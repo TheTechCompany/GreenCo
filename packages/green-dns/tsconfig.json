@@ -1,5 +1,4 @@
 {
-  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
@@ -71,8 +70,5 @@
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
   "include": ["src/"],
-  "exclude": ["dist/", "node_modules/"],
-  "references": [
-    {"path": "../hive-command-data-types"}
-  ]
+  "exclude": ["dist/", "node_modules/"]
 }

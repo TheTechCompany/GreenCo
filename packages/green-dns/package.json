@@ -24,15 +24,15 @@
   "scripts": {
     "example": "ts-node example/",
     "start": "ts-node src/index.ts",
-    "build": "tsc -b",
+    "build": "tsc -b && chmod +x dist/cli.js",
     "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/TheTechCompany/GreenCo/issues"
   },
   "dependencies": {
-    "@hive-command/data-types": "0.0.3",
     "dns2": "^2.0.1",
+    "mongoose": "^6.0.14",
     "tldts": "^5.7.38",
     "typescript": "^4.4.3",
     "yargs": "^17.0.1"

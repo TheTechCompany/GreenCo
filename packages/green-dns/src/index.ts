@@ -1,10 +1,8 @@
 
 import { parse } from 'tldts'
-import { Models, disconnect_data, connect_data } from '@hive-command/data-types'
 import dns2, { UDPServer, createUDPServer, Packet} from 'dns2';
 import { promises } from 'dns';
-
-const { DNSRecord } = Models;
+import { connect_data, disconnect_data, DNSRecord } from './data';
 
 // const { Packet, UDPClient } = dns2;
 
@@ -42,7 +40,7 @@ export class CommandDNS {
     }
 
     async start(){
-        await connect_data()
+        await connect_data(process.env.MONGO_URI)
         await this.server.listen(this.port, '0.0.0.0');
 
     }
