@@ -1,10 +1,6 @@
-46 error Error: Command failed with exit code 1: git commit -m v0.0.1
-46 error On branch master
-46 error Your branch is ahead of 'origin/master' by 3 commits.
-46 error   (use "git push" to publish your local commits)
-46 error
-46 error nothing to commit, working tree clean
-46 error     at makeError (/Users/the-kid/work/contract-work/green/node_modules/execa/lib/error.js:60:11)
-46 error     at handlePromise (/Users/the-kid/work/contract-work/green/node_modules/execa/index.js:118:26)
-46 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-46 error     at async Promise.all (index 0)
+48 error Error: Command failed with exit code 128: git tag v0.0.1 -m v0.0.1
+48 error fatal: tag 'v0.0.1' already exists
+48 error     at makeError (/Users/the-kid/work/contract-work/green/node_modules/execa/lib/error.js:60:11)
+48 error     at handlePromise (/Users/the-kid/work/contract-work/green/node_modules/execa/index.js:118:26)
+48 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+48 error     at async Promise.all (index 0)
