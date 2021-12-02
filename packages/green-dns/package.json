@@ -6,6 +6,9 @@
   "homepage": "https://github.com/TheTechCompany/sudbuster#readme",
   "license": "ISC",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -46,5 +49,5 @@
     "ts-jest": "^27.0.5",
     "ts-node": "^10.1.0"
   },
-  "gitHead": "ed40b7b8952a50194a3b696deda0c98f4de29c95"
+  "gitHead": "946e584f078a1103ffda3f008aa72b5eb6e46b23"
 }

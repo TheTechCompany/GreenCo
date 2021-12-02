@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,5 +32,6 @@
     "@types/tar": "^6.1.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
-  }
+  },
+  "gitHead": "946e584f078a1103ffda3f008aa72b5eb6e46b23"
 }
