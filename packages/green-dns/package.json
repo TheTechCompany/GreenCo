@@ -14,8 +14,8 @@
     "dist"
   ],
   "bin": {
-    "hive-dns-client": "dist/client.js",
-    "hive-dns": "dist/cli.js"
+    "green-dns-client": "dist/client.js",
+    "green-dns-server": "dist/cli.js"
   },
   "repository": {
     "type": "git",
