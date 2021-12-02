@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export const connect_data = async (host?: string) => {
-	await mongoose.connect(`mongodb://${host}/dns`);
+	await mongoose.connect(`mongodb://${host || process.env.MONGO_URI}/dns`);
 }
 
 export const disconnect_data = async () => {
