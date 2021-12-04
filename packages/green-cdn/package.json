@@ -37,6 +37,7 @@
     "moniker": "^0.1.2",
     "neo4j-driver": "^4.4.1",
     "pg": "^8.7.1",
+    "socket.io": "^4.4.0",
     "uuid": "^8.3.2"
   },
   "gitHead": "946e584f078a1103ffda3f008aa72b5eb6e46b23"

@@ -6,6 +6,9 @@ import routes from './routes';
 import bodyParser from 'body-parser';
 import neo4j from "neo4j-driver"
 import { Pool, PoolClient } from "pg";
+import { Server, Socket } from 'socket.io'
+import { createServer } from 'http';
+import { promises } from 'dns';
 
 (async () => {
 	const pgClient = new Pool({
@@ -23,7 +26,55 @@ import { Pool, PoolClient } from "pg";
 	
 	const app = express();
 	app.use(bodyParser.json())
+
+	const server = createServer(app)
+
+	const io = new Server(server)
+
+	const onSocketConnect = (socket: Socket) => {
+		
+		socket.on('subscribe', async (data: any) => {
+
+		})
+
+        socket.on('disconnect',(reason) => onSocketDisconnect(socket))
+	}
+
+	const onSocketDisconnect = (socket: Socket) => {
+
+	}
+
+	io.use(async (socket, next) => {
+
+		let remoteAddress = socket.request.socket.remoteAddress
+
+		let ip = remoteAddress?.replace('::ffff:', '')
+		console.log("IO-SOCKET", remoteAddress)
+		if(!ip) return next(new Error("Couldn't find IP allocation"));
+		const [host] = await promises.reverse(ip)
+		console.log("IO-SOCKET", host)
+	   
+		let deviceId = host?.replace(".hexhive.io", '');
+
+		(socket as any).networkName = deviceId;
+
+		// let token: string | undefined = socket.request.headers.authorization
+		// console.log("Machine info", token);
+
+		// if(token){
+		//     const info = jwt_decode(token);
+
+		//     console.log("Machine info", info);
+
+		//     (socket as any).machine_info = info;
+		//     next();
+		// }
+		next();
+	})
+	io.sockets.on('connection', onSocketConnect)
+
 	
 	app.use('/api/', await routes(driver, pgClient))
-	app.listen(process.env.NODE_ENV == 'prod' ? 80 : 4200)
+
+	server.listen(process.env.NODE_ENV == 'prod' ? 80 : 4200)
 })()
