@@ -27,7 +27,7 @@ export class CommandDNS {
         domain: 'dns.hive'
     }){        
 
-        this.port = opts.port;
+        this.port = process.env.PORT  ? parseInt(process.env.PORT) : opts.port;
         this.domain = opts.domain;
         
         this.server = createUDPServer(this.dnsHandler.bind(this))
