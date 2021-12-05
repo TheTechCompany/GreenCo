@@ -21,12 +21,12 @@ export class GreenScreen {
 
 	constructor(){
 		this.network = new Network({
-			url: `http://cdn.greenco.co.nz:4200`,
+			url: `http://hahei-jumpbox.hexhive.io`,
 		})
 
 		this.telemtry = new TelemetryService({
 			appName: 'GreenScreen',
-			url: `http://cdn.greenco.co.nz:4200`
+			url: `http://hahei-jumpbox.hexhive.io`
 		})
 
 		this.displayManager = new DisplayManager(this.telemtry);
@@ -36,7 +36,7 @@ export class GreenScreen {
 		this.assetStore = new AssetStore({
 			displayManager: this.displayManager,
 			telemtry: this.telemtry,
-			assetStoreUrl: `http://cdn.greenco.co.nz:4200`,
+			assetStoreUrl: `http://hahei-jumpbox.hexhive.io`,
 			assetStoragePath:  process.env.USERPROFILE+'\\Documents' || `C:\\Users\\Administrator\\Documents\\`
 		});
 	}
