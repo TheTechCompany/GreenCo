@@ -9,6 +9,7 @@ import { Pool, PoolClient } from "pg";
 import { Server, Socket } from 'socket.io'
 import { createServer } from 'http';
 import { promises } from 'dns';
+import { socketHandler } from './websockets';
 
 (async () => {
 	const pgClient = new Pool({
@@ -31,18 +32,7 @@ import { promises } from 'dns';
 
 	const io = new Server(server)
 
-	const onSocketConnect = (socket: Socket) => {
-		
-		socket.on('subscribe', async (data: any) => {
 
-		})
-
-        socket.on('disconnect',(reason) => onSocketDisconnect(socket))
-	}
-
-	const onSocketDisconnect = (socket: Socket) => {
-
-	}
 
 	io.use(async (socket, next) => {
 
@@ -71,7 +61,7 @@ import { promises } from 'dns';
 		// }
 		next();
 	})
-	io.sockets.on('connection', onSocketConnect)
+	io.sockets.on('connection', await socketHandler(driver))
 
 	
 	app.use('/api/', await routes(driver, pgClient))

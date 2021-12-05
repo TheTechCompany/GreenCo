@@ -13,9 +13,9 @@ export class Network {
 		// this.socket.on('c')
 	}
 
-	async provision(moniker: string, payload: any[]){
+	async provision(moniker: string, payload: any){
 		await new Promise((ressolve) => {
-			this.socket.emit('PROVISION:REQUEST', {moniker, type: 'green-screen', version: pkg.version, items: payload})
+			this.socket.emit('PROVISION:REQUEST', {moniker, type: 'green-screen', version: pkg.version, payload: payload})
 			this.socket.on('PROVISION:RESULT', (data) => {
 				console.log(data)
 				ressolve(data)

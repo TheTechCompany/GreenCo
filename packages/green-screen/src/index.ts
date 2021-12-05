@@ -1,10 +1,14 @@
 import puppeteer from 'puppeteer'
 import { AssetStore } from './asset-store';
 import { DisplayManager } from './display-manager';
+import { HardwareManager } from './hardware';
 import { Network } from './network';
 import { TelemetryService } from './telemetry';
 const Moniker = require('moniker');
 export class GreenScreen {
+
+	private hardwareManager: HardwareManager;
+
 	private displayManager: DisplayManager;
 	private assetStore: AssetStore;
 
@@ -27,6 +31,8 @@ export class GreenScreen {
 
 		this.displayManager = new DisplayManager(this.telemtry);
 
+		this.hardwareManager = new HardwareManager();
+
 		this.assetStore = new AssetStore({
 			displayManager: this.displayManager,
 			telemtry: this.telemtry,
@@ -37,14 +43,17 @@ export class GreenScreen {
 
 	async start(){
 		this.running = true;
+		await this.hardwareManager.init()
+
 		if(!this.isProvisioned){
-			await this.network.provision(Moniker.choose(), [{type: 'computer', count: 1}]);
+			await this.network.provision(Moniker.choose(), this.hardwareManager?.hardwareInfo);
 			// await this.assetStore.provision();
 			this.isProvisioned = true;
 		}
 		await this.assetStore.init()
 		await this.displayManager.init()
 		await this.schedule()
+		
 	}
 
 	async schedule(){
