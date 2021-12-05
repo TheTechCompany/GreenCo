@@ -10,4 +10,4 @@ RUN yarn
 
 RUN yarn build
 
-CMD ["./dist/cli.js"]
+CMD ["./dist/cli.js", "--port", "53"]
