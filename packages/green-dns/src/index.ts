@@ -23,7 +23,7 @@ export class CommandDNS {
     private domain : string;
 
     constructor(opts: CommandDNSOptions = {
-        port: 5333,
+        port: 53,
         domain: 'dns.hive'
     }){        
 
