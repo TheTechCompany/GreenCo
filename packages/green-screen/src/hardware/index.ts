@@ -1,5 +1,4 @@
 import os from 'os';
-import usbDetection from 'usb-detection'
 
 export class HardwareManager {
 	private hostname?: string;
@@ -18,14 +17,14 @@ export class HardwareManager {
 	}
 
 	async init(){
-		const devices = await usbDetection.find()
-		this.usbDevices = devices.map((device) => ({
-			name: device.deviceName,
-			manufacturer: device.manufacturer,
-			serialNumber: device.serialNumber,
-			productId: device.productId,
-			vendorId: device.vendorId,
-		}))
+		// const devices = await usbDetection.find()
+		// this.usbDevices = devices.map((device) => ({
+		// 	name: device.deviceName,
+		// 	manufacturer: device.manufacturer,
+		// 	serialNumber: device.serialNumber,
+		// 	productId: device.productId,
+		// 	vendorId: device.vendorId,
+		// }))
 	}
 
 	get hardwareInfo(){

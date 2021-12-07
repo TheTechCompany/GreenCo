@@ -35,7 +35,6 @@
     "puppeteer": "^12.0.0",
     "socket.io-client": "^4.4.0",
     "tar": "^6.1.11",
-    "usb-detection": "^4.13.0",
     "yargs": "^17.3.0"
   },
   "devDependencies": {
