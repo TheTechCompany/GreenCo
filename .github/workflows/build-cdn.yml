@@ -27,8 +27,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with: 
-          context: ./packages/green-dns
-          file: ./packages/green-dns/Dockerfile
+          context: ./packages/green-cdn
+          file: ./packages/green-cdn/Dockerfile
           push: true
           tags: thetechcompany/greenco-cdn:latest
   
