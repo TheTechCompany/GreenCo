@@ -1,6 +1,6 @@
 import { connect, Socket } from 'socket.io-client'
 
-const pkg = require('../../../package')
+const pkg = require('../../package')
 
 export interface NetworkOptions {
 	url: string
