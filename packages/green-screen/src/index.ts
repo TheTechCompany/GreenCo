@@ -45,11 +45,11 @@ export class GreenScreen {
 		this.running = true;
 		await this.hardwareManager.init()
 
-		if(!this.isProvisioned){
-			await this.network.provision(Moniker.choose(), this.hardwareManager?.hardwareInfo);
-			// await this.assetStore.provision();
-			this.isProvisioned = true;
-		}
+		// if(!this.isProvisioned){
+		// 	await this.network.provision(Moniker.choose(), this.hardwareManager?.hardwareInfo);
+		// 	// await this.assetStore.provision();
+		// 	this.isProvisioned = true;
+		// }
 		await this.assetStore.init()
 		await this.displayManager.init()
 		await this.schedule()
