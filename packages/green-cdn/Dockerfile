@@ -10,4 +10,4 @@ RUN yarn
 
 RUN yarn build
 
-CMD ["./dist/index.js"]
+CMD ["node", "./dist/index.js"]
