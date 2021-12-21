@@ -3,7 +3,12 @@ import { Driver, Session } from 'neo4j-driver-core'
 import { Pool, PoolClient } from 'pg'
 import { promises } from 'dns';
 
+promises.setServers(['192.168.255.1', '8.8.8.8'])
+
+
 export default async (session: Session, pgClient: Pool) => {
+
+
 	const router = Router()
 	const client = await pgClient.connect()
 
@@ -12,6 +17,7 @@ export default async (session: Session, pgClient: Pool) => {
 
 		let ip = (req.ip || req.socket.remoteAddress)?.replace('::ffff:', '')
         if(!ip) return res.send({error: "No IP, strange"});
+
         const [ host ] = await promises.reverse(ip)
 
 		await client.query(`
