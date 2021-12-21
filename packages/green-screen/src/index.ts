@@ -39,6 +39,16 @@ export class GreenScreen {
 			assetStoreUrl: `http://hahei-jumpbox.hexhive.io`,
 			assetStoragePath:  process.env.USERPROFILE+'\\Documents' || `C:\\Users\\Administrator\\Documents\\`
 		});
+
+		this.network.on('reload-schedule', this.reloadSchedule.bind(this))
+	}
+
+
+
+	async reloadSchedule(){
+		await this.assetStore.loadManifest()
+
+		await this.assetStore.pullAll()
 	}
 
 	async start(){

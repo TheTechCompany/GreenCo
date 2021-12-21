@@ -20,7 +20,7 @@ export default async (session: Session, pgClient: Pool) => {
 			VALUES 
 			($1, $2, $3, $4, $5, $6)
 		`, 
-		[event, properties, source, new Date(timestamp).toISOString(), new Date().toISOString(), host ]) //TODO change api to screen id
+		[event, properties, source, new Date().toISOString(), new Date().toISOString(), host ]) //TODO change api to screen id
 
 		console.log(event, properties, source, timestamp, host );
 		res.send({success: true})
