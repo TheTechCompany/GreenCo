@@ -1,13 +1,12 @@
 0 silly argv {
 0 silly argv   _: [ 'add' ],
-0 silly argv   D: true,
-0 silly argv   dev: true,
-0 silly argv   scope: '@greenco/screen',
-0 silly argv   globs: [ 'mdns' ],
+0 silly argv   scope: '@greenco/signage-frontend',
+0 silly argv   globs: [],
 0 silly argv   lernaVersion: '4.0.0',
 0 silly argv   '$0': '/Users/the-kid/work/contract-work/green/node_modules/.bin/lerna',
-0 silly argv   pkg: '@types/'
+0 silly argv   pkg: '@hexhive/ui'
 0 silly argv }
 1 notice cli v4.0.0
 2 verbose rootPath /Users/the-kid/work/contract-work/green
-3 error
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/@hexhive%2fui - Not found
+3 error     at /Users/the-kid/work/contract-work/green/node_modules/npm-registry-fetch/check-response.js:95:15
