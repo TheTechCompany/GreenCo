@@ -48,7 +48,7 @@ jobs:
           node-version: 15.x
       - run: yarn
 
-      - run: lerna bootstrap --scope @greenco-apps/${{ matrix.apps }} --include-dependencies
+      - run: CI=false lerna bootstrap --scope @greenco-apps/${{ matrix.apps }} --include-dependencies
         env: 
           CI: false
 
