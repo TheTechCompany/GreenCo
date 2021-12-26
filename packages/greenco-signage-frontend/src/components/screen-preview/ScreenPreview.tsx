@@ -6,7 +6,7 @@ import DEMO from './demo.html';
 import { PreviewFrame } from './PreviewFrame';
 
 export interface ScreenPreviewProps {
-	previewUrl: string;
+	previewUrl?: string;
 	width?: any;
 	height?: any;
 }
@@ -17,8 +17,8 @@ export const ScreenPreview : React.FC<ScreenPreviewProps> = (props) => {
 	const {width, height} = useMemo(() => {
 		console.log(sizes)
 		return {
-			width: (sizes.height / 1920).toFixed(2),
-			height: (sizes.height / 1920).toFixed(2)
+			width: ((sizes?.height || 1920) / 1920).toFixed(2),
+			height: ((sizes?.height || 1920) / 1920).toFixed(2)
 		}
 	}, [sizes])
 

@@ -18,7 +18,7 @@ export const LocationSingle = (props) => {
 	const location = query.locations({where: {id: id}})?.[0]
 
 	return (
-		<ClusterSingleProvider value={{id: id, analytics: location.cameraAnalytics }}>
+		<ClusterSingleProvider value={{id: id, analytics: location.cameraAnalytics || [] }}>
 		<Box overflow="hidden" flex elevation="small" background="neutral-1" round="xsmall">
 			<Box background="accent-2" direction="row" pad="xsmall">
 				<Text>{location.name}</Text>
@@ -26,7 +26,7 @@ export const LocationSingle = (props) => {
 			<Box direction="row" flex>
 				<Box border={{side: 'right', size: 'small'}}>
 					<List 
-						onClickItem={({item}) => navigate(`${item.toLowerCase()}`)}
+						onClickItem={(ev) => navigate(`${ev.item.toLowerCase()}`)}
 						border={false} 
 						data={["Analytics"]} />
 				</Box>

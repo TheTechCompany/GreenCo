@@ -15,7 +15,7 @@ export const ToolsPage = () => {
 
 	const { analytics, campaign } = useContext(CampaignSingleContext)
 	const [ createCampaignAnalytic, createAnalyticInfo ] = useMutation((mutation, args: {id?: string, name: string, type: string, data: string}) => {
-		let update = undefined;
+		let update : any = undefined;
 
 		if(args.id){
 			update = {

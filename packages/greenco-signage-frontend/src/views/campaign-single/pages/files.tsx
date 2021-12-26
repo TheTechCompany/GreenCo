@@ -27,7 +27,7 @@ export const FilesPage = (props: any) => {
 			setLoadingPercent(0)
 			setUploading([])
 
-			refresh()
+			refresh?.()
 		})
 
 	}, [])
@@ -42,9 +42,9 @@ export const FilesPage = (props: any) => {
 			{uploading.length > 0 && (<Meter  max={100} size="full" thickness="xsmall" type="bar" value={loadingPercent} />)}
 			<input {...getInputProps() as any} />
 
-			{files.length > 0  ? (
+			{(files || []).length > 0  ? (
 				<List data={files} primaryKey="path">
-					{(datum) => (
+					{(datum: any) => (
 						<Box color={uploading && "gray"} direction="row">
 							<Text>{datum.path}</Text>
 						</Box>

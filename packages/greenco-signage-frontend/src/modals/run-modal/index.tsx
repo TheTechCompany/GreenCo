@@ -15,7 +15,7 @@ export interface RunModalProps {
 export const RunModal : React.FC<RunModalProps> = (props) => {
     console.log(props.params)
 
-    const [ exploreFiles, openExplorer ] = useState<string>(undefined);
+    const [ exploreFiles, openExplorer ] = useState<string | undefined>(undefined);
 
     const [ workState, setWorkState] = useState<any>({})
 
@@ -52,6 +52,7 @@ export const RunModal : React.FC<RunModalProps> = (props) => {
                 onSubmit={(ids) => {
                     console.log(ids)
                     let ws = workState;
+                    if(!exploreFiles) return;
                     ws[exploreFiles] = ids;
                     setWorkState(ws)
                     openExplorer(undefined)

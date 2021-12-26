@@ -7,7 +7,7 @@ import { useMutation } from '@greenco/signage-api';
 import { ScheduleSingleContext } from '../context';
 import { VisualizeTierModal } from '../../../modals/visualize-tier/VisualizeTierModal';
 
-export const ScheduleTiers = (props) => {
+export const ScheduleTiers = (props: any) => {
 	const [ modalOpen, openModal ] = useState(false);
 	const [ visualModalOpen, openVisualModal ] = useState(false)
 	const { scheduleId, tiers, refresh } = useContext(ScheduleSingleContext)
@@ -73,7 +73,7 @@ export const ScheduleTiers = (props) => {
 			<CreateTierModal
 				open={modalOpen}
 				selected={selected}
-				onSubmit={(tier) => {
+				onSubmit={(tier: any) => {
 					
 					createTier({args: {
 						id: tier.id,
@@ -82,7 +82,7 @@ export const ScheduleTiers = (props) => {
 						slots: tier.slots
 					}}).then(() => {
 						openModal(false)
-						refresh()
+						refresh?.()
 					})
 					setSelected(undefined)
 
@@ -98,7 +98,7 @@ export const ScheduleTiers = (props) => {
 			<List
 				primaryKey="name"
 				data={tiers}>
-				{(datum) => (
+				{(datum: any) => (
 					<Box direction="row" align="center" justify="between">
 						<Text>{datum.name}</Text>
 						<Button 

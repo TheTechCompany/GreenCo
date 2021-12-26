@@ -12,7 +12,7 @@ export const ScheduleMeter : React.FC<ScheduleMeterProps> = (props) => {
 			{props.items?.map((item, index) => {
 
 				return (
-					<Box align="center" justify="center" height="100%" style={{flex: item.percent / total, background: item.color || '#f0af0a'}}>
+					<Box align="center" justify="center" height="100%" style={{flex: item.percent / (total || 1), background: item.color || '#f0af0a'}}>
 						<Text size="small" color="white">{item.label}</Text>
 					</Box>
 				)

@@ -104,10 +104,10 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 			scheduleId: id,
 			locations: schedule?.locations,
 			screens: schedule?.screens,
-			campaigns: schedule?.campaignsConnection?.edges?.map(edge => ({
+			campaigns: schedule?.campaignsConnection?.edges?.map((edge: any) => ({
 				...edge.node, 
 				screen: edge.screen,
-				tier: schedule?.tiers.find((a) => a.id == edge.tier), 
+				tier: schedule?.tiers.find((a: any) => a.id == edge.tier), 
 				dates: [edge.startDate, edge.endDate]
 			})),
 			tiers: schedule?.tiers,

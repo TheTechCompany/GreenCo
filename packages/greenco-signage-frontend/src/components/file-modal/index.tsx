@@ -49,12 +49,12 @@ export const FileModal : React.FC<FileModalProps> = (props) => {
             selected={selected}
             onSubmit={() => {
                 console.log(selected, files)
-                props.onSubmit(selected.map((option) => {
+                props.onSubmit?.(selected.map((option) => {
                     return files.find((a) => a.id == option)
                 }))
             }}
             onClick={(file) => {
-                if(file.isFolder){
+                if(file.isFolder && file.id){
                     setCwd(file.id)
                 }
             }}

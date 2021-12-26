@@ -41,7 +41,7 @@ export const PortModal: React.FC<PortModalProps> = (props) => {
                         justify="end"
                         direction="row">
                         <Button label="Cancel" onClick={props.onClose} />
-                        <Button onClick={() => props.onSubmit({name: name, type: type})} primary label="Create" />
+                        <Button onClick={() => props.onSubmit?.({name: name, type: type})} primary label="Create" />
                     </Box>
                 </Box>
             

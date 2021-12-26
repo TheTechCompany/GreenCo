@@ -73,7 +73,7 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 					/>
 			</Box>
 			<List
-				onClickItem={({item}) => navigate(`${item.id}`)}
+				onClickItem={(ev) => navigate(`${ev.item.id}`)}
 				primaryKey={"name"}
 				data={locations} />
 		</Box>

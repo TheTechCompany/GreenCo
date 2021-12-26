@@ -71,7 +71,7 @@ export const MachineList : React.FC<DisplayListProps> = (props) => {
             </Box>
             <Box  overflow="scroll" flex>
                 <List 
-                    onClickItem={({item}) => navigate(`${item.id}`)}
+                    onClickItem={(ev) => navigate(`${ev.item.id}`)}
                     primaryKey={"name"}
                     data={machines} />
             </Box>

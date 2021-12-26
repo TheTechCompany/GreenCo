@@ -42,7 +42,7 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 			background="light-1" 
 			flex>
 			<CreateScheduleModal 
-				onSubmit={(schedule) => {
+				onSubmit={(schedule: any) => {
 					createSchedule({args: {name: schedule.name}}).then(() => {
 						setModalOpen(false)
 					})
@@ -64,7 +64,7 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 					hoverIndicator />
 			</Box>
 			<List
-				onClickItem={({item}) => navigate(`${item.id}`)}
+				onClickItem={(ev) => navigate(`${ev.item.id}`)}
 				primaryKey="name"
 				data={schedules} />
 		</Box>

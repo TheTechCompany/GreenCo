@@ -84,7 +84,7 @@ export const MachineSingle = (props) => {
 				<Box elevation="small" border={{side: 'right', size: 'small'}}>
 					<List 
 						border={false}
-						onClickItem={({item}) => navigate(`${item.toLowerCase()}`)}
+						onClickItem={(ev) => navigate(`${ev.item.toLowerCase()}`)}
 						data={["Computers", "Screen", "Cluster"]} />
 				</Box>
 				<Box flex>

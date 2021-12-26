@@ -65,14 +65,14 @@ export const TemplateScreenList = () => {
 			<ScreenTemplateModal 
 				computers={computers}
 				onClose={() => openModal(false)}
-				onSubmit={(screen) => {
+				onSubmit={(screen: any) => {
 					createTemplateScreen({
 						args: {
 							...screen
 						}
 					}).then(() => {
 						openModal(false)
-						refresh()
+						refresh?.()
 					})
 				}}
 				onDelete={() => {
@@ -83,7 +83,7 @@ export const TemplateScreenList = () => {
 					}).then(() => {
 						openModal(false)
 						setSelected(undefined)
-						refresh()
+						refresh?.()
 					})
 				}}
 				open={modalOpen} />

@@ -42,7 +42,7 @@ export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
                         direction="row">
                         {campaign.id && <Button onClick={props.onDelete} label="Delete" color="red" />}
                         <Button label="Cancel" onClick={props.onClose} />
-                        <Button onClick={() => props.onSubmit(campaign)} primary label={campaign.id ? "Save" : "Create"} />
+                        <Button onClick={() => props.onSubmit?.(campaign)} primary label={campaign.id ? "Save" : "Create"} />
                     </Box>
                 </Box>
             

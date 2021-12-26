@@ -3,11 +3,15 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "esModuleInterop": true,
-    "downlevelIteration": true
+    "noImplicitAny": false,
+    "rootDir": "src/",
+    "downlevelIteration": true,
+    "moduleResolution": "node"
   },
   "include": ["src/**/*", "node_modules/@types"],
   "exclude": ["src/**/*.test*"],
   "references": [
+    {"path": "../greenco-styles"},
     {"path": "../greenco-signage-api"}
   ]
 }

@@ -7,7 +7,7 @@ import { ScheduleSingleContext } from '../context';
 import { Timeline } from '@hexhive/ui';
 
 export const ScheduleCampaigns = () => {
-	const [ activeView, changeActiveView ] = useState<string>(null);
+	const [ activeView, changeActiveView ] = useState<string | null>(null);
 	
 	const [ modalOpen, openModal ] = useState(false)
 	const [ viewMode, changeMode ] = useState(false)
@@ -53,7 +53,7 @@ export const ScheduleCampaigns = () => {
 				tiers={tiers}
 				open={modalOpen}
 				onClose={() => openModal(false)}
-				onSubmit={(schedule) => {
+				onSubmit={(schedule: any) => {
 					scheduleCampaign({
 						args: {
 							tier: schedule.tier,
@@ -62,7 +62,7 @@ export const ScheduleCampaigns = () => {
 							screen: activeView || screens?.[0]?.id
 						}
 					}).then(() => {
-						refresh()
+						refresh?.()
 						openModal(false)
 					})
 				}} />
@@ -92,7 +92,7 @@ export const ScheduleCampaigns = () => {
 					<List 
 					primaryKey="name"
 					data={getCampaigns()} >
-						{(datum) => (
+						{(datum: any) => (
 							<Box direction="row" justify="between" align="center">
 								<Text>{datum.name}</Text>
 								<Text size='small'>{datum.tier?.name}</Text>
@@ -102,10 +102,10 @@ export const ScheduleCampaigns = () => {
 				) : (
 					<Box flex pad="xsmall">
 						<Timeline
-							data={getCampaigns().map((campaign) => ({
+							data={getCampaigns()?.map((campaign) => ({
 								id: campaign.id,
 								name: campaign.name,
-								color: tiers.find((a) => a.id == campaign.tier)?.color,
+								color: tiers?.find((a) => a.id == campaign.tier)?.color,
 								showLabel: campaign.name,
 								start: campaign.dates?.[0],
 								end: campaign.dates?.[1],

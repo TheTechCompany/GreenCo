@@ -68,7 +68,7 @@ export const TemplatePeripheralList = () => {
 			<PeripheralTemplateModal 
 				open={modalOpen}
 				selected={selected}
-				onSubmit={(peripheral) => {
+				onSubmit={(peripheral: any) => {
 					createTemplatePeripheral({
 						args: {
 							name: peripheral.name,
@@ -77,7 +77,7 @@ export const TemplatePeripheralList = () => {
 							computer: peripheral.computer
 						}
 					}).then(() => {
-						refresh()
+						refresh?.()
 						openModal(false)
 					})
 				}}
@@ -89,7 +89,7 @@ export const TemplatePeripheralList = () => {
 					}).then(() => {
 						openModal(false)
 						setSelected(undefined)
-						refresh()
+						refresh?.()
 					})
 				}}
 				computers={computers}

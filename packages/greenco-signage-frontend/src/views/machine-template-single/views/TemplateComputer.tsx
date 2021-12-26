@@ -59,16 +59,16 @@ export const TemplateComputerList = () => {
 					deleteTemplateComputer({args: {
 						id: selected?.id
 					}}).then(() => {
-						refresh()
+						refresh?.()
 						setSelected(undefined)
 						openModal(false)
 					})
 				}}
-				onSubmit={(computer) => {
+				onSubmit={(computer: any) => {
 					createTemplateComputer({args: {
 						name: computer.name
 					}}).then(() => {
-						refresh()
+						refresh?.()
 						openModal(false)
 					})
 				}}
@@ -81,7 +81,7 @@ export const TemplateComputerList = () => {
 				<List 
 					primaryKey="name"
 					data={computers || []}>
-					{(datum) => (
+					{(datum: any) => (
 						<Box
 							align="center"
 							justify="between"

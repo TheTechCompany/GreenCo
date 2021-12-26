@@ -44,7 +44,7 @@ export const MachineTemplateList = (props) => {
 				onClose={() => openModal(false)}
 				/>
 			<List 
-				onClickItem={({item}) => props.history.push(`${props.match.url}/${item.id}`)}
+				onClickItem={(ev) => props.history.push(`${ev.item.id}`)}
 				primaryKey="name"
 				data={templates} />
 		</Box>

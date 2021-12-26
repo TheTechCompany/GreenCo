@@ -37,7 +37,7 @@ export const ScheduleLocations = () => {
 		<Box>
 			<ScheduleLocationModal 
 				locations={allLocations}
-				onSubmit={(location) => {
+				onSubmit={(location: any) => {
 
 					connectLocation({args: {locationId: location}}).then(() => {
 						openModal(false)

@@ -41,13 +41,13 @@ export const ScheduleScreens = () => {
 			<ScreenTemplateModal 
 				open={modalOpen} 
 				onClose={() => openModal(false)}
-				onSubmit={(screen) => {
+				onSubmit={(screen: any) => {
 					addScreen({
 						args: {
 							...screen
 						}
 					}).then(() => {
-						refresh()
+						refresh?.()
 						openModal(false)
 					})
 				}} />

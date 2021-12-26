@@ -78,7 +78,7 @@ export const App = (props) => {
                 <List 
                     border={false}
                     pad={'none'}
-                    onClickItem={({item}) => changeView(item.path)}
+                    onClickItem={(ev) => changeView(ev.item.path)}
                     data={menu} 
                     primaryKey="label">
                     {(datum) => (

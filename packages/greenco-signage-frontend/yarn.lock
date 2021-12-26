@@ -6322,10 +6322,10 @@
   "resolved" "https://registry.npmjs.org/grommet-styles/-/grommet-styles-0.2.0.tgz"
   "version" "0.2.0"
 
-"grommet@^2.17.4", "grommet@^2.19.1":
-  "integrity" "sha512-tnFLACh0+eaHGUia79C8SFctsQBce9kQcNjOEM8WemlSFv8/0hUJLuaEvgdcGw9ZL22i8g/0s6m+tuJAqvQmYg=="
-  "resolved" "https://registry.npmjs.org/grommet/-/grommet-2.19.1.tgz"
-  "version" "2.19.1"
+"grommet@^2.17.4", "grommet@2.17.x":
+  "integrity" "sha512-ld8nvuEqBDXiUiMybX2yuMH94KC1LxGhHKaDyqQI8HZrzgUpOB/GuQ2VcvB2YSB62Zpt7NuBjsghlLPKG5l8gQ=="
+  "resolved" "https://registry.npmjs.org/grommet/-/grommet-2.17.5.tgz"
+  "version" "2.17.5"
   dependencies:
     "grommet-icons" "^4.6.2"
     "hoist-non-react-statics" "^3.2.0"

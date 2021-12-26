@@ -1,7 +1,7 @@
 import { BaseModal, FormControl } from '@hexhive/ui';
 import React, { useState } from 'react';
 
-export const ScheduleLocationModal = (props) => {
+export const ScheduleLocationModal = (props: any) => {
 	const [ location, setLocation ] = useState<string>('')
 
 	const onSubmit = () => {

@@ -21,12 +21,12 @@ export const LocationAnalytics = (props) => {
 	analytics //[{timestamp, results: [{}]}]
 
 	const [keys, points] = useMemo(() => {
-		const keys = [...new Set(analytics.map(a => {
-			return [...new Set(a.results.map((x) => x.name?.replace(/ /g, '-')))]
+		const keys = [...new Set(analytics?.map(a => {
+			return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
 		}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
 
-		const points = analytics.map(({timestamp, results}) => {
-			let resultKeys = [...new Set(results.map((x: any) => x.name?.replace(/ /g, '-')))]
+		const points = analytics?.map(({timestamp, results}) => {
+			let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
 
 			let returnObject : any = {};
 

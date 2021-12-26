@@ -14,7 +14,7 @@ export const CreateMachineModal: React.FC<WorkflowModalProps> = (props) => {
     const [machine, setMachine] = useState<any>({})
 
     const onSubmit = () => {
-        props.onSubmit(machine)
+        props.onSubmit?.(machine)
     }
     return (
         <BaseModal
