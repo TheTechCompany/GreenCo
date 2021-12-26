@@ -4,6 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "gqty": "gqty.config.cjs",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "generate": "gqty generate",
     "build": "tsc -b",
