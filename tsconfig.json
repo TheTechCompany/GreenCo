@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./packages/",
+    "paths": {
+      "@greenco/signage-api": ["./greenco-signage-api/src"],
+    },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Projects */
