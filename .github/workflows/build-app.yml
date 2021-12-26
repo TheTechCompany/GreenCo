@@ -49,6 +49,8 @@ jobs:
       - run: yarn
 
       - run: lerna bootstrap --scope @greenco-apps/${{ matrix.apps }} --include-dependencies
+        env: 
+          CI: false
 
       - run: export REACT_APP_API="https://api.hexhive.io"
       - run: export REACT_APP_URL="https://go.hexhive.io"
@@ -56,7 +58,9 @@ jobs:
       
       - name: Build web
         run: (export REACT_APP_URL="https://go.hexhive.io" PUBLIC_PATH="https://apps.hexhive.io/${{matrix.apps}}/" REACT_APP_API="https://api.hexhive.io" NODE_ENV=production CI=false; lerna run build --scope @greenco-apps/${{ matrix.apps }} --include-dependencies)
-      
+        env: 
+          CI: false
+          
       - name: Configure AWS Creds
         uses: aws-actions/configure-aws-credentials@v1
         with: 
