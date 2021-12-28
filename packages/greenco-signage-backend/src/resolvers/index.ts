@@ -35,7 +35,7 @@ export default async (fs: FileStore, pool: Pool) => {
 						time_bucket_gapfill('30 minutes', "timestamp") as time 
 						from green_screen_telemetry 
 						where "event"=$1 AND source=$2 and 
-						"timestamp" < now() and "timestamp" > now() - interval '3 week'
+						"timestamp" < now() and "timestamp" > now() - interval '1 week'
 						group by time
 					)
 					select time, SUM(cnt) over (order by time) as interactions from data`,
