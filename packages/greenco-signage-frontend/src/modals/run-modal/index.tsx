@@ -13,7 +13,6 @@ export interface RunModalProps {
 }
 
 export const RunModal : React.FC<RunModalProps> = (props) => {
-    console.log(props.params)
 
     const [ exploreFiles, openExplorer ] = useState<string | undefined>(undefined);
 
