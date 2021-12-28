@@ -4,7 +4,7 @@ import React from 'react';
 import { ServerCluster, Monitor, Action, Plug } from 'grommet-icons';
 import { TemplateScreenList } from './views/TemplateScreen';
 import { TemplateComputerList } from './views/TemplateComputer';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import { TemplatePeripheralList } from './views/TemplatePeripheral';
 import { TemplatePluginList } from './views/TemplatePlugin';
 import { MachineTemplateSingleProvider } from './context';
@@ -13,6 +13,7 @@ import { useQuery as useApolloQuery, gql, useApolloClient } from '@apollo/client
 export const MachineTemplateSingle = (props) => {
 
 	const client = useApolloClient()
+	const { id } = useParams()
 
 	const { data } = useApolloQuery(gql`
 		query Q ($id: ID){
@@ -41,7 +42,7 @@ export const MachineTemplateSingle = (props) => {
 		}
 	`, {
 		variables: {
-			id: props.match.params.id
+			id: id
 		}
 	})
 
@@ -72,7 +73,7 @@ export const MachineTemplateSingle = (props) => {
 	return (
 		<MachineTemplateSingleProvider
 			value={{
-				templateId: props.match.params.id,
+				templateId: id,
 				computers: machineTemplate?.computers,
 				screens: machineTemplate?.displays,
 				peripherals: machineTemplate?.peripherals,

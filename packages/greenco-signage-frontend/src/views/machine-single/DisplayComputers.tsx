@@ -9,8 +9,6 @@ export const DisplayComputers = (props) => {
 
 	const query = useQuery()
 
-	// const computers = query.computers({where: {display: {id: props.match.params.id}}})
-
 	return (
 		<Box flex background="neutral-1">
 			<List data={[]} />
