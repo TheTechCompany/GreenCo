@@ -26,12 +26,18 @@ export const AnalyticsPage = () => {
 
 			</Box>
 
-			<Box overflow="hidden" background="white" round="xsmall" elevation="small" flex>
+			<Box 
+				overflow="hidden" 
+				background="white" 
+				round="xsmall" 
+				elevation="small" 
+				flex>
 				<Box margin={{bottom: 'xsmall'}} pad={'xsmall'} background="accent-2" direction="row">
 					<Text>Interactions</Text>
 				</Box>
-				<ResponsiveContainer>
+				<ResponsiveContainer width={'100%'}>
 					<AreaChart
+					
 						data={interactionTimeline?.map((x) => ({
 							...x,
 							time: moment(new Date(x.time).getTime()).format('DD/MM')
