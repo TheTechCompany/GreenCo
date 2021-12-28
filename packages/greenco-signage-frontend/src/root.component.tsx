@@ -8,7 +8,7 @@ export default function Root(props) {
   return (
 
     <Router basename={process.env.PUBLIC_URL}>
-    <Grommet style={{width: '100%', height: '100%'}} theme={BaseStyle}>
+    <Grommet style={{width: '100vw', height: '100%'}} theme={BaseStyle}>
       <Routes>
         <Route path="*" element={<App />} />
       </Routes>
