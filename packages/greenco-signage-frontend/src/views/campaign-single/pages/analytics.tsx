@@ -35,7 +35,7 @@ export const AnalyticsPage = () => {
 				<Box margin={{bottom: 'xsmall'}} pad={'xsmall'} background="accent-2" direction="row">
 					<Text>Interactions</Text>
 				</Box>
-				<ResponsiveContainer width={'100%'}>
+				{/* <ResponsiveContainer width={'100%'}>
 					<AreaChart
 					
 						data={interactionTimeline?.map((x) => ({
@@ -55,9 +55,9 @@ export const AnalyticsPage = () => {
 						<Tooltip />
 						<CartesianGrid stroke="#f5f5f5" />
 						<Area type="monotone" dataKey="interactions" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-						{/* <Line type="monotone" dataKey={"interactions"}  stroke="#ff7300" yAxisId={0} /> */}
+						{/* <Line type="monotone" dataKey={"interactions"}  stroke="#ff7300" yAxisId={0} /> 
 					</AreaChart>
-				</ResponsiveContainer>
+				</ResponsiveContainer> */}
 			</Box>
 		</Box>
 	)
