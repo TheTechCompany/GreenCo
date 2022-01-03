@@ -1,5 +1,8 @@
 export default `
-type Machine {
+type Machine @auth(rules: [
+	{operations: [READ], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE], bind: {organisation: {id: "$jwt.organisation"}}}
+])  {
 	id: ID! @id
 	name: String
 	location: Location @relationship(type: "IN_LOCATION", direction: OUT)
@@ -14,7 +17,7 @@ type Machine {
 	networkName: String
 }
 
-type MachineTemplate {
+type MachineTemplate  {
 	id: ID! @id
 	name: String
 

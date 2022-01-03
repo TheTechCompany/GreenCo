@@ -1,5 +1,8 @@
 export default `
-type Schedule {
+type Schedule @auth(rules: [
+	{operations: [READ], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE], bind: {organisation: {id: "$jwt.organisation"}}}
+]) {
 	id: ID! @id
 	name: String
 
@@ -22,7 +25,10 @@ interface ScheduleItemProperties @relationshipProperties {
 }
 
 
-type ScheduleTier {
+type ScheduleTier @auth(rules: [
+	{operations: [READ], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE], bind: {organisation: {id: "$jwt.organisation"}}}
+])  {
 	id: ID! @id
 	name: String
 	schedule: Schedule @relationship(type: "HAS_TIER", direction: IN)

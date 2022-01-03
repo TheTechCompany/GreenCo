@@ -1,5 +1,8 @@
 export default `
-	type Campaign {
+	type Campaign @auth(rules: [
+		{operations: [READ], where: {organisation: {id: "$jwt.organisation"}}},
+		{operations: [UPDATE], bind: {organisation: {id: "$jwt.organisation"}}}
+	]) {
 		id: ID! @id
 		name: String
 
