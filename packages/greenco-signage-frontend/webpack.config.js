@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 const webpack = require('webpack')
+const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -25,7 +26,10 @@ module.exports = (webpackConfigEnv, argv) => {
     resolve: {
       fallback: {
         "process": require.resolve('process/browser')
-      }
+      },
+      plugins: [
+        new TsConfigPathsPlugin()
+      ]
     },
     plugins: [
       new webpack.ProvidePlugin({

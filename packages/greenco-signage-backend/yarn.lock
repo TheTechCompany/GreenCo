@@ -626,16 +626,7 @@
     "camel-case" "4.1.2"
     "tslib" "~2.2.0"
 
-"@graphql-tools/utils@^7.10.0":
-  "integrity" "sha512-d334r6bo9mxdSqZW6zWboEnnOOFRrAPVQJ7LkU8/6grglrbcu6WhwCLzHb90E94JI3TD3ricC3YGbUqIi9Xg0w=="
-  "resolved" "https://registry.npmjs.org/@graphql-tools/utils/-/utils-7.10.0.tgz"
-  "version" "7.10.0"
-  dependencies:
-    "@ardatan/aggregate-error" "0.0.6"
-    "camel-case" "4.1.2"
-    "tslib" "~2.2.0"
-
-"@graphql-tools/utils@^7.7.0":
+"@graphql-tools/utils@^7.10.0", "@graphql-tools/utils@^7.7.0":
   "integrity" "sha512-d334r6bo9mxdSqZW6zWboEnnOOFRrAPVQJ7LkU8/6grglrbcu6WhwCLzHb90E94JI3TD3ricC3YGbUqIi9Xg0w=="
   "resolved" "https://registry.npmjs.org/@graphql-tools/utils/-/utils-7.10.0.tgz"
   "version" "7.10.0"
@@ -934,13 +925,14 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@hexhive/graphql-server@0.0.6-alpha.6":
-  "integrity" "sha512-HUWHB3HS5A2VnqtdbwBpVsyToBia9kg/jnEE9aLAtMINqRZmpOxPPF3FQyf/3TTYuzHS0tLw01OdxRb3ZjXXMA=="
-  "resolved" "https://registry.npmjs.org/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.6.tgz"
-  "version" "0.0.6-alpha.6"
+"@hexhive/graphql-server@0.0.6-alpha.9":
+  "integrity" "sha512-u5lnlFmnTfWtzMppstGSqoBzcvMZD3Y+qN6cyQEuYNZTw75F/nGcRzWd88zgam45QBi8UupW7LYNUPQHAkly2g=="
+  "resolved" "https://registry.npmjs.org/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.9.tgz"
+  "version" "0.0.6-alpha.9"
   dependencies:
     "@graphql-tools/merge" "^8.2.1"
     "@neo4j/graphql" "^2.5.4"
+    "@neo4j/graphql-ogm" "^2.5.5"
     "express-graphql" "^0.12.0"
     "jsonwebtoken" "^8.5.1"
     "jwks-rsa" "^2.0.5"
@@ -1027,10 +1019,44 @@
     "pluralize" "^8.0.0"
     "prettier" "2.3.2"
 
+"@neo4j/graphql-ogm@^2.5.5":
+  "integrity" "sha512-AfPH4gz5pbSkTOGu8rJpljwSt0Hrc6tF8QoGGVm5EkPrlSN9b80R/dO5Wr0oYNYjNqSo313dCFh9aUwBWbfBsw=="
+  "resolved" "https://registry.npmjs.org/@neo4j/graphql-ogm/-/graphql-ogm-2.5.5.tgz"
+  "version" "2.5.5"
+  dependencies:
+    "@graphql-codegen/core" "2.0.0"
+    "@graphql-codegen/plugin-helpers" "2.0.0"
+    "@graphql-codegen/typescript" "2.0.0"
+    "@graphql-tools/merge" "6.2.14"
+    "@neo4j/graphql" "^2.5.5"
+    "camelcase" "^6.2.0"
+    "pluralize" "^8.0.0"
+    "prettier" "2.3.2"
+
 "@neo4j/graphql@^2.5.4":
   "integrity" "sha512-IDRFQhV8PLdTvEVwTxqU2cnKf3CG+oJ0+Y75mApQiGi13p8cA12GDTlSHtxI1qTZSE+pKysjxlTgQ5ceGrvZsQ=="
   "resolved" "https://registry.npmjs.org/@neo4j/graphql/-/graphql-2.5.4.tgz"
   "version" "2.5.4"
+  dependencies:
+    "@graphql-tools/merge" "6.2.14"
+    "@graphql-tools/schema" "^7.1.5"
+    "@graphql-tools/utils" "^7.10.0"
+    "camelcase" "^6.2.0"
+    "debug" "^4.3.2"
+    "deep-equal" "^2.0.5"
+    "dot-prop" "^6.0.1"
+    "graphql-compose" "9.0.4"
+    "graphql-parse-resolve-info" "^4.12.0"
+    "graphql-relay" "^0.8.0"
+    "jsonwebtoken" "^8.5.1"
+    "jwks-rsa" "^2.0.5"
+    "pluralize" "^8.0.0"
+    "semver" "^7.3.5"
+
+"@neo4j/graphql@^2.5.5":
+  "integrity" "sha512-q+cQIssO9ciI+qSDoP/WkSn1XVxQsaV/R/afFbA1hdygVMng/pGwiVbElBDievlpbzs9fPCunGNX2Ak8V3WxWg=="
+  "resolved" "https://registry.npmjs.org/@neo4j/graphql/-/graphql-2.5.5.tgz"
+  "version" "2.5.5"
   dependencies:
     "@graphql-tools/merge" "6.2.14"
     "@graphql-tools/schema" "^7.1.5"
