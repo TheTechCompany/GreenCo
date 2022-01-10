@@ -1,5 +1,14 @@
 export default `
-type Schedule {
+
+extend type HiveOrganisation {
+	schedules: [Schedule] @relationship(type: "HAS_SCHEDULE", direction: OUT)
+	scheduleTiers: [ScheduleTier] @relationship(type: "HAS_TIER", direction: OUT)
+}
+
+type Schedule @auth(rules: [
+	{operations: [READ, UPDATE, CREATE], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE, DELETE], bind: {organisation: {id: "$jwt.organisation"}}}
+]) {
 	id: ID! @id
 	name: String
 
@@ -12,7 +21,10 @@ type Schedule {
 
 	startDate: DateTime
 	endDate: DateTime
+
+	organisation: HiveOrganisation @relationship(type: "HAS_SCHEDULE", direction: IN)
 }
+
 
 interface ScheduleItemProperties @relationshipProperties {
 	tier: String
@@ -22,11 +34,16 @@ interface ScheduleItemProperties @relationshipProperties {
 }
 
 
-type ScheduleTier {
+type ScheduleTier @auth(rules: [
+	{operations: [READ, UPDATE], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE, DELETE], bind: {organisation: {id: "$jwt.organisation"}}}
+])  {
 	id: ID! @id
 	name: String
 	schedule: Schedule @relationship(type: "HAS_TIER", direction: IN)
 	percent: Float
 	slots: Float
+
+	organisation: HiveOrganisation @relationship(type: "HAS_TIER", direction: IN)
 }
 `

@@ -1,5 +1,13 @@
 export default `
-	type Campaign {
+
+	extend type HiveOrganisation {
+		campaigns: [Campaign] @relationship(type: "HAS_CAMPAIGN", direction: OUT)
+	}
+
+	type Campaign @auth(rules: [
+		{operations: [READ, UPDATE, CREATE], where: {organisation: {id: "$jwt.organisation"}}},
+		{operations: [UPDATE, DELETE], bind: {organisation: {id: "$jwt.organisation"}}}
+	]) {
 		id: ID! @id
 		name: String
 
@@ -12,6 +20,7 @@ export default `
 		assets: [CampaignAsset] @ignore
 		customer: String
 
+		organisation: HiveOrganisation @relationship(type: "HAS_CAMPAIGN", direction: IN)
 	}
 
 	type CampaignInteraction @exclude {

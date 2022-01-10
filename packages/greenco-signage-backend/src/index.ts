@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config()
 
+import { HiveGraph } from '@hexhive/graphql-server'
+
 import neo4j from "neo4j-driver"
 import { Neo4jGraphQL } from "@neo4j/graphql"
 import { graphqlHTTP } from "express-graphql"
@@ -20,6 +22,8 @@ import { createServer } from "http"
 const greenlock = require("greenlock-express");
 
 (async () => {
+
+
 	const app = express();
 
 	const server = createServer(app)
@@ -48,16 +52,25 @@ const greenlock = require("greenlock-express");
 	await fs.init()
 
 	const resolved = await resolvers(fs, pgClient)
-	const ogm = new OGM({typeDefs, driver})
-	const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
+	// const ogm = new OGM({typeDefs, driver})
+	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
 
-	app.use('/api/', signageApi(ogm, fs))
+	const graphServer = new HiveGraph({
+		rootServer: process.env.ROOT_SERVER || 'http://localhost:7000',
+		schema: {
+			typeDefs,
+			resolvers: resolved,
+			driver
+		},
+		dev: false
+	})
 
-	app.use("/graphql", graphqlHTTP({
-		schema: neoSchema.schema,
-		graphiql: true,
-	}))
+	await graphServer.init()
+
+	// app.use('/api/', signageApi(ogm, fs))
+
+	app.use(graphServer.middleware)
 
 
 	if(process.env.NODE_ENV == "production"){

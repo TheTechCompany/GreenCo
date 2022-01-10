@@ -30,10 +30,22 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
         }
     })
     const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string}) => {
-        const item = mutation.createCampaigns({input: [{name: args.name}]})
+       const item = mutation.updateHiveOrganisations({
+            // where: {id: "J8I15pyAKy037gISCwfmT"},
+            update: {
+                campaigns: [{
+                    create: [{
+                        node: {
+                            name: args.name
+                        }
+                    }]
+                }]
+            }
+        })
+        // const item = mutation.createCampaigns({input: [{name: args.name}]})
         return {
             item: {
-                ...item.campaigns[0]
+                ...item.hiveOrganisations[0]
             },
             err: null
         }

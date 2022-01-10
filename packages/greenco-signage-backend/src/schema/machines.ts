@@ -1,5 +1,12 @@
 export default `
-type Machine {
+extend type HiveOrganisation {
+	machines: [Machine] @relationship(type: "HAS_MACHINE", direction: OUT)
+}
+
+type Machine @auth(rules: [
+	{operations: [READ, UPDATE], where: {organisation: {id: "$jwt.organisation"}}},
+	{operations: [UPDATE, DELETE, CREATE], bind: {organisation: {id: "$jwt.organisation"}}}
+])  {
 	id: ID! @id
 	name: String
 	location: Location @relationship(type: "IN_LOCATION", direction: OUT)
@@ -12,9 +19,11 @@ type Machine {
 	provisionedAt: DateTime
 
 	networkName: String
+
+	organisation: HiveOrganisation @relationship(type: "HAS_MACHINE", direction: IN)
 }
 
-type MachineTemplate {
+type MachineTemplate  {
 	id: ID! @id
 	name: String
 
