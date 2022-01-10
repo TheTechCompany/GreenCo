@@ -934,11 +934,13 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@hexhive/graphql-server@^0.0.6-alpha.2":
-  "integrity" "sha512-kKU4+MoV/OX8TxJgs/4dZZaP42TdL1DFgMzP6GcnwBeLkRpme9usJxAWyfdhLTZfY2OJABqC84o533TtDc4SNA=="
-  "resolved" "https://registry.npmjs.org/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.2.tgz"
-  "version" "0.0.6-alpha.2"
+"@hexhive/graphql-server@0.0.6-alpha.6":
+  "integrity" "sha512-HUWHB3HS5A2VnqtdbwBpVsyToBia9kg/jnEE9aLAtMINqRZmpOxPPF3FQyf/3TTYuzHS0tLw01OdxRb3ZjXXMA=="
+  "resolved" "https://registry.npmjs.org/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.6.tgz"
+  "version" "0.0.6-alpha.6"
   dependencies:
+    "@graphql-tools/merge" "^8.2.1"
+    "@neo4j/graphql" "^2.5.4"
     "express-graphql" "^0.12.0"
     "jsonwebtoken" "^8.5.1"
     "jwks-rsa" "^2.0.5"

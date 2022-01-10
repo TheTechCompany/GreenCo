@@ -52,18 +52,23 @@ const greenlock = require("greenlock-express");
 	await fs.init()
 
 	const resolved = await resolvers(fs, pgClient)
-	const ogm = new OGM({typeDefs, driver})
-	const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
+	// const ogm = new OGM({typeDefs, driver})
+	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
 
 	const graphServer = new HiveGraph({
 		rootServer: process.env.ROOT_SERVER || 'http://localhost:7000',
-		schema: neoSchema.schema
+		schema: {
+			typeDefs,
+			resolvers: resolved,
+			driver
+		},
+		dev: false
 	})
 
 	await graphServer.init()
 
-	app.use('/api/', signageApi(ogm, fs))
+	// app.use('/api/', signageApi(ogm, fs))
 
 	app.use(graphServer.middleware)
 
