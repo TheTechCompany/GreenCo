@@ -63,7 +63,7 @@ const greenlock = require("greenlock-express");
 			resolvers: resolved,
 			driver
 		},
-		dev: false
+		dev: true
 	})
 
 	await graphServer.init()
