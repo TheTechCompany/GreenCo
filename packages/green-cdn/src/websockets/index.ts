@@ -5,45 +5,59 @@ export const socketHandler = async (driver: Driver) => {
 	
 	const session = await driver.session()
 
-	const handleSocket = (socket: Socket) => {
-		socket.on('PROVISION:REQUEST', async (data) => {
-			//socket.networkName = ${networkName}.hexhive.io
-			//data.moniker = provision code
-			//data.payload = hardware info
+	const handleSocket = async (socket: Socket) => {
 
-			console.log("REQUEST", data, (socket as any).networkName)
-
-			const computer = await session.run(`
-				MATCH (machine:Machine {networkName: $networkName})
-				MERGE (machine)-[:HAS_COMPUTER]->(computer:Computer {name: $moniker})
-				ON CREATE 
-					SET computer.hostname = $hostname, computer.cpu = $cpu, computer.memory = $memory
-				ON MATCH
-					SET computer.hostname = $hostname, computer.cpu = $cpu, computer.memory = $memory
-				RETURN computer{.*}
+			const screen = await session.run(`
+				MATCH (screen:GreenScreen {networkName: $networkName})
+				SET screen.online = true
+				RETURN screen
 			`, {
-				moniker: data.moniker,
 				networkName: (socket as any).networkName,
-				...data.payload,
 			})
+		// socket.on('PROVISION:REQUEST', async (data) => {
+		// 	//socket.networkName = ${networkName}.hexhive.io
+		// 	//data.moniker = provision code
+		// 	//data.payload = hardware info
 
-			if(computer.records.length > 0) {
-				socket.emit('PROVISION:RESPONSE', {
-					moniker: data.moniker,
-					id: computer.records[0].get(0).id,
-				})
-			}
+		// 	console.log("REQUEST", data, (socket as any).networkName)
+
+		// 	const computer = await session.run(`
+		// 		MATCH (machine:Machine {networkName: $networkName})
+		// 		MERGE (machine)-[:HAS_COMPUTER]->(computer:Computer {name: $moniker})
+		// 		ON CREATE 
+		// 			SET computer.hostname = $hostname, computer.cpu = $cpu, computer.memory = $memory
+		// 		ON MATCH
+		// 			SET computer.hostname = $hostname, computer.cpu = $cpu, computer.memory = $memory
+		// 		RETURN computer{.*}
+		// 	`, {
+		// 		moniker: data.moniker,
+		// 		networkName: (socket as any).networkName,
+		// 		...data.payload,
+		// 	})
+
+		// 	if(computer.records.length > 0) {
+		// 		socket.emit('PROVISION:RESPONSE', {
+		// 			moniker: data.moniker,
+		// 			id: computer.records[0].get(0).id,
+		// 		})
+		// 	}
 
 
-		});
+		// });
 
-        socket.on('disconnect',(reason) => onSocketDisconnect(socket))
+        socket.on('disconnect', (reason) => onSocketDisconnect(socket))
 
 
 	}
 
-	const onSocketDisconnect = (socket: Socket) => {
-
+	const onSocketDisconnect = async (socket: Socket) => {
+		const screen = await session.run(`
+			MATCH (screen:GreenScreen {networkName: $networkName})
+			SET screen.online = false
+			RETURN screen
+		`, {
+			networkName: (socket as any).networkName,
+		})
 	}
 
 	return handleSocket

@@ -27,8 +27,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with: 
-          context: ./packages/greenco-signage-backend
-          file: ./packages/greenco-signage-backend/Dockerfile
+          context: ./packages/app/greenco-signage-backend
+          file: ./packages/app/greenco-signage-backend/Dockerfile
           push: true
           tags: thetechcompany/greenco-signage:latest
   
@@ -73,4 +73,4 @@ jobs:
 
       - name: Upload new web-build
         run: |
-          aws s3 sync packages/greenco-${{ matrix.apps }}/dist/ s3://${{ secrets.APP_BUCKET }}/${{matrix.apps}} --delete
+          aws s3 sync packages/app/greenco-${{ matrix.apps }}/dist/ s3://${{ secrets.APP_BUCKET }}/${{matrix.apps}} --delete
