@@ -1,6 +1,6 @@
 {
   "name": "@greenco/styles",
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.1-alpha.9",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -14,7 +14,5 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.3.5"
-  },
-  "dependencies": {
   }
 }
