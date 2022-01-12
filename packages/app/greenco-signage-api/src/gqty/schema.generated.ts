@@ -651,6 +651,7 @@ export interface GreenScreenCreateInput {
   location?: Maybe<GreenScreenLocationFieldInput>;
   name?: Maybe<Scalars["String"]>;
   networkName?: Maybe<Scalars["String"]>;
+  online?: Maybe<Scalars["Boolean"]>;
   organisation?: Maybe<GreenScreenOrganisationFieldInput>;
   slots?: Maybe<GreenScreenSlotsFieldInput>;
 }
@@ -1153,6 +1154,7 @@ export interface GreenScreenSort {
   id?: Maybe<SortDirection>;
   name?: Maybe<SortDirection>;
   networkName?: Maybe<SortDirection>;
+  online?: Maybe<SortDirection>;
 }
 
 export interface GreenScreenUniqueWhere {
@@ -1163,6 +1165,7 @@ export interface GreenScreenUpdateInput {
   location?: Maybe<GreenScreenLocationUpdateFieldInput>;
   name?: Maybe<Scalars["String"]>;
   networkName?: Maybe<Scalars["String"]>;
+  online?: Maybe<Scalars["Boolean"]>;
   organisation?: Maybe<GreenScreenOrganisationUpdateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsUpdateFieldInput>>;
 }
@@ -1205,6 +1208,8 @@ export interface GreenScreenWhere {
   networkName_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
   networkName_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
   networkName_STARTS_WITH?: Maybe<Scalars["String"]>;
+  online?: Maybe<Scalars["Boolean"]>;
+  online_NOT?: Maybe<Scalars["Boolean"]>;
   organisation?: Maybe<HiveOrganisationWhere>;
   organisationAggregate?: Maybe<GreenScreenOrganisationAggregateInput>;
   organisationConnection?: Maybe<GreenScreenOrganisationConnectionWhere>;
@@ -8789,6 +8794,7 @@ export const generatedSchema = {
     },
     name: { __type: "String" },
     networkName: { __type: "String" },
+    online: { __type: "Boolean" },
     organisation: {
       __type: "HiveOrganisation",
       __args: {
@@ -8854,6 +8860,7 @@ export const generatedSchema = {
     location: { __type: "GreenScreenLocationFieldInput" },
     name: { __type: "String" },
     networkName: { __type: "String" },
+    online: { __type: "Boolean" },
     organisation: { __type: "GreenScreenOrganisationFieldInput" },
     slots: { __type: "GreenScreenSlotsFieldInput" },
   },
@@ -9386,12 +9393,14 @@ export const generatedSchema = {
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
     networkName: { __type: "SortDirection" },
+    online: { __type: "SortDirection" },
   },
   GreenScreenUniqueWhere: { id: { __type: "ID" } },
   GreenScreenUpdateInput: {
     location: { __type: "GreenScreenLocationUpdateFieldInput" },
     name: { __type: "String" },
     networkName: { __type: "String" },
+    online: { __type: "Boolean" },
     organisation: { __type: "GreenScreenOrganisationUpdateFieldInput" },
     slots: { __type: "[GreenScreenSlotsUpdateFieldInput!]" },
   },
@@ -9433,6 +9442,8 @@ export const generatedSchema = {
     networkName_NOT_IN: { __type: "[String]" },
     networkName_NOT_STARTS_WITH: { __type: "String" },
     networkName_STARTS_WITH: { __type: "String" },
+    online: { __type: "Boolean" },
+    online_NOT: { __type: "Boolean" },
     organisation: { __type: "HiveOrganisationWhere" },
     organisationAggregate: { __type: "GreenScreenOrganisationAggregateInput" },
     organisationConnection: {
@@ -18509,6 +18520,7 @@ export interface GreenScreen {
   }) => GreenScreenLocationConnection;
   name?: Maybe<ScalarsEnums["String"]>;
   networkName?: Maybe<ScalarsEnums["String"]>;
+  online?: Maybe<ScalarsEnums["Boolean"]>;
   organisation: (args?: {
     options?: Maybe<HiveOrganisationOptions>;
     where?: Maybe<HiveOrganisationWhere>;

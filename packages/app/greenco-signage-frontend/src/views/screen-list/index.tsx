@@ -86,9 +86,9 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
                             direction='row'>
                             <ColorDot 
                                 size={7}
-                                color={datum.online ? 'green' : "red"}/>
+                                color={datum?.online ? 'green' : "red"}/>
                             <Text>
-                                {datum.name}
+                                {datum?.name}
                             </Text>
                         </Box>
                     )}

@@ -10,6 +10,8 @@ type GreenScreen @auth(rules: [
 	id: ID! @id
 	name: String
 	networkName: String
+
+	online: Boolean
 	
 	location: Location @relationship(type: "IN_LOCATION", direction: OUT)
 	
