@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/gqty/index.js",
   "gqty": "gqty.config.cjs",
+  "private": true,
   "files": [
     "dist/"
   ],

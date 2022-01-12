@@ -1,5 +1,6 @@
 {
   "name": "@greenco-apps/signage-frontend",
+  "private": true,
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
