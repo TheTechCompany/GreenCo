@@ -21,14 +21,6 @@ export const CreateLocationModal = (props) => {
 				onChange={(e) => setLocation({...location, name: e.target.value})}
 				placeholder="Name" />
 			
-			<FormControl
-				placeholder="Screen"
-				options={props.screens}
-				value={location.screen}
-				labelKey="name"
-				valueKey="id"
-				onChange={(screen) => setLocation({...location, screen})}
-				/>
 		</BaseModal>
 	)
 }

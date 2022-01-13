@@ -758,51 +758,41 @@ export interface GreenScreenLocationNodeAggregationWhereInput {
   lat_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
   lat_AVERAGE_LT?: Maybe<Scalars["Float"]>;
   lat_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lat_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_GT?: Maybe<Scalars["Float"]>;
-  lat_GTE?: Maybe<Scalars["Float"]>;
-  lat_LT?: Maybe<Scalars["Float"]>;
-  lat_LTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MAX_GT?: Maybe<Scalars["Float"]>;
-  lat_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_LT?: Maybe<Scalars["Float"]>;
-  lat_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MIN_GT?: Maybe<Scalars["Float"]>;
-  lat_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_LT?: Maybe<Scalars["Float"]>;
-  lat_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_SUM_GT?: Maybe<Scalars["Float"]>;
-  lat_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_LT?: Maybe<Scalars["Float"]>;
-  lat_SUM_LTE?: Maybe<Scalars["Float"]>;
+  lat_EQUAL?: Maybe<Scalars["String"]>;
+  lat_GT?: Maybe<Scalars["Int"]>;
+  lat_GTE?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  lat_LT?: Maybe<Scalars["Int"]>;
+  lat_LTE?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   lng_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_LT?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lng_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_GT?: Maybe<Scalars["Float"]>;
-  lng_GTE?: Maybe<Scalars["Float"]>;
-  lng_LT?: Maybe<Scalars["Float"]>;
-  lng_LTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MAX_GT?: Maybe<Scalars["Float"]>;
-  lng_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_LT?: Maybe<Scalars["Float"]>;
-  lng_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MIN_GT?: Maybe<Scalars["Float"]>;
-  lng_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_LT?: Maybe<Scalars["Float"]>;
-  lng_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_SUM_GT?: Maybe<Scalars["Float"]>;
-  lng_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_LT?: Maybe<Scalars["Float"]>;
-  lng_SUM_LTE?: Maybe<Scalars["Float"]>;
+  lng_EQUAL?: Maybe<Scalars["String"]>;
+  lng_GT?: Maybe<Scalars["Int"]>;
+  lng_GTE?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  lng_LT?: Maybe<Scalars["Int"]>;
+  lng_LTE?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -2956,7 +2946,6 @@ export interface HiveOrganisationConnectInput {
   locationGroups?: Maybe<
     Array<HiveOrganisationLocationGroupsConnectFieldInput>
   >;
-  locations?: Maybe<Array<HiveOrganisationLocationsConnectFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersConnectFieldInput>>;
   roles?: Maybe<Array<HiveOrganisationRolesConnectFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersConnectFieldInput>>;
@@ -2977,7 +2966,6 @@ export interface HiveOrganisationConnectOrCreateInput {
   locationGroups?: Maybe<
     Array<HiveOrganisationLocationGroupsConnectOrCreateFieldInput>
   >;
-  locations?: Maybe<Array<HiveOrganisationLocationsConnectOrCreateFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersConnectOrCreateFieldInput>>;
   roles?: Maybe<Array<HiveOrganisationRolesConnectOrCreateFieldInput>>;
   scheduleTiers?: Maybe<
@@ -3000,7 +2988,6 @@ export interface HiveOrganisationCreateInput {
   greenScreens?: Maybe<HiveOrganisationGreenScreensFieldInput>;
   integrations?: Maybe<HiveOrganisationIntegrationsFieldInput>;
   locationGroups?: Maybe<HiveOrganisationLocationGroupsFieldInput>;
-  locations?: Maybe<HiveOrganisationLocationsFieldInput>;
   members?: Maybe<HiveOrganisationMembersFieldInput>;
   name?: Maybe<Scalars["String"]>;
   roles?: Maybe<HiveOrganisationRolesFieldInput>;
@@ -3014,7 +3001,6 @@ export interface HiveOrganisationDeleteInput {
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensDeleteFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsDeleteFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsDeleteFieldInput>>;
-  locations?: Maybe<Array<HiveOrganisationLocationsDeleteFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersDeleteFieldInput>>;
   roles?: Maybe<Array<HiveOrganisationRolesDeleteFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersDeleteFieldInput>>;
@@ -3029,7 +3015,6 @@ export interface HiveOrganisationDisconnectInput {
   locationGroups?: Maybe<
     Array<HiveOrganisationLocationGroupsDisconnectFieldInput>
   >;
-  locations?: Maybe<Array<HiveOrganisationLocationsDisconnectFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersDisconnectFieldInput>>;
   roles?: Maybe<Array<HiveOrganisationRolesDisconnectFieldInput>>;
   scheduleTiers?: Maybe<
@@ -3378,181 +3363,6 @@ export interface HiveOrganisationLocationGroupsUpdateFieldInput {
   where?: Maybe<HiveOrganisationLocationGroupsConnectionWhere>;
 }
 
-export interface HiveOrganisationLocationsAggregateInput {
-  AND?: Maybe<Array<HiveOrganisationLocationsAggregateInput>>;
-  OR?: Maybe<Array<HiveOrganisationLocationsAggregateInput>>;
-  count?: Maybe<Scalars["Int"]>;
-  count_GT?: Maybe<Scalars["Int"]>;
-  count_GTE?: Maybe<Scalars["Int"]>;
-  count_LT?: Maybe<Scalars["Int"]>;
-  count_LTE?: Maybe<Scalars["Int"]>;
-  node?: Maybe<HiveOrganisationLocationsNodeAggregationWhereInput>;
-}
-
-export interface HiveOrganisationLocationsConnectFieldInput {
-  connect?: Maybe<Array<LocationConnectInput>>;
-  where?: Maybe<LocationConnectWhere>;
-}
-
-export interface HiveOrganisationLocationsConnectOrCreateFieldInput {
-  onCreate: HiveOrganisationLocationsConnectOrCreateFieldInputOnCreate;
-  where: LocationConnectOrCreateWhere;
-}
-
-export interface HiveOrganisationLocationsConnectOrCreateFieldInputOnCreate {
-  node: LocationCreateInput;
-}
-
-export interface HiveOrganisationLocationsConnectionSort {
-  node?: Maybe<LocationSort>;
-}
-
-export interface HiveOrganisationLocationsConnectionWhere {
-  AND?: Maybe<Array<HiveOrganisationLocationsConnectionWhere>>;
-  OR?: Maybe<Array<HiveOrganisationLocationsConnectionWhere>>;
-  node?: Maybe<LocationWhere>;
-  node_NOT?: Maybe<LocationWhere>;
-}
-
-export interface HiveOrganisationLocationsCreateFieldInput {
-  node: LocationCreateInput;
-}
-
-export interface HiveOrganisationLocationsDeleteFieldInput {
-  delete?: Maybe<LocationDeleteInput>;
-  where?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-}
-
-export interface HiveOrganisationLocationsDisconnectFieldInput {
-  disconnect?: Maybe<LocationDisconnectInput>;
-  where?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-}
-
-export interface HiveOrganisationLocationsFieldInput {
-  connect?: Maybe<Array<HiveOrganisationLocationsConnectFieldInput>>;
-  connectOrCreate?: Maybe<
-    Array<HiveOrganisationLocationsConnectOrCreateFieldInput>
-  >;
-  create?: Maybe<Array<HiveOrganisationLocationsCreateFieldInput>>;
-}
-
-export interface HiveOrganisationLocationsNodeAggregationWhereInput {
-  AND?: Maybe<Array<HiveOrganisationLocationsNodeAggregationWhereInput>>;
-  OR?: Maybe<Array<HiveOrganisationLocationsNodeAggregationWhereInput>>;
-  elevation_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  elevation_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_GT?: Maybe<Scalars["Float"]>;
-  elevation_GTE?: Maybe<Scalars["Float"]>;
-  elevation_LT?: Maybe<Scalars["Float"]>;
-  elevation_LTE?: Maybe<Scalars["Float"]>;
-  elevation_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_MAX_GT?: Maybe<Scalars["Float"]>;
-  elevation_MAX_GTE?: Maybe<Scalars["Float"]>;
-  elevation_MAX_LT?: Maybe<Scalars["Float"]>;
-  elevation_MAX_LTE?: Maybe<Scalars["Float"]>;
-  elevation_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_MIN_GT?: Maybe<Scalars["Float"]>;
-  elevation_MIN_GTE?: Maybe<Scalars["Float"]>;
-  elevation_MIN_LT?: Maybe<Scalars["Float"]>;
-  elevation_MIN_LTE?: Maybe<Scalars["Float"]>;
-  elevation_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_SUM_GT?: Maybe<Scalars["Float"]>;
-  elevation_SUM_GTE?: Maybe<Scalars["Float"]>;
-  elevation_SUM_LT?: Maybe<Scalars["Float"]>;
-  elevation_SUM_LTE?: Maybe<Scalars["Float"]>;
-  id_EQUAL?: Maybe<Scalars["ID"]>;
-  lat_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lat_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_GT?: Maybe<Scalars["Float"]>;
-  lat_GTE?: Maybe<Scalars["Float"]>;
-  lat_LT?: Maybe<Scalars["Float"]>;
-  lat_LTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MAX_GT?: Maybe<Scalars["Float"]>;
-  lat_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_LT?: Maybe<Scalars["Float"]>;
-  lat_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MIN_GT?: Maybe<Scalars["Float"]>;
-  lat_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_LT?: Maybe<Scalars["Float"]>;
-  lat_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_SUM_GT?: Maybe<Scalars["Float"]>;
-  lat_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_LT?: Maybe<Scalars["Float"]>;
-  lat_SUM_LTE?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lng_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_GT?: Maybe<Scalars["Float"]>;
-  lng_GTE?: Maybe<Scalars["Float"]>;
-  lng_LT?: Maybe<Scalars["Float"]>;
-  lng_LTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MAX_GT?: Maybe<Scalars["Float"]>;
-  lng_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_LT?: Maybe<Scalars["Float"]>;
-  lng_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MIN_GT?: Maybe<Scalars["Float"]>;
-  lng_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_LT?: Maybe<Scalars["Float"]>;
-  lng_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_SUM_GT?: Maybe<Scalars["Float"]>;
-  lng_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_LT?: Maybe<Scalars["Float"]>;
-  lng_SUM_LTE?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  name_EQUAL?: Maybe<Scalars["String"]>;
-  name_GT?: Maybe<Scalars["Int"]>;
-  name_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  name_LT?: Maybe<Scalars["Int"]>;
-  name_LTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-}
-
-export interface HiveOrganisationLocationsUpdateConnectionInput {
-  node?: Maybe<LocationUpdateInput>;
-}
-
-export interface HiveOrganisationLocationsUpdateFieldInput {
-  connect?: Maybe<Array<HiveOrganisationLocationsConnectFieldInput>>;
-  connectOrCreate?: Maybe<
-    Array<HiveOrganisationLocationsConnectOrCreateFieldInput>
-  >;
-  create?: Maybe<Array<HiveOrganisationLocationsCreateFieldInput>>;
-  delete?: Maybe<Array<HiveOrganisationLocationsDeleteFieldInput>>;
-  disconnect?: Maybe<Array<HiveOrganisationLocationsDisconnectFieldInput>>;
-  update?: Maybe<HiveOrganisationLocationsUpdateConnectionInput>;
-  where?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-}
-
 export interface HiveOrganisationMembersAggregateInput {
   AND?: Maybe<Array<HiveOrganisationMembersAggregateInput>>;
   OR?: Maybe<Array<HiveOrganisationMembersAggregateInput>>;
@@ -3706,7 +3516,6 @@ export interface HiveOrganisationRelationInput {
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensCreateFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsCreateFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsCreateFieldInput>>;
-  locations?: Maybe<Array<HiveOrganisationLocationsCreateFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersCreateFieldInput>>;
   roles?: Maybe<Array<HiveOrganisationRolesCreateFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersCreateFieldInput>>;
@@ -4109,7 +3918,6 @@ export interface HiveOrganisationUpdateInput {
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensUpdateFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsUpdateFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsUpdateFieldInput>>;
-  locations?: Maybe<Array<HiveOrganisationLocationsUpdateFieldInput>>;
   members?: Maybe<Array<HiveOrganisationMembersUpdateFieldInput>>;
   name?: Maybe<Scalars["String"]>;
   roles?: Maybe<Array<HiveOrganisationRolesUpdateFieldInput>>;
@@ -4155,11 +3963,6 @@ export interface HiveOrganisationWhere {
   locationGroupsConnection?: Maybe<HiveOrganisationLocationGroupsConnectionWhere>;
   locationGroupsConnection_NOT?: Maybe<HiveOrganisationLocationGroupsConnectionWhere>;
   locationGroups_NOT?: Maybe<LocationGroupWhere>;
-  locations?: Maybe<LocationWhere>;
-  locationsAggregate?: Maybe<HiveOrganisationLocationsAggregateInput>;
-  locationsConnection?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-  locationsConnection_NOT?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-  locations_NOT?: Maybe<LocationWhere>;
   members?: Maybe<HiveUserWhere>;
   membersAggregate?: Maybe<HiveOrganisationMembersAggregateInput>;
   membersConnection?: Maybe<HiveOrganisationMembersConnectionWhere>;
@@ -4977,15 +4780,13 @@ export interface HiveUserWhere {
 }
 
 export interface LocationConnectInput {
-  groups?: Maybe<Array<LocationGroupsConnectFieldInput>>;
-  organisation?: Maybe<LocationOrganisationConnectFieldInput>;
-  screens?: Maybe<Array<LocationScreensConnectFieldInput>>;
+  group?: Maybe<LocationGroupConnectFieldInput>;
+  screen?: Maybe<LocationScreenConnectFieldInput>;
 }
 
 export interface LocationConnectOrCreateInput {
-  groups?: Maybe<Array<LocationGroupsConnectOrCreateFieldInput>>;
-  organisation?: Maybe<LocationOrganisationConnectOrCreateFieldInput>;
-  screens?: Maybe<Array<LocationScreensConnectOrCreateFieldInput>>;
+  group?: Maybe<LocationGroupConnectOrCreateFieldInput>;
+  screen?: Maybe<LocationScreenConnectOrCreateFieldInput>;
 }
 
 export interface LocationConnectOrCreateWhere {
@@ -4998,34 +4799,58 @@ export interface LocationConnectWhere {
 
 export interface LocationCreateInput {
   elevation?: Maybe<Scalars["Float"]>;
-  groups?: Maybe<LocationGroupsFieldInput>;
-  lat?: Maybe<Scalars["Float"]>;
-  lng?: Maybe<Scalars["Float"]>;
+  group?: Maybe<LocationGroupFieldInput>;
+  lat?: Maybe<Scalars["String"]>;
+  lng?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  organisation?: Maybe<LocationOrganisationFieldInput>;
-  screens?: Maybe<LocationScreensFieldInput>;
+  screen?: Maybe<LocationScreenFieldInput>;
 }
 
 export interface LocationDeleteInput {
-  groups?: Maybe<Array<LocationGroupsDeleteFieldInput>>;
-  organisation?: Maybe<LocationOrganisationDeleteFieldInput>;
-  screens?: Maybe<Array<LocationScreensDeleteFieldInput>>;
+  group?: Maybe<LocationGroupDeleteFieldInput>;
+  screen?: Maybe<LocationScreenDeleteFieldInput>;
 }
 
 export interface LocationDisconnectInput {
-  groups?: Maybe<Array<LocationGroupsDisconnectFieldInput>>;
-  organisation?: Maybe<LocationOrganisationDisconnectFieldInput>;
-  screens?: Maybe<Array<LocationScreensDisconnectFieldInput>>;
+  group?: Maybe<LocationGroupDisconnectFieldInput>;
+  screen?: Maybe<LocationScreenDisconnectFieldInput>;
+}
+
+export interface LocationGroupAggregateInput {
+  AND?: Maybe<Array<LocationGroupAggregateInput>>;
+  OR?: Maybe<Array<LocationGroupAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<LocationGroupNodeAggregationWhereInput>;
+}
+
+export interface LocationGroupConnectFieldInput {
+  connect?: Maybe<LocationGroupConnectInput>;
+  where?: Maybe<LocationGroupConnectWhere>;
 }
 
 export interface LocationGroupConnectInput {
   locations?: Maybe<Array<LocationGroupLocationsConnectFieldInput>>;
   organisation?: Maybe<LocationGroupOrganisationConnectFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleConnectFieldInput>;
+}
+
+export interface LocationGroupConnectOrCreateFieldInput {
+  onCreate: LocationGroupConnectOrCreateFieldInputOnCreate;
+  where: LocationGroupConnectOrCreateWhere;
+}
+
+export interface LocationGroupConnectOrCreateFieldInputOnCreate {
+  node: LocationGroupCreateInput;
 }
 
 export interface LocationGroupConnectOrCreateInput {
   locations?: Maybe<Array<LocationGroupLocationsConnectOrCreateFieldInput>>;
   organisation?: Maybe<LocationGroupOrganisationConnectOrCreateFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleConnectOrCreateFieldInput>;
 }
 
 export interface LocationGroupConnectOrCreateWhere {
@@ -5036,20 +4861,54 @@ export interface LocationGroupConnectWhere {
   node: LocationGroupWhere;
 }
 
+export interface LocationGroupConnectionSort {
+  node?: Maybe<LocationGroupSort>;
+}
+
+export interface LocationGroupConnectionWhere {
+  AND?: Maybe<Array<LocationGroupConnectionWhere>>;
+  OR?: Maybe<Array<LocationGroupConnectionWhere>>;
+  node?: Maybe<LocationGroupWhere>;
+  node_NOT?: Maybe<LocationGroupWhere>;
+}
+
+export interface LocationGroupCreateFieldInput {
+  node: LocationGroupCreateInput;
+}
+
 export interface LocationGroupCreateInput {
   locations?: Maybe<LocationGroupLocationsFieldInput>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<LocationGroupOrganisationFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleFieldInput>;
+}
+
+export interface LocationGroupDeleteFieldInput {
+  delete?: Maybe<LocationGroupDeleteInput>;
+  where?: Maybe<LocationGroupConnectionWhere>;
 }
 
 export interface LocationGroupDeleteInput {
   locations?: Maybe<Array<LocationGroupLocationsDeleteFieldInput>>;
   organisation?: Maybe<LocationGroupOrganisationDeleteFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleDeleteFieldInput>;
+}
+
+export interface LocationGroupDisconnectFieldInput {
+  disconnect?: Maybe<LocationGroupDisconnectInput>;
+  where?: Maybe<LocationGroupConnectionWhere>;
 }
 
 export interface LocationGroupDisconnectInput {
   locations?: Maybe<Array<LocationGroupLocationsDisconnectFieldInput>>;
   organisation?: Maybe<LocationGroupOrganisationDisconnectFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleDisconnectFieldInput>;
+}
+
+export interface LocationGroupFieldInput {
+  connect?: Maybe<LocationGroupConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationGroupConnectOrCreateFieldInput>;
+  create?: Maybe<LocationGroupCreateFieldInput>;
 }
 
 export interface LocationGroupLocationsAggregateInput {
@@ -5144,51 +5003,41 @@ export interface LocationGroupLocationsNodeAggregationWhereInput {
   lat_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
   lat_AVERAGE_LT?: Maybe<Scalars["Float"]>;
   lat_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lat_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_GT?: Maybe<Scalars["Float"]>;
-  lat_GTE?: Maybe<Scalars["Float"]>;
-  lat_LT?: Maybe<Scalars["Float"]>;
-  lat_LTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MAX_GT?: Maybe<Scalars["Float"]>;
-  lat_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_LT?: Maybe<Scalars["Float"]>;
-  lat_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MIN_GT?: Maybe<Scalars["Float"]>;
-  lat_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_LT?: Maybe<Scalars["Float"]>;
-  lat_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_SUM_GT?: Maybe<Scalars["Float"]>;
-  lat_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_LT?: Maybe<Scalars["Float"]>;
-  lat_SUM_LTE?: Maybe<Scalars["Float"]>;
+  lat_EQUAL?: Maybe<Scalars["String"]>;
+  lat_GT?: Maybe<Scalars["Int"]>;
+  lat_GTE?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  lat_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  lat_LT?: Maybe<Scalars["Int"]>;
+  lat_LTE?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  lat_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   lng_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_LT?: Maybe<Scalars["Float"]>;
   lng_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lng_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_GT?: Maybe<Scalars["Float"]>;
-  lng_GTE?: Maybe<Scalars["Float"]>;
-  lng_LT?: Maybe<Scalars["Float"]>;
-  lng_LTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MAX_GT?: Maybe<Scalars["Float"]>;
-  lng_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_LT?: Maybe<Scalars["Float"]>;
-  lng_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MIN_GT?: Maybe<Scalars["Float"]>;
-  lng_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_LT?: Maybe<Scalars["Float"]>;
-  lng_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_SUM_GT?: Maybe<Scalars["Float"]>;
-  lng_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_LT?: Maybe<Scalars["Float"]>;
-  lng_SUM_LTE?: Maybe<Scalars["Float"]>;
+  lng_EQUAL?: Maybe<Scalars["String"]>;
+  lng_GT?: Maybe<Scalars["Int"]>;
+  lng_GTE?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  lng_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  lng_LT?: Maybe<Scalars["Int"]>;
+  lng_LTE?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  lng_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -5225,6 +5074,32 @@ export interface LocationGroupLocationsUpdateFieldInput {
   disconnect?: Maybe<Array<LocationGroupLocationsDisconnectFieldInput>>;
   update?: Maybe<LocationGroupLocationsUpdateConnectionInput>;
   where?: Maybe<LocationGroupLocationsConnectionWhere>;
+}
+
+export interface LocationGroupNodeAggregationWhereInput {
+  AND?: Maybe<Array<LocationGroupNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<LocationGroupNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
 }
 
 export interface LocationGroupOptions {
@@ -5333,6 +5208,133 @@ export interface LocationGroupOrganisationUpdateFieldInput {
 export interface LocationGroupRelationInput {
   locations?: Maybe<Array<LocationGroupLocationsCreateFieldInput>>;
   organisation?: Maybe<LocationGroupOrganisationCreateFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleCreateFieldInput>;
+}
+
+export interface LocationGroupScheduleAggregateInput {
+  AND?: Maybe<Array<LocationGroupScheduleAggregateInput>>;
+  OR?: Maybe<Array<LocationGroupScheduleAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<LocationGroupScheduleNodeAggregationWhereInput>;
+}
+
+export interface LocationGroupScheduleConnectFieldInput {
+  connect?: Maybe<ScheduleConnectInput>;
+  where?: Maybe<ScheduleConnectWhere>;
+}
+
+export interface LocationGroupScheduleConnectOrCreateFieldInput {
+  onCreate: LocationGroupScheduleConnectOrCreateFieldInputOnCreate;
+  where: ScheduleConnectOrCreateWhere;
+}
+
+export interface LocationGroupScheduleConnectOrCreateFieldInputOnCreate {
+  node: ScheduleCreateInput;
+}
+
+export interface LocationGroupScheduleConnectionSort {
+  node?: Maybe<ScheduleSort>;
+}
+
+export interface LocationGroupScheduleConnectionWhere {
+  AND?: Maybe<Array<LocationGroupScheduleConnectionWhere>>;
+  OR?: Maybe<Array<LocationGroupScheduleConnectionWhere>>;
+  node?: Maybe<ScheduleWhere>;
+  node_NOT?: Maybe<ScheduleWhere>;
+}
+
+export interface LocationGroupScheduleCreateFieldInput {
+  node: ScheduleCreateInput;
+}
+
+export interface LocationGroupScheduleDeleteFieldInput {
+  delete?: Maybe<ScheduleDeleteInput>;
+  where?: Maybe<LocationGroupScheduleConnectionWhere>;
+}
+
+export interface LocationGroupScheduleDisconnectFieldInput {
+  disconnect?: Maybe<ScheduleDisconnectInput>;
+  where?: Maybe<LocationGroupScheduleConnectionWhere>;
+}
+
+export interface LocationGroupScheduleFieldInput {
+  connect?: Maybe<LocationGroupScheduleConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationGroupScheduleConnectOrCreateFieldInput>;
+  create?: Maybe<LocationGroupScheduleCreateFieldInput>;
+}
+
+export interface LocationGroupScheduleNodeAggregationWhereInput {
+  AND?: Maybe<Array<LocationGroupScheduleNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<LocationGroupScheduleNodeAggregationWhereInput>>;
+  endDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  startDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+}
+
+export interface LocationGroupScheduleUpdateConnectionInput {
+  node?: Maybe<ScheduleUpdateInput>;
+}
+
+export interface LocationGroupScheduleUpdateFieldInput {
+  connect?: Maybe<LocationGroupScheduleConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationGroupScheduleConnectOrCreateFieldInput>;
+  create?: Maybe<LocationGroupScheduleCreateFieldInput>;
+  delete?: Maybe<LocationGroupScheduleDeleteFieldInput>;
+  disconnect?: Maybe<LocationGroupScheduleDisconnectFieldInput>;
+  update?: Maybe<LocationGroupScheduleUpdateConnectionInput>;
+  where?: Maybe<LocationGroupScheduleConnectionWhere>;
 }
 
 /** Fields to sort LocationGroups by. The order in which sorts are applied is not guaranteed when specifying many fields in one LocationGroupSort object. */
@@ -5345,10 +5347,25 @@ export interface LocationGroupUniqueWhere {
   id?: Maybe<Scalars["ID"]>;
 }
 
+export interface LocationGroupUpdateConnectionInput {
+  node?: Maybe<LocationGroupUpdateInput>;
+}
+
+export interface LocationGroupUpdateFieldInput {
+  connect?: Maybe<LocationGroupConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationGroupConnectOrCreateFieldInput>;
+  create?: Maybe<LocationGroupCreateFieldInput>;
+  delete?: Maybe<LocationGroupDeleteFieldInput>;
+  disconnect?: Maybe<LocationGroupDisconnectFieldInput>;
+  update?: Maybe<LocationGroupUpdateConnectionInput>;
+  where?: Maybe<LocationGroupConnectionWhere>;
+}
+
 export interface LocationGroupUpdateInput {
   locations?: Maybe<Array<LocationGroupLocationsUpdateFieldInput>>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<LocationGroupOrganisationUpdateFieldInput>;
+  schedule?: Maybe<LocationGroupScheduleUpdateFieldInput>;
 }
 
 export interface LocationGroupWhere {
@@ -5384,102 +5401,11 @@ export interface LocationGroupWhere {
   organisationConnection?: Maybe<LocationGroupOrganisationConnectionWhere>;
   organisationConnection_NOT?: Maybe<LocationGroupOrganisationConnectionWhere>;
   organisation_NOT?: Maybe<HiveOrganisationWhere>;
-}
-
-export interface LocationGroupsAggregateInput {
-  AND?: Maybe<Array<LocationGroupsAggregateInput>>;
-  OR?: Maybe<Array<LocationGroupsAggregateInput>>;
-  count?: Maybe<Scalars["Int"]>;
-  count_GT?: Maybe<Scalars["Int"]>;
-  count_GTE?: Maybe<Scalars["Int"]>;
-  count_LT?: Maybe<Scalars["Int"]>;
-  count_LTE?: Maybe<Scalars["Int"]>;
-  node?: Maybe<LocationGroupsNodeAggregationWhereInput>;
-}
-
-export interface LocationGroupsConnectFieldInput {
-  connect?: Maybe<Array<LocationGroupConnectInput>>;
-  where?: Maybe<LocationGroupConnectWhere>;
-}
-
-export interface LocationGroupsConnectOrCreateFieldInput {
-  onCreate: LocationGroupsConnectOrCreateFieldInputOnCreate;
-  where: LocationGroupConnectOrCreateWhere;
-}
-
-export interface LocationGroupsConnectOrCreateFieldInputOnCreate {
-  node: LocationGroupCreateInput;
-}
-
-export interface LocationGroupsConnectionSort {
-  node?: Maybe<LocationGroupSort>;
-}
-
-export interface LocationGroupsConnectionWhere {
-  AND?: Maybe<Array<LocationGroupsConnectionWhere>>;
-  OR?: Maybe<Array<LocationGroupsConnectionWhere>>;
-  node?: Maybe<LocationGroupWhere>;
-  node_NOT?: Maybe<LocationGroupWhere>;
-}
-
-export interface LocationGroupsCreateFieldInput {
-  node: LocationGroupCreateInput;
-}
-
-export interface LocationGroupsDeleteFieldInput {
-  delete?: Maybe<LocationGroupDeleteInput>;
-  where?: Maybe<LocationGroupsConnectionWhere>;
-}
-
-export interface LocationGroupsDisconnectFieldInput {
-  disconnect?: Maybe<LocationGroupDisconnectInput>;
-  where?: Maybe<LocationGroupsConnectionWhere>;
-}
-
-export interface LocationGroupsFieldInput {
-  connect?: Maybe<Array<LocationGroupsConnectFieldInput>>;
-  connectOrCreate?: Maybe<Array<LocationGroupsConnectOrCreateFieldInput>>;
-  create?: Maybe<Array<LocationGroupsCreateFieldInput>>;
-}
-
-export interface LocationGroupsNodeAggregationWhereInput {
-  AND?: Maybe<Array<LocationGroupsNodeAggregationWhereInput>>;
-  OR?: Maybe<Array<LocationGroupsNodeAggregationWhereInput>>;
-  id_EQUAL?: Maybe<Scalars["ID"]>;
-  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  name_EQUAL?: Maybe<Scalars["String"]>;
-  name_GT?: Maybe<Scalars["Int"]>;
-  name_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  name_LT?: Maybe<Scalars["Int"]>;
-  name_LTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-}
-
-export interface LocationGroupsUpdateConnectionInput {
-  node?: Maybe<LocationGroupUpdateInput>;
-}
-
-export interface LocationGroupsUpdateFieldInput {
-  connect?: Maybe<Array<LocationGroupsConnectFieldInput>>;
-  connectOrCreate?: Maybe<Array<LocationGroupsConnectOrCreateFieldInput>>;
-  create?: Maybe<Array<LocationGroupsCreateFieldInput>>;
-  delete?: Maybe<Array<LocationGroupsDeleteFieldInput>>;
-  disconnect?: Maybe<Array<LocationGroupsDisconnectFieldInput>>;
-  update?: Maybe<LocationGroupsUpdateConnectionInput>;
-  where?: Maybe<LocationGroupsConnectionWhere>;
+  schedule?: Maybe<ScheduleWhere>;
+  scheduleAggregate?: Maybe<LocationGroupScheduleAggregateInput>;
+  scheduleConnection?: Maybe<LocationGroupScheduleConnectionWhere>;
+  scheduleConnection_NOT?: Maybe<LocationGroupScheduleConnectionWhere>;
+  schedule_NOT?: Maybe<ScheduleWhere>;
 }
 
 export interface LocationOptions {
@@ -5489,167 +5415,70 @@ export interface LocationOptions {
   sort?: Maybe<Array<Maybe<LocationSort>>>;
 }
 
-export interface LocationOrganisationAggregateInput {
-  AND?: Maybe<Array<LocationOrganisationAggregateInput>>;
-  OR?: Maybe<Array<LocationOrganisationAggregateInput>>;
-  count?: Maybe<Scalars["Int"]>;
-  count_GT?: Maybe<Scalars["Int"]>;
-  count_GTE?: Maybe<Scalars["Int"]>;
-  count_LT?: Maybe<Scalars["Int"]>;
-  count_LTE?: Maybe<Scalars["Int"]>;
-  node?: Maybe<LocationOrganisationNodeAggregationWhereInput>;
-}
-
-export interface LocationOrganisationConnectFieldInput {
-  connect?: Maybe<HiveOrganisationConnectInput>;
-  where?: Maybe<HiveOrganisationConnectWhere>;
-}
-
-export interface LocationOrganisationConnectOrCreateFieldInput {
-  onCreate: LocationOrganisationConnectOrCreateFieldInputOnCreate;
-  where: HiveOrganisationConnectOrCreateWhere;
-}
-
-export interface LocationOrganisationConnectOrCreateFieldInputOnCreate {
-  node: HiveOrganisationCreateInput;
-}
-
-export interface LocationOrganisationConnectionSort {
-  node?: Maybe<HiveOrganisationSort>;
-}
-
-export interface LocationOrganisationConnectionWhere {
-  AND?: Maybe<Array<LocationOrganisationConnectionWhere>>;
-  OR?: Maybe<Array<LocationOrganisationConnectionWhere>>;
-  node?: Maybe<HiveOrganisationWhere>;
-  node_NOT?: Maybe<HiveOrganisationWhere>;
-}
-
-export interface LocationOrganisationCreateFieldInput {
-  node: HiveOrganisationCreateInput;
-}
-
-export interface LocationOrganisationDeleteFieldInput {
-  delete?: Maybe<HiveOrganisationDeleteInput>;
-  where?: Maybe<LocationOrganisationConnectionWhere>;
-}
-
-export interface LocationOrganisationDisconnectFieldInput {
-  disconnect?: Maybe<HiveOrganisationDisconnectInput>;
-  where?: Maybe<LocationOrganisationConnectionWhere>;
-}
-
-export interface LocationOrganisationFieldInput {
-  connect?: Maybe<LocationOrganisationConnectFieldInput>;
-  connectOrCreate?: Maybe<LocationOrganisationConnectOrCreateFieldInput>;
-  create?: Maybe<LocationOrganisationCreateFieldInput>;
-}
-
-export interface LocationOrganisationNodeAggregationWhereInput {
-  AND?: Maybe<Array<LocationOrganisationNodeAggregationWhereInput>>;
-  OR?: Maybe<Array<LocationOrganisationNodeAggregationWhereInput>>;
-  id_EQUAL?: Maybe<Scalars["ID"]>;
-  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  name_EQUAL?: Maybe<Scalars["String"]>;
-  name_GT?: Maybe<Scalars["Int"]>;
-  name_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  name_LT?: Maybe<Scalars["Int"]>;
-  name_LTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-}
-
-export interface LocationOrganisationUpdateConnectionInput {
-  node?: Maybe<HiveOrganisationUpdateInput>;
-}
-
-export interface LocationOrganisationUpdateFieldInput {
-  connect?: Maybe<LocationOrganisationConnectFieldInput>;
-  connectOrCreate?: Maybe<LocationOrganisationConnectOrCreateFieldInput>;
-  create?: Maybe<LocationOrganisationCreateFieldInput>;
-  delete?: Maybe<LocationOrganisationDeleteFieldInput>;
-  disconnect?: Maybe<LocationOrganisationDisconnectFieldInput>;
-  update?: Maybe<LocationOrganisationUpdateConnectionInput>;
-  where?: Maybe<LocationOrganisationConnectionWhere>;
-}
-
 export interface LocationRelationInput {
-  groups?: Maybe<Array<LocationGroupsCreateFieldInput>>;
-  organisation?: Maybe<LocationOrganisationCreateFieldInput>;
-  screens?: Maybe<Array<LocationScreensCreateFieldInput>>;
+  group?: Maybe<LocationGroupCreateFieldInput>;
+  screen?: Maybe<LocationScreenCreateFieldInput>;
 }
 
-export interface LocationScreensAggregateInput {
-  AND?: Maybe<Array<LocationScreensAggregateInput>>;
-  OR?: Maybe<Array<LocationScreensAggregateInput>>;
+export interface LocationScreenAggregateInput {
+  AND?: Maybe<Array<LocationScreenAggregateInput>>;
+  OR?: Maybe<Array<LocationScreenAggregateInput>>;
   count?: Maybe<Scalars["Int"]>;
   count_GT?: Maybe<Scalars["Int"]>;
   count_GTE?: Maybe<Scalars["Int"]>;
   count_LT?: Maybe<Scalars["Int"]>;
   count_LTE?: Maybe<Scalars["Int"]>;
-  node?: Maybe<LocationScreensNodeAggregationWhereInput>;
+  node?: Maybe<LocationScreenNodeAggregationWhereInput>;
 }
 
-export interface LocationScreensConnectFieldInput {
-  connect?: Maybe<Array<GreenScreenConnectInput>>;
+export interface LocationScreenConnectFieldInput {
+  connect?: Maybe<GreenScreenConnectInput>;
   where?: Maybe<GreenScreenConnectWhere>;
 }
 
-export interface LocationScreensConnectOrCreateFieldInput {
-  onCreate: LocationScreensConnectOrCreateFieldInputOnCreate;
+export interface LocationScreenConnectOrCreateFieldInput {
+  onCreate: LocationScreenConnectOrCreateFieldInputOnCreate;
   where: GreenScreenConnectOrCreateWhere;
 }
 
-export interface LocationScreensConnectOrCreateFieldInputOnCreate {
+export interface LocationScreenConnectOrCreateFieldInputOnCreate {
   node: GreenScreenCreateInput;
 }
 
-export interface LocationScreensConnectionSort {
+export interface LocationScreenConnectionSort {
   node?: Maybe<GreenScreenSort>;
 }
 
-export interface LocationScreensConnectionWhere {
-  AND?: Maybe<Array<LocationScreensConnectionWhere>>;
-  OR?: Maybe<Array<LocationScreensConnectionWhere>>;
+export interface LocationScreenConnectionWhere {
+  AND?: Maybe<Array<LocationScreenConnectionWhere>>;
+  OR?: Maybe<Array<LocationScreenConnectionWhere>>;
   node?: Maybe<GreenScreenWhere>;
   node_NOT?: Maybe<GreenScreenWhere>;
 }
 
-export interface LocationScreensCreateFieldInput {
+export interface LocationScreenCreateFieldInput {
   node: GreenScreenCreateInput;
 }
 
-export interface LocationScreensDeleteFieldInput {
+export interface LocationScreenDeleteFieldInput {
   delete?: Maybe<GreenScreenDeleteInput>;
-  where?: Maybe<LocationScreensConnectionWhere>;
+  where?: Maybe<LocationScreenConnectionWhere>;
 }
 
-export interface LocationScreensDisconnectFieldInput {
+export interface LocationScreenDisconnectFieldInput {
   disconnect?: Maybe<GreenScreenDisconnectInput>;
-  where?: Maybe<LocationScreensConnectionWhere>;
+  where?: Maybe<LocationScreenConnectionWhere>;
 }
 
-export interface LocationScreensFieldInput {
-  connect?: Maybe<Array<LocationScreensConnectFieldInput>>;
-  connectOrCreate?: Maybe<Array<LocationScreensConnectOrCreateFieldInput>>;
-  create?: Maybe<Array<LocationScreensCreateFieldInput>>;
+export interface LocationScreenFieldInput {
+  connect?: Maybe<LocationScreenConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationScreenConnectOrCreateFieldInput>;
+  create?: Maybe<LocationScreenCreateFieldInput>;
 }
 
-export interface LocationScreensNodeAggregationWhereInput {
-  AND?: Maybe<Array<LocationScreensNodeAggregationWhereInput>>;
-  OR?: Maybe<Array<LocationScreensNodeAggregationWhereInput>>;
+export interface LocationScreenNodeAggregationWhereInput {
+  AND?: Maybe<Array<LocationScreenNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<LocationScreenNodeAggregationWhereInput>>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
@@ -5693,18 +5522,18 @@ export interface LocationScreensNodeAggregationWhereInput {
   networkName_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
 }
 
-export interface LocationScreensUpdateConnectionInput {
+export interface LocationScreenUpdateConnectionInput {
   node?: Maybe<GreenScreenUpdateInput>;
 }
 
-export interface LocationScreensUpdateFieldInput {
-  connect?: Maybe<Array<LocationScreensConnectFieldInput>>;
-  connectOrCreate?: Maybe<Array<LocationScreensConnectOrCreateFieldInput>>;
-  create?: Maybe<Array<LocationScreensCreateFieldInput>>;
-  delete?: Maybe<Array<LocationScreensDeleteFieldInput>>;
-  disconnect?: Maybe<Array<LocationScreensDisconnectFieldInput>>;
-  update?: Maybe<LocationScreensUpdateConnectionInput>;
-  where?: Maybe<LocationScreensConnectionWhere>;
+export interface LocationScreenUpdateFieldInput {
+  connect?: Maybe<LocationScreenConnectFieldInput>;
+  connectOrCreate?: Maybe<LocationScreenConnectOrCreateFieldInput>;
+  create?: Maybe<LocationScreenCreateFieldInput>;
+  delete?: Maybe<LocationScreenDeleteFieldInput>;
+  disconnect?: Maybe<LocationScreenDisconnectFieldInput>;
+  update?: Maybe<LocationScreenUpdateConnectionInput>;
+  where?: Maybe<LocationScreenConnectionWhere>;
 }
 
 /** Fields to sort Locations by. The order in which sorts are applied is not guaranteed when specifying many fields in one LocationSort object. */
@@ -5722,12 +5551,11 @@ export interface LocationUniqueWhere {
 
 export interface LocationUpdateInput {
   elevation?: Maybe<Scalars["Float"]>;
-  groups?: Maybe<Array<LocationGroupsUpdateFieldInput>>;
-  lat?: Maybe<Scalars["Float"]>;
-  lng?: Maybe<Scalars["Float"]>;
+  group?: Maybe<LocationGroupUpdateFieldInput>;
+  lat?: Maybe<Scalars["String"]>;
+  lng?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  organisation?: Maybe<LocationOrganisationUpdateFieldInput>;
-  screens?: Maybe<Array<LocationScreensUpdateFieldInput>>;
+  screen?: Maybe<LocationScreenUpdateFieldInput>;
 }
 
 export interface LocationWhere {
@@ -5741,11 +5569,11 @@ export interface LocationWhere {
   elevation_LTE?: Maybe<Scalars["Float"]>;
   elevation_NOT?: Maybe<Scalars["Float"]>;
   elevation_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  groups?: Maybe<LocationGroupWhere>;
-  groupsAggregate?: Maybe<LocationGroupsAggregateInput>;
-  groupsConnection?: Maybe<LocationGroupsConnectionWhere>;
-  groupsConnection_NOT?: Maybe<LocationGroupsConnectionWhere>;
-  groups_NOT?: Maybe<LocationGroupWhere>;
+  group?: Maybe<LocationGroupWhere>;
+  groupAggregate?: Maybe<LocationGroupAggregateInput>;
+  groupConnection?: Maybe<LocationGroupConnectionWhere>;
+  groupConnection_NOT?: Maybe<LocationGroupConnectionWhere>;
+  group_NOT?: Maybe<LocationGroupWhere>;
   id?: Maybe<Scalars["ID"]>;
   id_CONTAINS?: Maybe<Scalars["ID"]>;
   id_ENDS_WITH?: Maybe<Scalars["ID"]>;
@@ -5756,22 +5584,26 @@ export interface LocationWhere {
   id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
   id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
   id_STARTS_WITH?: Maybe<Scalars["ID"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  lat_GT?: Maybe<Scalars["Float"]>;
-  lat_GTE?: Maybe<Scalars["Float"]>;
-  lat_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  lat_LT?: Maybe<Scalars["Float"]>;
-  lat_LTE?: Maybe<Scalars["Float"]>;
-  lat_NOT?: Maybe<Scalars["Float"]>;
-  lat_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  lng?: Maybe<Scalars["Float"]>;
-  lng_GT?: Maybe<Scalars["Float"]>;
-  lng_GTE?: Maybe<Scalars["Float"]>;
-  lng_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  lng_LT?: Maybe<Scalars["Float"]>;
-  lng_LTE?: Maybe<Scalars["Float"]>;
-  lng_NOT?: Maybe<Scalars["Float"]>;
-  lng_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  lat?: Maybe<Scalars["String"]>;
+  lat_CONTAINS?: Maybe<Scalars["String"]>;
+  lat_ENDS_WITH?: Maybe<Scalars["String"]>;
+  lat_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  lat_NOT?: Maybe<Scalars["String"]>;
+  lat_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  lat_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  lat_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  lat_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  lat_STARTS_WITH?: Maybe<Scalars["String"]>;
+  lng?: Maybe<Scalars["String"]>;
+  lng_CONTAINS?: Maybe<Scalars["String"]>;
+  lng_ENDS_WITH?: Maybe<Scalars["String"]>;
+  lng_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  lng_NOT?: Maybe<Scalars["String"]>;
+  lng_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  lng_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  lng_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  lng_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  lng_STARTS_WITH?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   name_CONTAINS?: Maybe<Scalars["String"]>;
   name_ENDS_WITH?: Maybe<Scalars["String"]>;
@@ -5782,16 +5614,11 @@ export interface LocationWhere {
   name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
   name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
   name_STARTS_WITH?: Maybe<Scalars["String"]>;
-  organisation?: Maybe<HiveOrganisationWhere>;
-  organisationAggregate?: Maybe<LocationOrganisationAggregateInput>;
-  organisationConnection?: Maybe<LocationOrganisationConnectionWhere>;
-  organisationConnection_NOT?: Maybe<LocationOrganisationConnectionWhere>;
-  organisation_NOT?: Maybe<HiveOrganisationWhere>;
-  screens?: Maybe<GreenScreenWhere>;
-  screensAggregate?: Maybe<LocationScreensAggregateInput>;
-  screensConnection?: Maybe<LocationScreensConnectionWhere>;
-  screensConnection_NOT?: Maybe<LocationScreensConnectionWhere>;
-  screens_NOT?: Maybe<GreenScreenWhere>;
+  screen?: Maybe<GreenScreenWhere>;
+  screenAggregate?: Maybe<LocationScreenAggregateInput>;
+  screenConnection?: Maybe<LocationScreenConnectionWhere>;
+  screenConnection_NOT?: Maybe<LocationScreenConnectionWhere>;
+  screen_NOT?: Maybe<GreenScreenWhere>;
 }
 
 export interface PermissionConnectInput {
@@ -6817,41 +6644,41 @@ export interface ScheduleLocationsAggregateInput {
 }
 
 export interface ScheduleLocationsConnectFieldInput {
-  connect?: Maybe<Array<LocationConnectInput>>;
-  where?: Maybe<LocationConnectWhere>;
+  connect?: Maybe<Array<LocationGroupConnectInput>>;
+  where?: Maybe<LocationGroupConnectWhere>;
 }
 
 export interface ScheduleLocationsConnectOrCreateFieldInput {
   onCreate: ScheduleLocationsConnectOrCreateFieldInputOnCreate;
-  where: LocationConnectOrCreateWhere;
+  where: LocationGroupConnectOrCreateWhere;
 }
 
 export interface ScheduleLocationsConnectOrCreateFieldInputOnCreate {
-  node: LocationCreateInput;
+  node: LocationGroupCreateInput;
 }
 
 export interface ScheduleLocationsConnectionSort {
-  node?: Maybe<LocationSort>;
+  node?: Maybe<LocationGroupSort>;
 }
 
 export interface ScheduleLocationsConnectionWhere {
   AND?: Maybe<Array<ScheduleLocationsConnectionWhere>>;
   OR?: Maybe<Array<ScheduleLocationsConnectionWhere>>;
-  node?: Maybe<LocationWhere>;
-  node_NOT?: Maybe<LocationWhere>;
+  node?: Maybe<LocationGroupWhere>;
+  node_NOT?: Maybe<LocationGroupWhere>;
 }
 
 export interface ScheduleLocationsCreateFieldInput {
-  node: LocationCreateInput;
+  node: LocationGroupCreateInput;
 }
 
 export interface ScheduleLocationsDeleteFieldInput {
-  delete?: Maybe<LocationDeleteInput>;
+  delete?: Maybe<LocationGroupDeleteInput>;
   where?: Maybe<ScheduleLocationsConnectionWhere>;
 }
 
 export interface ScheduleLocationsDisconnectFieldInput {
-  disconnect?: Maybe<LocationDisconnectInput>;
+  disconnect?: Maybe<LocationGroupDisconnectInput>;
   where?: Maybe<ScheduleLocationsConnectionWhere>;
 }
 
@@ -6864,82 +6691,7 @@ export interface ScheduleLocationsFieldInput {
 export interface ScheduleLocationsNodeAggregationWhereInput {
   AND?: Maybe<Array<ScheduleLocationsNodeAggregationWhereInput>>;
   OR?: Maybe<Array<ScheduleLocationsNodeAggregationWhereInput>>;
-  elevation_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  elevation_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  elevation_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_GT?: Maybe<Scalars["Float"]>;
-  elevation_GTE?: Maybe<Scalars["Float"]>;
-  elevation_LT?: Maybe<Scalars["Float"]>;
-  elevation_LTE?: Maybe<Scalars["Float"]>;
-  elevation_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_MAX_GT?: Maybe<Scalars["Float"]>;
-  elevation_MAX_GTE?: Maybe<Scalars["Float"]>;
-  elevation_MAX_LT?: Maybe<Scalars["Float"]>;
-  elevation_MAX_LTE?: Maybe<Scalars["Float"]>;
-  elevation_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_MIN_GT?: Maybe<Scalars["Float"]>;
-  elevation_MIN_GTE?: Maybe<Scalars["Float"]>;
-  elevation_MIN_LT?: Maybe<Scalars["Float"]>;
-  elevation_MIN_LTE?: Maybe<Scalars["Float"]>;
-  elevation_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  elevation_SUM_GT?: Maybe<Scalars["Float"]>;
-  elevation_SUM_GTE?: Maybe<Scalars["Float"]>;
-  elevation_SUM_LT?: Maybe<Scalars["Float"]>;
-  elevation_SUM_LTE?: Maybe<Scalars["Float"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
-  lat_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  lat_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lat_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_GT?: Maybe<Scalars["Float"]>;
-  lat_GTE?: Maybe<Scalars["Float"]>;
-  lat_LT?: Maybe<Scalars["Float"]>;
-  lat_LTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MAX_GT?: Maybe<Scalars["Float"]>;
-  lat_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lat_MAX_LT?: Maybe<Scalars["Float"]>;
-  lat_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_MIN_GT?: Maybe<Scalars["Float"]>;
-  lat_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lat_MIN_LT?: Maybe<Scalars["Float"]>;
-  lat_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lat_SUM_GT?: Maybe<Scalars["Float"]>;
-  lat_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lat_SUM_LT?: Maybe<Scalars["Float"]>;
-  lat_SUM_LTE?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  lng_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  lng_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_GT?: Maybe<Scalars["Float"]>;
-  lng_GTE?: Maybe<Scalars["Float"]>;
-  lng_LT?: Maybe<Scalars["Float"]>;
-  lng_LTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MAX_GT?: Maybe<Scalars["Float"]>;
-  lng_MAX_GTE?: Maybe<Scalars["Float"]>;
-  lng_MAX_LT?: Maybe<Scalars["Float"]>;
-  lng_MAX_LTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_MIN_GT?: Maybe<Scalars["Float"]>;
-  lng_MIN_GTE?: Maybe<Scalars["Float"]>;
-  lng_MIN_LT?: Maybe<Scalars["Float"]>;
-  lng_MIN_LTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  lng_SUM_GT?: Maybe<Scalars["Float"]>;
-  lng_SUM_GTE?: Maybe<Scalars["Float"]>;
-  lng_SUM_LT?: Maybe<Scalars["Float"]>;
-  lng_SUM_LTE?: Maybe<Scalars["Float"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -6963,7 +6715,7 @@ export interface ScheduleLocationsNodeAggregationWhereInput {
 }
 
 export interface ScheduleLocationsUpdateConnectionInput {
-  node?: Maybe<LocationUpdateInput>;
+  node?: Maybe<LocationGroupUpdateInput>;
 }
 
 export interface ScheduleLocationsUpdateFieldInput {
@@ -7621,11 +7373,11 @@ export interface ScheduleWhere {
   id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
   id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
   id_STARTS_WITH?: Maybe<Scalars["ID"]>;
-  locations?: Maybe<LocationWhere>;
+  locations?: Maybe<LocationGroupWhere>;
   locationsAggregate?: Maybe<ScheduleLocationsAggregateInput>;
   locationsConnection?: Maybe<ScheduleLocationsConnectionWhere>;
   locationsConnection_NOT?: Maybe<ScheduleLocationsConnectionWhere>;
-  locations_NOT?: Maybe<LocationWhere>;
+  locations_NOT?: Maybe<LocationGroupWhere>;
   name?: Maybe<Scalars["String"]>;
   name_CONTAINS?: Maybe<Scalars["String"]>;
   name_ENDS_WITH?: Maybe<Scalars["String"]>;
@@ -8947,8 +8699,8 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     elevation: { __type: "FloatAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    lat: { __type: "FloatAggregateSelection!" },
-    lng: { __type: "FloatAggregateSelection!" },
+    lat: { __type: "StringAggregateSelection!" },
+    lng: { __type: "StringAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
   GreenScreenLocationNodeAggregationWhereInput: {
@@ -8985,51 +8737,41 @@ export const generatedSchema = {
     lat_AVERAGE_GTE: { __type: "Float" },
     lat_AVERAGE_LT: { __type: "Float" },
     lat_AVERAGE_LTE: { __type: "Float" },
-    lat_EQUAL: { __type: "Float" },
-    lat_GT: { __type: "Float" },
-    lat_GTE: { __type: "Float" },
-    lat_LT: { __type: "Float" },
-    lat_LTE: { __type: "Float" },
-    lat_MAX_EQUAL: { __type: "Float" },
-    lat_MAX_GT: { __type: "Float" },
-    lat_MAX_GTE: { __type: "Float" },
-    lat_MAX_LT: { __type: "Float" },
-    lat_MAX_LTE: { __type: "Float" },
-    lat_MIN_EQUAL: { __type: "Float" },
-    lat_MIN_GT: { __type: "Float" },
-    lat_MIN_GTE: { __type: "Float" },
-    lat_MIN_LT: { __type: "Float" },
-    lat_MIN_LTE: { __type: "Float" },
-    lat_SUM_EQUAL: { __type: "Float" },
-    lat_SUM_GT: { __type: "Float" },
-    lat_SUM_GTE: { __type: "Float" },
-    lat_SUM_LT: { __type: "Float" },
-    lat_SUM_LTE: { __type: "Float" },
+    lat_EQUAL: { __type: "String" },
+    lat_GT: { __type: "Int" },
+    lat_GTE: { __type: "Int" },
+    lat_LONGEST_EQUAL: { __type: "Int" },
+    lat_LONGEST_GT: { __type: "Int" },
+    lat_LONGEST_GTE: { __type: "Int" },
+    lat_LONGEST_LT: { __type: "Int" },
+    lat_LONGEST_LTE: { __type: "Int" },
+    lat_LT: { __type: "Int" },
+    lat_LTE: { __type: "Int" },
+    lat_SHORTEST_EQUAL: { __type: "Int" },
+    lat_SHORTEST_GT: { __type: "Int" },
+    lat_SHORTEST_GTE: { __type: "Int" },
+    lat_SHORTEST_LT: { __type: "Int" },
+    lat_SHORTEST_LTE: { __type: "Int" },
     lng_AVERAGE_EQUAL: { __type: "Float" },
     lng_AVERAGE_GT: { __type: "Float" },
     lng_AVERAGE_GTE: { __type: "Float" },
     lng_AVERAGE_LT: { __type: "Float" },
     lng_AVERAGE_LTE: { __type: "Float" },
-    lng_EQUAL: { __type: "Float" },
-    lng_GT: { __type: "Float" },
-    lng_GTE: { __type: "Float" },
-    lng_LT: { __type: "Float" },
-    lng_LTE: { __type: "Float" },
-    lng_MAX_EQUAL: { __type: "Float" },
-    lng_MAX_GT: { __type: "Float" },
-    lng_MAX_GTE: { __type: "Float" },
-    lng_MAX_LT: { __type: "Float" },
-    lng_MAX_LTE: { __type: "Float" },
-    lng_MIN_EQUAL: { __type: "Float" },
-    lng_MIN_GT: { __type: "Float" },
-    lng_MIN_GTE: { __type: "Float" },
-    lng_MIN_LT: { __type: "Float" },
-    lng_MIN_LTE: { __type: "Float" },
-    lng_SUM_EQUAL: { __type: "Float" },
-    lng_SUM_GT: { __type: "Float" },
-    lng_SUM_GTE: { __type: "Float" },
-    lng_SUM_LT: { __type: "Float" },
-    lng_SUM_LTE: { __type: "Float" },
+    lng_EQUAL: { __type: "String" },
+    lng_GT: { __type: "Int" },
+    lng_GTE: { __type: "Int" },
+    lng_LONGEST_EQUAL: { __type: "Int" },
+    lng_LONGEST_GT: { __type: "Int" },
+    lng_LONGEST_GTE: { __type: "Int" },
+    lng_LONGEST_LT: { __type: "Int" },
+    lng_LONGEST_LTE: { __type: "Int" },
+    lng_LT: { __type: "Int" },
+    lng_LTE: { __type: "Int" },
+    lng_SHORTEST_EQUAL: { __type: "Int" },
+    lng_SHORTEST_GT: { __type: "Int" },
+    lng_SHORTEST_GTE: { __type: "Int" },
+    lng_SHORTEST_LT: { __type: "Int" },
+    lng_SHORTEST_LTE: { __type: "Int" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
     name_AVERAGE_GTE: { __type: "Float" },
@@ -11356,23 +11098,6 @@ export const generatedSchema = {
         where: "HiveOrganisationLocationGroupsConnectionWhere",
       },
     },
-    locations: {
-      __type: "[Location]",
-      __args: { options: "LocationOptions", where: "LocationWhere" },
-    },
-    locationsAggregate: {
-      __type: "HiveOrganisationLocationLocationsAggregationSelection",
-      __args: { where: "LocationWhere" },
-    },
-    locationsConnection: {
-      __type: "HiveOrganisationLocationsConnection!",
-      __args: {
-        after: "String",
-        first: "Int",
-        sort: "[HiveOrganisationLocationsConnectionSort!]",
-        where: "HiveOrganisationLocationsConnectionWhere",
-      },
-    },
     members: {
       __type: "[HiveUser]",
       __args: { options: "HiveUserOptions", where: "HiveUserWhere" },
@@ -11751,7 +11476,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsConnectFieldInput!]",
     },
-    locations: { __type: "[HiveOrganisationLocationsConnectFieldInput!]" },
     members: { __type: "[HiveOrganisationMembersConnectFieldInput!]" },
     roles: { __type: "[HiveOrganisationRolesConnectFieldInput!]" },
     scheduleTiers: {
@@ -11775,9 +11499,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsConnectOrCreateFieldInput!]",
     },
-    locations: {
-      __type: "[HiveOrganisationLocationsConnectOrCreateFieldInput!]",
-    },
     members: { __type: "[HiveOrganisationMembersConnectOrCreateFieldInput!]" },
     roles: { __type: "[HiveOrganisationRolesConnectOrCreateFieldInput!]" },
     scheduleTiers: {
@@ -11797,7 +11518,6 @@ export const generatedSchema = {
     greenScreens: { __type: "HiveOrganisationGreenScreensFieldInput" },
     integrations: { __type: "HiveOrganisationIntegrationsFieldInput" },
     locationGroups: { __type: "HiveOrganisationLocationGroupsFieldInput" },
-    locations: { __type: "HiveOrganisationLocationsFieldInput" },
     members: { __type: "HiveOrganisationMembersFieldInput" },
     name: { __type: "String" },
     roles: { __type: "HiveOrganisationRolesFieldInput" },
@@ -11812,7 +11532,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsDeleteFieldInput!]",
     },
-    locations: { __type: "[HiveOrganisationLocationsDeleteFieldInput!]" },
     members: { __type: "[HiveOrganisationMembersDeleteFieldInput!]" },
     roles: { __type: "[HiveOrganisationRolesDeleteFieldInput!]" },
     scheduleTiers: {
@@ -11832,7 +11551,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsDisconnectFieldInput!]",
     },
-    locations: { __type: "[HiveOrganisationLocationsDisconnectFieldInput!]" },
     members: { __type: "[HiveOrganisationMembersDisconnectFieldInput!]" },
     roles: { __type: "[HiveOrganisationRolesDisconnectFieldInput!]" },
     scheduleTiers: {
@@ -12257,192 +11975,6 @@ export const generatedSchema = {
     update: { __type: "HiveOrganisationLocationGroupsUpdateConnectionInput" },
     where: { __type: "HiveOrganisationLocationGroupsConnectionWhere" },
   },
-  HiveOrganisationLocationLocationsAggregationSelection: {
-    __typename: { __type: "String!" },
-    count: { __type: "Int!" },
-    node: { __type: "HiveOrganisationLocationLocationsNodeAggregateSelection" },
-  },
-  HiveOrganisationLocationLocationsNodeAggregateSelection: {
-    __typename: { __type: "String!" },
-    elevation: { __type: "FloatAggregateSelection!" },
-    id: { __type: "IDAggregateSelection!" },
-    lat: { __type: "FloatAggregateSelection!" },
-    lng: { __type: "FloatAggregateSelection!" },
-    name: { __type: "StringAggregateSelection!" },
-  },
-  HiveOrganisationLocationsAggregateInput: {
-    AND: { __type: "[HiveOrganisationLocationsAggregateInput!]" },
-    OR: { __type: "[HiveOrganisationLocationsAggregateInput!]" },
-    count: { __type: "Int" },
-    count_GT: { __type: "Int" },
-    count_GTE: { __type: "Int" },
-    count_LT: { __type: "Int" },
-    count_LTE: { __type: "Int" },
-    node: { __type: "HiveOrganisationLocationsNodeAggregationWhereInput" },
-  },
-  HiveOrganisationLocationsConnectFieldInput: {
-    connect: { __type: "[LocationConnectInput!]" },
-    where: { __type: "LocationConnectWhere" },
-  },
-  HiveOrganisationLocationsConnectOrCreateFieldInput: {
-    onCreate: {
-      __type: "HiveOrganisationLocationsConnectOrCreateFieldInputOnCreate!",
-    },
-    where: { __type: "LocationConnectOrCreateWhere!" },
-  },
-  HiveOrganisationLocationsConnectOrCreateFieldInputOnCreate: {
-    node: { __type: "LocationCreateInput!" },
-  },
-  HiveOrganisationLocationsConnection: {
-    __typename: { __type: "String!" },
-    edges: { __type: "[HiveOrganisationLocationsRelationship!]!" },
-    pageInfo: { __type: "PageInfo!" },
-    totalCount: { __type: "Int!" },
-  },
-  HiveOrganisationLocationsConnectionSort: { node: { __type: "LocationSort" } },
-  HiveOrganisationLocationsConnectionWhere: {
-    AND: { __type: "[HiveOrganisationLocationsConnectionWhere!]" },
-    OR: { __type: "[HiveOrganisationLocationsConnectionWhere!]" },
-    node: { __type: "LocationWhere" },
-    node_NOT: { __type: "LocationWhere" },
-  },
-  HiveOrganisationLocationsCreateFieldInput: {
-    node: { __type: "LocationCreateInput!" },
-  },
-  HiveOrganisationLocationsDeleteFieldInput: {
-    delete: { __type: "LocationDeleteInput" },
-    where: { __type: "HiveOrganisationLocationsConnectionWhere" },
-  },
-  HiveOrganisationLocationsDisconnectFieldInput: {
-    disconnect: { __type: "LocationDisconnectInput" },
-    where: { __type: "HiveOrganisationLocationsConnectionWhere" },
-  },
-  HiveOrganisationLocationsFieldInput: {
-    connect: { __type: "[HiveOrganisationLocationsConnectFieldInput!]" },
-    connectOrCreate: {
-      __type: "[HiveOrganisationLocationsConnectOrCreateFieldInput!]",
-    },
-    create: { __type: "[HiveOrganisationLocationsCreateFieldInput!]" },
-  },
-  HiveOrganisationLocationsNodeAggregationWhereInput: {
-    AND: { __type: "[HiveOrganisationLocationsNodeAggregationWhereInput!]" },
-    OR: { __type: "[HiveOrganisationLocationsNodeAggregationWhereInput!]" },
-    elevation_AVERAGE_EQUAL: { __type: "Float" },
-    elevation_AVERAGE_GT: { __type: "Float" },
-    elevation_AVERAGE_GTE: { __type: "Float" },
-    elevation_AVERAGE_LT: { __type: "Float" },
-    elevation_AVERAGE_LTE: { __type: "Float" },
-    elevation_EQUAL: { __type: "Float" },
-    elevation_GT: { __type: "Float" },
-    elevation_GTE: { __type: "Float" },
-    elevation_LT: { __type: "Float" },
-    elevation_LTE: { __type: "Float" },
-    elevation_MAX_EQUAL: { __type: "Float" },
-    elevation_MAX_GT: { __type: "Float" },
-    elevation_MAX_GTE: { __type: "Float" },
-    elevation_MAX_LT: { __type: "Float" },
-    elevation_MAX_LTE: { __type: "Float" },
-    elevation_MIN_EQUAL: { __type: "Float" },
-    elevation_MIN_GT: { __type: "Float" },
-    elevation_MIN_GTE: { __type: "Float" },
-    elevation_MIN_LT: { __type: "Float" },
-    elevation_MIN_LTE: { __type: "Float" },
-    elevation_SUM_EQUAL: { __type: "Float" },
-    elevation_SUM_GT: { __type: "Float" },
-    elevation_SUM_GTE: { __type: "Float" },
-    elevation_SUM_LT: { __type: "Float" },
-    elevation_SUM_LTE: { __type: "Float" },
-    id_EQUAL: { __type: "ID" },
-    lat_AVERAGE_EQUAL: { __type: "Float" },
-    lat_AVERAGE_GT: { __type: "Float" },
-    lat_AVERAGE_GTE: { __type: "Float" },
-    lat_AVERAGE_LT: { __type: "Float" },
-    lat_AVERAGE_LTE: { __type: "Float" },
-    lat_EQUAL: { __type: "Float" },
-    lat_GT: { __type: "Float" },
-    lat_GTE: { __type: "Float" },
-    lat_LT: { __type: "Float" },
-    lat_LTE: { __type: "Float" },
-    lat_MAX_EQUAL: { __type: "Float" },
-    lat_MAX_GT: { __type: "Float" },
-    lat_MAX_GTE: { __type: "Float" },
-    lat_MAX_LT: { __type: "Float" },
-    lat_MAX_LTE: { __type: "Float" },
-    lat_MIN_EQUAL: { __type: "Float" },
-    lat_MIN_GT: { __type: "Float" },
-    lat_MIN_GTE: { __type: "Float" },
-    lat_MIN_LT: { __type: "Float" },
-    lat_MIN_LTE: { __type: "Float" },
-    lat_SUM_EQUAL: { __type: "Float" },
-    lat_SUM_GT: { __type: "Float" },
-    lat_SUM_GTE: { __type: "Float" },
-    lat_SUM_LT: { __type: "Float" },
-    lat_SUM_LTE: { __type: "Float" },
-    lng_AVERAGE_EQUAL: { __type: "Float" },
-    lng_AVERAGE_GT: { __type: "Float" },
-    lng_AVERAGE_GTE: { __type: "Float" },
-    lng_AVERAGE_LT: { __type: "Float" },
-    lng_AVERAGE_LTE: { __type: "Float" },
-    lng_EQUAL: { __type: "Float" },
-    lng_GT: { __type: "Float" },
-    lng_GTE: { __type: "Float" },
-    lng_LT: { __type: "Float" },
-    lng_LTE: { __type: "Float" },
-    lng_MAX_EQUAL: { __type: "Float" },
-    lng_MAX_GT: { __type: "Float" },
-    lng_MAX_GTE: { __type: "Float" },
-    lng_MAX_LT: { __type: "Float" },
-    lng_MAX_LTE: { __type: "Float" },
-    lng_MIN_EQUAL: { __type: "Float" },
-    lng_MIN_GT: { __type: "Float" },
-    lng_MIN_GTE: { __type: "Float" },
-    lng_MIN_LT: { __type: "Float" },
-    lng_MIN_LTE: { __type: "Float" },
-    lng_SUM_EQUAL: { __type: "Float" },
-    lng_SUM_GT: { __type: "Float" },
-    lng_SUM_GTE: { __type: "Float" },
-    lng_SUM_LT: { __type: "Float" },
-    lng_SUM_LTE: { __type: "Float" },
-    name_AVERAGE_EQUAL: { __type: "Float" },
-    name_AVERAGE_GT: { __type: "Float" },
-    name_AVERAGE_GTE: { __type: "Float" },
-    name_AVERAGE_LT: { __type: "Float" },
-    name_AVERAGE_LTE: { __type: "Float" },
-    name_EQUAL: { __type: "String" },
-    name_GT: { __type: "Int" },
-    name_GTE: { __type: "Int" },
-    name_LONGEST_EQUAL: { __type: "Int" },
-    name_LONGEST_GT: { __type: "Int" },
-    name_LONGEST_GTE: { __type: "Int" },
-    name_LONGEST_LT: { __type: "Int" },
-    name_LONGEST_LTE: { __type: "Int" },
-    name_LT: { __type: "Int" },
-    name_LTE: { __type: "Int" },
-    name_SHORTEST_EQUAL: { __type: "Int" },
-    name_SHORTEST_GT: { __type: "Int" },
-    name_SHORTEST_GTE: { __type: "Int" },
-    name_SHORTEST_LT: { __type: "Int" },
-    name_SHORTEST_LTE: { __type: "Int" },
-  },
-  HiveOrganisationLocationsRelationship: {
-    __typename: { __type: "String!" },
-    cursor: { __type: "String!" },
-    node: { __type: "Location!" },
-  },
-  HiveOrganisationLocationsUpdateConnectionInput: {
-    node: { __type: "LocationUpdateInput" },
-  },
-  HiveOrganisationLocationsUpdateFieldInput: {
-    connect: { __type: "[HiveOrganisationLocationsConnectFieldInput!]" },
-    connectOrCreate: {
-      __type: "[HiveOrganisationLocationsConnectOrCreateFieldInput!]",
-    },
-    create: { __type: "[HiveOrganisationLocationsCreateFieldInput!]" },
-    delete: { __type: "[HiveOrganisationLocationsDeleteFieldInput!]" },
-    disconnect: { __type: "[HiveOrganisationLocationsDisconnectFieldInput!]" },
-    update: { __type: "HiveOrganisationLocationsUpdateConnectionInput" },
-    where: { __type: "HiveOrganisationLocationsConnectionWhere" },
-  },
   HiveOrganisationMembersAggregateInput: {
     AND: { __type: "[HiveOrganisationMembersAggregateInput!]" },
     OR: { __type: "[HiveOrganisationMembersAggregateInput!]" },
@@ -12594,7 +12126,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsCreateFieldInput!]",
     },
-    locations: { __type: "[HiveOrganisationLocationsCreateFieldInput!]" },
     members: { __type: "[HiveOrganisationMembersCreateFieldInput!]" },
     roles: { __type: "[HiveOrganisationRolesCreateFieldInput!]" },
     scheduleTiers: {
@@ -13031,7 +12562,6 @@ export const generatedSchema = {
     locationGroups: {
       __type: "[HiveOrganisationLocationGroupsUpdateFieldInput!]",
     },
-    locations: { __type: "[HiveOrganisationLocationsUpdateFieldInput!]" },
     members: { __type: "[HiveOrganisationMembersUpdateFieldInput!]" },
     name: { __type: "String" },
     roles: { __type: "[HiveOrganisationRolesUpdateFieldInput!]" },
@@ -13102,13 +12632,6 @@ export const generatedSchema = {
       __type: "HiveOrganisationLocationGroupsConnectionWhere",
     },
     locationGroups_NOT: { __type: "LocationGroupWhere" },
-    locations: { __type: "LocationWhere" },
-    locationsAggregate: { __type: "HiveOrganisationLocationsAggregateInput" },
-    locationsConnection: { __type: "HiveOrganisationLocationsConnectionWhere" },
-    locationsConnection_NOT: {
-      __type: "HiveOrganisationLocationsConnectionWhere",
-    },
-    locations_NOT: { __type: "LocationWhere" },
     members: { __type: "HiveUserWhere" },
     membersAggregate: { __type: "HiveOrganisationMembersAggregateInput" },
     membersConnection: { __type: "HiveOrganisationMembersConnectionWhere" },
@@ -14025,62 +13548,42 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     cameraAnalytics: { __type: "[CameraAnalytic]" },
     elevation: { __type: "Float" },
-    groups: {
-      __type: "[LocationGroup]",
+    group: {
+      __type: "LocationGroup",
       __args: { options: "LocationGroupOptions", where: "LocationGroupWhere" },
     },
-    groupsAggregate: {
-      __type: "LocationLocationGroupGroupsAggregationSelection",
+    groupAggregate: {
+      __type: "LocationLocationGroupGroupAggregationSelection",
       __args: { where: "LocationGroupWhere" },
     },
-    groupsConnection: {
-      __type: "LocationGroupsConnection!",
+    groupConnection: {
+      __type: "LocationGroupConnection!",
       __args: {
         after: "String",
         first: "Int",
-        sort: "[LocationGroupsConnectionSort!]",
-        where: "LocationGroupsConnectionWhere",
+        sort: "[LocationGroupConnectionSort!]",
+        where: "LocationGroupConnectionWhere",
       },
     },
     id: { __type: "ID!" },
-    lat: { __type: "Float" },
-    lng: { __type: "Float" },
+    lat: { __type: "String" },
+    lng: { __type: "String" },
     name: { __type: "String" },
-    organisation: {
-      __type: "HiveOrganisation",
-      __args: {
-        options: "HiveOrganisationOptions",
-        where: "HiveOrganisationWhere",
-      },
-    },
-    organisationAggregate: {
-      __type: "LocationHiveOrganisationOrganisationAggregationSelection",
-      __args: { where: "HiveOrganisationWhere" },
-    },
-    organisationConnection: {
-      __type: "LocationOrganisationConnection!",
-      __args: {
-        after: "String",
-        first: "Int",
-        sort: "[LocationOrganisationConnectionSort!]",
-        where: "LocationOrganisationConnectionWhere",
-      },
-    },
-    screens: {
-      __type: "[GreenScreen]",
+    screen: {
+      __type: "GreenScreen",
       __args: { options: "GreenScreenOptions", where: "GreenScreenWhere" },
     },
-    screensAggregate: {
-      __type: "LocationGreenScreenScreensAggregationSelection",
+    screenAggregate: {
+      __type: "LocationGreenScreenScreenAggregationSelection",
       __args: { where: "GreenScreenWhere" },
     },
-    screensConnection: {
-      __type: "LocationScreensConnection!",
+    screenConnection: {
+      __type: "LocationScreenConnection!",
       __args: {
         after: "String",
         first: "Int",
-        sort: "[LocationScreensConnectionSort!]",
-        where: "LocationScreensConnectionWhere",
+        sort: "[LocationScreenConnectionSort!]",
+        where: "LocationScreenConnectionWhere",
       },
     },
   },
@@ -14089,47 +13592,42 @@ export const generatedSchema = {
     count: { __type: "Int!" },
     elevation: { __type: "FloatAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    lat: { __type: "FloatAggregateSelection!" },
-    lng: { __type: "FloatAggregateSelection!" },
+    lat: { __type: "StringAggregateSelection!" },
+    lng: { __type: "StringAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
   LocationConnectInput: {
-    groups: { __type: "[LocationGroupsConnectFieldInput!]" },
-    organisation: { __type: "LocationOrganisationConnectFieldInput" },
-    screens: { __type: "[LocationScreensConnectFieldInput!]" },
+    group: { __type: "LocationGroupConnectFieldInput" },
+    screen: { __type: "LocationScreenConnectFieldInput" },
   },
   LocationConnectOrCreateInput: {
-    groups: { __type: "[LocationGroupsConnectOrCreateFieldInput!]" },
-    organisation: { __type: "LocationOrganisationConnectOrCreateFieldInput" },
-    screens: { __type: "[LocationScreensConnectOrCreateFieldInput!]" },
+    group: { __type: "LocationGroupConnectOrCreateFieldInput" },
+    screen: { __type: "LocationScreenConnectOrCreateFieldInput" },
   },
   LocationConnectOrCreateWhere: { node: { __type: "LocationUniqueWhere!" } },
   LocationConnectWhere: { node: { __type: "LocationWhere!" } },
   LocationCreateInput: {
     elevation: { __type: "Float" },
-    groups: { __type: "LocationGroupsFieldInput" },
-    lat: { __type: "Float" },
-    lng: { __type: "Float" },
+    group: { __type: "LocationGroupFieldInput" },
+    lat: { __type: "String" },
+    lng: { __type: "String" },
     name: { __type: "String" },
-    organisation: { __type: "LocationOrganisationFieldInput" },
-    screens: { __type: "LocationScreensFieldInput" },
+    screen: { __type: "LocationScreenFieldInput" },
   },
   LocationDeleteInput: {
-    groups: { __type: "[LocationGroupsDeleteFieldInput!]" },
-    organisation: { __type: "LocationOrganisationDeleteFieldInput" },
-    screens: { __type: "[LocationScreensDeleteFieldInput!]" },
+    group: { __type: "LocationGroupDeleteFieldInput" },
+    screen: { __type: "LocationScreenDeleteFieldInput" },
   },
   LocationDisconnectInput: {
-    groups: { __type: "[LocationGroupsDisconnectFieldInput!]" },
-    organisation: { __type: "LocationOrganisationDisconnectFieldInput" },
-    screens: { __type: "[LocationScreensDisconnectFieldInput!]" },
+    group: { __type: "LocationGroupDisconnectFieldInput" },
+    screen: { __type: "LocationScreenDisconnectFieldInput" },
   },
-  LocationGreenScreenScreensAggregationSelection: {
+  LocationGreenScreenScreenAggregationSelection: {
     __typename: { __type: "String!" },
     count: { __type: "Int!" },
-    node: { __type: "LocationGreenScreenScreensNodeAggregateSelection" },
+    node: { __type: "LocationGreenScreenScreenNodeAggregateSelection" },
   },
-  LocationGreenScreenScreensNodeAggregateSelection: {
+  LocationGreenScreenScreenNodeAggregateSelection: {
     __typename: { __type: "String!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
@@ -14176,6 +13674,33 @@ export const generatedSchema = {
         where: "LocationGroupOrganisationConnectionWhere",
       },
     },
+    schedule: {
+      __type: "Schedule",
+      __args: { options: "ScheduleOptions", where: "ScheduleWhere" },
+    },
+    scheduleAggregate: {
+      __type: "LocationGroupScheduleScheduleAggregationSelection",
+      __args: { where: "ScheduleWhere" },
+    },
+    scheduleConnection: {
+      __type: "LocationGroupScheduleConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[LocationGroupScheduleConnectionSort!]",
+        where: "LocationGroupScheduleConnectionWhere",
+      },
+    },
+  },
+  LocationGroupAggregateInput: {
+    AND: { __type: "[LocationGroupAggregateInput!]" },
+    OR: { __type: "[LocationGroupAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "LocationGroupNodeAggregationWhereInput" },
   },
   LocationGroupAggregateSelection: {
     __typename: { __type: "String!" },
@@ -14183,32 +13708,77 @@ export const generatedSchema = {
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
+  LocationGroupConnectFieldInput: {
+    connect: { __type: "LocationGroupConnectInput" },
+    where: { __type: "LocationGroupConnectWhere" },
+  },
   LocationGroupConnectInput: {
     locations: { __type: "[LocationGroupLocationsConnectFieldInput!]" },
     organisation: { __type: "LocationGroupOrganisationConnectFieldInput" },
+    schedule: { __type: "LocationGroupScheduleConnectFieldInput" },
+  },
+  LocationGroupConnectOrCreateFieldInput: {
+    onCreate: { __type: "LocationGroupConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "LocationGroupConnectOrCreateWhere!" },
+  },
+  LocationGroupConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "LocationGroupCreateInput!" },
   },
   LocationGroupConnectOrCreateInput: {
     locations: { __type: "[LocationGroupLocationsConnectOrCreateFieldInput!]" },
     organisation: {
       __type: "LocationGroupOrganisationConnectOrCreateFieldInput",
     },
+    schedule: { __type: "LocationGroupScheduleConnectOrCreateFieldInput" },
   },
   LocationGroupConnectOrCreateWhere: {
     node: { __type: "LocationGroupUniqueWhere!" },
   },
   LocationGroupConnectWhere: { node: { __type: "LocationGroupWhere!" } },
+  LocationGroupConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[LocationGroupRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  LocationGroupConnectionSort: { node: { __type: "LocationGroupSort" } },
+  LocationGroupConnectionWhere: {
+    AND: { __type: "[LocationGroupConnectionWhere!]" },
+    OR: { __type: "[LocationGroupConnectionWhere!]" },
+    node: { __type: "LocationGroupWhere" },
+    node_NOT: { __type: "LocationGroupWhere" },
+  },
+  LocationGroupCreateFieldInput: {
+    node: { __type: "LocationGroupCreateInput!" },
+  },
   LocationGroupCreateInput: {
     locations: { __type: "LocationGroupLocationsFieldInput" },
     name: { __type: "String" },
     organisation: { __type: "LocationGroupOrganisationFieldInput" },
+    schedule: { __type: "LocationGroupScheduleFieldInput" },
+  },
+  LocationGroupDeleteFieldInput: {
+    delete: { __type: "LocationGroupDeleteInput" },
+    where: { __type: "LocationGroupConnectionWhere" },
   },
   LocationGroupDeleteInput: {
     locations: { __type: "[LocationGroupLocationsDeleteFieldInput!]" },
     organisation: { __type: "LocationGroupOrganisationDeleteFieldInput" },
+    schedule: { __type: "LocationGroupScheduleDeleteFieldInput" },
+  },
+  LocationGroupDisconnectFieldInput: {
+    disconnect: { __type: "LocationGroupDisconnectInput" },
+    where: { __type: "LocationGroupConnectionWhere" },
   },
   LocationGroupDisconnectInput: {
     locations: { __type: "[LocationGroupLocationsDisconnectFieldInput!]" },
     organisation: { __type: "LocationGroupOrganisationDisconnectFieldInput" },
+    schedule: { __type: "LocationGroupScheduleDisconnectFieldInput" },
+  },
+  LocationGroupFieldInput: {
+    connect: { __type: "LocationGroupConnectFieldInput" },
+    connectOrCreate: { __type: "LocationGroupConnectOrCreateFieldInput" },
+    create: { __type: "LocationGroupCreateFieldInput" },
   },
   LocationGroupHiveOrganisationOrganisationAggregationSelection: {
     __typename: { __type: "String!" },
@@ -14231,8 +13801,8 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     elevation: { __type: "FloatAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    lat: { __type: "FloatAggregateSelection!" },
-    lng: { __type: "FloatAggregateSelection!" },
+    lat: { __type: "StringAggregateSelection!" },
+    lng: { __type: "StringAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
   LocationGroupLocationsAggregateInput: {
@@ -14323,51 +13893,41 @@ export const generatedSchema = {
     lat_AVERAGE_GTE: { __type: "Float" },
     lat_AVERAGE_LT: { __type: "Float" },
     lat_AVERAGE_LTE: { __type: "Float" },
-    lat_EQUAL: { __type: "Float" },
-    lat_GT: { __type: "Float" },
-    lat_GTE: { __type: "Float" },
-    lat_LT: { __type: "Float" },
-    lat_LTE: { __type: "Float" },
-    lat_MAX_EQUAL: { __type: "Float" },
-    lat_MAX_GT: { __type: "Float" },
-    lat_MAX_GTE: { __type: "Float" },
-    lat_MAX_LT: { __type: "Float" },
-    lat_MAX_LTE: { __type: "Float" },
-    lat_MIN_EQUAL: { __type: "Float" },
-    lat_MIN_GT: { __type: "Float" },
-    lat_MIN_GTE: { __type: "Float" },
-    lat_MIN_LT: { __type: "Float" },
-    lat_MIN_LTE: { __type: "Float" },
-    lat_SUM_EQUAL: { __type: "Float" },
-    lat_SUM_GT: { __type: "Float" },
-    lat_SUM_GTE: { __type: "Float" },
-    lat_SUM_LT: { __type: "Float" },
-    lat_SUM_LTE: { __type: "Float" },
+    lat_EQUAL: { __type: "String" },
+    lat_GT: { __type: "Int" },
+    lat_GTE: { __type: "Int" },
+    lat_LONGEST_EQUAL: { __type: "Int" },
+    lat_LONGEST_GT: { __type: "Int" },
+    lat_LONGEST_GTE: { __type: "Int" },
+    lat_LONGEST_LT: { __type: "Int" },
+    lat_LONGEST_LTE: { __type: "Int" },
+    lat_LT: { __type: "Int" },
+    lat_LTE: { __type: "Int" },
+    lat_SHORTEST_EQUAL: { __type: "Int" },
+    lat_SHORTEST_GT: { __type: "Int" },
+    lat_SHORTEST_GTE: { __type: "Int" },
+    lat_SHORTEST_LT: { __type: "Int" },
+    lat_SHORTEST_LTE: { __type: "Int" },
     lng_AVERAGE_EQUAL: { __type: "Float" },
     lng_AVERAGE_GT: { __type: "Float" },
     lng_AVERAGE_GTE: { __type: "Float" },
     lng_AVERAGE_LT: { __type: "Float" },
     lng_AVERAGE_LTE: { __type: "Float" },
-    lng_EQUAL: { __type: "Float" },
-    lng_GT: { __type: "Float" },
-    lng_GTE: { __type: "Float" },
-    lng_LT: { __type: "Float" },
-    lng_LTE: { __type: "Float" },
-    lng_MAX_EQUAL: { __type: "Float" },
-    lng_MAX_GT: { __type: "Float" },
-    lng_MAX_GTE: { __type: "Float" },
-    lng_MAX_LT: { __type: "Float" },
-    lng_MAX_LTE: { __type: "Float" },
-    lng_MIN_EQUAL: { __type: "Float" },
-    lng_MIN_GT: { __type: "Float" },
-    lng_MIN_GTE: { __type: "Float" },
-    lng_MIN_LT: { __type: "Float" },
-    lng_MIN_LTE: { __type: "Float" },
-    lng_SUM_EQUAL: { __type: "Float" },
-    lng_SUM_GT: { __type: "Float" },
-    lng_SUM_GTE: { __type: "Float" },
-    lng_SUM_LT: { __type: "Float" },
-    lng_SUM_LTE: { __type: "Float" },
+    lng_EQUAL: { __type: "String" },
+    lng_GT: { __type: "Int" },
+    lng_GTE: { __type: "Int" },
+    lng_LONGEST_EQUAL: { __type: "Int" },
+    lng_LONGEST_GT: { __type: "Int" },
+    lng_LONGEST_GTE: { __type: "Int" },
+    lng_LONGEST_LT: { __type: "Int" },
+    lng_LONGEST_LTE: { __type: "Int" },
+    lng_LT: { __type: "Int" },
+    lng_LTE: { __type: "Int" },
+    lng_SHORTEST_EQUAL: { __type: "Int" },
+    lng_SHORTEST_GT: { __type: "Int" },
+    lng_SHORTEST_GTE: { __type: "Int" },
+    lng_SHORTEST_LT: { __type: "Int" },
+    lng_SHORTEST_LTE: { __type: "Int" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
     name_AVERAGE_GTE: { __type: "Float" },
@@ -14407,6 +13967,31 @@ export const generatedSchema = {
     disconnect: { __type: "[LocationGroupLocationsDisconnectFieldInput!]" },
     update: { __type: "LocationGroupLocationsUpdateConnectionInput" },
     where: { __type: "LocationGroupLocationsConnectionWhere" },
+  },
+  LocationGroupNodeAggregationWhereInput: {
+    AND: { __type: "[LocationGroupNodeAggregationWhereInput!]" },
+    OR: { __type: "[LocationGroupNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
   },
   LocationGroupOptions: {
     limit: { __type: "Int" },
@@ -14516,16 +14101,175 @@ export const generatedSchema = {
   LocationGroupRelationInput: {
     locations: { __type: "[LocationGroupLocationsCreateFieldInput!]" },
     organisation: { __type: "LocationGroupOrganisationCreateFieldInput" },
+    schedule: { __type: "LocationGroupScheduleCreateFieldInput" },
+  },
+  LocationGroupRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "LocationGroup!" },
+  },
+  LocationGroupScheduleAggregateInput: {
+    AND: { __type: "[LocationGroupScheduleAggregateInput!]" },
+    OR: { __type: "[LocationGroupScheduleAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "LocationGroupScheduleNodeAggregationWhereInput" },
+  },
+  LocationGroupScheduleConnectFieldInput: {
+    connect: { __type: "ScheduleConnectInput" },
+    where: { __type: "ScheduleConnectWhere" },
+  },
+  LocationGroupScheduleConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "LocationGroupScheduleConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "ScheduleConnectOrCreateWhere!" },
+  },
+  LocationGroupScheduleConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScheduleCreateInput!" },
+  },
+  LocationGroupScheduleConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[LocationGroupScheduleRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  LocationGroupScheduleConnectionSort: { node: { __type: "ScheduleSort" } },
+  LocationGroupScheduleConnectionWhere: {
+    AND: { __type: "[LocationGroupScheduleConnectionWhere!]" },
+    OR: { __type: "[LocationGroupScheduleConnectionWhere!]" },
+    node: { __type: "ScheduleWhere" },
+    node_NOT: { __type: "ScheduleWhere" },
+  },
+  LocationGroupScheduleCreateFieldInput: {
+    node: { __type: "ScheduleCreateInput!" },
+  },
+  LocationGroupScheduleDeleteFieldInput: {
+    delete: { __type: "ScheduleDeleteInput" },
+    where: { __type: "LocationGroupScheduleConnectionWhere" },
+  },
+  LocationGroupScheduleDisconnectFieldInput: {
+    disconnect: { __type: "ScheduleDisconnectInput" },
+    where: { __type: "LocationGroupScheduleConnectionWhere" },
+  },
+  LocationGroupScheduleFieldInput: {
+    connect: { __type: "LocationGroupScheduleConnectFieldInput" },
+    connectOrCreate: {
+      __type: "LocationGroupScheduleConnectOrCreateFieldInput",
+    },
+    create: { __type: "LocationGroupScheduleCreateFieldInput" },
+  },
+  LocationGroupScheduleNodeAggregationWhereInput: {
+    AND: { __type: "[LocationGroupScheduleNodeAggregationWhereInput!]" },
+    OR: { __type: "[LocationGroupScheduleNodeAggregationWhereInput!]" },
+    endDate_EQUAL: { __type: "DateTime" },
+    endDate_GT: { __type: "DateTime" },
+    endDate_GTE: { __type: "DateTime" },
+    endDate_LT: { __type: "DateTime" },
+    endDate_LTE: { __type: "DateTime" },
+    endDate_MAX_EQUAL: { __type: "DateTime" },
+    endDate_MAX_GT: { __type: "DateTime" },
+    endDate_MAX_GTE: { __type: "DateTime" },
+    endDate_MAX_LT: { __type: "DateTime" },
+    endDate_MAX_LTE: { __type: "DateTime" },
+    endDate_MIN_EQUAL: { __type: "DateTime" },
+    endDate_MIN_GT: { __type: "DateTime" },
+    endDate_MIN_GTE: { __type: "DateTime" },
+    endDate_MIN_LT: { __type: "DateTime" },
+    endDate_MIN_LTE: { __type: "DateTime" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    startDate_EQUAL: { __type: "DateTime" },
+    startDate_GT: { __type: "DateTime" },
+    startDate_GTE: { __type: "DateTime" },
+    startDate_LT: { __type: "DateTime" },
+    startDate_LTE: { __type: "DateTime" },
+    startDate_MAX_EQUAL: { __type: "DateTime" },
+    startDate_MAX_GT: { __type: "DateTime" },
+    startDate_MAX_GTE: { __type: "DateTime" },
+    startDate_MAX_LT: { __type: "DateTime" },
+    startDate_MAX_LTE: { __type: "DateTime" },
+    startDate_MIN_EQUAL: { __type: "DateTime" },
+    startDate_MIN_GT: { __type: "DateTime" },
+    startDate_MIN_GTE: { __type: "DateTime" },
+    startDate_MIN_LT: { __type: "DateTime" },
+    startDate_MIN_LTE: { __type: "DateTime" },
+  },
+  LocationGroupScheduleRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Schedule!" },
+  },
+  LocationGroupScheduleScheduleAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "LocationGroupScheduleScheduleNodeAggregateSelection" },
+  },
+  LocationGroupScheduleScheduleNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    endDate: { __type: "DateTimeAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    startDate: { __type: "DateTimeAggregateSelection!" },
+  },
+  LocationGroupScheduleUpdateConnectionInput: {
+    node: { __type: "ScheduleUpdateInput" },
+  },
+  LocationGroupScheduleUpdateFieldInput: {
+    connect: { __type: "LocationGroupScheduleConnectFieldInput" },
+    connectOrCreate: {
+      __type: "LocationGroupScheduleConnectOrCreateFieldInput",
+    },
+    create: { __type: "LocationGroupScheduleCreateFieldInput" },
+    delete: { __type: "LocationGroupScheduleDeleteFieldInput" },
+    disconnect: { __type: "LocationGroupScheduleDisconnectFieldInput" },
+    update: { __type: "LocationGroupScheduleUpdateConnectionInput" },
+    where: { __type: "LocationGroupScheduleConnectionWhere" },
   },
   LocationGroupSort: {
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
   },
   LocationGroupUniqueWhere: { id: { __type: "ID" } },
+  LocationGroupUpdateConnectionInput: {
+    node: { __type: "LocationGroupUpdateInput" },
+  },
+  LocationGroupUpdateFieldInput: {
+    connect: { __type: "LocationGroupConnectFieldInput" },
+    connectOrCreate: { __type: "LocationGroupConnectOrCreateFieldInput" },
+    create: { __type: "LocationGroupCreateFieldInput" },
+    delete: { __type: "LocationGroupDeleteFieldInput" },
+    disconnect: { __type: "LocationGroupDisconnectFieldInput" },
+    update: { __type: "LocationGroupUpdateConnectionInput" },
+    where: { __type: "LocationGroupConnectionWhere" },
+  },
   LocationGroupUpdateInput: {
     locations: { __type: "[LocationGroupLocationsUpdateFieldInput!]" },
     name: { __type: "String" },
     organisation: { __type: "LocationGroupOrganisationUpdateFieldInput" },
+    schedule: { __type: "LocationGroupScheduleUpdateFieldInput" },
   },
   LocationGroupWhere: {
     AND: { __type: "[LocationGroupWhere!]" },
@@ -14568,117 +14312,18 @@ export const generatedSchema = {
       __type: "LocationGroupOrganisationConnectionWhere",
     },
     organisation_NOT: { __type: "HiveOrganisationWhere" },
+    schedule: { __type: "ScheduleWhere" },
+    scheduleAggregate: { __type: "LocationGroupScheduleAggregateInput" },
+    scheduleConnection: { __type: "LocationGroupScheduleConnectionWhere" },
+    scheduleConnection_NOT: { __type: "LocationGroupScheduleConnectionWhere" },
+    schedule_NOT: { __type: "ScheduleWhere" },
   },
-  LocationGroupsAggregateInput: {
-    AND: { __type: "[LocationGroupsAggregateInput!]" },
-    OR: { __type: "[LocationGroupsAggregateInput!]" },
-    count: { __type: "Int" },
-    count_GT: { __type: "Int" },
-    count_GTE: { __type: "Int" },
-    count_LT: { __type: "Int" },
-    count_LTE: { __type: "Int" },
-    node: { __type: "LocationGroupsNodeAggregationWhereInput" },
-  },
-  LocationGroupsConnectFieldInput: {
-    connect: { __type: "[LocationGroupConnectInput!]" },
-    where: { __type: "LocationGroupConnectWhere" },
-  },
-  LocationGroupsConnectOrCreateFieldInput: {
-    onCreate: { __type: "LocationGroupsConnectOrCreateFieldInputOnCreate!" },
-    where: { __type: "LocationGroupConnectOrCreateWhere!" },
-  },
-  LocationGroupsConnectOrCreateFieldInputOnCreate: {
-    node: { __type: "LocationGroupCreateInput!" },
-  },
-  LocationGroupsConnection: {
-    __typename: { __type: "String!" },
-    edges: { __type: "[LocationGroupsRelationship!]!" },
-    pageInfo: { __type: "PageInfo!" },
-    totalCount: { __type: "Int!" },
-  },
-  LocationGroupsConnectionSort: { node: { __type: "LocationGroupSort" } },
-  LocationGroupsConnectionWhere: {
-    AND: { __type: "[LocationGroupsConnectionWhere!]" },
-    OR: { __type: "[LocationGroupsConnectionWhere!]" },
-    node: { __type: "LocationGroupWhere" },
-    node_NOT: { __type: "LocationGroupWhere" },
-  },
-  LocationGroupsCreateFieldInput: {
-    node: { __type: "LocationGroupCreateInput!" },
-  },
-  LocationGroupsDeleteFieldInput: {
-    delete: { __type: "LocationGroupDeleteInput" },
-    where: { __type: "LocationGroupsConnectionWhere" },
-  },
-  LocationGroupsDisconnectFieldInput: {
-    disconnect: { __type: "LocationGroupDisconnectInput" },
-    where: { __type: "LocationGroupsConnectionWhere" },
-  },
-  LocationGroupsFieldInput: {
-    connect: { __type: "[LocationGroupsConnectFieldInput!]" },
-    connectOrCreate: { __type: "[LocationGroupsConnectOrCreateFieldInput!]" },
-    create: { __type: "[LocationGroupsCreateFieldInput!]" },
-  },
-  LocationGroupsNodeAggregationWhereInput: {
-    AND: { __type: "[LocationGroupsNodeAggregationWhereInput!]" },
-    OR: { __type: "[LocationGroupsNodeAggregationWhereInput!]" },
-    id_EQUAL: { __type: "ID" },
-    name_AVERAGE_EQUAL: { __type: "Float" },
-    name_AVERAGE_GT: { __type: "Float" },
-    name_AVERAGE_GTE: { __type: "Float" },
-    name_AVERAGE_LT: { __type: "Float" },
-    name_AVERAGE_LTE: { __type: "Float" },
-    name_EQUAL: { __type: "String" },
-    name_GT: { __type: "Int" },
-    name_GTE: { __type: "Int" },
-    name_LONGEST_EQUAL: { __type: "Int" },
-    name_LONGEST_GT: { __type: "Int" },
-    name_LONGEST_GTE: { __type: "Int" },
-    name_LONGEST_LT: { __type: "Int" },
-    name_LONGEST_LTE: { __type: "Int" },
-    name_LT: { __type: "Int" },
-    name_LTE: { __type: "Int" },
-    name_SHORTEST_EQUAL: { __type: "Int" },
-    name_SHORTEST_GT: { __type: "Int" },
-    name_SHORTEST_GTE: { __type: "Int" },
-    name_SHORTEST_LT: { __type: "Int" },
-    name_SHORTEST_LTE: { __type: "Int" },
-  },
-  LocationGroupsRelationship: {
-    __typename: { __type: "String!" },
-    cursor: { __type: "String!" },
-    node: { __type: "LocationGroup!" },
-  },
-  LocationGroupsUpdateConnectionInput: {
-    node: { __type: "LocationGroupUpdateInput" },
-  },
-  LocationGroupsUpdateFieldInput: {
-    connect: { __type: "[LocationGroupsConnectFieldInput!]" },
-    connectOrCreate: { __type: "[LocationGroupsConnectOrCreateFieldInput!]" },
-    create: { __type: "[LocationGroupsCreateFieldInput!]" },
-    delete: { __type: "[LocationGroupsDeleteFieldInput!]" },
-    disconnect: { __type: "[LocationGroupsDisconnectFieldInput!]" },
-    update: { __type: "LocationGroupsUpdateConnectionInput" },
-    where: { __type: "LocationGroupsConnectionWhere" },
-  },
-  LocationHiveOrganisationOrganisationAggregationSelection: {
+  LocationLocationGroupGroupAggregationSelection: {
     __typename: { __type: "String!" },
     count: { __type: "Int!" },
-    node: {
-      __type: "LocationHiveOrganisationOrganisationNodeAggregateSelection",
-    },
+    node: { __type: "LocationLocationGroupGroupNodeAggregateSelection" },
   },
-  LocationHiveOrganisationOrganisationNodeAggregateSelection: {
-    __typename: { __type: "String!" },
-    id: { __type: "IDAggregateSelection!" },
-    name: { __type: "StringAggregateSelection!" },
-  },
-  LocationLocationGroupGroupsAggregationSelection: {
-    __typename: { __type: "String!" },
-    count: { __type: "Int!" },
-    node: { __type: "LocationLocationGroupGroupsNodeAggregateSelection" },
-  },
-  LocationLocationGroupGroupsNodeAggregateSelection: {
+  LocationLocationGroupGroupNodeAggregateSelection: {
     __typename: { __type: "String!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
@@ -14688,164 +14333,63 @@ export const generatedSchema = {
     offset: { __type: "Int" },
     sort: { __type: "[LocationSort]" },
   },
-  LocationOrganisationAggregateInput: {
-    AND: { __type: "[LocationOrganisationAggregateInput!]" },
-    OR: { __type: "[LocationOrganisationAggregateInput!]" },
-    count: { __type: "Int" },
-    count_GT: { __type: "Int" },
-    count_GTE: { __type: "Int" },
-    count_LT: { __type: "Int" },
-    count_LTE: { __type: "Int" },
-    node: { __type: "LocationOrganisationNodeAggregationWhereInput" },
-  },
-  LocationOrganisationConnectFieldInput: {
-    connect: { __type: "HiveOrganisationConnectInput" },
-    where: { __type: "HiveOrganisationConnectWhere" },
-  },
-  LocationOrganisationConnectOrCreateFieldInput: {
-    onCreate: {
-      __type: "LocationOrganisationConnectOrCreateFieldInputOnCreate!",
-    },
-    where: { __type: "HiveOrganisationConnectOrCreateWhere!" },
-  },
-  LocationOrganisationConnectOrCreateFieldInputOnCreate: {
-    node: { __type: "HiveOrganisationCreateInput!" },
-  },
-  LocationOrganisationConnection: {
-    __typename: { __type: "String!" },
-    edges: { __type: "[LocationOrganisationRelationship!]!" },
-    pageInfo: { __type: "PageInfo!" },
-    totalCount: { __type: "Int!" },
-  },
-  LocationOrganisationConnectionSort: {
-    node: { __type: "HiveOrganisationSort" },
-  },
-  LocationOrganisationConnectionWhere: {
-    AND: { __type: "[LocationOrganisationConnectionWhere!]" },
-    OR: { __type: "[LocationOrganisationConnectionWhere!]" },
-    node: { __type: "HiveOrganisationWhere" },
-    node_NOT: { __type: "HiveOrganisationWhere" },
-  },
-  LocationOrganisationCreateFieldInput: {
-    node: { __type: "HiveOrganisationCreateInput!" },
-  },
-  LocationOrganisationDeleteFieldInput: {
-    delete: { __type: "HiveOrganisationDeleteInput" },
-    where: { __type: "LocationOrganisationConnectionWhere" },
-  },
-  LocationOrganisationDisconnectFieldInput: {
-    disconnect: { __type: "HiveOrganisationDisconnectInput" },
-    where: { __type: "LocationOrganisationConnectionWhere" },
-  },
-  LocationOrganisationFieldInput: {
-    connect: { __type: "LocationOrganisationConnectFieldInput" },
-    connectOrCreate: {
-      __type: "LocationOrganisationConnectOrCreateFieldInput",
-    },
-    create: { __type: "LocationOrganisationCreateFieldInput" },
-  },
-  LocationOrganisationNodeAggregationWhereInput: {
-    AND: { __type: "[LocationOrganisationNodeAggregationWhereInput!]" },
-    OR: { __type: "[LocationOrganisationNodeAggregationWhereInput!]" },
-    id_EQUAL: { __type: "ID" },
-    name_AVERAGE_EQUAL: { __type: "Float" },
-    name_AVERAGE_GT: { __type: "Float" },
-    name_AVERAGE_GTE: { __type: "Float" },
-    name_AVERAGE_LT: { __type: "Float" },
-    name_AVERAGE_LTE: { __type: "Float" },
-    name_EQUAL: { __type: "String" },
-    name_GT: { __type: "Int" },
-    name_GTE: { __type: "Int" },
-    name_LONGEST_EQUAL: { __type: "Int" },
-    name_LONGEST_GT: { __type: "Int" },
-    name_LONGEST_GTE: { __type: "Int" },
-    name_LONGEST_LT: { __type: "Int" },
-    name_LONGEST_LTE: { __type: "Int" },
-    name_LT: { __type: "Int" },
-    name_LTE: { __type: "Int" },
-    name_SHORTEST_EQUAL: { __type: "Int" },
-    name_SHORTEST_GT: { __type: "Int" },
-    name_SHORTEST_GTE: { __type: "Int" },
-    name_SHORTEST_LT: { __type: "Int" },
-    name_SHORTEST_LTE: { __type: "Int" },
-  },
-  LocationOrganisationRelationship: {
-    __typename: { __type: "String!" },
-    cursor: { __type: "String!" },
-    node: { __type: "HiveOrganisation!" },
-  },
-  LocationOrganisationUpdateConnectionInput: {
-    node: { __type: "HiveOrganisationUpdateInput" },
-  },
-  LocationOrganisationUpdateFieldInput: {
-    connect: { __type: "LocationOrganisationConnectFieldInput" },
-    connectOrCreate: {
-      __type: "LocationOrganisationConnectOrCreateFieldInput",
-    },
-    create: { __type: "LocationOrganisationCreateFieldInput" },
-    delete: { __type: "LocationOrganisationDeleteFieldInput" },
-    disconnect: { __type: "LocationOrganisationDisconnectFieldInput" },
-    update: { __type: "LocationOrganisationUpdateConnectionInput" },
-    where: { __type: "LocationOrganisationConnectionWhere" },
-  },
   LocationRelationInput: {
-    groups: { __type: "[LocationGroupsCreateFieldInput!]" },
-    organisation: { __type: "LocationOrganisationCreateFieldInput" },
-    screens: { __type: "[LocationScreensCreateFieldInput!]" },
+    group: { __type: "LocationGroupCreateFieldInput" },
+    screen: { __type: "LocationScreenCreateFieldInput" },
   },
-  LocationScreensAggregateInput: {
-    AND: { __type: "[LocationScreensAggregateInput!]" },
-    OR: { __type: "[LocationScreensAggregateInput!]" },
+  LocationScreenAggregateInput: {
+    AND: { __type: "[LocationScreenAggregateInput!]" },
+    OR: { __type: "[LocationScreenAggregateInput!]" },
     count: { __type: "Int" },
     count_GT: { __type: "Int" },
     count_GTE: { __type: "Int" },
     count_LT: { __type: "Int" },
     count_LTE: { __type: "Int" },
-    node: { __type: "LocationScreensNodeAggregationWhereInput" },
+    node: { __type: "LocationScreenNodeAggregationWhereInput" },
   },
-  LocationScreensConnectFieldInput: {
-    connect: { __type: "[GreenScreenConnectInput!]" },
+  LocationScreenConnectFieldInput: {
+    connect: { __type: "GreenScreenConnectInput" },
     where: { __type: "GreenScreenConnectWhere" },
   },
-  LocationScreensConnectOrCreateFieldInput: {
-    onCreate: { __type: "LocationScreensConnectOrCreateFieldInputOnCreate!" },
+  LocationScreenConnectOrCreateFieldInput: {
+    onCreate: { __type: "LocationScreenConnectOrCreateFieldInputOnCreate!" },
     where: { __type: "GreenScreenConnectOrCreateWhere!" },
   },
-  LocationScreensConnectOrCreateFieldInputOnCreate: {
+  LocationScreenConnectOrCreateFieldInputOnCreate: {
     node: { __type: "GreenScreenCreateInput!" },
   },
-  LocationScreensConnection: {
+  LocationScreenConnection: {
     __typename: { __type: "String!" },
-    edges: { __type: "[LocationScreensRelationship!]!" },
+    edges: { __type: "[LocationScreenRelationship!]!" },
     pageInfo: { __type: "PageInfo!" },
     totalCount: { __type: "Int!" },
   },
-  LocationScreensConnectionSort: { node: { __type: "GreenScreenSort" } },
-  LocationScreensConnectionWhere: {
-    AND: { __type: "[LocationScreensConnectionWhere!]" },
-    OR: { __type: "[LocationScreensConnectionWhere!]" },
+  LocationScreenConnectionSort: { node: { __type: "GreenScreenSort" } },
+  LocationScreenConnectionWhere: {
+    AND: { __type: "[LocationScreenConnectionWhere!]" },
+    OR: { __type: "[LocationScreenConnectionWhere!]" },
     node: { __type: "GreenScreenWhere" },
     node_NOT: { __type: "GreenScreenWhere" },
   },
-  LocationScreensCreateFieldInput: {
+  LocationScreenCreateFieldInput: {
     node: { __type: "GreenScreenCreateInput!" },
   },
-  LocationScreensDeleteFieldInput: {
+  LocationScreenDeleteFieldInput: {
     delete: { __type: "GreenScreenDeleteInput" },
-    where: { __type: "LocationScreensConnectionWhere" },
+    where: { __type: "LocationScreenConnectionWhere" },
   },
-  LocationScreensDisconnectFieldInput: {
+  LocationScreenDisconnectFieldInput: {
     disconnect: { __type: "GreenScreenDisconnectInput" },
-    where: { __type: "LocationScreensConnectionWhere" },
+    where: { __type: "LocationScreenConnectionWhere" },
   },
-  LocationScreensFieldInput: {
-    connect: { __type: "[LocationScreensConnectFieldInput!]" },
-    connectOrCreate: { __type: "[LocationScreensConnectOrCreateFieldInput!]" },
-    create: { __type: "[LocationScreensCreateFieldInput!]" },
+  LocationScreenFieldInput: {
+    connect: { __type: "LocationScreenConnectFieldInput" },
+    connectOrCreate: { __type: "LocationScreenConnectOrCreateFieldInput" },
+    create: { __type: "LocationScreenCreateFieldInput" },
   },
-  LocationScreensNodeAggregationWhereInput: {
-    AND: { __type: "[LocationScreensNodeAggregationWhereInput!]" },
-    OR: { __type: "[LocationScreensNodeAggregationWhereInput!]" },
+  LocationScreenNodeAggregationWhereInput: {
+    AND: { __type: "[LocationScreenNodeAggregationWhereInput!]" },
+    OR: { __type: "[LocationScreenNodeAggregationWhereInput!]" },
     id_EQUAL: { __type: "ID" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
@@ -14888,22 +14432,22 @@ export const generatedSchema = {
     networkName_SHORTEST_LT: { __type: "Int" },
     networkName_SHORTEST_LTE: { __type: "Int" },
   },
-  LocationScreensRelationship: {
+  LocationScreenRelationship: {
     __typename: { __type: "String!" },
     cursor: { __type: "String!" },
     node: { __type: "GreenScreen!" },
   },
-  LocationScreensUpdateConnectionInput: {
+  LocationScreenUpdateConnectionInput: {
     node: { __type: "GreenScreenUpdateInput" },
   },
-  LocationScreensUpdateFieldInput: {
-    connect: { __type: "[LocationScreensConnectFieldInput!]" },
-    connectOrCreate: { __type: "[LocationScreensConnectOrCreateFieldInput!]" },
-    create: { __type: "[LocationScreensCreateFieldInput!]" },
-    delete: { __type: "[LocationScreensDeleteFieldInput!]" },
-    disconnect: { __type: "[LocationScreensDisconnectFieldInput!]" },
-    update: { __type: "LocationScreensUpdateConnectionInput" },
-    where: { __type: "LocationScreensConnectionWhere" },
+  LocationScreenUpdateFieldInput: {
+    connect: { __type: "LocationScreenConnectFieldInput" },
+    connectOrCreate: { __type: "LocationScreenConnectOrCreateFieldInput" },
+    create: { __type: "LocationScreenCreateFieldInput" },
+    delete: { __type: "LocationScreenDeleteFieldInput" },
+    disconnect: { __type: "LocationScreenDisconnectFieldInput" },
+    update: { __type: "LocationScreenUpdateConnectionInput" },
+    where: { __type: "LocationScreenConnectionWhere" },
   },
   LocationSort: {
     elevation: { __type: "SortDirection" },
@@ -14915,12 +14459,11 @@ export const generatedSchema = {
   LocationUniqueWhere: { id: { __type: "ID" } },
   LocationUpdateInput: {
     elevation: { __type: "Float" },
-    groups: { __type: "[LocationGroupsUpdateFieldInput!]" },
-    lat: { __type: "Float" },
-    lng: { __type: "Float" },
+    group: { __type: "LocationGroupUpdateFieldInput" },
+    lat: { __type: "String" },
+    lng: { __type: "String" },
     name: { __type: "String" },
-    organisation: { __type: "LocationOrganisationUpdateFieldInput" },
-    screens: { __type: "[LocationScreensUpdateFieldInput!]" },
+    screen: { __type: "LocationScreenUpdateFieldInput" },
   },
   LocationWhere: {
     AND: { __type: "[LocationWhere!]" },
@@ -14933,11 +14476,11 @@ export const generatedSchema = {
     elevation_LTE: { __type: "Float" },
     elevation_NOT: { __type: "Float" },
     elevation_NOT_IN: { __type: "[Float]" },
-    groups: { __type: "LocationGroupWhere" },
-    groupsAggregate: { __type: "LocationGroupsAggregateInput" },
-    groupsConnection: { __type: "LocationGroupsConnectionWhere" },
-    groupsConnection_NOT: { __type: "LocationGroupsConnectionWhere" },
-    groups_NOT: { __type: "LocationGroupWhere" },
+    group: { __type: "LocationGroupWhere" },
+    groupAggregate: { __type: "LocationGroupAggregateInput" },
+    groupConnection: { __type: "LocationGroupConnectionWhere" },
+    groupConnection_NOT: { __type: "LocationGroupConnectionWhere" },
+    group_NOT: { __type: "LocationGroupWhere" },
     id: { __type: "ID" },
     id_CONTAINS: { __type: "ID" },
     id_ENDS_WITH: { __type: "ID" },
@@ -14948,22 +14491,26 @@ export const generatedSchema = {
     id_NOT_IN: { __type: "[ID]" },
     id_NOT_STARTS_WITH: { __type: "ID" },
     id_STARTS_WITH: { __type: "ID" },
-    lat: { __type: "Float" },
-    lat_GT: { __type: "Float" },
-    lat_GTE: { __type: "Float" },
-    lat_IN: { __type: "[Float]" },
-    lat_LT: { __type: "Float" },
-    lat_LTE: { __type: "Float" },
-    lat_NOT: { __type: "Float" },
-    lat_NOT_IN: { __type: "[Float]" },
-    lng: { __type: "Float" },
-    lng_GT: { __type: "Float" },
-    lng_GTE: { __type: "Float" },
-    lng_IN: { __type: "[Float]" },
-    lng_LT: { __type: "Float" },
-    lng_LTE: { __type: "Float" },
-    lng_NOT: { __type: "Float" },
-    lng_NOT_IN: { __type: "[Float]" },
+    lat: { __type: "String" },
+    lat_CONTAINS: { __type: "String" },
+    lat_ENDS_WITH: { __type: "String" },
+    lat_IN: { __type: "[String]" },
+    lat_NOT: { __type: "String" },
+    lat_NOT_CONTAINS: { __type: "String" },
+    lat_NOT_ENDS_WITH: { __type: "String" },
+    lat_NOT_IN: { __type: "[String]" },
+    lat_NOT_STARTS_WITH: { __type: "String" },
+    lat_STARTS_WITH: { __type: "String" },
+    lng: { __type: "String" },
+    lng_CONTAINS: { __type: "String" },
+    lng_ENDS_WITH: { __type: "String" },
+    lng_IN: { __type: "[String]" },
+    lng_NOT: { __type: "String" },
+    lng_NOT_CONTAINS: { __type: "String" },
+    lng_NOT_ENDS_WITH: { __type: "String" },
+    lng_NOT_IN: { __type: "[String]" },
+    lng_NOT_STARTS_WITH: { __type: "String" },
+    lng_STARTS_WITH: { __type: "String" },
     name: { __type: "String" },
     name_CONTAINS: { __type: "String" },
     name_ENDS_WITH: { __type: "String" },
@@ -14974,18 +14521,11 @@ export const generatedSchema = {
     name_NOT_IN: { __type: "[String]" },
     name_NOT_STARTS_WITH: { __type: "String" },
     name_STARTS_WITH: { __type: "String" },
-    organisation: { __type: "HiveOrganisationWhere" },
-    organisationAggregate: { __type: "LocationOrganisationAggregateInput" },
-    organisationConnection: { __type: "LocationOrganisationConnectionWhere" },
-    organisationConnection_NOT: {
-      __type: "LocationOrganisationConnectionWhere",
-    },
-    organisation_NOT: { __type: "HiveOrganisationWhere" },
-    screens: { __type: "GreenScreenWhere" },
-    screensAggregate: { __type: "LocationScreensAggregateInput" },
-    screensConnection: { __type: "LocationScreensConnectionWhere" },
-    screensConnection_NOT: { __type: "LocationScreensConnectionWhere" },
-    screens_NOT: { __type: "GreenScreenWhere" },
+    screen: { __type: "GreenScreenWhere" },
+    screenAggregate: { __type: "LocationScreenAggregateInput" },
+    screenConnection: { __type: "LocationScreenConnectionWhere" },
+    screenConnection_NOT: { __type: "LocationScreenConnectionWhere" },
+    screen_NOT: { __type: "GreenScreenWhere" },
   },
   PageInfo: {
     __typename: { __type: "String!" },
@@ -15781,12 +15321,12 @@ export const generatedSchema = {
     endDate: { __type: "DateTime" },
     id: { __type: "ID!" },
     locations: {
-      __type: "[Location]",
-      __args: { options: "LocationOptions", where: "LocationWhere" },
+      __type: "[LocationGroup]",
+      __args: { options: "LocationGroupOptions", where: "LocationGroupWhere" },
     },
     locationsAggregate: {
-      __type: "ScheduleLocationLocationsAggregationSelection",
-      __args: { where: "LocationWhere" },
+      __type: "ScheduleLocationGroupLocationsAggregationSelection",
+      __args: { where: "LocationGroupWhere" },
     },
     locationsConnection: {
       __type: "ScheduleLocationsConnection!",
@@ -16202,17 +15742,14 @@ export const generatedSchema = {
     tier_NOT_STARTS_WITH: { __type: "String" },
     tier_STARTS_WITH: { __type: "String" },
   },
-  ScheduleLocationLocationsAggregationSelection: {
+  ScheduleLocationGroupLocationsAggregationSelection: {
     __typename: { __type: "String!" },
     count: { __type: "Int!" },
-    node: { __type: "ScheduleLocationLocationsNodeAggregateSelection" },
+    node: { __type: "ScheduleLocationGroupLocationsNodeAggregateSelection" },
   },
-  ScheduleLocationLocationsNodeAggregateSelection: {
+  ScheduleLocationGroupLocationsNodeAggregateSelection: {
     __typename: { __type: "String!" },
-    elevation: { __type: "FloatAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    lat: { __type: "FloatAggregateSelection!" },
-    lng: { __type: "FloatAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
   ScheduleLocationsAggregateInput: {
@@ -16226,15 +15763,15 @@ export const generatedSchema = {
     node: { __type: "ScheduleLocationsNodeAggregationWhereInput" },
   },
   ScheduleLocationsConnectFieldInput: {
-    connect: { __type: "[LocationConnectInput!]" },
-    where: { __type: "LocationConnectWhere" },
+    connect: { __type: "[LocationGroupConnectInput!]" },
+    where: { __type: "LocationGroupConnectWhere" },
   },
   ScheduleLocationsConnectOrCreateFieldInput: {
     onCreate: { __type: "ScheduleLocationsConnectOrCreateFieldInputOnCreate!" },
-    where: { __type: "LocationConnectOrCreateWhere!" },
+    where: { __type: "LocationGroupConnectOrCreateWhere!" },
   },
   ScheduleLocationsConnectOrCreateFieldInputOnCreate: {
-    node: { __type: "LocationCreateInput!" },
+    node: { __type: "LocationGroupCreateInput!" },
   },
   ScheduleLocationsConnection: {
     __typename: { __type: "String!" },
@@ -16242,22 +15779,22 @@ export const generatedSchema = {
     pageInfo: { __type: "PageInfo!" },
     totalCount: { __type: "Int!" },
   },
-  ScheduleLocationsConnectionSort: { node: { __type: "LocationSort" } },
+  ScheduleLocationsConnectionSort: { node: { __type: "LocationGroupSort" } },
   ScheduleLocationsConnectionWhere: {
     AND: { __type: "[ScheduleLocationsConnectionWhere!]" },
     OR: { __type: "[ScheduleLocationsConnectionWhere!]" },
-    node: { __type: "LocationWhere" },
-    node_NOT: { __type: "LocationWhere" },
+    node: { __type: "LocationGroupWhere" },
+    node_NOT: { __type: "LocationGroupWhere" },
   },
   ScheduleLocationsCreateFieldInput: {
-    node: { __type: "LocationCreateInput!" },
+    node: { __type: "LocationGroupCreateInput!" },
   },
   ScheduleLocationsDeleteFieldInput: {
-    delete: { __type: "LocationDeleteInput" },
+    delete: { __type: "LocationGroupDeleteInput" },
     where: { __type: "ScheduleLocationsConnectionWhere" },
   },
   ScheduleLocationsDisconnectFieldInput: {
-    disconnect: { __type: "LocationDisconnectInput" },
+    disconnect: { __type: "LocationGroupDisconnectInput" },
     where: { __type: "ScheduleLocationsConnectionWhere" },
   },
   ScheduleLocationsFieldInput: {
@@ -16270,82 +15807,7 @@ export const generatedSchema = {
   ScheduleLocationsNodeAggregationWhereInput: {
     AND: { __type: "[ScheduleLocationsNodeAggregationWhereInput!]" },
     OR: { __type: "[ScheduleLocationsNodeAggregationWhereInput!]" },
-    elevation_AVERAGE_EQUAL: { __type: "Float" },
-    elevation_AVERAGE_GT: { __type: "Float" },
-    elevation_AVERAGE_GTE: { __type: "Float" },
-    elevation_AVERAGE_LT: { __type: "Float" },
-    elevation_AVERAGE_LTE: { __type: "Float" },
-    elevation_EQUAL: { __type: "Float" },
-    elevation_GT: { __type: "Float" },
-    elevation_GTE: { __type: "Float" },
-    elevation_LT: { __type: "Float" },
-    elevation_LTE: { __type: "Float" },
-    elevation_MAX_EQUAL: { __type: "Float" },
-    elevation_MAX_GT: { __type: "Float" },
-    elevation_MAX_GTE: { __type: "Float" },
-    elevation_MAX_LT: { __type: "Float" },
-    elevation_MAX_LTE: { __type: "Float" },
-    elevation_MIN_EQUAL: { __type: "Float" },
-    elevation_MIN_GT: { __type: "Float" },
-    elevation_MIN_GTE: { __type: "Float" },
-    elevation_MIN_LT: { __type: "Float" },
-    elevation_MIN_LTE: { __type: "Float" },
-    elevation_SUM_EQUAL: { __type: "Float" },
-    elevation_SUM_GT: { __type: "Float" },
-    elevation_SUM_GTE: { __type: "Float" },
-    elevation_SUM_LT: { __type: "Float" },
-    elevation_SUM_LTE: { __type: "Float" },
     id_EQUAL: { __type: "ID" },
-    lat_AVERAGE_EQUAL: { __type: "Float" },
-    lat_AVERAGE_GT: { __type: "Float" },
-    lat_AVERAGE_GTE: { __type: "Float" },
-    lat_AVERAGE_LT: { __type: "Float" },
-    lat_AVERAGE_LTE: { __type: "Float" },
-    lat_EQUAL: { __type: "Float" },
-    lat_GT: { __type: "Float" },
-    lat_GTE: { __type: "Float" },
-    lat_LT: { __type: "Float" },
-    lat_LTE: { __type: "Float" },
-    lat_MAX_EQUAL: { __type: "Float" },
-    lat_MAX_GT: { __type: "Float" },
-    lat_MAX_GTE: { __type: "Float" },
-    lat_MAX_LT: { __type: "Float" },
-    lat_MAX_LTE: { __type: "Float" },
-    lat_MIN_EQUAL: { __type: "Float" },
-    lat_MIN_GT: { __type: "Float" },
-    lat_MIN_GTE: { __type: "Float" },
-    lat_MIN_LT: { __type: "Float" },
-    lat_MIN_LTE: { __type: "Float" },
-    lat_SUM_EQUAL: { __type: "Float" },
-    lat_SUM_GT: { __type: "Float" },
-    lat_SUM_GTE: { __type: "Float" },
-    lat_SUM_LT: { __type: "Float" },
-    lat_SUM_LTE: { __type: "Float" },
-    lng_AVERAGE_EQUAL: { __type: "Float" },
-    lng_AVERAGE_GT: { __type: "Float" },
-    lng_AVERAGE_GTE: { __type: "Float" },
-    lng_AVERAGE_LT: { __type: "Float" },
-    lng_AVERAGE_LTE: { __type: "Float" },
-    lng_EQUAL: { __type: "Float" },
-    lng_GT: { __type: "Float" },
-    lng_GTE: { __type: "Float" },
-    lng_LT: { __type: "Float" },
-    lng_LTE: { __type: "Float" },
-    lng_MAX_EQUAL: { __type: "Float" },
-    lng_MAX_GT: { __type: "Float" },
-    lng_MAX_GTE: { __type: "Float" },
-    lng_MAX_LT: { __type: "Float" },
-    lng_MAX_LTE: { __type: "Float" },
-    lng_MIN_EQUAL: { __type: "Float" },
-    lng_MIN_GT: { __type: "Float" },
-    lng_MIN_GTE: { __type: "Float" },
-    lng_MIN_LT: { __type: "Float" },
-    lng_MIN_LTE: { __type: "Float" },
-    lng_SUM_EQUAL: { __type: "Float" },
-    lng_SUM_GT: { __type: "Float" },
-    lng_SUM_GTE: { __type: "Float" },
-    lng_SUM_LT: { __type: "Float" },
-    lng_SUM_LTE: { __type: "Float" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
     name_AVERAGE_GTE: { __type: "Float" },
@@ -16370,10 +15832,10 @@ export const generatedSchema = {
   ScheduleLocationsRelationship: {
     __typename: { __type: "String!" },
     cursor: { __type: "String!" },
-    node: { __type: "Location!" },
+    node: { __type: "LocationGroup!" },
   },
   ScheduleLocationsUpdateConnectionInput: {
-    node: { __type: "LocationUpdateInput" },
+    node: { __type: "LocationGroupUpdateInput" },
   },
   ScheduleLocationsUpdateFieldInput: {
     connect: { __type: "[ScheduleLocationsConnectFieldInput!]" },
@@ -17103,11 +16565,11 @@ export const generatedSchema = {
     id_NOT_IN: { __type: "[ID]" },
     id_NOT_STARTS_WITH: { __type: "ID" },
     id_STARTS_WITH: { __type: "ID" },
-    locations: { __type: "LocationWhere" },
+    locations: { __type: "LocationGroupWhere" },
     locationsAggregate: { __type: "ScheduleLocationsAggregateInput" },
     locationsConnection: { __type: "ScheduleLocationsConnectionWhere" },
     locationsConnection_NOT: { __type: "ScheduleLocationsConnectionWhere" },
-    locations_NOT: { __type: "LocationWhere" },
+    locations_NOT: { __type: "LocationGroupWhere" },
     name: { __type: "String" },
     name_CONTAINS: { __type: "String" },
     name_ENDS_WITH: { __type: "String" },
@@ -18586,8 +18048,8 @@ export interface GreenScreenLocationLocationNodeAggregateSelection {
   __typename?: "GreenScreenLocationLocationNodeAggregateSelection";
   elevation: FloatAggregateSelection;
   id: IDAggregateSelection;
-  lat: FloatAggregateSelection;
-  lng: FloatAggregateSelection;
+  lat: StringAggregateSelection;
+  lng: StringAggregateSelection;
   name: StringAggregateSelection;
 }
 
@@ -19096,19 +18558,6 @@ export interface HiveOrganisation {
     sort?: Maybe<Array<HiveOrganisationLocationGroupsConnectionSort>>;
     where?: Maybe<HiveOrganisationLocationGroupsConnectionWhere>;
   }) => HiveOrganisationLocationGroupsConnection;
-  locations: (args?: {
-    options?: Maybe<LocationOptions>;
-    where?: Maybe<LocationWhere>;
-  }) => Maybe<Array<Maybe<Location>>>;
-  locationsAggregate: (args?: {
-    where?: Maybe<LocationWhere>;
-  }) => Maybe<HiveOrganisationLocationLocationsAggregationSelection>;
-  locationsConnection: (args?: {
-    after?: Maybe<Scalars["String"]>;
-    first?: Maybe<Scalars["Int"]>;
-    sort?: Maybe<Array<HiveOrganisationLocationsConnectionSort>>;
-    where?: Maybe<HiveOrganisationLocationsConnectionWhere>;
-  }) => HiveOrganisationLocationsConnection;
   members: (args?: {
     options?: Maybe<HiveUserOptions>;
     where?: Maybe<HiveUserWhere>;
@@ -19314,34 +18763,6 @@ export interface HiveOrganisationLocationGroupsRelationship {
   __typename?: "HiveOrganisationLocationGroupsRelationship";
   cursor: ScalarsEnums["String"];
   node: LocationGroup;
-}
-
-export interface HiveOrganisationLocationLocationsAggregationSelection {
-  __typename?: "HiveOrganisationLocationLocationsAggregationSelection";
-  count: ScalarsEnums["Int"];
-  node?: Maybe<HiveOrganisationLocationLocationsNodeAggregateSelection>;
-}
-
-export interface HiveOrganisationLocationLocationsNodeAggregateSelection {
-  __typename?: "HiveOrganisationLocationLocationsNodeAggregateSelection";
-  elevation: FloatAggregateSelection;
-  id: IDAggregateSelection;
-  lat: FloatAggregateSelection;
-  lng: FloatAggregateSelection;
-  name: StringAggregateSelection;
-}
-
-export interface HiveOrganisationLocationsConnection {
-  __typename?: "HiveOrganisationLocationsConnection";
-  edges: Array<HiveOrganisationLocationsRelationship>;
-  pageInfo: PageInfo;
-  totalCount: ScalarsEnums["Int"];
-}
-
-export interface HiveOrganisationLocationsRelationship {
-  __typename?: "HiveOrganisationLocationsRelationship";
-  cursor: ScalarsEnums["String"];
-  node: Location;
 }
 
 export interface HiveOrganisationMembersConnection {
@@ -19659,49 +19080,36 @@ export interface Location {
   __typename?: "Location";
   cameraAnalytics?: Maybe<Array<Maybe<CameraAnalytic>>>;
   elevation?: Maybe<ScalarsEnums["Float"]>;
-  groups: (args?: {
+  group: (args?: {
     options?: Maybe<LocationGroupOptions>;
     where?: Maybe<LocationGroupWhere>;
-  }) => Maybe<Array<Maybe<LocationGroup>>>;
-  groupsAggregate: (args?: {
+  }) => Maybe<LocationGroup>;
+  groupAggregate: (args?: {
     where?: Maybe<LocationGroupWhere>;
-  }) => Maybe<LocationLocationGroupGroupsAggregationSelection>;
-  groupsConnection: (args?: {
+  }) => Maybe<LocationLocationGroupGroupAggregationSelection>;
+  groupConnection: (args?: {
     after?: Maybe<Scalars["String"]>;
     first?: Maybe<Scalars["Int"]>;
-    sort?: Maybe<Array<LocationGroupsConnectionSort>>;
-    where?: Maybe<LocationGroupsConnectionWhere>;
-  }) => LocationGroupsConnection;
+    sort?: Maybe<Array<LocationGroupConnectionSort>>;
+    where?: Maybe<LocationGroupConnectionWhere>;
+  }) => LocationGroupConnection;
   id: ScalarsEnums["ID"];
-  lat?: Maybe<ScalarsEnums["Float"]>;
-  lng?: Maybe<ScalarsEnums["Float"]>;
+  lat?: Maybe<ScalarsEnums["String"]>;
+  lng?: Maybe<ScalarsEnums["String"]>;
   name?: Maybe<ScalarsEnums["String"]>;
-  organisation: (args?: {
-    options?: Maybe<HiveOrganisationOptions>;
-    where?: Maybe<HiveOrganisationWhere>;
-  }) => Maybe<HiveOrganisation>;
-  organisationAggregate: (args?: {
-    where?: Maybe<HiveOrganisationWhere>;
-  }) => Maybe<LocationHiveOrganisationOrganisationAggregationSelection>;
-  organisationConnection: (args?: {
-    after?: Maybe<Scalars["String"]>;
-    first?: Maybe<Scalars["Int"]>;
-    sort?: Maybe<Array<LocationOrganisationConnectionSort>>;
-    where?: Maybe<LocationOrganisationConnectionWhere>;
-  }) => LocationOrganisationConnection;
-  screens: (args?: {
+  screen: (args?: {
     options?: Maybe<GreenScreenOptions>;
     where?: Maybe<GreenScreenWhere>;
-  }) => Maybe<Array<Maybe<GreenScreen>>>;
-  screensAggregate: (args?: {
+  }) => Maybe<GreenScreen>;
+  screenAggregate: (args?: {
     where?: Maybe<GreenScreenWhere>;
-  }) => Maybe<LocationGreenScreenScreensAggregationSelection>;
-  screensConnection: (args?: {
+  }) => Maybe<LocationGreenScreenScreenAggregationSelection>;
+  screenConnection: (args?: {
     after?: Maybe<Scalars["String"]>;
     first?: Maybe<Scalars["Int"]>;
-    sort?: Maybe<Array<LocationScreensConnectionSort>>;
-    where?: Maybe<LocationScreensConnectionWhere>;
-  }) => LocationScreensConnection;
+    sort?: Maybe<Array<LocationScreenConnectionSort>>;
+    where?: Maybe<LocationScreenConnectionWhere>;
+  }) => LocationScreenConnection;
 }
 
 export interface LocationAggregateSelection {
@@ -19709,19 +19117,19 @@ export interface LocationAggregateSelection {
   count: ScalarsEnums["Int"];
   elevation: FloatAggregateSelection;
   id: IDAggregateSelection;
-  lat: FloatAggregateSelection;
-  lng: FloatAggregateSelection;
+  lat: StringAggregateSelection;
+  lng: StringAggregateSelection;
   name: StringAggregateSelection;
 }
 
-export interface LocationGreenScreenScreensAggregationSelection {
-  __typename?: "LocationGreenScreenScreensAggregationSelection";
+export interface LocationGreenScreenScreenAggregationSelection {
+  __typename?: "LocationGreenScreenScreenAggregationSelection";
   count: ScalarsEnums["Int"];
-  node?: Maybe<LocationGreenScreenScreensNodeAggregateSelection>;
+  node?: Maybe<LocationGreenScreenScreenNodeAggregateSelection>;
 }
 
-export interface LocationGreenScreenScreensNodeAggregateSelection {
-  __typename?: "LocationGreenScreenScreensNodeAggregateSelection";
+export interface LocationGreenScreenScreenNodeAggregateSelection {
+  __typename?: "LocationGreenScreenScreenNodeAggregateSelection";
   id: IDAggregateSelection;
   name: StringAggregateSelection;
   networkName: StringAggregateSelection;
@@ -19757,6 +19165,19 @@ export interface LocationGroup {
     sort?: Maybe<Array<LocationGroupOrganisationConnectionSort>>;
     where?: Maybe<LocationGroupOrganisationConnectionWhere>;
   }) => LocationGroupOrganisationConnection;
+  schedule: (args?: {
+    options?: Maybe<ScheduleOptions>;
+    where?: Maybe<ScheduleWhere>;
+  }) => Maybe<Schedule>;
+  scheduleAggregate: (args?: {
+    where?: Maybe<ScheduleWhere>;
+  }) => Maybe<LocationGroupScheduleScheduleAggregationSelection>;
+  scheduleConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<LocationGroupScheduleConnectionSort>>;
+    where?: Maybe<LocationGroupScheduleConnectionWhere>;
+  }) => LocationGroupScheduleConnection;
 }
 
 export interface LocationGroupAggregateSelection {
@@ -19764,6 +19185,13 @@ export interface LocationGroupAggregateSelection {
   count: ScalarsEnums["Int"];
   id: IDAggregateSelection;
   name: StringAggregateSelection;
+}
+
+export interface LocationGroupConnection {
+  __typename?: "LocationGroupConnection";
+  edges: Array<LocationGroupRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
 }
 
 export interface LocationGroupHiveOrganisationOrganisationAggregationSelection {
@@ -19788,8 +19216,8 @@ export interface LocationGroupLocationLocationsNodeAggregateSelection {
   __typename?: "LocationGroupLocationLocationsNodeAggregateSelection";
   elevation: FloatAggregateSelection;
   id: IDAggregateSelection;
-  lat: FloatAggregateSelection;
-  lng: FloatAggregateSelection;
+  lat: StringAggregateSelection;
+  lng: StringAggregateSelection;
   name: StringAggregateSelection;
 }
 
@@ -19819,65 +19247,60 @@ export interface LocationGroupOrganisationRelationship {
   node: HiveOrganisation;
 }
 
-export interface LocationGroupsConnection {
-  __typename?: "LocationGroupsConnection";
-  edges: Array<LocationGroupsRelationship>;
-  pageInfo: PageInfo;
-  totalCount: ScalarsEnums["Int"];
-}
-
-export interface LocationGroupsRelationship {
-  __typename?: "LocationGroupsRelationship";
+export interface LocationGroupRelationship {
+  __typename?: "LocationGroupRelationship";
   cursor: ScalarsEnums["String"];
   node: LocationGroup;
 }
 
-export interface LocationHiveOrganisationOrganisationAggregationSelection {
-  __typename?: "LocationHiveOrganisationOrganisationAggregationSelection";
-  count: ScalarsEnums["Int"];
-  node?: Maybe<LocationHiveOrganisationOrganisationNodeAggregateSelection>;
-}
-
-export interface LocationHiveOrganisationOrganisationNodeAggregateSelection {
-  __typename?: "LocationHiveOrganisationOrganisationNodeAggregateSelection";
-  id: IDAggregateSelection;
-  name: StringAggregateSelection;
-}
-
-export interface LocationLocationGroupGroupsAggregationSelection {
-  __typename?: "LocationLocationGroupGroupsAggregationSelection";
-  count: ScalarsEnums["Int"];
-  node?: Maybe<LocationLocationGroupGroupsNodeAggregateSelection>;
-}
-
-export interface LocationLocationGroupGroupsNodeAggregateSelection {
-  __typename?: "LocationLocationGroupGroupsNodeAggregateSelection";
-  id: IDAggregateSelection;
-  name: StringAggregateSelection;
-}
-
-export interface LocationOrganisationConnection {
-  __typename?: "LocationOrganisationConnection";
-  edges: Array<LocationOrganisationRelationship>;
+export interface LocationGroupScheduleConnection {
+  __typename?: "LocationGroupScheduleConnection";
+  edges: Array<LocationGroupScheduleRelationship>;
   pageInfo: PageInfo;
   totalCount: ScalarsEnums["Int"];
 }
 
-export interface LocationOrganisationRelationship {
-  __typename?: "LocationOrganisationRelationship";
+export interface LocationGroupScheduleRelationship {
+  __typename?: "LocationGroupScheduleRelationship";
   cursor: ScalarsEnums["String"];
-  node: HiveOrganisation;
+  node: Schedule;
 }
 
-export interface LocationScreensConnection {
-  __typename?: "LocationScreensConnection";
-  edges: Array<LocationScreensRelationship>;
+export interface LocationGroupScheduleScheduleAggregationSelection {
+  __typename?: "LocationGroupScheduleScheduleAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<LocationGroupScheduleScheduleNodeAggregateSelection>;
+}
+
+export interface LocationGroupScheduleScheduleNodeAggregateSelection {
+  __typename?: "LocationGroupScheduleScheduleNodeAggregateSelection";
+  endDate: DateTimeAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  startDate: DateTimeAggregateSelection;
+}
+
+export interface LocationLocationGroupGroupAggregationSelection {
+  __typename?: "LocationLocationGroupGroupAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<LocationLocationGroupGroupNodeAggregateSelection>;
+}
+
+export interface LocationLocationGroupGroupNodeAggregateSelection {
+  __typename?: "LocationLocationGroupGroupNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface LocationScreenConnection {
+  __typename?: "LocationScreenConnection";
+  edges: Array<LocationScreenRelationship>;
   pageInfo: PageInfo;
   totalCount: ScalarsEnums["Int"];
 }
 
-export interface LocationScreensRelationship {
-  __typename?: "LocationScreensRelationship";
+export interface LocationScreenRelationship {
+  __typename?: "LocationScreenRelationship";
   cursor: ScalarsEnums["String"];
   node: GreenScreen;
 }
@@ -20097,12 +19520,12 @@ export interface Schedule {
   endDate?: Maybe<ScalarsEnums["DateTime"]>;
   id: ScalarsEnums["ID"];
   locations: (args?: {
-    options?: Maybe<LocationOptions>;
-    where?: Maybe<LocationWhere>;
-  }) => Maybe<Array<Maybe<Location>>>;
+    options?: Maybe<LocationGroupOptions>;
+    where?: Maybe<LocationGroupWhere>;
+  }) => Maybe<Array<Maybe<LocationGroup>>>;
   locationsAggregate: (args?: {
-    where?: Maybe<LocationWhere>;
-  }) => Maybe<ScheduleLocationLocationsAggregationSelection>;
+    where?: Maybe<LocationGroupWhere>;
+  }) => Maybe<ScheduleLocationGroupLocationsAggregationSelection>;
   locationsConnection: (args?: {
     after?: Maybe<Scalars["String"]>;
     first?: Maybe<Scalars["Int"]>;
@@ -20209,18 +19632,15 @@ export interface ScheduleItemProperties {
   $on: $ScheduleItemProperties;
 }
 
-export interface ScheduleLocationLocationsAggregationSelection {
-  __typename?: "ScheduleLocationLocationsAggregationSelection";
+export interface ScheduleLocationGroupLocationsAggregationSelection {
+  __typename?: "ScheduleLocationGroupLocationsAggregationSelection";
   count: ScalarsEnums["Int"];
-  node?: Maybe<ScheduleLocationLocationsNodeAggregateSelection>;
+  node?: Maybe<ScheduleLocationGroupLocationsNodeAggregateSelection>;
 }
 
-export interface ScheduleLocationLocationsNodeAggregateSelection {
-  __typename?: "ScheduleLocationLocationsNodeAggregateSelection";
-  elevation: FloatAggregateSelection;
+export interface ScheduleLocationGroupLocationsNodeAggregateSelection {
+  __typename?: "ScheduleLocationGroupLocationsNodeAggregateSelection";
   id: IDAggregateSelection;
-  lat: FloatAggregateSelection;
-  lng: FloatAggregateSelection;
   name: StringAggregateSelection;
 }
 
@@ -20234,7 +19654,7 @@ export interface ScheduleLocationsConnection {
 export interface ScheduleLocationsRelationship {
   __typename?: "ScheduleLocationsRelationship";
   cursor: ScalarsEnums["String"];
-  node: Location;
+  node: LocationGroup;
 }
 
 export interface ScheduleOrganisationConnection {
@@ -21199,10 +20619,6 @@ export interface SchemaObjectTypes {
   HiveOrganisationLocationGroupLocationGroupsNodeAggregateSelection: HiveOrganisationLocationGroupLocationGroupsNodeAggregateSelection;
   HiveOrganisationLocationGroupsConnection: HiveOrganisationLocationGroupsConnection;
   HiveOrganisationLocationGroupsRelationship: HiveOrganisationLocationGroupsRelationship;
-  HiveOrganisationLocationLocationsAggregationSelection: HiveOrganisationLocationLocationsAggregationSelection;
-  HiveOrganisationLocationLocationsNodeAggregateSelection: HiveOrganisationLocationLocationsNodeAggregateSelection;
-  HiveOrganisationLocationsConnection: HiveOrganisationLocationsConnection;
-  HiveOrganisationLocationsRelationship: HiveOrganisationLocationsRelationship;
   HiveOrganisationMembersConnection: HiveOrganisationMembersConnection;
   HiveOrganisationMembersRelationship: HiveOrganisationMembersRelationship;
   HiveOrganisationRoleRolesAggregationSelection: HiveOrganisationRoleRolesAggregationSelection;
@@ -21244,10 +20660,11 @@ export interface SchemaObjectTypes {
   IDAggregateSelection: IDAggregateSelection;
   Location: Location;
   LocationAggregateSelection: LocationAggregateSelection;
-  LocationGreenScreenScreensAggregationSelection: LocationGreenScreenScreensAggregationSelection;
-  LocationGreenScreenScreensNodeAggregateSelection: LocationGreenScreenScreensNodeAggregateSelection;
+  LocationGreenScreenScreenAggregationSelection: LocationGreenScreenScreenAggregationSelection;
+  LocationGreenScreenScreenNodeAggregateSelection: LocationGreenScreenScreenNodeAggregateSelection;
   LocationGroup: LocationGroup;
   LocationGroupAggregateSelection: LocationGroupAggregateSelection;
+  LocationGroupConnection: LocationGroupConnection;
   LocationGroupHiveOrganisationOrganisationAggregationSelection: LocationGroupHiveOrganisationOrganisationAggregationSelection;
   LocationGroupHiveOrganisationOrganisationNodeAggregateSelection: LocationGroupHiveOrganisationOrganisationNodeAggregateSelection;
   LocationGroupLocationLocationsAggregationSelection: LocationGroupLocationLocationsAggregationSelection;
@@ -21256,16 +20673,15 @@ export interface SchemaObjectTypes {
   LocationGroupLocationsRelationship: LocationGroupLocationsRelationship;
   LocationGroupOrganisationConnection: LocationGroupOrganisationConnection;
   LocationGroupOrganisationRelationship: LocationGroupOrganisationRelationship;
-  LocationGroupsConnection: LocationGroupsConnection;
-  LocationGroupsRelationship: LocationGroupsRelationship;
-  LocationHiveOrganisationOrganisationAggregationSelection: LocationHiveOrganisationOrganisationAggregationSelection;
-  LocationHiveOrganisationOrganisationNodeAggregateSelection: LocationHiveOrganisationOrganisationNodeAggregateSelection;
-  LocationLocationGroupGroupsAggregationSelection: LocationLocationGroupGroupsAggregationSelection;
-  LocationLocationGroupGroupsNodeAggregateSelection: LocationLocationGroupGroupsNodeAggregateSelection;
-  LocationOrganisationConnection: LocationOrganisationConnection;
-  LocationOrganisationRelationship: LocationOrganisationRelationship;
-  LocationScreensConnection: LocationScreensConnection;
-  LocationScreensRelationship: LocationScreensRelationship;
+  LocationGroupRelationship: LocationGroupRelationship;
+  LocationGroupScheduleConnection: LocationGroupScheduleConnection;
+  LocationGroupScheduleRelationship: LocationGroupScheduleRelationship;
+  LocationGroupScheduleScheduleAggregationSelection: LocationGroupScheduleScheduleAggregationSelection;
+  LocationGroupScheduleScheduleNodeAggregateSelection: LocationGroupScheduleScheduleNodeAggregateSelection;
+  LocationLocationGroupGroupAggregationSelection: LocationLocationGroupGroupAggregationSelection;
+  LocationLocationGroupGroupNodeAggregateSelection: LocationLocationGroupGroupNodeAggregateSelection;
+  LocationScreenConnection: LocationScreenConnection;
+  LocationScreenRelationship: LocationScreenRelationship;
   Mutation: Mutation;
   PageInfo: PageInfo;
   Permission: Permission;
@@ -21298,8 +20714,8 @@ export interface SchemaObjectTypes {
   ScheduleCampaignsRelationship: ScheduleCampaignsRelationship;
   ScheduleHiveOrganisationOrganisationAggregationSelection: ScheduleHiveOrganisationOrganisationAggregationSelection;
   ScheduleHiveOrganisationOrganisationNodeAggregateSelection: ScheduleHiveOrganisationOrganisationNodeAggregateSelection;
-  ScheduleLocationLocationsAggregationSelection: ScheduleLocationLocationsAggregationSelection;
-  ScheduleLocationLocationsNodeAggregateSelection: ScheduleLocationLocationsNodeAggregateSelection;
+  ScheduleLocationGroupLocationsAggregationSelection: ScheduleLocationGroupLocationsAggregationSelection;
+  ScheduleLocationGroupLocationsNodeAggregateSelection: ScheduleLocationGroupLocationsNodeAggregateSelection;
   ScheduleLocationsConnection: ScheduleLocationsConnection;
   ScheduleLocationsRelationship: ScheduleLocationsRelationship;
   ScheduleOrganisationConnection: ScheduleOrganisationConnection;
@@ -21473,10 +20889,6 @@ export type SchemaObjectTypesNames =
   | "HiveOrganisationLocationGroupLocationGroupsNodeAggregateSelection"
   | "HiveOrganisationLocationGroupsConnection"
   | "HiveOrganisationLocationGroupsRelationship"
-  | "HiveOrganisationLocationLocationsAggregationSelection"
-  | "HiveOrganisationLocationLocationsNodeAggregateSelection"
-  | "HiveOrganisationLocationsConnection"
-  | "HiveOrganisationLocationsRelationship"
   | "HiveOrganisationMembersConnection"
   | "HiveOrganisationMembersRelationship"
   | "HiveOrganisationRoleRolesAggregationSelection"
@@ -21518,10 +20930,11 @@ export type SchemaObjectTypesNames =
   | "IDAggregateSelection"
   | "Location"
   | "LocationAggregateSelection"
-  | "LocationGreenScreenScreensAggregationSelection"
-  | "LocationGreenScreenScreensNodeAggregateSelection"
+  | "LocationGreenScreenScreenAggregationSelection"
+  | "LocationGreenScreenScreenNodeAggregateSelection"
   | "LocationGroup"
   | "LocationGroupAggregateSelection"
+  | "LocationGroupConnection"
   | "LocationGroupHiveOrganisationOrganisationAggregationSelection"
   | "LocationGroupHiveOrganisationOrganisationNodeAggregateSelection"
   | "LocationGroupLocationLocationsAggregationSelection"
@@ -21530,16 +20943,15 @@ export type SchemaObjectTypesNames =
   | "LocationGroupLocationsRelationship"
   | "LocationGroupOrganisationConnection"
   | "LocationGroupOrganisationRelationship"
-  | "LocationGroupsConnection"
-  | "LocationGroupsRelationship"
-  | "LocationHiveOrganisationOrganisationAggregationSelection"
-  | "LocationHiveOrganisationOrganisationNodeAggregateSelection"
-  | "LocationLocationGroupGroupsAggregationSelection"
-  | "LocationLocationGroupGroupsNodeAggregateSelection"
-  | "LocationOrganisationConnection"
-  | "LocationOrganisationRelationship"
-  | "LocationScreensConnection"
-  | "LocationScreensRelationship"
+  | "LocationGroupRelationship"
+  | "LocationGroupScheduleConnection"
+  | "LocationGroupScheduleRelationship"
+  | "LocationGroupScheduleScheduleAggregationSelection"
+  | "LocationGroupScheduleScheduleNodeAggregateSelection"
+  | "LocationLocationGroupGroupAggregationSelection"
+  | "LocationLocationGroupGroupNodeAggregateSelection"
+  | "LocationScreenConnection"
+  | "LocationScreenRelationship"
   | "Mutation"
   | "PageInfo"
   | "Permission"
@@ -21572,8 +20984,8 @@ export type SchemaObjectTypesNames =
   | "ScheduleCampaignsRelationship"
   | "ScheduleHiveOrganisationOrganisationAggregationSelection"
   | "ScheduleHiveOrganisationOrganisationNodeAggregateSelection"
-  | "ScheduleLocationLocationsAggregationSelection"
-  | "ScheduleLocationLocationsNodeAggregateSelection"
+  | "ScheduleLocationGroupLocationsAggregationSelection"
+  | "ScheduleLocationGroupLocationsNodeAggregateSelection"
   | "ScheduleLocationsConnection"
   | "ScheduleLocationsRelationship"
   | "ScheduleOrganisationConnection"
