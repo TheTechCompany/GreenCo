@@ -3,9 +3,10 @@ import { Socket } from "socket.io";
 
 export const socketHandler = async (driver: Driver) => {
 	
-	const session = await driver.session()
 
 	const handleSocket = async (socket: Socket) => {
+
+		const session = await driver.session()
 
 			const screen = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})
@@ -44,6 +45,7 @@ export const socketHandler = async (driver: Driver) => {
 
 
 		// });
+		session.close()
 
         socket.on('disconnect', (reason) => onSocketDisconnect(socket))
 
@@ -51,6 +53,8 @@ export const socketHandler = async (driver: Driver) => {
 	}
 
 	const onSocketDisconnect = async (socket: Socket) => {
+		const session = await driver.session()
+
 		const screen = await session.run(`
 			MATCH (screen:GreenScreen {networkName: $networkName})
 			SET screen.online = false
@@ -58,6 +62,7 @@ export const socketHandler = async (driver: Driver) => {
 		`, {
 			networkName: (socket as any).networkName,
 		})
+		session.close()
 	}
 
 	return handleSocket
