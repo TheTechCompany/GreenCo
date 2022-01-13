@@ -69,7 +69,7 @@ export const ScreenSingle = (props) => {
 				background="accent-2" 
 				direction="row">
 				<Text>{machine.name}</Text>
-
+				<Text>{machine.networkName}</Text>
 				<Box>
 				{/* {!machine.provisioned && <Button 
 					hoverIndicator

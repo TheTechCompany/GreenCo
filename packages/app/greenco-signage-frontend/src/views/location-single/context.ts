@@ -2,7 +2,9 @@ import React from 'react';
 
 export const ClusterSingleContext = React.createContext<{
 	id?: string;
-	analytics?: any[]
+	analytics?: any[],
+	locations?: any[],
+	screens?: any[]
 }>({
 
 })

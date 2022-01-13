@@ -39,7 +39,7 @@ export class AssetStore {
 	}
 
 	async pullAll(){
-		await Promise.all(this.manifest.map(async (manifestItem) => {
+		await Promise.all(this.manifest.filter((a) => a.assetFolder).map(async (manifestItem) => {
 			console.log(`Pulling ${manifestItem.name}`)
 			const data = await this.pull(manifestItem.assetFolder)
 			if(!data) return;

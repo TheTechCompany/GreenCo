@@ -6,7 +6,8 @@
     "noImplicitAny": false,
     "rootDir": "src/",
     "downlevelIteration": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
   "include": ["src/**/*", "node_modules/@types"],
   "exclude": ["src/**/*.test*"],

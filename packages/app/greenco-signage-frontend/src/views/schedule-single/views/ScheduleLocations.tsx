@@ -13,7 +13,9 @@ export const ScheduleLocations = () => {
 
 	const { scheduleId, locations } = useContext(ScheduleSingleContext)
 
-	const allLocations = query.locations({})
+	console.log(locations) 
+	
+	const allLocations = query.locationGroups({})
 
 	const [ connectLocation, connectInfo ] = useMutation((mutation, args: {locationId: string}) => {
 		if(!args.locationId) return;

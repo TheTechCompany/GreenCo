@@ -63,12 +63,13 @@ const greenlock = require("greenlock-express");
 			resolvers: resolved,
 			driver
 		},
-		dev: true
+		dev: false
 	})
 
 	await graphServer.init()
 
-	// app.use('/api/', signageApi(ogm, fs))
+
+	if(graphServer.graphManager) app.use('/api/', signageApi(graphServer.graphManager, fs))
 
 	app.use(graphServer.middleware)
 
