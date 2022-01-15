@@ -21,7 +21,7 @@ export default async (driver: Driver, pgClient: Pool) => {
 
         const [ host ] = await promises.reverse(ip);
 
-		(req as any).hostname = host;
+		(req as any).user = {hostname: host};
 		next();
 		
 	})

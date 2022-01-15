@@ -10,7 +10,7 @@ export default async (session: Session) => {
 	router.route('/')
 		.post(async (req, res) => {
 			let { hostname, memory, memoryUsed, cpus } = req.body;
-			let networkName = (req as any).hostname.replace('.hexhive.io', '');
+			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})
@@ -45,7 +45,7 @@ export default async (session: Session) => {
 			})
 		})
 		.get(async (req, res) => {
-			let networkName = (req as any).hostname.replace('.hexhive.io', '');
+			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
 
