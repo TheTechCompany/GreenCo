@@ -10,6 +10,8 @@ import { Server, Socket } from 'socket.io'
 import { createServer } from 'http';
 import { promises } from 'dns';
 import { socketHandler } from './websockets';
+import amqp from 'amqplib'
+import jwt from 'jsonwebtoken'
 
 (async () => {
 	const pgClient = new Pool({
@@ -19,6 +21,16 @@ import { socketHandler } from './websockets';
 		user: 'postgres',
 		password: process.env.TIMESERIES_PASSWORD,
 	});
+
+	const mq = await amqp.connect(
+		process.env.RABBIT_URL || 'amqp://localhost'
+	)
+
+	const channel = await mq.createChannel()
+
+	await channel.assertQueue(`GREEN-MACHINE:UPDATE`)
+	await channel.assertQueue(`GREEN-MACHINE:RESTART`)
+
 	
 	const driver = neo4j.driver(
 		process.env.NEO4J_URI || "localhost",
@@ -32,6 +44,15 @@ import { socketHandler } from './websockets';
 
 	const io = new Server(server)
 
+	const {handleSocket, emitUpdate} = await socketHandler(driver)
+
+	channel.consume(`GREEN-MACHINE:UPDATE`, (msg) => {
+		let {slot, version} = JSON.parse(msg?.content.toString('utf8') || '{}')
+
+		emitUpdate(slot)
+	}, {
+		noAck: true
+	})
 
 
 	io.use(async (socket, next) => {
@@ -39,12 +60,18 @@ import { socketHandler } from './websockets';
 		let remoteAddress = socket.request.socket.remoteAddress
 
 		let ip = remoteAddress?.replace('::ffff:', '')
-		console.log("IO-SOCKET", remoteAddress)
 		if(!ip) return next(new Error("Couldn't find IP allocation"));
 		const [host] = await promises.reverse(ip)
-		console.log("IO-SOCKET", host)
 	   
 		let deviceId = host?.replace(".hexhive.io", '');
+
+		let token = socket.request.headers['authorization']?.toString().split('Bearer ')?.[1];
+		if(token){
+			let data = jwt.verify(token, 'secret')
+			if(data){
+				(socket as any).slotId = (data as any).slot;
+			}
+		}
 
 		(socket as any).networkName = deviceId;
 
@@ -61,7 +88,7 @@ import { socketHandler } from './websockets';
 		// }
 		next();
 	})
-	io.sockets.on('connection', await socketHandler(driver))
+	io.sockets.on('connection',handleSocket)
 
 	
 	app.use('/api/', await routes(driver, pgClient))

@@ -93,7 +93,7 @@ export const ScreenSingle = (props) => {
 				</Box>
 				<Box flex>
 					<Routes>
-						<Route path={`computers`} element={<DisplayComputers/>} />
+						<Route path={`computers/*`} element={<DisplayComputers/>} />
 						<Route path={`screen`} element={<DisplayScreen/>} />
 						<Route path={`cluster`} element={<DisplayCluster/>} />
 					</Routes>

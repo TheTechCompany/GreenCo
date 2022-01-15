@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/amqplib": "^0.8.2",
     "@types/cors": "^2.8.12",
     "@types/multer": "^1.4.7",
     "@types/node": "^17.0.4",
@@ -22,6 +23,7 @@
   "dependencies": {
     "@hexhive/graphql-server": "0.0.6-alpha.13",
     "@neo4j/graphql-ogm": "^2.5.4",
+    "amqplib": "^0.8.0",
     "aws-sdk": "^2.1048.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

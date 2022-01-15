@@ -1098,26 +1098,26 @@ export interface GreenScreenSlotsNodeAggregationWhereInput {
   memory_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
   memory_AVERAGE_LT?: Maybe<Scalars["Float"]>;
   memory_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  memory_EQUAL?: Maybe<Scalars["Int"]>;
-  memory_GT?: Maybe<Scalars["Int"]>;
-  memory_GTE?: Maybe<Scalars["Int"]>;
-  memory_LT?: Maybe<Scalars["Int"]>;
-  memory_LTE?: Maybe<Scalars["Int"]>;
-  memory_MAX_EQUAL?: Maybe<Scalars["Int"]>;
-  memory_MAX_GT?: Maybe<Scalars["Int"]>;
-  memory_MAX_GTE?: Maybe<Scalars["Int"]>;
-  memory_MAX_LT?: Maybe<Scalars["Int"]>;
-  memory_MAX_LTE?: Maybe<Scalars["Int"]>;
-  memory_MIN_EQUAL?: Maybe<Scalars["Int"]>;
-  memory_MIN_GT?: Maybe<Scalars["Int"]>;
-  memory_MIN_GTE?: Maybe<Scalars["Int"]>;
-  memory_MIN_LT?: Maybe<Scalars["Int"]>;
-  memory_MIN_LTE?: Maybe<Scalars["Int"]>;
-  memory_SUM_EQUAL?: Maybe<Scalars["Int"]>;
-  memory_SUM_GT?: Maybe<Scalars["Int"]>;
-  memory_SUM_GTE?: Maybe<Scalars["Int"]>;
-  memory_SUM_LT?: Maybe<Scalars["Int"]>;
-  memory_SUM_LTE?: Maybe<Scalars["Int"]>;
+  memory_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_GT?: Maybe<Scalars["Float"]>;
+  memory_GTE?: Maybe<Scalars["Float"]>;
+  memory_LT?: Maybe<Scalars["Float"]>;
+  memory_LTE?: Maybe<Scalars["Float"]>;
+  memory_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_MAX_GT?: Maybe<Scalars["Float"]>;
+  memory_MAX_GTE?: Maybe<Scalars["Float"]>;
+  memory_MAX_LT?: Maybe<Scalars["Float"]>;
+  memory_MAX_LTE?: Maybe<Scalars["Float"]>;
+  memory_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_MIN_GT?: Maybe<Scalars["Float"]>;
+  memory_MIN_GTE?: Maybe<Scalars["Float"]>;
+  memory_MIN_LT?: Maybe<Scalars["Float"]>;
+  memory_MIN_LTE?: Maybe<Scalars["Float"]>;
+  memory_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_SUM_GT?: Maybe<Scalars["Float"]>;
+  memory_SUM_GTE?: Maybe<Scalars["Float"]>;
+  memory_SUM_LT?: Maybe<Scalars["Float"]>;
+  memory_SUM_LTE?: Maybe<Scalars["Float"]>;
   orientation_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   orientation_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   orientation_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -7523,7 +7523,7 @@ export interface ScreenSlotCreateInput {
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
-  memory?: Maybe<Scalars["Int"]>;
+  memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   orientation?: Maybe<Scalars["Float"]>;
   resHeight?: Maybe<Scalars["Float"]>;
@@ -7690,7 +7690,7 @@ export interface ScreenSlotUpdateInput {
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
-  memory?: Maybe<Scalars["Int"]>;
+  memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   orientation?: Maybe<Scalars["Float"]>;
   resHeight?: Maybe<Scalars["Float"]>;
@@ -7739,7 +7739,7 @@ export interface ScreenSlotWhere {
   id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
   id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
   id_STARTS_WITH?: Maybe<Scalars["ID"]>;
-  memory?: Maybe<Scalars["Int"]>;
+  memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   memoryUsed_GT?: Maybe<Scalars["Float"]>;
   memoryUsed_GTE?: Maybe<Scalars["Float"]>;
@@ -7748,13 +7748,13 @@ export interface ScreenSlotWhere {
   memoryUsed_LTE?: Maybe<Scalars["Float"]>;
   memoryUsed_NOT?: Maybe<Scalars["Float"]>;
   memoryUsed_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  memory_GT?: Maybe<Scalars["Int"]>;
-  memory_GTE?: Maybe<Scalars["Int"]>;
-  memory_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
-  memory_LT?: Maybe<Scalars["Int"]>;
-  memory_LTE?: Maybe<Scalars["Int"]>;
-  memory_NOT?: Maybe<Scalars["Int"]>;
-  memory_NOT_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  memory_GT?: Maybe<Scalars["Float"]>;
+  memory_GTE?: Maybe<Scalars["Float"]>;
+  memory_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  memory_LT?: Maybe<Scalars["Float"]>;
+  memory_LTE?: Maybe<Scalars["Float"]>;
+  memory_NOT?: Maybe<Scalars["Float"]>;
+  memory_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
   orientation?: Maybe<Scalars["Float"]>;
   orientation_GT?: Maybe<Scalars["Float"]>;
   orientation_GTE?: Maybe<Scalars["Float"]>;
@@ -9072,7 +9072,7 @@ export const generatedSchema = {
     height: { __type: "FloatAggregateSelection!" },
     hostname: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    memory: { __type: "IntAggregateSelection!" },
+    memory: { __type: "FloatAggregateSelection!" },
     memoryUsed: { __type: "FloatAggregateSelection!" },
     orientation: { __type: "FloatAggregateSelection!" },
     resHeight: { __type: "FloatAggregateSelection!" },
@@ -9233,26 +9233,26 @@ export const generatedSchema = {
     memory_AVERAGE_GTE: { __type: "Float" },
     memory_AVERAGE_LT: { __type: "Float" },
     memory_AVERAGE_LTE: { __type: "Float" },
-    memory_EQUAL: { __type: "Int" },
-    memory_GT: { __type: "Int" },
-    memory_GTE: { __type: "Int" },
-    memory_LT: { __type: "Int" },
-    memory_LTE: { __type: "Int" },
-    memory_MAX_EQUAL: { __type: "Int" },
-    memory_MAX_GT: { __type: "Int" },
-    memory_MAX_GTE: { __type: "Int" },
-    memory_MAX_LT: { __type: "Int" },
-    memory_MAX_LTE: { __type: "Int" },
-    memory_MIN_EQUAL: { __type: "Int" },
-    memory_MIN_GT: { __type: "Int" },
-    memory_MIN_GTE: { __type: "Int" },
-    memory_MIN_LT: { __type: "Int" },
-    memory_MIN_LTE: { __type: "Int" },
-    memory_SUM_EQUAL: { __type: "Int" },
-    memory_SUM_GT: { __type: "Int" },
-    memory_SUM_GTE: { __type: "Int" },
-    memory_SUM_LT: { __type: "Int" },
-    memory_SUM_LTE: { __type: "Int" },
+    memory_EQUAL: { __type: "Float" },
+    memory_GT: { __type: "Float" },
+    memory_GTE: { __type: "Float" },
+    memory_LT: { __type: "Float" },
+    memory_LTE: { __type: "Float" },
+    memory_MAX_EQUAL: { __type: "Float" },
+    memory_MAX_GT: { __type: "Float" },
+    memory_MAX_GTE: { __type: "Float" },
+    memory_MAX_LT: { __type: "Float" },
+    memory_MAX_LTE: { __type: "Float" },
+    memory_MIN_EQUAL: { __type: "Float" },
+    memory_MIN_GT: { __type: "Float" },
+    memory_MIN_GTE: { __type: "Float" },
+    memory_MIN_LT: { __type: "Float" },
+    memory_MIN_LTE: { __type: "Float" },
+    memory_SUM_EQUAL: { __type: "Float" },
+    memory_SUM_GT: { __type: "Float" },
+    memory_SUM_GTE: { __type: "Float" },
+    memory_SUM_LT: { __type: "Float" },
+    memory_SUM_LTE: { __type: "Float" },
     orientation_AVERAGE_EQUAL: { __type: "Float" },
     orientation_AVERAGE_GT: { __type: "Float" },
     orientation_AVERAGE_GTE: { __type: "Float" },
@@ -16854,7 +16854,7 @@ export const generatedSchema = {
     height: { __type: "Float" },
     hostname: { __type: "String" },
     id: { __type: "ID!" },
-    memory: { __type: "Int" },
+    memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
@@ -16886,7 +16886,7 @@ export const generatedSchema = {
     height: { __type: "FloatAggregateSelection!" },
     hostname: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
-    memory: { __type: "IntAggregateSelection!" },
+    memory: { __type: "FloatAggregateSelection!" },
     memoryUsed: { __type: "FloatAggregateSelection!" },
     orientation: { __type: "FloatAggregateSelection!" },
     resHeight: { __type: "FloatAggregateSelection!" },
@@ -16907,7 +16907,7 @@ export const generatedSchema = {
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
-    memory: { __type: "Int" },
+    memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
@@ -17070,7 +17070,7 @@ export const generatedSchema = {
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
-    memory: { __type: "Int" },
+    memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
@@ -17118,7 +17118,7 @@ export const generatedSchema = {
     id_NOT_IN: { __type: "[ID]" },
     id_NOT_STARTS_WITH: { __type: "ID" },
     id_STARTS_WITH: { __type: "ID" },
-    memory: { __type: "Int" },
+    memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     memoryUsed_GT: { __type: "Float" },
     memoryUsed_GTE: { __type: "Float" },
@@ -17127,13 +17127,13 @@ export const generatedSchema = {
     memoryUsed_LTE: { __type: "Float" },
     memoryUsed_NOT: { __type: "Float" },
     memoryUsed_NOT_IN: { __type: "[Float]" },
-    memory_GT: { __type: "Int" },
-    memory_GTE: { __type: "Int" },
-    memory_IN: { __type: "[Int]" },
-    memory_LT: { __type: "Int" },
-    memory_LTE: { __type: "Int" },
-    memory_NOT: { __type: "Int" },
-    memory_NOT_IN: { __type: "[Int]" },
+    memory_GT: { __type: "Float" },
+    memory_GTE: { __type: "Float" },
+    memory_IN: { __type: "[Float]" },
+    memory_LT: { __type: "Float" },
+    memory_LTE: { __type: "Float" },
+    memory_NOT: { __type: "Float" },
+    memory_NOT_IN: { __type: "[Float]" },
     orientation: { __type: "Float" },
     orientation_GT: { __type: "Float" },
     orientation_GTE: { __type: "Float" },
@@ -17687,6 +17687,10 @@ export const generatedSchema = {
         update: "ScreenSlotUpdateInput",
         where: "ScreenSlotWhere",
       },
+    },
+    updateSlotClient: {
+      __type: "Boolean",
+      __args: { id: "ID!", version: "String" },
     },
   },
   query: {
@@ -18385,7 +18389,7 @@ export interface GreenScreenScreenSlotSlotsNodeAggregateSelection {
   height: FloatAggregateSelection;
   hostname: StringAggregateSelection;
   id: IDAggregateSelection;
-  memory: IntAggregateSelection;
+  memory: FloatAggregateSelection;
   memoryUsed: FloatAggregateSelection;
   orientation: FloatAggregateSelection;
   resHeight: FloatAggregateSelection;
@@ -20111,7 +20115,7 @@ export interface ScreenSlot {
   height?: Maybe<ScalarsEnums["Float"]>;
   hostname?: Maybe<ScalarsEnums["String"]>;
   id: ScalarsEnums["ID"];
-  memory?: Maybe<ScalarsEnums["Int"]>;
+  memory?: Maybe<ScalarsEnums["Float"]>;
   memoryUsed?: Maybe<ScalarsEnums["Float"]>;
   orientation?: Maybe<ScalarsEnums["Float"]>;
   resHeight?: Maybe<ScalarsEnums["Float"]>;
@@ -20140,7 +20144,7 @@ export interface ScreenSlotAggregateSelection {
   height: FloatAggregateSelection;
   hostname: StringAggregateSelection;
   id: IDAggregateSelection;
-  memory: IntAggregateSelection;
+  memory: FloatAggregateSelection;
   memoryUsed: FloatAggregateSelection;
   orientation: FloatAggregateSelection;
   resHeight: FloatAggregateSelection;
@@ -20607,6 +20611,10 @@ export interface Mutation {
     update?: Maybe<ScreenSlotUpdateInput>;
     where?: Maybe<ScreenSlotWhere>;
   }) => UpdateScreenSlotsMutationResponse;
+  updateSlotClient: (args: {
+    id: Scalars["ID"];
+    version?: Maybe<Scalars["String"]>;
+  }) => Maybe<ScalarsEnums["Boolean"]>;
 }
 
 export interface Query {

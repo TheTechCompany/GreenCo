@@ -5,6 +5,9 @@ import locations from "./locations";
 import schedule from "./schedule";
 
 export default `
+type Mutation {
+	updateSlotClient(id: ID!, version: String): Boolean
+}
 	${locations}
 	${schedule}
 	${campaigns}

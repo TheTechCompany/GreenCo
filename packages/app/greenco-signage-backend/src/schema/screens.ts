@@ -25,8 +25,9 @@ type ScreenSlot {
 	id: ID! @id
 
 	hostname: String
+	online: Boolean
 
-	memory: Int
+	memory: Float
 	memoryUsed: Float
 	cpus: Int
 	

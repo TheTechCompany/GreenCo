@@ -1,11 +1,17 @@
 import { FileStore } from "../de-file-store"
 import { Pool } from 'pg';
+import { Channel } from 'amqplib'
 
-export default async (fs: FileStore, pool: Pool) => {
+export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 
 	const client = await pool.connect()
 
 	return {
+		Mutation: {
+			updateSlotClient: async (parent: any, {id, version}: any, context: any, info: any) => {
+				return channel.sendToQueue(`GREEN-MACHINE:UPDATE`, Buffer.from(JSON.stringify({slot: id, version: version || 'latest'})))
+			}
+		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {
 				const res = await client.query(
