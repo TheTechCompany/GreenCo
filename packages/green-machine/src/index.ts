@@ -15,6 +15,7 @@ import { ConfigManager } from "./config";
 import { PluginManager } from "./plugins";
 import axios from 'axios';
 import { connect, Socket } from "socket.io-client";
+import express, {Express} from 'express'
 import pkg from '../package.json';
 
 export interface GreenMachineOptions {
@@ -31,6 +32,8 @@ export class GreenMachine {
 
 	private opts: GreenMachineOptions;
 
+	private app : Express
+
 	constructor(opts: GreenMachineOptions){
 		this.opts = opts;
 		this.configManager = new ConfigManager()
@@ -38,6 +41,8 @@ export class GreenMachine {
 		this.pluginManager = new PluginManager({
 			pluginDirectory: opts.pluginDirectory
 		})
+
+		this.app = express()
 
 		this.init()
 	}
@@ -84,6 +89,8 @@ export class GreenMachine {
 		this.initControlSocket(this.opts.controlUrl);
 
 		console.log(token, data)
+
+		this.app.listen(9090)
 	}
 
 }
