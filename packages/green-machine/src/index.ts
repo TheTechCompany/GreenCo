@@ -54,6 +54,7 @@ export class GreenMachine {
 		this.controlSocket.on('update', async (event: {version: string}) => {
 			console.log("UPDATE", event.version)
 			await this.pluginManager.installGlobal(`${pkg.name}@${event.version}`)
+			process.exit()
 		})
 
 		this.controlSocket.on('restart', async () => {
