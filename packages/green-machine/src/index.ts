@@ -35,7 +35,7 @@ export class GreenMachine {
 			pluginDirectory: opts.pluginDirectory
 		})
 
-		this.load()
+		this.init()
 	}
 
 	async getToken(){
@@ -48,8 +48,8 @@ export class GreenMachine {
 		return result.data;
 	}
 
-	load(){
-		this.pluginManager.installPlugins()
+	init(){
+		this.pluginManager.init()
 		// this.pluginManager.loadPlugins(['@greenco/screen'])
 	}
 

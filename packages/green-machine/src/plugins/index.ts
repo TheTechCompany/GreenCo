@@ -1,4 +1,4 @@
-import fs, { existsSync, readdirSync, readFileSync } from 'fs';
+import fs, { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import git from 'isomorphic-git'
 import http from 'isomorphic-git/http/node'
 import {exec, spawn} from 'child_process'
@@ -18,14 +18,34 @@ export interface PluginManagerOptions {
 export class PluginManager {
 	private pluginDirectory: string;
 
+	private pluginConfPath: string;
+
 	private plugins: any[] = [];
+
+	private configuration: {
+		plugins: Plugin[]
+	} = {plugins: []}
 
 	constructor(opts: PluginManagerOptions) {
 		this.plugins = [];
 		this.pluginDirectory = opts.pluginDirectory;
-		
+		this.pluginConfPath = path.join(this.pluginDirectory, './plugins.json')	
 	}
 
+	init(){
+		let configuration:  {
+			plugins: Plugin[]
+		} = {
+			plugins: []
+		}
+		if(existsSync(this.pluginConfPath)){
+			configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
+		}else{
+			writeFileSync(this.pluginConfPath, JSON.stringify(configuration))
+		}
+
+		this.configuration = configuration
+	}
 
 	public async loadPlugins(plugins: string[]){
 		// let plugins = this.findPlugins();
@@ -57,11 +77,11 @@ export class PluginManager {
 	}
 
 	public async installPlugins(){
-		const pluginConf : {
-			plugins: Plugin[]
-		} = JSON.parse(readFileSync(path.join(this.pluginDirectory, './plugins.json'), {encoding: 'utf-8'}) || '{}')
+		// const pluginConf : {
+		// 	plugins: Plugin[]
+		// } = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
 
-		await Promise.all(pluginConf.plugins.map(async (plugin) => {
+		await Promise.all(this.configuration.plugins.map(async (plugin) => {
 			const installResult = await this.installPlugin(plugin)
 			console.log({installResult})
 			return installResult
