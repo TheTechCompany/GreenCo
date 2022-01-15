@@ -1,4 +1,4 @@
-import fs, { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import fs, { existsSync, readdirSync, readFile, readFileSync, writeFileSync } from 'fs';
 import git from 'isomorphic-git'
 import http from 'isomorphic-git/http/node'
 import {exec, spawn} from 'child_process'
@@ -45,6 +45,15 @@ export class PluginManager {
 		}
 
 		this.configuration = configuration
+	}
+
+	async getGlobalVersion(name: string){
+		return await new Promise((resolve, reject) => {
+			exec(`npm info -g ${name} version`, (err, stdout, stderr) => {
+				if(err) return reject(err)
+				resolve(stdout.trim())
+			})
+		})
 	}
 
 	public async loadPlugins(plugins: string[]){

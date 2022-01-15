@@ -16,6 +16,8 @@ import { PluginManager } from "./plugins";
 import axios from 'axios';
 import { connect, Socket } from "socket.io-client";
 import express, {Express} from 'express'
+import log from "loglevel";
+import { readFileSync } from "fs";
 
 const pkg = require('../package.json');
 
@@ -46,6 +48,8 @@ export class GreenMachine {
 		this.app = express()
 
 		this.init()
+
+		log.info(`Green Machine v${pkg.version}`)
 	}
 
 	initControlSocket(controlUrl: string){
@@ -54,7 +58,15 @@ export class GreenMachine {
 		this.controlSocket.on('update', async (event: {version: string}) => {
 			console.log("UPDATE", event.version)
 			await this.pluginManager.installGlobal(`${pkg.name}@${event.version}`)
-			process.exit()
+
+			const version = await this.pluginManager.getGlobalVersion(`${pkg.name}`)
+
+			console.log({version, pkgVersion: pkg.version})
+
+			if(version !== pkg.version){
+				process.exit()
+			}
+			// readFileSync(path.join(this.pluginManager.pluginDirectory, './plugins.json'), {encoding: 'utf-8'})
 		})
 
 		this.controlSocket.on('restart', async () => {
