@@ -17,16 +17,27 @@ export const socketHandler = async (driver: Driver) => {
 
 		const session = await driver.session()
 
-		const screen = await session.run(`
-			MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
-			SET screen.online = true, slot.online = true
-			RETURN screen
-		`, {
-			networkName: (socket as any).networkName,
-			id: (socket as any).slotId
-		})
+		if((socket as any).slotId){
+			const screen = await session.run(`
+				MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
+				SET screen.online = true, slot.online = true
+				RETURN screen
+			`, {
+				networkName: (socket as any).networkName,
+				id: (socket as any).slotId
+			})
 
-		sockets[(socket as any).slotId] = socket;
+			sockets[(socket as any).slotId] = socket;
+		}else{
+			const screen = await session.run(`
+				MATCH (screen:GreenScreen {networkName: $networkName})
+				SET screen.online = true
+				RETURN screen
+			`, {
+				networkName: (socket as any).networkName
+			})
+
+		}
  		// socket.on('PROVISION:REQUEST', async (data) => {
 		// 	//socket.networkName = ${networkName}.hexhive.io
 		// 	//data.moniker = provision code
@@ -67,15 +78,25 @@ export const socketHandler = async (driver: Driver) => {
 	const onSocketDisconnect = async (socket: Socket) => {
 		const session = await driver.session()
 
-		const screen = await session.run(`
-			MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
-			SET screen.online = false, slot.online = false
+		if((socket as any).slotId){
+			const screen = await session.run(`
+				MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
+				SET screen.online = false, slot.online = false
+				RETURN screen
+			`, {
+				networkName: (socket as any).networkName,
+				id: (socket as any).slotId
+			})
+			delete sockets[(socket as any).slotId]
+		}else{
+			const screen = await session.run(`
+			MATCH (screen:GreenScreen {networkName: $networkName})
+			SET screen.online = false
 			RETURN screen
 		`, {
-			networkName: (socket as any).networkName,
-			id: (socket as any).slotId
+			networkName: (socket as any).networkName
 		})
-		delete sockets[(socket as any).slotId]
+		}
 		session.close()
 	}
 
