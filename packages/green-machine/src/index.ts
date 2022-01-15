@@ -16,7 +16,8 @@ import { PluginManager } from "./plugins";
 import axios from 'axios';
 import { connect, Socket } from "socket.io-client";
 import express, {Express} from 'express'
-import pkg from '../package.json';
+
+const pkg = require('../package.json');
 
 export interface GreenMachineOptions {
 	pluginDirectory: string;
