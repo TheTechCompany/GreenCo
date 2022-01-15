@@ -24,6 +24,12 @@ type GreenScreen @auth(rules: [
 type ScreenSlot {
 	id: ID! @id
 
+	hostname: String
+
+	memory: Int
+	memoryUsed: Float
+	cpus: Int
+	
 	width: Float
 	height: Float
 	
