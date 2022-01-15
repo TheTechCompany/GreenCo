@@ -14,6 +14,8 @@
 import { ConfigManager } from "./config";
 import { PluginManager } from "./plugins";
 import axios from 'axios';
+import { connect, Socket } from "socket.io-client";
+import pkg from '../package.json';
 
 export interface GreenMachineOptions {
 	pluginDirectory: string;
@@ -21,6 +23,8 @@ export interface GreenMachineOptions {
 }
 
 export class GreenMachine {
+
+	private controlSocket?: Socket;
 
 	private pluginManager: PluginManager;
 	private configManager: ConfigManager;
@@ -36,6 +40,27 @@ export class GreenMachine {
 		})
 
 		this.init()
+	}
+
+	initControlSocket(controlUrl: string){
+		this.controlSocket = connect(controlUrl)
+
+		this.controlSocket.on('update', async (event: {version: string}) => {
+			await this.pluginManager.installGlobal(`${pkg.name}@${event.version}`)
+		})
+
+		this.controlSocket.on('restart', async () => {
+			process.exit()
+		})
+
+		this.controlSocket.on('plugin-update', () => {
+
+		})
+
+		this.controlSocket.on('conf-update', () => {
+
+		})
+
 	}
 
 	async getToken(){
@@ -55,6 +80,8 @@ export class GreenMachine {
 
 	async start(){
 		const {token, data} = await this.getToken();
+
+		this.initControlSocket(this.opts.controlUrl);
 
 		console.log(token, data)
 	}

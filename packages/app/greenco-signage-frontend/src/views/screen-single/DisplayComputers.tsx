@@ -3,15 +3,15 @@ import { Box, List } from 'grommet';
 import React, {useContext} from 'react';
 import { DisplaySingleContext } from './context';
 
-export const DisplayComputers = (props) => {
+export const DisplayComputers = () => {
 
-	const { id } = useContext(DisplaySingleContext)
+	const { id, slots } = useContext(DisplaySingleContext)
 
 	const query = useQuery()
 
 	return (
 		<Box flex background="neutral-1">
-			<List data={[]} />
+			<List data={slots} primaryKey={"hostname"} />
 		</Box>
 	)
 }

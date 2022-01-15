@@ -1,4 +1,4 @@
-name: Build CDN Docker
+name: Build Apps (Master)
 on:
   push:
     branches:

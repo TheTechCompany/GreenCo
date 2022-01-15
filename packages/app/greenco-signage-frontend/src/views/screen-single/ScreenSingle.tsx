@@ -19,6 +19,7 @@ export const ScreenSingle = (props) => {
 
 	const machines = query.greenScreens({where: {id: id}})
 
+	const slots = query.screenSlots({where: {screen: {id: id}}})?.map((x) => ({...x}))
 	const machine = machines?.[0];
 
 	// const [ provisionMachine, provisionInfo ] = useMutation((mutation, args: {networkName: string}) => {
@@ -41,7 +42,8 @@ export const ScreenSingle = (props) => {
 
 	return (
 		<DisplaySingleProvider value={{
-			id: id
+			id: id,
+			slots
 		}}>
 		<ProvisionMachineModal
 			onSubmit={(provision) => {
@@ -68,8 +70,10 @@ export const ScreenSingle = (props) => {
 				pad="xsmall" 
 				background="accent-2" 
 				direction="row">
-				<Text>{machine.name}</Text>
-				<Text>{machine.networkName}</Text>
+				<Box>
+					<Text>{machine.name}</Text>
+					<Text size="xsmall">{machine.networkName}.hexhive.io</Text>
+				</Box>
 				<Box>
 				{/* {!machine.provisioned && <Button 
 					hoverIndicator

@@ -19,7 +19,9 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 	const [ view, setView ] = useState<string>('list');
 	
 	const query = useQuery()
-	const locations = query.locationGroups()
+	const locationGroups = query.locationGroups()
+	const locations = query.locations()
+
 
 	const [ createLocation, createInfo ] = useMutation((mutation, args: {name: string, machine: string}) => {
 
@@ -93,7 +95,7 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 							<List
 								onClickItem={(ev) => navigate(`${ev.item.id}`)}
 								primaryKey={"name"}
-								data={locations}>
+								data={locationGroups}>
 								{(datum) => (
 									<Box>
 										<Text>{datum?.name}</Text>
@@ -101,7 +103,7 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 								)}
 							</List>
 				) : (
-					<LocationMap />
+					<LocationMap markers={locations.map((x) => ({lat: x.lat || '0', lng: x.lng || '0'}))  || []} />
 				)}
 			</Box>
 

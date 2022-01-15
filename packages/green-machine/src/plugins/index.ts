@@ -144,6 +144,15 @@ export class PluginManager {
 		})
 	}
 
+	public async installGlobal(plugin: string){
+		return await new Promise((resolve, reject) => {
+			exec(`npm install -g ${plugin}`, (err, stdout, stderr) => {
+				if(err) return reject(err);
+				resolve(stdout)
+			})
+		})
+	}
+
 	public findPlugins(scope?: string) : string[]{
 		let dir = scope ? `${this.pluginDirectory}/${scope}` : this.pluginDirectory;
 		let files = readdirSync(dir);
