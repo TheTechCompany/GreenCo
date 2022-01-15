@@ -52,8 +52,14 @@ export class GreenMachine {
 		log.info(`Green Machine v${pkg.version}`)
 	}
 
-	initControlSocket(controlUrl: string){
-		this.controlSocket = connect(controlUrl)
+	initControlSocket(controlUrl: string, token: string){
+		let headers = {
+			authorization: `Bearer ${token}`
+		}
+
+		this.controlSocket = connect(controlUrl, {
+			extraHeaders: headers
+		});
 
 		this.controlSocket.on('update', async (event: {version: string}) => {
 			console.log("UPDATE", event.version)
@@ -101,7 +107,7 @@ export class GreenMachine {
 	async start(){
 		const {token, data} = await this.getToken();
 
-		this.initControlSocket(this.opts.controlUrl);
+		this.initControlSocket(this.opts.controlUrl, token);
 
 		console.log(token, data)
 
