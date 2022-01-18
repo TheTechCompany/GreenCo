@@ -34,12 +34,12 @@ interface ScheduleItemProperties @relationshipProperties {
 
 
 type ScheduleTier @auth(rules: [
-	{operations: [READ, UPDATE], where: {organisation: {id: "$jwt.organisation"}}},
-	{operations: [UPDATE, DELETE], bind: {organisation: {id: "$jwt.organisation"}}}
+	{operations: [READ, UPDATE], where: {schedule: {organisation: {id: "$jwt.organisation"}}}},
+	{operations: [UPDATE, DELETE], bind: {schedule: {organisation: {id: "$jwt.organisation"}}}}
 ])  {
 	id: ID! @id
 	name: String
-	schedule: Schedule @relationship(type: "HAS_TIER", direction: IN)
+	schedule: Schedule @relationship(type: "SCHEDULE_TIER", direction: IN)
 	percent: Float
 	slots: Float
 

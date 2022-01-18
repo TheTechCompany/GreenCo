@@ -10,6 +10,7 @@ import { VisualizeTierModal } from '../../../modals/visualize-tier/VisualizeTier
 export const ScheduleTiers = (props: any) => {
 	const [ modalOpen, openModal ] = useState(false);
 	const [ visualModalOpen, openVisualModal ] = useState(false)
+	
 	const { scheduleId, tiers, refresh } = useContext(ScheduleSingleContext)
 
 	const [ selected, setSelected ] = useState<any>()
