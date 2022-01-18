@@ -4,10 +4,11 @@ import { CloudUpload } from 'grommet-icons'
 import React, {useState} from 'react';
 import { Route, Routes, useParams, useNavigate } from 'react-router-dom'
 import { ProvisionMachineModal } from '../../modals/provision-machine';
-import { DisplaySingleProvider } from './context';
-import { DisplayCluster } from './DisplayCluster';
-import { DisplayComputers } from './DisplayComputers';
-import { DisplayScreen } from './DisplayScreen';
+import { ScreenSingleProvider } from './context';
+import { ScreenLocation } from './ScreenLocation';
+import { ScreenComputers } from './ScreenComputers';
+import { ScreenDisplays } from './ScreenDisplays';
+import { gql, useQuery as useApolloQuery } from '@apollo/client';
 
 export const ScreenSingle = (props) => {
 	const query = useQuery()
@@ -21,6 +22,24 @@ export const ScreenSingle = (props) => {
 
 	const slots = query.screenSlots({where: {screen: {id: id}}})?.map((x) => ({...x}))
 	const machine = machines?.[0];
+
+	const { data } = useApolloQuery(gql`
+		query ScreenSingle ($id: ID!){
+			greenScreens(where: {id: $id}){
+				id
+				name
+
+				location {
+					id
+					name
+				}
+			}
+		}
+	`, {
+		variables: {
+			id
+		}
+	})
 
 	// const [ provisionMachine, provisionInfo ] = useMutation((mutation, args: {networkName: string}) => {
 	// 	const item = mutation.updateGreenScreens({
@@ -41,8 +60,9 @@ export const ScreenSingle = (props) => {
 	// })
 
 	return (
-		<DisplaySingleProvider value={{
+		<ScreenSingleProvider value={{
 			id: id,
+			screen: data?.greenScreens?.[0],
 			slots
 		}}>
 		<ProvisionMachineModal
@@ -89,17 +109,17 @@ export const ScreenSingle = (props) => {
 					<List 
 						border={false}
 						onClickItem={(ev) => navigate(`${ev.item.toLowerCase()}`)}
-						data={["Computers", "Screen", "Cluster"]} />
+						data={["Computers", "Screen", "Location"]} />
 				</Box>
 				<Box flex>
 					<Routes>
-						<Route path={`computers/*`} element={<DisplayComputers/>} />
-						<Route path={`screen`} element={<DisplayScreen/>} />
-						<Route path={`cluster`} element={<DisplayCluster/>} />
+						<Route path={`computers/*`} element={<ScreenComputers/>} />
+						<Route path={`screen`} element={<ScreenDisplays/>} />
+						<Route path={`location`} element={<ScreenLocation />} />
 					</Routes>
 				</Box>
 			</Box>
 		</Box>
-		</DisplaySingleProvider>
+		</ScreenSingleProvider>
 	)
 }

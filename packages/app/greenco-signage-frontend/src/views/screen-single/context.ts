@@ -1,10 +1,18 @@
 import React from 'react';
 
-export const DisplaySingleContext = React.createContext<{
+export const ScreenSingleContext = React.createContext<{
 	id?: string;
-	slots?: any[]
+	slots?: any[];
+	screen?: {
+		id: string;
+		name: string;
+		location: {
+			id: string;
+			name: string;
+		}
+	}
 }>({
 
 })
 
-export const DisplaySingleProvider = DisplaySingleContext.Provider
+export const ScreenSingleProvider = ScreenSingleContext.Provider
