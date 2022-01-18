@@ -18,26 +18,26 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 	const schedules = query.schedules()
 
 	const [ createSchedule, createInfo ] = useMutation((mutation, args: {name: string}) => {
-		// const item = mutation.updateHiveOrganisations({
-		// 	update: {
-		// 		schedules: [{
-		// 			create: [{
-		// 				node: {
-		// 					name: args.name,
-		// 				}
-		// 			}]
-		// 		}]
-		// 	}
-		// })
-		const item = mutation.createSchedules({
-			input: [{
-				name: args.name,
-			}]
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				schedules: [{
+					create: [{
+						node: {
+							name: args.name,
+						}
+					}]
+				}]
+			}
 		})
+		// const item = mutation.createSchedules({
+		// 	input: [{
+		// 		name: args.name,
+		// 	}]
+		// })
 
 		return {
 			item: {
-				...item.schedules?.[0]
+				...item.hiveOrganisations?.[0]
 			}
 		}
 	}, {
