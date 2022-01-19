@@ -10,7 +10,7 @@
     "access": "public"
   },
   "bin": {
-    "green-machine": "dist/cli.js"
+    "green-machine": "dist/main.js"
   },
   "scripts": {
     "start": "ts-node src/cli.ts",
