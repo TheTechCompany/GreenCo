@@ -32,8 +32,8 @@ export default async (session: Session) => {
 				memoryUsed: memoryUsed,
 				cpus: cpus,
 				os,
-				agentVersion: agentVersion,
-				ipAddr: network.find((a: {interface: string, addresses: string[]}) => a.interface == "Ethernet").addresses?.[0] || '169.169.169.169'
+				agentVersion: agentVersion || '0.0.0',
+				ipAddr: network?.find((a: {interface: string, addresses: string[]}) => a.interface == "Ethernet")?.addresses?.[0] || '169.169.169.169'
 			})
 
 			const data = result.records[0].get(0)
