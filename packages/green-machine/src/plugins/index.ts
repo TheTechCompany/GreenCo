@@ -16,12 +16,20 @@ export interface PluginManagerOptions {
 	initPlugins: Plugin[]
 }
 
+export abstract class AbstractPlugin {
+	start(){
+
+	}
+}
+
 export class PluginManager {
 	private pluginDirectory: string;
 
 	private pluginConfPath: string;
 
 	private initPlugins: Plugin[] = [];
+
+	private pluginInstances : {[key: string]: AbstractPlugin} = {}
 
 	private configuration: {
 		plugins: Plugin[]
@@ -56,6 +64,27 @@ export class PluginManager {
 		await this.installPlugins()
 	}
 
+	async startAll(){
+		const plugins = await this.loadPlugins(this.configuration.plugins.map((plugin) => { return plugin.source }));
+
+		const instances = plugins.map((plugin) => {
+			return plugin && {
+				id: plugin?.id || '',
+				instance: new plugin.module()
+			}
+		})
+		
+		this.pluginInstances =  instances.reduce((prev, curr) => ({
+			...prev,
+			[curr?.id || '']: curr?.instance
+		}), {})
+
+		await Promise.all(Object.keys(this.pluginInstances).map(async (plugin_key) => {
+			let plugin = this.pluginInstances[plugin_key];
+			return await plugin.start()
+		}))
+	}
+
 	async getGlobalVersion(name: string){
 		return await new Promise((resolve, reject) => {
 			exec(`npm info -g ${name} version`, (err, stdout, stderr) => {
@@ -75,12 +104,16 @@ export class PluginManager {
 				const p = require.resolve(plugin, {
 					paths: [path.join(this.pluginDirectory, './node_modules')]
 				})
-				return require(p);
+				return {
+					id: plugin,
+					module: require(p)
+				}
 			}catch(e){
 				return null;
 			}
 		}).filter((a)=> a != null);
 
+		return load;
 	
 		console.log({load})
 	}
