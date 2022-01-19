@@ -1,14 +1,16 @@
 import { Router } from "express";
-import { Session } from "neo4j-driver";
+import { Driver, Session } from "neo4j-driver";
 import { v4 } from "uuid";
 import jwt from 'jsonwebtoken'
 
-export default async (session: Session) => {
+export default async (driver: Driver) => {
 
 	const router = Router()
 
 	router.route('/')
 		.post(async (req, res) => {
+			const session = driver.session()
+
 			let { hostname, memory, memoryUsed, cpus, os, network, agentVersion } = req.body;
 
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
@@ -43,12 +45,16 @@ export default async (session: Session) => {
 				slot: data.slot.id
 			}, 'secret')
 
+			session.close()
+
 			res.send({
 				data,
 				token
 			})
 		})
 		.get(async (req, res) => {
+			const session = driver.session()
+
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
@@ -65,6 +71,10 @@ export default async (session: Session) => {
 			})
 
 			const data = result.records[0].get(0)
+
+			session.close()
+
+			
 			res.send({
 				data
 			})
