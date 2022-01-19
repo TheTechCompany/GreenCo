@@ -21,7 +21,7 @@ export default async (driver: Driver) => {
 				ON CREATE
 					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus, slot.os = $os, slot.ip = $ipAddr, slot.agentVersion = $agentVersion
 				ON MATCH
-					SET slot.memoryUsed = $memoryUsed, slot.ip = $ipAddr, slot.agentVersion = $agentVersion
+					SET slot.memoryUsed = $memoryUsed, slot.ip = $ipAddr, slot.agentVersion = $agentVersion, slot.os = $os
 				return screen{
 					.*,
 					slot: slot{.*}
@@ -33,7 +33,7 @@ export default async (driver: Driver) => {
 				memory: memory,
 				memoryUsed: memoryUsed,
 				cpus: cpus,
-				os,
+				os: os || 'none',
 				agentVersion: agentVersion || '0.0.0',
 				ipAddr: network?.find((a: {interface: string, addresses: string[]}) => a.interface == "Ethernet")?.addresses?.[0] || '169.169.169.169'
 			})
@@ -74,7 +74,7 @@ export default async (driver: Driver) => {
 
 			session.close()
 
-			
+
 			res.send({
 				data
 			})
