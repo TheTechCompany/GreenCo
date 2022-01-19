@@ -8,6 +8,7 @@ export interface Plugin {
 	type: 'node' | 'python' | 'script';
 	name: string;
 	source: string;
+	sourceVersion?: string;
 	sourceType: 'npm' | 'git'
 }
 
@@ -73,7 +74,7 @@ export class PluginManager {
 				instance: new plugin.module()
 			}
 		})
-		
+
 		this.pluginInstances =  instances.reduce((prev, curr) => ({
 			...prev,
 			[curr?.id || '']: curr?.instance
@@ -187,7 +188,8 @@ export class PluginManager {
 
 	private async installFromNpm(plugin: Plugin){
 		return await new Promise((resolve, reject) => {
-			exec(`npm install ${plugin.source}`, {
+			let install = plugin.sourceVersion ? `${plugin.source}@${plugin.sourceVersion}` : plugin.source;
+			exec(`npm install ${install}`, {
 				cwd: `${this.pluginDirectory}`
 			}, (err, stdout, stderr) => {
 				if(err) return reject(err)

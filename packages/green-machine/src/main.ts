@@ -13,7 +13,8 @@ const pluginDir = os.platform() == "win32" ? "C:\\green-plugins" : "./plugins";
 			{
 				name: "GreenScreen",
 				type: 'node',
-				source: '@greenco/screen@latest',
+				source: '@greenco/screen',
+				sourceVersion: 'latest',
 				sourceType: 'npm'
 			}
 		]
@@ -22,5 +23,5 @@ const pluginDir = os.platform() == "win32" ? "C:\\green-plugins" : "./plugins";
 	await screen.start()
 })().catch((err) => {
 	console.log(err)
-	// process.exit(1)
+	process.exit(1)
 })

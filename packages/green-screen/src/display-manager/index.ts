@@ -21,6 +21,7 @@ export class DisplayManager {
 	}
 
 	async init(){
+		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
 			ignoreDefaultArgs: ['--enable-automation'],

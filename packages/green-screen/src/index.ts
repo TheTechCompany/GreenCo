@@ -53,6 +53,7 @@ export default class GreenScreen {
 	}
 
 	async start(){
+		console.log("Starting Green Screen");
 		this.running = true;
 		await this.hardwareManager.init()
 
