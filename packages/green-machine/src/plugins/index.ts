@@ -69,9 +69,10 @@ export class PluginManager {
 		const plugins = await this.loadPlugins(this.configuration.plugins.map((plugin) => { return plugin.source }));
 
 		const instances = plugins.map((plugin) => {
+			const { default : module } = plugin?.module;
 			return plugin && {
 				id: plugin?.id || '',
-				instance: new plugin.module?.default()
+				instance: new module()
 			}
 		})
 
