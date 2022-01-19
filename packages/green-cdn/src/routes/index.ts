@@ -4,7 +4,7 @@ import distributeRouter from './distribute'
 import telemetryRouter from './telemetry'
 import identityRouter from './identity'
 
-import { Driver } from 'neo4j-driver-core'
+import { Driver } from 'neo4j-driver'
 import { Pool, PoolClient } from 'pg'
 import { promises } from 'dns'
 
@@ -30,6 +30,6 @@ export default async (driver: Driver, pgClient: Pool) => {
 	router.use('/provision', provisionRouter(session))
 	router.use('/distribute', distributeRouter(session))
 
-	router.use(`/identity`, await identityRouter(session))
+	router.use(`/identity`, await identityRouter(driver))
 	return router
 }
