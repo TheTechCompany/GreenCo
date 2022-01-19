@@ -1,6 +1,6 @@
 {
   "name": "@greenco/machine",
-  "version": "0.0.1-alpha.29",
+  "version": "0.0.1-alpha.30",
   "description": "",
   "main": "dist/index.js",
   "files": [
