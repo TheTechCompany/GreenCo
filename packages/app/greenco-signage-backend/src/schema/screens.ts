@@ -27,6 +27,8 @@ type ScreenSlot {
 	hostname: String
 	online: Boolean
 
+	agentVersion: String
+
 	os: String
 	ip: String
 

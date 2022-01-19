@@ -83,6 +83,8 @@ export const DisplayComputer = () => {
 			</Box>
 
 			<Box flex pad="small">
+				<Text>OS: {slot?.os}</Text>
+				<Text>IP: {slot?.ip}</Text>
 				<Text>CPU Cores: {slot?.cpus}</Text>
 				<Text>Memory: {(slot?.memory / 1024 / 1024 / 1024).toFixed(2)}GB</Text>
 				<Text>Memory Used: {Math.round((1 - (slot?.memoryUsed || 1)) * 100)}%</Text>

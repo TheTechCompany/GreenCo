@@ -1068,6 +1068,26 @@ export interface GreenScreenSlotsNodeAggregationWhereInput {
   hostname_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   hostname_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
+  ip_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  ip_EQUAL?: Maybe<Scalars["String"]>;
+  ip_GT?: Maybe<Scalars["Int"]>;
+  ip_GTE?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  ip_LT?: Maybe<Scalars["Int"]>;
+  ip_LTE?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   memoryUsed_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   memoryUsed_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   memoryUsed_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -1143,6 +1163,26 @@ export interface GreenScreenSlotsNodeAggregationWhereInput {
   orientation_SUM_GTE?: Maybe<Scalars["Float"]>;
   orientation_SUM_LT?: Maybe<Scalars["Float"]>;
   orientation_SUM_LTE?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  os_EQUAL?: Maybe<Scalars["String"]>;
+  os_GT?: Maybe<Scalars["Int"]>;
+  os_GTE?: Maybe<Scalars["Int"]>;
+  os_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  os_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  os_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  os_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  os_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  os_LT?: Maybe<Scalars["Int"]>;
+  os_LTE?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   resHeight_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   resHeight_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   resHeight_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -7523,10 +7563,12 @@ export interface ScreenSlotCreateInput {
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
+  ip?: Maybe<Scalars["String"]>;
   memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   online?: Maybe<Scalars["Boolean"]>;
   orientation?: Maybe<Scalars["Float"]>;
+  os?: Maybe<Scalars["String"]>;
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
   screen?: Maybe<ScreenSlotScreenFieldInput>;
@@ -7675,10 +7717,12 @@ export interface ScreenSlotSort {
   height?: Maybe<SortDirection>;
   hostname?: Maybe<SortDirection>;
   id?: Maybe<SortDirection>;
+  ip?: Maybe<SortDirection>;
   memory?: Maybe<SortDirection>;
   memoryUsed?: Maybe<SortDirection>;
   online?: Maybe<SortDirection>;
   orientation?: Maybe<SortDirection>;
+  os?: Maybe<SortDirection>;
   resHeight?: Maybe<SortDirection>;
   resWidth?: Maybe<SortDirection>;
   width?: Maybe<SortDirection>;
@@ -7692,10 +7736,12 @@ export interface ScreenSlotUpdateInput {
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
+  ip?: Maybe<Scalars["String"]>;
   memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   online?: Maybe<Scalars["Boolean"]>;
   orientation?: Maybe<Scalars["Float"]>;
+  os?: Maybe<Scalars["String"]>;
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
   screen?: Maybe<ScreenSlotScreenUpdateFieldInput>;
@@ -7742,6 +7788,16 @@ export interface ScreenSlotWhere {
   id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
   id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
   id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  ip?: Maybe<Scalars["String"]>;
+  ip_CONTAINS?: Maybe<Scalars["String"]>;
+  ip_ENDS_WITH?: Maybe<Scalars["String"]>;
+  ip_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  ip_NOT?: Maybe<Scalars["String"]>;
+  ip_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  ip_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  ip_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  ip_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  ip_STARTS_WITH?: Maybe<Scalars["String"]>;
   memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
   memoryUsed_GT?: Maybe<Scalars["Float"]>;
@@ -7768,6 +7824,16 @@ export interface ScreenSlotWhere {
   orientation_LTE?: Maybe<Scalars["Float"]>;
   orientation_NOT?: Maybe<Scalars["Float"]>;
   orientation_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  os?: Maybe<Scalars["String"]>;
+  os_CONTAINS?: Maybe<Scalars["String"]>;
+  os_ENDS_WITH?: Maybe<Scalars["String"]>;
+  os_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  os_NOT?: Maybe<Scalars["String"]>;
+  os_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  os_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  os_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  os_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  os_STARTS_WITH?: Maybe<Scalars["String"]>;
   resHeight?: Maybe<Scalars["Float"]>;
   resHeight_GT?: Maybe<Scalars["Float"]>;
   resHeight_GTE?: Maybe<Scalars["Float"]>;
@@ -9077,9 +9143,11 @@ export const generatedSchema = {
     height: { __type: "FloatAggregateSelection!" },
     hostname: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
+    ip: { __type: "StringAggregateSelection!" },
     memory: { __type: "FloatAggregateSelection!" },
     memoryUsed: { __type: "FloatAggregateSelection!" },
     orientation: { __type: "FloatAggregateSelection!" },
+    os: { __type: "StringAggregateSelection!" },
     resHeight: { __type: "FloatAggregateSelection!" },
     resWidth: { __type: "FloatAggregateSelection!" },
     width: { __type: "FloatAggregateSelection!" },
@@ -9208,6 +9276,26 @@ export const generatedSchema = {
     hostname_SHORTEST_LT: { __type: "Int" },
     hostname_SHORTEST_LTE: { __type: "Int" },
     id_EQUAL: { __type: "ID" },
+    ip_AVERAGE_EQUAL: { __type: "Float" },
+    ip_AVERAGE_GT: { __type: "Float" },
+    ip_AVERAGE_GTE: { __type: "Float" },
+    ip_AVERAGE_LT: { __type: "Float" },
+    ip_AVERAGE_LTE: { __type: "Float" },
+    ip_EQUAL: { __type: "String" },
+    ip_GT: { __type: "Int" },
+    ip_GTE: { __type: "Int" },
+    ip_LONGEST_EQUAL: { __type: "Int" },
+    ip_LONGEST_GT: { __type: "Int" },
+    ip_LONGEST_GTE: { __type: "Int" },
+    ip_LONGEST_LT: { __type: "Int" },
+    ip_LONGEST_LTE: { __type: "Int" },
+    ip_LT: { __type: "Int" },
+    ip_LTE: { __type: "Int" },
+    ip_SHORTEST_EQUAL: { __type: "Int" },
+    ip_SHORTEST_GT: { __type: "Int" },
+    ip_SHORTEST_GTE: { __type: "Int" },
+    ip_SHORTEST_LT: { __type: "Int" },
+    ip_SHORTEST_LTE: { __type: "Int" },
     memoryUsed_AVERAGE_EQUAL: { __type: "Float" },
     memoryUsed_AVERAGE_GT: { __type: "Float" },
     memoryUsed_AVERAGE_GTE: { __type: "Float" },
@@ -9283,6 +9371,26 @@ export const generatedSchema = {
     orientation_SUM_GTE: { __type: "Float" },
     orientation_SUM_LT: { __type: "Float" },
     orientation_SUM_LTE: { __type: "Float" },
+    os_AVERAGE_EQUAL: { __type: "Float" },
+    os_AVERAGE_GT: { __type: "Float" },
+    os_AVERAGE_GTE: { __type: "Float" },
+    os_AVERAGE_LT: { __type: "Float" },
+    os_AVERAGE_LTE: { __type: "Float" },
+    os_EQUAL: { __type: "String" },
+    os_GT: { __type: "Int" },
+    os_GTE: { __type: "Int" },
+    os_LONGEST_EQUAL: { __type: "Int" },
+    os_LONGEST_GT: { __type: "Int" },
+    os_LONGEST_GTE: { __type: "Int" },
+    os_LONGEST_LT: { __type: "Int" },
+    os_LONGEST_LTE: { __type: "Int" },
+    os_LT: { __type: "Int" },
+    os_LTE: { __type: "Int" },
+    os_SHORTEST_EQUAL: { __type: "Int" },
+    os_SHORTEST_GT: { __type: "Int" },
+    os_SHORTEST_GTE: { __type: "Int" },
+    os_SHORTEST_LT: { __type: "Int" },
+    os_SHORTEST_LTE: { __type: "Int" },
     resHeight_AVERAGE_EQUAL: { __type: "Float" },
     resHeight_AVERAGE_GT: { __type: "Float" },
     resHeight_AVERAGE_GTE: { __type: "Float" },
@@ -16859,10 +16967,12 @@ export const generatedSchema = {
     height: { __type: "Float" },
     hostname: { __type: "String" },
     id: { __type: "ID!" },
+    ip: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     online: { __type: "Boolean" },
     orientation: { __type: "Float" },
+    os: { __type: "String" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
     screen: {
@@ -16892,9 +17002,11 @@ export const generatedSchema = {
     height: { __type: "FloatAggregateSelection!" },
     hostname: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
+    ip: { __type: "StringAggregateSelection!" },
     memory: { __type: "FloatAggregateSelection!" },
     memoryUsed: { __type: "FloatAggregateSelection!" },
     orientation: { __type: "FloatAggregateSelection!" },
+    os: { __type: "StringAggregateSelection!" },
     resHeight: { __type: "FloatAggregateSelection!" },
     resWidth: { __type: "FloatAggregateSelection!" },
     width: { __type: "FloatAggregateSelection!" },
@@ -16913,10 +17025,12 @@ export const generatedSchema = {
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
+    ip: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     online: { __type: "Boolean" },
     orientation: { __type: "Float" },
+    os: { __type: "String" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
     screen: { __type: "ScreenSlotScreenFieldInput" },
@@ -17065,10 +17179,12 @@ export const generatedSchema = {
     height: { __type: "SortDirection" },
     hostname: { __type: "SortDirection" },
     id: { __type: "SortDirection" },
+    ip: { __type: "SortDirection" },
     memory: { __type: "SortDirection" },
     memoryUsed: { __type: "SortDirection" },
     online: { __type: "SortDirection" },
     orientation: { __type: "SortDirection" },
+    os: { __type: "SortDirection" },
     resHeight: { __type: "SortDirection" },
     resWidth: { __type: "SortDirection" },
     width: { __type: "SortDirection" },
@@ -17078,10 +17194,12 @@ export const generatedSchema = {
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
+    ip: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     online: { __type: "Boolean" },
     orientation: { __type: "Float" },
+    os: { __type: "String" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
     screen: { __type: "ScreenSlotScreenUpdateFieldInput" },
@@ -17127,6 +17245,16 @@ export const generatedSchema = {
     id_NOT_IN: { __type: "[ID]" },
     id_NOT_STARTS_WITH: { __type: "ID" },
     id_STARTS_WITH: { __type: "ID" },
+    ip: { __type: "String" },
+    ip_CONTAINS: { __type: "String" },
+    ip_ENDS_WITH: { __type: "String" },
+    ip_IN: { __type: "[String]" },
+    ip_NOT: { __type: "String" },
+    ip_NOT_CONTAINS: { __type: "String" },
+    ip_NOT_ENDS_WITH: { __type: "String" },
+    ip_NOT_IN: { __type: "[String]" },
+    ip_NOT_STARTS_WITH: { __type: "String" },
+    ip_STARTS_WITH: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
     memoryUsed_GT: { __type: "Float" },
@@ -17153,6 +17281,16 @@ export const generatedSchema = {
     orientation_LTE: { __type: "Float" },
     orientation_NOT: { __type: "Float" },
     orientation_NOT_IN: { __type: "[Float]" },
+    os: { __type: "String" },
+    os_CONTAINS: { __type: "String" },
+    os_ENDS_WITH: { __type: "String" },
+    os_IN: { __type: "[String]" },
+    os_NOT: { __type: "String" },
+    os_NOT_CONTAINS: { __type: "String" },
+    os_NOT_ENDS_WITH: { __type: "String" },
+    os_NOT_IN: { __type: "[String]" },
+    os_NOT_STARTS_WITH: { __type: "String" },
+    os_STARTS_WITH: { __type: "String" },
     resHeight: { __type: "Float" },
     resHeight_GT: { __type: "Float" },
     resHeight_GTE: { __type: "Float" },
@@ -18400,9 +18538,11 @@ export interface GreenScreenScreenSlotSlotsNodeAggregateSelection {
   height: FloatAggregateSelection;
   hostname: StringAggregateSelection;
   id: IDAggregateSelection;
+  ip: StringAggregateSelection;
   memory: FloatAggregateSelection;
   memoryUsed: FloatAggregateSelection;
   orientation: FloatAggregateSelection;
+  os: StringAggregateSelection;
   resHeight: FloatAggregateSelection;
   resWidth: FloatAggregateSelection;
   width: FloatAggregateSelection;
@@ -20126,10 +20266,12 @@ export interface ScreenSlot {
   height?: Maybe<ScalarsEnums["Float"]>;
   hostname?: Maybe<ScalarsEnums["String"]>;
   id: ScalarsEnums["ID"];
+  ip?: Maybe<ScalarsEnums["String"]>;
   memory?: Maybe<ScalarsEnums["Float"]>;
   memoryUsed?: Maybe<ScalarsEnums["Float"]>;
   online?: Maybe<ScalarsEnums["Boolean"]>;
   orientation?: Maybe<ScalarsEnums["Float"]>;
+  os?: Maybe<ScalarsEnums["String"]>;
   resHeight?: Maybe<ScalarsEnums["Float"]>;
   resWidth?: Maybe<ScalarsEnums["Float"]>;
   screen: (args?: {
@@ -20156,9 +20298,11 @@ export interface ScreenSlotAggregateSelection {
   height: FloatAggregateSelection;
   hostname: StringAggregateSelection;
   id: IDAggregateSelection;
+  ip: StringAggregateSelection;
   memory: FloatAggregateSelection;
   memoryUsed: FloatAggregateSelection;
   orientation: FloatAggregateSelection;
+  os: StringAggregateSelection;
   resHeight: FloatAggregateSelection;
   resWidth: FloatAggregateSelection;
   width: FloatAggregateSelection;

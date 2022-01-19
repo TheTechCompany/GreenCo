@@ -1,5 +1,7 @@
 import os from 'os';
 
+const pkg = require('../../package.json')
+
 export class ConfigManager {
 	private hostname : string = os.hostname()
 	
@@ -26,7 +28,8 @@ export class ConfigManager {
 			},
 			os: os.type(),
 			platform: os.platform(),
-			network: addresses
+			network: addresses,
+			agentVersion: pkg.version
 		}
 	}
 }

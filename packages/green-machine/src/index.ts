@@ -98,7 +98,8 @@ export class GreenMachine {
 			memoryUsed: this.configManager.host.memory.used, 
 			cpus: this.configManager.host.cpus,
 			os: this.configManager.host.os,
-			network: this.configManager.host.network
+			network: this.configManager.host.network,
+			agentVersion: this.configManager.host.agentVersion
 		})
 		return result.data;
 	}
