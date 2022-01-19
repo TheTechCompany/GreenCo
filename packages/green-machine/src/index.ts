@@ -12,7 +12,7 @@
 */
 
 import { ConfigManager } from "./config";
-import { PluginManager } from "./plugins";
+import { Plugin, PluginManager } from "./plugins";
 import axios from 'axios';
 import { connect, Socket } from "socket.io-client";
 import express, {Express} from 'express'
@@ -23,6 +23,7 @@ const pkg = require('../package.json');
 
 export interface GreenMachineOptions {
 	pluginDirectory: string;
+	initPlugins: Plugin[]
 	controlUrl: string;
 }
 
@@ -42,7 +43,8 @@ export class GreenMachine {
 		this.configManager = new ConfigManager()
 
 		this.pluginManager = new PluginManager({
-			pluginDirectory: opts.pluginDirectory
+			pluginDirectory: opts.pluginDirectory,
+			initPlugins: opts.initPlugins
 		})
 
 		this.app = express()
@@ -99,8 +101,8 @@ export class GreenMachine {
 		return result.data;
 	}
 
-	init(){
-		this.pluginManager.init()
+	async init(){
+		await this.pluginManager.init()
 		// this.pluginManager.loadPlugins(['@greenco/screen'])
 	}
 

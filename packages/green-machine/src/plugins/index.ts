@@ -13,6 +13,7 @@ export interface Plugin {
 
 export interface PluginManagerOptions {
 	pluginDirectory: string;
+	initPlugins: Plugin[]
 }
 
 export class PluginManager {
@@ -20,24 +21,24 @@ export class PluginManager {
 
 	private pluginConfPath: string;
 
-	private plugins: any[] = [];
+	private initPlugins: Plugin[] = [];
 
 	private configuration: {
 		plugins: Plugin[]
 	} = {plugins: []}
 
 	constructor(opts: PluginManagerOptions) {
-		this.plugins = [];
+		this.initPlugins = opts.initPlugins
 		this.pluginDirectory = opts.pluginDirectory;
 		this.pluginConfPath = path.join(this.pluginDirectory, './plugins.json')	
 
 	}
 
-	init(){
+	async init(){
 		let configuration:  {
 			plugins: Plugin[]
 		} = {
-			plugins: []
+			plugins: this.initPlugins
 		}
 
 		if(!existsSync(this.pluginDirectory)){
@@ -51,6 +52,8 @@ export class PluginManager {
 		}
 
 		this.configuration = configuration
+
+		await this.installPlugins()
 	}
 
 	async getGlobalVersion(name: string){

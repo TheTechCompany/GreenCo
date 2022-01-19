@@ -27,7 +27,15 @@ type Options = {
 
 	const screen = new GreenMachine({
 		pluginDirectory: pluginDir,
-		controlUrl
+		controlUrl,
+		initPlugins: [
+			{
+				name: "GreenScreen",
+				type: 'node',
+				source: '@greenco/screen',
+				sourceType: 'npm'
+			}
+		]
 	});
 
 	await screen.start()
