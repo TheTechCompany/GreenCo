@@ -1,6 +1,6 @@
 {
   "name": "@greenco/screen",
-  "version": "0.0.1-alpha.39",
+  "version": "0.0.1-alpha.40",
   "description": "",
   "main": "./dist/index.js",
   "files": [
