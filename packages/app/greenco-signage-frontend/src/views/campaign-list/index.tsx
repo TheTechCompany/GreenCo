@@ -28,6 +28,8 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                 ...item.nodesDeleted?.[0]
             }
         }
+    }, {
+        refetchQueries: [query.campaigns()]
     })
     const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string}) => {
        const item = mutation.updateHiveOrganisations({

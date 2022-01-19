@@ -2,6 +2,7 @@ import { Arguments, CommandBuilder, string } from 'yargs';
 import crypto from 'crypto';
 import { existsSync, writeFileSync } from 'fs';
 import { GreenMachine } from '..';
+import os from 'os';
 // import jwt from 'jsonwebtoken'
 
 type Options = {
@@ -15,7 +16,7 @@ type Options = {
   export const builder: CommandBuilder<Options, Options> = (yargs) =>
 	yargs
 	  .options({
-		pluginDir: {type: 'string', description: "Path to plugin directory", default: './plugins'},
+		pluginDir: {type: 'string', description: "Path to plugin directory", default: os.platform() == 'win32' ? `C:\\green-plugins` : './plugins'},
 		controlUrl: {type: 'string', description: "Control URL", default: 'http://hahei-jumpbox.hexhive.io'},
 	  })
 

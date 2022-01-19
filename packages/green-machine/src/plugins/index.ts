@@ -1,4 +1,4 @@
-import fs, { existsSync, readdirSync, readFile, readFileSync, writeFileSync } from 'fs';
+import fs, { existsSync, mkdirSync, readdirSync, readFile, readFileSync, writeFileSync } from 'fs';
 import git from 'isomorphic-git'
 import http from 'isomorphic-git/http/node'
 import {exec, spawn} from 'child_process'
@@ -30,6 +30,7 @@ export class PluginManager {
 		this.plugins = [];
 		this.pluginDirectory = opts.pluginDirectory;
 		this.pluginConfPath = path.join(this.pluginDirectory, './plugins.json')	
+
 	}
 
 	init(){
@@ -38,6 +39,11 @@ export class PluginManager {
 		} = {
 			plugins: []
 		}
+
+		if(!existsSync(this.pluginDirectory)){
+			mkdirSync(this.pluginDirectory, {recursive: true})
+		}
+
 		if(existsSync(this.pluginConfPath)){
 			configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
 		}else{
