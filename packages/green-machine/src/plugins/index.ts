@@ -71,7 +71,7 @@ export class PluginManager {
 		const instances = plugins.map((plugin) => {
 			return plugin && {
 				id: plugin?.id || '',
-				instance: new plugin.module()
+				instance: new plugin.module?.default()
 			}
 		})
 
