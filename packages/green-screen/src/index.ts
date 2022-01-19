@@ -62,8 +62,8 @@ export default class GreenScreen {
 		// 	// await this.assetStore.provision();
 		// 	this.isProvisioned = true;
 		// }
-		await this.assetStore.init()
 		await this.displayManager.init()
+		await this.assetStore.init()
 		await this.schedule()
 		
 	}

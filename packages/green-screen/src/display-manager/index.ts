@@ -7,7 +7,7 @@ export class DisplayManager {
 
 	private page?: Page;
 
-	private baseUrl = 'https://hexhive.io'
+	private baseUrl = 'https://streetlevelone.com/'
 
 	public currentAsset: string | undefined = undefined;
 
