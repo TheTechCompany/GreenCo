@@ -99,6 +99,7 @@ export class PluginManager {
 		// 	plugins: Plugin[]
 		// } = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
 
+		console.log("Installing Plugins");
 		await Promise.all(this.configuration.plugins.map(async (plugin) => {
 			const installResult = await this.installPlugin(plugin)
 			console.log({installResult})

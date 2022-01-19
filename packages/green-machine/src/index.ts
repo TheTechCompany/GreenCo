@@ -49,7 +49,7 @@ export class GreenMachine {
 
 		this.app = express()
 
-		this.init()
+		// this.init()
 
 		log.info(`Green Machine v${pkg.version}`)
 	}
@@ -110,6 +110,8 @@ export class GreenMachine {
 		const {token, data} = await this.getToken();
 
 		this.initControlSocket(this.opts.controlUrl, token);
+
+		await this.init()
 
 		console.log(token, data)
 
