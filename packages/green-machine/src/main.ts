@@ -12,4 +12,6 @@ const pluginDir = os.platform() == "win32" ? "C:\\green-plugins" : "./plugins";
 	});
 
 	await screen.start()
-})()
+})().catch((err) => {
+	process.exit(1)
+})

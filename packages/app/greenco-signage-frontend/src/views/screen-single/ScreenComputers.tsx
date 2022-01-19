@@ -4,6 +4,7 @@ import { Box, Text, Button, List } from 'grommet';
 import React, {useContext} from 'react';
 import { ScreenSingleContext } from './context';
 import { Routes, Route, useParams, Navigate, useNavigate, Outlet } from 'react-router-dom'
+import { ColorDot } from '@hexhive/ui';
 
 export const ScreenComputers = () => {
 
@@ -17,13 +18,28 @@ export const ScreenComputers = () => {
 		<Box flex background="neutral-1">
 			<Routes>
 				<Route path={''} element={<Outlet />} >
-					<Route path={''} element={<List onClickItem={(event) => navigate(event.item.id) } data={slots} primaryKey={"hostname"} />} />
+					<Route path={''} element={<ComputerList />} />
 					<Route path={':id'} element={<DisplayComputer />} />
 				
 				</Route> 
 			</Routes>
 		</Box>
 	)
+}
+
+export const ComputerList = (props) => {
+	const { id, slots } = useContext(ScreenSingleContext)
+
+	const navigate = useNavigate()
+
+	return <List onClickItem={(ev) => navigate(ev.item.id)} data={slots} >
+			{(item) => <Box direction='row' align='center'>
+				<ColorDot 
+                    size={7}
+                    color={item?.online ? 'green' : "red"}/>
+				<Text>{item.hostname}</Text>
+			</Box> }
+		</List>
 }
 
 export const DisplayComputer = () => {

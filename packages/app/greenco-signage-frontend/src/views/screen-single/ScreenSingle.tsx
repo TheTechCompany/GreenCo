@@ -29,6 +29,8 @@ export const ScreenSingle = (props) => {
 				id
 				name
 
+				online
+				
 				location {
 					id
 					name

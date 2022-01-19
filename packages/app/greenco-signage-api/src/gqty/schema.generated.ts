@@ -7525,6 +7525,7 @@ export interface ScreenSlotCreateInput {
   hostname?: Maybe<Scalars["String"]>;
   memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
+  online?: Maybe<Scalars["Boolean"]>;
   orientation?: Maybe<Scalars["Float"]>;
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
@@ -7676,6 +7677,7 @@ export interface ScreenSlotSort {
   id?: Maybe<SortDirection>;
   memory?: Maybe<SortDirection>;
   memoryUsed?: Maybe<SortDirection>;
+  online?: Maybe<SortDirection>;
   orientation?: Maybe<SortDirection>;
   resHeight?: Maybe<SortDirection>;
   resWidth?: Maybe<SortDirection>;
@@ -7692,6 +7694,7 @@ export interface ScreenSlotUpdateInput {
   hostname?: Maybe<Scalars["String"]>;
   memory?: Maybe<Scalars["Float"]>;
   memoryUsed?: Maybe<Scalars["Float"]>;
+  online?: Maybe<Scalars["Boolean"]>;
   orientation?: Maybe<Scalars["Float"]>;
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
@@ -7755,6 +7758,8 @@ export interface ScreenSlotWhere {
   memory_LTE?: Maybe<Scalars["Float"]>;
   memory_NOT?: Maybe<Scalars["Float"]>;
   memory_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  online?: Maybe<Scalars["Boolean"]>;
+  online_NOT?: Maybe<Scalars["Boolean"]>;
   orientation?: Maybe<Scalars["Float"]>;
   orientation_GT?: Maybe<Scalars["Float"]>;
   orientation_GTE?: Maybe<Scalars["Float"]>;
@@ -16856,6 +16861,7 @@ export const generatedSchema = {
     id: { __type: "ID!" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
+    online: { __type: "Boolean" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
@@ -16909,6 +16915,7 @@ export const generatedSchema = {
     hostname: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
+    online: { __type: "Boolean" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
@@ -17060,6 +17067,7 @@ export const generatedSchema = {
     id: { __type: "SortDirection" },
     memory: { __type: "SortDirection" },
     memoryUsed: { __type: "SortDirection" },
+    online: { __type: "SortDirection" },
     orientation: { __type: "SortDirection" },
     resHeight: { __type: "SortDirection" },
     resWidth: { __type: "SortDirection" },
@@ -17072,6 +17080,7 @@ export const generatedSchema = {
     hostname: { __type: "String" },
     memory: { __type: "Float" },
     memoryUsed: { __type: "Float" },
+    online: { __type: "Boolean" },
     orientation: { __type: "Float" },
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
@@ -17134,6 +17143,8 @@ export const generatedSchema = {
     memory_LTE: { __type: "Float" },
     memory_NOT: { __type: "Float" },
     memory_NOT_IN: { __type: "[Float]" },
+    online: { __type: "Boolean" },
+    online_NOT: { __type: "Boolean" },
     orientation: { __type: "Float" },
     orientation_GT: { __type: "Float" },
     orientation_GTE: { __type: "Float" },
@@ -20117,6 +20128,7 @@ export interface ScreenSlot {
   id: ScalarsEnums["ID"];
   memory?: Maybe<ScalarsEnums["Float"]>;
   memoryUsed?: Maybe<ScalarsEnums["Float"]>;
+  online?: Maybe<ScalarsEnums["Boolean"]>;
   orientation?: Maybe<ScalarsEnums["Float"]>;
   resHeight?: Maybe<ScalarsEnums["Float"]>;
   resWidth?: Maybe<ScalarsEnums["Float"]>;
