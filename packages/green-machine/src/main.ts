@@ -13,7 +13,7 @@ const pluginDir = os.platform() == "win32" ? "C:\\green-plugins" : "./plugins";
 			{
 				name: "GreenScreen",
 				type: 'node',
-				source: '@greenco/screen',
+				source: '@greenco/screen@latest',
 				sourceType: 'npm'
 			}
 		]
