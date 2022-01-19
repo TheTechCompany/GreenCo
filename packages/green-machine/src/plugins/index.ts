@@ -45,11 +45,11 @@ export class PluginManager {
 			mkdirSync(this.pluginDirectory, {recursive: true})
 		}
 
-		if(existsSync(this.pluginConfPath)){
-			configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
-		}else{
+		// if(existsSync(this.pluginConfPath)){
+		// 	configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
+		// }else{
 			writeFileSync(this.pluginConfPath, JSON.stringify(configuration))
-		}
+		// }
 
 		this.configuration = configuration
 

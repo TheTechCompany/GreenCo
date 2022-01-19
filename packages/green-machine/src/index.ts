@@ -109,9 +109,10 @@ export class GreenMachine {
 	async start(){
 		const {token, data} = await this.getToken();
 
-		this.initControlSocket(this.opts.controlUrl, token);
 
 		await this.init()
+		
+		this.initControlSocket(this.opts.controlUrl, token);
 
 		console.log(token, data)
 
