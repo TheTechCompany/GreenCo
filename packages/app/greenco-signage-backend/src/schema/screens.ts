@@ -27,6 +27,9 @@ type ScreenSlot {
 	hostname: String
 	online: Boolean
 
+	os: String
+	ip: String
+
 	memory: Float
 	memoryUsed: Float
 	cpus: Int

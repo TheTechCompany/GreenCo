@@ -9,16 +9,17 @@ export default async (session: Session) => {
 
 	router.route('/')
 		.post(async (req, res) => {
-			let { hostname, memory, memoryUsed, cpus } = req.body;
+			let { hostname, memory, memoryUsed, cpus, os, network } = req.body;
+
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})
 				MERGE (screen)-[:HAS_SLOT]->(slot:ScreenSlot {hostname: $hostname})
 				ON CREATE
-					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus
+					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus, slot.os = $os, slot.ip = $ipAddr
 				ON MATCH
-					SET slot.memoryUsed = $memoryUsed
+					SET slot.memoryUsed = $memoryUsed, slot.ip = $ipAddr
 				return screen{
 					.*,
 					slot: slot{.*}
@@ -29,7 +30,9 @@ export default async (session: Session) => {
 				slotId: v4(),
 				memory: memory,
 				memoryUsed: memoryUsed,
-				cpus: cpus
+				cpus: cpus,
+				os,
+				ipAddr: network.find((a: {interface: string, addresses: string[]}) => a.interface == "Ethernet").addresses?.[0] || '169.169.169.169'
 			})
 
 			const data = result.records[0].get(0)

@@ -96,7 +96,9 @@ export class GreenMachine {
 			hostname: this.configManager.host.name,
 			memory: this.configManager.host.memory.total, 
 			memoryUsed: this.configManager.host.memory.used, 
-			cpus: this.configManager.host.cpus
+			cpus: this.configManager.host.cpus,
+			os: this.configManager.host.os,
+			network: this.configManager.host.network
 		})
 		return result.data;
 	}
