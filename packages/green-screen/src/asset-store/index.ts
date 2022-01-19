@@ -82,12 +82,21 @@ export class AssetStore {
 	}
 
 	async pull(hash: string){
-		const pull = this.node?.get(hash)
-		if(!pull) return;
-		let ret = [];
-		for await (const chunk of pull){
-			ret.push(chunk)
-		}
-		return Buffer.concat(ret)
+		return await new Promise<Buffer | null>(async (resolve, reject) => {
+
+			setTimeout(() => {
+				console.log(`Pulling ${hash} timed out`)
+				resolve(null)
+			}, 5 * 60 * 1000)
+
+			const pull = this.node?.get(hash)
+			if(!pull) return;
+			let ret = [];
+			for await (const chunk of pull){
+				ret.push(chunk)
+			}
+			resolve(Buffer.concat(ret))
+
+		})
 	}
 }
