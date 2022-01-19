@@ -1,4 +1,4 @@
-import { GreenScreen } from './index'
+import GreenScreen from './index'
 
 (async () => {
 	const screen = new GreenScreen()

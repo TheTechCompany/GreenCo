@@ -5,7 +5,8 @@ import { HardwareManager } from './hardware';
 import { Network } from './network';
 import { TelemetryService } from './telemetry';
 const Moniker = require('moniker');
-export class GreenScreen {
+
+export default class GreenScreen {
 
 	private hardwareManager: HardwareManager;
 
