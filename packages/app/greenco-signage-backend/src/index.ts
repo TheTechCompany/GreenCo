@@ -58,10 +58,12 @@ const greenlock = require("greenlock-express");
 
 	console.log("Postgres")
 
-	const fs = new FileStore({
+	const fs = new FileStore();
+/*
+{
 		url: process.env.IPFS_URL || 'http://localhost:5001'
-	});
-
+	}
+*/
 	await fs.init()
 
 	const resolved = await resolvers(fs, pgClient, channel)

@@ -1,20 +1,19 @@
-// import {create, IPFS} from 'ipfs';
-import { create, IPFSHTTPClient } from 'ipfs-http-client'
+import {create, IPFS} from 'ipfs';
+
 export class FileStore {
-	private node?: IPFSHTTPClient;
+	private node?: IPFS;
 
-	private nodeUrl: string;
-
-	constructor(opts: {url: string}){
+	constructor(){
 		
-		this.nodeUrl = opts.url;
 
 		this.writeFile = this.writeFile.bind(this);
 		this.lsAsset = this.lsAsset.bind(this)
 	}
 
 	async init(){
-		this.node = await create({url: this.nodeUrl})
+		this.node = await create({
+			repo: '/tmp/ipfs-datastore',
+		})
 
 		// const results = await this.ls(`/Assets/`)
 		// console.log(results)
