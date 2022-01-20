@@ -1,10 +1,10 @@
 import { Box, List, Button, Text } from 'grommet';
 import React, {useCallback, useState} from 'react';
 import { ScreenPreview } from '../../components/screen-preview';
-import { Upload, Analytics, Add, Tools, Document, Qr, MoreVertical} from 'grommet-icons';
+import { Upload, Analytics, Add, Tools, Document, Qr, MoreVertical, DownloadOption} from 'grommet-icons';
 import { UploadPlaceholder } from '../../components/upload-placeholder';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { uploadCampaignAssets } from '../../api/campaign';
+import { downloadCampaignAssets, uploadCampaignAssets } from '../../api/campaign';
 import { useQuery as useApolloQuery, useApolloClient, gql } from '@apollo/client';
 import { CreateAnalyticModal } from '../../modals/create-analytic';
 import QRCode from 'qrcode.react'
@@ -15,6 +15,8 @@ import { ToolsPage } from './pages/tools';
 import { CampaignSingleProvider } from './context';
 
 export const CampaignSingle = (props) => {
+	const [ downloading, setDownloading ] = useState(false);
+
 	const navigate = useNavigate()
 
 	const client = useApolloClient()
@@ -96,6 +98,13 @@ export const CampaignSingle = (props) => {
 		`${item.route}`,
 	) != null).indexOf(true)
 
+	const downloadCampaign = async () => {
+		if(!id) return;
+		setDownloading(true)
+		await downloadCampaignAssets(id)
+		setDownloading(false)
+	}
+
 	return (
 		<CampaignSingleProvider value={{
 			campaign,
@@ -127,6 +136,13 @@ export const CampaignSingle = (props) => {
 					<Text>{campaign.name}</Text>
 
 					<Box direction="row" gap="xsmall">
+						<Button 
+							disabled={downloading}
+							onClick={() => downloadCampaign()}
+							hoverIndicator 
+							plain 
+							style={{padding: 6, borderRadius: 3}} 
+							icon={<DownloadOption size="small" />} />
 						{menu.map((item, ix) => (
 							<Button 
 							active={ix == active}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import download from 'downloadjs'
 
 let apiUrl = process.env.NODE_ENV == 'production' ? (`https://api.greenco.co.nz`) : "http://localhost:9009"
 
@@ -25,3 +26,7 @@ export const uploadCampaignAssets = async (campaignId: string, files: Array<File
 	// }).then((r) => r.json())
 }
 
+export const downloadCampaignAssets = async (campaignId: string) => {
+	const res = await axios.get(`${apiUrl}/api/campaign/${campaignId}/assets`, { responseType: 'blob' })
+	download(res.data)
+}
