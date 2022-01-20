@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@greenco/signage-api';
 import { Box, Button, List, Text } from 'grommet'
-import { CloudUpload } from 'grommet-icons'
+import { CloudUpload, FormPreviousLink } from 'grommet-icons'
 import React, {useState} from 'react';
 import { Route, Routes, useParams, useNavigate } from 'react-router-dom'
 import { ProvisionMachineModal } from '../../modals/provision-machine';
@@ -30,7 +30,7 @@ export const ScreenSingle = (props) => {
 				name
 
 				online
-				
+
 				location {
 					id
 					name
@@ -92,10 +92,18 @@ export const ScreenSingle = (props) => {
 				pad="xsmall" 
 				background="accent-2" 
 				direction="row">
-				<Box>
-					<Text>{machine.name}</Text>
-					<Text size="xsmall">{machine.networkName}.hexhive.io</Text>
-				</Box>
+					<Box direction='row' align='center' gap="xsmall">
+						<Button 
+							hoverIndicator
+							onClick={() => navigate('../')}
+							plain 
+							style={{padding: 6, borderRadius: 3}} 
+							icon={<FormPreviousLink />} />
+						<Box>
+							<Text>{machine.name}</Text>
+							<Text size="xsmall">{machine.networkName}.hexhive.io</Text>
+						</Box>
+					</Box>
 				<Box>
 				{/* {!machine.provisioned && <Button 
 					hoverIndicator

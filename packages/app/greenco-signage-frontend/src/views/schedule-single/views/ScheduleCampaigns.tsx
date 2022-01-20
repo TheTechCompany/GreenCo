@@ -5,6 +5,7 @@ import { ScheduleCampaignModal } from '../modals/ScheduleCampaign';
 import { mutation, useMutation, useQuery } from '@greenco/signage-api';
 import { ScheduleSingleContext } from '../context';
 import { Timeline } from '@hexhive/ui';
+import { useQuery as useApolloQuery, gql} from '@apollo/client'
 
 export const ScheduleCampaigns = () => {
 	const [ activeView, changeActiveView ] = useState<string | null>(null);
@@ -12,10 +13,17 @@ export const ScheduleCampaigns = () => {
 	const [ modalOpen, openModal ] = useState(false)
 	const [ viewMode, changeMode ] = useState(false)
 
-	const query = useQuery()
-
 	const { scheduleId, tiers, screens, campaigns, refresh } = useContext(ScheduleSingleContext)
-	const allCampaigns = query.campaigns({})
+
+	const { data } = useApolloQuery(gql`
+		query GetCampaigns {
+			campaigns {
+				id
+				name
+			}
+		}
+	`)
+	const allCampaigns = data?.campaigns || [];
 
 	const [ scheduleCampaign, scheduleInfo ] = useMutation((mutation, args: {tier: string, campaign: string, dates: string[], screen: string}) => {
 		let dateUpdate = {};

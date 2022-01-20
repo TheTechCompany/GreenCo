@@ -997,6 +997,26 @@ export interface GreenScreenSlotsFieldInput {
 export interface GreenScreenSlotsNodeAggregationWhereInput {
   AND?: Maybe<Array<GreenScreenSlotsNodeAggregationWhereInput>>;
   OR?: Maybe<Array<GreenScreenSlotsNodeAggregationWhereInput>>;
+  agentVersion_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  agentVersion_EQUAL?: Maybe<Scalars["String"]>;
+  agentVersion_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_LTE?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   cpus_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   cpus_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   cpus_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -7560,6 +7580,7 @@ export interface ScreenSlotConnectWhere {
 }
 
 export interface ScreenSlotCreateInput {
+  agentVersion?: Maybe<Scalars["String"]>;
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
@@ -7713,6 +7734,7 @@ export interface ScreenSlotScreenUpdateFieldInput {
 
 /** Fields to sort ScreenSlots by. The order in which sorts are applied is not guaranteed when specifying many fields in one ScreenSlotSort object. */
 export interface ScreenSlotSort {
+  agentVersion?: Maybe<SortDirection>;
   cpus?: Maybe<SortDirection>;
   height?: Maybe<SortDirection>;
   hostname?: Maybe<SortDirection>;
@@ -7733,6 +7755,7 @@ export interface ScreenSlotUniqueWhere {
 }
 
 export interface ScreenSlotUpdateInput {
+  agentVersion?: Maybe<Scalars["String"]>;
   cpus?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Float"]>;
   hostname?: Maybe<Scalars["String"]>;
@@ -7752,6 +7775,16 @@ export interface ScreenSlotUpdateInput {
 export interface ScreenSlotWhere {
   AND?: Maybe<Array<ScreenSlotWhere>>;
   OR?: Maybe<Array<ScreenSlotWhere>>;
+  agentVersion?: Maybe<Scalars["String"]>;
+  agentVersion_CONTAINS?: Maybe<Scalars["String"]>;
+  agentVersion_ENDS_WITH?: Maybe<Scalars["String"]>;
+  agentVersion_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  agentVersion_NOT?: Maybe<Scalars["String"]>;
+  agentVersion_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  agentVersion_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  agentVersion_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  agentVersion_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  agentVersion_STARTS_WITH?: Maybe<Scalars["String"]>;
   cpus?: Maybe<Scalars["Int"]>;
   cpus_GT?: Maybe<Scalars["Int"]>;
   cpus_GTE?: Maybe<Scalars["Int"]>;
@@ -9139,6 +9172,7 @@ export const generatedSchema = {
   },
   GreenScreenScreenSlotSlotsNodeAggregateSelection: {
     __typename: { __type: "String!" },
+    agentVersion: { __type: "StringAggregateSelection!" },
     cpus: { __type: "IntAggregateSelection!" },
     height: { __type: "FloatAggregateSelection!" },
     hostname: { __type: "StringAggregateSelection!" },
@@ -9205,6 +9239,26 @@ export const generatedSchema = {
   GreenScreenSlotsNodeAggregationWhereInput: {
     AND: { __type: "[GreenScreenSlotsNodeAggregationWhereInput!]" },
     OR: { __type: "[GreenScreenSlotsNodeAggregationWhereInput!]" },
+    agentVersion_AVERAGE_EQUAL: { __type: "Float" },
+    agentVersion_AVERAGE_GT: { __type: "Float" },
+    agentVersion_AVERAGE_GTE: { __type: "Float" },
+    agentVersion_AVERAGE_LT: { __type: "Float" },
+    agentVersion_AVERAGE_LTE: { __type: "Float" },
+    agentVersion_EQUAL: { __type: "String" },
+    agentVersion_GT: { __type: "Int" },
+    agentVersion_GTE: { __type: "Int" },
+    agentVersion_LONGEST_EQUAL: { __type: "Int" },
+    agentVersion_LONGEST_GT: { __type: "Int" },
+    agentVersion_LONGEST_GTE: { __type: "Int" },
+    agentVersion_LONGEST_LT: { __type: "Int" },
+    agentVersion_LONGEST_LTE: { __type: "Int" },
+    agentVersion_LT: { __type: "Int" },
+    agentVersion_LTE: { __type: "Int" },
+    agentVersion_SHORTEST_EQUAL: { __type: "Int" },
+    agentVersion_SHORTEST_GT: { __type: "Int" },
+    agentVersion_SHORTEST_GTE: { __type: "Int" },
+    agentVersion_SHORTEST_LT: { __type: "Int" },
+    agentVersion_SHORTEST_LTE: { __type: "Int" },
     cpus_AVERAGE_EQUAL: { __type: "Float" },
     cpus_AVERAGE_GT: { __type: "Float" },
     cpus_AVERAGE_GTE: { __type: "Float" },
@@ -16963,6 +17017,7 @@ export const generatedSchema = {
   },
   ScreenSlot: {
     __typename: { __type: "String!" },
+    agentVersion: { __type: "String" },
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
@@ -16997,6 +17052,7 @@ export const generatedSchema = {
   },
   ScreenSlotAggregateSelection: {
     __typename: { __type: "String!" },
+    agentVersion: { __type: "StringAggregateSelection!" },
     count: { __type: "Int!" },
     cpus: { __type: "IntAggregateSelection!" },
     height: { __type: "FloatAggregateSelection!" },
@@ -17022,6 +17078,7 @@ export const generatedSchema = {
   },
   ScreenSlotConnectWhere: { node: { __type: "ScreenSlotWhere!" } },
   ScreenSlotCreateInput: {
+    agentVersion: { __type: "String" },
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
@@ -17175,6 +17232,7 @@ export const generatedSchema = {
     where: { __type: "ScreenSlotScreenConnectionWhere" },
   },
   ScreenSlotSort: {
+    agentVersion: { __type: "SortDirection" },
     cpus: { __type: "SortDirection" },
     height: { __type: "SortDirection" },
     hostname: { __type: "SortDirection" },
@@ -17191,6 +17249,7 @@ export const generatedSchema = {
   },
   ScreenSlotUniqueWhere: { id: { __type: "ID" } },
   ScreenSlotUpdateInput: {
+    agentVersion: { __type: "String" },
     cpus: { __type: "Int" },
     height: { __type: "Float" },
     hostname: { __type: "String" },
@@ -17209,6 +17268,16 @@ export const generatedSchema = {
   ScreenSlotWhere: {
     AND: { __type: "[ScreenSlotWhere!]" },
     OR: { __type: "[ScreenSlotWhere!]" },
+    agentVersion: { __type: "String" },
+    agentVersion_CONTAINS: { __type: "String" },
+    agentVersion_ENDS_WITH: { __type: "String" },
+    agentVersion_IN: { __type: "[String]" },
+    agentVersion_NOT: { __type: "String" },
+    agentVersion_NOT_CONTAINS: { __type: "String" },
+    agentVersion_NOT_ENDS_WITH: { __type: "String" },
+    agentVersion_NOT_IN: { __type: "[String]" },
+    agentVersion_NOT_STARTS_WITH: { __type: "String" },
+    agentVersion_STARTS_WITH: { __type: "String" },
     cpus: { __type: "Int" },
     cpus_GT: { __type: "Int" },
     cpus_GTE: { __type: "Int" },
@@ -18534,6 +18603,7 @@ export interface GreenScreenScreenSlotSlotsAggregationSelection {
 
 export interface GreenScreenScreenSlotSlotsNodeAggregateSelection {
   __typename?: "GreenScreenScreenSlotSlotsNodeAggregateSelection";
+  agentVersion: StringAggregateSelection;
   cpus: IntAggregateSelection;
   height: FloatAggregateSelection;
   hostname: StringAggregateSelection;
@@ -20262,6 +20332,7 @@ export interface ScheduleTiersRelationship {
 
 export interface ScreenSlot {
   __typename?: "ScreenSlot";
+  agentVersion?: Maybe<ScalarsEnums["String"]>;
   cpus?: Maybe<ScalarsEnums["Int"]>;
   height?: Maybe<ScalarsEnums["Float"]>;
   hostname?: Maybe<ScalarsEnums["String"]>;
@@ -20293,6 +20364,7 @@ export interface ScreenSlot {
 
 export interface ScreenSlotAggregateSelection {
   __typename?: "ScreenSlotAggregateSelection";
+  agentVersion: StringAggregateSelection;
   count: ScalarsEnums["Int"];
   cpus: IntAggregateSelection;
   height: FloatAggregateSelection;
