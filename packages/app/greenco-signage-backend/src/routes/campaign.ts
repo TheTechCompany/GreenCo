@@ -137,7 +137,15 @@ export default (ogm: OGM, fs: FileStore) => {
 			const folderInfo = await fs.getFolderInfo(req.params.id)
 			if(!folderInfo?.cid.toString()) return res.send({error: "No folder found"})
 			const asset = await fs.pull(folderInfo?.cid?.toString())
-			res.send(asset)
+			
+			if(!asset) return;
+			let ret = [];
+			for await (const chunk of asset){
+				ret.push(chunk)
+			}
+			// resolve(Buffer.concat(ret))
+
+			res.send(Buffer.concat(ret))
 		})
 	return router
 }
