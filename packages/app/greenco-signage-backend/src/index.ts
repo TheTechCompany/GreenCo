@@ -64,7 +64,9 @@ const greenlock = require("greenlock-express");
 		url: process.env.IPFS_URL || 'http://localhost:5001'
 	}
 */
-	await fs.init()
+	await fs.init({
+		url: process.env.IPFS_URL || 'http://localhost:5001'
+	})
 
 	const resolved = await resolvers(fs, pgClient, channel)
 	// const ogm = new OGM({typeDefs, driver})
