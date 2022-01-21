@@ -1,10 +1,13 @@
 import { IPFS, create } from 'ipfs';
+import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
 import { promises } from 'fs';
 import tar from 'tar';
 import { TelemetryService } from '../telemetry';
 import { DisplayManager } from '../display-manager';
+import { rmdirSync, existsSync } from 'fs';
+import path from 'path'
 
 export interface AssetStoreConfiguration {
 	assetStoreUrl?: string;
@@ -73,8 +76,15 @@ export class AssetStore {
 
 	async init(){
 		await this.server.start()
+
+		let ipfsPath = os.platform() == "win32" ? 'C:\\ipfs-repo' : './ipfs-repo';
+
+		if(existsSync(path.join(ipfsPath, 'repo.lock'))){
+			rmdirSync(path.join(ipfsPath, 'repo.lock'))
+		}
+
 		this.node = await create({
-			repo: './ipfs-repo',
+			repo: ipfsPath
 		})
 
 		await this.loadManifest()
