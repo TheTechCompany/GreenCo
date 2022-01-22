@@ -84,7 +84,8 @@ export class AssetStore {
 		}
 
 		this.node = await create({
-			repo: ipfsPath
+			repo: ipfsPath,
+
 		})
 
 		await this.loadManifest()
@@ -94,17 +95,20 @@ export class AssetStore {
 	async pull(hash: string){
 		return await new Promise<Buffer | null>(async (resolve, reject) => {
 
-			setTimeout(() => {
+			const timeoutTimer = setTimeout(() => {
 				console.log(`Pulling ${hash} timed out`)
 				resolve(null)
 			}, 5 * 60 * 1000)
 
 			const pull = this.node?.get(hash)
 			if(!pull) return;
-			let ret = [];
+			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
 				ret.push(chunk)
 			}
+
+			clearTimeout(timeoutTimer)
+			
 			resolve(Buffer.concat(ret))
 
 		})
