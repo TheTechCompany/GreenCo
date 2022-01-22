@@ -122,12 +122,17 @@ export class PluginManager {
 	}
 
 	public async installPlugin(plugin: Plugin) {
-		switch(plugin.sourceType){
-			case 'git':
-				return await this.installFromGit(plugin);
-			case 'npm':
-				return await this.installFromNpm(plugin)
+		try{
+			switch(plugin.sourceType){
+				case 'git':
+					return await this.installFromGit(plugin);
+				case 'npm':
+					return await this.installFromNpm(plugin)
+			}
+		}catch(err){
+			console.error(`Failed to install plugin ${plugin.name}`, err)
 		}
+
 	}
 
 	public async installPlugins(){
@@ -178,7 +183,7 @@ export class PluginManager {
 						})
 					break;
 					case 'python':
-						exec('python -m pip install', {
+						exec('python -m pip install -r requirements.txt', {
 							cwd: pluginPath
 						}, (err, stdout, stderr) => {
 							if(err) return reject(err);
