@@ -1,4 +1,4 @@
-import { IPFS, create } from 'ipfs';
+import { IPFS, create } from 'ipfs-core';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
@@ -108,7 +108,7 @@ export class AssetStore {
 			}
 
 			clearTimeout(timeoutTimer)
-			
+
 			resolve(Buffer.concat(ret))
 
 		})
