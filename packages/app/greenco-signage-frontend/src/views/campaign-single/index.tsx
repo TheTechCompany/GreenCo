@@ -8,12 +8,35 @@ import { downloadCampaignAssets, uploadCampaignAssets } from '../../api/campaign
 import { useQuery as useApolloQuery, useApolloClient, gql } from '@apollo/client';
 import { CreateAnalyticModal } from '../../modals/create-analytic';
 import QRCode from 'qrcode.react'
-import { matchPath, Route, Routes, useParams, useNavigate } from 'react-router-dom';
+import { matchPath, Route, Routes, useParams, useNavigate, useResolvedPath, useMatch } from 'react-router-dom';
 import { FilesPage } from './pages/files';
 import { AnalyticsPage } from './pages/analytics';
 import { ToolsPage } from './pages/tools';
 import { CampaignSingleProvider } from './context';
 
+
+export const NavButtons = (props) => {
+	return 	props.menu.map((item, ix) => (
+		<NavButton 
+			item={item}
+			onClick={() => props.onClick(item)}//() => setView(item.route)
+			/>
+	))
+}
+
+export const NavButton = ({item, onClick}) => {
+	
+	const path = useResolvedPath(item.route)
+	const active = useMatch(path.pathname)
+
+	return <Button 
+			active={active != null}
+			hoverIndicator 
+			plain 
+			onClick={() => onClick(item)}//() => setView(item.route)
+			style={{padding: 6, borderRadius: 3}} 
+			icon={item.icon} />
+}
 export const CampaignSingle = (props) => {
 	const [ downloading, setDownloading ] = useState(false);
 
@@ -94,6 +117,7 @@ export const CampaignSingle = (props) => {
 	const interactions = data?.campaigns?.[0]?.interactions
 	const interactionTimeline = data?.campaigns?.[0]?.interactionTimeline
 
+
 	const active = menu.map((item) => matchPath(window.location.pathname.replace(`/dashboard/signage`, ''), 
 		`${item.route}`,
 	) != null).indexOf(true)
@@ -143,7 +167,9 @@ export const CampaignSingle = (props) => {
 							plain 
 							style={{padding: 6, borderRadius: 3}} 
 							icon={<DownloadOption size="small" />} />
-						{menu.map((item, ix) => (
+
+						<NavButtons menu={menu} onClick={(item) => setView(item.route)} />
+						{/* {menu.map((item, ix) => (
 							<Button 
 							active={ix == active}
 							hoverIndicator 
@@ -151,7 +177,7 @@ export const CampaignSingle = (props) => {
 							onClick={() => setView(item.route)}
 							style={{padding: 6, borderRadius: 3}} 
 							icon={item.icon} />
-						))}
+						))} */}
 					</Box>
 					
 				</Box>
