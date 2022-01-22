@@ -96,6 +96,7 @@ export const LocationSingle = (props) => {
 					</Box>
 					<Box flex pad="xsmall">
 						<Routes>
+							{/* <Route path={''} element={<ClusterScreens />} /> */}
 							<Route path={`analytics`} element={<LocationAnalytics/>} />
 							<Route path={`screens`} element={<ClusterScreens />} />
 							{/* <Route path={`${props.match.url}/schedule`} component={ClusterSchedule} /> */}

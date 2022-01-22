@@ -34,9 +34,19 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 					name
 				}
 
-				campaigns {
+				slots {
 					id
-					name
+					campaign {
+						id
+						name
+					}
+					tier {
+						id
+						name
+						slots
+					}
+					startDate
+					endDate
 				}
 
 				tiers {
@@ -44,19 +54,7 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 					name
 					percent
 					slots
-				}
-
-				campaignsConnection {
-					edges {
-						tier
-						startDate
-						endDate
-						screen
-						node {
-							id
-							name
-						}
-					}
+					color
 				}
 
 			
@@ -97,12 +95,13 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 			scheduleId: id,
 			locations: schedule?.locations,
 			screens: schedule?.screens,
-			campaigns: schedule?.campaignsConnection?.edges?.map((edge: any) => ({
-				...edge.node, 
-				screen: edge.screen,
-				tier: schedule?.tiers.find((a: any) => a.id == edge.tier), 
-				dates: [edge.startDate, edge.endDate]
-			})),
+			campaigns: schedule?.slots.map((slot) => {
+					return {
+						...slot,
+						dates: [slot.startDate, slot.endDate],
+						tier: schedule?.tiers.find((a) => a.id == slot.tier.id)
+					}
+			}),
 			tiers: schedule?.tiers,
 			refresh
 		}}>

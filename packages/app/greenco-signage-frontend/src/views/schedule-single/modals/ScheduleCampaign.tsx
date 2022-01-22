@@ -1,9 +1,18 @@
 import { BaseModal, FormControl } from '@hexhive/ui';
 import { Box, Calendar, Text, DateInput } from 'grommet';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const ScheduleCampaignModal = (props) => {
 	const [ schedule, setSchedule ] = useState<any>();
+
+	useEffect(() => {
+		setSchedule({
+			...props.selected,
+			campaign: props.selected?.campaign?.id,
+			tier: props.selected?.tier?.id,
+		})
+		// console.log({selected: props.selected})
+	}, [props.selected])
 
 	const onSubmit = () => {
 		props.onSubmit(schedule);

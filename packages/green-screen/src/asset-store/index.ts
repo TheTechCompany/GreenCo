@@ -30,8 +30,17 @@ export class AssetStore {
 
 	private manifest : {
 		id?: string,
-		name?: string,
-		assetFolder: string
+		startDate: Date,
+		endDate: Date,
+		tier?: {
+			slots?: number,
+			percent?: number,
+		},
+		campaign?: {
+			id?: string;
+			assetFolder?: string;
+			name?: string;
+		}
 	}[] = []
 
 	constructor(opts: AssetStoreConfiguration){
@@ -42,9 +51,9 @@ export class AssetStore {
 	}
 
 	async pullAll(){
-		await Promise.all(this.manifest.filter((a) => a.assetFolder).map(async (manifestItem) => {
-			console.log(`Pulling ${manifestItem.name}`)
-			const data = await this.pull(manifestItem.assetFolder)
+		await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
+			console.log(`Pulling ${manifestItem.campaign?.name}`)
+			const data = await this.pull(manifestItem.campaign?.assetFolder || '')
 			if(!data) return;
 			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
 
@@ -52,7 +61,7 @@ export class AssetStore {
 				file: `${this.assetStoragePath}/${manifestItem.id}`,
 				cwd: this.assetStoragePath,
 			})
-			console.log(`Pulled ${manifestItem.name}`)
+			console.log(`Pulled ${manifestItem.campaign?.name}`)
 
 		}))
 	}

@@ -14,14 +14,28 @@ type Schedule @auth(rules: [
 
 	tiers: [ScheduleTier] @relationship(type: "SCHEDULE_TIER", direction: OUT)
 
-	campaigns: [Campaign] @relationship(type: "SCHEDULES_CAMPAIGN", direction: OUT, properties: "ScheduleItemProperties")
-	
+	slots: [ScheduleSlot] @relationship(type: "HAS_SLOT", direction: OUT)
+
 	locations: [LocationGroup] @relationship(type: "USES_SCHEDULE", direction: IN)
 
 	startDate: DateTime
 	endDate: DateTime
 
 	organisation: HiveOrganisation @relationship(type: "HAS_SCHEDULE", direction: IN)
+}
+
+type ScheduleSlot @auth(rules: [
+	{operations: [READ, UPDATE, CREATE], where: {schedule: {organisation: {id: "$jwt.organisation"}}}},
+	{operations: [UPDATE, DELETE], bind: {schedule: {organisation: {id: "$jwt.organisation"}}}},
+]) {
+	id: ID! @id
+
+	campaign: Campaign @relationship(type: "USES_CAMPAIGN", direction: OUT)
+	tier: ScheduleTier @relationship(type: "USES_TIER", direction: OUT)
+
+	startDate: DateTime
+	endDate: DateTime
+	schedule: Schedule @relationship(type: "HAS_SLOT", direction: IN)
 }
 
 
@@ -42,6 +56,8 @@ type ScheduleTier @auth(rules: [
 	schedule: Schedule @relationship(type: "SCHEDULE_TIER", direction: IN)
 	percent: Float
 	slots: Float
+
+	color: String
 
 	organisation: HiveOrganisation @relationship(type: "HAS_TIER", direction: IN)
 }

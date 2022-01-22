@@ -9,15 +9,38 @@ export default (session: Session) => {
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 
 			const campaigns = await session.run(`
-				MATCH (campaigns:Campaign)<--(:Schedule)<--(:LocationGroup)-->(:Location)<--(:GreenScreen {networkName: $networkName})
-				WHERE campaigns.assetFolder IS NOT NULL
-				RETURN campaigns{.*}
+
+			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(:GreenScreen {networkName: $networkName})
+			WITH distinct(schedule)
+			CALL {
+				WITH schedule
+				MATCH (schedule)-->(slots:ScheduleSlot)
+				WHERE slots.endDate > DATETIME()
+				CALL {
+					WITH slots
+					MATCH (slots)-->(campaign:Campaign)
+					WHERE campaign.assetFolder IS NOT NULL
+					RETURN campaign{.*} as campaign
+				}
+				CALL {
+					WITH slots
+					MATCH (slots)-->(tiers:ScheduleTier)
+					RETURN tiers{.*} as tier
+				}
+				RETURN slots {
+					.*,
+					tier,
+					campaign
+				} as slot
+			}
+				
+			RETURN slot
 			`, {
 				networkName
 			})
 			
 			res.send({
-				campaigns: campaigns?.records?.map(record => record.get(0))
+				campaigns: campaigns?.records?.map(record => record.get(0)) || []
 			})
 		})
 	
