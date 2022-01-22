@@ -16,6 +16,12 @@ const pluginDir = os.platform() == "win32" ? "C:\\green-plugins" : "./plugins";
 				source: '@greenco/screen',
 				sourceVersion: 'latest',
 				sourceType: 'npm'
+			},
+			{
+				name: "HiveVision",
+				type: 'python',
+				source: 'https://github.com/TheTechCompany/HiveVision',
+				sourceType: 'git'
 			}
 		]
 	});

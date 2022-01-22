@@ -66,7 +66,9 @@ export class PluginManager {
 	}
 
 	async startAll(){
-		const plugins = await this.loadPlugins(this.configuration.plugins.map((plugin) => { return plugin.source }));
+		const plugins = await this.loadPlugins(
+			this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
+		);
 
 		const instances = plugins.map((plugin) => {
 			const { default : module } = plugin?.module;
@@ -101,7 +103,7 @@ export class PluginManager {
 
 		console.log({plugins})
 
-		const load = plugins.map((plugin) => {
+		const loadedNpm = plugins.map((plugin) => {
 			try{
 				const p = require.resolve(plugin, {
 					paths: [path.join(this.pluginDirectory, './node_modules')]
@@ -115,9 +117,8 @@ export class PluginManager {
 			}
 		}).filter((a)=> a != null);
 
-		return load;
-	
-		console.log({load})
+		return loadedNpm;
+
 	}
 
 	public async installPlugin(plugin: Plugin) {
