@@ -183,7 +183,7 @@ export class PluginManager {
 						})
 					break;
 					case 'python':
-						exec('python -m pip install -r requirements.txt', {
+						exec('python3 -m pip install -r requirements.txt', {
 							cwd: pluginPath
 						}, (err, stdout, stderr) => {
 							if(err) return reject(err);
