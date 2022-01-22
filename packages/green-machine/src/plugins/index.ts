@@ -67,7 +67,9 @@ export class PluginManager {
 
 	async startAll(){
 		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
-		console.log("Start All", {plugin_names})
+		
+		console.log("Start All", {plugin_names}
+		)
 		const plugins = await this.loadPlugins(
 			plugin_names
 		);
@@ -120,6 +122,7 @@ export class PluginManager {
 					module: require(p)
 				}
 			}catch(e){
+				console.error(`Failed to load plugin ${plugin}`, e)
 				return null;
 			}
 		}).filter((a)=> a != null);
