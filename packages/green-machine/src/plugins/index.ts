@@ -72,6 +72,8 @@ export class PluginManager {
 			plugin_names
 		);
 
+		console.log("Loaded", {plugins})
+
 		const instances = plugins.map((plugin) => {
 			const { default : module } = plugin?.module;
 			return plugin && {
@@ -79,6 +81,8 @@ export class PluginManager {
 				instance: new module()
 			}
 		})
+
+		console.log("instances", {instances})
 
 		this.pluginInstances =  instances.reduce((prev, curr) => ({
 			...prev,
@@ -89,6 +93,7 @@ export class PluginManager {
 			let plugin = this.pluginInstances[plugin_key];
 			return await plugin.start()
 		}))
+		console.log("Started")
 	}
 
 	async getGlobalVersion(name: string){
