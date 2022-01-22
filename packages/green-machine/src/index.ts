@@ -118,8 +118,6 @@ export class GreenMachine {
 
 		this.pluginManager.startAll()
 
-		console.log(token, data)
-
 		this.app.listen(9090)
 	}
 
