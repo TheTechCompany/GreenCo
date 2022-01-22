@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
+import { View, FingerPrint } from 'grommet-icons';
 import { ResponsiveContainer, AreaChart, YAxis, XAxis, Tooltip, CartesianGrid, Line, Area } from 'recharts'
 import { Box, Text } from 'grommet';
 import { CampaignSingleContext } from '../context';
 import moment from 'moment';
+import { AnalyticBubble } from '../../../components/analytic-bubble/AnalyticBubble';
 
 export const AnalyticsPage = () => {
 
@@ -11,18 +13,34 @@ export const AnalyticsPage = () => {
 	return (
 		<Box pad="xsmall" gap="small" flex>
 			<Box direction="row" justify="between">
-				<Box background="white" round="xsmall" width="small" height="small" elevation="small">
-					<Box direction="column" align="center" justify="center" pad="small">
-						<Text>Total Plays</Text>
-						<Text>{views}</Text>
-					</Box>
-				</Box>
-				<Box background="white" round="xsmall" width="small" height="small" elevation="small">
-					<Box direction="column" align="center" justify="center" pad="small">
-						<Text>Total Interactions</Text>
-						<Text>{interactions}</Text>
-					</Box>
-				</Box>
+
+				<AnalyticBubble
+					color="white"
+					background="#627df6"
+					icon={<View />}
+					label="Appearances"
+					value={views} />
+				
+				<AnalyticBubble
+					color="white"
+					background="#627df6"
+					icon={<View />}
+					label="People avg. daily"
+					value={"0"} />
+				
+				<AnalyticBubble
+					color="white"
+					background="#627df6"
+					icon={<View />}
+					label="People avg. monthly"
+					value={"0"} />
+
+				<AnalyticBubble
+					color="white"
+					background="#627df6"
+					icon={<FingerPrint />}
+					label="Engagements"
+					value={interactions} />
 
 			</Box>
 

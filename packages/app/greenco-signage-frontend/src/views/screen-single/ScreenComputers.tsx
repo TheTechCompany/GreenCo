@@ -62,9 +62,10 @@ export const DisplayComputer = () => {
 		<Box flex>
 			<Box 
 			 	align='center'
-				 justify='between'
+				justify='between'
+				background={'accent-1'}
 			 	direction='row'
-				 elevation='small'>
+				elevation='medium'>
 					<Box direction='row' align='center'>
 						<Button
 							onClick={() => navigate('../')}
@@ -82,14 +83,23 @@ export const DisplayComputer = () => {
 						icon={<Upgrade />} />
 			</Box>
 
-			<Box flex pad="small">
-				<Text>OS: {slot?.os}</Text>
-				<Text>IP: {slot?.ip}</Text>
-				<Text>Agent Version: {slot?.agentVersion}</Text>
-				<Text>CPU Cores: {slot?.cpus}</Text>
-				<Text>Memory: {(slot?.memory / 1024 / 1024 / 1024).toFixed(2)}GB</Text>
-				<Text>Memory Used: {Math.round((1 - (slot?.memoryUsed || 1)) * 100)}%</Text>
+			<Box background="light-1"  direction='row' gap="xsmall" flex pad="xsmall">
+				<Box background={"neutral-1"} pad="small" flex elevation='small' round='small'>
+					<Text>Configuration</Text>
+				</Box>
+				<Box gap="xsmall">
+					<Box round="small" background='#627df6' elevation='small' gap="xsmall" pad="small">
+						<Text color="white">OS: {slot?.os}</Text>
+						<Text color="white">IP: {slot?.ip}</Text>
+						<Text color="white">Agent Version: {slot?.agentVersion}</Text>
+						<Text color="white">CPU Cores: {slot?.cpus}</Text>
+						<Text color="white">Memory: {(slot?.memory / 1024 / 1024 / 1024).toFixed(2)}GB</Text>
+						<Text color="white">Memory Used: {Math.round((1 - (slot?.memoryUsed || 1)) * 100)}%</Text>
+					</Box>
+					<Box round="small" flex background='#627df6'>
 
+					</Box>
+				</Box>
 			</Box>
 		</Box>
 	)
