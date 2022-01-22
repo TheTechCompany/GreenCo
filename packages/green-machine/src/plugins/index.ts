@@ -167,24 +167,24 @@ export class PluginManager {
 				})
 			}
 
-			switch(plugin.type){
-				case 'node':
-					exec('npm install', {
-						cwd: pluginPath
-					}, (err, stdout, stderr) => {
-						if(err) return reject(err);
-						resolve(stdout)
-					})
-				break;
-				case 'python':
-					exec('python3 -m pip install', {
-						cwd: pluginPath
-					}, (err, stdout, stderr) => {
-						if(err) return reject(err);
-						resolve(stdout)
-					})
-				break;
-			}
+			// switch(plugin.type){
+			// 	case 'node':
+			// 		exec('npm install', {
+			// 			cwd: pluginPath
+			// 		}, (err, stdout, stderr) => {
+			// 			if(err) return reject(err);
+			// 			resolve(stdout)
+			// 		})
+			// 	break;
+			// 	case 'python':
+			// 		exec('python3 -m pip install', {
+			// 			cwd: pluginPath
+			// 		}, (err, stdout, stderr) => {
+			// 			if(err) return reject(err);
+			// 			resolve(stdout)
+			// 		})
+			// 	break;
+			// }
 		})
 	}
 
