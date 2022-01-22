@@ -66,8 +66,10 @@ export class PluginManager {
 	}
 
 	async startAll(){
+		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
+		console.log("Start All", {plugin_names})
 		const plugins = await this.loadPlugins(
-			this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
+			plugin_names
 		);
 
 		const instances = plugins.map((plugin) => {
