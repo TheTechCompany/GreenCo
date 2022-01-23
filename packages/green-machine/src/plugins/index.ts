@@ -99,6 +99,7 @@ export class PluginManager {
 			let plugin_exec = path.join(plugin_path, `./index.py`)
 
 			let pid = spawn(`python3 ${plugin_exec}`, {cwd: plugin_path})
+			console.log("Spawn python process", {pid});
 
 			pid.stdout.on('data', (data) => {
 				console.log(`${plugin.name} stdout: ${data.toString()}`)	
