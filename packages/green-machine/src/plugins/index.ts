@@ -103,10 +103,20 @@ export class PluginManager {
 
 			let plugin_exec = path.join(plugin_path, `./index.py`)
 
-			return exec(`python3 ${plugin_exec}`, {cwd: plugin_path}, (err, stdout, stderr) => {
-				if(err) console.error(`Failed to start plugin ${plugin.name}`, err)
-				console.log(`Started plugin ${plugin.name}`)
+			let pid = spawn(`python3 ${plugin_exec}`, {cwd: plugin_path})
+
+			pid.stdout.on('data', (data) => {
+				console.log(`${plugin.name} stdout: ${data.toString()}`)	
 			})
+
+			pid.stderr.on('data', (data) => {
+				console.log(`${plugin.name} stderr: ${data.toString()}`)	
+			});
+			
+			// , (err, stdout, stderr) => {
+			// 	if(err) console.error(`Failed to start plugin ${plugin.name}`, err)
+			// 	console.log(`Started plugin ${plugin.name}`)
+			// })
 
 		}))
 
