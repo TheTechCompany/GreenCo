@@ -93,11 +93,6 @@ export class PluginManager {
 			[curr?.id || '']: curr?.instance
 		}), {})
 
-		await Promise.all(Object.keys(this.pluginInstances).map(async (plugin_key) => {
-			let plugin = this.pluginInstances[plugin_key];
-			return plugin.start()
-		}))
-
 		await Promise.all(python_plugins.map((plugin) => {
 			let plugin_path = path.join(this.pluginDirectory, `./${plugin.name}`)
 
@@ -119,8 +114,15 @@ export class PluginManager {
 			// })
 
 		}))
-
 		console.log("Started")
+
+		await Promise.all(Object.keys(this.pluginInstances).map(async (plugin_key) => {
+			let plugin = this.pluginInstances[plugin_key];
+			return plugin.start()
+		}))
+
+		
+
 	}
 
 	async getGlobalVersion(name: string){
