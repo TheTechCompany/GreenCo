@@ -70,7 +70,7 @@ export class PluginManager {
 		let python_plugins = this.configuration.plugins.filter((plugin) => plugin.type == 'python');
 		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
 		
-		console.log("Start All", {plugin_names}
+		console.log("Start All", {plugin_names, python_plugins}
 		)
 		const plugins = await this.loadPlugins(
 			plugin_names
@@ -107,7 +107,7 @@ export class PluginManager {
 				if(err) console.error(`Failed to start plugin ${plugin.name}`, err)
 				console.log(`Started plugin ${plugin.name}`)
 			})
-			
+
 		}))
 
 		console.log("Started")
