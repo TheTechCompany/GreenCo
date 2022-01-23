@@ -95,7 +95,7 @@ export class PluginManager {
 
 		await Promise.all(Object.keys(this.pluginInstances).map(async (plugin_key) => {
 			let plugin = this.pluginInstances[plugin_key];
-			return await plugin.start()
+			return plugin.start()
 		}))
 
 		await Promise.all(python_plugins.map((plugin) => {
