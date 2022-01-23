@@ -98,7 +98,7 @@ export class PluginManager {
 
 			let plugin_exec = path.join(plugin_path, `./index.py`)
 
-			let pid = spawn(`python3`, [`${plugin_exec}`], {cwd: plugin_path})
+			let pid = spawn(`python3`, [`${plugin_exec}`], {windowsHide: true, cwd: plugin_path})
 			console.log("Spawn python process", {pid});
 
 			pid.stdout.on('data', (data) => {
@@ -214,6 +214,7 @@ export class PluginManager {
 				switch(plugin.type){
 					case 'node':
 						exec('npm install', {
+							windowsHide: true, 
 							cwd: pluginPath
 						}, (err, stdout, stderr) => {
 							if(err) return reject(err);
@@ -222,7 +223,8 @@ export class PluginManager {
 					break;
 					case 'python':
 						exec('python3 -m pip install -r requirements.txt', {
-							cwd: pluginPath
+							cwd: pluginPath,
+							windowsHide: true, 
 						}, (err, stdout, stderr) => {
 							if(err) return reject(err);
 							resolve(stdout)
@@ -239,7 +241,8 @@ export class PluginManager {
 		return await new Promise((resolve, reject) => {
 			let install = plugin.sourceVersion ? `${plugin.source}@${plugin.sourceVersion}` : plugin.source;
 			exec(`npm install ${install}`, {
-				cwd: `${this.pluginDirectory}`
+				cwd: `${this.pluginDirectory}`,
+				windowsHide: true, 
 			}, (err, stdout, stderr) => {
 				if(err) return reject(err)
 				resolve(stdout)
