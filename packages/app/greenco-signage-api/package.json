@@ -1,6 +1,6 @@
 {
   "name": "@greenco/signage-api",
-  "version": "0.0.1-alpha.58",
+  "version": "0.0.1-alpha.60",
   "description": "",
   "main": "dist/gqty/index.js",
   "gqty": "gqty.config.cjs",
