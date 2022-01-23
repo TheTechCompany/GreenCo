@@ -31,6 +31,7 @@ export class PluginManager {
 	// private initPlugins: Plugin[] = [];
 
 	private pluginInstances : {[key: string]: AbstractPlugin} = {}
+	private pythonInstances : {[key: string]: any} = {};
 
 	private configuration: {
 		plugins: Plugin[]
@@ -66,6 +67,7 @@ export class PluginManager {
 	}
 
 	async startAll(token?: string){
+		let python_plugins = this.configuration.plugins.filter((plugin) => plugin.type == 'python');
 		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
 		
 		console.log("Start All", {plugin_names}
@@ -95,6 +97,19 @@ export class PluginManager {
 			let plugin = this.pluginInstances[plugin_key];
 			return await plugin.start()
 		}))
+
+		await Promise.all(python_plugins.map((plugin) => {
+			let plugin_path = path.join(this.pluginDirectory, `./${plugin.name}`)
+
+			let plugin_exec = path.join(plugin_path, `./index.py`)
+
+			return exec(`python3 ${plugin_exec}`, {cwd: plugin_path}, (err, stdout, stderr) => {
+				if(err) console.error(`Failed to start plugin ${plugin.name}`, err)
+				console.log(`Started plugin ${plugin.name}`)
+			})
+			
+		}))
+
 		console.log("Started")
 	}
 
