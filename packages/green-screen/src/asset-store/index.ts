@@ -15,6 +15,8 @@ export interface AssetStoreConfiguration {
 
 	telemtry: TelemetryService;
 	displayManager: DisplayManager;
+
+	token?: string;
 }
 
 export class AssetStore {
@@ -27,6 +29,8 @@ export class AssetStore {
 	private assetStoragePath?: string; //Storage path to store assets
 
 	private currentAsset: number = 0;
+
+	private token?: string;
 
 	private manifest : {
 		id?: string,
@@ -44,6 +48,8 @@ export class AssetStore {
 	}[] = []
 
 	constructor(opts: AssetStoreConfiguration){
+		this.token = opts.token
+
 		this.assetStoreUrl = opts.assetStoreUrl
 		this.assetStoragePath = opts.assetStoragePath || '/tmp/'
 
@@ -79,7 +85,7 @@ export class AssetStore {
 	}
 
 	async loadManifest(){
-		const resp = await axios.get(`${this.assetStoreUrl}/api/distribute`)
+		const resp = await axios.get(`${this.assetStoreUrl}/api/distribute?token=${this.token}`)
 		this.manifest = resp.data.campaigns;
 	}
 

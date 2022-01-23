@@ -63,7 +63,7 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
             background="neutral-1"
             flex
             overflow="hidden"
-            round="small"
+            round="xsmall"
             elevation="small">
            <CampaignModal   
             open={modalOpen}

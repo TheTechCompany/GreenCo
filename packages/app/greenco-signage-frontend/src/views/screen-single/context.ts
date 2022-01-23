@@ -6,11 +6,18 @@ export const ScreenSingleContext = React.createContext<{
 	screen?: {
 		id: string;
 		name: string;
+		template?: {
+			id: string;
+			name: string;
+
+			slots: any[]
+		}
 		location: {
 			id: string;
 			name: string;
 		}
 	}
+	refresh?:() => void;
 }>({
 
 })

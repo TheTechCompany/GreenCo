@@ -1,5 +1,5 @@
 import { Box, Text, Button, List, Select } from 'grommet';
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useMemo, useEffect} from 'react';
 import { Add, Plan, List as ListIcon } from 'grommet-icons';
 import { ScheduleCampaignModal } from '../modals/ScheduleCampaign';
 import { mutation, useMutation, useQuery } from '@greenco/signage-api';
@@ -13,10 +13,12 @@ export const ScheduleCampaigns = () => {
 
 	const [ activeView, changeActiveView ] = useState<string | null>(null);
 	
+	// const [ filteredCampaigns, setFilteredCampaigns ] = useState<any[]>()
+
 	const [ modalOpen, openModal ] = useState(false)
 	const [ viewMode, changeMode ] = useState(false)
 
-	const { scheduleId, tiers, screens, campaigns, refresh } = useContext(ScheduleSingleContext)
+	const { scheduleId, tiers, views, campaigns, refresh } = useContext(ScheduleSingleContext)
 
 	const { data } = useApolloQuery(gql`
 		query GetCampaigns {
@@ -28,7 +30,7 @@ export const ScheduleCampaigns = () => {
 	`)
 	const allCampaigns = data?.campaigns || [];
 
-	const [ scheduleCampaign, scheduleInfo ] = useMutation((mutation, args: {tier: string, campaign: string, dates: string[], screen: string}) => {
+	const [ scheduleCampaign, scheduleInfo ] = useMutation((mutation, args: {tier: string, campaign: string, dates: string[]}) => {
 		let dateUpdate = {};
 		if(args.dates.length == 2){
 			dateUpdate = {
@@ -44,6 +46,9 @@ export const ScheduleCampaigns = () => {
 						node: {
 							campaign: {connect: {where: {node: {id: args.campaign}}}},
 							tier: {connect: {where: {node: {id: args.tier}}}},
+							slot: {
+								connect: {where: {node: {id: ( activeView || views?.[0]?.id )}}}
+							},
 							...dateUpdate
 						}
 					}]
@@ -80,6 +85,10 @@ export const ScheduleCampaigns = () => {
 						node: {
 							campaign: {disconnect:{where: {node: {id_NOT: args.campaign}}}, connect: {where: {node: {id: args.campaign}}}},
 							tier: {disconnect: {where: {node: {id_NOT: args.tier}}}, connect: {where: {node: {id: args.tier}}}},
+							slot: {
+								connect: {where: {node: {id: ( activeView || views?.[0]?.id )}}},
+								disconnect: {where: {node: {id_NOT: ( activeView || views?.[0]?.id )}}}
+							},
 							...dateUpdate
 						}
 					}
@@ -93,12 +102,43 @@ export const ScheduleCampaigns = () => {
 		}
 	})
 
-	const getCampaigns = () => {
-		return campaigns?.filter((a) => a.screen == activeView)
-	}
+
+	const [ removeCampaign ] = useMutation((mutation, args: {id: string}) => {
+		const item = mutation.updateSchedules({
+			where: {id: scheduleId},
+			update: {
+				slots: [{
+					delete: [{where: {node: {id: args.id}}}]
+				}]
+			}
+		})
+		return {
+			item: {
+				...item.schedules?.[0]
+			}
+		}
+	})
+	// useEffect(() => {
+	// 	console.log(screens)
+	// 	if(!activeView && screens?.[0]?.id){
+	// 		changeActiveView(screens?.[0]?.id)
+	// 	}
+	// }, [activeView, JSON.stringify(screens) ])
+
+	// const filteredCampaigns = useMemo()
+	// useEffect(() => {
+			
+	// 		console.log({activeView, screens, campaigns: campaigns?.filter((a) => a.slot?.id == (activeView || screens?.[0]?.id)) || []})
+	// 	setFilteredCampaigns(
+	// 		campaigns?.filter((a) => a.slot?.id == (activeView || screens?.[0]?.id)) || []
+	// 	)
+	// }, [campaigns, activeView, screens])
+
+	const filteredCampaigns = campaigns?.filter((a) => a.slot?.id == (activeView || views?.[0]?.id)) || []
+	console.log({activeView: (activeView || views?.[0]?.id), views})
 
 	const getSelected = () => {
-		const found = getCampaigns()?.find((a) => a.id == selected?.id)
+		const found = campaigns?.find((a) => a.id == selected?.id)
 		console.log(selected, found)
 		return found
 	}
@@ -109,6 +149,12 @@ export const ScheduleCampaigns = () => {
 				tiers={tiers}
 				open={modalOpen}
 				selected={getSelected()}
+				onDelete={() => {
+					removeCampaign({args: {id: getSelected()?.id}}).then(() => {
+						openModal(false)
+						refresh?.()
+					})
+				}}
 				onClose={() => openModal(false)}
 				onSubmit={(schedule: any) => {
 					if(schedule.id){
@@ -118,7 +164,7 @@ export const ScheduleCampaigns = () => {
 								tier: schedule.tier,
 								campaign: schedule.campaign,
 								dates: schedule.dates,
-								screen: schedule.screen,
+								screen: schedule.screen
 							}
 						}).then(() => {
 							refresh?.()
@@ -129,8 +175,7 @@ export const ScheduleCampaigns = () => {
 							args: {
 								tier: schedule.tier,
 								campaign: schedule.campaign,
-								dates: schedule.dates,
-								screen: activeView || screens?.[0]?.id
+								dates: schedule.dates
 							}
 						}).then(() => {
 							refresh?.()
@@ -140,16 +185,16 @@ export const ScheduleCampaigns = () => {
 				}} />
 			<Box pad={{left: 'xsmall'}} align="center" justify="between" direction="row">
 				<Box gap="xsmall" direction='row' align='center'>
-					<Text weight="bold">Campaigns</Text>
+					<Text weight="bold">Playlist</Text>
 					<Box direction='row' align='center'  round="xsmall">
 						<Select 
 							plain
 							size='small'
-							labelKey={"label"}
+							labelKey={"name"}
 							onChange={({value}) => changeActiveView(value)}
 							valueKey={{key: 'id', reduce: true}}
-							value={activeView || screens?.[0]?.id}
-							options={(screens || []).map((x) => ({id: x.id, label: x.name}))} />
+							value={activeView || views?.[0]?.id}
+							options={views || []} />
 					</Box>
 		
 				</Box>
@@ -167,7 +212,7 @@ export const ScheduleCampaigns = () => {
 							openModal(true)
 						}}
 					primaryKey="name"
-					data={getCampaigns()} >
+					data={filteredCampaigns || []} >
 						{(datum: any) => (
 							<Box direction="row" justify="between" align="center">
 								<Text>{datum.campaign.name}</Text>
@@ -183,13 +228,13 @@ export const ScheduleCampaigns = () => {
 								openModal(true)
 								// console.log({task})
 							}}
-							data={getCampaigns()?.map((campaign) => ({
-								id: campaign.id,
-								name: `${campaign.campaign?.name} - ${campaign.tier?.name}`,
-								color: tiers?.find((a) => a.id == campaign.tier?.id)?.color,
-								showLabel: campaign.campaign?.name,
-								start: campaign.dates?.[0],
-								end: campaign.dates?.[1],
+							data={filteredCampaigns?.map((campaign) => ({
+								id: campaign?.id,
+								name: `${campaign?.campaign?.name} - ${campaign?.tier?.name}`,
+								color: tiers?.find((a) => a.id == campaign?.tier?.id)?.color,
+								showLabel: campaign?.campaign?.name,
+								start: campaign?.dates?.[0],
+								end: campaign?.dates?.[1],
 							}))}
 							/>
 					</Box>

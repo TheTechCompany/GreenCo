@@ -13,6 +13,8 @@ type GreenScreen @auth(rules: [
 
 	online: Boolean
 	
+	template: GreenScreenTemplate @relationship(type: "USES_TEMPLATE", direction: OUT)
+
 	location: Location @relationship(type: "IN_LOCATION", direction: OUT)
 	
 	slots: [ScreenSlot] @relationship(type: "HAS_SLOT", direction: OUT)
@@ -43,8 +45,15 @@ type ScreenSlot {
 	resHeight: Float
 	orientation: Float
 
-	tags: [String]
+	templateSlot: TemplateSlot @relationship(type: "USES_SLOT", direction: OUT)
+
+	tags: [ScreenTag] @relationship(type: "HAS_TAG", direction: OUT)
 	screen: GreenScreen @relationship(type: "HAS_SLOT", direction: IN)
+}
+
+type ScreenTag {
+	id: ID @id
+	text: String
 }
 
 `

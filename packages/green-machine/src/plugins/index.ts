@@ -14,7 +14,7 @@ export interface Plugin {
 
 export interface PluginManagerOptions {
 	pluginDirectory: string;
-	initPlugins: Plugin[]
+	// initPlugins: Plugin[]
 }
 
 export abstract class AbstractPlugin {
@@ -28,7 +28,7 @@ export class PluginManager {
 
 	private pluginConfPath: string;
 
-	private initPlugins: Plugin[] = [];
+	// private initPlugins: Plugin[] = [];
 
 	private pluginInstances : {[key: string]: AbstractPlugin} = {}
 
@@ -37,17 +37,17 @@ export class PluginManager {
 	} = {plugins: []}
 
 	constructor(opts: PluginManagerOptions) {
-		this.initPlugins = opts.initPlugins
+		// this.initPlugins = opts.initPlugins
 		this.pluginDirectory = opts.pluginDirectory;
 		this.pluginConfPath = path.join(this.pluginDirectory, './plugins.json')	
 
 	}
 
-	async init(){
+	async init(plugins?: Plugin[]){
 		let configuration:  {
 			plugins: Plugin[]
 		} = {
-			plugins: this.initPlugins
+			plugins: plugins || [] //this.initPlugins
 		}
 
 		if(!existsSync(this.pluginDirectory)){
@@ -65,7 +65,7 @@ export class PluginManager {
 		await this.installPlugins()
 	}
 
-	async startAll(){
+	async startAll(token?: string){
 		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
 		
 		console.log("Start All", {plugin_names}
@@ -80,7 +80,7 @@ export class PluginManager {
 			const { default : module } = plugin?.module;
 			return plugin && {
 				id: plugin?.id || '',
-				instance: new module()
+				instance: new module(token)
 			}
 		})
 

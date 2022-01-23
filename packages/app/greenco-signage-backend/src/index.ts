@@ -80,7 +80,7 @@ const greenlock = require("greenlock-express");
 			resolvers: resolved,
 			driver
 		},
-		dev: false
+		dev: false,
 	})
 
 	await graphServer.init()

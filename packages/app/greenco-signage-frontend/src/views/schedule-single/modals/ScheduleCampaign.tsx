@@ -22,6 +22,7 @@ export const ScheduleCampaignModal = (props) => {
 		<BaseModal 
 			title="Assign Campaign"
 			onClose={props.onClose}
+			onDelete={props.onDelete}
 			onSubmit={onSubmit}
 			open={props.open}>
 			<FormControl 

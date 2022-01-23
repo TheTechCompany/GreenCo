@@ -3,6 +3,7 @@ import screens from "./screens";
 import gql from 'graphql-tag'
 import locations from "./locations";
 import schedule from "./schedule";
+import templates from "./templates";
 
 export default `
 type Mutation {
@@ -12,4 +13,5 @@ type Mutation {
 	${schedule}
 	${campaigns}
 	${screens}
+	${templates}
 `

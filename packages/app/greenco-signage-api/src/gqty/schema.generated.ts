@@ -629,12 +629,14 @@ export interface GreenScreenConnectInput {
   location?: Maybe<GreenScreenLocationConnectFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationConnectFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsConnectFieldInput>>;
+  template?: Maybe<GreenScreenTemplateConnectFieldInput>;
 }
 
 export interface GreenScreenConnectOrCreateInput {
   location?: Maybe<GreenScreenLocationConnectOrCreateFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationConnectOrCreateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsConnectOrCreateFieldInput>>;
+  template?: Maybe<GreenScreenTemplateConnectOrCreateFieldInput>;
 }
 
 export interface GreenScreenConnectOrCreateWhere {
@@ -652,18 +654,21 @@ export interface GreenScreenCreateInput {
   online?: Maybe<Scalars["Boolean"]>;
   organisation?: Maybe<GreenScreenOrganisationFieldInput>;
   slots?: Maybe<GreenScreenSlotsFieldInput>;
+  template?: Maybe<GreenScreenTemplateFieldInput>;
 }
 
 export interface GreenScreenDeleteInput {
   location?: Maybe<GreenScreenLocationDeleteFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationDeleteFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsDeleteFieldInput>>;
+  template?: Maybe<GreenScreenTemplateDeleteFieldInput>;
 }
 
 export interface GreenScreenDisconnectInput {
   location?: Maybe<GreenScreenLocationDisconnectFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationDisconnectFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsDisconnectFieldInput>>;
+  template?: Maybe<GreenScreenTemplateDisconnectFieldInput>;
 }
 
 export interface GreenScreenLocationAggregateInput {
@@ -934,6 +939,7 @@ export interface GreenScreenRelationInput {
   location?: Maybe<GreenScreenLocationCreateFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationCreateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsCreateFieldInput>>;
+  template?: Maybe<GreenScreenTemplateCreateFieldInput>;
 }
 
 export interface GreenScreenSlotsAggregateInput {
@@ -1300,6 +1306,719 @@ export interface GreenScreenSort {
   online?: Maybe<SortDirection>;
 }
 
+export interface GreenScreenTemplateAggregateInput {
+  AND?: Maybe<Array<GreenScreenTemplateAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenTemplateNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenTemplateConnectFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectInput>;
+  where?: Maybe<GreenScreenTemplateConnectWhere>;
+}
+
+export interface GreenScreenTemplateConnectInput {
+  organisation?: Maybe<GreenScreenTemplateOrganisationConnectFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsConnectFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensConnectFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsConnectFieldInput>>;
+}
+
+export interface GreenScreenTemplateConnectOrCreateFieldInput {
+  onCreate: GreenScreenTemplateConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenTemplateConnectOrCreateWhere;
+}
+
+export interface GreenScreenTemplateConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface GreenScreenTemplateConnectOrCreateInput {
+  organisation?: Maybe<GreenScreenTemplateOrganisationConnectOrCreateFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsConnectOrCreateFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensConnectOrCreateFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsConnectOrCreateFieldInput>>;
+}
+
+export interface GreenScreenTemplateConnectOrCreateWhere {
+  node: GreenScreenTemplateUniqueWhere;
+}
+
+export interface GreenScreenTemplateConnectWhere {
+  node: GreenScreenTemplateWhere;
+}
+
+export interface GreenScreenTemplateConnectionSort {
+  node?: Maybe<GreenScreenTemplateSort>;
+}
+
+export interface GreenScreenTemplateConnectionWhere {
+  AND?: Maybe<Array<GreenScreenTemplateConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplateConnectionWhere>>;
+  node?: Maybe<GreenScreenTemplateWhere>;
+  node_NOT?: Maybe<GreenScreenTemplateWhere>;
+}
+
+export interface GreenScreenTemplateCreateFieldInput {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface GreenScreenTemplateCreateInput {
+  name?: Maybe<Scalars["String"]>;
+  organisation?: Maybe<GreenScreenTemplateOrganisationFieldInput>;
+  plugins?: Maybe<GreenScreenTemplatePluginsFieldInput>;
+  screens?: Maybe<GreenScreenTemplateScreensFieldInput>;
+  slots?: Maybe<GreenScreenTemplateSlotsFieldInput>;
+}
+
+export interface GreenScreenTemplateDeleteFieldInput {
+  delete?: Maybe<GreenScreenTemplateDeleteInput>;
+  where?: Maybe<GreenScreenTemplateConnectionWhere>;
+}
+
+export interface GreenScreenTemplateDeleteInput {
+  organisation?: Maybe<GreenScreenTemplateOrganisationDeleteFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsDeleteFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensDeleteFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsDeleteFieldInput>>;
+}
+
+export interface GreenScreenTemplateDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+  where?: Maybe<GreenScreenTemplateConnectionWhere>;
+}
+
+export interface GreenScreenTemplateDisconnectInput {
+  organisation?: Maybe<GreenScreenTemplateOrganisationDisconnectFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsDisconnectFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensDisconnectFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsDisconnectFieldInput>>;
+}
+
+export interface GreenScreenTemplateFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<GreenScreenTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<GreenScreenTemplateCreateFieldInput>;
+}
+
+export interface GreenScreenTemplateNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenTemplateNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface GreenScreenTemplateOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more GreenScreenTemplateSort objects to sort GreenScreenTemplates by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<GreenScreenTemplateSort>>>;
+}
+
+export interface GreenScreenTemplateOrganisationAggregateInput {
+  AND?: Maybe<Array<GreenScreenTemplateOrganisationAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateOrganisationAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenTemplateOrganisationNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenTemplateOrganisationConnectFieldInput {
+  connect?: Maybe<HiveOrganisationConnectInput>;
+  where?: Maybe<HiveOrganisationConnectWhere>;
+}
+
+export interface GreenScreenTemplateOrganisationConnectOrCreateFieldInput {
+  onCreate: GreenScreenTemplateOrganisationConnectOrCreateFieldInputOnCreate;
+  where: HiveOrganisationConnectOrCreateWhere;
+}
+
+export interface GreenScreenTemplateOrganisationConnectOrCreateFieldInputOnCreate {
+  node: HiveOrganisationCreateInput;
+}
+
+export interface GreenScreenTemplateOrganisationConnectionSort {
+  node?: Maybe<HiveOrganisationSort>;
+}
+
+export interface GreenScreenTemplateOrganisationConnectionWhere {
+  AND?: Maybe<Array<GreenScreenTemplateOrganisationConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplateOrganisationConnectionWhere>>;
+  node?: Maybe<HiveOrganisationWhere>;
+  node_NOT?: Maybe<HiveOrganisationWhere>;
+}
+
+export interface GreenScreenTemplateOrganisationCreateFieldInput {
+  node: HiveOrganisationCreateInput;
+}
+
+export interface GreenScreenTemplateOrganisationDeleteFieldInput {
+  delete?: Maybe<HiveOrganisationDeleteInput>;
+  where?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+}
+
+export interface GreenScreenTemplateOrganisationDisconnectFieldInput {
+  disconnect?: Maybe<HiveOrganisationDisconnectInput>;
+  where?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+}
+
+export interface GreenScreenTemplateOrganisationFieldInput {
+  connect?: Maybe<GreenScreenTemplateOrganisationConnectFieldInput>;
+  connectOrCreate?: Maybe<GreenScreenTemplateOrganisationConnectOrCreateFieldInput>;
+  create?: Maybe<GreenScreenTemplateOrganisationCreateFieldInput>;
+}
+
+export interface GreenScreenTemplateOrganisationNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenTemplateOrganisationNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateOrganisationNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface GreenScreenTemplateOrganisationUpdateConnectionInput {
+  node?: Maybe<HiveOrganisationUpdateInput>;
+}
+
+export interface GreenScreenTemplateOrganisationUpdateFieldInput {
+  connect?: Maybe<GreenScreenTemplateOrganisationConnectFieldInput>;
+  connectOrCreate?: Maybe<GreenScreenTemplateOrganisationConnectOrCreateFieldInput>;
+  create?: Maybe<GreenScreenTemplateOrganisationCreateFieldInput>;
+  delete?: Maybe<GreenScreenTemplateOrganisationDeleteFieldInput>;
+  disconnect?: Maybe<GreenScreenTemplateOrganisationDisconnectFieldInput>;
+  update?: Maybe<GreenScreenTemplateOrganisationUpdateConnectionInput>;
+  where?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+}
+
+export interface GreenScreenTemplatePluginsAggregateInput {
+  AND?: Maybe<Array<GreenScreenTemplatePluginsAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenTemplatePluginsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenTemplatePluginsNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenTemplatePluginsConnectFieldInput {
+  connect?: Maybe<Array<TemplateSlotPluginConnectInput>>;
+  where?: Maybe<TemplateSlotPluginConnectWhere>;
+}
+
+export interface GreenScreenTemplatePluginsConnectOrCreateFieldInput {
+  onCreate: GreenScreenTemplatePluginsConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotPluginConnectOrCreateWhere;
+}
+
+export interface GreenScreenTemplatePluginsConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotPluginCreateInput;
+}
+
+export interface GreenScreenTemplatePluginsConnectionSort {
+  node?: Maybe<TemplateSlotPluginSort>;
+}
+
+export interface GreenScreenTemplatePluginsConnectionWhere {
+  AND?: Maybe<Array<GreenScreenTemplatePluginsConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplatePluginsConnectionWhere>>;
+  node?: Maybe<TemplateSlotPluginWhere>;
+  node_NOT?: Maybe<TemplateSlotPluginWhere>;
+}
+
+export interface GreenScreenTemplatePluginsCreateFieldInput {
+  node: TemplateSlotPluginCreateInput;
+}
+
+export interface GreenScreenTemplatePluginsDeleteFieldInput {
+  delete?: Maybe<TemplateSlotPluginDeleteInput>;
+  where?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+}
+
+export interface GreenScreenTemplatePluginsDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotPluginDisconnectInput>;
+  where?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+}
+
+export interface GreenScreenTemplatePluginsFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplatePluginsConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplatePluginsConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplatePluginsCreateFieldInput>>;
+}
+
+export interface GreenScreenTemplatePluginsNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenTemplatePluginsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenTemplatePluginsNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  sourceType_EQUAL?: Maybe<Scalars["String"]>;
+  sourceType_GT?: Maybe<Scalars["Int"]>;
+  sourceType_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_LT?: Maybe<Scalars["Int"]>;
+  sourceType_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  sourceVersion_EQUAL?: Maybe<Scalars["String"]>;
+  sourceVersion_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  source_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  source_EQUAL?: Maybe<Scalars["String"]>;
+  source_GT?: Maybe<Scalars["Int"]>;
+  source_GTE?: Maybe<Scalars["Int"]>;
+  source_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  source_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  source_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  source_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  source_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  source_LT?: Maybe<Scalars["Int"]>;
+  source_LTE?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  type_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  type_EQUAL?: Maybe<Scalars["String"]>;
+  type_GT?: Maybe<Scalars["Int"]>;
+  type_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  type_LT?: Maybe<Scalars["Int"]>;
+  type_LTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface GreenScreenTemplatePluginsUpdateConnectionInput {
+  node?: Maybe<TemplateSlotPluginUpdateInput>;
+}
+
+export interface GreenScreenTemplatePluginsUpdateFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplatePluginsConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplatePluginsConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplatePluginsCreateFieldInput>>;
+  delete?: Maybe<Array<GreenScreenTemplatePluginsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<GreenScreenTemplatePluginsDisconnectFieldInput>>;
+  update?: Maybe<GreenScreenTemplatePluginsUpdateConnectionInput>;
+  where?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+}
+
+export interface GreenScreenTemplateRelationInput {
+  organisation?: Maybe<GreenScreenTemplateOrganisationCreateFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsCreateFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensCreateFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsCreateFieldInput>>;
+}
+
+export interface GreenScreenTemplateScreensAggregateInput {
+  AND?: Maybe<Array<GreenScreenTemplateScreensAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateScreensAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenTemplateScreensNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenTemplateScreensConnectFieldInput {
+  connect?: Maybe<Array<GreenScreenConnectInput>>;
+  where?: Maybe<GreenScreenConnectWhere>;
+}
+
+export interface GreenScreenTemplateScreensConnectOrCreateFieldInput {
+  onCreate: GreenScreenTemplateScreensConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenConnectOrCreateWhere;
+}
+
+export interface GreenScreenTemplateScreensConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenCreateInput;
+}
+
+export interface GreenScreenTemplateScreensConnectionSort {
+  node?: Maybe<GreenScreenSort>;
+}
+
+export interface GreenScreenTemplateScreensConnectionWhere {
+  AND?: Maybe<Array<GreenScreenTemplateScreensConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplateScreensConnectionWhere>>;
+  node?: Maybe<GreenScreenWhere>;
+  node_NOT?: Maybe<GreenScreenWhere>;
+}
+
+export interface GreenScreenTemplateScreensCreateFieldInput {
+  node: GreenScreenCreateInput;
+}
+
+export interface GreenScreenTemplateScreensDeleteFieldInput {
+  delete?: Maybe<GreenScreenDeleteInput>;
+  where?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+}
+
+export interface GreenScreenTemplateScreensDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenDisconnectInput>;
+  where?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+}
+
+export interface GreenScreenTemplateScreensFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplateScreensConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplateScreensConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplateScreensCreateFieldInput>>;
+}
+
+export interface GreenScreenTemplateScreensNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenTemplateScreensNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateScreensNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  networkName_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  networkName_EQUAL?: Maybe<Scalars["String"]>;
+  networkName_GT?: Maybe<Scalars["Int"]>;
+  networkName_GTE?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  networkName_LT?: Maybe<Scalars["Int"]>;
+  networkName_LTE?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface GreenScreenTemplateScreensUpdateConnectionInput {
+  node?: Maybe<GreenScreenUpdateInput>;
+}
+
+export interface GreenScreenTemplateScreensUpdateFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplateScreensConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplateScreensConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplateScreensCreateFieldInput>>;
+  delete?: Maybe<Array<GreenScreenTemplateScreensDeleteFieldInput>>;
+  disconnect?: Maybe<Array<GreenScreenTemplateScreensDisconnectFieldInput>>;
+  update?: Maybe<GreenScreenTemplateScreensUpdateConnectionInput>;
+  where?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+}
+
+export interface GreenScreenTemplateSlotsAggregateInput {
+  AND?: Maybe<Array<GreenScreenTemplateSlotsAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateSlotsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenTemplateSlotsNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenTemplateSlotsConnectFieldInput {
+  connect?: Maybe<Array<TemplateSlotConnectInput>>;
+  where?: Maybe<TemplateSlotConnectWhere>;
+}
+
+export interface GreenScreenTemplateSlotsConnectOrCreateFieldInput {
+  onCreate: GreenScreenTemplateSlotsConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotConnectOrCreateWhere;
+}
+
+export interface GreenScreenTemplateSlotsConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotCreateInput;
+}
+
+export interface GreenScreenTemplateSlotsConnectionSort {
+  node?: Maybe<TemplateSlotSort>;
+}
+
+export interface GreenScreenTemplateSlotsConnectionWhere {
+  AND?: Maybe<Array<GreenScreenTemplateSlotsConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplateSlotsConnectionWhere>>;
+  node?: Maybe<TemplateSlotWhere>;
+  node_NOT?: Maybe<TemplateSlotWhere>;
+}
+
+export interface GreenScreenTemplateSlotsCreateFieldInput {
+  node: TemplateSlotCreateInput;
+}
+
+export interface GreenScreenTemplateSlotsDeleteFieldInput {
+  delete?: Maybe<TemplateSlotDeleteInput>;
+  where?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+}
+
+export interface GreenScreenTemplateSlotsDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotDisconnectInput>;
+  where?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+}
+
+export interface GreenScreenTemplateSlotsFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplateSlotsConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplateSlotsConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplateSlotsCreateFieldInput>>;
+}
+
+export interface GreenScreenTemplateSlotsNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenTemplateSlotsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenTemplateSlotsNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface GreenScreenTemplateSlotsUpdateConnectionInput {
+  node?: Maybe<TemplateSlotUpdateInput>;
+}
+
+export interface GreenScreenTemplateSlotsUpdateFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplateSlotsConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenTemplateSlotsConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenTemplateSlotsCreateFieldInput>>;
+  delete?: Maybe<Array<GreenScreenTemplateSlotsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<GreenScreenTemplateSlotsDisconnectFieldInput>>;
+  update?: Maybe<GreenScreenTemplateSlotsUpdateConnectionInput>;
+  where?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+}
+
+/** Fields to sort GreenScreenTemplates by. The order in which sorts are applied is not guaranteed when specifying many fields in one GreenScreenTemplateSort object. */
+export interface GreenScreenTemplateSort {
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+}
+
+export interface GreenScreenTemplateUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface GreenScreenTemplateUpdateConnectionInput {
+  node?: Maybe<GreenScreenTemplateUpdateInput>;
+}
+
+export interface GreenScreenTemplateUpdateFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<GreenScreenTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<GreenScreenTemplateCreateFieldInput>;
+  delete?: Maybe<GreenScreenTemplateDeleteFieldInput>;
+  disconnect?: Maybe<GreenScreenTemplateDisconnectFieldInput>;
+  update?: Maybe<GreenScreenTemplateUpdateConnectionInput>;
+  where?: Maybe<GreenScreenTemplateConnectionWhere>;
+}
+
+export interface GreenScreenTemplateUpdateInput {
+  name?: Maybe<Scalars["String"]>;
+  organisation?: Maybe<GreenScreenTemplateOrganisationUpdateFieldInput>;
+  plugins?: Maybe<Array<GreenScreenTemplatePluginsUpdateFieldInput>>;
+  screens?: Maybe<Array<GreenScreenTemplateScreensUpdateFieldInput>>;
+  slots?: Maybe<Array<GreenScreenTemplateSlotsUpdateFieldInput>>;
+}
+
+export interface GreenScreenTemplateWhere {
+  AND?: Maybe<Array<GreenScreenTemplateWhere>>;
+  OR?: Maybe<Array<GreenScreenTemplateWhere>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  organisation?: Maybe<HiveOrganisationWhere>;
+  organisationAggregate?: Maybe<GreenScreenTemplateOrganisationAggregateInput>;
+  organisationConnection?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+  organisationConnection_NOT?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+  organisation_NOT?: Maybe<HiveOrganisationWhere>;
+  plugins?: Maybe<TemplateSlotPluginWhere>;
+  pluginsAggregate?: Maybe<GreenScreenTemplatePluginsAggregateInput>;
+  pluginsConnection?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+  pluginsConnection_NOT?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+  plugins_NOT?: Maybe<TemplateSlotPluginWhere>;
+  screens?: Maybe<GreenScreenWhere>;
+  screensAggregate?: Maybe<GreenScreenTemplateScreensAggregateInput>;
+  screensConnection?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+  screensConnection_NOT?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+  screens_NOT?: Maybe<GreenScreenWhere>;
+  slots?: Maybe<TemplateSlotWhere>;
+  slotsAggregate?: Maybe<GreenScreenTemplateSlotsAggregateInput>;
+  slotsConnection?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+  slotsConnection_NOT?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+  slots_NOT?: Maybe<TemplateSlotWhere>;
+}
+
 export interface GreenScreenUniqueWhere {
   id?: Maybe<Scalars["ID"]>;
 }
@@ -1311,6 +2030,7 @@ export interface GreenScreenUpdateInput {
   online?: Maybe<Scalars["Boolean"]>;
   organisation?: Maybe<GreenScreenOrganisationUpdateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsUpdateFieldInput>>;
+  template?: Maybe<GreenScreenTemplateUpdateFieldInput>;
 }
 
 export interface GreenScreenWhere {
@@ -1363,6 +2083,11 @@ export interface GreenScreenWhere {
   slotsConnection?: Maybe<GreenScreenSlotsConnectionWhere>;
   slotsConnection_NOT?: Maybe<GreenScreenSlotsConnectionWhere>;
   slots_NOT?: Maybe<ScreenSlotWhere>;
+  template?: Maybe<GreenScreenTemplateWhere>;
+  templateAggregate?: Maybe<GreenScreenTemplateAggregateInput>;
+  templateConnection?: Maybe<GreenScreenTemplateConnectionWhere>;
+  templateConnection_NOT?: Maybe<GreenScreenTemplateConnectionWhere>;
+  template_NOT?: Maybe<GreenScreenTemplateWhere>;
 }
 
 export interface HiveApplianceConnectInput {
@@ -3103,6 +3828,9 @@ export interface HiveOrganisationConnectInput {
   roles?: Maybe<Array<HiveOrganisationRolesConnectFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersConnectFieldInput>>;
   schedules?: Maybe<Array<HiveOrganisationSchedulesConnectFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesConnectFieldInput>
+  >;
 }
 
 export interface HiveOrganisationConnectOrCreateInput {
@@ -3125,6 +3853,9 @@ export interface HiveOrganisationConnectOrCreateInput {
     Array<HiveOrganisationScheduleTiersConnectOrCreateFieldInput>
   >;
   schedules?: Maybe<Array<HiveOrganisationSchedulesConnectOrCreateFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesConnectOrCreateFieldInput>
+  >;
 }
 
 export interface HiveOrganisationConnectOrCreateWhere {
@@ -3146,6 +3877,7 @@ export interface HiveOrganisationCreateInput {
   roles?: Maybe<HiveOrganisationRolesFieldInput>;
   scheduleTiers?: Maybe<HiveOrganisationScheduleTiersFieldInput>;
   schedules?: Maybe<HiveOrganisationSchedulesFieldInput>;
+  screenTemplates?: Maybe<HiveOrganisationScreenTemplatesFieldInput>;
 }
 
 export interface HiveOrganisationDeleteInput {
@@ -3158,6 +3890,9 @@ export interface HiveOrganisationDeleteInput {
   roles?: Maybe<Array<HiveOrganisationRolesDeleteFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersDeleteFieldInput>>;
   schedules?: Maybe<Array<HiveOrganisationSchedulesDeleteFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesDeleteFieldInput>
+  >;
 }
 
 export interface HiveOrganisationDisconnectInput {
@@ -3174,6 +3909,9 @@ export interface HiveOrganisationDisconnectInput {
     Array<HiveOrganisationScheduleTiersDisconnectFieldInput>
   >;
   schedules?: Maybe<Array<HiveOrganisationSchedulesDisconnectFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesDisconnectFieldInput>
+  >;
 }
 
 export interface HiveOrganisationGreenScreensAggregateInput {
@@ -3673,6 +4411,9 @@ export interface HiveOrganisationRelationInput {
   roles?: Maybe<Array<HiveOrganisationRolesCreateFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersCreateFieldInput>>;
   schedules?: Maybe<Array<HiveOrganisationSchedulesCreateFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesCreateFieldInput>
+  >;
 }
 
 export interface HiveOrganisationRolesAggregateInput {
@@ -4075,6 +4816,108 @@ export interface HiveOrganisationSchedulesUpdateFieldInput {
   where?: Maybe<HiveOrganisationSchedulesConnectionWhere>;
 }
 
+export interface HiveOrganisationScreenTemplatesAggregateInput {
+  AND?: Maybe<Array<HiveOrganisationScreenTemplatesAggregateInput>>;
+  OR?: Maybe<Array<HiveOrganisationScreenTemplatesAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<HiveOrganisationScreenTemplatesNodeAggregationWhereInput>;
+}
+
+export interface HiveOrganisationScreenTemplatesConnectFieldInput {
+  connect?: Maybe<Array<GreenScreenTemplateConnectInput>>;
+  where?: Maybe<GreenScreenTemplateConnectWhere>;
+}
+
+export interface HiveOrganisationScreenTemplatesConnectOrCreateFieldInput {
+  onCreate: HiveOrganisationScreenTemplatesConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenTemplateConnectOrCreateWhere;
+}
+
+export interface HiveOrganisationScreenTemplatesConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface HiveOrganisationScreenTemplatesConnectionSort {
+  node?: Maybe<GreenScreenTemplateSort>;
+}
+
+export interface HiveOrganisationScreenTemplatesConnectionWhere {
+  AND?: Maybe<Array<HiveOrganisationScreenTemplatesConnectionWhere>>;
+  OR?: Maybe<Array<HiveOrganisationScreenTemplatesConnectionWhere>>;
+  node?: Maybe<GreenScreenTemplateWhere>;
+  node_NOT?: Maybe<GreenScreenTemplateWhere>;
+}
+
+export interface HiveOrganisationScreenTemplatesCreateFieldInput {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface HiveOrganisationScreenTemplatesDeleteFieldInput {
+  delete?: Maybe<GreenScreenTemplateDeleteInput>;
+  where?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+}
+
+export interface HiveOrganisationScreenTemplatesDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+  where?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+}
+
+export interface HiveOrganisationScreenTemplatesFieldInput {
+  connect?: Maybe<Array<HiveOrganisationScreenTemplatesConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<HiveOrganisationScreenTemplatesConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<HiveOrganisationScreenTemplatesCreateFieldInput>>;
+}
+
+export interface HiveOrganisationScreenTemplatesNodeAggregationWhereInput {
+  AND?: Maybe<Array<HiveOrganisationScreenTemplatesNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<HiveOrganisationScreenTemplatesNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface HiveOrganisationScreenTemplatesUpdateConnectionInput {
+  node?: Maybe<GreenScreenTemplateUpdateInput>;
+}
+
+export interface HiveOrganisationScreenTemplatesUpdateFieldInput {
+  connect?: Maybe<Array<HiveOrganisationScreenTemplatesConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<HiveOrganisationScreenTemplatesConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<HiveOrganisationScreenTemplatesCreateFieldInput>>;
+  delete?: Maybe<Array<HiveOrganisationScreenTemplatesDeleteFieldInput>>;
+  disconnect?: Maybe<
+    Array<HiveOrganisationScreenTemplatesDisconnectFieldInput>
+  >;
+  update?: Maybe<HiveOrganisationScreenTemplatesUpdateConnectionInput>;
+  where?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+}
+
 /** Fields to sort HiveOrganisations by. The order in which sorts are applied is not guaranteed when specifying many fields in one HiveOrganisationSort object. */
 export interface HiveOrganisationSort {
   id?: Maybe<SortDirection>;
@@ -4096,6 +4939,9 @@ export interface HiveOrganisationUpdateInput {
   roles?: Maybe<Array<HiveOrganisationRolesUpdateFieldInput>>;
   scheduleTiers?: Maybe<Array<HiveOrganisationScheduleTiersUpdateFieldInput>>;
   schedules?: Maybe<Array<HiveOrganisationSchedulesUpdateFieldInput>>;
+  screenTemplates?: Maybe<
+    Array<HiveOrganisationScreenTemplatesUpdateFieldInput>
+  >;
 }
 
 export interface HiveOrganisationWhere {
@@ -4166,6 +5012,11 @@ export interface HiveOrganisationWhere {
   schedulesConnection?: Maybe<HiveOrganisationSchedulesConnectionWhere>;
   schedulesConnection_NOT?: Maybe<HiveOrganisationSchedulesConnectionWhere>;
   schedules_NOT?: Maybe<ScheduleWhere>;
+  screenTemplates?: Maybe<GreenScreenTemplateWhere>;
+  screenTemplatesAggregate?: Maybe<HiveOrganisationScreenTemplatesAggregateInput>;
+  screenTemplatesConnection?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+  screenTemplatesConnection_NOT?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+  screenTemplates_NOT?: Maybe<GreenScreenTemplateWhere>;
 }
 
 export interface HiveServiceConnectWhere {
@@ -6482,6 +7333,7 @@ export interface ScheduleConnectInput {
   locations?: Maybe<Array<ScheduleLocationsConnectFieldInput>>;
   organisation?: Maybe<ScheduleOrganisationConnectFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsConnectFieldInput>>;
+  template?: Maybe<ScheduleTemplateConnectFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersConnectFieldInput>>;
 }
 
@@ -6489,6 +7341,7 @@ export interface ScheduleConnectOrCreateInput {
   locations?: Maybe<Array<ScheduleLocationsConnectOrCreateFieldInput>>;
   organisation?: Maybe<ScheduleOrganisationConnectOrCreateFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsConnectOrCreateFieldInput>>;
+  template?: Maybe<ScheduleTemplateConnectOrCreateFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersConnectOrCreateFieldInput>>;
 }
 
@@ -6507,6 +7360,7 @@ export interface ScheduleCreateInput {
   organisation?: Maybe<ScheduleOrganisationFieldInput>;
   slots?: Maybe<ScheduleSlotsFieldInput>;
   startDate?: Maybe<Scalars["DateTime"]>;
+  template?: Maybe<ScheduleTemplateFieldInput>;
   tiers?: Maybe<ScheduleTiersFieldInput>;
 }
 
@@ -6514,6 +7368,7 @@ export interface ScheduleDeleteInput {
   locations?: Maybe<Array<ScheduleLocationsDeleteFieldInput>>;
   organisation?: Maybe<ScheduleOrganisationDeleteFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsDeleteFieldInput>>;
+  template?: Maybe<ScheduleTemplateDeleteFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersDeleteFieldInput>>;
 }
 
@@ -6521,6 +7376,7 @@ export interface ScheduleDisconnectInput {
   locations?: Maybe<Array<ScheduleLocationsDisconnectFieldInput>>;
   organisation?: Maybe<ScheduleOrganisationDisconnectFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsDisconnectFieldInput>>;
+  template?: Maybe<ScheduleTemplateDisconnectFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersDisconnectFieldInput>>;
 }
 
@@ -6727,6 +7583,7 @@ export interface ScheduleRelationInput {
   locations?: Maybe<Array<ScheduleLocationsCreateFieldInput>>;
   organisation?: Maybe<ScheduleOrganisationCreateFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsCreateFieldInput>>;
+  template?: Maybe<ScheduleTemplateCreateFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersCreateFieldInput>>;
 }
 
@@ -6869,12 +7726,14 @@ export interface ScheduleSlotCampaignUpdateFieldInput {
 export interface ScheduleSlotConnectInput {
   campaign?: Maybe<ScheduleSlotCampaignConnectFieldInput>;
   schedule?: Maybe<ScheduleSlotScheduleConnectFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotConnectFieldInput>;
   tier?: Maybe<ScheduleSlotTierConnectFieldInput>;
 }
 
 export interface ScheduleSlotConnectOrCreateInput {
   campaign?: Maybe<ScheduleSlotCampaignConnectOrCreateFieldInput>;
   schedule?: Maybe<ScheduleSlotScheduleConnectOrCreateFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotConnectOrCreateFieldInput>;
   tier?: Maybe<ScheduleSlotTierConnectOrCreateFieldInput>;
 }
 
@@ -6890,6 +7749,7 @@ export interface ScheduleSlotCreateInput {
   campaign?: Maybe<ScheduleSlotCampaignFieldInput>;
   endDate?: Maybe<Scalars["DateTime"]>;
   schedule?: Maybe<ScheduleSlotScheduleFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotFieldInput>;
   startDate?: Maybe<Scalars["DateTime"]>;
   tier?: Maybe<ScheduleSlotTierFieldInput>;
 }
@@ -6897,12 +7757,14 @@ export interface ScheduleSlotCreateInput {
 export interface ScheduleSlotDeleteInput {
   campaign?: Maybe<ScheduleSlotCampaignDeleteFieldInput>;
   schedule?: Maybe<ScheduleSlotScheduleDeleteFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotDeleteFieldInput>;
   tier?: Maybe<ScheduleSlotTierDeleteFieldInput>;
 }
 
 export interface ScheduleSlotDisconnectInput {
   campaign?: Maybe<ScheduleSlotCampaignDisconnectFieldInput>;
   schedule?: Maybe<ScheduleSlotScheduleDisconnectFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotDisconnectFieldInput>;
   tier?: Maybe<ScheduleSlotTierDisconnectFieldInput>;
 }
 
@@ -6916,6 +7778,7 @@ export interface ScheduleSlotOptions {
 export interface ScheduleSlotRelationInput {
   campaign?: Maybe<ScheduleSlotCampaignCreateFieldInput>;
   schedule?: Maybe<ScheduleSlotScheduleCreateFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotCreateFieldInput>;
   tier?: Maybe<ScheduleSlotTierCreateFieldInput>;
 }
 
@@ -7043,6 +7906,102 @@ export interface ScheduleSlotScheduleUpdateFieldInput {
   disconnect?: Maybe<ScheduleSlotScheduleDisconnectFieldInput>;
   update?: Maybe<ScheduleSlotScheduleUpdateConnectionInput>;
   where?: Maybe<ScheduleSlotScheduleConnectionWhere>;
+}
+
+export interface ScheduleSlotSlotAggregateInput {
+  AND?: Maybe<Array<ScheduleSlotSlotAggregateInput>>;
+  OR?: Maybe<Array<ScheduleSlotSlotAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScheduleSlotSlotNodeAggregationWhereInput>;
+}
+
+export interface ScheduleSlotSlotConnectFieldInput {
+  connect?: Maybe<TemplateSlotConnectInput>;
+  where?: Maybe<TemplateSlotConnectWhere>;
+}
+
+export interface ScheduleSlotSlotConnectOrCreateFieldInput {
+  onCreate: ScheduleSlotSlotConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotConnectOrCreateWhere;
+}
+
+export interface ScheduleSlotSlotConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScheduleSlotSlotConnectionSort {
+  node?: Maybe<TemplateSlotSort>;
+}
+
+export interface ScheduleSlotSlotConnectionWhere {
+  AND?: Maybe<Array<ScheduleSlotSlotConnectionWhere>>;
+  OR?: Maybe<Array<ScheduleSlotSlotConnectionWhere>>;
+  node?: Maybe<TemplateSlotWhere>;
+  node_NOT?: Maybe<TemplateSlotWhere>;
+}
+
+export interface ScheduleSlotSlotCreateFieldInput {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScheduleSlotSlotDeleteFieldInput {
+  delete?: Maybe<TemplateSlotDeleteInput>;
+  where?: Maybe<ScheduleSlotSlotConnectionWhere>;
+}
+
+export interface ScheduleSlotSlotDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotDisconnectInput>;
+  where?: Maybe<ScheduleSlotSlotConnectionWhere>;
+}
+
+export interface ScheduleSlotSlotFieldInput {
+  connect?: Maybe<ScheduleSlotSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleSlotSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleSlotSlotCreateFieldInput>;
+}
+
+export interface ScheduleSlotSlotNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScheduleSlotSlotNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScheduleSlotSlotNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScheduleSlotSlotUpdateConnectionInput {
+  node?: Maybe<TemplateSlotUpdateInput>;
+}
+
+export interface ScheduleSlotSlotUpdateFieldInput {
+  connect?: Maybe<ScheduleSlotSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleSlotSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleSlotSlotCreateFieldInput>;
+  delete?: Maybe<ScheduleSlotSlotDeleteFieldInput>;
+  disconnect?: Maybe<ScheduleSlotSlotDisconnectFieldInput>;
+  update?: Maybe<ScheduleSlotSlotUpdateConnectionInput>;
+  where?: Maybe<ScheduleSlotSlotConnectionWhere>;
 }
 
 /** Fields to sort ScheduleSlots by. The order in which sorts are applied is not guaranteed when specifying many fields in one ScheduleSlotSort object. */
@@ -7226,6 +8185,7 @@ export interface ScheduleSlotUpdateInput {
   campaign?: Maybe<ScheduleSlotCampaignUpdateFieldInput>;
   endDate?: Maybe<Scalars["DateTime"]>;
   schedule?: Maybe<ScheduleSlotScheduleUpdateFieldInput>;
+  slot?: Maybe<ScheduleSlotSlotUpdateFieldInput>;
   startDate?: Maybe<Scalars["DateTime"]>;
   tier?: Maybe<ScheduleSlotTierUpdateFieldInput>;
 }
@@ -7261,6 +8221,11 @@ export interface ScheduleSlotWhere {
   scheduleConnection?: Maybe<ScheduleSlotScheduleConnectionWhere>;
   scheduleConnection_NOT?: Maybe<ScheduleSlotScheduleConnectionWhere>;
   schedule_NOT?: Maybe<ScheduleWhere>;
+  slot?: Maybe<TemplateSlotWhere>;
+  slotAggregate?: Maybe<ScheduleSlotSlotAggregateInput>;
+  slotConnection?: Maybe<ScheduleSlotSlotConnectionWhere>;
+  slotConnection_NOT?: Maybe<ScheduleSlotSlotConnectionWhere>;
+  slot_NOT?: Maybe<TemplateSlotWhere>;
   startDate?: Maybe<Scalars["DateTime"]>;
   startDate_GT?: Maybe<Scalars["DateTime"]>;
   startDate_GTE?: Maybe<Scalars["DateTime"]>;
@@ -7388,6 +8353,102 @@ export interface ScheduleSort {
   id?: Maybe<SortDirection>;
   name?: Maybe<SortDirection>;
   startDate?: Maybe<SortDirection>;
+}
+
+export interface ScheduleTemplateAggregateInput {
+  AND?: Maybe<Array<ScheduleTemplateAggregateInput>>;
+  OR?: Maybe<Array<ScheduleTemplateAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScheduleTemplateNodeAggregationWhereInput>;
+}
+
+export interface ScheduleTemplateConnectFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectInput>;
+  where?: Maybe<GreenScreenTemplateConnectWhere>;
+}
+
+export interface ScheduleTemplateConnectOrCreateFieldInput {
+  onCreate: ScheduleTemplateConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenTemplateConnectOrCreateWhere;
+}
+
+export interface ScheduleTemplateConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface ScheduleTemplateConnectionSort {
+  node?: Maybe<GreenScreenTemplateSort>;
+}
+
+export interface ScheduleTemplateConnectionWhere {
+  AND?: Maybe<Array<ScheduleTemplateConnectionWhere>>;
+  OR?: Maybe<Array<ScheduleTemplateConnectionWhere>>;
+  node?: Maybe<GreenScreenTemplateWhere>;
+  node_NOT?: Maybe<GreenScreenTemplateWhere>;
+}
+
+export interface ScheduleTemplateCreateFieldInput {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface ScheduleTemplateDeleteFieldInput {
+  delete?: Maybe<GreenScreenTemplateDeleteInput>;
+  where?: Maybe<ScheduleTemplateConnectionWhere>;
+}
+
+export interface ScheduleTemplateDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+  where?: Maybe<ScheduleTemplateConnectionWhere>;
+}
+
+export interface ScheduleTemplateFieldInput {
+  connect?: Maybe<ScheduleTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleTemplateCreateFieldInput>;
+}
+
+export interface ScheduleTemplateNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScheduleTemplateNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScheduleTemplateNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScheduleTemplateUpdateConnectionInput {
+  node?: Maybe<GreenScreenTemplateUpdateInput>;
+}
+
+export interface ScheduleTemplateUpdateFieldInput {
+  connect?: Maybe<ScheduleTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleTemplateCreateFieldInput>;
+  delete?: Maybe<ScheduleTemplateDeleteFieldInput>;
+  disconnect?: Maybe<ScheduleTemplateDisconnectFieldInput>;
+  update?: Maybe<ScheduleTemplateUpdateConnectionInput>;
+  where?: Maybe<ScheduleTemplateConnectionWhere>;
 }
 
 export interface ScheduleTierConnectInput {
@@ -7921,7 +8982,213 @@ export interface ScheduleUpdateInput {
   organisation?: Maybe<ScheduleOrganisationUpdateFieldInput>;
   slots?: Maybe<Array<ScheduleSlotsUpdateFieldInput>>;
   startDate?: Maybe<Scalars["DateTime"]>;
+  template?: Maybe<ScheduleTemplateUpdateFieldInput>;
   tiers?: Maybe<Array<ScheduleTiersUpdateFieldInput>>;
+}
+
+export interface ScheduleViewConnectInput {
+  schedule?: Maybe<ScheduleViewScheduleConnectFieldInput>;
+}
+
+export interface ScheduleViewConnectOrCreateInput {
+  schedule?: Maybe<ScheduleViewScheduleConnectOrCreateFieldInput>;
+}
+
+export interface ScheduleViewCreateInput {
+  name?: Maybe<Scalars["String"]>;
+  schedule?: Maybe<ScheduleViewScheduleFieldInput>;
+  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
+}
+
+export interface ScheduleViewDeleteInput {
+  schedule?: Maybe<ScheduleViewScheduleDeleteFieldInput>;
+}
+
+export interface ScheduleViewDisconnectInput {
+  schedule?: Maybe<ScheduleViewScheduleDisconnectFieldInput>;
+}
+
+export interface ScheduleViewOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more ScheduleViewSort objects to sort ScheduleViews by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<ScheduleViewSort>>>;
+}
+
+export interface ScheduleViewRelationInput {
+  schedule?: Maybe<ScheduleViewScheduleCreateFieldInput>;
+}
+
+export interface ScheduleViewScheduleAggregateInput {
+  AND?: Maybe<Array<ScheduleViewScheduleAggregateInput>>;
+  OR?: Maybe<Array<ScheduleViewScheduleAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScheduleViewScheduleNodeAggregationWhereInput>;
+}
+
+export interface ScheduleViewScheduleConnectFieldInput {
+  connect?: Maybe<ScheduleConnectInput>;
+  where?: Maybe<ScheduleConnectWhere>;
+}
+
+export interface ScheduleViewScheduleConnectOrCreateFieldInput {
+  onCreate: ScheduleViewScheduleConnectOrCreateFieldInputOnCreate;
+  where: ScheduleConnectOrCreateWhere;
+}
+
+export interface ScheduleViewScheduleConnectOrCreateFieldInputOnCreate {
+  node: ScheduleCreateInput;
+}
+
+export interface ScheduleViewScheduleConnectionSort {
+  node?: Maybe<ScheduleSort>;
+}
+
+export interface ScheduleViewScheduleConnectionWhere {
+  AND?: Maybe<Array<ScheduleViewScheduleConnectionWhere>>;
+  OR?: Maybe<Array<ScheduleViewScheduleConnectionWhere>>;
+  node?: Maybe<ScheduleWhere>;
+  node_NOT?: Maybe<ScheduleWhere>;
+}
+
+export interface ScheduleViewScheduleCreateFieldInput {
+  node: ScheduleCreateInput;
+}
+
+export interface ScheduleViewScheduleDeleteFieldInput {
+  delete?: Maybe<ScheduleDeleteInput>;
+  where?: Maybe<ScheduleViewScheduleConnectionWhere>;
+}
+
+export interface ScheduleViewScheduleDisconnectFieldInput {
+  disconnect?: Maybe<ScheduleDisconnectInput>;
+  where?: Maybe<ScheduleViewScheduleConnectionWhere>;
+}
+
+export interface ScheduleViewScheduleFieldInput {
+  connect?: Maybe<ScheduleViewScheduleConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleViewScheduleConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleViewScheduleCreateFieldInput>;
+}
+
+export interface ScheduleViewScheduleNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScheduleViewScheduleNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScheduleViewScheduleNodeAggregationWhereInput>>;
+  endDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  startDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+}
+
+export interface ScheduleViewScheduleUpdateConnectionInput {
+  node?: Maybe<ScheduleUpdateInput>;
+}
+
+export interface ScheduleViewScheduleUpdateFieldInput {
+  connect?: Maybe<ScheduleViewScheduleConnectFieldInput>;
+  connectOrCreate?: Maybe<ScheduleViewScheduleConnectOrCreateFieldInput>;
+  create?: Maybe<ScheduleViewScheduleCreateFieldInput>;
+  delete?: Maybe<ScheduleViewScheduleDeleteFieldInput>;
+  disconnect?: Maybe<ScheduleViewScheduleDisconnectFieldInput>;
+  update?: Maybe<ScheduleViewScheduleUpdateConnectionInput>;
+  where?: Maybe<ScheduleViewScheduleConnectionWhere>;
+}
+
+/** Fields to sort ScheduleViews by. The order in which sorts are applied is not guaranteed when specifying many fields in one ScheduleViewSort object. */
+export interface ScheduleViewSort {
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+}
+
+export interface ScheduleViewUpdateInput {
+  name?: Maybe<Scalars["String"]>;
+  schedule?: Maybe<ScheduleViewScheduleUpdateFieldInput>;
+  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
+}
+
+export interface ScheduleViewWhere {
+  AND?: Maybe<Array<ScheduleViewWhere>>;
+  OR?: Maybe<Array<ScheduleViewWhere>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  schedule?: Maybe<ScheduleWhere>;
+  scheduleAggregate?: Maybe<ScheduleViewScheduleAggregateInput>;
+  scheduleConnection?: Maybe<ScheduleViewScheduleConnectionWhere>;
+  scheduleConnection_NOT?: Maybe<ScheduleViewScheduleConnectionWhere>;
+  schedule_NOT?: Maybe<ScheduleWhere>;
+  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  tags_INCLUDES?: Maybe<Scalars["String"]>;
+  tags_NOT?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  tags_NOT_INCLUDES?: Maybe<Scalars["String"]>;
 }
 
 export interface ScheduleWhere {
@@ -7978,6 +9245,11 @@ export interface ScheduleWhere {
   startDate_LTE?: Maybe<Scalars["DateTime"]>;
   startDate_NOT?: Maybe<Scalars["DateTime"]>;
   startDate_NOT_IN?: Maybe<Array<Maybe<Scalars["DateTime"]>>>;
+  template?: Maybe<GreenScreenTemplateWhere>;
+  templateAggregate?: Maybe<ScheduleTemplateAggregateInput>;
+  templateConnection?: Maybe<ScheduleTemplateConnectionWhere>;
+  templateConnection_NOT?: Maybe<ScheduleTemplateConnectionWhere>;
+  template_NOT?: Maybe<GreenScreenTemplateWhere>;
   tiers?: Maybe<ScheduleTierWhere>;
   tiersAggregate?: Maybe<ScheduleTiersAggregateInput>;
   tiersConnection?: Maybe<ScheduleTiersConnectionWhere>;
@@ -7987,10 +9259,14 @@ export interface ScheduleWhere {
 
 export interface ScreenSlotConnectInput {
   screen?: Maybe<ScreenSlotScreenConnectFieldInput>;
+  tags?: Maybe<Array<ScreenSlotTagsConnectFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotConnectFieldInput>;
 }
 
 export interface ScreenSlotConnectOrCreateInput {
   screen?: Maybe<ScreenSlotScreenConnectOrCreateFieldInput>;
+  tags?: Maybe<Array<ScreenSlotTagsConnectOrCreateFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotConnectOrCreateFieldInput>;
 }
 
 export interface ScreenSlotConnectOrCreateWhere {
@@ -8015,16 +9291,21 @@ export interface ScreenSlotCreateInput {
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
   screen?: Maybe<ScreenSlotScreenFieldInput>;
-  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  tags?: Maybe<ScreenSlotTagsFieldInput>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotFieldInput>;
   width?: Maybe<Scalars["Float"]>;
 }
 
 export interface ScreenSlotDeleteInput {
   screen?: Maybe<ScreenSlotScreenDeleteFieldInput>;
+  tags?: Maybe<Array<ScreenSlotTagsDeleteFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotDeleteFieldInput>;
 }
 
 export interface ScreenSlotDisconnectInput {
   screen?: Maybe<ScreenSlotScreenDisconnectFieldInput>;
+  tags?: Maybe<Array<ScreenSlotTagsDisconnectFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotDisconnectFieldInput>;
 }
 
 export interface ScreenSlotOptions {
@@ -8036,6 +9317,8 @@ export interface ScreenSlotOptions {
 
 export interface ScreenSlotRelationInput {
   screen?: Maybe<ScreenSlotScreenCreateFieldInput>;
+  tags?: Maybe<Array<ScreenSlotTagsCreateFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotCreateFieldInput>;
 }
 
 export interface ScreenSlotScreenAggregateInput {
@@ -8172,6 +9455,195 @@ export interface ScreenSlotSort {
   width?: Maybe<SortDirection>;
 }
 
+export interface ScreenSlotTagsAggregateInput {
+  AND?: Maybe<Array<ScreenSlotTagsAggregateInput>>;
+  OR?: Maybe<Array<ScreenSlotTagsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenSlotTagsNodeAggregationWhereInput>;
+}
+
+export interface ScreenSlotTagsConnectFieldInput {
+  where?: Maybe<ScreenTagConnectWhere>;
+}
+
+export interface ScreenSlotTagsConnectOrCreateFieldInput {
+  onCreate: ScreenSlotTagsConnectOrCreateFieldInputOnCreate;
+  where: ScreenTagConnectOrCreateWhere;
+}
+
+export interface ScreenSlotTagsConnectOrCreateFieldInputOnCreate {
+  node: ScreenTagCreateInput;
+}
+
+export interface ScreenSlotTagsConnectionSort {
+  node?: Maybe<ScreenTagSort>;
+}
+
+export interface ScreenSlotTagsConnectionWhere {
+  AND?: Maybe<Array<ScreenSlotTagsConnectionWhere>>;
+  OR?: Maybe<Array<ScreenSlotTagsConnectionWhere>>;
+  node?: Maybe<ScreenTagWhere>;
+  node_NOT?: Maybe<ScreenTagWhere>;
+}
+
+export interface ScreenSlotTagsCreateFieldInput {
+  node: ScreenTagCreateInput;
+}
+
+export interface ScreenSlotTagsDeleteFieldInput {
+  where?: Maybe<ScreenSlotTagsConnectionWhere>;
+}
+
+export interface ScreenSlotTagsDisconnectFieldInput {
+  where?: Maybe<ScreenSlotTagsConnectionWhere>;
+}
+
+export interface ScreenSlotTagsFieldInput {
+  connect?: Maybe<Array<ScreenSlotTagsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<ScreenSlotTagsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<ScreenSlotTagsCreateFieldInput>>;
+}
+
+export interface ScreenSlotTagsNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenSlotTagsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenSlotTagsNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  text_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  text_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  text_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  text_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  text_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  text_EQUAL?: Maybe<Scalars["String"]>;
+  text_GT?: Maybe<Scalars["Int"]>;
+  text_GTE?: Maybe<Scalars["Int"]>;
+  text_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  text_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  text_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  text_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  text_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  text_LT?: Maybe<Scalars["Int"]>;
+  text_LTE?: Maybe<Scalars["Int"]>;
+  text_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  text_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  text_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  text_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  text_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScreenSlotTagsUpdateConnectionInput {
+  node?: Maybe<ScreenTagUpdateInput>;
+}
+
+export interface ScreenSlotTagsUpdateFieldInput {
+  connect?: Maybe<Array<ScreenSlotTagsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<ScreenSlotTagsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<ScreenSlotTagsCreateFieldInput>>;
+  delete?: Maybe<Array<ScreenSlotTagsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<ScreenSlotTagsDisconnectFieldInput>>;
+  update?: Maybe<ScreenSlotTagsUpdateConnectionInput>;
+  where?: Maybe<ScreenSlotTagsConnectionWhere>;
+}
+
+export interface ScreenSlotTemplateSlotAggregateInput {
+  AND?: Maybe<Array<ScreenSlotTemplateSlotAggregateInput>>;
+  OR?: Maybe<Array<ScreenSlotTemplateSlotAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenSlotTemplateSlotNodeAggregationWhereInput>;
+}
+
+export interface ScreenSlotTemplateSlotConnectFieldInput {
+  connect?: Maybe<TemplateSlotConnectInput>;
+  where?: Maybe<TemplateSlotConnectWhere>;
+}
+
+export interface ScreenSlotTemplateSlotConnectOrCreateFieldInput {
+  onCreate: ScreenSlotTemplateSlotConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotConnectOrCreateWhere;
+}
+
+export interface ScreenSlotTemplateSlotConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScreenSlotTemplateSlotConnectionSort {
+  node?: Maybe<TemplateSlotSort>;
+}
+
+export interface ScreenSlotTemplateSlotConnectionWhere {
+  AND?: Maybe<Array<ScreenSlotTemplateSlotConnectionWhere>>;
+  OR?: Maybe<Array<ScreenSlotTemplateSlotConnectionWhere>>;
+  node?: Maybe<TemplateSlotWhere>;
+  node_NOT?: Maybe<TemplateSlotWhere>;
+}
+
+export interface ScreenSlotTemplateSlotCreateFieldInput {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScreenSlotTemplateSlotDeleteFieldInput {
+  delete?: Maybe<TemplateSlotDeleteInput>;
+  where?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+}
+
+export interface ScreenSlotTemplateSlotDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotDisconnectInput>;
+  where?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+}
+
+export interface ScreenSlotTemplateSlotFieldInput {
+  connect?: Maybe<ScreenSlotTemplateSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenSlotTemplateSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenSlotTemplateSlotCreateFieldInput>;
+}
+
+export interface ScreenSlotTemplateSlotNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenSlotTemplateSlotNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenSlotTemplateSlotNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScreenSlotTemplateSlotUpdateConnectionInput {
+  node?: Maybe<TemplateSlotUpdateInput>;
+}
+
+export interface ScreenSlotTemplateSlotUpdateFieldInput {
+  connect?: Maybe<ScreenSlotTemplateSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenSlotTemplateSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenSlotTemplateSlotCreateFieldInput>;
+  delete?: Maybe<ScreenSlotTemplateSlotDeleteFieldInput>;
+  disconnect?: Maybe<ScreenSlotTemplateSlotDisconnectFieldInput>;
+  update?: Maybe<ScreenSlotTemplateSlotUpdateConnectionInput>;
+  where?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+}
+
 export interface ScreenSlotUniqueWhere {
   id?: Maybe<Scalars["ID"]>;
 }
@@ -8190,7 +9662,8 @@ export interface ScreenSlotUpdateInput {
   resHeight?: Maybe<Scalars["Float"]>;
   resWidth?: Maybe<Scalars["Float"]>;
   screen?: Maybe<ScreenSlotScreenUpdateFieldInput>;
-  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  tags?: Maybe<Array<ScreenSlotTagsUpdateFieldInput>>;
+  templateSlot?: Maybe<ScreenSlotTemplateSlotUpdateFieldInput>;
   width?: Maybe<Scalars["Float"]>;
 }
 
@@ -8310,10 +9783,16 @@ export interface ScreenSlotWhere {
   screenConnection?: Maybe<ScreenSlotScreenConnectionWhere>;
   screenConnection_NOT?: Maybe<ScreenSlotScreenConnectionWhere>;
   screen_NOT?: Maybe<GreenScreenWhere>;
-  tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  tags_INCLUDES?: Maybe<Scalars["String"]>;
-  tags_NOT?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  tags_NOT_INCLUDES?: Maybe<Scalars["String"]>;
+  tags?: Maybe<ScreenTagWhere>;
+  tagsAggregate?: Maybe<ScreenSlotTagsAggregateInput>;
+  tagsConnection?: Maybe<ScreenSlotTagsConnectionWhere>;
+  tagsConnection_NOT?: Maybe<ScreenSlotTagsConnectionWhere>;
+  tags_NOT?: Maybe<ScreenTagWhere>;
+  templateSlot?: Maybe<TemplateSlotWhere>;
+  templateSlotAggregate?: Maybe<ScreenSlotTemplateSlotAggregateInput>;
+  templateSlotConnection?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+  templateSlotConnection_NOT?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+  templateSlot_NOT?: Maybe<TemplateSlotWhere>;
   width?: Maybe<Scalars["Float"]>;
   width_GT?: Maybe<Scalars["Float"]>;
   width_GTE?: Maybe<Scalars["Float"]>;
@@ -8324,11 +9803,1039 @@ export interface ScreenSlotWhere {
   width_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
 }
 
+export interface ScreenTagConnectOrCreateWhere {
+  node: ScreenTagUniqueWhere;
+}
+
+export interface ScreenTagConnectWhere {
+  node: ScreenTagWhere;
+}
+
+export interface ScreenTagCreateInput {
+  text?: Maybe<Scalars["String"]>;
+}
+
+export interface ScreenTagOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more ScreenTagSort objects to sort ScreenTags by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<ScreenTagSort>>>;
+}
+
+/** Fields to sort ScreenTags by. The order in which sorts are applied is not guaranteed when specifying many fields in one ScreenTagSort object. */
+export interface ScreenTagSort {
+  id?: Maybe<SortDirection>;
+  text?: Maybe<SortDirection>;
+}
+
+export interface ScreenTagUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface ScreenTagUpdateInput {
+  text?: Maybe<Scalars["String"]>;
+}
+
+export interface ScreenTagWhere {
+  AND?: Maybe<Array<ScreenTagWhere>>;
+  OR?: Maybe<Array<ScreenTagWhere>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  text?: Maybe<Scalars["String"]>;
+  text_CONTAINS?: Maybe<Scalars["String"]>;
+  text_ENDS_WITH?: Maybe<Scalars["String"]>;
+  text_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  text_NOT?: Maybe<Scalars["String"]>;
+  text_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  text_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  text_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  text_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  text_STARTS_WITH?: Maybe<Scalars["String"]>;
+}
+
 export enum SortDirection {
   /** Sort by field values in ascending order. */
   ASC = "ASC",
   /** Sort by field values in descending order. */
   DESC = "DESC",
+}
+
+export interface TemplateSlotConnectInput {
+  plugins?: Maybe<Array<TemplateSlotPluginsConnectFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateConnectFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByConnectFieldInput>>;
+}
+
+export interface TemplateSlotConnectOrCreateInput {
+  plugins?: Maybe<Array<TemplateSlotPluginsConnectOrCreateFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateConnectOrCreateFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByConnectOrCreateFieldInput>>;
+}
+
+export interface TemplateSlotConnectOrCreateWhere {
+  node: TemplateSlotUniqueWhere;
+}
+
+export interface TemplateSlotConnectWhere {
+  node: TemplateSlotWhere;
+}
+
+export interface TemplateSlotCreateInput {
+  name?: Maybe<Scalars["String"]>;
+  plugins?: Maybe<TemplateSlotPluginsFieldInput>;
+  template?: Maybe<TemplateSlotTemplateFieldInput>;
+  usedBy?: Maybe<TemplateSlotUsedByFieldInput>;
+}
+
+export interface TemplateSlotDeleteInput {
+  plugins?: Maybe<Array<TemplateSlotPluginsDeleteFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateDeleteFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByDeleteFieldInput>>;
+}
+
+export interface TemplateSlotDisconnectInput {
+  plugins?: Maybe<Array<TemplateSlotPluginsDisconnectFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateDisconnectFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByDisconnectFieldInput>>;
+}
+
+export interface TemplateSlotOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more TemplateSlotSort objects to sort TemplateSlots by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<TemplateSlotSort>>>;
+}
+
+export interface TemplateSlotPluginConnectInput {
+  template?: Maybe<TemplateSlotPluginTemplateConnectFieldInput>;
+}
+
+export interface TemplateSlotPluginConnectOrCreateInput {
+  template?: Maybe<TemplateSlotPluginTemplateConnectOrCreateFieldInput>;
+}
+
+export interface TemplateSlotPluginConnectOrCreateWhere {
+  node: TemplateSlotPluginUniqueWhere;
+}
+
+export interface TemplateSlotPluginConnectWhere {
+  node: TemplateSlotPluginWhere;
+}
+
+export interface TemplateSlotPluginCreateInput {
+  name?: Maybe<Scalars["String"]>;
+  source?: Maybe<Scalars["String"]>;
+  sourceType?: Maybe<Scalars["String"]>;
+  sourceVersion?: Maybe<Scalars["String"]>;
+  template?: Maybe<TemplateSlotPluginTemplateFieldInput>;
+  type?: Maybe<Scalars["String"]>;
+}
+
+export interface TemplateSlotPluginDeleteInput {
+  template?: Maybe<TemplateSlotPluginTemplateDeleteFieldInput>;
+}
+
+export interface TemplateSlotPluginDisconnectInput {
+  template?: Maybe<TemplateSlotPluginTemplateDisconnectFieldInput>;
+}
+
+export interface TemplateSlotPluginOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more TemplateSlotPluginSort objects to sort TemplateSlotPlugins by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<TemplateSlotPluginSort>>>;
+}
+
+export interface TemplateSlotPluginRelationInput {
+  template?: Maybe<TemplateSlotPluginTemplateCreateFieldInput>;
+}
+
+/** Fields to sort TemplateSlotPlugins by. The order in which sorts are applied is not guaranteed when specifying many fields in one TemplateSlotPluginSort object. */
+export interface TemplateSlotPluginSort {
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+  source?: Maybe<SortDirection>;
+  sourceType?: Maybe<SortDirection>;
+  sourceVersion?: Maybe<SortDirection>;
+  type?: Maybe<SortDirection>;
+}
+
+export interface TemplateSlotPluginTemplateAggregateInput {
+  AND?: Maybe<Array<TemplateSlotPluginTemplateAggregateInput>>;
+  OR?: Maybe<Array<TemplateSlotPluginTemplateAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<TemplateSlotPluginTemplateNodeAggregationWhereInput>;
+}
+
+export interface TemplateSlotPluginTemplateConnectFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectInput>;
+  where?: Maybe<GreenScreenTemplateConnectWhere>;
+}
+
+export interface TemplateSlotPluginTemplateConnectOrCreateFieldInput {
+  onCreate: TemplateSlotPluginTemplateConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenTemplateConnectOrCreateWhere;
+}
+
+export interface TemplateSlotPluginTemplateConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface TemplateSlotPluginTemplateConnectionSort {
+  node?: Maybe<GreenScreenTemplateSort>;
+}
+
+export interface TemplateSlotPluginTemplateConnectionWhere {
+  AND?: Maybe<Array<TemplateSlotPluginTemplateConnectionWhere>>;
+  OR?: Maybe<Array<TemplateSlotPluginTemplateConnectionWhere>>;
+  node?: Maybe<GreenScreenTemplateWhere>;
+  node_NOT?: Maybe<GreenScreenTemplateWhere>;
+}
+
+export interface TemplateSlotPluginTemplateCreateFieldInput {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface TemplateSlotPluginTemplateDeleteFieldInput {
+  delete?: Maybe<GreenScreenTemplateDeleteInput>;
+  where?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotPluginTemplateDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+  where?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotPluginTemplateFieldInput {
+  connect?: Maybe<TemplateSlotPluginTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<TemplateSlotPluginTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<TemplateSlotPluginTemplateCreateFieldInput>;
+}
+
+export interface TemplateSlotPluginTemplateNodeAggregationWhereInput {
+  AND?: Maybe<Array<TemplateSlotPluginTemplateNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<TemplateSlotPluginTemplateNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface TemplateSlotPluginTemplateUpdateConnectionInput {
+  node?: Maybe<GreenScreenTemplateUpdateInput>;
+}
+
+export interface TemplateSlotPluginTemplateUpdateFieldInput {
+  connect?: Maybe<TemplateSlotPluginTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<TemplateSlotPluginTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<TemplateSlotPluginTemplateCreateFieldInput>;
+  delete?: Maybe<TemplateSlotPluginTemplateDeleteFieldInput>;
+  disconnect?: Maybe<TemplateSlotPluginTemplateDisconnectFieldInput>;
+  update?: Maybe<TemplateSlotPluginTemplateUpdateConnectionInput>;
+  where?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotPluginUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface TemplateSlotPluginUpdateInput {
+  name?: Maybe<Scalars["String"]>;
+  source?: Maybe<Scalars["String"]>;
+  sourceType?: Maybe<Scalars["String"]>;
+  sourceVersion?: Maybe<Scalars["String"]>;
+  template?: Maybe<TemplateSlotPluginTemplateUpdateFieldInput>;
+  type?: Maybe<Scalars["String"]>;
+}
+
+export interface TemplateSlotPluginWhere {
+  AND?: Maybe<Array<TemplateSlotPluginWhere>>;
+  OR?: Maybe<Array<TemplateSlotPluginWhere>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  source?: Maybe<Scalars["String"]>;
+  sourceType?: Maybe<Scalars["String"]>;
+  sourceType_CONTAINS?: Maybe<Scalars["String"]>;
+  sourceType_ENDS_WITH?: Maybe<Scalars["String"]>;
+  sourceType_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  sourceType_NOT?: Maybe<Scalars["String"]>;
+  sourceType_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  sourceType_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  sourceType_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  sourceType_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  sourceType_STARTS_WITH?: Maybe<Scalars["String"]>;
+  sourceVersion?: Maybe<Scalars["String"]>;
+  sourceVersion_CONTAINS?: Maybe<Scalars["String"]>;
+  sourceVersion_ENDS_WITH?: Maybe<Scalars["String"]>;
+  sourceVersion_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  sourceVersion_NOT?: Maybe<Scalars["String"]>;
+  sourceVersion_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  sourceVersion_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  sourceVersion_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  sourceVersion_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  sourceVersion_STARTS_WITH?: Maybe<Scalars["String"]>;
+  source_CONTAINS?: Maybe<Scalars["String"]>;
+  source_ENDS_WITH?: Maybe<Scalars["String"]>;
+  source_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  source_NOT?: Maybe<Scalars["String"]>;
+  source_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  source_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  source_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  source_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  source_STARTS_WITH?: Maybe<Scalars["String"]>;
+  template?: Maybe<GreenScreenTemplateWhere>;
+  templateAggregate?: Maybe<TemplateSlotPluginTemplateAggregateInput>;
+  templateConnection?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+  templateConnection_NOT?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+  template_NOT?: Maybe<GreenScreenTemplateWhere>;
+  type?: Maybe<Scalars["String"]>;
+  type_CONTAINS?: Maybe<Scalars["String"]>;
+  type_ENDS_WITH?: Maybe<Scalars["String"]>;
+  type_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  type_NOT?: Maybe<Scalars["String"]>;
+  type_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  type_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  type_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  type_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  type_STARTS_WITH?: Maybe<Scalars["String"]>;
+}
+
+export interface TemplateSlotPluginsAggregateInput {
+  AND?: Maybe<Array<TemplateSlotPluginsAggregateInput>>;
+  OR?: Maybe<Array<TemplateSlotPluginsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<TemplateSlotPluginsNodeAggregationWhereInput>;
+}
+
+export interface TemplateSlotPluginsConnectFieldInput {
+  connect?: Maybe<Array<TemplateSlotPluginConnectInput>>;
+  where?: Maybe<TemplateSlotPluginConnectWhere>;
+}
+
+export interface TemplateSlotPluginsConnectOrCreateFieldInput {
+  onCreate: TemplateSlotPluginsConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotPluginConnectOrCreateWhere;
+}
+
+export interface TemplateSlotPluginsConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotPluginCreateInput;
+}
+
+export interface TemplateSlotPluginsConnectionSort {
+  node?: Maybe<TemplateSlotPluginSort>;
+}
+
+export interface TemplateSlotPluginsConnectionWhere {
+  AND?: Maybe<Array<TemplateSlotPluginsConnectionWhere>>;
+  OR?: Maybe<Array<TemplateSlotPluginsConnectionWhere>>;
+  node?: Maybe<TemplateSlotPluginWhere>;
+  node_NOT?: Maybe<TemplateSlotPluginWhere>;
+}
+
+export interface TemplateSlotPluginsCreateFieldInput {
+  node: TemplateSlotPluginCreateInput;
+}
+
+export interface TemplateSlotPluginsDeleteFieldInput {
+  delete?: Maybe<TemplateSlotPluginDeleteInput>;
+  where?: Maybe<TemplateSlotPluginsConnectionWhere>;
+}
+
+export interface TemplateSlotPluginsDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotPluginDisconnectInput>;
+  where?: Maybe<TemplateSlotPluginsConnectionWhere>;
+}
+
+export interface TemplateSlotPluginsFieldInput {
+  connect?: Maybe<Array<TemplateSlotPluginsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<TemplateSlotPluginsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<TemplateSlotPluginsCreateFieldInput>>;
+}
+
+export interface TemplateSlotPluginsNodeAggregationWhereInput {
+  AND?: Maybe<Array<TemplateSlotPluginsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<TemplateSlotPluginsNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  sourceType_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  sourceType_EQUAL?: Maybe<Scalars["String"]>;
+  sourceType_GT?: Maybe<Scalars["Int"]>;
+  sourceType_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  sourceType_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_LT?: Maybe<Scalars["Int"]>;
+  sourceType_LTE?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  sourceType_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  sourceVersion_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  sourceVersion_EQUAL?: Maybe<Scalars["String"]>;
+  sourceVersion_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_LTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  sourceVersion_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  source_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  source_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  source_EQUAL?: Maybe<Scalars["String"]>;
+  source_GT?: Maybe<Scalars["Int"]>;
+  source_GTE?: Maybe<Scalars["Int"]>;
+  source_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  source_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  source_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  source_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  source_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  source_LT?: Maybe<Scalars["Int"]>;
+  source_LTE?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  source_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  type_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  type_EQUAL?: Maybe<Scalars["String"]>;
+  type_GT?: Maybe<Scalars["Int"]>;
+  type_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  type_LT?: Maybe<Scalars["Int"]>;
+  type_LTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface TemplateSlotPluginsUpdateConnectionInput {
+  node?: Maybe<TemplateSlotPluginUpdateInput>;
+}
+
+export interface TemplateSlotPluginsUpdateFieldInput {
+  connect?: Maybe<Array<TemplateSlotPluginsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<TemplateSlotPluginsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<TemplateSlotPluginsCreateFieldInput>>;
+  delete?: Maybe<Array<TemplateSlotPluginsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<TemplateSlotPluginsDisconnectFieldInput>>;
+  update?: Maybe<TemplateSlotPluginsUpdateConnectionInput>;
+  where?: Maybe<TemplateSlotPluginsConnectionWhere>;
+}
+
+export interface TemplateSlotRelationInput {
+  plugins?: Maybe<Array<TemplateSlotPluginsCreateFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateCreateFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByCreateFieldInput>>;
+}
+
+/** Fields to sort TemplateSlots by. The order in which sorts are applied is not guaranteed when specifying many fields in one TemplateSlotSort object. */
+export interface TemplateSlotSort {
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+}
+
+export interface TemplateSlotTemplateAggregateInput {
+  AND?: Maybe<Array<TemplateSlotTemplateAggregateInput>>;
+  OR?: Maybe<Array<TemplateSlotTemplateAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<TemplateSlotTemplateNodeAggregationWhereInput>;
+}
+
+export interface TemplateSlotTemplateConnectFieldInput {
+  connect?: Maybe<GreenScreenTemplateConnectInput>;
+  where?: Maybe<GreenScreenTemplateConnectWhere>;
+}
+
+export interface TemplateSlotTemplateConnectOrCreateFieldInput {
+  onCreate: TemplateSlotTemplateConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenTemplateConnectOrCreateWhere;
+}
+
+export interface TemplateSlotTemplateConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface TemplateSlotTemplateConnectionSort {
+  node?: Maybe<GreenScreenTemplateSort>;
+}
+
+export interface TemplateSlotTemplateConnectionWhere {
+  AND?: Maybe<Array<TemplateSlotTemplateConnectionWhere>>;
+  OR?: Maybe<Array<TemplateSlotTemplateConnectionWhere>>;
+  node?: Maybe<GreenScreenTemplateWhere>;
+  node_NOT?: Maybe<GreenScreenTemplateWhere>;
+}
+
+export interface TemplateSlotTemplateCreateFieldInput {
+  node: GreenScreenTemplateCreateInput;
+}
+
+export interface TemplateSlotTemplateDeleteFieldInput {
+  delete?: Maybe<GreenScreenTemplateDeleteInput>;
+  where?: Maybe<TemplateSlotTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotTemplateDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+  where?: Maybe<TemplateSlotTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotTemplateFieldInput {
+  connect?: Maybe<TemplateSlotTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<TemplateSlotTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<TemplateSlotTemplateCreateFieldInput>;
+}
+
+export interface TemplateSlotTemplateNodeAggregationWhereInput {
+  AND?: Maybe<Array<TemplateSlotTemplateNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<TemplateSlotTemplateNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface TemplateSlotTemplateUpdateConnectionInput {
+  node?: Maybe<GreenScreenTemplateUpdateInput>;
+}
+
+export interface TemplateSlotTemplateUpdateFieldInput {
+  connect?: Maybe<TemplateSlotTemplateConnectFieldInput>;
+  connectOrCreate?: Maybe<TemplateSlotTemplateConnectOrCreateFieldInput>;
+  create?: Maybe<TemplateSlotTemplateCreateFieldInput>;
+  delete?: Maybe<TemplateSlotTemplateDeleteFieldInput>;
+  disconnect?: Maybe<TemplateSlotTemplateDisconnectFieldInput>;
+  update?: Maybe<TemplateSlotTemplateUpdateConnectionInput>;
+  where?: Maybe<TemplateSlotTemplateConnectionWhere>;
+}
+
+export interface TemplateSlotUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface TemplateSlotUpdateInput {
+  name?: Maybe<Scalars["String"]>;
+  plugins?: Maybe<Array<TemplateSlotPluginsUpdateFieldInput>>;
+  template?: Maybe<TemplateSlotTemplateUpdateFieldInput>;
+  usedBy?: Maybe<Array<TemplateSlotUsedByUpdateFieldInput>>;
+}
+
+export interface TemplateSlotUsedByAggregateInput {
+  AND?: Maybe<Array<TemplateSlotUsedByAggregateInput>>;
+  OR?: Maybe<Array<TemplateSlotUsedByAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<TemplateSlotUsedByNodeAggregationWhereInput>;
+}
+
+export interface TemplateSlotUsedByConnectFieldInput {
+  connect?: Maybe<Array<ScreenSlotConnectInput>>;
+  where?: Maybe<ScreenSlotConnectWhere>;
+}
+
+export interface TemplateSlotUsedByConnectOrCreateFieldInput {
+  onCreate: TemplateSlotUsedByConnectOrCreateFieldInputOnCreate;
+  where: ScreenSlotConnectOrCreateWhere;
+}
+
+export interface TemplateSlotUsedByConnectOrCreateFieldInputOnCreate {
+  node: ScreenSlotCreateInput;
+}
+
+export interface TemplateSlotUsedByConnectionSort {
+  node?: Maybe<ScreenSlotSort>;
+}
+
+export interface TemplateSlotUsedByConnectionWhere {
+  AND?: Maybe<Array<TemplateSlotUsedByConnectionWhere>>;
+  OR?: Maybe<Array<TemplateSlotUsedByConnectionWhere>>;
+  node?: Maybe<ScreenSlotWhere>;
+  node_NOT?: Maybe<ScreenSlotWhere>;
+}
+
+export interface TemplateSlotUsedByCreateFieldInput {
+  node: ScreenSlotCreateInput;
+}
+
+export interface TemplateSlotUsedByDeleteFieldInput {
+  delete?: Maybe<ScreenSlotDeleteInput>;
+  where?: Maybe<TemplateSlotUsedByConnectionWhere>;
+}
+
+export interface TemplateSlotUsedByDisconnectFieldInput {
+  disconnect?: Maybe<ScreenSlotDisconnectInput>;
+  where?: Maybe<TemplateSlotUsedByConnectionWhere>;
+}
+
+export interface TemplateSlotUsedByFieldInput {
+  connect?: Maybe<Array<TemplateSlotUsedByConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<TemplateSlotUsedByConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<TemplateSlotUsedByCreateFieldInput>>;
+}
+
+export interface TemplateSlotUsedByNodeAggregationWhereInput {
+  AND?: Maybe<Array<TemplateSlotUsedByNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<TemplateSlotUsedByNodeAggregationWhereInput>>;
+  agentVersion_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  agentVersion_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  agentVersion_EQUAL?: Maybe<Scalars["String"]>;
+  agentVersion_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  agentVersion_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_LTE?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  agentVersion_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  cpus_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  cpus_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  cpus_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  cpus_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  cpus_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  cpus_EQUAL?: Maybe<Scalars["Int"]>;
+  cpus_GT?: Maybe<Scalars["Int"]>;
+  cpus_GTE?: Maybe<Scalars["Int"]>;
+  cpus_LT?: Maybe<Scalars["Int"]>;
+  cpus_LTE?: Maybe<Scalars["Int"]>;
+  cpus_MAX_EQUAL?: Maybe<Scalars["Int"]>;
+  cpus_MAX_GT?: Maybe<Scalars["Int"]>;
+  cpus_MAX_GTE?: Maybe<Scalars["Int"]>;
+  cpus_MAX_LT?: Maybe<Scalars["Int"]>;
+  cpus_MAX_LTE?: Maybe<Scalars["Int"]>;
+  cpus_MIN_EQUAL?: Maybe<Scalars["Int"]>;
+  cpus_MIN_GT?: Maybe<Scalars["Int"]>;
+  cpus_MIN_GTE?: Maybe<Scalars["Int"]>;
+  cpus_MIN_LT?: Maybe<Scalars["Int"]>;
+  cpus_MIN_LTE?: Maybe<Scalars["Int"]>;
+  cpus_SUM_EQUAL?: Maybe<Scalars["Int"]>;
+  cpus_SUM_GT?: Maybe<Scalars["Int"]>;
+  cpus_SUM_GTE?: Maybe<Scalars["Int"]>;
+  cpus_SUM_LT?: Maybe<Scalars["Int"]>;
+  cpus_SUM_LTE?: Maybe<Scalars["Int"]>;
+  height_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  height_EQUAL?: Maybe<Scalars["Float"]>;
+  height_GT?: Maybe<Scalars["Float"]>;
+  height_GTE?: Maybe<Scalars["Float"]>;
+  height_LT?: Maybe<Scalars["Float"]>;
+  height_LTE?: Maybe<Scalars["Float"]>;
+  height_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  height_MAX_GT?: Maybe<Scalars["Float"]>;
+  height_MAX_GTE?: Maybe<Scalars["Float"]>;
+  height_MAX_LT?: Maybe<Scalars["Float"]>;
+  height_MAX_LTE?: Maybe<Scalars["Float"]>;
+  height_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  height_MIN_GT?: Maybe<Scalars["Float"]>;
+  height_MIN_GTE?: Maybe<Scalars["Float"]>;
+  height_MIN_LT?: Maybe<Scalars["Float"]>;
+  height_MIN_LTE?: Maybe<Scalars["Float"]>;
+  height_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  height_SUM_GT?: Maybe<Scalars["Float"]>;
+  height_SUM_GTE?: Maybe<Scalars["Float"]>;
+  height_SUM_LT?: Maybe<Scalars["Float"]>;
+  height_SUM_LTE?: Maybe<Scalars["Float"]>;
+  hostname_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  hostname_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  hostname_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  hostname_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  hostname_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  hostname_EQUAL?: Maybe<Scalars["String"]>;
+  hostname_GT?: Maybe<Scalars["Int"]>;
+  hostname_GTE?: Maybe<Scalars["Int"]>;
+  hostname_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  hostname_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  hostname_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  hostname_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  hostname_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  hostname_LT?: Maybe<Scalars["Int"]>;
+  hostname_LTE?: Maybe<Scalars["Int"]>;
+  hostname_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  hostname_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  hostname_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  hostname_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  hostname_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  ip_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  ip_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  ip_EQUAL?: Maybe<Scalars["String"]>;
+  ip_GT?: Maybe<Scalars["Int"]>;
+  ip_GTE?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  ip_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  ip_LT?: Maybe<Scalars["Int"]>;
+  ip_LTE?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  ip_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  memoryUsed_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  memoryUsed_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  memoryUsed_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  memoryUsed_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_EQUAL?: Maybe<Scalars["Float"]>;
+  memoryUsed_GT?: Maybe<Scalars["Float"]>;
+  memoryUsed_GTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_LT?: Maybe<Scalars["Float"]>;
+  memoryUsed_LTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  memoryUsed_MAX_GT?: Maybe<Scalars["Float"]>;
+  memoryUsed_MAX_GTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_MAX_LT?: Maybe<Scalars["Float"]>;
+  memoryUsed_MAX_LTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  memoryUsed_MIN_GT?: Maybe<Scalars["Float"]>;
+  memoryUsed_MIN_GTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_MIN_LT?: Maybe<Scalars["Float"]>;
+  memoryUsed_MIN_LTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  memoryUsed_SUM_GT?: Maybe<Scalars["Float"]>;
+  memoryUsed_SUM_GTE?: Maybe<Scalars["Float"]>;
+  memoryUsed_SUM_LT?: Maybe<Scalars["Float"]>;
+  memoryUsed_SUM_LTE?: Maybe<Scalars["Float"]>;
+  memory_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  memory_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  memory_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  memory_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  memory_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_GT?: Maybe<Scalars["Float"]>;
+  memory_GTE?: Maybe<Scalars["Float"]>;
+  memory_LT?: Maybe<Scalars["Float"]>;
+  memory_LTE?: Maybe<Scalars["Float"]>;
+  memory_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_MAX_GT?: Maybe<Scalars["Float"]>;
+  memory_MAX_GTE?: Maybe<Scalars["Float"]>;
+  memory_MAX_LT?: Maybe<Scalars["Float"]>;
+  memory_MAX_LTE?: Maybe<Scalars["Float"]>;
+  memory_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_MIN_GT?: Maybe<Scalars["Float"]>;
+  memory_MIN_GTE?: Maybe<Scalars["Float"]>;
+  memory_MIN_LT?: Maybe<Scalars["Float"]>;
+  memory_MIN_LTE?: Maybe<Scalars["Float"]>;
+  memory_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  memory_SUM_GT?: Maybe<Scalars["Float"]>;
+  memory_SUM_GTE?: Maybe<Scalars["Float"]>;
+  memory_SUM_LT?: Maybe<Scalars["Float"]>;
+  memory_SUM_LTE?: Maybe<Scalars["Float"]>;
+  orientation_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  orientation_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  orientation_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  orientation_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  orientation_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  orientation_EQUAL?: Maybe<Scalars["Float"]>;
+  orientation_GT?: Maybe<Scalars["Float"]>;
+  orientation_GTE?: Maybe<Scalars["Float"]>;
+  orientation_LT?: Maybe<Scalars["Float"]>;
+  orientation_LTE?: Maybe<Scalars["Float"]>;
+  orientation_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  orientation_MAX_GT?: Maybe<Scalars["Float"]>;
+  orientation_MAX_GTE?: Maybe<Scalars["Float"]>;
+  orientation_MAX_LT?: Maybe<Scalars["Float"]>;
+  orientation_MAX_LTE?: Maybe<Scalars["Float"]>;
+  orientation_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  orientation_MIN_GT?: Maybe<Scalars["Float"]>;
+  orientation_MIN_GTE?: Maybe<Scalars["Float"]>;
+  orientation_MIN_LT?: Maybe<Scalars["Float"]>;
+  orientation_MIN_LTE?: Maybe<Scalars["Float"]>;
+  orientation_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  orientation_SUM_GT?: Maybe<Scalars["Float"]>;
+  orientation_SUM_GTE?: Maybe<Scalars["Float"]>;
+  orientation_SUM_LT?: Maybe<Scalars["Float"]>;
+  orientation_SUM_LTE?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  os_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  os_EQUAL?: Maybe<Scalars["String"]>;
+  os_GT?: Maybe<Scalars["Int"]>;
+  os_GTE?: Maybe<Scalars["Int"]>;
+  os_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  os_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  os_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  os_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  os_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  os_LT?: Maybe<Scalars["Int"]>;
+  os_LTE?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  os_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  resHeight_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  resHeight_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  resHeight_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  resHeight_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  resHeight_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  resHeight_EQUAL?: Maybe<Scalars["Float"]>;
+  resHeight_GT?: Maybe<Scalars["Float"]>;
+  resHeight_GTE?: Maybe<Scalars["Float"]>;
+  resHeight_LT?: Maybe<Scalars["Float"]>;
+  resHeight_LTE?: Maybe<Scalars["Float"]>;
+  resHeight_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  resHeight_MAX_GT?: Maybe<Scalars["Float"]>;
+  resHeight_MAX_GTE?: Maybe<Scalars["Float"]>;
+  resHeight_MAX_LT?: Maybe<Scalars["Float"]>;
+  resHeight_MAX_LTE?: Maybe<Scalars["Float"]>;
+  resHeight_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  resHeight_MIN_GT?: Maybe<Scalars["Float"]>;
+  resHeight_MIN_GTE?: Maybe<Scalars["Float"]>;
+  resHeight_MIN_LT?: Maybe<Scalars["Float"]>;
+  resHeight_MIN_LTE?: Maybe<Scalars["Float"]>;
+  resHeight_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  resHeight_SUM_GT?: Maybe<Scalars["Float"]>;
+  resHeight_SUM_GTE?: Maybe<Scalars["Float"]>;
+  resHeight_SUM_LT?: Maybe<Scalars["Float"]>;
+  resHeight_SUM_LTE?: Maybe<Scalars["Float"]>;
+  resWidth_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  resWidth_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  resWidth_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  resWidth_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  resWidth_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  resWidth_EQUAL?: Maybe<Scalars["Float"]>;
+  resWidth_GT?: Maybe<Scalars["Float"]>;
+  resWidth_GTE?: Maybe<Scalars["Float"]>;
+  resWidth_LT?: Maybe<Scalars["Float"]>;
+  resWidth_LTE?: Maybe<Scalars["Float"]>;
+  resWidth_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  resWidth_MAX_GT?: Maybe<Scalars["Float"]>;
+  resWidth_MAX_GTE?: Maybe<Scalars["Float"]>;
+  resWidth_MAX_LT?: Maybe<Scalars["Float"]>;
+  resWidth_MAX_LTE?: Maybe<Scalars["Float"]>;
+  resWidth_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  resWidth_MIN_GT?: Maybe<Scalars["Float"]>;
+  resWidth_MIN_GTE?: Maybe<Scalars["Float"]>;
+  resWidth_MIN_LT?: Maybe<Scalars["Float"]>;
+  resWidth_MIN_LTE?: Maybe<Scalars["Float"]>;
+  resWidth_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  resWidth_SUM_GT?: Maybe<Scalars["Float"]>;
+  resWidth_SUM_GTE?: Maybe<Scalars["Float"]>;
+  resWidth_SUM_LT?: Maybe<Scalars["Float"]>;
+  resWidth_SUM_LTE?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  width_EQUAL?: Maybe<Scalars["Float"]>;
+  width_GT?: Maybe<Scalars["Float"]>;
+  width_GTE?: Maybe<Scalars["Float"]>;
+  width_LT?: Maybe<Scalars["Float"]>;
+  width_LTE?: Maybe<Scalars["Float"]>;
+  width_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  width_MAX_GT?: Maybe<Scalars["Float"]>;
+  width_MAX_GTE?: Maybe<Scalars["Float"]>;
+  width_MAX_LT?: Maybe<Scalars["Float"]>;
+  width_MAX_LTE?: Maybe<Scalars["Float"]>;
+  width_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  width_MIN_GT?: Maybe<Scalars["Float"]>;
+  width_MIN_GTE?: Maybe<Scalars["Float"]>;
+  width_MIN_LT?: Maybe<Scalars["Float"]>;
+  width_MIN_LTE?: Maybe<Scalars["Float"]>;
+  width_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  width_SUM_GT?: Maybe<Scalars["Float"]>;
+  width_SUM_GTE?: Maybe<Scalars["Float"]>;
+  width_SUM_LT?: Maybe<Scalars["Float"]>;
+  width_SUM_LTE?: Maybe<Scalars["Float"]>;
+}
+
+export interface TemplateSlotUsedByUpdateConnectionInput {
+  node?: Maybe<ScreenSlotUpdateInput>;
+}
+
+export interface TemplateSlotUsedByUpdateFieldInput {
+  connect?: Maybe<Array<TemplateSlotUsedByConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<TemplateSlotUsedByConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<TemplateSlotUsedByCreateFieldInput>>;
+  delete?: Maybe<Array<TemplateSlotUsedByDeleteFieldInput>>;
+  disconnect?: Maybe<Array<TemplateSlotUsedByDisconnectFieldInput>>;
+  update?: Maybe<TemplateSlotUsedByUpdateConnectionInput>;
+  where?: Maybe<TemplateSlotUsedByConnectionWhere>;
+}
+
+export interface TemplateSlotWhere {
+  AND?: Maybe<Array<TemplateSlotWhere>>;
+  OR?: Maybe<Array<TemplateSlotWhere>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  plugins?: Maybe<TemplateSlotPluginWhere>;
+  pluginsAggregate?: Maybe<TemplateSlotPluginsAggregateInput>;
+  pluginsConnection?: Maybe<TemplateSlotPluginsConnectionWhere>;
+  pluginsConnection_NOT?: Maybe<TemplateSlotPluginsConnectionWhere>;
+  plugins_NOT?: Maybe<TemplateSlotPluginWhere>;
+  template?: Maybe<GreenScreenTemplateWhere>;
+  templateAggregate?: Maybe<TemplateSlotTemplateAggregateInput>;
+  templateConnection?: Maybe<TemplateSlotTemplateConnectionWhere>;
+  templateConnection_NOT?: Maybe<TemplateSlotTemplateConnectionWhere>;
+  template_NOT?: Maybe<GreenScreenTemplateWhere>;
+  usedBy?: Maybe<ScreenSlotWhere>;
+  usedByAggregate?: Maybe<TemplateSlotUsedByAggregateInput>;
+  usedByConnection?: Maybe<TemplateSlotUsedByConnectionWhere>;
+  usedByConnection_NOT?: Maybe<TemplateSlotUsedByConnectionWhere>;
+  usedBy_NOT?: Maybe<ScreenSlotWhere>;
 }
 
 export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
@@ -9075,6 +11582,11 @@ export const generatedSchema = {
     campaigns: { __type: "[Campaign!]!" },
     info: { __type: "CreateInfo!" },
   },
+  CreateGreenScreenTemplatesMutationResponse: {
+    __typename: { __type: "String!" },
+    greenScreenTemplates: { __type: "[GreenScreenTemplate!]!" },
+    info: { __type: "CreateInfo!" },
+  },
   CreateGreenScreensMutationResponse: {
     __typename: { __type: "String!" },
     greenScreens: { __type: "[GreenScreen!]!" },
@@ -9168,6 +11680,11 @@ export const generatedSchema = {
     info: { __type: "CreateInfo!" },
     scheduleTiers: { __type: "[ScheduleTier!]!" },
   },
+  CreateScheduleViewsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "CreateInfo!" },
+    scheduleViews: { __type: "[ScheduleView!]!" },
+  },
   CreateSchedulesMutationResponse: {
     __typename: { __type: "String!" },
     info: { __type: "CreateInfo!" },
@@ -9177,6 +11694,21 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     info: { __type: "CreateInfo!" },
     screenSlots: { __type: "[ScreenSlot!]!" },
+  },
+  CreateScreenTagsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "CreateInfo!" },
+    screenTags: { __type: "[ScreenTag!]!" },
+  },
+  CreateTemplateSlotPluginsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "CreateInfo!" },
+    templateSlotPlugins: { __type: "[TemplateSlotPlugin!]!" },
+  },
+  CreateTemplateSlotsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "CreateInfo!" },
+    templateSlots: { __type: "[TemplateSlot!]!" },
   },
   DateTimeAggregateSelection: {
     __typename: { __type: "String!" },
@@ -9256,6 +11788,26 @@ export const generatedSchema = {
         where: "GreenScreenSlotsConnectionWhere",
       },
     },
+    template: {
+      __type: "GreenScreenTemplate",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    templateAggregate: {
+      __type: "GreenScreenGreenScreenTemplateTemplateAggregationSelection",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    templateConnection: {
+      __type: "GreenScreenTemplateConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenTemplateConnectionSort!]",
+        where: "GreenScreenTemplateConnectionWhere",
+      },
+    },
   },
   GreenScreenAggregateSelection: {
     __typename: { __type: "String!" },
@@ -9268,6 +11820,7 @@ export const generatedSchema = {
     location: { __type: "GreenScreenLocationConnectFieldInput" },
     organisation: { __type: "GreenScreenOrganisationConnectFieldInput" },
     slots: { __type: "[GreenScreenSlotsConnectFieldInput!]" },
+    template: { __type: "GreenScreenTemplateConnectFieldInput" },
   },
   GreenScreenConnectOrCreateInput: {
     location: { __type: "GreenScreenLocationConnectOrCreateFieldInput" },
@@ -9275,6 +11828,7 @@ export const generatedSchema = {
       __type: "GreenScreenOrganisationConnectOrCreateFieldInput",
     },
     slots: { __type: "[GreenScreenSlotsConnectOrCreateFieldInput!]" },
+    template: { __type: "GreenScreenTemplateConnectOrCreateFieldInput" },
   },
   GreenScreenConnectOrCreateWhere: {
     node: { __type: "GreenScreenUniqueWhere!" },
@@ -9287,16 +11841,31 @@ export const generatedSchema = {
     online: { __type: "Boolean" },
     organisation: { __type: "GreenScreenOrganisationFieldInput" },
     slots: { __type: "GreenScreenSlotsFieldInput" },
+    template: { __type: "GreenScreenTemplateFieldInput" },
   },
   GreenScreenDeleteInput: {
     location: { __type: "GreenScreenLocationDeleteFieldInput" },
     organisation: { __type: "GreenScreenOrganisationDeleteFieldInput" },
     slots: { __type: "[GreenScreenSlotsDeleteFieldInput!]" },
+    template: { __type: "GreenScreenTemplateDeleteFieldInput" },
   },
   GreenScreenDisconnectInput: {
     location: { __type: "GreenScreenLocationDisconnectFieldInput" },
     organisation: { __type: "GreenScreenOrganisationDisconnectFieldInput" },
     slots: { __type: "[GreenScreenSlotsDisconnectFieldInput!]" },
+    template: { __type: "GreenScreenTemplateDisconnectFieldInput" },
+  },
+  GreenScreenGreenScreenTemplateTemplateAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection",
+    },
+  },
+  GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
   },
   GreenScreenHiveOrganisationOrganisationAggregationSelection: {
     __typename: { __type: "String!" },
@@ -9591,6 +12160,7 @@ export const generatedSchema = {
     location: { __type: "GreenScreenLocationCreateFieldInput" },
     organisation: { __type: "GreenScreenOrganisationCreateFieldInput" },
     slots: { __type: "[GreenScreenSlotsCreateFieldInput!]" },
+    template: { __type: "GreenScreenTemplateCreateFieldInput" },
   },
   GreenScreenScreenSlotSlotsAggregationSelection: {
     __typename: { __type: "String!" },
@@ -9971,6 +12541,877 @@ export const generatedSchema = {
     networkName: { __type: "SortDirection" },
     online: { __type: "SortDirection" },
   },
+  GreenScreenTemplate: {
+    __typename: { __type: "String!" },
+    id: { __type: "ID!" },
+    name: { __type: "String" },
+    organisation: {
+      __type: "HiveOrganisation",
+      __args: {
+        options: "HiveOrganisationOptions",
+        where: "HiveOrganisationWhere",
+      },
+    },
+    organisationAggregate: {
+      __type:
+        "GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection",
+      __args: { where: "HiveOrganisationWhere" },
+    },
+    organisationConnection: {
+      __type: "GreenScreenTemplateOrganisationConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenTemplateOrganisationConnectionSort!]",
+        where: "GreenScreenTemplateOrganisationConnectionWhere",
+      },
+    },
+    plugins: {
+      __type: "[TemplateSlotPlugin]",
+      __args: {
+        options: "TemplateSlotPluginOptions",
+        where: "TemplateSlotPluginWhere",
+      },
+    },
+    pluginsAggregate: {
+      __type:
+        "GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection",
+      __args: { where: "TemplateSlotPluginWhere" },
+    },
+    pluginsConnection: {
+      __type: "GreenScreenTemplatePluginsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenTemplatePluginsConnectionSort!]",
+        where: "GreenScreenTemplatePluginsConnectionWhere",
+      },
+    },
+    screens: {
+      __type: "[GreenScreen]",
+      __args: { options: "GreenScreenOptions", where: "GreenScreenWhere" },
+    },
+    screensAggregate: {
+      __type: "GreenScreenTemplateGreenScreenScreensAggregationSelection",
+      __args: { where: "GreenScreenWhere" },
+    },
+    screensConnection: {
+      __type: "GreenScreenTemplateScreensConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenTemplateScreensConnectionSort!]",
+        where: "GreenScreenTemplateScreensConnectionWhere",
+      },
+    },
+    slots: {
+      __type: "[TemplateSlot]",
+      __args: { options: "TemplateSlotOptions", where: "TemplateSlotWhere" },
+    },
+    slotsAggregate: {
+      __type: "GreenScreenTemplateTemplateSlotSlotsAggregationSelection",
+      __args: { where: "TemplateSlotWhere" },
+    },
+    slotsConnection: {
+      __type: "GreenScreenTemplateSlotsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenTemplateSlotsConnectionSort!]",
+        where: "GreenScreenTemplateSlotsConnectionWhere",
+      },
+    },
+  },
+  GreenScreenTemplateAggregateInput: {
+    AND: { __type: "[GreenScreenTemplateAggregateInput!]" },
+    OR: { __type: "[GreenScreenTemplateAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "GreenScreenTemplateNodeAggregationWhereInput" },
+  },
+  GreenScreenTemplateAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  GreenScreenTemplateConnectFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectInput" },
+    where: { __type: "GreenScreenTemplateConnectWhere" },
+  },
+  GreenScreenTemplateConnectInput: {
+    organisation: {
+      __type: "GreenScreenTemplateOrganisationConnectFieldInput",
+    },
+    plugins: { __type: "[GreenScreenTemplatePluginsConnectFieldInput!]" },
+    screens: { __type: "[GreenScreenTemplateScreensConnectFieldInput!]" },
+    slots: { __type: "[GreenScreenTemplateSlotsConnectFieldInput!]" },
+  },
+  GreenScreenTemplateConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "GreenScreenTemplateConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenTemplateConnectOrCreateWhere!" },
+  },
+  GreenScreenTemplateConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  GreenScreenTemplateConnectOrCreateInput: {
+    organisation: {
+      __type: "GreenScreenTemplateOrganisationConnectOrCreateFieldInput",
+    },
+    plugins: {
+      __type: "[GreenScreenTemplatePluginsConnectOrCreateFieldInput!]",
+    },
+    screens: {
+      __type: "[GreenScreenTemplateScreensConnectOrCreateFieldInput!]",
+    },
+    slots: { __type: "[GreenScreenTemplateSlotsConnectOrCreateFieldInput!]" },
+  },
+  GreenScreenTemplateConnectOrCreateWhere: {
+    node: { __type: "GreenScreenTemplateUniqueWhere!" },
+  },
+  GreenScreenTemplateConnectWhere: {
+    node: { __type: "GreenScreenTemplateWhere!" },
+  },
+  GreenScreenTemplateConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenTemplateRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenTemplateConnectionSort: {
+    node: { __type: "GreenScreenTemplateSort" },
+  },
+  GreenScreenTemplateConnectionWhere: {
+    AND: { __type: "[GreenScreenTemplateConnectionWhere!]" },
+    OR: { __type: "[GreenScreenTemplateConnectionWhere!]" },
+    node: { __type: "GreenScreenTemplateWhere" },
+    node_NOT: { __type: "GreenScreenTemplateWhere" },
+  },
+  GreenScreenTemplateCreateFieldInput: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  GreenScreenTemplateCreateInput: {
+    name: { __type: "String" },
+    organisation: { __type: "GreenScreenTemplateOrganisationFieldInput" },
+    plugins: { __type: "GreenScreenTemplatePluginsFieldInput" },
+    screens: { __type: "GreenScreenTemplateScreensFieldInput" },
+    slots: { __type: "GreenScreenTemplateSlotsFieldInput" },
+  },
+  GreenScreenTemplateDeleteFieldInput: {
+    delete: { __type: "GreenScreenTemplateDeleteInput" },
+    where: { __type: "GreenScreenTemplateConnectionWhere" },
+  },
+  GreenScreenTemplateDeleteInput: {
+    organisation: { __type: "GreenScreenTemplateOrganisationDeleteFieldInput" },
+    plugins: { __type: "[GreenScreenTemplatePluginsDeleteFieldInput!]" },
+    screens: { __type: "[GreenScreenTemplateScreensDeleteFieldInput!]" },
+    slots: { __type: "[GreenScreenTemplateSlotsDeleteFieldInput!]" },
+  },
+  GreenScreenTemplateDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenTemplateDisconnectInput" },
+    where: { __type: "GreenScreenTemplateConnectionWhere" },
+  },
+  GreenScreenTemplateDisconnectInput: {
+    organisation: {
+      __type: "GreenScreenTemplateOrganisationDisconnectFieldInput",
+    },
+    plugins: { __type: "[GreenScreenTemplatePluginsDisconnectFieldInput!]" },
+    screens: { __type: "[GreenScreenTemplateScreensDisconnectFieldInput!]" },
+    slots: { __type: "[GreenScreenTemplateSlotsDisconnectFieldInput!]" },
+  },
+  GreenScreenTemplateFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectFieldInput" },
+    connectOrCreate: { __type: "GreenScreenTemplateConnectOrCreateFieldInput" },
+    create: { __type: "GreenScreenTemplateCreateFieldInput" },
+  },
+  GreenScreenTemplateGreenScreenScreensAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "GreenScreenTemplateGreenScreenScreensNodeAggregateSelection",
+    },
+  },
+  GreenScreenTemplateGreenScreenScreensNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    networkName: { __type: "StringAggregateSelection!" },
+  },
+  GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type:
+        "GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection",
+    },
+  },
+  GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  GreenScreenTemplateNodeAggregationWhereInput: {
+    AND: { __type: "[GreenScreenTemplateNodeAggregationWhereInput!]" },
+    OR: { __type: "[GreenScreenTemplateNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  GreenScreenTemplateOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[GreenScreenTemplateSort]" },
+  },
+  GreenScreenTemplateOrganisationAggregateInput: {
+    AND: { __type: "[GreenScreenTemplateOrganisationAggregateInput!]" },
+    OR: { __type: "[GreenScreenTemplateOrganisationAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: {
+      __type: "GreenScreenTemplateOrganisationNodeAggregationWhereInput",
+    },
+  },
+  GreenScreenTemplateOrganisationConnectFieldInput: {
+    connect: { __type: "HiveOrganisationConnectInput" },
+    where: { __type: "HiveOrganisationConnectWhere" },
+  },
+  GreenScreenTemplateOrganisationConnectOrCreateFieldInput: {
+    onCreate: {
+      __type:
+        "GreenScreenTemplateOrganisationConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "HiveOrganisationConnectOrCreateWhere!" },
+  },
+  GreenScreenTemplateOrganisationConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "HiveOrganisationCreateInput!" },
+  },
+  GreenScreenTemplateOrganisationConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenTemplateOrganisationRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenTemplateOrganisationConnectionSort: {
+    node: { __type: "HiveOrganisationSort" },
+  },
+  GreenScreenTemplateOrganisationConnectionWhere: {
+    AND: { __type: "[GreenScreenTemplateOrganisationConnectionWhere!]" },
+    OR: { __type: "[GreenScreenTemplateOrganisationConnectionWhere!]" },
+    node: { __type: "HiveOrganisationWhere" },
+    node_NOT: { __type: "HiveOrganisationWhere" },
+  },
+  GreenScreenTemplateOrganisationCreateFieldInput: {
+    node: { __type: "HiveOrganisationCreateInput!" },
+  },
+  GreenScreenTemplateOrganisationDeleteFieldInput: {
+    delete: { __type: "HiveOrganisationDeleteInput" },
+    where: { __type: "GreenScreenTemplateOrganisationConnectionWhere" },
+  },
+  GreenScreenTemplateOrganisationDisconnectFieldInput: {
+    disconnect: { __type: "HiveOrganisationDisconnectInput" },
+    where: { __type: "GreenScreenTemplateOrganisationConnectionWhere" },
+  },
+  GreenScreenTemplateOrganisationFieldInput: {
+    connect: { __type: "GreenScreenTemplateOrganisationConnectFieldInput" },
+    connectOrCreate: {
+      __type: "GreenScreenTemplateOrganisationConnectOrCreateFieldInput",
+    },
+    create: { __type: "GreenScreenTemplateOrganisationCreateFieldInput" },
+  },
+  GreenScreenTemplateOrganisationNodeAggregationWhereInput: {
+    AND: {
+      __type: "[GreenScreenTemplateOrganisationNodeAggregationWhereInput!]",
+    },
+    OR: {
+      __type: "[GreenScreenTemplateOrganisationNodeAggregationWhereInput!]",
+    },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  GreenScreenTemplateOrganisationRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "HiveOrganisation!" },
+  },
+  GreenScreenTemplateOrganisationUpdateConnectionInput: {
+    node: { __type: "HiveOrganisationUpdateInput" },
+  },
+  GreenScreenTemplateOrganisationUpdateFieldInput: {
+    connect: { __type: "GreenScreenTemplateOrganisationConnectFieldInput" },
+    connectOrCreate: {
+      __type: "GreenScreenTemplateOrganisationConnectOrCreateFieldInput",
+    },
+    create: { __type: "GreenScreenTemplateOrganisationCreateFieldInput" },
+    delete: { __type: "GreenScreenTemplateOrganisationDeleteFieldInput" },
+    disconnect: {
+      __type: "GreenScreenTemplateOrganisationDisconnectFieldInput",
+    },
+    update: { __type: "GreenScreenTemplateOrganisationUpdateConnectionInput" },
+    where: { __type: "GreenScreenTemplateOrganisationConnectionWhere" },
+  },
+  GreenScreenTemplatePluginsAggregateInput: {
+    AND: { __type: "[GreenScreenTemplatePluginsAggregateInput!]" },
+    OR: { __type: "[GreenScreenTemplatePluginsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "GreenScreenTemplatePluginsNodeAggregationWhereInput" },
+  },
+  GreenScreenTemplatePluginsConnectFieldInput: {
+    connect: { __type: "[TemplateSlotPluginConnectInput!]" },
+    where: { __type: "TemplateSlotPluginConnectWhere" },
+  },
+  GreenScreenTemplatePluginsConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "GreenScreenTemplatePluginsConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "TemplateSlotPluginConnectOrCreateWhere!" },
+  },
+  GreenScreenTemplatePluginsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotPluginCreateInput!" },
+  },
+  GreenScreenTemplatePluginsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenTemplatePluginsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenTemplatePluginsConnectionSort: {
+    node: { __type: "TemplateSlotPluginSort" },
+  },
+  GreenScreenTemplatePluginsConnectionWhere: {
+    AND: { __type: "[GreenScreenTemplatePluginsConnectionWhere!]" },
+    OR: { __type: "[GreenScreenTemplatePluginsConnectionWhere!]" },
+    node: { __type: "TemplateSlotPluginWhere" },
+    node_NOT: { __type: "TemplateSlotPluginWhere" },
+  },
+  GreenScreenTemplatePluginsCreateFieldInput: {
+    node: { __type: "TemplateSlotPluginCreateInput!" },
+  },
+  GreenScreenTemplatePluginsDeleteFieldInput: {
+    delete: { __type: "TemplateSlotPluginDeleteInput" },
+    where: { __type: "GreenScreenTemplatePluginsConnectionWhere" },
+  },
+  GreenScreenTemplatePluginsDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotPluginDisconnectInput" },
+    where: { __type: "GreenScreenTemplatePluginsConnectionWhere" },
+  },
+  GreenScreenTemplatePluginsFieldInput: {
+    connect: { __type: "[GreenScreenTemplatePluginsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplatePluginsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplatePluginsCreateFieldInput!]" },
+  },
+  GreenScreenTemplatePluginsNodeAggregationWhereInput: {
+    AND: { __type: "[GreenScreenTemplatePluginsNodeAggregationWhereInput!]" },
+    OR: { __type: "[GreenScreenTemplatePluginsNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    sourceType_AVERAGE_EQUAL: { __type: "Float" },
+    sourceType_AVERAGE_GT: { __type: "Float" },
+    sourceType_AVERAGE_GTE: { __type: "Float" },
+    sourceType_AVERAGE_LT: { __type: "Float" },
+    sourceType_AVERAGE_LTE: { __type: "Float" },
+    sourceType_EQUAL: { __type: "String" },
+    sourceType_GT: { __type: "Int" },
+    sourceType_GTE: { __type: "Int" },
+    sourceType_LONGEST_EQUAL: { __type: "Int" },
+    sourceType_LONGEST_GT: { __type: "Int" },
+    sourceType_LONGEST_GTE: { __type: "Int" },
+    sourceType_LONGEST_LT: { __type: "Int" },
+    sourceType_LONGEST_LTE: { __type: "Int" },
+    sourceType_LT: { __type: "Int" },
+    sourceType_LTE: { __type: "Int" },
+    sourceType_SHORTEST_EQUAL: { __type: "Int" },
+    sourceType_SHORTEST_GT: { __type: "Int" },
+    sourceType_SHORTEST_GTE: { __type: "Int" },
+    sourceType_SHORTEST_LT: { __type: "Int" },
+    sourceType_SHORTEST_LTE: { __type: "Int" },
+    sourceVersion_AVERAGE_EQUAL: { __type: "Float" },
+    sourceVersion_AVERAGE_GT: { __type: "Float" },
+    sourceVersion_AVERAGE_GTE: { __type: "Float" },
+    sourceVersion_AVERAGE_LT: { __type: "Float" },
+    sourceVersion_AVERAGE_LTE: { __type: "Float" },
+    sourceVersion_EQUAL: { __type: "String" },
+    sourceVersion_GT: { __type: "Int" },
+    sourceVersion_GTE: { __type: "Int" },
+    sourceVersion_LONGEST_EQUAL: { __type: "Int" },
+    sourceVersion_LONGEST_GT: { __type: "Int" },
+    sourceVersion_LONGEST_GTE: { __type: "Int" },
+    sourceVersion_LONGEST_LT: { __type: "Int" },
+    sourceVersion_LONGEST_LTE: { __type: "Int" },
+    sourceVersion_LT: { __type: "Int" },
+    sourceVersion_LTE: { __type: "Int" },
+    sourceVersion_SHORTEST_EQUAL: { __type: "Int" },
+    sourceVersion_SHORTEST_GT: { __type: "Int" },
+    sourceVersion_SHORTEST_GTE: { __type: "Int" },
+    sourceVersion_SHORTEST_LT: { __type: "Int" },
+    sourceVersion_SHORTEST_LTE: { __type: "Int" },
+    source_AVERAGE_EQUAL: { __type: "Float" },
+    source_AVERAGE_GT: { __type: "Float" },
+    source_AVERAGE_GTE: { __type: "Float" },
+    source_AVERAGE_LT: { __type: "Float" },
+    source_AVERAGE_LTE: { __type: "Float" },
+    source_EQUAL: { __type: "String" },
+    source_GT: { __type: "Int" },
+    source_GTE: { __type: "Int" },
+    source_LONGEST_EQUAL: { __type: "Int" },
+    source_LONGEST_GT: { __type: "Int" },
+    source_LONGEST_GTE: { __type: "Int" },
+    source_LONGEST_LT: { __type: "Int" },
+    source_LONGEST_LTE: { __type: "Int" },
+    source_LT: { __type: "Int" },
+    source_LTE: { __type: "Int" },
+    source_SHORTEST_EQUAL: { __type: "Int" },
+    source_SHORTEST_GT: { __type: "Int" },
+    source_SHORTEST_GTE: { __type: "Int" },
+    source_SHORTEST_LT: { __type: "Int" },
+    source_SHORTEST_LTE: { __type: "Int" },
+    type_AVERAGE_EQUAL: { __type: "Float" },
+    type_AVERAGE_GT: { __type: "Float" },
+    type_AVERAGE_GTE: { __type: "Float" },
+    type_AVERAGE_LT: { __type: "Float" },
+    type_AVERAGE_LTE: { __type: "Float" },
+    type_EQUAL: { __type: "String" },
+    type_GT: { __type: "Int" },
+    type_GTE: { __type: "Int" },
+    type_LONGEST_EQUAL: { __type: "Int" },
+    type_LONGEST_GT: { __type: "Int" },
+    type_LONGEST_GTE: { __type: "Int" },
+    type_LONGEST_LT: { __type: "Int" },
+    type_LONGEST_LTE: { __type: "Int" },
+    type_LT: { __type: "Int" },
+    type_LTE: { __type: "Int" },
+    type_SHORTEST_EQUAL: { __type: "Int" },
+    type_SHORTEST_GT: { __type: "Int" },
+    type_SHORTEST_GTE: { __type: "Int" },
+    type_SHORTEST_LT: { __type: "Int" },
+    type_SHORTEST_LTE: { __type: "Int" },
+  },
+  GreenScreenTemplatePluginsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlotPlugin!" },
+  },
+  GreenScreenTemplatePluginsUpdateConnectionInput: {
+    node: { __type: "TemplateSlotPluginUpdateInput" },
+  },
+  GreenScreenTemplatePluginsUpdateFieldInput: {
+    connect: { __type: "[GreenScreenTemplatePluginsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplatePluginsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplatePluginsCreateFieldInput!]" },
+    delete: { __type: "[GreenScreenTemplatePluginsDeleteFieldInput!]" },
+    disconnect: { __type: "[GreenScreenTemplatePluginsDisconnectFieldInput!]" },
+    update: { __type: "GreenScreenTemplatePluginsUpdateConnectionInput" },
+    where: { __type: "GreenScreenTemplatePluginsConnectionWhere" },
+  },
+  GreenScreenTemplateRelationInput: {
+    organisation: { __type: "GreenScreenTemplateOrganisationCreateFieldInput" },
+    plugins: { __type: "[GreenScreenTemplatePluginsCreateFieldInput!]" },
+    screens: { __type: "[GreenScreenTemplateScreensCreateFieldInput!]" },
+    slots: { __type: "[GreenScreenTemplateSlotsCreateFieldInput!]" },
+  },
+  GreenScreenTemplateRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreenTemplate!" },
+  },
+  GreenScreenTemplateScreensAggregateInput: {
+    AND: { __type: "[GreenScreenTemplateScreensAggregateInput!]" },
+    OR: { __type: "[GreenScreenTemplateScreensAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "GreenScreenTemplateScreensNodeAggregationWhereInput" },
+  },
+  GreenScreenTemplateScreensConnectFieldInput: {
+    connect: { __type: "[GreenScreenConnectInput!]" },
+    where: { __type: "GreenScreenConnectWhere" },
+  },
+  GreenScreenTemplateScreensConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "GreenScreenTemplateScreensConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenConnectOrCreateWhere!" },
+  },
+  GreenScreenTemplateScreensConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenCreateInput!" },
+  },
+  GreenScreenTemplateScreensConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenTemplateScreensRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenTemplateScreensConnectionSort: {
+    node: { __type: "GreenScreenSort" },
+  },
+  GreenScreenTemplateScreensConnectionWhere: {
+    AND: { __type: "[GreenScreenTemplateScreensConnectionWhere!]" },
+    OR: { __type: "[GreenScreenTemplateScreensConnectionWhere!]" },
+    node: { __type: "GreenScreenWhere" },
+    node_NOT: { __type: "GreenScreenWhere" },
+  },
+  GreenScreenTemplateScreensCreateFieldInput: {
+    node: { __type: "GreenScreenCreateInput!" },
+  },
+  GreenScreenTemplateScreensDeleteFieldInput: {
+    delete: { __type: "GreenScreenDeleteInput" },
+    where: { __type: "GreenScreenTemplateScreensConnectionWhere" },
+  },
+  GreenScreenTemplateScreensDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenDisconnectInput" },
+    where: { __type: "GreenScreenTemplateScreensConnectionWhere" },
+  },
+  GreenScreenTemplateScreensFieldInput: {
+    connect: { __type: "[GreenScreenTemplateScreensConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplateScreensConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplateScreensCreateFieldInput!]" },
+  },
+  GreenScreenTemplateScreensNodeAggregationWhereInput: {
+    AND: { __type: "[GreenScreenTemplateScreensNodeAggregationWhereInput!]" },
+    OR: { __type: "[GreenScreenTemplateScreensNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    networkName_AVERAGE_EQUAL: { __type: "Float" },
+    networkName_AVERAGE_GT: { __type: "Float" },
+    networkName_AVERAGE_GTE: { __type: "Float" },
+    networkName_AVERAGE_LT: { __type: "Float" },
+    networkName_AVERAGE_LTE: { __type: "Float" },
+    networkName_EQUAL: { __type: "String" },
+    networkName_GT: { __type: "Int" },
+    networkName_GTE: { __type: "Int" },
+    networkName_LONGEST_EQUAL: { __type: "Int" },
+    networkName_LONGEST_GT: { __type: "Int" },
+    networkName_LONGEST_GTE: { __type: "Int" },
+    networkName_LONGEST_LT: { __type: "Int" },
+    networkName_LONGEST_LTE: { __type: "Int" },
+    networkName_LT: { __type: "Int" },
+    networkName_LTE: { __type: "Int" },
+    networkName_SHORTEST_EQUAL: { __type: "Int" },
+    networkName_SHORTEST_GT: { __type: "Int" },
+    networkName_SHORTEST_GTE: { __type: "Int" },
+    networkName_SHORTEST_LT: { __type: "Int" },
+    networkName_SHORTEST_LTE: { __type: "Int" },
+  },
+  GreenScreenTemplateScreensRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreen!" },
+  },
+  GreenScreenTemplateScreensUpdateConnectionInput: {
+    node: { __type: "GreenScreenUpdateInput" },
+  },
+  GreenScreenTemplateScreensUpdateFieldInput: {
+    connect: { __type: "[GreenScreenTemplateScreensConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplateScreensConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplateScreensCreateFieldInput!]" },
+    delete: { __type: "[GreenScreenTemplateScreensDeleteFieldInput!]" },
+    disconnect: { __type: "[GreenScreenTemplateScreensDisconnectFieldInput!]" },
+    update: { __type: "GreenScreenTemplateScreensUpdateConnectionInput" },
+    where: { __type: "GreenScreenTemplateScreensConnectionWhere" },
+  },
+  GreenScreenTemplateSlotsAggregateInput: {
+    AND: { __type: "[GreenScreenTemplateSlotsAggregateInput!]" },
+    OR: { __type: "[GreenScreenTemplateSlotsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "GreenScreenTemplateSlotsNodeAggregationWhereInput" },
+  },
+  GreenScreenTemplateSlotsConnectFieldInput: {
+    connect: { __type: "[TemplateSlotConnectInput!]" },
+    where: { __type: "TemplateSlotConnectWhere" },
+  },
+  GreenScreenTemplateSlotsConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "GreenScreenTemplateSlotsConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "TemplateSlotConnectOrCreateWhere!" },
+  },
+  GreenScreenTemplateSlotsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  GreenScreenTemplateSlotsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenTemplateSlotsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenTemplateSlotsConnectionSort: {
+    node: { __type: "TemplateSlotSort" },
+  },
+  GreenScreenTemplateSlotsConnectionWhere: {
+    AND: { __type: "[GreenScreenTemplateSlotsConnectionWhere!]" },
+    OR: { __type: "[GreenScreenTemplateSlotsConnectionWhere!]" },
+    node: { __type: "TemplateSlotWhere" },
+    node_NOT: { __type: "TemplateSlotWhere" },
+  },
+  GreenScreenTemplateSlotsCreateFieldInput: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  GreenScreenTemplateSlotsDeleteFieldInput: {
+    delete: { __type: "TemplateSlotDeleteInput" },
+    where: { __type: "GreenScreenTemplateSlotsConnectionWhere" },
+  },
+  GreenScreenTemplateSlotsDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotDisconnectInput" },
+    where: { __type: "GreenScreenTemplateSlotsConnectionWhere" },
+  },
+  GreenScreenTemplateSlotsFieldInput: {
+    connect: { __type: "[GreenScreenTemplateSlotsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplateSlotsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplateSlotsCreateFieldInput!]" },
+  },
+  GreenScreenTemplateSlotsNodeAggregationWhereInput: {
+    AND: { __type: "[GreenScreenTemplateSlotsNodeAggregationWhereInput!]" },
+    OR: { __type: "[GreenScreenTemplateSlotsNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  GreenScreenTemplateSlotsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlot!" },
+  },
+  GreenScreenTemplateSlotsUpdateConnectionInput: {
+    node: { __type: "TemplateSlotUpdateInput" },
+  },
+  GreenScreenTemplateSlotsUpdateFieldInput: {
+    connect: { __type: "[GreenScreenTemplateSlotsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenTemplateSlotsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenTemplateSlotsCreateFieldInput!]" },
+    delete: { __type: "[GreenScreenTemplateSlotsDeleteFieldInput!]" },
+    disconnect: { __type: "[GreenScreenTemplateSlotsDisconnectFieldInput!]" },
+    update: { __type: "GreenScreenTemplateSlotsUpdateConnectionInput" },
+    where: { __type: "GreenScreenTemplateSlotsConnectionWhere" },
+  },
+  GreenScreenTemplateSort: {
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+  },
+  GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type:
+        "GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection",
+    },
+  },
+  GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    source: { __type: "StringAggregateSelection!" },
+    sourceType: { __type: "StringAggregateSelection!" },
+    sourceVersion: { __type: "StringAggregateSelection!" },
+    type: { __type: "StringAggregateSelection!" },
+  },
+  GreenScreenTemplateTemplateSlotSlotsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection",
+    },
+  },
+  GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  GreenScreenTemplateUniqueWhere: { id: { __type: "ID" } },
+  GreenScreenTemplateUpdateConnectionInput: {
+    node: { __type: "GreenScreenTemplateUpdateInput" },
+  },
+  GreenScreenTemplateUpdateFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectFieldInput" },
+    connectOrCreate: { __type: "GreenScreenTemplateConnectOrCreateFieldInput" },
+    create: { __type: "GreenScreenTemplateCreateFieldInput" },
+    delete: { __type: "GreenScreenTemplateDeleteFieldInput" },
+    disconnect: { __type: "GreenScreenTemplateDisconnectFieldInput" },
+    update: { __type: "GreenScreenTemplateUpdateConnectionInput" },
+    where: { __type: "GreenScreenTemplateConnectionWhere" },
+  },
+  GreenScreenTemplateUpdateInput: {
+    name: { __type: "String" },
+    organisation: { __type: "GreenScreenTemplateOrganisationUpdateFieldInput" },
+    plugins: { __type: "[GreenScreenTemplatePluginsUpdateFieldInput!]" },
+    screens: { __type: "[GreenScreenTemplateScreensUpdateFieldInput!]" },
+    slots: { __type: "[GreenScreenTemplateSlotsUpdateFieldInput!]" },
+  },
+  GreenScreenTemplateWhere: {
+    AND: { __type: "[GreenScreenTemplateWhere!]" },
+    OR: { __type: "[GreenScreenTemplateWhere!]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    organisation: { __type: "HiveOrganisationWhere" },
+    organisationAggregate: {
+      __type: "GreenScreenTemplateOrganisationAggregateInput",
+    },
+    organisationConnection: {
+      __type: "GreenScreenTemplateOrganisationConnectionWhere",
+    },
+    organisationConnection_NOT: {
+      __type: "GreenScreenTemplateOrganisationConnectionWhere",
+    },
+    organisation_NOT: { __type: "HiveOrganisationWhere" },
+    plugins: { __type: "TemplateSlotPluginWhere" },
+    pluginsAggregate: { __type: "GreenScreenTemplatePluginsAggregateInput" },
+    pluginsConnection: { __type: "GreenScreenTemplatePluginsConnectionWhere" },
+    pluginsConnection_NOT: {
+      __type: "GreenScreenTemplatePluginsConnectionWhere",
+    },
+    plugins_NOT: { __type: "TemplateSlotPluginWhere" },
+    screens: { __type: "GreenScreenWhere" },
+    screensAggregate: { __type: "GreenScreenTemplateScreensAggregateInput" },
+    screensConnection: { __type: "GreenScreenTemplateScreensConnectionWhere" },
+    screensConnection_NOT: {
+      __type: "GreenScreenTemplateScreensConnectionWhere",
+    },
+    screens_NOT: { __type: "GreenScreenWhere" },
+    slots: { __type: "TemplateSlotWhere" },
+    slotsAggregate: { __type: "GreenScreenTemplateSlotsAggregateInput" },
+    slotsConnection: { __type: "GreenScreenTemplateSlotsConnectionWhere" },
+    slotsConnection_NOT: { __type: "GreenScreenTemplateSlotsConnectionWhere" },
+    slots_NOT: { __type: "TemplateSlotWhere" },
+  },
   GreenScreenUniqueWhere: { id: { __type: "ID" } },
   GreenScreenUpdateInput: {
     location: { __type: "GreenScreenLocationUpdateFieldInput" },
@@ -9979,6 +13420,7 @@ export const generatedSchema = {
     online: { __type: "Boolean" },
     organisation: { __type: "GreenScreenOrganisationUpdateFieldInput" },
     slots: { __type: "[GreenScreenSlotsUpdateFieldInput!]" },
+    template: { __type: "GreenScreenTemplateUpdateFieldInput" },
   },
   GreenScreenWhere: {
     AND: { __type: "[GreenScreenWhere!]" },
@@ -10034,6 +13476,11 @@ export const generatedSchema = {
     slotsConnection: { __type: "GreenScreenSlotsConnectionWhere" },
     slotsConnection_NOT: { __type: "GreenScreenSlotsConnectionWhere" },
     slots_NOT: { __type: "ScreenSlotWhere" },
+    template: { __type: "GreenScreenTemplateWhere" },
+    templateAggregate: { __type: "GreenScreenTemplateAggregateInput" },
+    templateConnection: { __type: "GreenScreenTemplateConnectionWhere" },
+    templateConnection_NOT: { __type: "GreenScreenTemplateConnectionWhere" },
+    template_NOT: { __type: "GreenScreenTemplateWhere" },
   },
   HiveAppliance: {
     __typename: { __type: "String!" },
@@ -12001,6 +15448,27 @@ export const generatedSchema = {
         where: "HiveOrganisationSchedulesConnectionWhere",
       },
     },
+    screenTemplates: {
+      __type: "[GreenScreenTemplate]",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    screenTemplatesAggregate: {
+      __type:
+        "HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    screenTemplatesConnection: {
+      __type: "HiveOrganisationScreenTemplatesConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[HiveOrganisationScreenTemplatesConnectionSort!]",
+        where: "HiveOrganisationScreenTemplatesConnectionWhere",
+      },
+    },
   },
   HiveOrganisationAggregateSelection: {
     __typename: { __type: "String!" },
@@ -12316,6 +15784,9 @@ export const generatedSchema = {
       __type: "[HiveOrganisationScheduleTiersConnectFieldInput!]",
     },
     schedules: { __type: "[HiveOrganisationSchedulesConnectFieldInput!]" },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesConnectFieldInput!]",
+    },
   },
   HiveOrganisationConnectOrCreateInput: {
     appliances: {
@@ -12341,6 +15812,9 @@ export const generatedSchema = {
     schedules: {
       __type: "[HiveOrganisationSchedulesConnectOrCreateFieldInput!]",
     },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesConnectOrCreateFieldInput!]",
+    },
   },
   HiveOrganisationConnectOrCreateWhere: {
     node: { __type: "HiveOrganisationUniqueWhere!" },
@@ -12357,6 +15831,7 @@ export const generatedSchema = {
     roles: { __type: "HiveOrganisationRolesFieldInput" },
     scheduleTiers: { __type: "HiveOrganisationScheduleTiersFieldInput" },
     schedules: { __type: "HiveOrganisationSchedulesFieldInput" },
+    screenTemplates: { __type: "HiveOrganisationScreenTemplatesFieldInput" },
   },
   HiveOrganisationDeleteInput: {
     appliances: { __type: "[HiveOrganisationAppliancesDeleteFieldInput!]" },
@@ -12372,6 +15847,9 @@ export const generatedSchema = {
       __type: "[HiveOrganisationScheduleTiersDeleteFieldInput!]",
     },
     schedules: { __type: "[HiveOrganisationSchedulesDeleteFieldInput!]" },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesDeleteFieldInput!]",
+    },
   },
   HiveOrganisationDisconnectInput: {
     appliances: { __type: "[HiveOrganisationAppliancesDisconnectFieldInput!]" },
@@ -12391,6 +15869,9 @@ export const generatedSchema = {
       __type: "[HiveOrganisationScheduleTiersDisconnectFieldInput!]",
     },
     schedules: { __type: "[HiveOrganisationSchedulesDisconnectFieldInput!]" },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesDisconnectFieldInput!]",
+    },
   },
   HiveOrganisationGreenScreenGreenScreensAggregationSelection: {
     __typename: { __type: "String!" },
@@ -12404,6 +15885,19 @@ export const generatedSchema = {
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
     networkName: { __type: "StringAggregateSelection!" },
+  },
+  HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type:
+        "HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection",
+    },
+  },
+  HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
   },
   HiveOrganisationGreenScreensAggregateInput: {
     AND: { __type: "[HiveOrganisationGreenScreensAggregateInput!]" },
@@ -12966,6 +16460,9 @@ export const generatedSchema = {
       __type: "[HiveOrganisationScheduleTiersCreateFieldInput!]",
     },
     schedules: { __type: "[HiveOrganisationSchedulesCreateFieldInput!]" },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesCreateFieldInput!]",
+    },
   },
   HiveOrganisationRoleRolesAggregationSelection: {
     __typename: { __type: "String!" },
@@ -13404,6 +16901,115 @@ export const generatedSchema = {
     update: { __type: "HiveOrganisationSchedulesUpdateConnectionInput" },
     where: { __type: "HiveOrganisationSchedulesConnectionWhere" },
   },
+  HiveOrganisationScreenTemplatesAggregateInput: {
+    AND: { __type: "[HiveOrganisationScreenTemplatesAggregateInput!]" },
+    OR: { __type: "[HiveOrganisationScreenTemplatesAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: {
+      __type: "HiveOrganisationScreenTemplatesNodeAggregationWhereInput",
+    },
+  },
+  HiveOrganisationScreenTemplatesConnectFieldInput: {
+    connect: { __type: "[GreenScreenTemplateConnectInput!]" },
+    where: { __type: "GreenScreenTemplateConnectWhere" },
+  },
+  HiveOrganisationScreenTemplatesConnectOrCreateFieldInput: {
+    onCreate: {
+      __type:
+        "HiveOrganisationScreenTemplatesConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenTemplateConnectOrCreateWhere!" },
+  },
+  HiveOrganisationScreenTemplatesConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  HiveOrganisationScreenTemplatesConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[HiveOrganisationScreenTemplatesRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  HiveOrganisationScreenTemplatesConnectionSort: {
+    node: { __type: "GreenScreenTemplateSort" },
+  },
+  HiveOrganisationScreenTemplatesConnectionWhere: {
+    AND: { __type: "[HiveOrganisationScreenTemplatesConnectionWhere!]" },
+    OR: { __type: "[HiveOrganisationScreenTemplatesConnectionWhere!]" },
+    node: { __type: "GreenScreenTemplateWhere" },
+    node_NOT: { __type: "GreenScreenTemplateWhere" },
+  },
+  HiveOrganisationScreenTemplatesCreateFieldInput: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  HiveOrganisationScreenTemplatesDeleteFieldInput: {
+    delete: { __type: "GreenScreenTemplateDeleteInput" },
+    where: { __type: "HiveOrganisationScreenTemplatesConnectionWhere" },
+  },
+  HiveOrganisationScreenTemplatesDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenTemplateDisconnectInput" },
+    where: { __type: "HiveOrganisationScreenTemplatesConnectionWhere" },
+  },
+  HiveOrganisationScreenTemplatesFieldInput: {
+    connect: { __type: "[HiveOrganisationScreenTemplatesConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[HiveOrganisationScreenTemplatesConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[HiveOrganisationScreenTemplatesCreateFieldInput!]" },
+  },
+  HiveOrganisationScreenTemplatesNodeAggregationWhereInput: {
+    AND: {
+      __type: "[HiveOrganisationScreenTemplatesNodeAggregationWhereInput!]",
+    },
+    OR: {
+      __type: "[HiveOrganisationScreenTemplatesNodeAggregationWhereInput!]",
+    },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  HiveOrganisationScreenTemplatesRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreenTemplate!" },
+  },
+  HiveOrganisationScreenTemplatesUpdateConnectionInput: {
+    node: { __type: "GreenScreenTemplateUpdateInput" },
+  },
+  HiveOrganisationScreenTemplatesUpdateFieldInput: {
+    connect: { __type: "[HiveOrganisationScreenTemplatesConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[HiveOrganisationScreenTemplatesConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[HiveOrganisationScreenTemplatesCreateFieldInput!]" },
+    delete: { __type: "[HiveOrganisationScreenTemplatesDeleteFieldInput!]" },
+    disconnect: {
+      __type: "[HiveOrganisationScreenTemplatesDisconnectFieldInput!]",
+    },
+    update: { __type: "HiveOrganisationScreenTemplatesUpdateConnectionInput" },
+    where: { __type: "HiveOrganisationScreenTemplatesConnectionWhere" },
+  },
   HiveOrganisationSort: {
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
@@ -13424,6 +17030,9 @@ export const generatedSchema = {
       __type: "[HiveOrganisationScheduleTiersUpdateFieldInput!]",
     },
     schedules: { __type: "[HiveOrganisationSchedulesUpdateFieldInput!]" },
+    screenTemplates: {
+      __type: "[HiveOrganisationScreenTemplatesUpdateFieldInput!]",
+    },
   },
   HiveOrganisationWhere: {
     AND: { __type: "[HiveOrganisationWhere!]" },
@@ -13525,6 +17134,17 @@ export const generatedSchema = {
       __type: "HiveOrganisationSchedulesConnectionWhere",
     },
     schedules_NOT: { __type: "ScheduleWhere" },
+    screenTemplates: { __type: "GreenScreenTemplateWhere" },
+    screenTemplatesAggregate: {
+      __type: "HiveOrganisationScreenTemplatesAggregateInput",
+    },
+    screenTemplatesConnection: {
+      __type: "HiveOrganisationScreenTemplatesConnectionWhere",
+    },
+    screenTemplatesConnection_NOT: {
+      __type: "HiveOrganisationScreenTemplatesConnectionWhere",
+    },
+    screenTemplates_NOT: { __type: "GreenScreenTemplateWhere" },
   },
   HiveService: {
     __typename: { __type: "String!" },
@@ -16221,6 +19841,26 @@ export const generatedSchema = {
       },
     },
     startDate: { __type: "DateTime" },
+    template: {
+      __type: "GreenScreenTemplate",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    templateAggregate: {
+      __type: "ScheduleGreenScreenTemplateTemplateAggregationSelection",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    templateConnection: {
+      __type: "ScheduleTemplateConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScheduleTemplateConnectionSort!]",
+        where: "ScheduleTemplateConnectionWhere",
+      },
+    },
     tiers: {
       __type: "[ScheduleTier]",
       __args: { options: "ScheduleTierOptions", where: "ScheduleTierWhere" },
@@ -16251,12 +19891,14 @@ export const generatedSchema = {
     locations: { __type: "[ScheduleLocationsConnectFieldInput!]" },
     organisation: { __type: "ScheduleOrganisationConnectFieldInput" },
     slots: { __type: "[ScheduleSlotsConnectFieldInput!]" },
+    template: { __type: "ScheduleTemplateConnectFieldInput" },
     tiers: { __type: "[ScheduleTiersConnectFieldInput!]" },
   },
   ScheduleConnectOrCreateInput: {
     locations: { __type: "[ScheduleLocationsConnectOrCreateFieldInput!]" },
     organisation: { __type: "ScheduleOrganisationConnectOrCreateFieldInput" },
     slots: { __type: "[ScheduleSlotsConnectOrCreateFieldInput!]" },
+    template: { __type: "ScheduleTemplateConnectOrCreateFieldInput" },
     tiers: { __type: "[ScheduleTiersConnectOrCreateFieldInput!]" },
   },
   ScheduleConnectOrCreateWhere: { node: { __type: "ScheduleUniqueWhere!" } },
@@ -16268,19 +19910,34 @@ export const generatedSchema = {
     organisation: { __type: "ScheduleOrganisationFieldInput" },
     slots: { __type: "ScheduleSlotsFieldInput" },
     startDate: { __type: "DateTime" },
+    template: { __type: "ScheduleTemplateFieldInput" },
     tiers: { __type: "ScheduleTiersFieldInput" },
   },
   ScheduleDeleteInput: {
     locations: { __type: "[ScheduleLocationsDeleteFieldInput!]" },
     organisation: { __type: "ScheduleOrganisationDeleteFieldInput" },
     slots: { __type: "[ScheduleSlotsDeleteFieldInput!]" },
+    template: { __type: "ScheduleTemplateDeleteFieldInput" },
     tiers: { __type: "[ScheduleTiersDeleteFieldInput!]" },
   },
   ScheduleDisconnectInput: {
     locations: { __type: "[ScheduleLocationsDisconnectFieldInput!]" },
     organisation: { __type: "ScheduleOrganisationDisconnectFieldInput" },
     slots: { __type: "[ScheduleSlotsDisconnectFieldInput!]" },
+    template: { __type: "ScheduleTemplateDisconnectFieldInput" },
     tiers: { __type: "[ScheduleTiersDisconnectFieldInput!]" },
+  },
+  ScheduleGreenScreenTemplateTemplateAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScheduleGreenScreenTemplateTemplateNodeAggregateSelection",
+    },
+  },
+  ScheduleGreenScreenTemplateTemplateNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
   },
   ScheduleHiveOrganisationOrganisationAggregationSelection: {
     __typename: { __type: "String!" },
@@ -16509,6 +20166,7 @@ export const generatedSchema = {
     locations: { __type: "[ScheduleLocationsCreateFieldInput!]" },
     organisation: { __type: "ScheduleOrganisationCreateFieldInput" },
     slots: { __type: "[ScheduleSlotsCreateFieldInput!]" },
+    template: { __type: "ScheduleTemplateCreateFieldInput" },
     tiers: { __type: "[ScheduleTiersCreateFieldInput!]" },
   },
   ScheduleScheduleSlotSlotsAggregationSelection: {
@@ -16571,6 +20229,23 @@ export const generatedSchema = {
         first: "Int",
         sort: "[ScheduleSlotScheduleConnectionSort!]",
         where: "ScheduleSlotScheduleConnectionWhere",
+      },
+    },
+    slot: {
+      __type: "TemplateSlot",
+      __args: { options: "TemplateSlotOptions", where: "TemplateSlotWhere" },
+    },
+    slotAggregate: {
+      __type: "ScheduleSlotTemplateSlotSlotAggregationSelection",
+      __args: { where: "TemplateSlotWhere" },
+    },
+    slotConnection: {
+      __type: "ScheduleSlotSlotConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScheduleSlotSlotConnectionSort!]",
+        where: "ScheduleSlotSlotConnectionWhere",
       },
     },
     startDate: { __type: "DateTime" },
@@ -16752,11 +20427,13 @@ export const generatedSchema = {
   ScheduleSlotConnectInput: {
     campaign: { __type: "ScheduleSlotCampaignConnectFieldInput" },
     schedule: { __type: "ScheduleSlotScheduleConnectFieldInput" },
+    slot: { __type: "ScheduleSlotSlotConnectFieldInput" },
     tier: { __type: "ScheduleSlotTierConnectFieldInput" },
   },
   ScheduleSlotConnectOrCreateInput: {
     campaign: { __type: "ScheduleSlotCampaignConnectOrCreateFieldInput" },
     schedule: { __type: "ScheduleSlotScheduleConnectOrCreateFieldInput" },
+    slot: { __type: "ScheduleSlotSlotConnectOrCreateFieldInput" },
     tier: { __type: "ScheduleSlotTierConnectOrCreateFieldInput" },
   },
   ScheduleSlotConnectOrCreateWhere: {
@@ -16767,17 +20444,20 @@ export const generatedSchema = {
     campaign: { __type: "ScheduleSlotCampaignFieldInput" },
     endDate: { __type: "DateTime" },
     schedule: { __type: "ScheduleSlotScheduleFieldInput" },
+    slot: { __type: "ScheduleSlotSlotFieldInput" },
     startDate: { __type: "DateTime" },
     tier: { __type: "ScheduleSlotTierFieldInput" },
   },
   ScheduleSlotDeleteInput: {
     campaign: { __type: "ScheduleSlotCampaignDeleteFieldInput" },
     schedule: { __type: "ScheduleSlotScheduleDeleteFieldInput" },
+    slot: { __type: "ScheduleSlotSlotDeleteFieldInput" },
     tier: { __type: "ScheduleSlotTierDeleteFieldInput" },
   },
   ScheduleSlotDisconnectInput: {
     campaign: { __type: "ScheduleSlotCampaignDisconnectFieldInput" },
     schedule: { __type: "ScheduleSlotScheduleDisconnectFieldInput" },
+    slot: { __type: "ScheduleSlotSlotDisconnectFieldInput" },
     tier: { __type: "ScheduleSlotTierDisconnectFieldInput" },
   },
   ScheduleSlotOptions: {
@@ -16788,6 +20468,7 @@ export const generatedSchema = {
   ScheduleSlotRelationInput: {
     campaign: { __type: "ScheduleSlotCampaignCreateFieldInput" },
     schedule: { __type: "ScheduleSlotScheduleCreateFieldInput" },
+    slot: { __type: "ScheduleSlotSlotCreateFieldInput" },
     tier: { __type: "ScheduleSlotTierCreateFieldInput" },
   },
   ScheduleSlotScheduleAggregateInput: {
@@ -16943,10 +20624,112 @@ export const generatedSchema = {
     update: { __type: "ScheduleSlotScheduleUpdateConnectionInput" },
     where: { __type: "ScheduleSlotScheduleConnectionWhere" },
   },
+  ScheduleSlotSlotAggregateInput: {
+    AND: { __type: "[ScheduleSlotSlotAggregateInput!]" },
+    OR: { __type: "[ScheduleSlotSlotAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScheduleSlotSlotNodeAggregationWhereInput" },
+  },
+  ScheduleSlotSlotConnectFieldInput: {
+    connect: { __type: "TemplateSlotConnectInput" },
+    where: { __type: "TemplateSlotConnectWhere" },
+  },
+  ScheduleSlotSlotConnectOrCreateFieldInput: {
+    onCreate: { __type: "ScheduleSlotSlotConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "TemplateSlotConnectOrCreateWhere!" },
+  },
+  ScheduleSlotSlotConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScheduleSlotSlotConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScheduleSlotSlotRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScheduleSlotSlotConnectionSort: { node: { __type: "TemplateSlotSort" } },
+  ScheduleSlotSlotConnectionWhere: {
+    AND: { __type: "[ScheduleSlotSlotConnectionWhere!]" },
+    OR: { __type: "[ScheduleSlotSlotConnectionWhere!]" },
+    node: { __type: "TemplateSlotWhere" },
+    node_NOT: { __type: "TemplateSlotWhere" },
+  },
+  ScheduleSlotSlotCreateFieldInput: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScheduleSlotSlotDeleteFieldInput: {
+    delete: { __type: "TemplateSlotDeleteInput" },
+    where: { __type: "ScheduleSlotSlotConnectionWhere" },
+  },
+  ScheduleSlotSlotDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotDisconnectInput" },
+    where: { __type: "ScheduleSlotSlotConnectionWhere" },
+  },
+  ScheduleSlotSlotFieldInput: {
+    connect: { __type: "ScheduleSlotSlotConnectFieldInput" },
+    connectOrCreate: { __type: "ScheduleSlotSlotConnectOrCreateFieldInput" },
+    create: { __type: "ScheduleSlotSlotCreateFieldInput" },
+  },
+  ScheduleSlotSlotNodeAggregationWhereInput: {
+    AND: { __type: "[ScheduleSlotSlotNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScheduleSlotSlotNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScheduleSlotSlotRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlot!" },
+  },
+  ScheduleSlotSlotUpdateConnectionInput: {
+    node: { __type: "TemplateSlotUpdateInput" },
+  },
+  ScheduleSlotSlotUpdateFieldInput: {
+    connect: { __type: "ScheduleSlotSlotConnectFieldInput" },
+    connectOrCreate: { __type: "ScheduleSlotSlotConnectOrCreateFieldInput" },
+    create: { __type: "ScheduleSlotSlotCreateFieldInput" },
+    delete: { __type: "ScheduleSlotSlotDeleteFieldInput" },
+    disconnect: { __type: "ScheduleSlotSlotDisconnectFieldInput" },
+    update: { __type: "ScheduleSlotSlotUpdateConnectionInput" },
+    where: { __type: "ScheduleSlotSlotConnectionWhere" },
+  },
   ScheduleSlotSort: {
     endDate: { __type: "SortDirection" },
     id: { __type: "SortDirection" },
     startDate: { __type: "SortDirection" },
+  },
+  ScheduleSlotTemplateSlotSlotAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "ScheduleSlotTemplateSlotSlotNodeAggregateSelection" },
+  },
+  ScheduleSlotTemplateSlotSlotNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
   },
   ScheduleSlotTierAggregateInput: {
     AND: { __type: "[ScheduleSlotTierAggregateInput!]" },
@@ -17115,6 +20898,7 @@ export const generatedSchema = {
     campaign: { __type: "ScheduleSlotCampaignUpdateFieldInput" },
     endDate: { __type: "DateTime" },
     schedule: { __type: "ScheduleSlotScheduleUpdateFieldInput" },
+    slot: { __type: "ScheduleSlotSlotUpdateFieldInput" },
     startDate: { __type: "DateTime" },
     tier: { __type: "ScheduleSlotTierUpdateFieldInput" },
   },
@@ -17149,6 +20933,11 @@ export const generatedSchema = {
     scheduleConnection: { __type: "ScheduleSlotScheduleConnectionWhere" },
     scheduleConnection_NOT: { __type: "ScheduleSlotScheduleConnectionWhere" },
     schedule_NOT: { __type: "ScheduleWhere" },
+    slot: { __type: "TemplateSlotWhere" },
+    slotAggregate: { __type: "ScheduleSlotSlotAggregateInput" },
+    slotConnection: { __type: "ScheduleSlotSlotConnectionWhere" },
+    slotConnection_NOT: { __type: "ScheduleSlotSlotConnectionWhere" },
+    slot_NOT: { __type: "TemplateSlotWhere" },
     startDate: { __type: "DateTime" },
     startDate_GT: { __type: "DateTime" },
     startDate_GTE: { __type: "DateTime" },
@@ -17270,6 +21059,100 @@ export const generatedSchema = {
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
     startDate: { __type: "SortDirection" },
+  },
+  ScheduleTemplateAggregateInput: {
+    AND: { __type: "[ScheduleTemplateAggregateInput!]" },
+    OR: { __type: "[ScheduleTemplateAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScheduleTemplateNodeAggregationWhereInput" },
+  },
+  ScheduleTemplateConnectFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectInput" },
+    where: { __type: "GreenScreenTemplateConnectWhere" },
+  },
+  ScheduleTemplateConnectOrCreateFieldInput: {
+    onCreate: { __type: "ScheduleTemplateConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "GreenScreenTemplateConnectOrCreateWhere!" },
+  },
+  ScheduleTemplateConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  ScheduleTemplateConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScheduleTemplateRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScheduleTemplateConnectionSort: {
+    node: { __type: "GreenScreenTemplateSort" },
+  },
+  ScheduleTemplateConnectionWhere: {
+    AND: { __type: "[ScheduleTemplateConnectionWhere!]" },
+    OR: { __type: "[ScheduleTemplateConnectionWhere!]" },
+    node: { __type: "GreenScreenTemplateWhere" },
+    node_NOT: { __type: "GreenScreenTemplateWhere" },
+  },
+  ScheduleTemplateCreateFieldInput: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  ScheduleTemplateDeleteFieldInput: {
+    delete: { __type: "GreenScreenTemplateDeleteInput" },
+    where: { __type: "ScheduleTemplateConnectionWhere" },
+  },
+  ScheduleTemplateDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenTemplateDisconnectInput" },
+    where: { __type: "ScheduleTemplateConnectionWhere" },
+  },
+  ScheduleTemplateFieldInput: {
+    connect: { __type: "ScheduleTemplateConnectFieldInput" },
+    connectOrCreate: { __type: "ScheduleTemplateConnectOrCreateFieldInput" },
+    create: { __type: "ScheduleTemplateCreateFieldInput" },
+  },
+  ScheduleTemplateNodeAggregationWhereInput: {
+    AND: { __type: "[ScheduleTemplateNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScheduleTemplateNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScheduleTemplateRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreenTemplate!" },
+  },
+  ScheduleTemplateUpdateConnectionInput: {
+    node: { __type: "GreenScreenTemplateUpdateInput" },
+  },
+  ScheduleTemplateUpdateFieldInput: {
+    connect: { __type: "ScheduleTemplateConnectFieldInput" },
+    connectOrCreate: { __type: "ScheduleTemplateConnectOrCreateFieldInput" },
+    create: { __type: "ScheduleTemplateCreateFieldInput" },
+    delete: { __type: "ScheduleTemplateDeleteFieldInput" },
+    disconnect: { __type: "ScheduleTemplateDisconnectFieldInput" },
+    update: { __type: "ScheduleTemplateUpdateConnectionInput" },
+    where: { __type: "ScheduleTemplateConnectionWhere" },
   },
   ScheduleTier: {
     __typename: { __type: "String!" },
@@ -17866,7 +21749,244 @@ export const generatedSchema = {
     organisation: { __type: "ScheduleOrganisationUpdateFieldInput" },
     slots: { __type: "[ScheduleSlotsUpdateFieldInput!]" },
     startDate: { __type: "DateTime" },
+    template: { __type: "ScheduleTemplateUpdateFieldInput" },
     tiers: { __type: "[ScheduleTiersUpdateFieldInput!]" },
+  },
+  ScheduleView: {
+    __typename: { __type: "String!" },
+    id: { __type: "ID!" },
+    name: { __type: "String" },
+    schedule: {
+      __type: "Schedule",
+      __args: { options: "ScheduleOptions", where: "ScheduleWhere" },
+    },
+    scheduleAggregate: {
+      __type: "ScheduleViewScheduleScheduleAggregationSelection",
+      __args: { where: "ScheduleWhere" },
+    },
+    scheduleConnection: {
+      __type: "ScheduleViewScheduleConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScheduleViewScheduleConnectionSort!]",
+        where: "ScheduleViewScheduleConnectionWhere",
+      },
+    },
+    tags: { __type: "[String]" },
+  },
+  ScheduleViewAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  ScheduleViewConnectInput: {
+    schedule: { __type: "ScheduleViewScheduleConnectFieldInput" },
+  },
+  ScheduleViewConnectOrCreateInput: {
+    schedule: { __type: "ScheduleViewScheduleConnectOrCreateFieldInput" },
+  },
+  ScheduleViewCreateInput: {
+    name: { __type: "String" },
+    schedule: { __type: "ScheduleViewScheduleFieldInput" },
+    tags: { __type: "[String]" },
+  },
+  ScheduleViewDeleteInput: {
+    schedule: { __type: "ScheduleViewScheduleDeleteFieldInput" },
+  },
+  ScheduleViewDisconnectInput: {
+    schedule: { __type: "ScheduleViewScheduleDisconnectFieldInput" },
+  },
+  ScheduleViewOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[ScheduleViewSort]" },
+  },
+  ScheduleViewRelationInput: {
+    schedule: { __type: "ScheduleViewScheduleCreateFieldInput" },
+  },
+  ScheduleViewScheduleAggregateInput: {
+    AND: { __type: "[ScheduleViewScheduleAggregateInput!]" },
+    OR: { __type: "[ScheduleViewScheduleAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScheduleViewScheduleNodeAggregationWhereInput" },
+  },
+  ScheduleViewScheduleConnectFieldInput: {
+    connect: { __type: "ScheduleConnectInput" },
+    where: { __type: "ScheduleConnectWhere" },
+  },
+  ScheduleViewScheduleConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScheduleViewScheduleConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "ScheduleConnectOrCreateWhere!" },
+  },
+  ScheduleViewScheduleConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScheduleCreateInput!" },
+  },
+  ScheduleViewScheduleConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScheduleViewScheduleRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScheduleViewScheduleConnectionSort: { node: { __type: "ScheduleSort" } },
+  ScheduleViewScheduleConnectionWhere: {
+    AND: { __type: "[ScheduleViewScheduleConnectionWhere!]" },
+    OR: { __type: "[ScheduleViewScheduleConnectionWhere!]" },
+    node: { __type: "ScheduleWhere" },
+    node_NOT: { __type: "ScheduleWhere" },
+  },
+  ScheduleViewScheduleCreateFieldInput: {
+    node: { __type: "ScheduleCreateInput!" },
+  },
+  ScheduleViewScheduleDeleteFieldInput: {
+    delete: { __type: "ScheduleDeleteInput" },
+    where: { __type: "ScheduleViewScheduleConnectionWhere" },
+  },
+  ScheduleViewScheduleDisconnectFieldInput: {
+    disconnect: { __type: "ScheduleDisconnectInput" },
+    where: { __type: "ScheduleViewScheduleConnectionWhere" },
+  },
+  ScheduleViewScheduleFieldInput: {
+    connect: { __type: "ScheduleViewScheduleConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScheduleViewScheduleConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScheduleViewScheduleCreateFieldInput" },
+  },
+  ScheduleViewScheduleNodeAggregationWhereInput: {
+    AND: { __type: "[ScheduleViewScheduleNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScheduleViewScheduleNodeAggregationWhereInput!]" },
+    endDate_EQUAL: { __type: "DateTime" },
+    endDate_GT: { __type: "DateTime" },
+    endDate_GTE: { __type: "DateTime" },
+    endDate_LT: { __type: "DateTime" },
+    endDate_LTE: { __type: "DateTime" },
+    endDate_MAX_EQUAL: { __type: "DateTime" },
+    endDate_MAX_GT: { __type: "DateTime" },
+    endDate_MAX_GTE: { __type: "DateTime" },
+    endDate_MAX_LT: { __type: "DateTime" },
+    endDate_MAX_LTE: { __type: "DateTime" },
+    endDate_MIN_EQUAL: { __type: "DateTime" },
+    endDate_MIN_GT: { __type: "DateTime" },
+    endDate_MIN_GTE: { __type: "DateTime" },
+    endDate_MIN_LT: { __type: "DateTime" },
+    endDate_MIN_LTE: { __type: "DateTime" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    startDate_EQUAL: { __type: "DateTime" },
+    startDate_GT: { __type: "DateTime" },
+    startDate_GTE: { __type: "DateTime" },
+    startDate_LT: { __type: "DateTime" },
+    startDate_LTE: { __type: "DateTime" },
+    startDate_MAX_EQUAL: { __type: "DateTime" },
+    startDate_MAX_GT: { __type: "DateTime" },
+    startDate_MAX_GTE: { __type: "DateTime" },
+    startDate_MAX_LT: { __type: "DateTime" },
+    startDate_MAX_LTE: { __type: "DateTime" },
+    startDate_MIN_EQUAL: { __type: "DateTime" },
+    startDate_MIN_GT: { __type: "DateTime" },
+    startDate_MIN_GTE: { __type: "DateTime" },
+    startDate_MIN_LT: { __type: "DateTime" },
+    startDate_MIN_LTE: { __type: "DateTime" },
+  },
+  ScheduleViewScheduleRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Schedule!" },
+  },
+  ScheduleViewScheduleScheduleAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "ScheduleViewScheduleScheduleNodeAggregateSelection" },
+  },
+  ScheduleViewScheduleScheduleNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    endDate: { __type: "DateTimeAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    startDate: { __type: "DateTimeAggregateSelection!" },
+  },
+  ScheduleViewScheduleUpdateConnectionInput: {
+    node: { __type: "ScheduleUpdateInput" },
+  },
+  ScheduleViewScheduleUpdateFieldInput: {
+    connect: { __type: "ScheduleViewScheduleConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScheduleViewScheduleConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScheduleViewScheduleCreateFieldInput" },
+    delete: { __type: "ScheduleViewScheduleDeleteFieldInput" },
+    disconnect: { __type: "ScheduleViewScheduleDisconnectFieldInput" },
+    update: { __type: "ScheduleViewScheduleUpdateConnectionInput" },
+    where: { __type: "ScheduleViewScheduleConnectionWhere" },
+  },
+  ScheduleViewSort: {
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+  },
+  ScheduleViewUpdateInput: {
+    name: { __type: "String" },
+    schedule: { __type: "ScheduleViewScheduleUpdateFieldInput" },
+    tags: { __type: "[String]" },
+  },
+  ScheduleViewWhere: {
+    AND: { __type: "[ScheduleViewWhere!]" },
+    OR: { __type: "[ScheduleViewWhere!]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    schedule: { __type: "ScheduleWhere" },
+    scheduleAggregate: { __type: "ScheduleViewScheduleAggregateInput" },
+    scheduleConnection: { __type: "ScheduleViewScheduleConnectionWhere" },
+    scheduleConnection_NOT: { __type: "ScheduleViewScheduleConnectionWhere" },
+    schedule_NOT: { __type: "ScheduleWhere" },
+    tags: { __type: "[String]" },
+    tags_INCLUDES: { __type: "String" },
+    tags_NOT: { __type: "[String]" },
+    tags_NOT_INCLUDES: { __type: "String" },
   },
   ScheduleWhere: {
     AND: { __type: "[ScheduleWhere!]" },
@@ -17924,6 +22044,11 @@ export const generatedSchema = {
     startDate_LTE: { __type: "DateTime" },
     startDate_NOT: { __type: "DateTime" },
     startDate_NOT_IN: { __type: "[DateTime]" },
+    template: { __type: "GreenScreenTemplateWhere" },
+    templateAggregate: { __type: "ScheduleTemplateAggregateInput" },
+    templateConnection: { __type: "ScheduleTemplateConnectionWhere" },
+    templateConnection_NOT: { __type: "ScheduleTemplateConnectionWhere" },
+    template_NOT: { __type: "GreenScreenTemplateWhere" },
     tiers: { __type: "ScheduleTierWhere" },
     tiersAggregate: { __type: "ScheduleTiersAggregateInput" },
     tiersConnection: { __type: "ScheduleTiersConnectionWhere" },
@@ -17962,7 +22087,40 @@ export const generatedSchema = {
         where: "ScreenSlotScreenConnectionWhere",
       },
     },
-    tags: { __type: "[String]" },
+    tags: {
+      __type: "[ScreenTag]",
+      __args: { options: "ScreenTagOptions", where: "ScreenTagWhere" },
+    },
+    tagsAggregate: {
+      __type: "ScreenSlotScreenTagTagsAggregationSelection",
+      __args: { where: "ScreenTagWhere" },
+    },
+    tagsConnection: {
+      __type: "ScreenSlotTagsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenSlotTagsConnectionSort!]",
+        where: "ScreenSlotTagsConnectionWhere",
+      },
+    },
+    templateSlot: {
+      __type: "TemplateSlot",
+      __args: { options: "TemplateSlotOptions", where: "TemplateSlotWhere" },
+    },
+    templateSlotAggregate: {
+      __type: "ScreenSlotTemplateSlotTemplateSlotAggregationSelection",
+      __args: { where: "TemplateSlotWhere" },
+    },
+    templateSlotConnection: {
+      __type: "ScreenSlotTemplateSlotConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenSlotTemplateSlotConnectionSort!]",
+        where: "ScreenSlotTemplateSlotConnectionWhere",
+      },
+    },
     width: { __type: "Float" },
   },
   ScreenSlotAggregateSelection: {
@@ -17984,9 +22142,13 @@ export const generatedSchema = {
   },
   ScreenSlotConnectInput: {
     screen: { __type: "ScreenSlotScreenConnectFieldInput" },
+    tags: { __type: "[ScreenSlotTagsConnectFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotConnectFieldInput" },
   },
   ScreenSlotConnectOrCreateInput: {
     screen: { __type: "ScreenSlotScreenConnectOrCreateFieldInput" },
+    tags: { __type: "[ScreenSlotTagsConnectOrCreateFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotConnectOrCreateFieldInput" },
   },
   ScreenSlotConnectOrCreateWhere: {
     node: { __type: "ScreenSlotUniqueWhere!" },
@@ -18006,14 +22168,19 @@ export const generatedSchema = {
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
     screen: { __type: "ScreenSlotScreenFieldInput" },
-    tags: { __type: "[String]" },
+    tags: { __type: "ScreenSlotTagsFieldInput" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotFieldInput" },
     width: { __type: "Float" },
   },
   ScreenSlotDeleteInput: {
     screen: { __type: "ScreenSlotScreenDeleteFieldInput" },
+    tags: { __type: "[ScreenSlotTagsDeleteFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotDeleteFieldInput" },
   },
   ScreenSlotDisconnectInput: {
     screen: { __type: "ScreenSlotScreenDisconnectFieldInput" },
+    tags: { __type: "[ScreenSlotTagsDisconnectFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotDisconnectFieldInput" },
   },
   ScreenSlotGreenScreenScreenAggregationSelection: {
     __typename: { __type: "String!" },
@@ -18033,6 +22200,8 @@ export const generatedSchema = {
   },
   ScreenSlotRelationInput: {
     screen: { __type: "ScreenSlotScreenCreateFieldInput" },
+    tags: { __type: "[ScreenSlotTagsCreateFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotCreateFieldInput" },
   },
   ScreenSlotScreenAggregateInput: {
     AND: { __type: "[ScreenSlotScreenAggregateInput!]" },
@@ -18134,6 +22303,16 @@ export const generatedSchema = {
     cursor: { __type: "String!" },
     node: { __type: "GreenScreen!" },
   },
+  ScreenSlotScreenTagTagsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "ScreenSlotScreenTagTagsNodeAggregateSelection" },
+  },
+  ScreenSlotScreenTagTagsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    text: { __type: "StringAggregateSelection!" },
+  },
   ScreenSlotScreenUpdateConnectionInput: {
     node: { __type: "GreenScreenUpdateInput" },
   },
@@ -18162,6 +22341,205 @@ export const generatedSchema = {
     resWidth: { __type: "SortDirection" },
     width: { __type: "SortDirection" },
   },
+  ScreenSlotTagsAggregateInput: {
+    AND: { __type: "[ScreenSlotTagsAggregateInput!]" },
+    OR: { __type: "[ScreenSlotTagsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenSlotTagsNodeAggregationWhereInput" },
+  },
+  ScreenSlotTagsConnectFieldInput: {
+    where: { __type: "ScreenTagConnectWhere" },
+  },
+  ScreenSlotTagsConnectOrCreateFieldInput: {
+    onCreate: { __type: "ScreenSlotTagsConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "ScreenTagConnectOrCreateWhere!" },
+  },
+  ScreenSlotTagsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScreenTagCreateInput!" },
+  },
+  ScreenSlotTagsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenSlotTagsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenSlotTagsConnectionSort: { node: { __type: "ScreenTagSort" } },
+  ScreenSlotTagsConnectionWhere: {
+    AND: { __type: "[ScreenSlotTagsConnectionWhere!]" },
+    OR: { __type: "[ScreenSlotTagsConnectionWhere!]" },
+    node: { __type: "ScreenTagWhere" },
+    node_NOT: { __type: "ScreenTagWhere" },
+  },
+  ScreenSlotTagsCreateFieldInput: { node: { __type: "ScreenTagCreateInput!" } },
+  ScreenSlotTagsDeleteFieldInput: {
+    where: { __type: "ScreenSlotTagsConnectionWhere" },
+  },
+  ScreenSlotTagsDisconnectFieldInput: {
+    where: { __type: "ScreenSlotTagsConnectionWhere" },
+  },
+  ScreenSlotTagsFieldInput: {
+    connect: { __type: "[ScreenSlotTagsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[ScreenSlotTagsConnectOrCreateFieldInput!]" },
+    create: { __type: "[ScreenSlotTagsCreateFieldInput!]" },
+  },
+  ScreenSlotTagsNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenSlotTagsNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenSlotTagsNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    text_AVERAGE_EQUAL: { __type: "Float" },
+    text_AVERAGE_GT: { __type: "Float" },
+    text_AVERAGE_GTE: { __type: "Float" },
+    text_AVERAGE_LT: { __type: "Float" },
+    text_AVERAGE_LTE: { __type: "Float" },
+    text_EQUAL: { __type: "String" },
+    text_GT: { __type: "Int" },
+    text_GTE: { __type: "Int" },
+    text_LONGEST_EQUAL: { __type: "Int" },
+    text_LONGEST_GT: { __type: "Int" },
+    text_LONGEST_GTE: { __type: "Int" },
+    text_LONGEST_LT: { __type: "Int" },
+    text_LONGEST_LTE: { __type: "Int" },
+    text_LT: { __type: "Int" },
+    text_LTE: { __type: "Int" },
+    text_SHORTEST_EQUAL: { __type: "Int" },
+    text_SHORTEST_GT: { __type: "Int" },
+    text_SHORTEST_GTE: { __type: "Int" },
+    text_SHORTEST_LT: { __type: "Int" },
+    text_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScreenSlotTagsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "ScreenTag!" },
+  },
+  ScreenSlotTagsUpdateConnectionInput: {
+    node: { __type: "ScreenTagUpdateInput" },
+  },
+  ScreenSlotTagsUpdateFieldInput: {
+    connect: { __type: "[ScreenSlotTagsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[ScreenSlotTagsConnectOrCreateFieldInput!]" },
+    create: { __type: "[ScreenSlotTagsCreateFieldInput!]" },
+    delete: { __type: "[ScreenSlotTagsDeleteFieldInput!]" },
+    disconnect: { __type: "[ScreenSlotTagsDisconnectFieldInput!]" },
+    update: { __type: "ScreenSlotTagsUpdateConnectionInput" },
+    where: { __type: "ScreenSlotTagsConnectionWhere" },
+  },
+  ScreenSlotTemplateSlotAggregateInput: {
+    AND: { __type: "[ScreenSlotTemplateSlotAggregateInput!]" },
+    OR: { __type: "[ScreenSlotTemplateSlotAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenSlotTemplateSlotNodeAggregationWhereInput" },
+  },
+  ScreenSlotTemplateSlotConnectFieldInput: {
+    connect: { __type: "TemplateSlotConnectInput" },
+    where: { __type: "TemplateSlotConnectWhere" },
+  },
+  ScreenSlotTemplateSlotConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScreenSlotTemplateSlotConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "TemplateSlotConnectOrCreateWhere!" },
+  },
+  ScreenSlotTemplateSlotConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScreenSlotTemplateSlotConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenSlotTemplateSlotRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenSlotTemplateSlotConnectionSort: {
+    node: { __type: "TemplateSlotSort" },
+  },
+  ScreenSlotTemplateSlotConnectionWhere: {
+    AND: { __type: "[ScreenSlotTemplateSlotConnectionWhere!]" },
+    OR: { __type: "[ScreenSlotTemplateSlotConnectionWhere!]" },
+    node: { __type: "TemplateSlotWhere" },
+    node_NOT: { __type: "TemplateSlotWhere" },
+  },
+  ScreenSlotTemplateSlotCreateFieldInput: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScreenSlotTemplateSlotDeleteFieldInput: {
+    delete: { __type: "TemplateSlotDeleteInput" },
+    where: { __type: "ScreenSlotTemplateSlotConnectionWhere" },
+  },
+  ScreenSlotTemplateSlotDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotDisconnectInput" },
+    where: { __type: "ScreenSlotTemplateSlotConnectionWhere" },
+  },
+  ScreenSlotTemplateSlotFieldInput: {
+    connect: { __type: "ScreenSlotTemplateSlotConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenSlotTemplateSlotConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenSlotTemplateSlotCreateFieldInput" },
+  },
+  ScreenSlotTemplateSlotNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenSlotTemplateSlotNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenSlotTemplateSlotNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScreenSlotTemplateSlotRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlot!" },
+  },
+  ScreenSlotTemplateSlotTemplateSlotAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection",
+    },
+  },
+  ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  ScreenSlotTemplateSlotUpdateConnectionInput: {
+    node: { __type: "TemplateSlotUpdateInput" },
+  },
+  ScreenSlotTemplateSlotUpdateFieldInput: {
+    connect: { __type: "ScreenSlotTemplateSlotConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenSlotTemplateSlotConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenSlotTemplateSlotCreateFieldInput" },
+    delete: { __type: "ScreenSlotTemplateSlotDeleteFieldInput" },
+    disconnect: { __type: "ScreenSlotTemplateSlotDisconnectFieldInput" },
+    update: { __type: "ScreenSlotTemplateSlotUpdateConnectionInput" },
+    where: { __type: "ScreenSlotTemplateSlotConnectionWhere" },
+  },
   ScreenSlotUniqueWhere: { id: { __type: "ID" } },
   ScreenSlotUpdateInput: {
     agentVersion: { __type: "String" },
@@ -18177,7 +22555,8 @@ export const generatedSchema = {
     resHeight: { __type: "Float" },
     resWidth: { __type: "Float" },
     screen: { __type: "ScreenSlotScreenUpdateFieldInput" },
-    tags: { __type: "[String]" },
+    tags: { __type: "[ScreenSlotTagsUpdateFieldInput!]" },
+    templateSlot: { __type: "ScreenSlotTemplateSlotUpdateFieldInput" },
     width: { __type: "Float" },
   },
   ScreenSlotWhere: {
@@ -18296,10 +22675,18 @@ export const generatedSchema = {
     screenConnection: { __type: "ScreenSlotScreenConnectionWhere" },
     screenConnection_NOT: { __type: "ScreenSlotScreenConnectionWhere" },
     screen_NOT: { __type: "GreenScreenWhere" },
-    tags: { __type: "[String]" },
-    tags_INCLUDES: { __type: "String" },
-    tags_NOT: { __type: "[String]" },
-    tags_NOT_INCLUDES: { __type: "String" },
+    tags: { __type: "ScreenTagWhere" },
+    tagsAggregate: { __type: "ScreenSlotTagsAggregateInput" },
+    tagsConnection: { __type: "ScreenSlotTagsConnectionWhere" },
+    tagsConnection_NOT: { __type: "ScreenSlotTagsConnectionWhere" },
+    tags_NOT: { __type: "ScreenTagWhere" },
+    templateSlot: { __type: "TemplateSlotWhere" },
+    templateSlotAggregate: { __type: "ScreenSlotTemplateSlotAggregateInput" },
+    templateSlotConnection: { __type: "ScreenSlotTemplateSlotConnectionWhere" },
+    templateSlotConnection_NOT: {
+      __type: "ScreenSlotTemplateSlotConnectionWhere",
+    },
+    templateSlot_NOT: { __type: "TemplateSlotWhere" },
     width: { __type: "Float" },
     width_GT: { __type: "Float" },
     width_GTE: { __type: "Float" },
@@ -18309,10 +22696,1179 @@ export const generatedSchema = {
     width_NOT: { __type: "Float" },
     width_NOT_IN: { __type: "[Float]" },
   },
+  ScreenTag: {
+    __typename: { __type: "String!" },
+    id: { __type: "ID" },
+    text: { __type: "String" },
+  },
+  ScreenTagAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    id: { __type: "IDAggregateSelection!" },
+    text: { __type: "StringAggregateSelection!" },
+  },
+  ScreenTagConnectOrCreateWhere: { node: { __type: "ScreenTagUniqueWhere!" } },
+  ScreenTagConnectWhere: { node: { __type: "ScreenTagWhere!" } },
+  ScreenTagCreateInput: { text: { __type: "String" } },
+  ScreenTagOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[ScreenTagSort]" },
+  },
+  ScreenTagSort: {
+    id: { __type: "SortDirection" },
+    text: { __type: "SortDirection" },
+  },
+  ScreenTagUniqueWhere: { id: { __type: "ID" } },
+  ScreenTagUpdateInput: { text: { __type: "String" } },
+  ScreenTagWhere: {
+    AND: { __type: "[ScreenTagWhere!]" },
+    OR: { __type: "[ScreenTagWhere!]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    text: { __type: "String" },
+    text_CONTAINS: { __type: "String" },
+    text_ENDS_WITH: { __type: "String" },
+    text_IN: { __type: "[String]" },
+    text_NOT: { __type: "String" },
+    text_NOT_CONTAINS: { __type: "String" },
+    text_NOT_ENDS_WITH: { __type: "String" },
+    text_NOT_IN: { __type: "[String]" },
+    text_NOT_STARTS_WITH: { __type: "String" },
+    text_STARTS_WITH: { __type: "String" },
+  },
   StringAggregateSelection: {
     __typename: { __type: "String!" },
     longest: { __type: "String" },
     shortest: { __type: "String" },
+  },
+  TemplateSlot: {
+    __typename: { __type: "String!" },
+    id: { __type: "ID!" },
+    name: { __type: "String" },
+    plugins: {
+      __type: "[TemplateSlotPlugin]",
+      __args: {
+        options: "TemplateSlotPluginOptions",
+        where: "TemplateSlotPluginWhere",
+      },
+    },
+    pluginsAggregate: {
+      __type: "TemplateSlotTemplateSlotPluginPluginsAggregationSelection",
+      __args: { where: "TemplateSlotPluginWhere" },
+    },
+    pluginsConnection: {
+      __type: "TemplateSlotPluginsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[TemplateSlotPluginsConnectionSort!]",
+        where: "TemplateSlotPluginsConnectionWhere",
+      },
+    },
+    template: {
+      __type: "GreenScreenTemplate",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    templateAggregate: {
+      __type: "TemplateSlotGreenScreenTemplateTemplateAggregationSelection",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    templateConnection: {
+      __type: "TemplateSlotTemplateConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[TemplateSlotTemplateConnectionSort!]",
+        where: "TemplateSlotTemplateConnectionWhere",
+      },
+    },
+    usedBy: {
+      __type: "[ScreenSlot]",
+      __args: { options: "ScreenSlotOptions", where: "ScreenSlotWhere" },
+    },
+    usedByAggregate: {
+      __type: "TemplateSlotScreenSlotUsedByAggregationSelection",
+      __args: { where: "ScreenSlotWhere" },
+    },
+    usedByConnection: {
+      __type: "TemplateSlotUsedByConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[TemplateSlotUsedByConnectionSort!]",
+        where: "TemplateSlotUsedByConnectionWhere",
+      },
+    },
+  },
+  TemplateSlotAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  TemplateSlotConnectInput: {
+    plugins: { __type: "[TemplateSlotPluginsConnectFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateConnectFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByConnectFieldInput!]" },
+  },
+  TemplateSlotConnectOrCreateInput: {
+    plugins: { __type: "[TemplateSlotPluginsConnectOrCreateFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateConnectOrCreateFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByConnectOrCreateFieldInput!]" },
+  },
+  TemplateSlotConnectOrCreateWhere: {
+    node: { __type: "TemplateSlotUniqueWhere!" },
+  },
+  TemplateSlotConnectWhere: { node: { __type: "TemplateSlotWhere!" } },
+  TemplateSlotCreateInput: {
+    name: { __type: "String" },
+    plugins: { __type: "TemplateSlotPluginsFieldInput" },
+    template: { __type: "TemplateSlotTemplateFieldInput" },
+    usedBy: { __type: "TemplateSlotUsedByFieldInput" },
+  },
+  TemplateSlotDeleteInput: {
+    plugins: { __type: "[TemplateSlotPluginsDeleteFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateDeleteFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByDeleteFieldInput!]" },
+  },
+  TemplateSlotDisconnectInput: {
+    plugins: { __type: "[TemplateSlotPluginsDisconnectFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateDisconnectFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByDisconnectFieldInput!]" },
+  },
+  TemplateSlotGreenScreenTemplateTemplateAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection",
+    },
+  },
+  TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  TemplateSlotOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[TemplateSlotSort]" },
+  },
+  TemplateSlotPlugin: {
+    __typename: { __type: "String!" },
+    id: { __type: "ID!" },
+    name: { __type: "String" },
+    source: { __type: "String" },
+    sourceType: { __type: "String" },
+    sourceVersion: { __type: "String" },
+    template: {
+      __type: "GreenScreenTemplate",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    templateAggregate: {
+      __type:
+        "TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    templateConnection: {
+      __type: "TemplateSlotPluginTemplateConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[TemplateSlotPluginTemplateConnectionSort!]",
+        where: "TemplateSlotPluginTemplateConnectionWhere",
+      },
+    },
+    type: { __type: "String" },
+  },
+  TemplateSlotPluginAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    source: { __type: "StringAggregateSelection!" },
+    sourceType: { __type: "StringAggregateSelection!" },
+    sourceVersion: { __type: "StringAggregateSelection!" },
+    type: { __type: "StringAggregateSelection!" },
+  },
+  TemplateSlotPluginConnectInput: {
+    template: { __type: "TemplateSlotPluginTemplateConnectFieldInput" },
+  },
+  TemplateSlotPluginConnectOrCreateInput: {
+    template: { __type: "TemplateSlotPluginTemplateConnectOrCreateFieldInput" },
+  },
+  TemplateSlotPluginConnectOrCreateWhere: {
+    node: { __type: "TemplateSlotPluginUniqueWhere!" },
+  },
+  TemplateSlotPluginConnectWhere: {
+    node: { __type: "TemplateSlotPluginWhere!" },
+  },
+  TemplateSlotPluginCreateInput: {
+    name: { __type: "String" },
+    source: { __type: "String" },
+    sourceType: { __type: "String" },
+    sourceVersion: { __type: "String" },
+    template: { __type: "TemplateSlotPluginTemplateFieldInput" },
+    type: { __type: "String" },
+  },
+  TemplateSlotPluginDeleteInput: {
+    template: { __type: "TemplateSlotPluginTemplateDeleteFieldInput" },
+  },
+  TemplateSlotPluginDisconnectInput: {
+    template: { __type: "TemplateSlotPluginTemplateDisconnectFieldInput" },
+  },
+  TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type:
+        "TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection",
+    },
+  },
+  TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  TemplateSlotPluginOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[TemplateSlotPluginSort]" },
+  },
+  TemplateSlotPluginRelationInput: {
+    template: { __type: "TemplateSlotPluginTemplateCreateFieldInput" },
+  },
+  TemplateSlotPluginSort: {
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+    source: { __type: "SortDirection" },
+    sourceType: { __type: "SortDirection" },
+    sourceVersion: { __type: "SortDirection" },
+    type: { __type: "SortDirection" },
+  },
+  TemplateSlotPluginTemplateAggregateInput: {
+    AND: { __type: "[TemplateSlotPluginTemplateAggregateInput!]" },
+    OR: { __type: "[TemplateSlotPluginTemplateAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "TemplateSlotPluginTemplateNodeAggregationWhereInput" },
+  },
+  TemplateSlotPluginTemplateConnectFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectInput" },
+    where: { __type: "GreenScreenTemplateConnectWhere" },
+  },
+  TemplateSlotPluginTemplateConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "TemplateSlotPluginTemplateConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenTemplateConnectOrCreateWhere!" },
+  },
+  TemplateSlotPluginTemplateConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  TemplateSlotPluginTemplateConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[TemplateSlotPluginTemplateRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  TemplateSlotPluginTemplateConnectionSort: {
+    node: { __type: "GreenScreenTemplateSort" },
+  },
+  TemplateSlotPluginTemplateConnectionWhere: {
+    AND: { __type: "[TemplateSlotPluginTemplateConnectionWhere!]" },
+    OR: { __type: "[TemplateSlotPluginTemplateConnectionWhere!]" },
+    node: { __type: "GreenScreenTemplateWhere" },
+    node_NOT: { __type: "GreenScreenTemplateWhere" },
+  },
+  TemplateSlotPluginTemplateCreateFieldInput: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  TemplateSlotPluginTemplateDeleteFieldInput: {
+    delete: { __type: "GreenScreenTemplateDeleteInput" },
+    where: { __type: "TemplateSlotPluginTemplateConnectionWhere" },
+  },
+  TemplateSlotPluginTemplateDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenTemplateDisconnectInput" },
+    where: { __type: "TemplateSlotPluginTemplateConnectionWhere" },
+  },
+  TemplateSlotPluginTemplateFieldInput: {
+    connect: { __type: "TemplateSlotPluginTemplateConnectFieldInput" },
+    connectOrCreate: {
+      __type: "TemplateSlotPluginTemplateConnectOrCreateFieldInput",
+    },
+    create: { __type: "TemplateSlotPluginTemplateCreateFieldInput" },
+  },
+  TemplateSlotPluginTemplateNodeAggregationWhereInput: {
+    AND: { __type: "[TemplateSlotPluginTemplateNodeAggregationWhereInput!]" },
+    OR: { __type: "[TemplateSlotPluginTemplateNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  TemplateSlotPluginTemplateRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreenTemplate!" },
+  },
+  TemplateSlotPluginTemplateUpdateConnectionInput: {
+    node: { __type: "GreenScreenTemplateUpdateInput" },
+  },
+  TemplateSlotPluginTemplateUpdateFieldInput: {
+    connect: { __type: "TemplateSlotPluginTemplateConnectFieldInput" },
+    connectOrCreate: {
+      __type: "TemplateSlotPluginTemplateConnectOrCreateFieldInput",
+    },
+    create: { __type: "TemplateSlotPluginTemplateCreateFieldInput" },
+    delete: { __type: "TemplateSlotPluginTemplateDeleteFieldInput" },
+    disconnect: { __type: "TemplateSlotPluginTemplateDisconnectFieldInput" },
+    update: { __type: "TemplateSlotPluginTemplateUpdateConnectionInput" },
+    where: { __type: "TemplateSlotPluginTemplateConnectionWhere" },
+  },
+  TemplateSlotPluginUniqueWhere: { id: { __type: "ID" } },
+  TemplateSlotPluginUpdateInput: {
+    name: { __type: "String" },
+    source: { __type: "String" },
+    sourceType: { __type: "String" },
+    sourceVersion: { __type: "String" },
+    template: { __type: "TemplateSlotPluginTemplateUpdateFieldInput" },
+    type: { __type: "String" },
+  },
+  TemplateSlotPluginWhere: {
+    AND: { __type: "[TemplateSlotPluginWhere!]" },
+    OR: { __type: "[TemplateSlotPluginWhere!]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    source: { __type: "String" },
+    sourceType: { __type: "String" },
+    sourceType_CONTAINS: { __type: "String" },
+    sourceType_ENDS_WITH: { __type: "String" },
+    sourceType_IN: { __type: "[String]" },
+    sourceType_NOT: { __type: "String" },
+    sourceType_NOT_CONTAINS: { __type: "String" },
+    sourceType_NOT_ENDS_WITH: { __type: "String" },
+    sourceType_NOT_IN: { __type: "[String]" },
+    sourceType_NOT_STARTS_WITH: { __type: "String" },
+    sourceType_STARTS_WITH: { __type: "String" },
+    sourceVersion: { __type: "String" },
+    sourceVersion_CONTAINS: { __type: "String" },
+    sourceVersion_ENDS_WITH: { __type: "String" },
+    sourceVersion_IN: { __type: "[String]" },
+    sourceVersion_NOT: { __type: "String" },
+    sourceVersion_NOT_CONTAINS: { __type: "String" },
+    sourceVersion_NOT_ENDS_WITH: { __type: "String" },
+    sourceVersion_NOT_IN: { __type: "[String]" },
+    sourceVersion_NOT_STARTS_WITH: { __type: "String" },
+    sourceVersion_STARTS_WITH: { __type: "String" },
+    source_CONTAINS: { __type: "String" },
+    source_ENDS_WITH: { __type: "String" },
+    source_IN: { __type: "[String]" },
+    source_NOT: { __type: "String" },
+    source_NOT_CONTAINS: { __type: "String" },
+    source_NOT_ENDS_WITH: { __type: "String" },
+    source_NOT_IN: { __type: "[String]" },
+    source_NOT_STARTS_WITH: { __type: "String" },
+    source_STARTS_WITH: { __type: "String" },
+    template: { __type: "GreenScreenTemplateWhere" },
+    templateAggregate: { __type: "TemplateSlotPluginTemplateAggregateInput" },
+    templateConnection: { __type: "TemplateSlotPluginTemplateConnectionWhere" },
+    templateConnection_NOT: {
+      __type: "TemplateSlotPluginTemplateConnectionWhere",
+    },
+    template_NOT: { __type: "GreenScreenTemplateWhere" },
+    type: { __type: "String" },
+    type_CONTAINS: { __type: "String" },
+    type_ENDS_WITH: { __type: "String" },
+    type_IN: { __type: "[String]" },
+    type_NOT: { __type: "String" },
+    type_NOT_CONTAINS: { __type: "String" },
+    type_NOT_ENDS_WITH: { __type: "String" },
+    type_NOT_IN: { __type: "[String]" },
+    type_NOT_STARTS_WITH: { __type: "String" },
+    type_STARTS_WITH: { __type: "String" },
+  },
+  TemplateSlotPluginsAggregateInput: {
+    AND: { __type: "[TemplateSlotPluginsAggregateInput!]" },
+    OR: { __type: "[TemplateSlotPluginsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "TemplateSlotPluginsNodeAggregationWhereInput" },
+  },
+  TemplateSlotPluginsConnectFieldInput: {
+    connect: { __type: "[TemplateSlotPluginConnectInput!]" },
+    where: { __type: "TemplateSlotPluginConnectWhere" },
+  },
+  TemplateSlotPluginsConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "TemplateSlotPluginsConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "TemplateSlotPluginConnectOrCreateWhere!" },
+  },
+  TemplateSlotPluginsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotPluginCreateInput!" },
+  },
+  TemplateSlotPluginsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[TemplateSlotPluginsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  TemplateSlotPluginsConnectionSort: {
+    node: { __type: "TemplateSlotPluginSort" },
+  },
+  TemplateSlotPluginsConnectionWhere: {
+    AND: { __type: "[TemplateSlotPluginsConnectionWhere!]" },
+    OR: { __type: "[TemplateSlotPluginsConnectionWhere!]" },
+    node: { __type: "TemplateSlotPluginWhere" },
+    node_NOT: { __type: "TemplateSlotPluginWhere" },
+  },
+  TemplateSlotPluginsCreateFieldInput: {
+    node: { __type: "TemplateSlotPluginCreateInput!" },
+  },
+  TemplateSlotPluginsDeleteFieldInput: {
+    delete: { __type: "TemplateSlotPluginDeleteInput" },
+    where: { __type: "TemplateSlotPluginsConnectionWhere" },
+  },
+  TemplateSlotPluginsDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotPluginDisconnectInput" },
+    where: { __type: "TemplateSlotPluginsConnectionWhere" },
+  },
+  TemplateSlotPluginsFieldInput: {
+    connect: { __type: "[TemplateSlotPluginsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[TemplateSlotPluginsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[TemplateSlotPluginsCreateFieldInput!]" },
+  },
+  TemplateSlotPluginsNodeAggregationWhereInput: {
+    AND: { __type: "[TemplateSlotPluginsNodeAggregationWhereInput!]" },
+    OR: { __type: "[TemplateSlotPluginsNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    sourceType_AVERAGE_EQUAL: { __type: "Float" },
+    sourceType_AVERAGE_GT: { __type: "Float" },
+    sourceType_AVERAGE_GTE: { __type: "Float" },
+    sourceType_AVERAGE_LT: { __type: "Float" },
+    sourceType_AVERAGE_LTE: { __type: "Float" },
+    sourceType_EQUAL: { __type: "String" },
+    sourceType_GT: { __type: "Int" },
+    sourceType_GTE: { __type: "Int" },
+    sourceType_LONGEST_EQUAL: { __type: "Int" },
+    sourceType_LONGEST_GT: { __type: "Int" },
+    sourceType_LONGEST_GTE: { __type: "Int" },
+    sourceType_LONGEST_LT: { __type: "Int" },
+    sourceType_LONGEST_LTE: { __type: "Int" },
+    sourceType_LT: { __type: "Int" },
+    sourceType_LTE: { __type: "Int" },
+    sourceType_SHORTEST_EQUAL: { __type: "Int" },
+    sourceType_SHORTEST_GT: { __type: "Int" },
+    sourceType_SHORTEST_GTE: { __type: "Int" },
+    sourceType_SHORTEST_LT: { __type: "Int" },
+    sourceType_SHORTEST_LTE: { __type: "Int" },
+    sourceVersion_AVERAGE_EQUAL: { __type: "Float" },
+    sourceVersion_AVERAGE_GT: { __type: "Float" },
+    sourceVersion_AVERAGE_GTE: { __type: "Float" },
+    sourceVersion_AVERAGE_LT: { __type: "Float" },
+    sourceVersion_AVERAGE_LTE: { __type: "Float" },
+    sourceVersion_EQUAL: { __type: "String" },
+    sourceVersion_GT: { __type: "Int" },
+    sourceVersion_GTE: { __type: "Int" },
+    sourceVersion_LONGEST_EQUAL: { __type: "Int" },
+    sourceVersion_LONGEST_GT: { __type: "Int" },
+    sourceVersion_LONGEST_GTE: { __type: "Int" },
+    sourceVersion_LONGEST_LT: { __type: "Int" },
+    sourceVersion_LONGEST_LTE: { __type: "Int" },
+    sourceVersion_LT: { __type: "Int" },
+    sourceVersion_LTE: { __type: "Int" },
+    sourceVersion_SHORTEST_EQUAL: { __type: "Int" },
+    sourceVersion_SHORTEST_GT: { __type: "Int" },
+    sourceVersion_SHORTEST_GTE: { __type: "Int" },
+    sourceVersion_SHORTEST_LT: { __type: "Int" },
+    sourceVersion_SHORTEST_LTE: { __type: "Int" },
+    source_AVERAGE_EQUAL: { __type: "Float" },
+    source_AVERAGE_GT: { __type: "Float" },
+    source_AVERAGE_GTE: { __type: "Float" },
+    source_AVERAGE_LT: { __type: "Float" },
+    source_AVERAGE_LTE: { __type: "Float" },
+    source_EQUAL: { __type: "String" },
+    source_GT: { __type: "Int" },
+    source_GTE: { __type: "Int" },
+    source_LONGEST_EQUAL: { __type: "Int" },
+    source_LONGEST_GT: { __type: "Int" },
+    source_LONGEST_GTE: { __type: "Int" },
+    source_LONGEST_LT: { __type: "Int" },
+    source_LONGEST_LTE: { __type: "Int" },
+    source_LT: { __type: "Int" },
+    source_LTE: { __type: "Int" },
+    source_SHORTEST_EQUAL: { __type: "Int" },
+    source_SHORTEST_GT: { __type: "Int" },
+    source_SHORTEST_GTE: { __type: "Int" },
+    source_SHORTEST_LT: { __type: "Int" },
+    source_SHORTEST_LTE: { __type: "Int" },
+    type_AVERAGE_EQUAL: { __type: "Float" },
+    type_AVERAGE_GT: { __type: "Float" },
+    type_AVERAGE_GTE: { __type: "Float" },
+    type_AVERAGE_LT: { __type: "Float" },
+    type_AVERAGE_LTE: { __type: "Float" },
+    type_EQUAL: { __type: "String" },
+    type_GT: { __type: "Int" },
+    type_GTE: { __type: "Int" },
+    type_LONGEST_EQUAL: { __type: "Int" },
+    type_LONGEST_GT: { __type: "Int" },
+    type_LONGEST_GTE: { __type: "Int" },
+    type_LONGEST_LT: { __type: "Int" },
+    type_LONGEST_LTE: { __type: "Int" },
+    type_LT: { __type: "Int" },
+    type_LTE: { __type: "Int" },
+    type_SHORTEST_EQUAL: { __type: "Int" },
+    type_SHORTEST_GT: { __type: "Int" },
+    type_SHORTEST_GTE: { __type: "Int" },
+    type_SHORTEST_LT: { __type: "Int" },
+    type_SHORTEST_LTE: { __type: "Int" },
+  },
+  TemplateSlotPluginsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlotPlugin!" },
+  },
+  TemplateSlotPluginsUpdateConnectionInput: {
+    node: { __type: "TemplateSlotPluginUpdateInput" },
+  },
+  TemplateSlotPluginsUpdateFieldInput: {
+    connect: { __type: "[TemplateSlotPluginsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[TemplateSlotPluginsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[TemplateSlotPluginsCreateFieldInput!]" },
+    delete: { __type: "[TemplateSlotPluginsDeleteFieldInput!]" },
+    disconnect: { __type: "[TemplateSlotPluginsDisconnectFieldInput!]" },
+    update: { __type: "TemplateSlotPluginsUpdateConnectionInput" },
+    where: { __type: "TemplateSlotPluginsConnectionWhere" },
+  },
+  TemplateSlotRelationInput: {
+    plugins: { __type: "[TemplateSlotPluginsCreateFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateCreateFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByCreateFieldInput!]" },
+  },
+  TemplateSlotScreenSlotUsedByAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "TemplateSlotScreenSlotUsedByNodeAggregateSelection" },
+  },
+  TemplateSlotScreenSlotUsedByNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    agentVersion: { __type: "StringAggregateSelection!" },
+    cpus: { __type: "IntAggregateSelection!" },
+    height: { __type: "FloatAggregateSelection!" },
+    hostname: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    ip: { __type: "StringAggregateSelection!" },
+    memory: { __type: "FloatAggregateSelection!" },
+    memoryUsed: { __type: "FloatAggregateSelection!" },
+    orientation: { __type: "FloatAggregateSelection!" },
+    os: { __type: "StringAggregateSelection!" },
+    resHeight: { __type: "FloatAggregateSelection!" },
+    resWidth: { __type: "FloatAggregateSelection!" },
+    width: { __type: "FloatAggregateSelection!" },
+  },
+  TemplateSlotSort: {
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+  },
+  TemplateSlotTemplateAggregateInput: {
+    AND: { __type: "[TemplateSlotTemplateAggregateInput!]" },
+    OR: { __type: "[TemplateSlotTemplateAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "TemplateSlotTemplateNodeAggregationWhereInput" },
+  },
+  TemplateSlotTemplateConnectFieldInput: {
+    connect: { __type: "GreenScreenTemplateConnectInput" },
+    where: { __type: "GreenScreenTemplateConnectWhere" },
+  },
+  TemplateSlotTemplateConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "TemplateSlotTemplateConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenTemplateConnectOrCreateWhere!" },
+  },
+  TemplateSlotTemplateConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  TemplateSlotTemplateConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[TemplateSlotTemplateRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  TemplateSlotTemplateConnectionSort: {
+    node: { __type: "GreenScreenTemplateSort" },
+  },
+  TemplateSlotTemplateConnectionWhere: {
+    AND: { __type: "[TemplateSlotTemplateConnectionWhere!]" },
+    OR: { __type: "[TemplateSlotTemplateConnectionWhere!]" },
+    node: { __type: "GreenScreenTemplateWhere" },
+    node_NOT: { __type: "GreenScreenTemplateWhere" },
+  },
+  TemplateSlotTemplateCreateFieldInput: {
+    node: { __type: "GreenScreenTemplateCreateInput!" },
+  },
+  TemplateSlotTemplateDeleteFieldInput: {
+    delete: { __type: "GreenScreenTemplateDeleteInput" },
+    where: { __type: "TemplateSlotTemplateConnectionWhere" },
+  },
+  TemplateSlotTemplateDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenTemplateDisconnectInput" },
+    where: { __type: "TemplateSlotTemplateConnectionWhere" },
+  },
+  TemplateSlotTemplateFieldInput: {
+    connect: { __type: "TemplateSlotTemplateConnectFieldInput" },
+    connectOrCreate: {
+      __type: "TemplateSlotTemplateConnectOrCreateFieldInput",
+    },
+    create: { __type: "TemplateSlotTemplateCreateFieldInput" },
+  },
+  TemplateSlotTemplateNodeAggregationWhereInput: {
+    AND: { __type: "[TemplateSlotTemplateNodeAggregationWhereInput!]" },
+    OR: { __type: "[TemplateSlotTemplateNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  TemplateSlotTemplateRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreenTemplate!" },
+  },
+  TemplateSlotTemplateSlotPluginPluginsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection",
+    },
+  },
+  TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    source: { __type: "StringAggregateSelection!" },
+    sourceType: { __type: "StringAggregateSelection!" },
+    sourceVersion: { __type: "StringAggregateSelection!" },
+    type: { __type: "StringAggregateSelection!" },
+  },
+  TemplateSlotTemplateUpdateConnectionInput: {
+    node: { __type: "GreenScreenTemplateUpdateInput" },
+  },
+  TemplateSlotTemplateUpdateFieldInput: {
+    connect: { __type: "TemplateSlotTemplateConnectFieldInput" },
+    connectOrCreate: {
+      __type: "TemplateSlotTemplateConnectOrCreateFieldInput",
+    },
+    create: { __type: "TemplateSlotTemplateCreateFieldInput" },
+    delete: { __type: "TemplateSlotTemplateDeleteFieldInput" },
+    disconnect: { __type: "TemplateSlotTemplateDisconnectFieldInput" },
+    update: { __type: "TemplateSlotTemplateUpdateConnectionInput" },
+    where: { __type: "TemplateSlotTemplateConnectionWhere" },
+  },
+  TemplateSlotUniqueWhere: { id: { __type: "ID" } },
+  TemplateSlotUpdateInput: {
+    name: { __type: "String" },
+    plugins: { __type: "[TemplateSlotPluginsUpdateFieldInput!]" },
+    template: { __type: "TemplateSlotTemplateUpdateFieldInput" },
+    usedBy: { __type: "[TemplateSlotUsedByUpdateFieldInput!]" },
+  },
+  TemplateSlotUsedByAggregateInput: {
+    AND: { __type: "[TemplateSlotUsedByAggregateInput!]" },
+    OR: { __type: "[TemplateSlotUsedByAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "TemplateSlotUsedByNodeAggregationWhereInput" },
+  },
+  TemplateSlotUsedByConnectFieldInput: {
+    connect: { __type: "[ScreenSlotConnectInput!]" },
+    where: { __type: "ScreenSlotConnectWhere" },
+  },
+  TemplateSlotUsedByConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "TemplateSlotUsedByConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "ScreenSlotConnectOrCreateWhere!" },
+  },
+  TemplateSlotUsedByConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScreenSlotCreateInput!" },
+  },
+  TemplateSlotUsedByConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[TemplateSlotUsedByRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  TemplateSlotUsedByConnectionSort: { node: { __type: "ScreenSlotSort" } },
+  TemplateSlotUsedByConnectionWhere: {
+    AND: { __type: "[TemplateSlotUsedByConnectionWhere!]" },
+    OR: { __type: "[TemplateSlotUsedByConnectionWhere!]" },
+    node: { __type: "ScreenSlotWhere" },
+    node_NOT: { __type: "ScreenSlotWhere" },
+  },
+  TemplateSlotUsedByCreateFieldInput: {
+    node: { __type: "ScreenSlotCreateInput!" },
+  },
+  TemplateSlotUsedByDeleteFieldInput: {
+    delete: { __type: "ScreenSlotDeleteInput" },
+    where: { __type: "TemplateSlotUsedByConnectionWhere" },
+  },
+  TemplateSlotUsedByDisconnectFieldInput: {
+    disconnect: { __type: "ScreenSlotDisconnectInput" },
+    where: { __type: "TemplateSlotUsedByConnectionWhere" },
+  },
+  TemplateSlotUsedByFieldInput: {
+    connect: { __type: "[TemplateSlotUsedByConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[TemplateSlotUsedByConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[TemplateSlotUsedByCreateFieldInput!]" },
+  },
+  TemplateSlotUsedByNodeAggregationWhereInput: {
+    AND: { __type: "[TemplateSlotUsedByNodeAggregationWhereInput!]" },
+    OR: { __type: "[TemplateSlotUsedByNodeAggregationWhereInput!]" },
+    agentVersion_AVERAGE_EQUAL: { __type: "Float" },
+    agentVersion_AVERAGE_GT: { __type: "Float" },
+    agentVersion_AVERAGE_GTE: { __type: "Float" },
+    agentVersion_AVERAGE_LT: { __type: "Float" },
+    agentVersion_AVERAGE_LTE: { __type: "Float" },
+    agentVersion_EQUAL: { __type: "String" },
+    agentVersion_GT: { __type: "Int" },
+    agentVersion_GTE: { __type: "Int" },
+    agentVersion_LONGEST_EQUAL: { __type: "Int" },
+    agentVersion_LONGEST_GT: { __type: "Int" },
+    agentVersion_LONGEST_GTE: { __type: "Int" },
+    agentVersion_LONGEST_LT: { __type: "Int" },
+    agentVersion_LONGEST_LTE: { __type: "Int" },
+    agentVersion_LT: { __type: "Int" },
+    agentVersion_LTE: { __type: "Int" },
+    agentVersion_SHORTEST_EQUAL: { __type: "Int" },
+    agentVersion_SHORTEST_GT: { __type: "Int" },
+    agentVersion_SHORTEST_GTE: { __type: "Int" },
+    agentVersion_SHORTEST_LT: { __type: "Int" },
+    agentVersion_SHORTEST_LTE: { __type: "Int" },
+    cpus_AVERAGE_EQUAL: { __type: "Float" },
+    cpus_AVERAGE_GT: { __type: "Float" },
+    cpus_AVERAGE_GTE: { __type: "Float" },
+    cpus_AVERAGE_LT: { __type: "Float" },
+    cpus_AVERAGE_LTE: { __type: "Float" },
+    cpus_EQUAL: { __type: "Int" },
+    cpus_GT: { __type: "Int" },
+    cpus_GTE: { __type: "Int" },
+    cpus_LT: { __type: "Int" },
+    cpus_LTE: { __type: "Int" },
+    cpus_MAX_EQUAL: { __type: "Int" },
+    cpus_MAX_GT: { __type: "Int" },
+    cpus_MAX_GTE: { __type: "Int" },
+    cpus_MAX_LT: { __type: "Int" },
+    cpus_MAX_LTE: { __type: "Int" },
+    cpus_MIN_EQUAL: { __type: "Int" },
+    cpus_MIN_GT: { __type: "Int" },
+    cpus_MIN_GTE: { __type: "Int" },
+    cpus_MIN_LT: { __type: "Int" },
+    cpus_MIN_LTE: { __type: "Int" },
+    cpus_SUM_EQUAL: { __type: "Int" },
+    cpus_SUM_GT: { __type: "Int" },
+    cpus_SUM_GTE: { __type: "Int" },
+    cpus_SUM_LT: { __type: "Int" },
+    cpus_SUM_LTE: { __type: "Int" },
+    height_AVERAGE_EQUAL: { __type: "Float" },
+    height_AVERAGE_GT: { __type: "Float" },
+    height_AVERAGE_GTE: { __type: "Float" },
+    height_AVERAGE_LT: { __type: "Float" },
+    height_AVERAGE_LTE: { __type: "Float" },
+    height_EQUAL: { __type: "Float" },
+    height_GT: { __type: "Float" },
+    height_GTE: { __type: "Float" },
+    height_LT: { __type: "Float" },
+    height_LTE: { __type: "Float" },
+    height_MAX_EQUAL: { __type: "Float" },
+    height_MAX_GT: { __type: "Float" },
+    height_MAX_GTE: { __type: "Float" },
+    height_MAX_LT: { __type: "Float" },
+    height_MAX_LTE: { __type: "Float" },
+    height_MIN_EQUAL: { __type: "Float" },
+    height_MIN_GT: { __type: "Float" },
+    height_MIN_GTE: { __type: "Float" },
+    height_MIN_LT: { __type: "Float" },
+    height_MIN_LTE: { __type: "Float" },
+    height_SUM_EQUAL: { __type: "Float" },
+    height_SUM_GT: { __type: "Float" },
+    height_SUM_GTE: { __type: "Float" },
+    height_SUM_LT: { __type: "Float" },
+    height_SUM_LTE: { __type: "Float" },
+    hostname_AVERAGE_EQUAL: { __type: "Float" },
+    hostname_AVERAGE_GT: { __type: "Float" },
+    hostname_AVERAGE_GTE: { __type: "Float" },
+    hostname_AVERAGE_LT: { __type: "Float" },
+    hostname_AVERAGE_LTE: { __type: "Float" },
+    hostname_EQUAL: { __type: "String" },
+    hostname_GT: { __type: "Int" },
+    hostname_GTE: { __type: "Int" },
+    hostname_LONGEST_EQUAL: { __type: "Int" },
+    hostname_LONGEST_GT: { __type: "Int" },
+    hostname_LONGEST_GTE: { __type: "Int" },
+    hostname_LONGEST_LT: { __type: "Int" },
+    hostname_LONGEST_LTE: { __type: "Int" },
+    hostname_LT: { __type: "Int" },
+    hostname_LTE: { __type: "Int" },
+    hostname_SHORTEST_EQUAL: { __type: "Int" },
+    hostname_SHORTEST_GT: { __type: "Int" },
+    hostname_SHORTEST_GTE: { __type: "Int" },
+    hostname_SHORTEST_LT: { __type: "Int" },
+    hostname_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    ip_AVERAGE_EQUAL: { __type: "Float" },
+    ip_AVERAGE_GT: { __type: "Float" },
+    ip_AVERAGE_GTE: { __type: "Float" },
+    ip_AVERAGE_LT: { __type: "Float" },
+    ip_AVERAGE_LTE: { __type: "Float" },
+    ip_EQUAL: { __type: "String" },
+    ip_GT: { __type: "Int" },
+    ip_GTE: { __type: "Int" },
+    ip_LONGEST_EQUAL: { __type: "Int" },
+    ip_LONGEST_GT: { __type: "Int" },
+    ip_LONGEST_GTE: { __type: "Int" },
+    ip_LONGEST_LT: { __type: "Int" },
+    ip_LONGEST_LTE: { __type: "Int" },
+    ip_LT: { __type: "Int" },
+    ip_LTE: { __type: "Int" },
+    ip_SHORTEST_EQUAL: { __type: "Int" },
+    ip_SHORTEST_GT: { __type: "Int" },
+    ip_SHORTEST_GTE: { __type: "Int" },
+    ip_SHORTEST_LT: { __type: "Int" },
+    ip_SHORTEST_LTE: { __type: "Int" },
+    memoryUsed_AVERAGE_EQUAL: { __type: "Float" },
+    memoryUsed_AVERAGE_GT: { __type: "Float" },
+    memoryUsed_AVERAGE_GTE: { __type: "Float" },
+    memoryUsed_AVERAGE_LT: { __type: "Float" },
+    memoryUsed_AVERAGE_LTE: { __type: "Float" },
+    memoryUsed_EQUAL: { __type: "Float" },
+    memoryUsed_GT: { __type: "Float" },
+    memoryUsed_GTE: { __type: "Float" },
+    memoryUsed_LT: { __type: "Float" },
+    memoryUsed_LTE: { __type: "Float" },
+    memoryUsed_MAX_EQUAL: { __type: "Float" },
+    memoryUsed_MAX_GT: { __type: "Float" },
+    memoryUsed_MAX_GTE: { __type: "Float" },
+    memoryUsed_MAX_LT: { __type: "Float" },
+    memoryUsed_MAX_LTE: { __type: "Float" },
+    memoryUsed_MIN_EQUAL: { __type: "Float" },
+    memoryUsed_MIN_GT: { __type: "Float" },
+    memoryUsed_MIN_GTE: { __type: "Float" },
+    memoryUsed_MIN_LT: { __type: "Float" },
+    memoryUsed_MIN_LTE: { __type: "Float" },
+    memoryUsed_SUM_EQUAL: { __type: "Float" },
+    memoryUsed_SUM_GT: { __type: "Float" },
+    memoryUsed_SUM_GTE: { __type: "Float" },
+    memoryUsed_SUM_LT: { __type: "Float" },
+    memoryUsed_SUM_LTE: { __type: "Float" },
+    memory_AVERAGE_EQUAL: { __type: "Float" },
+    memory_AVERAGE_GT: { __type: "Float" },
+    memory_AVERAGE_GTE: { __type: "Float" },
+    memory_AVERAGE_LT: { __type: "Float" },
+    memory_AVERAGE_LTE: { __type: "Float" },
+    memory_EQUAL: { __type: "Float" },
+    memory_GT: { __type: "Float" },
+    memory_GTE: { __type: "Float" },
+    memory_LT: { __type: "Float" },
+    memory_LTE: { __type: "Float" },
+    memory_MAX_EQUAL: { __type: "Float" },
+    memory_MAX_GT: { __type: "Float" },
+    memory_MAX_GTE: { __type: "Float" },
+    memory_MAX_LT: { __type: "Float" },
+    memory_MAX_LTE: { __type: "Float" },
+    memory_MIN_EQUAL: { __type: "Float" },
+    memory_MIN_GT: { __type: "Float" },
+    memory_MIN_GTE: { __type: "Float" },
+    memory_MIN_LT: { __type: "Float" },
+    memory_MIN_LTE: { __type: "Float" },
+    memory_SUM_EQUAL: { __type: "Float" },
+    memory_SUM_GT: { __type: "Float" },
+    memory_SUM_GTE: { __type: "Float" },
+    memory_SUM_LT: { __type: "Float" },
+    memory_SUM_LTE: { __type: "Float" },
+    orientation_AVERAGE_EQUAL: { __type: "Float" },
+    orientation_AVERAGE_GT: { __type: "Float" },
+    orientation_AVERAGE_GTE: { __type: "Float" },
+    orientation_AVERAGE_LT: { __type: "Float" },
+    orientation_AVERAGE_LTE: { __type: "Float" },
+    orientation_EQUAL: { __type: "Float" },
+    orientation_GT: { __type: "Float" },
+    orientation_GTE: { __type: "Float" },
+    orientation_LT: { __type: "Float" },
+    orientation_LTE: { __type: "Float" },
+    orientation_MAX_EQUAL: { __type: "Float" },
+    orientation_MAX_GT: { __type: "Float" },
+    orientation_MAX_GTE: { __type: "Float" },
+    orientation_MAX_LT: { __type: "Float" },
+    orientation_MAX_LTE: { __type: "Float" },
+    orientation_MIN_EQUAL: { __type: "Float" },
+    orientation_MIN_GT: { __type: "Float" },
+    orientation_MIN_GTE: { __type: "Float" },
+    orientation_MIN_LT: { __type: "Float" },
+    orientation_MIN_LTE: { __type: "Float" },
+    orientation_SUM_EQUAL: { __type: "Float" },
+    orientation_SUM_GT: { __type: "Float" },
+    orientation_SUM_GTE: { __type: "Float" },
+    orientation_SUM_LT: { __type: "Float" },
+    orientation_SUM_LTE: { __type: "Float" },
+    os_AVERAGE_EQUAL: { __type: "Float" },
+    os_AVERAGE_GT: { __type: "Float" },
+    os_AVERAGE_GTE: { __type: "Float" },
+    os_AVERAGE_LT: { __type: "Float" },
+    os_AVERAGE_LTE: { __type: "Float" },
+    os_EQUAL: { __type: "String" },
+    os_GT: { __type: "Int" },
+    os_GTE: { __type: "Int" },
+    os_LONGEST_EQUAL: { __type: "Int" },
+    os_LONGEST_GT: { __type: "Int" },
+    os_LONGEST_GTE: { __type: "Int" },
+    os_LONGEST_LT: { __type: "Int" },
+    os_LONGEST_LTE: { __type: "Int" },
+    os_LT: { __type: "Int" },
+    os_LTE: { __type: "Int" },
+    os_SHORTEST_EQUAL: { __type: "Int" },
+    os_SHORTEST_GT: { __type: "Int" },
+    os_SHORTEST_GTE: { __type: "Int" },
+    os_SHORTEST_LT: { __type: "Int" },
+    os_SHORTEST_LTE: { __type: "Int" },
+    resHeight_AVERAGE_EQUAL: { __type: "Float" },
+    resHeight_AVERAGE_GT: { __type: "Float" },
+    resHeight_AVERAGE_GTE: { __type: "Float" },
+    resHeight_AVERAGE_LT: { __type: "Float" },
+    resHeight_AVERAGE_LTE: { __type: "Float" },
+    resHeight_EQUAL: { __type: "Float" },
+    resHeight_GT: { __type: "Float" },
+    resHeight_GTE: { __type: "Float" },
+    resHeight_LT: { __type: "Float" },
+    resHeight_LTE: { __type: "Float" },
+    resHeight_MAX_EQUAL: { __type: "Float" },
+    resHeight_MAX_GT: { __type: "Float" },
+    resHeight_MAX_GTE: { __type: "Float" },
+    resHeight_MAX_LT: { __type: "Float" },
+    resHeight_MAX_LTE: { __type: "Float" },
+    resHeight_MIN_EQUAL: { __type: "Float" },
+    resHeight_MIN_GT: { __type: "Float" },
+    resHeight_MIN_GTE: { __type: "Float" },
+    resHeight_MIN_LT: { __type: "Float" },
+    resHeight_MIN_LTE: { __type: "Float" },
+    resHeight_SUM_EQUAL: { __type: "Float" },
+    resHeight_SUM_GT: { __type: "Float" },
+    resHeight_SUM_GTE: { __type: "Float" },
+    resHeight_SUM_LT: { __type: "Float" },
+    resHeight_SUM_LTE: { __type: "Float" },
+    resWidth_AVERAGE_EQUAL: { __type: "Float" },
+    resWidth_AVERAGE_GT: { __type: "Float" },
+    resWidth_AVERAGE_GTE: { __type: "Float" },
+    resWidth_AVERAGE_LT: { __type: "Float" },
+    resWidth_AVERAGE_LTE: { __type: "Float" },
+    resWidth_EQUAL: { __type: "Float" },
+    resWidth_GT: { __type: "Float" },
+    resWidth_GTE: { __type: "Float" },
+    resWidth_LT: { __type: "Float" },
+    resWidth_LTE: { __type: "Float" },
+    resWidth_MAX_EQUAL: { __type: "Float" },
+    resWidth_MAX_GT: { __type: "Float" },
+    resWidth_MAX_GTE: { __type: "Float" },
+    resWidth_MAX_LT: { __type: "Float" },
+    resWidth_MAX_LTE: { __type: "Float" },
+    resWidth_MIN_EQUAL: { __type: "Float" },
+    resWidth_MIN_GT: { __type: "Float" },
+    resWidth_MIN_GTE: { __type: "Float" },
+    resWidth_MIN_LT: { __type: "Float" },
+    resWidth_MIN_LTE: { __type: "Float" },
+    resWidth_SUM_EQUAL: { __type: "Float" },
+    resWidth_SUM_GT: { __type: "Float" },
+    resWidth_SUM_GTE: { __type: "Float" },
+    resWidth_SUM_LT: { __type: "Float" },
+    resWidth_SUM_LTE: { __type: "Float" },
+    width_AVERAGE_EQUAL: { __type: "Float" },
+    width_AVERAGE_GT: { __type: "Float" },
+    width_AVERAGE_GTE: { __type: "Float" },
+    width_AVERAGE_LT: { __type: "Float" },
+    width_AVERAGE_LTE: { __type: "Float" },
+    width_EQUAL: { __type: "Float" },
+    width_GT: { __type: "Float" },
+    width_GTE: { __type: "Float" },
+    width_LT: { __type: "Float" },
+    width_LTE: { __type: "Float" },
+    width_MAX_EQUAL: { __type: "Float" },
+    width_MAX_GT: { __type: "Float" },
+    width_MAX_GTE: { __type: "Float" },
+    width_MAX_LT: { __type: "Float" },
+    width_MAX_LTE: { __type: "Float" },
+    width_MIN_EQUAL: { __type: "Float" },
+    width_MIN_GT: { __type: "Float" },
+    width_MIN_GTE: { __type: "Float" },
+    width_MIN_LT: { __type: "Float" },
+    width_MIN_LTE: { __type: "Float" },
+    width_SUM_EQUAL: { __type: "Float" },
+    width_SUM_GT: { __type: "Float" },
+    width_SUM_GTE: { __type: "Float" },
+    width_SUM_LT: { __type: "Float" },
+    width_SUM_LTE: { __type: "Float" },
+  },
+  TemplateSlotUsedByRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "ScreenSlot!" },
+  },
+  TemplateSlotUsedByUpdateConnectionInput: {
+    node: { __type: "ScreenSlotUpdateInput" },
+  },
+  TemplateSlotUsedByUpdateFieldInput: {
+    connect: { __type: "[TemplateSlotUsedByConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[TemplateSlotUsedByConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[TemplateSlotUsedByCreateFieldInput!]" },
+    delete: { __type: "[TemplateSlotUsedByDeleteFieldInput!]" },
+    disconnect: { __type: "[TemplateSlotUsedByDisconnectFieldInput!]" },
+    update: { __type: "TemplateSlotUsedByUpdateConnectionInput" },
+    where: { __type: "TemplateSlotUsedByConnectionWhere" },
+  },
+  TemplateSlotWhere: {
+    AND: { __type: "[TemplateSlotWhere!]" },
+    OR: { __type: "[TemplateSlotWhere!]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    plugins: { __type: "TemplateSlotPluginWhere" },
+    pluginsAggregate: { __type: "TemplateSlotPluginsAggregateInput" },
+    pluginsConnection: { __type: "TemplateSlotPluginsConnectionWhere" },
+    pluginsConnection_NOT: { __type: "TemplateSlotPluginsConnectionWhere" },
+    plugins_NOT: { __type: "TemplateSlotPluginWhere" },
+    template: { __type: "GreenScreenTemplateWhere" },
+    templateAggregate: { __type: "TemplateSlotTemplateAggregateInput" },
+    templateConnection: { __type: "TemplateSlotTemplateConnectionWhere" },
+    templateConnection_NOT: { __type: "TemplateSlotTemplateConnectionWhere" },
+    template_NOT: { __type: "GreenScreenTemplateWhere" },
+    usedBy: { __type: "ScreenSlotWhere" },
+    usedByAggregate: { __type: "TemplateSlotUsedByAggregateInput" },
+    usedByConnection: { __type: "TemplateSlotUsedByConnectionWhere" },
+    usedByConnection_NOT: { __type: "TemplateSlotUsedByConnectionWhere" },
+    usedBy_NOT: { __type: "ScreenSlotWhere" },
   },
   UpdateCampaignAnalyticsMutationResponse: {
     __typename: { __type: "String!" },
@@ -18322,6 +23878,11 @@ export const generatedSchema = {
   UpdateCampaignsMutationResponse: {
     __typename: { __type: "String!" },
     campaigns: { __type: "[Campaign!]!" },
+    info: { __type: "UpdateInfo!" },
+  },
+  UpdateGreenScreenTemplatesMutationResponse: {
+    __typename: { __type: "String!" },
+    greenScreenTemplates: { __type: "[GreenScreenTemplate!]!" },
     info: { __type: "UpdateInfo!" },
   },
   UpdateGreenScreensMutationResponse: {
@@ -18419,6 +23980,11 @@ export const generatedSchema = {
     info: { __type: "UpdateInfo!" },
     scheduleTiers: { __type: "[ScheduleTier!]!" },
   },
+  UpdateScheduleViewsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "UpdateInfo!" },
+    scheduleViews: { __type: "[ScheduleView!]!" },
+  },
   UpdateSchedulesMutationResponse: {
     __typename: { __type: "String!" },
     info: { __type: "UpdateInfo!" },
@@ -18429,6 +23995,21 @@ export const generatedSchema = {
     info: { __type: "UpdateInfo!" },
     screenSlots: { __type: "[ScreenSlot!]!" },
   },
+  UpdateScreenTagsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "UpdateInfo!" },
+    screenTags: { __type: "[ScreenTag!]!" },
+  },
+  UpdateTemplateSlotPluginsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "UpdateInfo!" },
+    templateSlotPlugins: { __type: "[TemplateSlotPlugin!]!" },
+  },
+  UpdateTemplateSlotsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "UpdateInfo!" },
+    templateSlots: { __type: "[TemplateSlot!]!" },
+  },
   mutation: {
     __typename: { __type: "String!" },
     createCampaignAnalytics: {
@@ -18438,6 +24019,10 @@ export const generatedSchema = {
     createCampaigns: {
       __type: "CreateCampaignsMutationResponse!",
       __args: { input: "[CampaignCreateInput!]!" },
+    },
+    createGreenScreenTemplates: {
+      __type: "CreateGreenScreenTemplatesMutationResponse!",
+      __args: { input: "[GreenScreenTemplateCreateInput!]!" },
     },
     createGreenScreens: {
       __type: "CreateGreenScreensMutationResponse!",
@@ -18507,6 +24092,10 @@ export const generatedSchema = {
       __type: "CreateScheduleTiersMutationResponse!",
       __args: { input: "[ScheduleTierCreateInput!]!" },
     },
+    createScheduleViews: {
+      __type: "CreateScheduleViewsMutationResponse!",
+      __args: { input: "[ScheduleViewCreateInput!]!" },
+    },
     createSchedules: {
       __type: "CreateSchedulesMutationResponse!",
       __args: { input: "[ScheduleCreateInput!]!" },
@@ -18514,6 +24103,18 @@ export const generatedSchema = {
     createScreenSlots: {
       __type: "CreateScreenSlotsMutationResponse!",
       __args: { input: "[ScreenSlotCreateInput!]!" },
+    },
+    createScreenTags: {
+      __type: "CreateScreenTagsMutationResponse!",
+      __args: { input: "[ScreenTagCreateInput!]!" },
+    },
+    createTemplateSlotPlugins: {
+      __type: "CreateTemplateSlotPluginsMutationResponse!",
+      __args: { input: "[TemplateSlotPluginCreateInput!]!" },
+    },
+    createTemplateSlots: {
+      __type: "CreateTemplateSlotsMutationResponse!",
+      __args: { input: "[TemplateSlotCreateInput!]!" },
     },
     deleteCampaignAnalytics: {
       __type: "DeleteInfo!",
@@ -18525,6 +24126,13 @@ export const generatedSchema = {
     deleteCampaigns: {
       __type: "DeleteInfo!",
       __args: { delete: "CampaignDeleteInput", where: "CampaignWhere" },
+    },
+    deleteGreenScreenTemplates: {
+      __type: "DeleteInfo!",
+      __args: {
+        delete: "GreenScreenTemplateDeleteInput",
+        where: "GreenScreenTemplateWhere",
+      },
     },
     deleteGreenScreens: {
       __type: "DeleteInfo!",
@@ -18609,6 +24217,10 @@ export const generatedSchema = {
       __type: "DeleteInfo!",
       __args: { delete: "ScheduleTierDeleteInput", where: "ScheduleTierWhere" },
     },
+    deleteScheduleViews: {
+      __type: "DeleteInfo!",
+      __args: { delete: "ScheduleViewDeleteInput", where: "ScheduleViewWhere" },
+    },
     deleteSchedules: {
       __type: "DeleteInfo!",
       __args: { delete: "ScheduleDeleteInput", where: "ScheduleWhere" },
@@ -18616,6 +24228,21 @@ export const generatedSchema = {
     deleteScreenSlots: {
       __type: "DeleteInfo!",
       __args: { delete: "ScreenSlotDeleteInput", where: "ScreenSlotWhere" },
+    },
+    deleteScreenTags: {
+      __type: "DeleteInfo!",
+      __args: { where: "ScreenTagWhere" },
+    },
+    deleteTemplateSlotPlugins: {
+      __type: "DeleteInfo!",
+      __args: {
+        delete: "TemplateSlotPluginDeleteInput",
+        where: "TemplateSlotPluginWhere",
+      },
+    },
+    deleteTemplateSlots: {
+      __type: "DeleteInfo!",
+      __args: { delete: "TemplateSlotDeleteInput", where: "TemplateSlotWhere" },
     },
     updateCampaignAnalytics: {
       __type: "UpdateCampaignAnalyticsMutationResponse!",
@@ -18639,6 +24266,18 @@ export const generatedSchema = {
         disconnect: "CampaignDisconnectInput",
         update: "CampaignUpdateInput",
         where: "CampaignWhere",
+      },
+    },
+    updateGreenScreenTemplates: {
+      __type: "UpdateGreenScreenTemplatesMutationResponse!",
+      __args: {
+        connect: "GreenScreenTemplateConnectInput",
+        connectOrCreate: "GreenScreenTemplateConnectOrCreateInput",
+        create: "GreenScreenTemplateRelationInput",
+        delete: "GreenScreenTemplateDeleteInput",
+        disconnect: "GreenScreenTemplateDisconnectInput",
+        update: "GreenScreenTemplateUpdateInput",
+        where: "GreenScreenTemplateWhere",
       },
     },
     updateGreenScreens: {
@@ -18822,6 +24461,18 @@ export const generatedSchema = {
         where: "ScheduleTierWhere",
       },
     },
+    updateScheduleViews: {
+      __type: "UpdateScheduleViewsMutationResponse!",
+      __args: {
+        connect: "ScheduleViewConnectInput",
+        connectOrCreate: "ScheduleViewConnectOrCreateInput",
+        create: "ScheduleViewRelationInput",
+        delete: "ScheduleViewDeleteInput",
+        disconnect: "ScheduleViewDisconnectInput",
+        update: "ScheduleViewUpdateInput",
+        where: "ScheduleViewWhere",
+      },
+    },
     updateSchedules: {
       __type: "UpdateSchedulesMutationResponse!",
       __args: {
@@ -18846,9 +24497,37 @@ export const generatedSchema = {
         where: "ScreenSlotWhere",
       },
     },
+    updateScreenTags: {
+      __type: "UpdateScreenTagsMutationResponse!",
+      __args: { update: "ScreenTagUpdateInput", where: "ScreenTagWhere" },
+    },
     updateSlotClient: {
       __type: "Boolean",
       __args: { id: "ID!", version: "String" },
+    },
+    updateTemplateSlotPlugins: {
+      __type: "UpdateTemplateSlotPluginsMutationResponse!",
+      __args: {
+        connect: "TemplateSlotPluginConnectInput",
+        connectOrCreate: "TemplateSlotPluginConnectOrCreateInput",
+        create: "TemplateSlotPluginRelationInput",
+        delete: "TemplateSlotPluginDeleteInput",
+        disconnect: "TemplateSlotPluginDisconnectInput",
+        update: "TemplateSlotPluginUpdateInput",
+        where: "TemplateSlotPluginWhere",
+      },
+    },
+    updateTemplateSlots: {
+      __type: "UpdateTemplateSlotsMutationResponse!",
+      __args: {
+        connect: "TemplateSlotConnectInput",
+        connectOrCreate: "TemplateSlotConnectOrCreateInput",
+        create: "TemplateSlotRelationInput",
+        delete: "TemplateSlotDeleteInput",
+        disconnect: "TemplateSlotDisconnectInput",
+        update: "TemplateSlotUpdateInput",
+        where: "TemplateSlotWhere",
+      },
     },
   },
   query: {
@@ -18877,6 +24556,21 @@ export const generatedSchema = {
       __args: { where: "CampaignWhere" },
     },
     campaignsCount: { __type: "Int!", __args: { where: "CampaignWhere" } },
+    greenScreenTemplates: {
+      __type: "[GreenScreenTemplate!]!",
+      __args: {
+        options: "GreenScreenTemplateOptions",
+        where: "GreenScreenTemplateWhere",
+      },
+    },
+    greenScreenTemplatesAggregate: {
+      __type: "GreenScreenTemplateAggregateSelection!",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
+    greenScreenTemplatesCount: {
+      __type: "Int!",
+      __args: { where: "GreenScreenTemplateWhere" },
+    },
     greenScreens: {
       __type: "[GreenScreen!]!",
       __args: { options: "GreenScreenOptions", where: "GreenScreenWhere" },
@@ -19081,6 +24775,18 @@ export const generatedSchema = {
       __type: "Int!",
       __args: { where: "ScheduleTierWhere" },
     },
+    scheduleViews: {
+      __type: "[ScheduleView!]!",
+      __args: { options: "ScheduleViewOptions", where: "ScheduleViewWhere" },
+    },
+    scheduleViewsAggregate: {
+      __type: "ScheduleViewAggregateSelection!",
+      __args: { where: "ScheduleViewWhere" },
+    },
+    scheduleViewsCount: {
+      __type: "Int!",
+      __args: { where: "ScheduleViewWhere" },
+    },
     schedules: {
       __type: "[Schedule!]!",
       __args: { options: "ScheduleOptions", where: "ScheduleWhere" },
@@ -19099,6 +24805,42 @@ export const generatedSchema = {
       __args: { where: "ScreenSlotWhere" },
     },
     screenSlotsCount: { __type: "Int!", __args: { where: "ScreenSlotWhere" } },
+    screenTags: {
+      __type: "[ScreenTag!]!",
+      __args: { options: "ScreenTagOptions", where: "ScreenTagWhere" },
+    },
+    screenTagsAggregate: {
+      __type: "ScreenTagAggregateSelection!",
+      __args: { where: "ScreenTagWhere" },
+    },
+    screenTagsCount: { __type: "Int!", __args: { where: "ScreenTagWhere" } },
+    templateSlotPlugins: {
+      __type: "[TemplateSlotPlugin!]!",
+      __args: {
+        options: "TemplateSlotPluginOptions",
+        where: "TemplateSlotPluginWhere",
+      },
+    },
+    templateSlotPluginsAggregate: {
+      __type: "TemplateSlotPluginAggregateSelection!",
+      __args: { where: "TemplateSlotPluginWhere" },
+    },
+    templateSlotPluginsCount: {
+      __type: "Int!",
+      __args: { where: "TemplateSlotPluginWhere" },
+    },
+    templateSlots: {
+      __type: "[TemplateSlot!]!",
+      __args: { options: "TemplateSlotOptions", where: "TemplateSlotWhere" },
+    },
+    templateSlotsAggregate: {
+      __type: "TemplateSlotAggregateSelection!",
+      __args: { where: "TemplateSlotWhere" },
+    },
+    templateSlotsCount: {
+      __type: "Int!",
+      __args: { where: "TemplateSlotWhere" },
+    },
   },
   subscription: {},
 } as const;
@@ -19300,6 +25042,12 @@ export interface CreateCampaignsMutationResponse {
   info: CreateInfo;
 }
 
+export interface CreateGreenScreenTemplatesMutationResponse {
+  __typename?: "CreateGreenScreenTemplatesMutationResponse";
+  greenScreenTemplates: Array<GreenScreenTemplate>;
+  info: CreateInfo;
+}
+
 export interface CreateGreenScreensMutationResponse {
   __typename?: "CreateGreenScreensMutationResponse";
   greenScreens: Array<GreenScreen>;
@@ -19409,6 +25157,12 @@ export interface CreateScheduleTiersMutationResponse {
   scheduleTiers: Array<ScheduleTier>;
 }
 
+export interface CreateScheduleViewsMutationResponse {
+  __typename?: "CreateScheduleViewsMutationResponse";
+  info: CreateInfo;
+  scheduleViews: Array<ScheduleView>;
+}
+
 export interface CreateSchedulesMutationResponse {
   __typename?: "CreateSchedulesMutationResponse";
   info: CreateInfo;
@@ -19419,6 +25173,24 @@ export interface CreateScreenSlotsMutationResponse {
   __typename?: "CreateScreenSlotsMutationResponse";
   info: CreateInfo;
   screenSlots: Array<ScreenSlot>;
+}
+
+export interface CreateScreenTagsMutationResponse {
+  __typename?: "CreateScreenTagsMutationResponse";
+  info: CreateInfo;
+  screenTags: Array<ScreenTag>;
+}
+
+export interface CreateTemplateSlotPluginsMutationResponse {
+  __typename?: "CreateTemplateSlotPluginsMutationResponse";
+  info: CreateInfo;
+  templateSlotPlugins: Array<TemplateSlotPlugin>;
+}
+
+export interface CreateTemplateSlotsMutationResponse {
+  __typename?: "CreateTemplateSlotsMutationResponse";
+  info: CreateInfo;
+  templateSlots: Array<TemplateSlot>;
 }
 
 export interface DateTimeAggregateSelection {
@@ -19487,6 +25259,19 @@ export interface GreenScreen {
     sort?: Maybe<Array<GreenScreenSlotsConnectionSort>>;
     where?: Maybe<GreenScreenSlotsConnectionWhere>;
   }) => GreenScreenSlotsConnection;
+  template: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<GreenScreenTemplate>;
+  templateAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<GreenScreenGreenScreenTemplateTemplateAggregationSelection>;
+  templateConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenTemplateConnectionSort>>;
+    where?: Maybe<GreenScreenTemplateConnectionWhere>;
+  }) => GreenScreenTemplateConnection;
 }
 
 export interface GreenScreenAggregateSelection {
@@ -19495,6 +25280,18 @@ export interface GreenScreenAggregateSelection {
   id: IDAggregateSelection;
   name: StringAggregateSelection;
   networkName: StringAggregateSelection;
+}
+
+export interface GreenScreenGreenScreenTemplateTemplateAggregationSelection {
+  __typename?: "GreenScreenGreenScreenTemplateTemplateAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection>;
+}
+
+export interface GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection {
+  __typename?: "GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
 }
 
 export interface GreenScreenHiveOrganisationOrganisationAggregationSelection {
@@ -19584,6 +25381,189 @@ export interface GreenScreenSlotsRelationship {
   __typename?: "GreenScreenSlotsRelationship";
   cursor: ScalarsEnums["String"];
   node: ScreenSlot;
+}
+
+export interface GreenScreenTemplate {
+  __typename?: "GreenScreenTemplate";
+  id: ScalarsEnums["ID"];
+  name?: Maybe<ScalarsEnums["String"]>;
+  organisation: (args?: {
+    options?: Maybe<HiveOrganisationOptions>;
+    where?: Maybe<HiveOrganisationWhere>;
+  }) => Maybe<HiveOrganisation>;
+  organisationAggregate: (args?: {
+    where?: Maybe<HiveOrganisationWhere>;
+  }) => Maybe<GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection>;
+  organisationConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenTemplateOrganisationConnectionSort>>;
+    where?: Maybe<GreenScreenTemplateOrganisationConnectionWhere>;
+  }) => GreenScreenTemplateOrganisationConnection;
+  plugins: (args?: {
+    options?: Maybe<TemplateSlotPluginOptions>;
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => Maybe<Array<Maybe<TemplateSlotPlugin>>>;
+  pluginsAggregate: (args?: {
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => Maybe<GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection>;
+  pluginsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenTemplatePluginsConnectionSort>>;
+    where?: Maybe<GreenScreenTemplatePluginsConnectionWhere>;
+  }) => GreenScreenTemplatePluginsConnection;
+  screens: (args?: {
+    options?: Maybe<GreenScreenOptions>;
+    where?: Maybe<GreenScreenWhere>;
+  }) => Maybe<Array<Maybe<GreenScreen>>>;
+  screensAggregate: (args?: {
+    where?: Maybe<GreenScreenWhere>;
+  }) => Maybe<GreenScreenTemplateGreenScreenScreensAggregationSelection>;
+  screensConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenTemplateScreensConnectionSort>>;
+    where?: Maybe<GreenScreenTemplateScreensConnectionWhere>;
+  }) => GreenScreenTemplateScreensConnection;
+  slots: (args?: {
+    options?: Maybe<TemplateSlotOptions>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<Array<Maybe<TemplateSlot>>>;
+  slotsAggregate: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<GreenScreenTemplateTemplateSlotSlotsAggregationSelection>;
+  slotsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenTemplateSlotsConnectionSort>>;
+    where?: Maybe<GreenScreenTemplateSlotsConnectionWhere>;
+  }) => GreenScreenTemplateSlotsConnection;
+}
+
+export interface GreenScreenTemplateAggregateSelection {
+  __typename?: "GreenScreenTemplateAggregateSelection";
+  count: ScalarsEnums["Int"];
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface GreenScreenTemplateConnection {
+  __typename?: "GreenScreenTemplateConnection";
+  edges: Array<GreenScreenTemplateRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenTemplateGreenScreenScreensAggregationSelection {
+  __typename?: "GreenScreenTemplateGreenScreenScreensAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenTemplateGreenScreenScreensNodeAggregateSelection>;
+}
+
+export interface GreenScreenTemplateGreenScreenScreensNodeAggregateSelection {
+  __typename?: "GreenScreenTemplateGreenScreenScreensNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  networkName: StringAggregateSelection;
+}
+
+export interface GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection {
+  __typename?: "GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection>;
+}
+
+export interface GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection {
+  __typename?: "GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface GreenScreenTemplateOrganisationConnection {
+  __typename?: "GreenScreenTemplateOrganisationConnection";
+  edges: Array<GreenScreenTemplateOrganisationRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenTemplateOrganisationRelationship {
+  __typename?: "GreenScreenTemplateOrganisationRelationship";
+  cursor: ScalarsEnums["String"];
+  node: HiveOrganisation;
+}
+
+export interface GreenScreenTemplatePluginsConnection {
+  __typename?: "GreenScreenTemplatePluginsConnection";
+  edges: Array<GreenScreenTemplatePluginsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenTemplatePluginsRelationship {
+  __typename?: "GreenScreenTemplatePluginsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlotPlugin;
+}
+
+export interface GreenScreenTemplateRelationship {
+  __typename?: "GreenScreenTemplateRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreenTemplate;
+}
+
+export interface GreenScreenTemplateScreensConnection {
+  __typename?: "GreenScreenTemplateScreensConnection";
+  edges: Array<GreenScreenTemplateScreensRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenTemplateScreensRelationship {
+  __typename?: "GreenScreenTemplateScreensRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreen;
+}
+
+export interface GreenScreenTemplateSlotsConnection {
+  __typename?: "GreenScreenTemplateSlotsConnection";
+  edges: Array<GreenScreenTemplateSlotsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenTemplateSlotsRelationship {
+  __typename?: "GreenScreenTemplateSlotsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlot;
+}
+
+export interface GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection {
+  __typename?: "GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection>;
+}
+
+export interface GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection {
+  __typename?: "GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  source: StringAggregateSelection;
+  sourceType: StringAggregateSelection;
+  sourceVersion: StringAggregateSelection;
+  type: StringAggregateSelection;
+}
+
+export interface GreenScreenTemplateTemplateSlotSlotsAggregationSelection {
+  __typename?: "GreenScreenTemplateTemplateSlotSlotsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection>;
+}
+
+export interface GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection {
+  __typename?: "GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
 }
 
 export interface HiveAppliance {
@@ -20096,6 +26076,19 @@ export interface HiveOrganisation {
     sort?: Maybe<Array<HiveOrganisationSchedulesConnectionSort>>;
     where?: Maybe<HiveOrganisationSchedulesConnectionWhere>;
   }) => HiveOrganisationSchedulesConnection;
+  screenTemplates: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<Array<Maybe<GreenScreenTemplate>>>;
+  screenTemplatesAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection>;
+  screenTemplatesConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<HiveOrganisationScreenTemplatesConnectionSort>>;
+    where?: Maybe<HiveOrganisationScreenTemplatesConnectionWhere>;
+  }) => HiveOrganisationScreenTemplatesConnection;
 }
 
 export interface HiveOrganisationAggregateSelection {
@@ -20156,6 +26149,18 @@ export interface HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection {
   id: IDAggregateSelection;
   name: StringAggregateSelection;
   networkName: StringAggregateSelection;
+}
+
+export interface HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection {
+  __typename?: "HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection>;
+}
+
+export interface HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection {
+  __typename?: "HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
 }
 
 export interface HiveOrganisationGreenScreensConnection {
@@ -20341,6 +26346,19 @@ export interface HiveOrganisationSchedulesRelationship {
   __typename?: "HiveOrganisationSchedulesRelationship";
   cursor: ScalarsEnums["String"];
   node: Schedule;
+}
+
+export interface HiveOrganisationScreenTemplatesConnection {
+  __typename?: "HiveOrganisationScreenTemplatesConnection";
+  edges: Array<HiveOrganisationScreenTemplatesRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface HiveOrganisationScreenTemplatesRelationship {
+  __typename?: "HiveOrganisationScreenTemplatesRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreenTemplate;
 }
 
 export interface HiveService {
@@ -21041,6 +27059,19 @@ export interface Schedule {
     where?: Maybe<ScheduleSlotsConnectionWhere>;
   }) => ScheduleSlotsConnection;
   startDate?: Maybe<ScalarsEnums["DateTime"]>;
+  template: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<GreenScreenTemplate>;
+  templateAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<ScheduleGreenScreenTemplateTemplateAggregationSelection>;
+  templateConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScheduleTemplateConnectionSort>>;
+    where?: Maybe<ScheduleTemplateConnectionWhere>;
+  }) => ScheduleTemplateConnection;
   tiers: (args?: {
     options?: Maybe<ScheduleTierOptions>;
     where?: Maybe<ScheduleTierWhere>;
@@ -21063,6 +27094,18 @@ export interface ScheduleAggregateSelection {
   id: IDAggregateSelection;
   name: StringAggregateSelection;
   startDate: DateTimeAggregateSelection;
+}
+
+export interface ScheduleGreenScreenTemplateTemplateAggregationSelection {
+  __typename?: "ScheduleGreenScreenTemplateTemplateAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScheduleGreenScreenTemplateTemplateNodeAggregateSelection>;
+}
+
+export interface ScheduleGreenScreenTemplateTemplateNodeAggregateSelection {
+  __typename?: "ScheduleGreenScreenTemplateTemplateNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
 }
 
 export interface ScheduleHiveOrganisationOrganisationAggregationSelection {
@@ -21173,6 +27216,19 @@ export interface ScheduleSlot {
     sort?: Maybe<Array<ScheduleSlotScheduleConnectionSort>>;
     where?: Maybe<ScheduleSlotScheduleConnectionWhere>;
   }) => ScheduleSlotScheduleConnection;
+  slot: (args?: {
+    options?: Maybe<TemplateSlotOptions>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<TemplateSlot>;
+  slotAggregate: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<ScheduleSlotTemplateSlotSlotAggregationSelection>;
+  slotConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScheduleSlotSlotConnectionSort>>;
+    where?: Maybe<ScheduleSlotSlotConnectionWhere>;
+  }) => ScheduleSlotSlotConnection;
   startDate?: Maybe<ScalarsEnums["DateTime"]>;
   tier: (args?: {
     options?: Maybe<ScheduleTierOptions>;
@@ -21266,6 +27322,31 @@ export interface ScheduleSlotScheduleTierTierNodeAggregateSelection {
   slots: FloatAggregateSelection;
 }
 
+export interface ScheduleSlotSlotConnection {
+  __typename?: "ScheduleSlotSlotConnection";
+  edges: Array<ScheduleSlotSlotRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScheduleSlotSlotRelationship {
+  __typename?: "ScheduleSlotSlotRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlot;
+}
+
+export interface ScheduleSlotTemplateSlotSlotAggregationSelection {
+  __typename?: "ScheduleSlotTemplateSlotSlotAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScheduleSlotTemplateSlotSlotNodeAggregateSelection>;
+}
+
+export interface ScheduleSlotTemplateSlotSlotNodeAggregateSelection {
+  __typename?: "ScheduleSlotTemplateSlotSlotNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
 export interface ScheduleSlotTierConnection {
   __typename?: "ScheduleSlotTierConnection";
   edges: Array<ScheduleSlotTierRelationship>;
@@ -21290,6 +27371,19 @@ export interface ScheduleSlotsRelationship {
   __typename?: "ScheduleSlotsRelationship";
   cursor: ScalarsEnums["String"];
   node: ScheduleSlot;
+}
+
+export interface ScheduleTemplateConnection {
+  __typename?: "ScheduleTemplateConnection";
+  edges: Array<ScheduleTemplateRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScheduleTemplateRelationship {
+  __typename?: "ScheduleTemplateRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreenTemplate;
 }
 
 export interface ScheduleTier {
@@ -21402,6 +27496,60 @@ export interface ScheduleTiersRelationship {
   node: ScheduleTier;
 }
 
+export interface ScheduleView {
+  __typename?: "ScheduleView";
+  id: ScalarsEnums["ID"];
+  name?: Maybe<ScalarsEnums["String"]>;
+  schedule: (args?: {
+    options?: Maybe<ScheduleOptions>;
+    where?: Maybe<ScheduleWhere>;
+  }) => Maybe<Schedule>;
+  scheduleAggregate: (args?: {
+    where?: Maybe<ScheduleWhere>;
+  }) => Maybe<ScheduleViewScheduleScheduleAggregationSelection>;
+  scheduleConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScheduleViewScheduleConnectionSort>>;
+    where?: Maybe<ScheduleViewScheduleConnectionWhere>;
+  }) => ScheduleViewScheduleConnection;
+  tags?: Maybe<Array<Maybe<ScalarsEnums["String"]>>>;
+}
+
+export interface ScheduleViewAggregateSelection {
+  __typename?: "ScheduleViewAggregateSelection";
+  count: ScalarsEnums["Int"];
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface ScheduleViewScheduleConnection {
+  __typename?: "ScheduleViewScheduleConnection";
+  edges: Array<ScheduleViewScheduleRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScheduleViewScheduleRelationship {
+  __typename?: "ScheduleViewScheduleRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Schedule;
+}
+
+export interface ScheduleViewScheduleScheduleAggregationSelection {
+  __typename?: "ScheduleViewScheduleScheduleAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScheduleViewScheduleScheduleNodeAggregateSelection>;
+}
+
+export interface ScheduleViewScheduleScheduleNodeAggregateSelection {
+  __typename?: "ScheduleViewScheduleScheduleNodeAggregateSelection";
+  endDate: DateTimeAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  startDate: DateTimeAggregateSelection;
+}
+
 export interface ScreenSlot {
   __typename?: "ScreenSlot";
   agentVersion?: Maybe<ScalarsEnums["String"]>;
@@ -21430,7 +27578,32 @@ export interface ScreenSlot {
     sort?: Maybe<Array<ScreenSlotScreenConnectionSort>>;
     where?: Maybe<ScreenSlotScreenConnectionWhere>;
   }) => ScreenSlotScreenConnection;
-  tags?: Maybe<Array<Maybe<ScalarsEnums["String"]>>>;
+  tags: (args?: {
+    options?: Maybe<ScreenTagOptions>;
+    where?: Maybe<ScreenTagWhere>;
+  }) => Maybe<Array<Maybe<ScreenTag>>>;
+  tagsAggregate: (args?: {
+    where?: Maybe<ScreenTagWhere>;
+  }) => Maybe<ScreenSlotScreenTagTagsAggregationSelection>;
+  tagsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenSlotTagsConnectionSort>>;
+    where?: Maybe<ScreenSlotTagsConnectionWhere>;
+  }) => ScreenSlotTagsConnection;
+  templateSlot: (args?: {
+    options?: Maybe<TemplateSlotOptions>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<TemplateSlot>;
+  templateSlotAggregate: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<ScreenSlotTemplateSlotTemplateSlotAggregationSelection>;
+  templateSlotConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenSlotTemplateSlotConnectionSort>>;
+    where?: Maybe<ScreenSlotTemplateSlotConnectionWhere>;
+  }) => ScreenSlotTemplateSlotConnection;
   width?: Maybe<ScalarsEnums["Float"]>;
 }
 
@@ -21478,10 +27651,274 @@ export interface ScreenSlotScreenRelationship {
   node: GreenScreen;
 }
 
+export interface ScreenSlotScreenTagTagsAggregationSelection {
+  __typename?: "ScreenSlotScreenTagTagsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenSlotScreenTagTagsNodeAggregateSelection>;
+}
+
+export interface ScreenSlotScreenTagTagsNodeAggregateSelection {
+  __typename?: "ScreenSlotScreenTagTagsNodeAggregateSelection";
+  id: IDAggregateSelection;
+  text: StringAggregateSelection;
+}
+
+export interface ScreenSlotTagsConnection {
+  __typename?: "ScreenSlotTagsConnection";
+  edges: Array<ScreenSlotTagsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenSlotTagsRelationship {
+  __typename?: "ScreenSlotTagsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: ScreenTag;
+}
+
+export interface ScreenSlotTemplateSlotConnection {
+  __typename?: "ScreenSlotTemplateSlotConnection";
+  edges: Array<ScreenSlotTemplateSlotRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenSlotTemplateSlotRelationship {
+  __typename?: "ScreenSlotTemplateSlotRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlot;
+}
+
+export interface ScreenSlotTemplateSlotTemplateSlotAggregationSelection {
+  __typename?: "ScreenSlotTemplateSlotTemplateSlotAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection>;
+}
+
+export interface ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection {
+  __typename?: "ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface ScreenTag {
+  __typename?: "ScreenTag";
+  id?: Maybe<ScalarsEnums["ID"]>;
+  text?: Maybe<ScalarsEnums["String"]>;
+}
+
+export interface ScreenTagAggregateSelection {
+  __typename?: "ScreenTagAggregateSelection";
+  count: ScalarsEnums["Int"];
+  id: IDAggregateSelection;
+  text: StringAggregateSelection;
+}
+
 export interface StringAggregateSelection {
   __typename?: "StringAggregateSelection";
   longest?: Maybe<ScalarsEnums["String"]>;
   shortest?: Maybe<ScalarsEnums["String"]>;
+}
+
+export interface TemplateSlot {
+  __typename?: "TemplateSlot";
+  id: ScalarsEnums["ID"];
+  name?: Maybe<ScalarsEnums["String"]>;
+  plugins: (args?: {
+    options?: Maybe<TemplateSlotPluginOptions>;
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => Maybe<Array<Maybe<TemplateSlotPlugin>>>;
+  pluginsAggregate: (args?: {
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => Maybe<TemplateSlotTemplateSlotPluginPluginsAggregationSelection>;
+  pluginsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<TemplateSlotPluginsConnectionSort>>;
+    where?: Maybe<TemplateSlotPluginsConnectionWhere>;
+  }) => TemplateSlotPluginsConnection;
+  template: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<GreenScreenTemplate>;
+  templateAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<TemplateSlotGreenScreenTemplateTemplateAggregationSelection>;
+  templateConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<TemplateSlotTemplateConnectionSort>>;
+    where?: Maybe<TemplateSlotTemplateConnectionWhere>;
+  }) => TemplateSlotTemplateConnection;
+  usedBy: (args?: {
+    options?: Maybe<ScreenSlotOptions>;
+    where?: Maybe<ScreenSlotWhere>;
+  }) => Maybe<Array<Maybe<ScreenSlot>>>;
+  usedByAggregate: (args?: {
+    where?: Maybe<ScreenSlotWhere>;
+  }) => Maybe<TemplateSlotScreenSlotUsedByAggregationSelection>;
+  usedByConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<TemplateSlotUsedByConnectionSort>>;
+    where?: Maybe<TemplateSlotUsedByConnectionWhere>;
+  }) => TemplateSlotUsedByConnection;
+}
+
+export interface TemplateSlotAggregateSelection {
+  __typename?: "TemplateSlotAggregateSelection";
+  count: ScalarsEnums["Int"];
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface TemplateSlotGreenScreenTemplateTemplateAggregationSelection {
+  __typename?: "TemplateSlotGreenScreenTemplateTemplateAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection>;
+}
+
+export interface TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection {
+  __typename?: "TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface TemplateSlotPlugin {
+  __typename?: "TemplateSlotPlugin";
+  id: ScalarsEnums["ID"];
+  name?: Maybe<ScalarsEnums["String"]>;
+  source?: Maybe<ScalarsEnums["String"]>;
+  sourceType?: Maybe<ScalarsEnums["String"]>;
+  sourceVersion?: Maybe<ScalarsEnums["String"]>;
+  template: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<GreenScreenTemplate>;
+  templateAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Maybe<TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection>;
+  templateConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<TemplateSlotPluginTemplateConnectionSort>>;
+    where?: Maybe<TemplateSlotPluginTemplateConnectionWhere>;
+  }) => TemplateSlotPluginTemplateConnection;
+  type?: Maybe<ScalarsEnums["String"]>;
+}
+
+export interface TemplateSlotPluginAggregateSelection {
+  __typename?: "TemplateSlotPluginAggregateSelection";
+  count: ScalarsEnums["Int"];
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  source: StringAggregateSelection;
+  sourceType: StringAggregateSelection;
+  sourceVersion: StringAggregateSelection;
+  type: StringAggregateSelection;
+}
+
+export interface TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection {
+  __typename?: "TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection>;
+}
+
+export interface TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection {
+  __typename?: "TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface TemplateSlotPluginTemplateConnection {
+  __typename?: "TemplateSlotPluginTemplateConnection";
+  edges: Array<TemplateSlotPluginTemplateRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface TemplateSlotPluginTemplateRelationship {
+  __typename?: "TemplateSlotPluginTemplateRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreenTemplate;
+}
+
+export interface TemplateSlotPluginsConnection {
+  __typename?: "TemplateSlotPluginsConnection";
+  edges: Array<TemplateSlotPluginsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface TemplateSlotPluginsRelationship {
+  __typename?: "TemplateSlotPluginsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlotPlugin;
+}
+
+export interface TemplateSlotScreenSlotUsedByAggregationSelection {
+  __typename?: "TemplateSlotScreenSlotUsedByAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<TemplateSlotScreenSlotUsedByNodeAggregateSelection>;
+}
+
+export interface TemplateSlotScreenSlotUsedByNodeAggregateSelection {
+  __typename?: "TemplateSlotScreenSlotUsedByNodeAggregateSelection";
+  agentVersion: StringAggregateSelection;
+  cpus: IntAggregateSelection;
+  height: FloatAggregateSelection;
+  hostname: StringAggregateSelection;
+  id: IDAggregateSelection;
+  ip: StringAggregateSelection;
+  memory: FloatAggregateSelection;
+  memoryUsed: FloatAggregateSelection;
+  orientation: FloatAggregateSelection;
+  os: StringAggregateSelection;
+  resHeight: FloatAggregateSelection;
+  resWidth: FloatAggregateSelection;
+  width: FloatAggregateSelection;
+}
+
+export interface TemplateSlotTemplateConnection {
+  __typename?: "TemplateSlotTemplateConnection";
+  edges: Array<TemplateSlotTemplateRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface TemplateSlotTemplateRelationship {
+  __typename?: "TemplateSlotTemplateRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreenTemplate;
+}
+
+export interface TemplateSlotTemplateSlotPluginPluginsAggregationSelection {
+  __typename?: "TemplateSlotTemplateSlotPluginPluginsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection>;
+}
+
+export interface TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection {
+  __typename?: "TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  source: StringAggregateSelection;
+  sourceType: StringAggregateSelection;
+  sourceVersion: StringAggregateSelection;
+  type: StringAggregateSelection;
+}
+
+export interface TemplateSlotUsedByConnection {
+  __typename?: "TemplateSlotUsedByConnection";
+  edges: Array<TemplateSlotUsedByRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface TemplateSlotUsedByRelationship {
+  __typename?: "TemplateSlotUsedByRelationship";
+  cursor: ScalarsEnums["String"];
+  node: ScreenSlot;
 }
 
 export interface UpdateCampaignAnalyticsMutationResponse {
@@ -21493,6 +27930,12 @@ export interface UpdateCampaignAnalyticsMutationResponse {
 export interface UpdateCampaignsMutationResponse {
   __typename?: "UpdateCampaignsMutationResponse";
   campaigns: Array<Campaign>;
+  info: UpdateInfo;
+}
+
+export interface UpdateGreenScreenTemplatesMutationResponse {
+  __typename?: "UpdateGreenScreenTemplatesMutationResponse";
+  greenScreenTemplates: Array<GreenScreenTemplate>;
   info: UpdateInfo;
 }
 
@@ -21607,6 +28050,12 @@ export interface UpdateScheduleTiersMutationResponse {
   scheduleTiers: Array<ScheduleTier>;
 }
 
+export interface UpdateScheduleViewsMutationResponse {
+  __typename?: "UpdateScheduleViewsMutationResponse";
+  info: UpdateInfo;
+  scheduleViews: Array<ScheduleView>;
+}
+
 export interface UpdateSchedulesMutationResponse {
   __typename?: "UpdateSchedulesMutationResponse";
   info: UpdateInfo;
@@ -21619,6 +28068,24 @@ export interface UpdateScreenSlotsMutationResponse {
   screenSlots: Array<ScreenSlot>;
 }
 
+export interface UpdateScreenTagsMutationResponse {
+  __typename?: "UpdateScreenTagsMutationResponse";
+  info: UpdateInfo;
+  screenTags: Array<ScreenTag>;
+}
+
+export interface UpdateTemplateSlotPluginsMutationResponse {
+  __typename?: "UpdateTemplateSlotPluginsMutationResponse";
+  info: UpdateInfo;
+  templateSlotPlugins: Array<TemplateSlotPlugin>;
+}
+
+export interface UpdateTemplateSlotsMutationResponse {
+  __typename?: "UpdateTemplateSlotsMutationResponse";
+  info: UpdateInfo;
+  templateSlots: Array<TemplateSlot>;
+}
+
 export interface Mutation {
   __typename?: "Mutation";
   createCampaignAnalytics: (args: {
@@ -21627,6 +28094,9 @@ export interface Mutation {
   createCampaigns: (args: {
     input: Array<CampaignCreateInput>;
   }) => CreateCampaignsMutationResponse;
+  createGreenScreenTemplates: (args: {
+    input: Array<GreenScreenTemplateCreateInput>;
+  }) => CreateGreenScreenTemplatesMutationResponse;
   createGreenScreens: (args: {
     input: Array<GreenScreenCreateInput>;
   }) => CreateGreenScreensMutationResponse;
@@ -21678,12 +28148,24 @@ export interface Mutation {
   createScheduleTiers: (args: {
     input: Array<ScheduleTierCreateInput>;
   }) => CreateScheduleTiersMutationResponse;
+  createScheduleViews: (args: {
+    input: Array<ScheduleViewCreateInput>;
+  }) => CreateScheduleViewsMutationResponse;
   createSchedules: (args: {
     input: Array<ScheduleCreateInput>;
   }) => CreateSchedulesMutationResponse;
   createScreenSlots: (args: {
     input: Array<ScreenSlotCreateInput>;
   }) => CreateScreenSlotsMutationResponse;
+  createScreenTags: (args: {
+    input: Array<ScreenTagCreateInput>;
+  }) => CreateScreenTagsMutationResponse;
+  createTemplateSlotPlugins: (args: {
+    input: Array<TemplateSlotPluginCreateInput>;
+  }) => CreateTemplateSlotPluginsMutationResponse;
+  createTemplateSlots: (args: {
+    input: Array<TemplateSlotCreateInput>;
+  }) => CreateTemplateSlotsMutationResponse;
   deleteCampaignAnalytics: (args?: {
     delete?: Maybe<CampaignAnalyticDeleteInput>;
     where?: Maybe<CampaignAnalyticWhere>;
@@ -21691,6 +28173,10 @@ export interface Mutation {
   deleteCampaigns: (args?: {
     delete?: Maybe<CampaignDeleteInput>;
     where?: Maybe<CampaignWhere>;
+  }) => DeleteInfo;
+  deleteGreenScreenTemplates: (args?: {
+    delete?: Maybe<GreenScreenTemplateDeleteInput>;
+    where?: Maybe<GreenScreenTemplateWhere>;
   }) => DeleteInfo;
   deleteGreenScreens: (args?: {
     delete?: Maybe<GreenScreenDeleteInput>;
@@ -21756,6 +28242,10 @@ export interface Mutation {
     delete?: Maybe<ScheduleTierDeleteInput>;
     where?: Maybe<ScheduleTierWhere>;
   }) => DeleteInfo;
+  deleteScheduleViews: (args?: {
+    delete?: Maybe<ScheduleViewDeleteInput>;
+    where?: Maybe<ScheduleViewWhere>;
+  }) => DeleteInfo;
   deleteSchedules: (args?: {
     delete?: Maybe<ScheduleDeleteInput>;
     where?: Maybe<ScheduleWhere>;
@@ -21763,6 +28253,15 @@ export interface Mutation {
   deleteScreenSlots: (args?: {
     delete?: Maybe<ScreenSlotDeleteInput>;
     where?: Maybe<ScreenSlotWhere>;
+  }) => DeleteInfo;
+  deleteScreenTags: (args?: { where?: Maybe<ScreenTagWhere> }) => DeleteInfo;
+  deleteTemplateSlotPlugins: (args?: {
+    delete?: Maybe<TemplateSlotPluginDeleteInput>;
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => DeleteInfo;
+  deleteTemplateSlots: (args?: {
+    delete?: Maybe<TemplateSlotDeleteInput>;
+    where?: Maybe<TemplateSlotWhere>;
   }) => DeleteInfo;
   updateCampaignAnalytics: (args?: {
     connect?: Maybe<CampaignAnalyticConnectInput>;
@@ -21782,6 +28281,15 @@ export interface Mutation {
     update?: Maybe<CampaignUpdateInput>;
     where?: Maybe<CampaignWhere>;
   }) => UpdateCampaignsMutationResponse;
+  updateGreenScreenTemplates: (args?: {
+    connect?: Maybe<GreenScreenTemplateConnectInput>;
+    connectOrCreate?: Maybe<GreenScreenTemplateConnectOrCreateInput>;
+    create?: Maybe<GreenScreenTemplateRelationInput>;
+    delete?: Maybe<GreenScreenTemplateDeleteInput>;
+    disconnect?: Maybe<GreenScreenTemplateDisconnectInput>;
+    update?: Maybe<GreenScreenTemplateUpdateInput>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => UpdateGreenScreenTemplatesMutationResponse;
   updateGreenScreens: (args?: {
     connect?: Maybe<GreenScreenConnectInput>;
     connectOrCreate?: Maybe<GreenScreenConnectOrCreateInput>;
@@ -21915,6 +28423,15 @@ export interface Mutation {
     update?: Maybe<ScheduleTierUpdateInput>;
     where?: Maybe<ScheduleTierWhere>;
   }) => UpdateScheduleTiersMutationResponse;
+  updateScheduleViews: (args?: {
+    connect?: Maybe<ScheduleViewConnectInput>;
+    connectOrCreate?: Maybe<ScheduleViewConnectOrCreateInput>;
+    create?: Maybe<ScheduleViewRelationInput>;
+    delete?: Maybe<ScheduleViewDeleteInput>;
+    disconnect?: Maybe<ScheduleViewDisconnectInput>;
+    update?: Maybe<ScheduleViewUpdateInput>;
+    where?: Maybe<ScheduleViewWhere>;
+  }) => UpdateScheduleViewsMutationResponse;
   updateSchedules: (args?: {
     connect?: Maybe<ScheduleConnectInput>;
     connectOrCreate?: Maybe<ScheduleConnectOrCreateInput>;
@@ -21933,10 +28450,32 @@ export interface Mutation {
     update?: Maybe<ScreenSlotUpdateInput>;
     where?: Maybe<ScreenSlotWhere>;
   }) => UpdateScreenSlotsMutationResponse;
+  updateScreenTags: (args?: {
+    update?: Maybe<ScreenTagUpdateInput>;
+    where?: Maybe<ScreenTagWhere>;
+  }) => UpdateScreenTagsMutationResponse;
   updateSlotClient: (args: {
     id: Scalars["ID"];
     version?: Maybe<Scalars["String"]>;
   }) => Maybe<ScalarsEnums["Boolean"]>;
+  updateTemplateSlotPlugins: (args?: {
+    connect?: Maybe<TemplateSlotPluginConnectInput>;
+    connectOrCreate?: Maybe<TemplateSlotPluginConnectOrCreateInput>;
+    create?: Maybe<TemplateSlotPluginRelationInput>;
+    delete?: Maybe<TemplateSlotPluginDeleteInput>;
+    disconnect?: Maybe<TemplateSlotPluginDisconnectInput>;
+    update?: Maybe<TemplateSlotPluginUpdateInput>;
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => UpdateTemplateSlotPluginsMutationResponse;
+  updateTemplateSlots: (args?: {
+    connect?: Maybe<TemplateSlotConnectInput>;
+    connectOrCreate?: Maybe<TemplateSlotConnectOrCreateInput>;
+    create?: Maybe<TemplateSlotRelationInput>;
+    delete?: Maybe<TemplateSlotDeleteInput>;
+    disconnect?: Maybe<TemplateSlotDisconnectInput>;
+    update?: Maybe<TemplateSlotUpdateInput>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => UpdateTemplateSlotsMutationResponse;
 }
 
 export interface Query {
@@ -21960,6 +28499,16 @@ export interface Query {
   }) => CampaignAggregateSelection;
   campaignsCount: (args?: {
     where?: Maybe<CampaignWhere>;
+  }) => ScalarsEnums["Int"];
+  greenScreenTemplates: (args?: {
+    options?: Maybe<GreenScreenTemplateOptions>;
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => Array<GreenScreenTemplate>;
+  greenScreenTemplatesAggregate: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
+  }) => GreenScreenTemplateAggregateSelection;
+  greenScreenTemplatesCount: (args?: {
+    where?: Maybe<GreenScreenTemplateWhere>;
   }) => ScalarsEnums["Int"];
   greenScreens: (args?: {
     options?: Maybe<GreenScreenOptions>;
@@ -22129,6 +28678,16 @@ export interface Query {
   scheduleTiersCount: (args?: {
     where?: Maybe<ScheduleTierWhere>;
   }) => ScalarsEnums["Int"];
+  scheduleViews: (args?: {
+    options?: Maybe<ScheduleViewOptions>;
+    where?: Maybe<ScheduleViewWhere>;
+  }) => Array<ScheduleView>;
+  scheduleViewsAggregate: (args?: {
+    where?: Maybe<ScheduleViewWhere>;
+  }) => ScheduleViewAggregateSelection;
+  scheduleViewsCount: (args?: {
+    where?: Maybe<ScheduleViewWhere>;
+  }) => ScalarsEnums["Int"];
   schedules: (args?: {
     options?: Maybe<ScheduleOptions>;
     where?: Maybe<ScheduleWhere>;
@@ -22148,6 +28707,36 @@ export interface Query {
   }) => ScreenSlotAggregateSelection;
   screenSlotsCount: (args?: {
     where?: Maybe<ScreenSlotWhere>;
+  }) => ScalarsEnums["Int"];
+  screenTags: (args?: {
+    options?: Maybe<ScreenTagOptions>;
+    where?: Maybe<ScreenTagWhere>;
+  }) => Array<ScreenTag>;
+  screenTagsAggregate: (args?: {
+    where?: Maybe<ScreenTagWhere>;
+  }) => ScreenTagAggregateSelection;
+  screenTagsCount: (args?: {
+    where?: Maybe<ScreenTagWhere>;
+  }) => ScalarsEnums["Int"];
+  templateSlotPlugins: (args?: {
+    options?: Maybe<TemplateSlotPluginOptions>;
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => Array<TemplateSlotPlugin>;
+  templateSlotPluginsAggregate: (args?: {
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => TemplateSlotPluginAggregateSelection;
+  templateSlotPluginsCount: (args?: {
+    where?: Maybe<TemplateSlotPluginWhere>;
+  }) => ScalarsEnums["Int"];
+  templateSlots: (args?: {
+    options?: Maybe<TemplateSlotOptions>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Array<TemplateSlot>;
+  templateSlotsAggregate: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
+  }) => TemplateSlotAggregateSelection;
+  templateSlotsCount: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
   }) => ScalarsEnums["Int"];
 }
 
@@ -22178,6 +28767,7 @@ export interface SchemaObjectTypes {
   CampaignOrganisationRelationship: CampaignOrganisationRelationship;
   CreateCampaignAnalyticsMutationResponse: CreateCampaignAnalyticsMutationResponse;
   CreateCampaignsMutationResponse: CreateCampaignsMutationResponse;
+  CreateGreenScreenTemplatesMutationResponse: CreateGreenScreenTemplatesMutationResponse;
   CreateGreenScreensMutationResponse: CreateGreenScreensMutationResponse;
   CreateHiveAppliancesMutationResponse: CreateHiveAppliancesMutationResponse;
   CreateHiveIntegrationInstancesMutationResponse: CreateHiveIntegrationInstancesMutationResponse;
@@ -22196,13 +28786,19 @@ export interface SchemaObjectTypes {
   CreateRolesMutationResponse: CreateRolesMutationResponse;
   CreateScheduleSlotsMutationResponse: CreateScheduleSlotsMutationResponse;
   CreateScheduleTiersMutationResponse: CreateScheduleTiersMutationResponse;
+  CreateScheduleViewsMutationResponse: CreateScheduleViewsMutationResponse;
   CreateSchedulesMutationResponse: CreateSchedulesMutationResponse;
   CreateScreenSlotsMutationResponse: CreateScreenSlotsMutationResponse;
+  CreateScreenTagsMutationResponse: CreateScreenTagsMutationResponse;
+  CreateTemplateSlotPluginsMutationResponse: CreateTemplateSlotPluginsMutationResponse;
+  CreateTemplateSlotsMutationResponse: CreateTemplateSlotsMutationResponse;
   DateTimeAggregateSelection: DateTimeAggregateSelection;
   DeleteInfo: DeleteInfo;
   FloatAggregateSelection: FloatAggregateSelection;
   GreenScreen: GreenScreen;
   GreenScreenAggregateSelection: GreenScreenAggregateSelection;
+  GreenScreenGreenScreenTemplateTemplateAggregationSelection: GreenScreenGreenScreenTemplateTemplateAggregationSelection;
+  GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection: GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection;
   GreenScreenHiveOrganisationOrganisationAggregationSelection: GreenScreenHiveOrganisationOrganisationAggregationSelection;
   GreenScreenHiveOrganisationOrganisationNodeAggregateSelection: GreenScreenHiveOrganisationOrganisationNodeAggregateSelection;
   GreenScreenLocationConnection: GreenScreenLocationConnection;
@@ -22215,6 +28811,26 @@ export interface SchemaObjectTypes {
   GreenScreenScreenSlotSlotsNodeAggregateSelection: GreenScreenScreenSlotSlotsNodeAggregateSelection;
   GreenScreenSlotsConnection: GreenScreenSlotsConnection;
   GreenScreenSlotsRelationship: GreenScreenSlotsRelationship;
+  GreenScreenTemplate: GreenScreenTemplate;
+  GreenScreenTemplateAggregateSelection: GreenScreenTemplateAggregateSelection;
+  GreenScreenTemplateConnection: GreenScreenTemplateConnection;
+  GreenScreenTemplateGreenScreenScreensAggregationSelection: GreenScreenTemplateGreenScreenScreensAggregationSelection;
+  GreenScreenTemplateGreenScreenScreensNodeAggregateSelection: GreenScreenTemplateGreenScreenScreensNodeAggregateSelection;
+  GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection: GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection;
+  GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection: GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection;
+  GreenScreenTemplateOrganisationConnection: GreenScreenTemplateOrganisationConnection;
+  GreenScreenTemplateOrganisationRelationship: GreenScreenTemplateOrganisationRelationship;
+  GreenScreenTemplatePluginsConnection: GreenScreenTemplatePluginsConnection;
+  GreenScreenTemplatePluginsRelationship: GreenScreenTemplatePluginsRelationship;
+  GreenScreenTemplateRelationship: GreenScreenTemplateRelationship;
+  GreenScreenTemplateScreensConnection: GreenScreenTemplateScreensConnection;
+  GreenScreenTemplateScreensRelationship: GreenScreenTemplateScreensRelationship;
+  GreenScreenTemplateSlotsConnection: GreenScreenTemplateSlotsConnection;
+  GreenScreenTemplateSlotsRelationship: GreenScreenTemplateSlotsRelationship;
+  GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection: GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection;
+  GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection: GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection;
+  GreenScreenTemplateTemplateSlotSlotsAggregationSelection: GreenScreenTemplateTemplateSlotSlotsAggregationSelection;
+  GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection: GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection;
   HiveAppliance: HiveAppliance;
   HiveApplianceAggregateSelection: HiveApplianceAggregateSelection;
   HiveApplianceHiveServiceServicesAggregationSelection: HiveApplianceHiveServiceServicesAggregationSelection;
@@ -22267,6 +28883,8 @@ export interface SchemaObjectTypes {
   HiveOrganisationCampaignsRelationship: HiveOrganisationCampaignsRelationship;
   HiveOrganisationGreenScreenGreenScreensAggregationSelection: HiveOrganisationGreenScreenGreenScreensAggregationSelection;
   HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection: HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection;
+  HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection: HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection;
+  HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection: HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection;
   HiveOrganisationGreenScreensConnection: HiveOrganisationGreenScreensConnection;
   HiveOrganisationGreenScreensRelationship: HiveOrganisationGreenScreensRelationship;
   HiveOrganisationHiveApplianceAppliancesAggregationSelection: HiveOrganisationHiveApplianceAppliancesAggregationSelection;
@@ -22295,6 +28913,8 @@ export interface SchemaObjectTypes {
   HiveOrganisationScheduleTiersRelationship: HiveOrganisationScheduleTiersRelationship;
   HiveOrganisationSchedulesConnection: HiveOrganisationSchedulesConnection;
   HiveOrganisationSchedulesRelationship: HiveOrganisationSchedulesRelationship;
+  HiveOrganisationScreenTemplatesConnection: HiveOrganisationScreenTemplatesConnection;
+  HiveOrganisationScreenTemplatesRelationship: HiveOrganisationScreenTemplatesRelationship;
   HiveService: HiveService;
   HiveServiceAggregateSelection: HiveServiceAggregateSelection;
   HiveType: HiveType;
@@ -22370,6 +28990,8 @@ export interface SchemaObjectTypes {
   RolePermissionsRelationship: RolePermissionsRelationship;
   Schedule: Schedule;
   ScheduleAggregateSelection: ScheduleAggregateSelection;
+  ScheduleGreenScreenTemplateTemplateAggregationSelection: ScheduleGreenScreenTemplateTemplateAggregationSelection;
+  ScheduleGreenScreenTemplateTemplateNodeAggregateSelection: ScheduleGreenScreenTemplateTemplateNodeAggregateSelection;
   ScheduleHiveOrganisationOrganisationAggregationSelection: ScheduleHiveOrganisationOrganisationAggregationSelection;
   ScheduleHiveOrganisationOrganisationNodeAggregateSelection: ScheduleHiveOrganisationOrganisationNodeAggregateSelection;
   ScheduleLocationGroupLocationsAggregationSelection: ScheduleLocationGroupLocationsAggregationSelection;
@@ -22394,10 +29016,16 @@ export interface SchemaObjectTypes {
   ScheduleSlotScheduleScheduleNodeAggregateSelection: ScheduleSlotScheduleScheduleNodeAggregateSelection;
   ScheduleSlotScheduleTierTierAggregationSelection: ScheduleSlotScheduleTierTierAggregationSelection;
   ScheduleSlotScheduleTierTierNodeAggregateSelection: ScheduleSlotScheduleTierTierNodeAggregateSelection;
+  ScheduleSlotSlotConnection: ScheduleSlotSlotConnection;
+  ScheduleSlotSlotRelationship: ScheduleSlotSlotRelationship;
+  ScheduleSlotTemplateSlotSlotAggregationSelection: ScheduleSlotTemplateSlotSlotAggregationSelection;
+  ScheduleSlotTemplateSlotSlotNodeAggregateSelection: ScheduleSlotTemplateSlotSlotNodeAggregateSelection;
   ScheduleSlotTierConnection: ScheduleSlotTierConnection;
   ScheduleSlotTierRelationship: ScheduleSlotTierRelationship;
   ScheduleSlotsConnection: ScheduleSlotsConnection;
   ScheduleSlotsRelationship: ScheduleSlotsRelationship;
+  ScheduleTemplateConnection: ScheduleTemplateConnection;
+  ScheduleTemplateRelationship: ScheduleTemplateRelationship;
   ScheduleTier: ScheduleTier;
   ScheduleTierAggregateSelection: ScheduleTierAggregateSelection;
   ScheduleTierHiveOrganisationOrganisationAggregationSelection: ScheduleTierHiveOrganisationOrganisationAggregationSelection;
@@ -22410,16 +29038,53 @@ export interface SchemaObjectTypes {
   ScheduleTierScheduleScheduleNodeAggregateSelection: ScheduleTierScheduleScheduleNodeAggregateSelection;
   ScheduleTiersConnection: ScheduleTiersConnection;
   ScheduleTiersRelationship: ScheduleTiersRelationship;
+  ScheduleView: ScheduleView;
+  ScheduleViewAggregateSelection: ScheduleViewAggregateSelection;
+  ScheduleViewScheduleConnection: ScheduleViewScheduleConnection;
+  ScheduleViewScheduleRelationship: ScheduleViewScheduleRelationship;
+  ScheduleViewScheduleScheduleAggregationSelection: ScheduleViewScheduleScheduleAggregationSelection;
+  ScheduleViewScheduleScheduleNodeAggregateSelection: ScheduleViewScheduleScheduleNodeAggregateSelection;
   ScreenSlot: ScreenSlot;
   ScreenSlotAggregateSelection: ScreenSlotAggregateSelection;
   ScreenSlotGreenScreenScreenAggregationSelection: ScreenSlotGreenScreenScreenAggregationSelection;
   ScreenSlotGreenScreenScreenNodeAggregateSelection: ScreenSlotGreenScreenScreenNodeAggregateSelection;
   ScreenSlotScreenConnection: ScreenSlotScreenConnection;
   ScreenSlotScreenRelationship: ScreenSlotScreenRelationship;
+  ScreenSlotScreenTagTagsAggregationSelection: ScreenSlotScreenTagTagsAggregationSelection;
+  ScreenSlotScreenTagTagsNodeAggregateSelection: ScreenSlotScreenTagTagsNodeAggregateSelection;
+  ScreenSlotTagsConnection: ScreenSlotTagsConnection;
+  ScreenSlotTagsRelationship: ScreenSlotTagsRelationship;
+  ScreenSlotTemplateSlotConnection: ScreenSlotTemplateSlotConnection;
+  ScreenSlotTemplateSlotRelationship: ScreenSlotTemplateSlotRelationship;
+  ScreenSlotTemplateSlotTemplateSlotAggregationSelection: ScreenSlotTemplateSlotTemplateSlotAggregationSelection;
+  ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection: ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection;
+  ScreenTag: ScreenTag;
+  ScreenTagAggregateSelection: ScreenTagAggregateSelection;
   StringAggregateSelection: StringAggregateSelection;
   Subscription: Subscription;
+  TemplateSlot: TemplateSlot;
+  TemplateSlotAggregateSelection: TemplateSlotAggregateSelection;
+  TemplateSlotGreenScreenTemplateTemplateAggregationSelection: TemplateSlotGreenScreenTemplateTemplateAggregationSelection;
+  TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection: TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection;
+  TemplateSlotPlugin: TemplateSlotPlugin;
+  TemplateSlotPluginAggregateSelection: TemplateSlotPluginAggregateSelection;
+  TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection: TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection;
+  TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection: TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection;
+  TemplateSlotPluginTemplateConnection: TemplateSlotPluginTemplateConnection;
+  TemplateSlotPluginTemplateRelationship: TemplateSlotPluginTemplateRelationship;
+  TemplateSlotPluginsConnection: TemplateSlotPluginsConnection;
+  TemplateSlotPluginsRelationship: TemplateSlotPluginsRelationship;
+  TemplateSlotScreenSlotUsedByAggregationSelection: TemplateSlotScreenSlotUsedByAggregationSelection;
+  TemplateSlotScreenSlotUsedByNodeAggregateSelection: TemplateSlotScreenSlotUsedByNodeAggregateSelection;
+  TemplateSlotTemplateConnection: TemplateSlotTemplateConnection;
+  TemplateSlotTemplateRelationship: TemplateSlotTemplateRelationship;
+  TemplateSlotTemplateSlotPluginPluginsAggregationSelection: TemplateSlotTemplateSlotPluginPluginsAggregationSelection;
+  TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection: TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection;
+  TemplateSlotUsedByConnection: TemplateSlotUsedByConnection;
+  TemplateSlotUsedByRelationship: TemplateSlotUsedByRelationship;
   UpdateCampaignAnalyticsMutationResponse: UpdateCampaignAnalyticsMutationResponse;
   UpdateCampaignsMutationResponse: UpdateCampaignsMutationResponse;
+  UpdateGreenScreenTemplatesMutationResponse: UpdateGreenScreenTemplatesMutationResponse;
   UpdateGreenScreensMutationResponse: UpdateGreenScreensMutationResponse;
   UpdateHiveAppliancesMutationResponse: UpdateHiveAppliancesMutationResponse;
   UpdateHiveIntegrationInstancesMutationResponse: UpdateHiveIntegrationInstancesMutationResponse;
@@ -22438,8 +29103,12 @@ export interface SchemaObjectTypes {
   UpdateRolesMutationResponse: UpdateRolesMutationResponse;
   UpdateScheduleSlotsMutationResponse: UpdateScheduleSlotsMutationResponse;
   UpdateScheduleTiersMutationResponse: UpdateScheduleTiersMutationResponse;
+  UpdateScheduleViewsMutationResponse: UpdateScheduleViewsMutationResponse;
   UpdateSchedulesMutationResponse: UpdateSchedulesMutationResponse;
   UpdateScreenSlotsMutationResponse: UpdateScreenSlotsMutationResponse;
+  UpdateScreenTagsMutationResponse: UpdateScreenTagsMutationResponse;
+  UpdateTemplateSlotPluginsMutationResponse: UpdateTemplateSlotPluginsMutationResponse;
+  UpdateTemplateSlotsMutationResponse: UpdateTemplateSlotsMutationResponse;
 }
 export type SchemaObjectTypesNames =
   | "CameraAnalytic"
@@ -22464,6 +29133,7 @@ export type SchemaObjectTypesNames =
   | "CampaignOrganisationRelationship"
   | "CreateCampaignAnalyticsMutationResponse"
   | "CreateCampaignsMutationResponse"
+  | "CreateGreenScreenTemplatesMutationResponse"
   | "CreateGreenScreensMutationResponse"
   | "CreateHiveAppliancesMutationResponse"
   | "CreateHiveIntegrationInstancesMutationResponse"
@@ -22482,13 +29152,19 @@ export type SchemaObjectTypesNames =
   | "CreateRolesMutationResponse"
   | "CreateScheduleSlotsMutationResponse"
   | "CreateScheduleTiersMutationResponse"
+  | "CreateScheduleViewsMutationResponse"
   | "CreateSchedulesMutationResponse"
   | "CreateScreenSlotsMutationResponse"
+  | "CreateScreenTagsMutationResponse"
+  | "CreateTemplateSlotPluginsMutationResponse"
+  | "CreateTemplateSlotsMutationResponse"
   | "DateTimeAggregateSelection"
   | "DeleteInfo"
   | "FloatAggregateSelection"
   | "GreenScreen"
   | "GreenScreenAggregateSelection"
+  | "GreenScreenGreenScreenTemplateTemplateAggregationSelection"
+  | "GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection"
   | "GreenScreenHiveOrganisationOrganisationAggregationSelection"
   | "GreenScreenHiveOrganisationOrganisationNodeAggregateSelection"
   | "GreenScreenLocationConnection"
@@ -22501,6 +29177,26 @@ export type SchemaObjectTypesNames =
   | "GreenScreenScreenSlotSlotsNodeAggregateSelection"
   | "GreenScreenSlotsConnection"
   | "GreenScreenSlotsRelationship"
+  | "GreenScreenTemplate"
+  | "GreenScreenTemplateAggregateSelection"
+  | "GreenScreenTemplateConnection"
+  | "GreenScreenTemplateGreenScreenScreensAggregationSelection"
+  | "GreenScreenTemplateGreenScreenScreensNodeAggregateSelection"
+  | "GreenScreenTemplateHiveOrganisationOrganisationAggregationSelection"
+  | "GreenScreenTemplateHiveOrganisationOrganisationNodeAggregateSelection"
+  | "GreenScreenTemplateOrganisationConnection"
+  | "GreenScreenTemplateOrganisationRelationship"
+  | "GreenScreenTemplatePluginsConnection"
+  | "GreenScreenTemplatePluginsRelationship"
+  | "GreenScreenTemplateRelationship"
+  | "GreenScreenTemplateScreensConnection"
+  | "GreenScreenTemplateScreensRelationship"
+  | "GreenScreenTemplateSlotsConnection"
+  | "GreenScreenTemplateSlotsRelationship"
+  | "GreenScreenTemplateTemplateSlotPluginPluginsAggregationSelection"
+  | "GreenScreenTemplateTemplateSlotPluginPluginsNodeAggregateSelection"
+  | "GreenScreenTemplateTemplateSlotSlotsAggregationSelection"
+  | "GreenScreenTemplateTemplateSlotSlotsNodeAggregateSelection"
   | "HiveAppliance"
   | "HiveApplianceAggregateSelection"
   | "HiveApplianceHiveServiceServicesAggregationSelection"
@@ -22553,6 +29249,8 @@ export type SchemaObjectTypesNames =
   | "HiveOrganisationCampaignsRelationship"
   | "HiveOrganisationGreenScreenGreenScreensAggregationSelection"
   | "HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection"
+  | "HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection"
+  | "HiveOrganisationGreenScreenTemplateScreenTemplatesNodeAggregateSelection"
   | "HiveOrganisationGreenScreensConnection"
   | "HiveOrganisationGreenScreensRelationship"
   | "HiveOrganisationHiveApplianceAppliancesAggregationSelection"
@@ -22581,6 +29279,8 @@ export type SchemaObjectTypesNames =
   | "HiveOrganisationScheduleTiersRelationship"
   | "HiveOrganisationSchedulesConnection"
   | "HiveOrganisationSchedulesRelationship"
+  | "HiveOrganisationScreenTemplatesConnection"
+  | "HiveOrganisationScreenTemplatesRelationship"
   | "HiveService"
   | "HiveServiceAggregateSelection"
   | "HiveType"
@@ -22656,6 +29356,8 @@ export type SchemaObjectTypesNames =
   | "RolePermissionsRelationship"
   | "Schedule"
   | "ScheduleAggregateSelection"
+  | "ScheduleGreenScreenTemplateTemplateAggregationSelection"
+  | "ScheduleGreenScreenTemplateTemplateNodeAggregateSelection"
   | "ScheduleHiveOrganisationOrganisationAggregationSelection"
   | "ScheduleHiveOrganisationOrganisationNodeAggregateSelection"
   | "ScheduleLocationGroupLocationsAggregationSelection"
@@ -22680,10 +29382,16 @@ export type SchemaObjectTypesNames =
   | "ScheduleSlotScheduleScheduleNodeAggregateSelection"
   | "ScheduleSlotScheduleTierTierAggregationSelection"
   | "ScheduleSlotScheduleTierTierNodeAggregateSelection"
+  | "ScheduleSlotSlotConnection"
+  | "ScheduleSlotSlotRelationship"
+  | "ScheduleSlotTemplateSlotSlotAggregationSelection"
+  | "ScheduleSlotTemplateSlotSlotNodeAggregateSelection"
   | "ScheduleSlotTierConnection"
   | "ScheduleSlotTierRelationship"
   | "ScheduleSlotsConnection"
   | "ScheduleSlotsRelationship"
+  | "ScheduleTemplateConnection"
+  | "ScheduleTemplateRelationship"
   | "ScheduleTier"
   | "ScheduleTierAggregateSelection"
   | "ScheduleTierHiveOrganisationOrganisationAggregationSelection"
@@ -22696,16 +29404,53 @@ export type SchemaObjectTypesNames =
   | "ScheduleTierScheduleScheduleNodeAggregateSelection"
   | "ScheduleTiersConnection"
   | "ScheduleTiersRelationship"
+  | "ScheduleView"
+  | "ScheduleViewAggregateSelection"
+  | "ScheduleViewScheduleConnection"
+  | "ScheduleViewScheduleRelationship"
+  | "ScheduleViewScheduleScheduleAggregationSelection"
+  | "ScheduleViewScheduleScheduleNodeAggregateSelection"
   | "ScreenSlot"
   | "ScreenSlotAggregateSelection"
   | "ScreenSlotGreenScreenScreenAggregationSelection"
   | "ScreenSlotGreenScreenScreenNodeAggregateSelection"
   | "ScreenSlotScreenConnection"
   | "ScreenSlotScreenRelationship"
+  | "ScreenSlotScreenTagTagsAggregationSelection"
+  | "ScreenSlotScreenTagTagsNodeAggregateSelection"
+  | "ScreenSlotTagsConnection"
+  | "ScreenSlotTagsRelationship"
+  | "ScreenSlotTemplateSlotConnection"
+  | "ScreenSlotTemplateSlotRelationship"
+  | "ScreenSlotTemplateSlotTemplateSlotAggregationSelection"
+  | "ScreenSlotTemplateSlotTemplateSlotNodeAggregateSelection"
+  | "ScreenTag"
+  | "ScreenTagAggregateSelection"
   | "StringAggregateSelection"
   | "Subscription"
+  | "TemplateSlot"
+  | "TemplateSlotAggregateSelection"
+  | "TemplateSlotGreenScreenTemplateTemplateAggregationSelection"
+  | "TemplateSlotGreenScreenTemplateTemplateNodeAggregateSelection"
+  | "TemplateSlotPlugin"
+  | "TemplateSlotPluginAggregateSelection"
+  | "TemplateSlotPluginGreenScreenTemplateTemplateAggregationSelection"
+  | "TemplateSlotPluginGreenScreenTemplateTemplateNodeAggregateSelection"
+  | "TemplateSlotPluginTemplateConnection"
+  | "TemplateSlotPluginTemplateRelationship"
+  | "TemplateSlotPluginsConnection"
+  | "TemplateSlotPluginsRelationship"
+  | "TemplateSlotScreenSlotUsedByAggregationSelection"
+  | "TemplateSlotScreenSlotUsedByNodeAggregateSelection"
+  | "TemplateSlotTemplateConnection"
+  | "TemplateSlotTemplateRelationship"
+  | "TemplateSlotTemplateSlotPluginPluginsAggregationSelection"
+  | "TemplateSlotTemplateSlotPluginPluginsNodeAggregateSelection"
+  | "TemplateSlotUsedByConnection"
+  | "TemplateSlotUsedByRelationship"
   | "UpdateCampaignAnalyticsMutationResponse"
   | "UpdateCampaignsMutationResponse"
+  | "UpdateGreenScreenTemplatesMutationResponse"
   | "UpdateGreenScreensMutationResponse"
   | "UpdateHiveAppliancesMutationResponse"
   | "UpdateHiveIntegrationInstancesMutationResponse"
@@ -22724,8 +29469,12 @@ export type SchemaObjectTypesNames =
   | "UpdateRolesMutationResponse"
   | "UpdateScheduleSlotsMutationResponse"
   | "UpdateScheduleTiersMutationResponse"
+  | "UpdateScheduleViewsMutationResponse"
   | "UpdateSchedulesMutationResponse"
-  | "UpdateScreenSlotsMutationResponse";
+  | "UpdateScreenSlotsMutationResponse"
+  | "UpdateScreenTagsMutationResponse"
+  | "UpdateTemplateSlotPluginsMutationResponse"
+  | "UpdateTemplateSlotsMutationResponse";
 
 export interface GeneratedSchema {
   query: Query;

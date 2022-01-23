@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { Driver, Session } from 'neo4j-driver-core'
+import jwt from 'jsonwebtoken'
 
 export default (session: Session) => {
 	const router = Router()
@@ -8,13 +9,15 @@ export default (session: Session) => {
 		.get(async (req, res) => {
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 
+			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
+
 			const campaigns = await session.run(`
 
-			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(:GreenScreen {networkName: $networkName})
-			WITH distinct(schedule)
+			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(:GreenScreen {networkName: $networkName})-->(:ScreenSlot {id: $id})-->(templateSlot:TemplateSlot)
+			WITH distinct(schedule), templateSlot
 			CALL {
-				WITH schedule
-				MATCH (schedule)-->(slots:ScheduleSlot)
+				WITH schedule, templateSlot
+				MATCH (schedule)-->(slots:ScheduleSlot)-->(templateSlot)
 				WHERE slots.endDate > DATETIME()
 				CALL {
 					WITH slots
@@ -36,6 +39,7 @@ export default (session: Session) => {
 				
 			RETURN slot
 			`, {
+				id: (info as any).slot,
 				networkName
 			})
 			

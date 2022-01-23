@@ -44,7 +44,7 @@ export class GreenMachine {
 
 		this.pluginManager = new PluginManager({
 			pluginDirectory: opts.pluginDirectory,
-			initPlugins: opts.initPlugins
+			// initPlugins: opts.initPlugins
 		})
 
 		this.app = express()
@@ -104,19 +104,32 @@ export class GreenMachine {
 		return result.data;
 	}
 
-	async init(){
-		await this.pluginManager.init()
-		// this.pluginManager.loadPlugins(['@greenco/screen'])
+	async getConfig(token: string) : Promise<{
+		data: {
+			slotName: string;
+			plugins: Plugin[];
+		}
+	}>{
+		const result = await axios.get(`${this.opts.controlUrl}/api/identity?token=${token}`)
+		return result.data
 	}
+
+	// async init(){
+	// 	await this.pluginManager.init()
+	// 	// this.pluginManager.loadPlugins(['@greenco/screen'])
+	// }
 
 	async start(){
 		const {token, data} = await this.getToken();
 
+		const { data : {plugins}} = await this.getConfig(token)
+
+		this.pluginManager.init(plugins)
+
 		this.initControlSocket(this.opts.controlUrl, token);
+		// await this.init()
 
-		await this.init()
-
-		this.pluginManager.startAll()
+		this.pluginManager.startAll(token)
 
 		this.app.listen(9090)
 	}

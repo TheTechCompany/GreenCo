@@ -61,8 +61,11 @@ export default async (driver: Driver) => {
 
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
+				OPTIONAL MATCH (slot)-[:USES_SLOT]->(templateSlot:TemplateSlot)-[:USES_PLUGIN]->(plugin:TemplateSlotPlugin)
 				return screen{
 					.*,
+					slotName: templateSlot.name,
+					plugins: collect(plugin{.*}),
 					slot: slot{.*}
 				}
 			`, {

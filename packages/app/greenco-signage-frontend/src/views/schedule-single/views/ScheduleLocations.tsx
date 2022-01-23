@@ -1,11 +1,14 @@
 import { Box, Text, List, Button } from 'grommet';
 import React, { useState, useContext} from 'react';
-import { Add } from 'grommet-icons';
+import { Add, List as ListIcon, Map } from 'grommet-icons';
 import { mutate, useMutation, useQuery } from '@greenco/signage-api';
 import { ScheduleSingleContext } from '../context';
 import { ScheduleLocationModal } from '../modals/ScheduleLocation';
+import { LocationMap } from '../../../components/location-map';
 
 export const ScheduleLocations = () => {
+
+	const [ isList, setIsList ] = useState(true);
 
 	const [ modalOpen, openModal ] = useState(false);
 
@@ -36,7 +39,7 @@ export const ScheduleLocations = () => {
 	})
 
 	return (
-		<Box>
+		<Box flex>
 			<ScheduleLocationModal 
 				locations={allLocations}
 				onSubmit={(location: any) => {
@@ -47,14 +50,28 @@ export const ScheduleLocations = () => {
 				}}
 				onClose={() => openModal(false)}
 				open={modalOpen} />
-			<Box pad={{left: 'xsmall'}} align="center" justify="between" direction="row">
-				<Text weight="bold">Locations</Text>
-				<Button onClick={() => openModal(true)} hoverIndicator icon={<Add size="small" />} />
+			<Box pad={'xsmall'} align="center" justify="between" direction="row">
+				<Text>Locations</Text>
+				<Box direction='row' align='center'>
+					<Button plain style={{padding: 6, borderRadius: 3}} onClick={() => setIsList(!isList)} hoverIndicator icon={!isList ? <ListIcon size="small" /> : <Map size="small" />} />
+					<Button plain style={{padding: 6, borderRadius: 3}}  onClick={() => openModal(true)} hoverIndicator icon={<Add size="small" />} />
+				</Box>
+			</Box>
+			<Box flex>
+				{isList ? (
+					<List 
+						primaryKey="name"
+						data={locations}>
+						{(datum) => (
+							<Text>{datum?.name}</Text>
+						)}
+					</List>
+				): (
+					<LocationMap 
+						markers={locations?.reduce((prev, curr) => prev.concat(curr.locations), []).map((x) => ({lat: x.lat || '0', lng: x.lng || '0'}))  || []} />
+				)}
 			</Box>
 
-			<List 
-				primaryKey="name"
-				data={locations} />
 		</Box>
 	)
 }

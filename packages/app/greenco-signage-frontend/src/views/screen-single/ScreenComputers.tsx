@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@greenco/signage-api';
 import { FormPreviousLink, Upgrade } from 'grommet-icons';
-import { Box, Text, Button, List } from 'grommet';
+import { Box, Text, Button, List, Select } from 'grommet';
 import React, {useContext} from 'react';
 import { ScreenSingleContext } from './context';
 import { Routes, Route, useParams, Navigate, useNavigate, Outlet } from 'react-router-dom'
@@ -44,7 +44,7 @@ export const ComputerList = (props) => {
 
 export const DisplayComputer = () => {
 	const { id } = useParams()
-	const { slots } = useContext(ScreenSingleContext)
+	const { slots, screen, refresh } = useContext(ScreenSingleContext)
 	const navigate = useNavigate()
 
 	const slot = slots?.find((a) => a.id == id) || {};
@@ -55,6 +55,35 @@ export const DisplayComputer = () => {
 		const item = mutation.updateSlotClient({id: id, version: args.version})
 		return {
 			item
+		}
+	})
+
+	const [ updateSlotTemplate ] = useMutation((mutation, args: {template: string}) => {
+		if(!screen?.id) return;
+		const item = mutation.updateGreenScreens({
+			where: {id: screen?.id},
+			update: {
+				slots: [{
+					where: {node: {id: id}},
+					update: {
+						node: {
+							templateSlot: {
+								connect: {
+									where: {node: {id: args.template}}
+								},
+								disconnect: {
+									where: {node: {id_NOT: args.template}}
+								}
+							}
+						}
+					}
+				}]
+			}
+		})	
+		return {
+			item: {
+				...item.greenScreens?.[0]
+			}
 		}
 	})
 
@@ -75,12 +104,25 @@ export const DisplayComputer = () => {
 							icon={<FormPreviousLink />} />
 						<Text>{slot?.hostname}</Text>
 					</Box>
-					<Button 
-						onClick={() => updateClient({args: {version: 'latest'}})}
-						hoverIndicator
-						plain 
-						style={{padding: 6, borderRadius: 3}} 
-						icon={<Upgrade />} />
+
+					<Box direction='row' align='center'>
+						<Select
+							options={screen?.template?.slots || []}
+							labelKey={"name"}
+							plain
+							onChange={({value}) => updateSlotTemplate({args: {template: value}}).then(() => {
+								refresh?.()
+							})}
+							valueKey={{key: 'id', reduce: true}}
+							value={slot?.templateSlot?.id}
+							size="small" />
+						<Button 
+							onClick={() => updateClient({args: {version: 'latest'}})}
+							hoverIndicator
+							plain 
+							style={{padding: 6, borderRadius: 3}} 
+							icon={<Upgrade />} />
+					</Box>
 			</Box>
 
 			<Box background="light-1"  direction='row' gap="xsmall" flex pad="xsmall">

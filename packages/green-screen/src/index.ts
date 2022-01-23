@@ -20,7 +20,12 @@ export default class GreenScreen {
 
 	private isProvisioned: boolean = false;
 
-	constructor(){
+
+	private runtimeToken?: string;
+
+	constructor(token?: string){
+		this.runtimeToken = token;
+
 		this.network = new Network({
 			url: `http://hahei-jumpbox.hexhive.io`,
 		})
@@ -37,6 +42,7 @@ export default class GreenScreen {
 		this.assetStore = new AssetStore({
 			displayManager: this.displayManager,
 			telemtry: this.telemtry,
+			token: this.runtimeToken,
 			assetStoreUrl: `http://hahei-jumpbox.hexhive.io`,
 			assetStoragePath:  process.env.USERPROFILE+'\\Documents' || `C:\\Users\\Administrator\\Documents\\`
 		});
