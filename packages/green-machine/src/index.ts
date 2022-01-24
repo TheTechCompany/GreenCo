@@ -49,8 +49,6 @@ export class GreenMachine {
 
 		this.app = express()
 
-		// this.init()
-
 		log.info(`Green Machine v${pkg.version}`)
 	}
 
@@ -114,10 +112,6 @@ export class GreenMachine {
 		return result.data
 	}
 
-	// async init(){
-	// 	await this.pluginManager.init()
-	// 	// this.pluginManager.loadPlugins(['@greenco/screen'])
-	// }
 
 	async start(){
 		const {token, data} = await this.getToken();
@@ -127,8 +121,7 @@ export class GreenMachine {
 		this.pluginManager.init(plugins)
 
 		this.initControlSocket(this.opts.controlUrl, token);
-		// await this.init()
-
+		
 		this.pluginManager.startAll(token)
 
 		this.app.listen(9090)
