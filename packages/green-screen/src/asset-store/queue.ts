@@ -159,7 +159,7 @@ export class AssetQueue {
 			dispersal
 		)
 
-		console.log(this.queue)
+		console.log({queue: this.queue, queueChains: this.queueChains})
 
 		//.reduce((prev, curr) => prev.concat(curr))
 

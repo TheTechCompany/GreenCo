@@ -15,6 +15,8 @@ export class DisplayManager {
 
 	private startTime?: number;
 
+	private hold = false;
+
 	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
 		this.telemtry = telemtry
@@ -39,6 +41,18 @@ export class DisplayManager {
 		}catch(e){
 
 		}
+	}
+
+	get isHolding(){
+		return this.hold
+	}
+
+	holdAsset(){
+		this.hold = true;
+	}
+
+	releaseAsset(){
+		this.hold = false;
 	}
 
 	async play(id: string){

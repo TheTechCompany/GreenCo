@@ -1,5 +1,10 @@
 export default `
 (() => {
+
+	document.addEventListener('click', () => {
+		fetch('http://localhost:3000/api/interaction', {method: "POST"})
+	})
+
 	const links = Array.from(document.querySelectorAll('a'));
 
 	links.forEach(link => {

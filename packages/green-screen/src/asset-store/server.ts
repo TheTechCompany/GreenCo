@@ -10,19 +10,32 @@ export class AssetStoreServer {
 	private telemetry: TelemetryService;
 	private displayManager: DisplayManager;
 
+	private interactionTimer? : NodeJS.Timeout;
+
 	constructor(storagePath: string, telemetry: TelemetryService, displayManager: DisplayManager){
 		this.app = express()
 		this.app.use(express.static(storagePath || `C:\\Users\\Administrator\\Documents\\`))
 		this.app.use(bodyParser.json())
 		this.app.get(`/api/device`, this.deviceInfo.bind(this))
 		this.app.post(`/api/telemetry`, this.telemtryListener.bind(this));
-		
+		this.app.post(`/api/interaction`, this.interactionListener.bind(this));
 		this.telemetry = telemetry;
 		this.displayManager = displayManager;
 	}
 
 	async deviceInfo(req: any, res: any){
 		res.send({currentAsset: this.displayManager.currentAsset})
+	}
+
+	async interactionListener(req: any, res: any){
+		this.displayManager.holdAsset();
+
+		if(this.interactionTimer) clearTimeout(this.interactionTimer)
+		this.interactionTimer = setTimeout(() => {
+			this.displayManager.releaseAsset()
+		}, 15 * 1000)
+		
+		res.send({success: "ok"})
 	}
 
 	async telemtryListener(req: any, res: any){
