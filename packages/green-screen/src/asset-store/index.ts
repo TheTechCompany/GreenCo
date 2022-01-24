@@ -8,6 +8,7 @@ import { TelemetryService } from '../telemetry';
 import { DisplayManager } from '../display-manager';
 import { rmdirSync, existsSync } from 'fs';
 import path from 'path'
+import { AssetQueue } from './queue';
 
 export interface AssetStoreConfiguration {
 	assetStoreUrl?: string;
@@ -29,6 +30,8 @@ export class AssetStore {
 	private assetStoragePath?: string; //Storage path to store assets
 
 	private currentAsset: number = 0;
+
+	private queue? : AssetQueue;
 
 	private token?: string;
 
@@ -74,14 +77,9 @@ export class AssetStore {
 
 
 	getNextAsset(){
-		let asset = this.manifest[this.currentAsset]
-		this.currentAsset++
-		if(this.currentAsset > this.manifest.length) {
-			this.currentAsset = 0;
-			asset = this.manifest[this.currentAsset]
-		}
-
-		return asset
+		const item = this.queue?.getNext()
+		console.info(`Getting next asset ${item?.item?.campaign?.name} - ${item?.item?.campaign?.id}`)
+		return item?.item.campaign
 	}
 
 	async loadManifest(){
@@ -104,6 +102,9 @@ export class AssetStore {
 		})
 
 		await this.loadManifest()
+		
+		this.queue = new AssetQueue(this.manifest, 15)
+
 		await this.pullAll()
 	}
 

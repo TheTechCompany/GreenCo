@@ -79,9 +79,9 @@ export default class GreenScreen {
 			console.log("Loop")
 			const asset = this.assetStore.getNextAsset()
 			console.log("Asset", asset)
-			if(asset?.campaign?.assetFolder){
+			if(asset?.assetFolder){
 				console.log("Play")
-				await this.displayManager.play(asset?.campaign?.assetFolder)
+				await this.displayManager.play(asset?.assetFolder)
 			}
 
 			await new Promise((resolve) => setTimeout(resolve, 15000))
