@@ -1,4 +1,4 @@
-import { IPFS, create } from 'ipfs-core';
+import { IPFS, create } from 'ipfs';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
