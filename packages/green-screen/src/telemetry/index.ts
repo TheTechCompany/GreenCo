@@ -17,8 +17,7 @@ export class TelemetryService {
 	}
 
 	async sendEvent(event: TelemetryEvent){
-		console.log(event);
-
+		// console.log(event);
 		await axios.post(`${this.opts.url}/api/telemetry`, {...event, timestamp: Date.now()});
 	}
 }

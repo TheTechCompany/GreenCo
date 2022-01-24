@@ -28,6 +28,7 @@ export class AssetStoreServer {
 	}
 
 	async interactionListener(req: any, res: any){
+		console.log("HOLD");
 		this.displayManager.holdAsset();
 
 		if(this.interactionTimer) clearTimeout(this.interactionTimer)

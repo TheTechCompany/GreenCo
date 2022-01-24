@@ -76,13 +76,13 @@ export default class GreenScreen {
 
 	async schedule(){
 		while(this.running){
-			console.log("Loop")
+			// console.log("Loop")
 			if(!this.displayManager.isHolding){
 
 				const asset = this.assetStore.getNextAsset()
-				console.log("Asset", asset)
+				// console.log("Asset", asset)
 				if(asset?.assetFolder){
-					console.log("Play")
+					// console.log("Play")
 					await this.displayManager.play(asset?.assetFolder)
 				}
 
