@@ -152,6 +152,7 @@ export const ScheduleCampaigns = () => {
 				onDelete={() => {
 					removeCampaign({args: {id: getSelected()?.id}}).then(() => {
 						openModal(false)
+						setSelected(null)
 						refresh?.()
 					})
 				}}

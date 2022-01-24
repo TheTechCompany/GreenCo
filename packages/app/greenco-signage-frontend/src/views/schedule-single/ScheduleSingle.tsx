@@ -93,7 +93,11 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 			
 			}
 		}
-	`)
+	`, {
+		variables: {
+			id
+		}
+	})
 
 	const refresh = () => {
 		client.refetchQueries({include: ['Q']})

@@ -76,6 +76,26 @@ export const ClusterScreens = (props) => {
 		}
 	})
 
+	const [ removeScreen ] = useMutation((mutation, args: {
+		id: string
+	}) => {
+		const item = mutation.updateLocationGroups({
+			where: {id: id},
+			update: {
+				locations: [{
+					delete: [{
+						where: {node: {id: args.id}}
+					}]
+				}]
+			}
+		})
+		return {
+			item: {
+				...item.locationGroups?.[0]
+			}
+		}
+	})
+
 	return (
 		<Box flex>
 			<AssignLocationScreenModal
@@ -83,6 +103,18 @@ export const ClusterScreens = (props) => {
 				selected={selected}
 				screens={screens}
 				onClose={() => openModal(false)}
+				onDelete={() => {
+					if(!selected?.id) return;
+					removeScreen({
+						args: {
+							id: selected.id
+						}
+					}).then(() => {
+						openModal(false)
+						setSelected(undefined)
+						refresh?.()
+					})
+				}}
 				onSubmit={(assignment) => {
 					if(assignment.id){
 						updateScreen({
@@ -124,7 +156,7 @@ export const ClusterScreens = (props) => {
 					hoverIndicator 
 					icon={<Add size="small" />} />
 			</Box>
-			<Box flex border={{side: 'top', size: 'small'}}>
+			<Box  overflow="scroll" flex border={{side: 'top', size: 'small'}}>
 				<List
 					primaryKey={"name"}
 					data={locations}
