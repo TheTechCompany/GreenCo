@@ -9,7 +9,8 @@ export class DisplayManager {
 
 	private baseUrl = 'https://streetlevelone.com/'
 
-	public currentAsset: string | undefined = undefined;
+	public lastAsset : {id?: string, assetFolder?: string} = {}
+	// public currentAsset: string | undefined = undefined;
 
 	private telemtry: TelemetryService;
 
@@ -55,15 +56,16 @@ export class DisplayManager {
 		this.hold = false;
 	}
 
-	async play(id: string){
+	async play(campaign: {id: string, assetFolder: string}){
 		try{
 			if(this.startTime){
 				const time = Date.now() - this.startTime
-				await this.telemtry.sendEvent({event: 'campaign-play', properties: {time, id}, source: 'display-manager'})
+				await this.telemtry.sendEvent({event: 'campaign-play', properties: {time, id: this.lastAsset.id}, source: 'display-manager'})
 			}
-			this.currentAsset = id;
+			this.lastAsset = campaign
+			// this.currentAsset = id;
 			this.startTime = Date.now()
-			await this.page?.goto(`http://localhost:3000/${id}`)
+			await this.page?.goto(`http://localhost:3000/${campaign.assetFolder}`)
 			await this.page?.addScriptTag({content: analytics})
 	
 		}catch(e){

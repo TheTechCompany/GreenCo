@@ -72,8 +72,8 @@ export class AssetQueue {
 		let rowItem = row?.items[row.index]
 
 		if(row){
-			 row.index++;
-			if(row?.index > row?.items.length) row.index = 0;
+			row.index++;
+			if(row?.index > row?.items.length - 1) row.index = 0;
 		}
 
 		if(rowItem){

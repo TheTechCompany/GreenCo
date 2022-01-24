@@ -24,7 +24,7 @@ export class AssetStoreServer {
 	}
 
 	async deviceInfo(req: any, res: any){
-		res.send({currentAsset: this.displayManager.currentAsset})
+		res.send({currentAsset: this.displayManager.lastAsset})
 	}
 
 	async interactionListener(req: any, res: any){
@@ -43,7 +43,7 @@ export class AssetStoreServer {
 		const { event, properties, } = req.body;
 		
 		try{
-			await this.telemetry.sendEvent({event, properties, source: `asset://${this.displayManager.currentAsset}`});
+			await this.telemetry.sendEvent({event, properties, source: `asset://${this.displayManager.lastAsset.id}`});
 			res.send({success: "ok"});
 		}catch(e){
 			res.send({error: "failed to send telemetry"});
