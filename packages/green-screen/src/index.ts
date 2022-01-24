@@ -53,9 +53,7 @@ export default class GreenScreen {
 
 
 	async reloadSchedule(){
-		await this.assetStore.loadManifest()
-
-		await this.assetStore.pullAll()
+		await this.assetStore.refreshSchedule()
 	}
 
 	async start(){

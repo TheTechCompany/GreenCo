@@ -101,11 +101,13 @@ export class AssetStore {
 
 		})
 
-		await this.loadManifest()
-		
-		this.queue = new AssetQueue(this.manifest, 15)
+		await this.refreshSchedule()
+	}
 
+	async refreshSchedule(){
+		await this.loadManifest()
 		await this.pullAll()
+		this.queue = new AssetQueue(this.manifest, 15)
 	}
 
 	async pull(hash: string){
