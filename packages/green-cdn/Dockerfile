@@ -12,4 +12,4 @@ RUN yarn build
 
 RUN npm i -g forever
 
-CMD ["forever", "start", "./dist/index.js"]
+CMD ["node", "./dist/index.js"]
