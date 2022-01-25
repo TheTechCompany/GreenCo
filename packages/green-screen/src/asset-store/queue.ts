@@ -43,8 +43,8 @@ export class AssetQueue {
 
 	private asset_length : number = 15;
 
-	constructor(items: AssetQueueItem[], asset_length?: number){
-		this.struct = items;
+	constructor(items: AssetQueueItem[], blacklist?: string[], asset_length?: number){
+		this.struct = items.filter((a) => (blacklist || []).indexOf(a.id || '') < 0);
 
 		this.asset_length = asset_length || 15;
 		

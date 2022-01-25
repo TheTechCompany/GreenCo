@@ -25,6 +25,8 @@ export class AssetStore {
 
 	private server: AssetStoreServer;
 
+	private failedAssets: string[] = []
+
 	private assetStoreUrl?: string; //URL to get asset manifest from
 
 	private assetStoragePath?: string; //Storage path to store assets
@@ -60,10 +62,22 @@ export class AssetStore {
 	}
 
 	async pullAll(){
-		await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
+		let results = await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
 			console.log(`Pulling ${manifestItem.campaign?.name}`)
+			if(!manifestItem.id) return;
+
 			const data = await this.pull(manifestItem.campaign?.assetFolder || '')
-			if(!data) return;
+			if(!data) {
+				this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
+				return {failed: true, id: manifestItem.id}
+			}
+			// }else{
+			// 	let ix = this.failedAssets.indexOf(manifestItem.id)
+			// 	if(ix > -1){
+			// 		this.failedAssets.splice(ix, 1)
+			// 	}
+			// };
+
 			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
 
 			await tar.x({
@@ -73,6 +87,8 @@ export class AssetStore {
 			console.log(`Pulled ${manifestItem.campaign?.name}`)
 
 		}))
+
+		return {rejected: results.filter((a) => a?.failed).map((a) => a?.id || '')}
 	}
 
 
@@ -106,8 +122,8 @@ export class AssetStore {
 
 	async refreshSchedule(){
 		await this.loadManifest()
-		await this.pullAll()
-		this.queue = new AssetQueue(this.manifest, 15)
+		const {rejected} = await this.pullAll()
+		this.queue = new AssetQueue(this.manifest, rejected, 15)
 	}
 
 	async pull(hash: string){
