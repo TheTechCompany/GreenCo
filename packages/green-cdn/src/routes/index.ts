@@ -26,9 +26,9 @@ export default async (driver: Driver, pgClient: Pool) => {
 		
 	})
 
-	router.use(`/telemetry`, await telemetryRouter(session, pgClient))
+	router.use(`/telemetry`, await telemetryRouter(driver, pgClient))
 	router.use('/provision', provisionRouter(session))
-	router.use('/distribute', distributeRouter(session))
+	router.use('/distribute', distributeRouter(driver))
 
 	router.use(`/identity`, await identityRouter(driver))
 	return router
