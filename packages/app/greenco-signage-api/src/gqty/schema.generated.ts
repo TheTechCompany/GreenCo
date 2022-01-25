@@ -24244,6 +24244,7 @@ export const generatedSchema = {
       __type: "DeleteInfo!",
       __args: { delete: "TemplateSlotDeleteInput", where: "TemplateSlotWhere" },
     },
+    pushScheduleUpdate: { __type: "Boolean", __args: { schedule: "ID!" } },
     updateCampaignAnalytics: {
       __type: "UpdateCampaignAnalyticsMutationResponse!",
       __args: {
@@ -28263,6 +28264,9 @@ export interface Mutation {
     delete?: Maybe<TemplateSlotDeleteInput>;
     where?: Maybe<TemplateSlotWhere>;
   }) => DeleteInfo;
+  pushScheduleUpdate: (args: {
+    schedule: Scalars["ID"];
+  }) => Maybe<ScalarsEnums["Boolean"]>;
   updateCampaignAnalytics: (args?: {
     connect?: Maybe<CampaignAnalyticConnectInput>;
     connectOrCreate?: Maybe<CampaignAnalyticConnectOrCreateInput>;

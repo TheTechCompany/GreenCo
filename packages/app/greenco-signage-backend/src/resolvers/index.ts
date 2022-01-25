@@ -10,7 +10,11 @@ export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 		Mutation: {
 			updateSlotClient: async (parent: any, {id, version}: any, context: any, info: any) => {
 				return channel.sendToQueue(`GREEN-MACHINE:UPDATE`, Buffer.from(JSON.stringify({slot: id, version: version || 'latest'})))
+			},
+			pushScheduleUpdate: async (parent: any, {schedule}: any, context: any, info: any) => {
+				return channel.sendToQueue(`GREEN-SCREEN:SCHEDULE:RELOAD`, Buffer.from(JSON.stringify({schedule: schedule})))
 			}
+
 		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {

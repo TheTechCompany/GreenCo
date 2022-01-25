@@ -31,6 +31,8 @@ export const ScheduleCampaigns = () => {
 	const allCampaigns = data?.campaigns || [];
 
 	const [ scheduleCampaign, scheduleInfo ] = useMutation((mutation, args: {tier: string, campaign: string, dates: string[]}) => {
+		if(!scheduleId) return;
+	
 		let dateUpdate = {};
 		if(args.dates.length == 2){
 			dateUpdate = {
@@ -55,9 +57,12 @@ export const ScheduleCampaigns = () => {
 				}]
 			}
 		})
+		const updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+
 		return {
 			item: {
-				...item.schedules?.[0]
+				...item.schedules?.[0],
+				update: updateRes
 			}
 		}
 	})
@@ -69,6 +74,8 @@ export const ScheduleCampaigns = () => {
 		dates: string[],
 		screen: string
 	}) => {
+		if(!scheduleId) return;
+
 		let dateUpdate = {};
 		if(args.dates.length == 2){
 			dateUpdate = {
@@ -95,15 +102,20 @@ export const ScheduleCampaigns = () => {
 				}]
 			}
 		})
+
+		const updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+
 		return {
 			item: {
-				...item.schedules?.[0]
+				...item.schedules?.[0],
+				update: updateRes
 			}
 		}
 	})
 
 
 	const [ removeCampaign ] = useMutation((mutation, args: {id: string}) => {
+		if(!scheduleId) return;
 		const item = mutation.updateSchedules({
 			where: {id: scheduleId},
 			update: {
@@ -112,9 +124,12 @@ export const ScheduleCampaigns = () => {
 				}]
 			}
 		})
+		const updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+
 		return {
 			item: {
-				...item.schedules?.[0]
+				...item.schedules?.[0],
+				update: updateRes
 			}
 		}
 	})

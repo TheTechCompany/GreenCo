@@ -21,6 +21,10 @@ export abstract class AbstractPlugin {
 	start(){
 
 	}
+
+	async handleMessage(msg: string){
+
+	}
 }
 
 export class PluginManager {
@@ -123,6 +127,14 @@ export class PluginManager {
 		}))
 
 		
+
+	}
+
+	async handleMessage(message: {plugin: string, message: any}){
+		let plugin = this.pluginInstances[message.plugin]
+		if(plugin){
+			await plugin.handleMessage(message.message)
+		}
 
 	}
 

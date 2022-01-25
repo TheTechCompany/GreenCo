@@ -22,10 +22,13 @@ L.Icon.Default.mergeOptions({
 // 	iconAnchor: [16, 42]
 // });
 
+
+
 export interface LocationMapProps {
 	markers: {lat?: string, lng?: string}[]
 }
 
+//bounds={[[-36.9915, 174.8734], [-36.8807, 174.7981]]}
 export const LocationMap : React.FC<LocationMapProps> = (props) => {
 	const [ bounds, setBounds ] = useState<any>()
 
@@ -33,9 +36,11 @@ export const LocationMap : React.FC<LocationMapProps> = (props) => {
 		let bounds = L.latLngBounds(props.markers.map((x) => [parseFloat(x.lat || '0'), parseFloat(x.lng || '0')]))
 		setBounds(bounds);
 	}, [props.markers])
+
+	console.log(bounds)
 	return (
 		<Box flex>
-			<MapContainer bounds={bounds} style={{flex: 1}} scrollWheelZoom={false}>
+				<MapContainer center={[-36.8807, 174.7981]} zoom={13}  style={{flex: 1}} scrollWheelZoom={false}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

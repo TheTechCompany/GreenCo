@@ -30,6 +30,7 @@ import jwt from 'jsonwebtoken'
 
 	await channel.assertQueue(`GREEN-MACHINE:UPDATE`)
 	await channel.assertQueue(`GREEN-MACHINE:RESTART`)
+	await channel.assertQueue(`GREEN-SCREEN:SCHEDULE:RELOAD`)
 
 	
 	const driver = neo4j.driver(
@@ -44,7 +45,7 @@ import jwt from 'jsonwebtoken'
 
 	const io = new Server(server)
 
-	const {handleSocket, emitUpdate} = await socketHandler(driver)
+	const {handleSocket, emitUpdate, emitPluginEvent} = await socketHandler(driver)
 
 	channel.consume(`GREEN-MACHINE:UPDATE`, (msg) => {
 		let {slot, version} = JSON.parse(msg?.content.toString('utf8') || '{}')
@@ -52,6 +53,29 @@ import jwt from 'jsonwebtoken'
 		emitUpdate(slot)
 	}, {
 		noAck: true
+	})
+
+	channel.consume(`GREEN-SCREEN:SCHEDULE:RELOAD`, async (msg) => {
+		let {schedule} = JSON.parse(msg?.content.toString('utf8') || '{}')
+
+		const session = driver.session()
+
+		const locations = await session.run(
+			`MATCH (s:Schedule {id: $schedule})<-[:USES_SCHEDULE]-(:LocationGroup)-[:HAS_LOCATION]->(:Location)<-[:IN_LOCATION]-(:GreenScreen)-[:HAS_SLOT]->(screens:ScreenSlot)-[:USES_SLOT]->(:TemplateSlot)-[:USES_PLUGIN]->(plugin:TemplateSlotPlugin {source: "@greenco/screen"})
+			RETURN {
+				plugin: plugin.id,
+				screens: collect(screens.id)
+			 }`, 
+			{
+				schedule
+			}
+		)
+
+		let data = locations.records.map((x) => x.get(0))?.[0]
+
+		session.close()
+		
+		emitPluginEvent(data.screens, {plugin: data.plugin, message: 'reload'})
 	})
 
 

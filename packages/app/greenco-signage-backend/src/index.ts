@@ -41,6 +41,7 @@ const greenlock = require("greenlock-express");
 
 	await channel.assertQueue(`GREEN-MACHINE:UPDATE`)
 	await channel.assertQueue(`GREEN-MACHINE:RESTART`)
+	await channel.assertQueue(`GREEN-SCREEN:SCHEDULE:RELOAD`)
 
 	const driver = neo4j.driver(
 		process.env.NEO4J_URI || "localhost",

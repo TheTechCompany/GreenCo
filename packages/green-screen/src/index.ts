@@ -13,7 +13,7 @@ export default class GreenScreen {
 	private displayManager: DisplayManager;
 	private assetStore: AssetStore;
 
-	private network: Network;
+	// private network: Network;
 	private telemtry: TelemetryService;
 
 	private running: boolean = false;
@@ -26,9 +26,9 @@ export default class GreenScreen {
 	constructor(token?: string){
 		this.runtimeToken = token;
 
-		this.network = new Network({
-			url: `http://hahei-jumpbox.hexhive.io`,
-		})
+		// this.network = new Network({
+		// 	url: `http://hahei-jumpbox.hexhive.io`,
+		// })
 
 		this.telemtry = new TelemetryService({
 			appName: 'GreenScreen',
@@ -47,13 +47,22 @@ export default class GreenScreen {
 			assetStoragePath:  process.env.USERPROFILE+'\\Documents' || `C:\\Users\\Administrator\\Documents\\`
 		});
 
-		this.network.on('reload-schedule', this.reloadSchedule.bind(this))
+		// this.network.on('reload-schedule', this.reloadSchedule.bind(this))
 	}
 
 
 
 	async reloadSchedule(){
 		await this.assetStore.refreshSchedule()
+	}
+
+	async handleMessage(message: any){
+		console.log("Message", message)
+		switch(message){
+			case 'reload':
+				await this.reloadSchedule()
+				break;
+		}
 	}
 
 	async start(){

@@ -8,6 +8,7 @@ import templates from "./templates";
 export default `
 type Mutation {
 	updateSlotClient(id: ID!, version: String): Boolean
+	pushScheduleUpdate(schedule: ID!): Boolean
 }
 	${locations}
 	${schedule}

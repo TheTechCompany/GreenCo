@@ -79,6 +79,10 @@ export class GreenMachine {
 			process.exit()
 		})
 
+		this.controlSocket.on('plugin-message', async (msg) => {
+			await this.pluginManager.handleMessage(msg)
+		})
+
 		this.controlSocket.on('plugin-update', () => {
 
 		})
