@@ -74,8 +74,10 @@ import jwt from 'jsonwebtoken'
 		let data = locations.records.map((x) => x.get(0))?.[0]
 
 		session.close()
-		
+
 		emitPluginEvent(data.screens, {plugin: data.plugin, message: 'reload'})
+	}, {
+		noAck: true
 	})
 
 
