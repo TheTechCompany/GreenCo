@@ -2,11 +2,13 @@ import { Router } from 'express'
 import { Driver, Session } from 'neo4j-driver-core'
 import jwt from 'jsonwebtoken'
 
-export default (session: Session) => {
+export default (driver: Driver) => {
 	const router = Router()
 
 	router.route('/')
 		.get(async (req, res) => {
+			const session = driver.session()
+
 			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
@@ -42,6 +44,8 @@ export default (session: Session) => {
 				id: (info as any).slot,
 				networkName
 			})
+			
+			session.close()
 			
 			res.send({
 				campaigns: campaigns?.records?.map(record => record.get(0)) || []

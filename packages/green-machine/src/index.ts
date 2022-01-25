@@ -80,6 +80,7 @@ export class GreenMachine {
 		})
 
 		this.controlSocket.on('plugin-message', async (msg) => {
+			console.log("PLUGIN MESSAGE", msg)
 			await this.pluginManager.handleMessage(msg)
 		})
 
