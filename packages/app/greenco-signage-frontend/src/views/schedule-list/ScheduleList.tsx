@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, List, Text, Button } from 'grommet';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { Add, Edit } from 'grommet-icons';
+import { Add, MoreVertical } from 'grommet-icons';
 import { CreateScheduleModal } from '../../modals/create-schedule';
 import { useNavigate } from 'react-router-dom'
 export interface ScheduleListProps {
@@ -148,21 +148,25 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 					hoverIndicator />
 			</Box>
 			<List
-				onClickItem={(ev) => navigate(`${ev.item.id}`)}
 				primaryKey="name"
 				data={schedules}>
 				{(datum) => (
-					<Box direction='row' align='center' justify='between'>
+					<Box 
+						onClick={() => navigate(`${datum.id}`)}
+						direction='row' align='center' justify='between'>
 						<Text>{datum.name}</Text>
 						<Button 
-							onClick={() => {
-								setSelected(datum)
+							onClick={(e) => {
+								e.stopPropagation()
+                                e.preventDefault()
 								setModalOpen(true)
+								setSelected(datum)
+
 							}}
 							hoverIndicator 
 							plain 
 							style={{padding: 6, borderRadius: 3}} 
-							icon={<Edit size="small" />} />
+							icon={<MoreVertical size="small" />} />
 					</Box>
 				)}
 			</List>
