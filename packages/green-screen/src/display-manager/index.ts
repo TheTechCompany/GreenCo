@@ -28,12 +28,12 @@ export class DisplayManager {
 		this.browser = await puppeteer.launch({
 			headless: false,
 			devtools: true, //process.env.DEVTOOLS === 'true' ? true : false,
-			ignoreDefaultArgs: ['--enable-automation'],
+			// ignoreDefaultArgs: ['--enable-automation'],
 			defaultViewport: {
 				width: 1080, //1080
 				height: 1920 //1920
 			},
-			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
+			// args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
 		})
 
 		this.page = await this.browser?.newPage()
