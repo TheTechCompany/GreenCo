@@ -33,7 +33,7 @@ export class DisplayManager {
 				width: 1080, //1080
 				height: 1920 //1920
 			},
-			executablePath: `C:\Program Files\Google\Chrome\Application\chrome.exe`,
+			executablePath: `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
 			// "C:\Program Files\Google\Chrome\Application
 			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
 		})
