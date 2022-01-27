@@ -27,6 +27,7 @@ export class DisplayManager {
 		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
+			devtools: process.env.DEVTOOLS === 'true' ? true : false,
 			ignoreDefaultArgs: ['--enable-automation'],
 			defaultViewport: {
 				width: 1080, //1080
