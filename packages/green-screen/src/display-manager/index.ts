@@ -33,7 +33,7 @@ export class DisplayManager {
 				width: 1080, //1080
 				height: 1920 //1920
 			},
-			args: ['--kiosk', '--disable-infobars']
+			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
 		})
 
 		this.page = await this.browser?.newPage()
