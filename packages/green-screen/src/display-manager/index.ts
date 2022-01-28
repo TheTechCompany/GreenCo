@@ -1,6 +1,7 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
 import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
+import Screenshot from 'screenshot-desktop'
 
 export class DisplayManager {
 	private browser?: Browser;
@@ -17,6 +18,8 @@ export class DisplayManager {
 	private startTime?: number;
 
 	private hold = false;
+
+	private screenshotTimer? : NodeJS.Timer;
 
 	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
@@ -45,6 +48,11 @@ export class DisplayManager {
 		}catch(e){
 
 		}
+
+		this.screenshotTimer = setInterval(async () => {
+			await this.screenshot()
+		}, 5 * 60 * 1000);
+		
 	}
 
 	get isHolding(){
@@ -57,6 +65,11 @@ export class DisplayManager {
 
 	releaseAsset(){
 		this.hold = false;
+	}
+
+	async screenshot(){
+		const desktop = await Screenshot()
+		await this.telemtry.sendScreenshot(desktop)
 	}
 
 	async play(campaign: {id: string, assetFolder: string}){

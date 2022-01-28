@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TelemetryEvent } from "./event";
+import FormData from 'form-data'
 
 export interface TelemetryServiceOpts {
 	appName: string;
@@ -18,6 +19,12 @@ export class TelemetryService {
 
 	async sendEvent(event: TelemetryEvent){
 		// console.log(event);
-		await axios.post(`${this.opts.url}/api/telemetry`, {...event, timestamp: Date.now()});
+		return await axios.post(`${this.opts.url}/api/telemetry`, {...event, timestamp: Date.now()});
+	}
+
+	async sendScreenshot(screenshot: Buffer){
+		let fd = new FormData()
+		fd.append('file', screenshot, 'screenshot.jpg')
+		return await axios.post(`${this.opts.url}/api/telemetry/screenshot`, fd);
 	}
 }
