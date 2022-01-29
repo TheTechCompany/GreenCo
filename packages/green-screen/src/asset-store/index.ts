@@ -63,7 +63,7 @@ export class AssetStore {
 
 	async pullAll(){
 		let results = await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
-			console.log(`Pulling ${manifestItem.campaign?.name}`)
+			console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.assetFolder}`)
 			if(!manifestItem.id) return;
 
 			const data = await this.pull(manifestItem.campaign?.assetFolder || '')
@@ -145,6 +145,7 @@ export class AssetStore {
 			if(!pull) return;
 			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
+				console.log(`${hash} - ${chunk.length}`)
 				ret.push(chunk)
 			}
 
