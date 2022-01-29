@@ -1,4 +1,4 @@
-import { IPFS, create } from 'ipfs';
+import { IPFSHTTPClient, create } from 'ipfs-http-client';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
@@ -21,7 +21,7 @@ export interface AssetStoreConfiguration {
 }
 
 export class AssetStore {
-	private node?: IPFS;
+	private node?: IPFSHTTPClient;
 
 	private server: AssetStoreServer;
 
@@ -112,15 +112,17 @@ export class AssetStore {
 			rmdirSync(path.join(ipfsPath, 'repo.lock'))
 		}
 
-		this.node = await create({
-			repo: ipfsPath,
-			config: {
-				Bootstrap: [
-					'/ip4/54.206.111.213/tcp/4001'
-				]
-			}
+		this.node = await create({url: `http://54.206.111.213:8080`})
+
+		// this.node = await create({
+		// 	repo: ipfsPath,
+		// 	config: {
+		// 		Bootstrap: [
+		// 			'/ip4/54.206.111.213/tcp/4001'
+		// 		]
+		// 	}
 			
-		})
+		// })
 
 		await this.refreshSchedule()
 	}
