@@ -5,6 +5,7 @@ import React from 'react';
 export const AnalyticBubble = (props) => {
 	return (
 		<Box	
+			flex
 			gap="xsmall"
 			pad="small"
 			elevation='small'

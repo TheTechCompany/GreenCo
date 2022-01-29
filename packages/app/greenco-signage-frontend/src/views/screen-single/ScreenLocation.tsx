@@ -14,7 +14,7 @@ export const ScreenLocation = (props) => {
 			<Text>{screen?.location?.lng}</Text>
 
 
-			<LocationMap markers={( screen?.location.lat && screen?.location.lng )?[
+			<LocationMap markers={( screen?.location?.lat && screen?.location?.lng )?[
 				{
 					lat: screen?.location.lat,
 					lng: screen?.location.lng

@@ -123,11 +123,11 @@ export class GreenMachine {
 
 		const { data : {plugins}} = await this.getConfig(token)
 
-		this.pluginManager.init(plugins)
+		await this.pluginManager.init(plugins)
 
 		this.initControlSocket(this.opts.controlUrl, token);
 		
-		this.pluginManager.startAll(token)
+		await this.pluginManager.startAll(token)
 
 		this.app.listen(9090)
 	}

@@ -50,7 +50,6 @@ export const CampaignSingle = (props) => {
 
 	const [ analyticModalOpen, setAnalyticModalOpen ] = useState(false)
 	const [ selectedAnalytic, setSelectedAnalytic ] = useState(false)
-	const campaign = query.campaigns({where: {id: id}})?.[0]
 
 	const setView = (path: string) => {
 		navigate(`${path}`)
@@ -79,8 +78,27 @@ export const CampaignSingle = (props) => {
 		query Q ($id: ID) {
 			campaigns(where: {id: $id}) {
 				id
+				name
+				
 				views
 				interactions
+
+				charts {
+					id
+					label
+					type
+
+					width
+					height
+
+					x
+					y
+
+					data
+					dataKey
+					total
+
+				}
 
 				interactionTimeline {
 					time
@@ -110,13 +128,16 @@ export const CampaignSingle = (props) => {
 	})
 
 	console.log(data)
-	const views = data?.campaigns?.[0]?.views
-	const files = data?.campaigns?.[0]?.assets || [];
-	const analytics = data?.campaigns?.[0]?.analytics || [];
-	
-	const interactions = data?.campaigns?.[0]?.interactions
-	const interactionTimeline = data?.campaigns?.[0]?.interactionTimeline
+	const campaign = data?.campaigns?.[0];
 
+	const views = campaign?.views
+	const files = campaign?.assets || [];
+	const analytics = campaign?.analytics || [];
+	
+	const interactions = campaign?.interactions
+	const interactionTimeline = campaign?.interactionTimeline
+
+	const charts = campaign?.charts;
 
 	const active = menu.map((item) => matchPath(window.location.pathname.replace(`/dashboard/signage`, ''), 
 		`${item.route}`,
@@ -136,6 +157,7 @@ export const CampaignSingle = (props) => {
 			analytics,
 			views,
 			interactions,
+			charts,
 			interactionTimeline,
 			refresh: () => {
 				client.refetchQueries({include: ['Q']})
@@ -157,7 +179,7 @@ export const CampaignSingle = (props) => {
 				background="light-1"
 				 flex>
 				<Box direction="row" justify="between" align="center" pad="xsmall" background="accent-2">
-					<Text>{campaign.name}</Text>
+					<Text>{campaign?.name}</Text>
 
 					<Box direction="row" gap="xsmall">
 						<Button 
