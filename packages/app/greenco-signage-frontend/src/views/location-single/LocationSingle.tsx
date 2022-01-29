@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box, Text, List } from 'grommet';
 import { Monitor, Analytics } from 'grommet-icons'
 import { gql, useApolloClient, useQuery } from '@apollo/client';
@@ -8,6 +8,7 @@ import { LocationAnalytics } from './LocationAnalytics';
 import { ClusterScreens } from './LocationScreens';
 import { ClusterSingleProvider } from './context';
 import { ClusterTiers } from './ClusterTiers';
+import moment from 'moment';
 
 export const LocationSingle = (props) => {
 
@@ -33,6 +34,14 @@ export const LocationSingle = (props) => {
 				name
 				lat
 				lng
+				cameraAnalytics {
+					timestamp
+					results {
+						name
+						confidence
+					}
+				} 	
+
 				screen {
 					id
 					name
@@ -55,6 +64,8 @@ export const LocationSingle = (props) => {
 
 	const greenScreens = data?.greenScreens || [] //query.greenScreens()?.map((x) => ({...x}))
 
+	const analytics =locations?.[0]?.cameraAnalytics;
+
 	const menu = [
 		{
 			label: "Screens",
@@ -66,10 +77,33 @@ export const LocationSingle = (props) => {
 		}
 	]
 
+	const [keys, points] = useMemo(() => {
+		const keys = [...new Set(analytics?.map(a => {
+			return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
+		}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
+
+		const points = analytics?.map(({timestamp, results}) => {
+			let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
+
+			let returnObject : any = {};
+
+			resultKeys.forEach((key: string) => {
+				returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
+			})
+
+			return {
+				timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
+				...returnObject
+			}
+		})
+		return [keys, points]
+	}, [analytics])
+	
 	return (
 		<ClusterSingleProvider value={{
 			id: id,
 			locations,
+			analytics: {keys, points},
 			refresh: () => client.refetchQueries({include: ["Q"]}),
 			screens: greenScreens,
 		}}>

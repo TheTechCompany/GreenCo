@@ -11,6 +11,8 @@ export default `
 		id: ID! @id
 		name: String
 
+		peopleCount: [CameraAnalytic] @ignore
+
 		charts: [CampaignChart] @relationship(type: "HAS_CHART", direction: OUT)
 
 		views: Int @ignore

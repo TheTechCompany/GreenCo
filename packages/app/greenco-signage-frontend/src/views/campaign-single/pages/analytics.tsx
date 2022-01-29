@@ -6,6 +6,7 @@ import { CampaignSingleContext } from '../context';
 import moment from 'moment';
 import { GraphGrid } from '@hexhive/ui';
 import { AnalyticBubble } from '../../../components/analytic-bubble/AnalyticBubble';
+import { stringToColor } from '@hexhive/utils';
 
 export const AnalyticsPage = () => {
 
@@ -36,13 +37,13 @@ export const AnalyticsPage = () => {
 		},
 		{
 			id: 'people',
-			type: 'bubble',
-			label: "People avg. daily",
-			x: 4,
-			y: 0,
-			w: 2,
-			h: 3,
-			data: "people-24hr"
+			type: 'area-chart',
+			label: "Camera (past 7 days)",
+			x: 0,
+			y: 3,
+			w: 6,
+			h: 6,
+			data: "peopleCount"
 		},
 		{
 			id: 'people-7d',
@@ -59,7 +60,7 @@ export const AnalyticsPage = () => {
 			label: "Interaction Timeline",
 			type: 'line-chart',
 			x: 0,
-			y: 3,
+			y: 8,
 			w: 6,
 			h: 6,
 			data: "interactionTimeline"
@@ -73,7 +74,43 @@ export const AnalyticsPage = () => {
 	})) || []
 
 	const renderGraphItem = (item: any) => {
+		console.log({item});
+
 		switch(item.type){
+			case 'area-chart':
+				let label= item.label;
+				item = campaign?.[item.data]
+
+				return (
+				<Box background={'#fff'} round="xsmall" overflow="hidden" flex elevation='small'>
+					<Box background={'#627df6'} pad="xsmall" direction='row'>
+						<Text color={'white'}>{label}</Text>
+					</Box>
+					<ResponsiveContainer>
+					<AreaChart
+						data={item?.points}
+						margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+						>
+						<defs>
+							{item?.keys?.map((key: string) => (
+								<linearGradient id={key} x1="0" y1="0" x2="0" y2="1">
+								<stop offset="5%" stopColor={stringToColor(key)} stopOpacity={0.8}/>
+								<stop offset="95%" stopColor={stringToColor(key)} stopOpacity={0}/>
+								</linearGradient>
+							))}
+							
+						</defs>
+						<XAxis minTickGap={25} dataKey="time" />
+						<YAxis />
+						<Tooltip />
+						<CartesianGrid stroke="#f5f5f5" />
+						{item?.keys?.map((key: string) => (
+							<Area type="monotone" dataKey={key} stroke={stringToColor(key)} fillOpacity={1} fill={`url(#${key})`} />
+						))}
+						{/* <Line type="monotone" dataKey={"interactions"}  stroke="#ff7300" yAxisId={0} /> */}
+					</AreaChart>
+				</ResponsiveContainer>
+				</Box>)
 			case 'bubble':
 				return (
 					<AnalyticBubble 

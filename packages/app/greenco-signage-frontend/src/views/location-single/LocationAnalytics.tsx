@@ -18,31 +18,31 @@ export const LocationAnalytics = (props) => {
 	const { id, analytics } = useContext(ClusterSingleContext)
 	const query = useQuery();
 
-	analytics //[{timestamp, results: [{}]}]
+	// analytics //[{timestamp, results: [{}]}]
 
-	const [keys, points] = useMemo(() => {
-		const keys = [...new Set(analytics?.map(a => {
-			return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
-		}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
+	// const [keys, points] = useMemo(() => {
+	// 	const keys = [...new Set(analytics?.map(a => {
+	// 		return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
+	// 	}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
 
-		const points = analytics?.map(({timestamp, results}) => {
-			let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
+	// 	const points = analytics?.map(({timestamp, results}) => {
+	// 		let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
 
-			let returnObject : any = {};
+	// 		let returnObject : any = {};
 
-			resultKeys.forEach((key: string) => {
-				returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
-			})
+	// 		resultKeys.forEach((key: string) => {
+	// 			returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
+	// 		})
 
-			return {
-				timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
-				...returnObject
-			}
-		})
-		return [keys, points]
-	}, [analytics])
+	// 		return {
+	// 			timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
+	// 			...returnObject
+	// 		}
+	// 	})
+	// 	return [keys, points]
+	// }, [analytics])
 
-	console.log(id)
+	console.log({analytics})
 
 	// const displays = query.displays({});
 	// const clusterDisplays = query.displays({where: {cluster: {id}}})
@@ -68,11 +68,11 @@ export const LocationAnalytics = (props) => {
 		<Box flex>
 			<ResponsiveContainer>
 					<AreaChart
-						data={points}
+						data={analytics?.points || []}
 						margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
 						>
 						<defs>
-							{keys.map((key: string) => (
+							{(analytics?.keys || []).map((key: string) => (
 								<linearGradient id={key} x1="0" y1="0" x2="0" y2="1">
 								<stop offset="5%" stopColor={stringToColor(key)} stopOpacity={0.8}/>
 								<stop offset="95%" stopColor={stringToColor(key)} stopOpacity={0}/>
@@ -84,7 +84,7 @@ export const LocationAnalytics = (props) => {
 						<YAxis />
 						<Tooltip />
 						<CartesianGrid stroke="#f5f5f5" />
-						{keys.map((key: string) => (
+						{analytics?.keys?.map((key: string) => (
 							<Area type="monotone" dataKey={key} stroke={stringToColor(key)} fillOpacity={1} fill={`url(#${key})`} />
 						))}
 						{/* <Line type="monotone" dataKey={"interactions"}  stroke="#ff7300" yAxisId={0} /> */}

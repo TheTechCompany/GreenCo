@@ -1,8 +1,9 @@
 import { FileStore } from "../de-file-store"
 import { Pool } from 'pg';
 import { Channel } from 'amqplib'
+import { Driver } from "neo4j-driver";
 
-export default async (fs: FileStore, pool: Pool, channel: Channel) => {
+export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Driver) => {
 
 	const client = await pool.connect()
 
@@ -18,9 +19,15 @@ export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {
+				if(!parent.networkName) return [];
+
 				const res = await client.query(
-					`SELECT properties, timestamp FROM green_screen_telemetry WHERE event=$1 AND source=$2`,
-					['camera-yolo', 'camera', ]
+					`SELECT properties, timestamp 
+						FROM green_screen_telemetry 
+						WHERE event=$1 AND source=$2 AND created_by=$3 AND
+					"timestamp" < now() and "timestamp" > now() - interval '1 week'
+					`,
+					['camera-yolo', 'camera', parent.networkName]
 				)
 				return res.rows.map(row => {
 					return {
@@ -31,6 +38,37 @@ export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 			}
 		},
 		Campaign: {
+			peopleCount: async (parent: any) => {
+				const session = driver.session();
+				console.log({parent})
+				const location_res = await session.run(`
+					MATCH (c:Campaign {id: $id})<--(:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen)
+					WHERE screen.networkName IS NOT NULL
+					RETURN distinct(screen{.*})
+				`, {
+					id: parent.id
+				})
+
+				console.log({records: location_res.records})
+				const locations = location_res.records?.map((x) => x.get(0)) //[0]?.get(0)
+
+				const res = await client.query(
+					`SELECT properties, timestamp 
+						FROM green_screen_telemetry 
+					WHERE event=$1 AND source=$2 AND created_by = ANY($3::text[]) AND 
+					"timestamp" < now() and "timestamp" > now() - interval '1 week'
+					`,
+					['camera-yolo', 'camera', locations?.map((x: any) => `${x.networkName}.hexhive.io`) ]
+				)
+				await session.close()
+				return res.rows.map(row => {
+					return {
+						timestamp: row.timestamp,
+						results: row.properties?.results?.map((x: any) => ({name: x.name, confidence: x.confidence}))
+					}
+				})
+				
+			},
 			interactions: async (root: any) => {
 				const res=  await client.query(
 					`SELECT COUNT(*) as interactions FROM green_screen_telemetry WHERE event=$1 AND source = $2 `, 

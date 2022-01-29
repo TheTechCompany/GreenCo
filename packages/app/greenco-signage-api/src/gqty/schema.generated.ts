@@ -11501,6 +11501,7 @@ export const generatedSchema = {
         where: "CampaignOrganisationConnectionWhere",
       },
     },
+    peopleCount: { __type: "[CameraAnalytic]" },
     views: { __type: "Int" },
   },
   CampaignAggregateSelection: {
@@ -26173,6 +26174,7 @@ export interface Campaign {
     sort?: Maybe<Array<CampaignOrganisationConnectionSort>>;
     where?: Maybe<CampaignOrganisationConnectionWhere>;
   }) => CampaignOrganisationConnection;
+  peopleCount?: Maybe<Array<Maybe<CameraAnalytic>>>;
   views?: Maybe<ScalarsEnums["Int"]>;
 }
 
