@@ -20,7 +20,7 @@ export const socketHandler = async (driver: Driver) => {
 
 	const handleSocket = async (socket: Socket) => {
 
-		socket.emit('update', {version: 'latest'})
+		// socket.emit('update', {version: 'latest'})
 
 		const session = await driver.session()
 
