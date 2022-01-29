@@ -21,7 +21,7 @@ export const AssignLocationScreenModal = (props) => {
 		<BaseModal
 			open={props.open}
 			onClose={props.onClose}
-			onDelete={props.onDelete}
+			onDelete={props.selected && props.onDelete}
 			onSubmit={onSubmit}
 			title="Assign Screen"
 			>

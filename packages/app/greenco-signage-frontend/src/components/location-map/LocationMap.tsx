@@ -28,24 +28,31 @@ export interface LocationMapProps {
 	markers: {lat?: string, lng?: string}[]
 }
 
-//bounds={[[-36.9915, 174.8734], [-36.8807, 174.7981]]}
+const markersArray = [[-36.9915, 174.8734], [-36.8807, 174.7981]];
+
+
 export const LocationMap : React.FC<LocationMapProps> = (props) => {
-	const [ bounds, setBounds ] = useState<any>()
+	const [ bounds, setBounds ] = useState<any>(props.markers || [])
+	
 
 	useEffect(() => {
-		let bounds = L.latLngBounds(props.markers.map((x) => [parseFloat(x.lat || '0'), parseFloat(x.lng || '0')]))
+
+		{console.log(props.markers)}
+
+		// let bounds = L.latLngBounds(props.markers.map((x) => [parseFloat(x.lat || '0'), parseFloat(x.lng || '0')]))
+
 		setBounds(bounds);
+
 	}, [props.markers])
 
-	console.log(bounds)
 	return (
 		<Box flex>
-				<MapContainer center={[-36.8807, 174.7981]} zoom={13}  style={{flex: 1}} scrollWheelZoom={false}>
+				<MapContainer center={[-36.9915, 174.8734]} bounds={bounds.length>0 ? bounds : undefined}  style={{flex: 1}} scrollWheelZoom={false}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			{props.markers.filter((a) => a.lat && a.lng).map((marker) => (
+			{props.markers.map((marker) => (
 				<Marker position={[parseFloat(marker.lat || '0'), parseFloat(marker.lng || '0')]}>
 				<Popup>
 					A pretty CSS3 popup. <br /> Easily customizable.

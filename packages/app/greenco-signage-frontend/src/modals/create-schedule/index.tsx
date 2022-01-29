@@ -15,6 +15,13 @@ export const CreateScheduleModal = (props) => {
 			...props.selected
 		})
 	}, [props.selected])
+
+	useEffect(() => 
+	{
+	if (props.open == false){
+		setSchedule({})}
+
+	}, [props.open])
 	
 	return (
 		<BaseModal

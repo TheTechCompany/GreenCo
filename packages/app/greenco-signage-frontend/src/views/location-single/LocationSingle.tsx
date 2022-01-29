@@ -31,7 +31,8 @@ export const LocationSingle = (props) => {
 			locations(where: {group: {id: $id}}){
 				id
 				name
-				
+				lat
+				lng
 				screen {
 					id
 					name
