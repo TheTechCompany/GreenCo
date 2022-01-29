@@ -66,6 +66,8 @@ export const LocationSingle = (props) => {
 
 	const analytics =locations?.[0]?.cameraAnalytics;
 
+	console.log({analytics})
+
 	const menu = [
 		{
 			label: "Screens",

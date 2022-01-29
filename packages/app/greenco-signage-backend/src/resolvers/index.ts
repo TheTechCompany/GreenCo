@@ -19,7 +19,17 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {
-				if(!parent.networkName) return [];
+				if(!parent.id) return [];
+
+				const session = driver.session()
+				const result = await session.run(`
+					MATCH (location:Location {id: $id})<--(screen:GreenScreen)
+					RETURN screen.networkName
+				`, {
+					id: parent.id
+				})
+
+				const networkName = result.records?.[0]?.get(0)
 
 				const res = await client.query(
 					`SELECT properties, timestamp 
@@ -27,8 +37,9 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 						WHERE event=$1 AND source=$2 AND created_by=$3 AND
 					"timestamp" < now() and "timestamp" > now() - interval '1 week'
 					`,
-					['camera-yolo', 'camera', parent.networkName]
+					['camera-yolo', 'camera', `${networkName}.hexhive.io`]
 				)
+				await session.close()
 				return res.rows.map(row => {
 					return {
 						timestamp: row.timestamp,
