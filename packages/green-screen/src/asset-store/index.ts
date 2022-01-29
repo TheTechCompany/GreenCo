@@ -114,7 +114,12 @@ export class AssetStore {
 
 		this.node = await create({
 			repo: ipfsPath,
-
+			config: {
+				Bootstrap: [
+					'/ip4/54.206.111.213/tcp/4001'
+				]
+			}
+			
 		})
 
 		await this.refreshSchedule()
