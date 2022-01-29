@@ -140,7 +140,7 @@ export class PluginManager {
 
 	async getGlobalVersion(name: string){
 		return await new Promise((resolve, reject) => {
-			exec(`npm info -g ${name} version`, (err, stdout, stderr) => {
+			exec(`npm info -g ${name} version`, {windowsHide: true}, (err, stdout, stderr) => {
 				if(err) return reject(err)
 				resolve(stdout.trim())
 			})
@@ -264,7 +264,7 @@ export class PluginManager {
 
 	public async installGlobal(plugin: string){
 		return await new Promise((resolve, reject) => {
-			exec(`npm install -g ${plugin}`, (err, stdout, stderr) => {
+			exec(`npm install -g ${plugin}`, { windowsHide: true}, (err, stdout, stderr) => {
 				if(err) return reject(err);
 				resolve(stdout)
 			})
