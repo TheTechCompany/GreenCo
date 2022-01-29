@@ -137,7 +137,7 @@ export class AssetStore {
 			const timeoutTimer = setTimeout(() => {
 				console.log(`Pulling ${hash} timed out`)
 				resolve(null)
-			}, 5 * 60 * 1000)
+			}, 10 * 60 * 1000)
 
 			const pull = this.node?.get(hash)
 			if(!pull) return;
