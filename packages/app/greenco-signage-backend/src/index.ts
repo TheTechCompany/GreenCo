@@ -87,7 +87,7 @@ const greenlock = require("greenlock-express");
 	await graphServer.init()
 
 
-	if(graphServer.graphManager) app.use('/api/', signageApi(graphServer.graphManager, fs))
+	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient, fs))
 
 	app.use(graphServer.middleware)
 
