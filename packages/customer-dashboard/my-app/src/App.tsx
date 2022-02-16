@@ -36,6 +36,7 @@ function App() {
         }}
       >
         <HeaderBar/>
+        <Box direction="row" flex>
         <DashboardSidebar/>
 
         <Routes>
@@ -46,7 +47,7 @@ function App() {
           <Route path='/settings' element={<Settings/>}/>
 
         </Routes>
-   
+        </Box>
       </Grommet>
     </>
   );

@@ -4,5 +4,5 @@ import { Box } from "grommet";
 
 export const CampaignSingle = () => (
 
-<Box> Single </Box>
+<Box> SINGLE CAMPAIGN </Box>
 );

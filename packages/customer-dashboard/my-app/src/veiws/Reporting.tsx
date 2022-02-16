@@ -4,5 +4,5 @@ import { Box } from "grommet";
 
 export const Reporting = () => (
 
-<Box> Reporting </Box>
+<Box> REPORTING </Box>
 );
