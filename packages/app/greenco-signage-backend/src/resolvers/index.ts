@@ -34,7 +34,7 @@ export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 			interactions: async (root: any) => {
 				const res=  await client.query(
 					`SELECT COUNT(*) as interactions FROM green_screen_telemetry WHERE event=$1 AND source = $2 `, 
-					['campaign-interaction', `asset://${root.assetFolder}`])
+					['campaign-interaction', `asset://${root.id}`])
 				return res.rows?.[0]?.interactions || 0
 			},
 			interactionTimeline: async (root: any) => {
@@ -50,13 +50,13 @@ export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 					)
 					select time, SUM(cnt) over (order by time) as interactions from data`,
 					// `SELECT "timestamp" as time, SUM(COUNT(*)) OVER(ORDER BY "timestamp") as interactions FROM  green_screen_telemetry WHERE event=$1 AND source=$2 group by "timestamp"`, 
-					['campaign-interaction', `asset://${root.assetFolder}`])
+					['campaign-interaction', `asset://${root.id}`])
 				return res.rows
 			},
 			views: async (root: any) => {
 				const res=  await client.query(
 					`SELECT COUNT(*) as views FROM green_screen_telemetry WHERE event=$1 AND (properties -> 'id')::text = $2 `, 
-					['campaign-play', `"${root.assetFolder}"`])
+					['campaign-play', `"${root.id}"`])
 
 				console.log(res)
 				return res.rows?.[0]?.views || 0
