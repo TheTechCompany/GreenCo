@@ -10,6 +10,7 @@ export const HeaderBar = () => (
     justify="between"
   >
     <Image height="28vh" src="/assets/sl1_logo.png" />
+    <Button color="white" label="Login" hoverIndicator alignSelf="center" href="/login"/>
   </Header>
 );
 
