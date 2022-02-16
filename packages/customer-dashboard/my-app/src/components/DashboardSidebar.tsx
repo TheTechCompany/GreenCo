@@ -7,9 +7,9 @@ export const DashboardSidebar = () => (
 
 <Sidebar background="black" width="small" align="center">
   <Nav pad="small" >
-    <Button plain label="Campaigns" hoverIndicator alignSelf="center" />
-    <Button plain label="Reporting" hoverIndicator alignSelf="center" />
-    <Button plain label="Settings" hoverIndicator alignSelf="center"/>
+    <Button plain label="Campaigns" hoverIndicator alignSelf="center" href="/campaignlist"/>
+    <Button plain label="Reporting" hoverIndicator alignSelf="center" href="/reporting"/>
+    <Button plain label="Settings" hoverIndicator alignSelf="center" href="/settings"/>
 
   </Nav>
 </Sidebar>  

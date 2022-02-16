@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "grommet";
 
 
-export const Reporting = () => (
+export const CampaignList = () => (
 
-<Box> Reporting </Box>
+<Box> CAMPAIGN LIST </Box>
 );
