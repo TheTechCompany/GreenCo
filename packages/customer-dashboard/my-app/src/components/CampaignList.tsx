@@ -2,7 +2,7 @@ import { Box, Button, Text, List } from "grommet";
 import React, { useState } from "react";
 import { Add, MoreVertical } from "grommet-icons";
 import { useNavigate } from "react-router-dom";
-import { CampaignModal } from "../components/modals/CampaignModal";
+import { CampaignModal } from "./modals/CampaignModal";
 
 export interface TriggerListProps {}
 
@@ -17,7 +17,7 @@ export const CampaignList: React.FC<TriggerListProps> = (props) => {
 
   return (
     <Box
-      background="neutral-1"
+      background="grey"
       flex
       overflow="hidden"
       round="xsmall"

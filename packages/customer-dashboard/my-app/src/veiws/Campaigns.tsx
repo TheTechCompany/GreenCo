@@ -3,7 +3,7 @@ import { Box } from "grommet";
 import { CampaignList } from "../components/CampaignList";
 
 export const Campaigns = () => (
-  <Box>
+  <Box flex>
     <CampaignList />
   </Box>
 );
