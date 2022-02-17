@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormField, TextInput, Box, Button, Image } from "grommet";
+import { Form, FormField, TextInput, Box, Button, Image, Text } from "grommet";
 import { Hide, View } from "grommet-icons";
 
 export const LoginForm = () => {
@@ -26,7 +26,7 @@ export const LoginForm = () => {
         pad="medium"
         align="center"
         justify="center"
-        width="large"
+        width="medium"
         height="medium"
         alignContent="center"
       >
@@ -37,20 +37,24 @@ export const LoginForm = () => {
           onSubmit={({ value }) => {}}
           color="black"
         >
+          <Text size="xlarge" alignSelf="center" textAlign="center">
+            Username
+          </Text>
           <FormField
             name="name"
             htmlFor="text-input-id"
-            label="Name"
             alignSelf="center"
-            alignContent="end"
+            alignContent="center"
             justify="center"
           >
             <TextInput id="text-input-id" name="name" textAlign="center" />
           </FormField>
+          <Text size="xlarge" alignSelf="center" textAlign="end">
+            Password
+          </Text>
+
           <FormField
-            name="Password"
             htmlFor="text-input-id"
-            label="Password"
             alignSelf="center"
             justify="center"
           >
