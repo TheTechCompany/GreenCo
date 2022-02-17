@@ -1,20 +1,45 @@
 import { Box, List, Button, Text } from 'grommet';
 import React, {useCallback, useState} from 'react';
 import { ScreenPreview } from '../../components/screen-preview';
-import { Upload, Analytics, Add, Tools, Document, Qr, MoreVertical} from 'grommet-icons';
+import { Upload, Analytics, Add, Tools, Document, Qr, MoreVertical, DownloadOption} from 'grommet-icons';
 import { UploadPlaceholder } from '../../components/upload-placeholder';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { uploadCampaignAssets } from '../../api/campaign';
+import { downloadCampaignAssets, uploadCampaignAssets } from '../../api/campaign';
 import { useQuery as useApolloQuery, useApolloClient, gql } from '@apollo/client';
 import { CreateAnalyticModal } from '../../modals/create-analytic';
 import QRCode from 'qrcode.react'
-import { matchPath, Route, Routes, useParams, useNavigate } from 'react-router-dom';
+import { matchPath, Route, Routes, useParams, useNavigate, useResolvedPath, useMatch } from 'react-router-dom';
 import { FilesPage } from './pages/files';
 import { AnalyticsPage } from './pages/analytics';
 import { ToolsPage } from './pages/tools';
 import { CampaignSingleProvider } from './context';
 
+
+export const NavButtons = (props) => {
+	return 	props.menu.map((item, ix) => (
+		<NavButton 
+			item={item}
+			onClick={() => props.onClick(item)}//() => setView(item.route)
+			/>
+	))
+}
+
+export const NavButton = ({item, onClick}) => {
+	
+	const path = useResolvedPath(item.route)
+	const active = useMatch(path.pathname)
+
+	return <Button 
+			active={active != null}
+			hoverIndicator 
+			plain 
+			onClick={() => onClick(item)}//() => setView(item.route)
+			style={{padding: 6, borderRadius: 3}} 
+			icon={item.icon} />
+}
 export const CampaignSingle = (props) => {
+	const [ downloading, setDownloading ] = useState(false);
+
 	const navigate = useNavigate()
 
 	const client = useApolloClient()
@@ -92,9 +117,17 @@ export const CampaignSingle = (props) => {
 	const interactions = data?.campaigns?.[0]?.interactions
 	const interactionTimeline = data?.campaigns?.[0]?.interactionTimeline
 
+
 	const active = menu.map((item) => matchPath(window.location.pathname.replace(`/dashboard/signage`, ''), 
 		`${item.route}`,
 	) != null).indexOf(true)
+
+	const downloadCampaign = async () => {
+		if(!id) return;
+		setDownloading(true)
+		await downloadCampaignAssets(id)
+		setDownloading(false)
+	}
 
 	return (
 		<CampaignSingleProvider value={{
@@ -127,7 +160,16 @@ export const CampaignSingle = (props) => {
 					<Text>{campaign.name}</Text>
 
 					<Box direction="row" gap="xsmall">
-						{menu.map((item, ix) => (
+						<Button 
+							disabled={downloading}
+							onClick={() => downloadCampaign()}
+							hoverIndicator 
+							plain 
+							style={{padding: 6, borderRadius: 3}} 
+							icon={<DownloadOption size="small" />} />
+
+						<NavButtons menu={menu} onClick={(item) => setView(item.route)} />
+						{/* {menu.map((item, ix) => (
 							<Button 
 							active={ix == active}
 							hoverIndicator 
@@ -135,7 +177,7 @@ export const CampaignSingle = (props) => {
 							onClick={() => setView(item.route)}
 							style={{padding: 6, borderRadius: 3}} 
 							icon={item.icon} />
-						))}
+						))} */}
 					</Box>
 					
 				</Box>

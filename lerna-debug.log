@@ -1,10 +1,12 @@
-15 error Error: Command failed with exit code 1: git remote update
-15 error fatal: unable to access 'https://github.com/TheTechCompany/GreenCo.git/': Could not resolve host: github.com
-15 error error: Could not fetch origin
-15 error Fetching origin
-15 error     at makeError (/Users/the-kid/work/contract-work/green/node_modules/execa/lib/error.js:60:11)
-15 error     at Function.module.exports.sync (/Users/the-kid/work/contract-work/green/node_modules/execa/index.js:194:17)
-15 error     at Object.execSync (/Users/the-kid/work/contract-work/green/node_modules/@lerna/child-process/index.js:39:16)
-15 error     at updateRemote (/Users/the-kid/work/contract-work/green/node_modules/@lerna/version/lib/is-behind-upstream.js:34:16)
-15 error     at isBehindUpstream (/Users/the-kid/work/contract-work/green/node_modules/@lerna/version/lib/is-behind-upstream.js:16:3)
-15 error     at VersionCommand.initialize (/Users/the-kid/work/contract-work/green/node_modules/@lerna/version/index.js:153:9)
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: '@greenco/screen',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/the-kid/work/contract-work/green/node_modules/.bin/lerna',
+0 silly argv   pkg: 'ipfs-core@0.60.0'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/the-kid/work/contract-work/green
+3 error ipfs-core: No matching version found for ipfs-core@0.60.0.
+3 error     at module.exports (/Users/the-kid/work/contract-work/green/node_modules/npm-pick-manifest/index.js:209:23)

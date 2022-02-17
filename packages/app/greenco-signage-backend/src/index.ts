@@ -14,6 +14,8 @@ import resolvers from "./resolvers"
 
 import signageApi from './routes'
 
+import amqp from 'amqplib'
+
 import {OGM} from "@neo4j/graphql-ogm"
 import { FileStore } from './de-file-store'
 import { Pool } from 'pg';
@@ -31,6 +33,16 @@ const greenlock = require("greenlock-express");
 
 	app.use(cors())
 	
+	const mq = await amqp.connect(
+		process.env.RABBIT_URL || 'amqp://localhost'
+	)
+
+	const channel = await mq.createChannel()
+
+	await channel.assertQueue(`GREEN-MACHINE:UPDATE`)
+	await channel.assertQueue(`GREEN-MACHINE:RESTART`)
+	await channel.assertQueue(`GREEN-SCREEN:SCHEDULE:RELOAD`)
+
 	const driver = neo4j.driver(
 		process.env.NEO4J_URI || "localhost",
 		neo4j.auth.basic(process.env.NEO4J_USER || "neo4j", process.env.NEO4J_PASSWORD || "test")
@@ -48,10 +60,16 @@ const greenlock = require("greenlock-express");
 	console.log("Postgres")
 
 	const fs = new FileStore();
+/*
+{
+		url: process.env.IPFS_URL || 'http://localhost:5001'
+	}
+*/
+	await fs.init({
+		url: process.env.IPFS_URL || 'http://localhost:5001'
+	})
 
-	await fs.init()
-
-	const resolved = await resolvers(fs, pgClient)
+	const resolved = await resolvers(fs, pgClient, channel)
 	// const ogm = new OGM({typeDefs, driver})
 	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
@@ -63,7 +81,7 @@ const greenlock = require("greenlock-express");
 			resolvers: resolved,
 			driver
 		},
-		dev: false
+		dev: false,
 	})
 
 	await graphServer.init()

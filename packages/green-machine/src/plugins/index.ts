@@ -1,4 +1,4 @@
-import fs, { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import fs, { existsSync, mkdirSync, readdirSync, readFile, readFileSync, writeFileSync } from 'fs';
 import git from 'isomorphic-git'
 import http from 'isomorphic-git/http/node'
 import {exec, spawn} from 'child_process'
@@ -8,11 +8,23 @@ export interface Plugin {
 	type: 'node' | 'python' | 'script';
 	name: string;
 	source: string;
+	sourceVersion?: string;
 	sourceType: 'npm' | 'git'
 }
 
 export interface PluginManagerOptions {
 	pluginDirectory: string;
+	// initPlugins: Plugin[]
+}
+
+export abstract class AbstractPlugin {
+	start(){
+
+	}
+
+	async handleMessage(msg: string){
+
+	}
 }
 
 export class PluginManager {
@@ -20,31 +32,119 @@ export class PluginManager {
 
 	private pluginConfPath: string;
 
-	private plugins: any[] = [];
+	// private initPlugins: Plugin[] = [];
+
+	private pluginInstances : {[key: string]: AbstractPlugin} = {}
+	private pythonInstances : {[key: string]: any} = {};
 
 	private configuration: {
 		plugins: Plugin[]
 	} = {plugins: []}
 
 	constructor(opts: PluginManagerOptions) {
-		this.plugins = [];
+		// this.initPlugins = opts.initPlugins
 		this.pluginDirectory = opts.pluginDirectory;
 		this.pluginConfPath = path.join(this.pluginDirectory, './plugins.json')	
+
 	}
 
-	init(){
+	async init(plugins?: Plugin[]){
 		let configuration:  {
 			plugins: Plugin[]
 		} = {
-			plugins: []
-		}
-		if(existsSync(this.pluginConfPath)){
-			configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
-		}else{
-			writeFileSync(this.pluginConfPath, JSON.stringify(configuration))
+			plugins: plugins || [] //this.initPlugins
 		}
 
+		if(!existsSync(this.pluginDirectory)){
+			mkdirSync(this.pluginDirectory, {recursive: true})
+		}
+
+		// if(existsSync(this.pluginConfPath)){
+		// 	configuration = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
+		// }else{
+			writeFileSync(this.pluginConfPath, JSON.stringify(configuration))
+		// }
+
 		this.configuration = configuration
+
+		await this.installPlugins()
+	}
+
+	async startAll(token?: string){
+		let python_plugins = this.configuration.plugins.filter((plugin) => plugin.type == 'python');
+		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
+		
+		console.log("Start All", {plugin_names, python_plugins}
+		)
+		const plugins = await this.loadPlugins(
+			plugin_names
+		);
+
+		console.log("Loaded", {plugins})
+
+		const instances = plugins.map((plugin) => {
+			const { default : module } = plugin?.module;
+			return plugin && {
+				id: plugin?.id || '',
+				instance: new module(token)
+			}
+		})
+
+		console.log("instances", {instances})
+
+		this.pluginInstances =  instances.reduce((prev, curr) => ({
+			...prev,
+			[curr?.id || '']: curr?.instance
+		}), {})
+
+		await Promise.all(python_plugins.map((plugin) => {
+			let plugin_path = path.join(this.pluginDirectory, `./${plugin.name}`)
+
+			let plugin_exec = path.join(plugin_path, `./index.py`)
+
+			let pid = spawn(`python3`, [`${plugin_exec}`], {windowsHide: true, cwd: plugin_path})
+			console.log("Spawn python process", {pid});
+
+			pid.stdout.on('data', (data) => {
+				console.log(`${plugin.name} stdout: ${data.toString()}`)	
+			})
+
+			pid.stderr.on('data', (data) => {
+				console.log(`${plugin.name} stderr: ${data.toString()}`)	
+			});
+			
+			// , (err, stdout, stderr) => {
+			// 	if(err) console.error(`Failed to start plugin ${plugin.name}`, err)
+			// 	console.log(`Started plugin ${plugin.name}`)
+			// })
+
+		}))
+		console.log("Started")
+
+		await Promise.all(Object.keys(this.pluginInstances).map(async (plugin_key) => {
+			let plugin = this.pluginInstances[plugin_key];
+			return plugin.start()
+		}))
+
+		
+
+	}
+
+	async handleMessage(message: {plugin: string, message: any}){
+		let plugin = this.pluginInstances[message.plugin]
+		if(plugin){
+			await plugin.handleMessage(message.message)
+		}
+
+	}
+
+	async getGlobalVersion(name: string){
+		return await new Promise((resolve, reject) => {
+			exec(`npm info -g ${name} version`, (err, stdout, stderr) => {
+				if(err) return reject(err)
+				resolve(stdout.trim())
+			})
+		})
 	}
 
 	public async loadPlugins(plugins: string[]){
@@ -52,28 +152,37 @@ export class PluginManager {
 
 		console.log({plugins})
 
-		const load = plugins.map((plugin) => {
+		const loadedNpm = plugins.map((plugin) => {
 			try{
 				const p = require.resolve(plugin, {
 					paths: [path.join(this.pluginDirectory, './node_modules')]
 				})
-				return require(p);
+				return {
+					id: plugin,
+					module: require(p)
+				}
 			}catch(e){
+				console.error(`Failed to load plugin ${plugin}`, e)
 				return null;
 			}
 		}).filter((a)=> a != null);
 
-	
-		console.log({load})
+		return loadedNpm;
+
 	}
 
 	public async installPlugin(plugin: Plugin) {
-		switch(plugin.sourceType){
-			case 'git':
-				return await this.installFromGit(plugin);
-			case 'npm':
-				return await this.installFromNpm(plugin)
+		try{
+			switch(plugin.sourceType){
+				case 'git':
+					return await this.installFromGit(plugin);
+				case 'npm':
+					return await this.installFromNpm(plugin)
+			}
+		}catch(err){
+			console.error(`Failed to install plugin ${plugin.name}`, err)
 		}
+
 	}
 
 	public async installPlugins(){
@@ -81,6 +190,7 @@ export class PluginManager {
 		// 	plugins: Plugin[]
 		// } = JSON.parse(readFileSync(this.pluginConfPath, {encoding: 'utf-8'}) || '{}')
 
+		console.log("Installing Plugins");
 		await Promise.all(this.configuration.plugins.map(async (plugin) => {
 			const installResult = await this.installPlugin(plugin)
 			console.log({installResult})
@@ -112,33 +222,50 @@ export class PluginManager {
 				})
 			}
 
-			switch(plugin.type){
-				case 'node':
-					exec('npm install', {
-						cwd: pluginPath
-					}, (err, stdout, stderr) => {
-						if(err) return reject(err);
-						resolve(stdout)
-					})
-				break;
-				case 'python':
-					exec('python3 -m pip install', {
-						cwd: pluginPath
-					}, (err, stdout, stderr) => {
-						if(err) return reject(err);
-						resolve(stdout)
-					})
-				break;
+			try{
+				switch(plugin.type){
+					case 'node':
+						exec('npm install', {
+							windowsHide: true, 
+							cwd: pluginPath
+						}, (err, stdout, stderr) => {
+							if(err) return reject(err);
+							resolve(stdout)
+						})
+					break;
+					case 'python':
+						exec('python3 -m pip install -r requirements.txt', {
+							cwd: pluginPath,
+							windowsHide: true, 
+						}, (err, stdout, stderr) => {
+							if(err) return reject(err);
+							resolve(stdout)
+						})
+					break;
+				}
+			}catch(err){
+				console.error(`Error installing plugin ${plugin.name}`, err)
 			}
 		})
 	}
 
 	private async installFromNpm(plugin: Plugin){
 		return await new Promise((resolve, reject) => {
-			exec(`npm install ${plugin.source}`, {
-				cwd: `${this.pluginDirectory}`
+			let install = plugin.sourceVersion ? `${plugin.source}@${plugin.sourceVersion}` : plugin.source;
+			exec(`npm install ${install}`, {
+				cwd: `${this.pluginDirectory}`,
+				windowsHide: true, 
 			}, (err, stdout, stderr) => {
 				if(err) return reject(err)
+				resolve(stdout)
+			})
+		})
+	}
+
+	public async installGlobal(plugin: string){
+		return await new Promise((resolve, reject) => {
+			exec(`npm install -g ${plugin}`, (err, stdout, stderr) => {
+				if(err) return reject(err);
 				resolve(stdout)
 			})
 		})

@@ -10,4 +10,6 @@ RUN yarn
 
 RUN yarn build
 
+RUN npm i -g forever
+
 CMD ["node", "./dist/index.js"]

@@ -1,9 +1,9 @@
 import { Box, Button, Text, List } from 'grommet';
 import React, { useState } from 'react';
-import { Add } from 'grommet-icons';
+import { Add, Monitor, Template } from 'grommet-icons';
 import { GreenScreen, mutation, useMutation, useQuery } from '@greenco/signage-api'
 import { CreateScreenModal } from '../../modals/create-screen'
-import { useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { ColorDot } from '@hexhive/ui';
 
 export interface DisplayListProps {
@@ -57,7 +57,7 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
         <Box
             flex
             overflow="hidden"
-            round="small"
+            round="xsmall"
             background="neutral-1"
             elevation="small">
             <CreateScreenModal 
@@ -75,24 +75,26 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
                 <Text>Screens</Text>
                 <Button plain hoverIndicator style={{padding: 6, borderRadius: 3}} onClick={() => openModal(true)} icon={<Add size="small" />} />
             </Box>
-            <Box  overflow="scroll" flex>
-                <List 
-                    onClickItem={(ev) => navigate(`${ev.item.id}`)}
-                    primaryKey={"name"}
-                    data={screens}>
-                    {(datum : GreenScreen) => (
-                        <Box
-                            align="center" 
-                            direction='row'>
-                            <ColorDot 
-                                size={7}
-                                color={datum?.online ? 'green' : "red"}/>
-                            <Text>
-                                {datum?.name}
-                            </Text>
-                        </Box>
-                    )}
-                </List>
+            <Box  direction='row' flex>
+                <Box flex overflow={"scroll"}>
+                    <List 
+                        onClickItem={(ev) => navigate(`${ev.item.id}`)}
+                        primaryKey={"name"}
+                        data={screens}>
+                        {(datum : GreenScreen) => (
+                            <Box
+                                align="center" 
+                                direction='row'>
+                                <ColorDot 
+                                    size={7}
+                                    color={datum?.online ? 'green' : "red"}/>
+                                <Text>
+                                    {datum?.name}
+                                </Text>
+                            </Box>
+                        )}
+                    </List>
+                </Box>               
             </Box>
         </Box>
     )

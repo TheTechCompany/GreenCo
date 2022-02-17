@@ -28,6 +28,8 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                 ...item.nodesDeleted?.[0]
             }
         }
+    }, {
+        refetchQueries: [query.campaigns()]
     })
     const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string}) => {
        const item = mutation.updateHiveOrganisations({
@@ -61,7 +63,7 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
             background="neutral-1"
             flex
             overflow="hidden"
-            round="small"
+            round="xsmall"
             elevation="small">
            <CampaignModal   
             open={modalOpen}

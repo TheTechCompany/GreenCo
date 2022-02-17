@@ -1,7 +1,7 @@
 import { Arguments, CommandBuilder, string } from 'yargs';
 import crypto from 'crypto';
 import { existsSync, writeFileSync } from 'fs';
-import { GreenScreen } from '..';
+import GreenScreen from '..';
 
 const Moniker = require('moniker')
 // import jwt from 'jsonwebtoken'

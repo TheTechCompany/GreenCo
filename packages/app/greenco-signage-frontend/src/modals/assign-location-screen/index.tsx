@@ -1,5 +1,5 @@
 import { BaseModal, FormControl, FormInput } from '@hexhive/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, TextInput } from 'grommet';
 import React from 'react';
 
@@ -9,10 +9,19 @@ export const AssignLocationScreenModal = (props) => {
 	const onSubmit = () => {
 		props.onSubmit(assignment)
 	}
+
+	useEffect(() => {
+		setAssignment({
+			...props.selected,
+			screen: props.selected?.screen?.id,
+		})
+	}, [props.selected])
+
 	return (
 		<BaseModal
 			open={props.open}
 			onClose={props.onClose}
+			onDelete={props.onDelete}
 			onSubmit={onSubmit}
 			title="Assign Screen"
 			>
@@ -23,6 +32,7 @@ export const AssignLocationScreenModal = (props) => {
 			
 			<Box direction="row">
 				<FormInput 
+					type='number'
 					value={assignment.lat}
 					onChange={(e) => setAssignment({...assignment, lat: e})}
 					placeholder="Lat" />

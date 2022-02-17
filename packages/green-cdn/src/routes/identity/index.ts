@@ -1,24 +1,27 @@
 import { Router } from "express";
-import { Session } from "neo4j-driver";
+import { Driver, Session } from "neo4j-driver";
 import { v4 } from "uuid";
 import jwt from 'jsonwebtoken'
 
-export default async (session: Session) => {
+export default async (driver: Driver) => {
 
 	const router = Router()
 
 	router.route('/')
 		.post(async (req, res) => {
-			let { hostname, memory, memoryUsed, cpus } = req.body;
-			let networkName = (req as any).hostname.replace('.hexhive.io', '');
+			const session = driver.session()
+
+			let { hostname, memory, memoryUsed, cpus, os, network, agentVersion } = req.body;
+
+			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})
 				MERGE (screen)-[:HAS_SLOT]->(slot:ScreenSlot {hostname: $hostname})
 				ON CREATE
-					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus
+					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus, slot.os = $os, slot.ip = $ipAddr, slot.agentVersion = $agentVersion
 				ON MATCH
-					SET slot.memoryUsed = $memoryUsed
+					SET slot.memoryUsed = $memoryUsed, slot.ip = $ipAddr, slot.agentVersion = $agentVersion, slot.os = $os
 				return screen{
 					.*,
 					slot: slot{.*}
@@ -29,7 +32,10 @@ export default async (session: Session) => {
 				slotId: v4(),
 				memory: memory,
 				memoryUsed: memoryUsed,
-				cpus: cpus
+				cpus: cpus,
+				os: os || 'none',
+				agentVersion: agentVersion || '0.0.0',
+				ipAddr: network?.find((a: {interface: string, addresses: string[]}) => a.interface == "Ethernet")?.addresses?.[0] || '169.169.169.169'
 			})
 
 			const data = result.records[0].get(0)
@@ -39,20 +45,27 @@ export default async (session: Session) => {
 				slot: data.slot.id
 			}, 'secret')
 
+			session.close()
+
 			res.send({
 				data,
 				token
 			})
 		})
 		.get(async (req, res) => {
-			let networkName = (req as any).hostname.replace('.hexhive.io', '');
+			const session = driver.session()
+
+			let networkName = (req as any).user.hostname.replace('.hexhive.io', '');
 			
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
 
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})-[:HAS_SLOT]->(slot:ScreenSlot {id: $id})
+				OPTIONAL MATCH (slot)-[:USES_SLOT]->(templateSlot:TemplateSlot)-[:USES_PLUGIN]->(plugin:TemplateSlotPlugin)
 				return screen{
 					.*,
+					slotName: templateSlot.name,
+					plugins: collect(plugin{.*}),
 					slot: slot{.*}
 				}
 			`, {
@@ -61,6 +74,10 @@ export default async (session: Session) => {
 			})
 
 			const data = result.records[0].get(0)
+
+			session.close()
+
+
 			res.send({
 				data
 			})

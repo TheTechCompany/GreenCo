@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Text } from 'grommet';
-import { client, useQuery } from '@greenco/signage-api';
+import { Box, Button, Select, Text } from 'grommet';
+import { client, useMutation, useQuery } from '@greenco/signage-api';
 import { Analytics, Scorecard, Monitor, Map, SchedulePlay } from 'grommet-icons';
 import { Route, Routes, useMatch, useResolvedPath } from 'react-router-dom';
 import { ScheduleLocations } from './views/ScheduleLocations';
@@ -10,6 +10,7 @@ import { ScheduleSingleProvider } from './context';
 import { useQuery as useApolloQuery, useApolloClient, gql } from '@apollo/client'
 import { ScheduleTiers } from './views/ScheduleTiers';
 import { useParams, useNavigate } from 'react-router-dom'
+import { ScheduleViews } from './views/ScheduleViews';
 export const ScheduleSingle : React.FC<{}> = (props) => {
 	const query = useQuery()
 	const client = useApolloClient()
@@ -24,19 +25,61 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 
 	const { data } = useApolloQuery(gql`
 		query Q ($id: ID){
+			greenScreenTemplates {
+				id
+				name
+
+				slots {
+					id
+					name
+				}
+			}
+
 			schedules(where: {id: $id}) {
 				id
 				name
 
-				
+				template {
+					id
+					name
+
+					slots {
+						id
+						name
+					}
+				}
+
 				locations {
 					id
 					name
+
+					locations {
+						id
+						name
+						lat
+						lng
+					}
+
+
 				}
 
-				campaigns {
+				slots {
 					id
-					name
+					slot {
+						id
+						name
+					}
+					campaign {
+						id
+						name
+					}
+					tier {
+						id
+						name
+						slots
+					}
+					startDate
+					endDate
 				}
 
 				tiers {
@@ -44,31 +87,25 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 					name
 					percent
 					slots
-				}
-
-				campaignsConnection {
-					edges {
-						tier
-						startDate
-						endDate
-						screen
-						node {
-							id
-							name
-						}
-					}
+					color
 				}
 
 			
 			}
 		}
-	`)
+	`, {
+		variables: {
+			id
+		}
+	})
 
 	const refresh = () => {
 		client.refetchQueries({include: ['Q']})
 	}
 
 	const schedule = data?.schedules?.[0]
+
+	const templates = data?.greenScreenTemplates || []
 
 	const menu = [ 
 
@@ -92,17 +129,37 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 			label: 'Reports'
 		}
 	]
+
+	const [updateScheduleTemplate] = useMutation((mutation, args: {template: string}) => {
+		const item = mutation.updateSchedules({
+			where: {id: id},
+			update: {
+				template: {
+					connect: {where: {node: {id: args.template}}},
+					disconnect: {where: {node: {id: args.template}}}
+				}
+			}
+		})
+		return {
+			item: {
+				...item.schedules?.[0]
+			}
+		}
+	})
+
 	return (
 		<ScheduleSingleProvider value={{
 			scheduleId: id,
 			locations: schedule?.locations,
 			screens: schedule?.screens,
-			campaigns: schedule?.campaignsConnection?.edges?.map((edge: any) => ({
-				...edge.node, 
-				screen: edge.screen,
-				tier: schedule?.tiers.find((a: any) => a.id == edge.tier), 
-				dates: [edge.startDate, edge.endDate]
-			})),
+			views: schedule?.template?.slots,
+			campaigns: schedule?.slots.map((slot) => {
+					return {
+						...slot,
+						dates: [slot.startDate, slot.endDate],
+						tier: schedule?.tiers.find((a) => a.id == slot.tier.id)
+					}
+			}),
 			tiers: schedule?.tiers,
 			refresh
 		}}>
@@ -112,8 +169,27 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 			flex 
 			elevation="small" 
 			background="neutral-1">
-			<Box background="accent-2" pad="xsmall" direction="row">
+			<Box background="accent-2" pad="xsmall" align="center" justify="between" direction="row">
 				<Text>{schedule?.name}</Text>
+
+				<Select
+					labelKey={"name"}
+					valueKey={{key: 'id', reduce: true}}
+					placeholder="Select Template"
+					plain
+					size="small"
+					value={schedule?.template?.id}
+					onChange={({value}) => {
+						updateScheduleTemplate({
+							args: {
+								template: value.id
+							}
+						}).then(() => {
+							refresh?.()
+						})
+					}}
+					options={templates}
+					/>
 			</Box>
 			<Box direction="row" flex>
 				<Box elevation="small" background="accent-1">

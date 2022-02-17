@@ -1,5 +1,5 @@
 import { BaseModal, FormControl } from '@hexhive/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput } from 'grommet';
 import React from 'react';
 
@@ -9,12 +9,20 @@ export const CreateLocationModal = (props) => {
 	const onSubmit = () => {
 		props.onSubmit(location)
 	}
+
+	useEffect(() => {
+		setLocation({
+			...props.selected
+		})
+	}, [props.selected])
+
 	return (
 		<BaseModal
 			open={props.open}
 			onClose={props.onClose}
+			onDelete={props.selected && props.onDelete}
 			onSubmit={onSubmit}
-			title="Create Location"
+			title={`${props.selected ? 'Update' : 'Create'} Location`}
 			>
 			<TextInput 
 				value={location.name}

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, List, Text, Button } from 'grommet';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { Add } from 'grommet-icons';
+import { Add, Edit } from 'grommet-icons';
 import { CreateScheduleModal } from '../../modals/create-schedule';
 import { useNavigate } from 'react-router-dom'
 export interface ScheduleListProps {
@@ -11,6 +11,7 @@ export interface ScheduleListProps {
 export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 	const navigate = useNavigate()
 
+	const [ selected, setSelected ] = useState<any | null>(null)
 	const [ modalOpen, setModalOpen ] = React.useState(false);
 
 	const query = useQuery()
@@ -18,26 +19,81 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 	const schedules = query.schedules()
 
 	const [ createSchedule, createInfo ] = useMutation((mutation, args: {name: string}) => {
-		// const item = mutation.updateHiveOrganisations({
-		// 	update: {
-		// 		schedules: [{
-		// 			create: [{
-		// 				node: {
-		// 					name: args.name,
-		// 				}
-		// 			}]
-		// 		}]
-		// 	}
-		// })
-		const item = mutation.createSchedules({
-			input: [{
-				name: args.name,
-			}]
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				schedules: [{
+					create: [{
+						node: {
+							name: args.name,
+						}
+					}]
+				}]
+			}
 		})
+		// const item = mutation.createSchedules({
+		// 	input: [{
+		// 		name: args.name,
+		// 	}]
+		// })
 
 		return {
 			item: {
-				...item.schedules?.[0]
+				...item.hiveOrganisations?.[0]
+			}
+		}
+	}, {
+		awaitRefetchQueries: true,
+		refetchQueries: [query.schedules()]
+	})
+
+	const [ updateSchedule ] = useMutation((mutation, args: {id: string, name: string}) => {
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				schedules: [{
+					where: {node: {id: args.id}},
+					update: {
+						node: {
+							name: args.name
+						}
+					}
+				}]
+			}
+		})
+		// const item = mutation.createSchedules({
+		// 	input: [{
+		// 		name: args.name,
+		// 	}]
+		// })
+
+		return {
+			item: {
+				...item.hiveOrganisations?.[0]
+			}
+		}
+	}, {
+		awaitRefetchQueries: true,
+		refetchQueries: [query.schedules()]
+	})
+
+	const [ deleteSchedule ] = useMutation((mutation, args: {id: string}) => {
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				schedules: [{
+					delete: [{
+						where: {node: {id: args.id}}
+					}]
+				}]
+			}
+		})
+		// const item = mutation.createSchedules({
+		// 	input: [{
+		// 		name: args.name,
+		// 	}]
+		// })
+
+		return {
+			item: {
+				...item.hiveOrganisations?.[0]
 			}
 		}
 	}, {
@@ -53,12 +109,29 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 			background="light-1" 
 			flex>
 			<CreateScheduleModal 
+				selected={selected}
 				onSubmit={(schedule: any) => {
-					createSchedule({args: {name: schedule.name}}).then(() => {
+					if(schedule.id){
+						createSchedule({args: {name: schedule.name}}).then(() => {
+							setModalOpen(false)
+						})
+					}else{
+						updateSchedule({args: {id: selected.id, name: schedule.name}}).then(() => {
+							setModalOpen(false)
+							setSelected(null)
+						})
+					}
+				}}
+				onDelete={() => {
+					deleteSchedule({args: {id: selected.id}}).then(() => {
 						setModalOpen(false)
+						setSelected(null)
 					})
 				}}
-				onClose={() => setModalOpen(false)}
+				onClose={() => {
+					setModalOpen(false)
+					setSelected(null)
+				}}
 				open={modalOpen} />
 			<Box 
 				pad="xsmall"
@@ -77,7 +150,22 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 			<List
 				onClickItem={(ev) => navigate(`${ev.item.id}`)}
 				primaryKey="name"
-				data={schedules} />
+				data={schedules}>
+				{(datum) => (
+					<Box direction='row' align='center' justify='between'>
+						<Text>{datum.name}</Text>
+						<Button 
+							onClick={() => {
+								setSelected(datum)
+								setModalOpen(true)
+							}}
+							hoverIndicator 
+							plain 
+							style={{padding: 6, borderRadius: 3}} 
+							icon={<Edit size="small" />} />
+					</Box>
+				)}
+			</List>
 		</Box>
 	)
 }

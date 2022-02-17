@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Text, List } from 'grommet';
 import { Monitor, Analytics } from 'grommet-icons'
-import { gql, useQuery } from '@apollo/client';
+import { gql, useApolloClient, useQuery } from '@apollo/client';
 import { Route, Routes, useParams, useNavigate, useResolvedPath, useMatch } from 'react-router-dom';
 import { LocationAnalytics } from './LocationAnalytics';
 // import { ClusterSchedule } from './ClusterSchedule';
-import { ClusterScreens } from './ClusterScreens';
+import { ClusterScreens } from './LocationScreens';
 import { ClusterSingleProvider } from './context';
 import { ClusterTiers } from './ClusterTiers';
 
@@ -18,6 +18,8 @@ export const LocationSingle = (props) => {
 
 	const navigate = useNavigate()
 	const { id } = useParams()
+
+	const client = useApolloClient()
 
 	const { data } = useQuery(gql`
 		query Q ($id: ID){
@@ -67,6 +69,7 @@ export const LocationSingle = (props) => {
 		<ClusterSingleProvider value={{
 			id: id,
 			locations,
+			refresh: () => client.refetchQueries({include: ["Q"]}),
 			screens: greenScreens,
 		}}>
 			<Box overflow="hidden" flex elevation="small" background="neutral-1" round="xsmall">
@@ -93,6 +96,7 @@ export const LocationSingle = (props) => {
 					</Box>
 					<Box flex pad="xsmall">
 						<Routes>
+							{/* <Route path={''} element={<ClusterScreens />} /> */}
 							<Route path={`analytics`} element={<LocationAnalytics/>} />
 							<Route path={`screens`} element={<ClusterScreens />} />
 							{/* <Route path={`${props.match.url}/schedule`} component={ClusterSchedule} /> */}

@@ -1,6 +1,6 @@
 import { BaseModal } from '@hexhive/ui';
 import { Box, TextInput } from 'grommet';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const CreateScheduleModal = (props) => {
 
@@ -9,13 +9,20 @@ export const CreateScheduleModal = (props) => {
 	const onSubmit = () => {
 		props.onSubmit(schedule)
 	}
+
+	useEffect(() => {
+		setSchedule({
+			...props.selected
+		})
+	}, [props.selected])
 	
 	return (
 		<BaseModal
 			open={props.open}
 			onClose={props.onClose}
 			onSubmit={onSubmit}
-			title="Create Schedule" >
+			onDelete={props.selected && props.onDelete}
+			title={`${props.selected ? 'Update' : 'Create'} Schedule`} >
 
 			<Box>
 				<TextInput 

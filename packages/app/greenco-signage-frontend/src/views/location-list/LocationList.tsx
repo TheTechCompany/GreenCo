@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Text, Button, List } from 'grommet';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { Add, List as ListIcon, Map as MapIcon } from 'grommet-icons';
+import { Add, List as ListIcon, Edit, Map as MapIcon } from 'grommet-icons';
 import { CreateLocationModal } from '../../modals/create-location';
 import { useNavigate } from 'react-router-dom'
 import { LocationMap } from '../../components/location-map';
@@ -13,13 +13,16 @@ export interface LocationListProps {
 export const LocationList : React.FC<LocationListProps> = (props) => {
 	const navigate = useNavigate()
 
+	const [ selected, setSelected ] = useState<any | null>(null)
 	const [ modalOpen, openModal ] = React.useState(false);
 
 
 	const [ view, setView ] = useState<string>('list');
 	
 	const query = useQuery()
-	const locations = query.locationGroups()
+	const locationGroups = query.locationGroups()
+	const locations = query.locations()
+
 
 	const [ createLocation, createInfo ] = useMutation((mutation, args: {name: string, machine: string}) => {
 
@@ -49,6 +52,62 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 		refetchQueries: [query.locationGroups()]
 	})
 
+	const [ updateLocation ] = useMutation((mutation, args: {id: string, name: string, machine: string}) => {
+
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				locationGroups: [{
+					where: {node: {id: args.id}},
+					update: {
+						node: {
+							name: args.name
+						}
+					}
+				}]
+			}
+		})
+		// const item = mutation.createLocations({input: [{
+		// 	name: args.name,
+		// 	...machineUpdate
+		// }]})
+		return {
+			item: {
+				...item.hiveOrganisations?.[0]
+			}
+		}
+
+	}, {
+		awaitRefetchQueries: true,
+		refetchQueries: [query.locationGroups()]
+	})
+
+	const [ deleteLocation ] = useMutation((mutation, args: {id: string}) => {
+
+		const item = mutation.updateHiveOrganisations({
+			update: {
+				locationGroups: [{
+					delete: [{
+						where: {node: {id: args.id}}
+				
+					}]
+				}]
+			}
+		})
+		// const item = mutation.createLocations({input: [{
+		// 	name: args.name,
+		// 	...machineUpdate
+		// }]})
+		return {
+			item: {
+				...item.hiveOrganisations?.[0]
+			}
+		}
+
+	}, {
+		awaitRefetchQueries: true,
+		refetchQueries: [query.locationGroups()]
+	})
+
 	return (
 		<Box
 			round="xsmall"
@@ -59,12 +118,39 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 			>
 			
 			<CreateLocationModal
-				onClose={() => openModal(false)}
+				selected={selected}
+				onClose={() => {
+					openModal(false)
+					setSelected(null)
+				}}
 				onSubmit={(cluster) => {
-					createLocation({args: {
-						...cluster
-					}}).then(() => {
+					if(cluster.id){
+						updateLocation({
+							args: {
+								id: cluster.id,
+								...cluster
+							}
+						}).then(() => {
+							setSelected(null)
+							openModal(false);
+						})
+					}else{
+						createLocation({args: {
+							...cluster
+						}}).then(() => {
+							openModal(false)
+						})
+					}
+				}}
+				onDelete={() => {
+					if(!selected.id) return;
+					deleteLocation({
+						args: {
+							id: selected.id
+						}
+					}).then(() => {
 						openModal(false)
+						setSelected(null)
 					})
 				}}
 				open={modalOpen}
@@ -93,15 +179,24 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 							<List
 								onClickItem={(ev) => navigate(`${ev.item.id}`)}
 								primaryKey={"name"}
-								data={locations}>
+								data={locationGroups}>
 								{(datum) => (
-									<Box>
+									<Box direction='row' align='center' justify='between'>
 										<Text>{datum?.name}</Text>
+										<Button 
+											onClick={() => {
+												openModal(true)
+												setSelected(datum)
+											}}
+											plain
+											hoverIndicator
+											style={{padding: 6, borderRadius: 3}}
+											icon={<Edit />} />
 									</Box>
 								)}
 							</List>
 				) : (
-					<LocationMap />
+					<LocationMap markers={locations.map((x) => ({lat: x.lat || '0', lng: x.lng || '0'}))  || []} />
 				)}
 			</Box>
 

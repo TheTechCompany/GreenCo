@@ -1,11 +1,21 @@
 import { FileStore } from "../de-file-store"
 import { Pool } from 'pg';
+import { Channel } from 'amqplib'
 
-export default async (fs: FileStore, pool: Pool) => {
+export default async (fs: FileStore, pool: Pool, channel: Channel) => {
 
 	const client = await pool.connect()
 
 	return {
+		Mutation: {
+			updateSlotClient: async (parent: any, {id, version}: any, context: any, info: any) => {
+				return channel.sendToQueue(`GREEN-MACHINE:UPDATE`, Buffer.from(JSON.stringify({slot: id, version: version || 'latest'})))
+			},
+			pushScheduleUpdate: async (parent: any, {schedule}: any, context: any, info: any) => {
+				return channel.sendToQueue(`GREEN-SCREEN:SCHEDULE:RELOAD`, Buffer.from(JSON.stringify({schedule: schedule})))
+			}
+
+		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {
 				const res = await client.query(
@@ -24,7 +34,7 @@ export default async (fs: FileStore, pool: Pool) => {
 			interactions: async (root: any) => {
 				const res=  await client.query(
 					`SELECT COUNT(*) as interactions FROM green_screen_telemetry WHERE event=$1 AND source = $2 `, 
-					['campaign-interaction', `asset://${root.assetFolder}`])
+					['campaign-interaction', `asset://${root.id}`])
 				return res.rows?.[0]?.interactions || 0
 			},
 			interactionTimeline: async (root: any) => {
@@ -40,13 +50,13 @@ export default async (fs: FileStore, pool: Pool) => {
 					)
 					select time, SUM(cnt) over (order by time) as interactions from data`,
 					// `SELECT "timestamp" as time, SUM(COUNT(*)) OVER(ORDER BY "timestamp") as interactions FROM  green_screen_telemetry WHERE event=$1 AND source=$2 group by "timestamp"`, 
-					['campaign-interaction', `asset://${root.assetFolder}`])
+					['campaign-interaction', `asset://${root.id}`])
 				return res.rows
 			},
 			views: async (root: any) => {
 				const res=  await client.query(
 					`SELECT COUNT(*) as views FROM green_screen_telemetry WHERE event=$1 AND (properties -> 'id')::text = $2 `, 
-					['campaign-play', `"${root.assetFolder}"`])
+					['campaign-play', `"${root.id}"`])
 
 				console.log(res)
 				return res.rows?.[0]?.views || 0

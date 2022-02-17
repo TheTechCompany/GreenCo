@@ -12,30 +12,86 @@
 */
 
 import { ConfigManager } from "./config";
-import { PluginManager } from "./plugins";
+import { Plugin, PluginManager } from "./plugins";
 import axios from 'axios';
+import { connect, Socket } from "socket.io-client";
+import express, {Express} from 'express'
+import log from "loglevel";
+import { readFileSync } from "fs";
+
+const pkg = require('../package.json');
 
 export interface GreenMachineOptions {
 	pluginDirectory: string;
+	initPlugins: Plugin[]
 	controlUrl: string;
 }
 
 export class GreenMachine {
+
+	private controlSocket?: Socket;
 
 	private pluginManager: PluginManager;
 	private configManager: ConfigManager;
 
 	private opts: GreenMachineOptions;
 
+	private app : Express
+
 	constructor(opts: GreenMachineOptions){
 		this.opts = opts;
 		this.configManager = new ConfigManager()
 
 		this.pluginManager = new PluginManager({
-			pluginDirectory: opts.pluginDirectory
+			pluginDirectory: opts.pluginDirectory,
+			// initPlugins: opts.initPlugins
 		})
 
-		this.init()
+		this.app = express()
+
+		log.info(`Green Machine v${pkg.version}`)
+	}
+
+	initControlSocket(controlUrl: string, token: string){
+		let headers = {
+			authorization: `Bearer ${token}`
+		}
+
+		this.controlSocket = connect(controlUrl, {
+			extraHeaders: headers
+		});
+
+		this.controlSocket.on('update', async (event: {version: string}) => {
+			console.log("UPDATE", event.version)
+			await this.pluginManager.installGlobal(`${pkg.name}@${event.version}`)
+
+			const version = await this.pluginManager.getGlobalVersion(`${pkg.name}`)
+
+			console.log({version, pkgVersion: pkg.version})
+
+			if(version !== pkg.version){
+				process.exit()
+			}
+			// readFileSync(path.join(this.pluginManager.pluginDirectory, './plugins.json'), {encoding: 'utf-8'})
+		})
+
+		this.controlSocket.on('restart', async () => {
+			process.exit()
+		})
+
+		this.controlSocket.on('plugin-message', async (msg) => {
+			console.log("PLUGIN MESSAGE", msg)
+			await this.pluginManager.handleMessage(msg)
+		})
+
+		this.controlSocket.on('plugin-update', () => {
+
+		})
+
+		this.controlSocket.on('conf-update', () => {
+
+		})
+
 	}
 
 	async getToken(){
@@ -43,20 +99,37 @@ export class GreenMachine {
 			hostname: this.configManager.host.name,
 			memory: this.configManager.host.memory.total, 
 			memoryUsed: this.configManager.host.memory.used, 
-			cpus: this.configManager.host.cpus
+			cpus: this.configManager.host.cpus,
+			os: this.configManager.host.os,
+			network: this.configManager.host.network,
+			agentVersion: this.configManager.host.agentVersion
 		})
 		return result.data;
 	}
 
-	init(){
-		this.pluginManager.init()
-		// this.pluginManager.loadPlugins(['@greenco/screen'])
+	async getConfig(token: string) : Promise<{
+		data: {
+			slotName: string;
+			plugins: Plugin[];
+		}
+	}>{
+		const result = await axios.get(`${this.opts.controlUrl}/api/identity?token=${token}`)
+		return result.data
 	}
+
 
 	async start(){
 		const {token, data} = await this.getToken();
 
-		console.log(token, data)
+		const { data : {plugins}} = await this.getConfig(token)
+
+		this.pluginManager.init(plugins)
+
+		this.initControlSocket(this.opts.controlUrl, token);
+		
+		this.pluginManager.startAll(token)
+
+		this.app.listen(9090)
 	}
 
 }

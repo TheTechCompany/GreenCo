@@ -5,6 +5,7 @@ export const ClusterSingleContext = React.createContext<{
 	analytics?: any[],
 	locations?: any[],
 	screens?: any[]
+	refresh?: () => void;
 }>({
 
 })

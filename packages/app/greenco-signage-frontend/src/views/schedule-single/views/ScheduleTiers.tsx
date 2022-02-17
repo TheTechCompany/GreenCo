@@ -10,11 +10,12 @@ import { VisualizeTierModal } from '../../../modals/visualize-tier/VisualizeTier
 export const ScheduleTiers = (props: any) => {
 	const [ modalOpen, openModal ] = useState(false);
 	const [ visualModalOpen, openVisualModal ] = useState(false)
+	
 	const { scheduleId, tiers, refresh } = useContext(ScheduleSingleContext)
 
 	const [ selected, setSelected ] = useState<any>()
 
-	const [ createTier, createInfo ] = useMutation((mutation, args: {id: string, name: string, percent: number, slots: number}) => {
+	const [ createTier, createInfo ] = useMutation((mutation, args: {id: string, name: string, percent: number, slots: number, color: string}) => {
 		
 		let mute = {}
 
@@ -25,7 +26,8 @@ export const ScheduleTiers = (props: any) => {
 					node: {
 						name: args.name,
 						percent: args.percent,
-						slots: args.slots
+						slots: args.slots,
+						color: args.color
 					}
 				}
 			}
@@ -35,7 +37,8 @@ export const ScheduleTiers = (props: any) => {
 					node: {
 						name: args.name,
 						percent: args.percent,
-						slots: args.slots
+						slots: args.slots,
+						color: args.color
 					}
 				}]
 			}
@@ -74,16 +77,18 @@ export const ScheduleTiers = (props: any) => {
 				open={modalOpen}
 				selected={selected}
 				onSubmit={(tier: any) => {
+				
+						createTier({args: {
+							id: tier.id,
+							name: tier.name,
+							percent: tier.percent,
+							slots: tier.slots,
+							color: tier.color
+						}}).then(() => {
+							openModal(false)
+							refresh?.()
+						})
 					
-					createTier({args: {
-						id: tier.id,
-						name: tier.name,
-						percent: tier.percent,
-						slots: tier.slots
-					}}).then(() => {
-						openModal(false)
-						refresh?.()
-					})
 					setSelected(undefined)
 
 				}}
@@ -93,7 +98,7 @@ export const ScheduleTiers = (props: any) => {
 				}}
 				/>
 			<ScheduleMeter 
-				items={tiers?.filter((a) => a.percent).map((x, ix) => ({...x, label: x.name, percent: parseFloat(x.percent), color: ['red', 'green', 'blue', 'purple'][ix]}))}
+				items={tiers?.filter((a) => a.percent).map((x, ix) => ({...x, label: x.name, percent: parseFloat(x.percent), color: x.color}))}
 				/>
 			<List
 				primaryKey="name"

@@ -6,7 +6,7 @@ import { promises } from 'dns';
 promises.setServers(['192.168.255.1', '8.8.8.8'])
 
 
-export default async (session: Session, pgClient: Pool) => {
+export default async (driver: Driver, pgClient: Pool) => {
 
 
 	const router = Router()

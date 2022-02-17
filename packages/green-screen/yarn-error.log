@@ -1,0 +1,69 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install --mutex network:42424 --non-interactive
+
+PATH: 
+  /Users/the-kid/work/contract-work/green/node_modules/.bin:/Users/the-kid/work/contract-work/node_modules/.bin:/Users/the-kid/work/node_modules/.bin:/Users/the-kid/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/the-kid/work/contract-work/green/node_modules/.bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/the-kid/.cargo/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.3.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: ENFILE: file table overflow, open '/Users/the-kid/Library/Caches/Yarn/v6/npm-ipfs-core-types-0.4.0-ccda075b22305e096c3e74698baa9b9e7d5f7dce-integrity/node_modules/ipfs-core-types/.yarn-metadata.json'
+
+npm manifest: 
+  {
+  	"name": "@greenco/screen",
+  	"version": "0.0.1-alpha.43",
+  	"description": "",
+  	"main": "./dist/index.js",
+  	"files": [
+  		"dist/"
+  	],
+  	"publishConfig": {
+  		"access": "public"
+  	},
+  	"bin": {
+  		"green-screen": "./dist/cli.js"
+  	},
+  	"repository": {
+  		"type": "git",
+  		"url": "git+https://github.com/TheTechCompany/GreenScreen.git"
+  	},
+  	"author": "",
+  	"license": "ISC",
+  	"bugs": {
+  		"url": "https://github.com/TheTechCompany/GreenScreen/issues"
+  	},
+  	"homepage": "https://github.com/TheTechCompany/GreenScreen#readme",
+  	"dependencies": {
+  		"axios": "^0.24.0",
+  		"express": "^4.17.1",
+  		"ipfs": "0.55.0",
+  		"moniker": "^0.1.2",
+  		"puppeteer": "^12.0.0",
+  		"socket.io-client": "^4.4.0",
+  		"tar": "^6.1.11",
+  		"yargs": "^17.3.0"
+  	},
+  	"devDependencies": {
+  		"@types/express": "^4.17.13",
+  		"@types/mdns": "^0.0.34",
+  		"@types/tar": "^6.1.1",
+  		"@types/yargs": "^17.0.7",
+  		"ts-node": "^10.4.0",
+  		"typescript": "^4.5.2"
+  	},
+  	"gitHead": "b0c003199f79d76ab823d7a085ac00193a4008b0"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

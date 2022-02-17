@@ -1,5 +1,5 @@
 import { Box } from 'grommet';
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import marker from 'leaflet/dist/images/marker-icon.png'
@@ -22,23 +22,36 @@ L.Icon.Default.mergeOptions({
 // 	iconAnchor: [16, 42]
 // });
 
-export interface LocationMapProps {
 
+
+export interface LocationMapProps {
+	markers: {lat?: string, lng?: string}[]
 }
 
+//bounds={[[-36.9915, 174.8734], [-36.8807, 174.7981]]}
 export const LocationMap : React.FC<LocationMapProps> = (props) => {
+	const [ bounds, setBounds ] = useState<any>()
+
+	useEffect(() => {
+		let bounds = L.latLngBounds(props.markers.map((x) => [parseFloat(x.lat || '0'), parseFloat(x.lng || '0')]))
+		setBounds(bounds);
+	}, [props.markers])
+
+	console.log(bounds)
 	return (
 		<Box flex>
-			<MapContainer style={{flex: 1}} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+				<MapContainer center={[-36.8807, 174.7981]} zoom={13}  style={{flex: 1}} scrollWheelZoom={false}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			<Marker position={[51.505, -0.09]}>
+			{props.markers.filter((a) => a.lat && a.lng).map((marker) => (
+				<Marker position={[parseFloat(marker.lat || '0'), parseFloat(marker.lng || '0')]}>
 				<Popup>
 					A pretty CSS3 popup. <br /> Easily customizable.
 				</Popup>
-			</Marker>
+				</Marker>
+			))}
 			</MapContainer>
 		</Box>
 	)
