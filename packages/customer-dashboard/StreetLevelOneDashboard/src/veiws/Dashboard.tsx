@@ -8,7 +8,6 @@ export const Dashboard = () => (
   <>
     <HeaderBar />
     <Box direction="row" flex height="85vh">
-      <DashboardSidebar />
       <Outlet />
     </Box>
   </>
