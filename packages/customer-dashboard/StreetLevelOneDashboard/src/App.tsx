@@ -13,25 +13,32 @@ import { Dashboard } from "./veiws/Dashboard";
 
 const theme = {
   global: {
+    colors: {
+      brand: "#69f542",
+      control: "white",
+    },
     font: {
       family: "Roboto",
       size: "18px",
       height: "20px",
     },
+    active: { background: "white", color: "black" },
   },
 };
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<LoginForm />} />
-      <Route path="/dashboard" element={<Dashboard />}>
-        <Route path="campaignlist" element={<Campaigns />} />
-        <Route path="campaign" element={<Campaigns />} />
-        <Route path="reporting" element={<Reporting />} />
-        <Route path="settings" element={<Settings />} />
-      </Route>
-    </Routes>
+    <Grommet theme={theme}>
+      <Routes>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="campaignlist" element={<Campaigns />} />
+          <Route path="campaign" element={<Campaigns />} />
+          <Route path="reporting" element={<Reporting />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </Grommet>
   );
 }
 

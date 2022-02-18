@@ -13,6 +13,7 @@ export const HeaderBar = () => (
     <Image height="28vh" src="/assets/sl1_logo.png" />
     <Box direction="row" width="medium" justify="evenly">
       <Button
+        secondary
         color="white"
         label="Campaigns"
         hoverIndicator
@@ -20,6 +21,7 @@ export const HeaderBar = () => (
         href="/dashboard/campaignlist"
       />
       <Button
+        active
         color="white"
         label="Reporting"
         hoverIndicator
