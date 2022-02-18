@@ -3,6 +3,8 @@ import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
 import Screenshot from 'screenshot-desktop'
 
+const handsfree = require('./handsfree.js');
+
 export class DisplayManager {
 	private browser?: Browser;
 
@@ -84,6 +86,7 @@ export class DisplayManager {
 			await this.page?.goto(`http://localhost:3000/${campaign.assetFolder}`)
 			await this.page?.addScriptTag({content: analytics})
 	
+			await this.page?.addScriptTag({content: handsfree.toString()})
 		}catch(e){
 
 		}

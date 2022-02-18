@@ -57,8 +57,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
-    "@greenco/signage-api": "^0.0.1-alpha.9",
-    "@greenco/styles": "^0.0.1-alpha.10",
+    "@greenco/signage-api": "^0.0.2",
+    "@greenco/styles": "^0.0.2",
     "@hexhive/auth-ui": "^0.0.6",
     "@hexhive/ui": "^0.0.6-alpha.20",
     "@types/jest": "^26.0.23",
@@ -79,5 +79,6 @@
     "react-tag-input": "^6.8.0",
     "single-spa-react": "^4.2.0",
     "styled-components": "^5.3.3"
-  }
+  },
+  "version": "0.0.2"
 }
