@@ -23,12 +23,10 @@ export const LoginForm = () => {
       <Box
         border={{ color: "white", size: "small" }}
         round="medium"
-        pad="medium"
         align="center"
         justify="center"
-        width="medium"
+        width="large"
         height="medium"
-        alignContent="center"
       >
         <Form
           value={value}
@@ -46,6 +44,7 @@ export const LoginForm = () => {
             alignSelf="center"
             alignContent="center"
             justify="center"
+            textAlign="center"
           >
             <TextInput id="text-input-id" name="name" textAlign="center" />
           </FormField>
@@ -57,6 +56,7 @@ export const LoginForm = () => {
             htmlFor="text-input-id"
             alignSelf="center"
             justify="center"
+            textAlign="center"
           >
             <TextInput
               id="pass-input-id"
@@ -69,14 +69,25 @@ export const LoginForm = () => {
           <Box direction="row" gap="medium">
             <Button
               type="submit"
-              primary
               label="Submit"
-              color="black"
+              color="white"
               href="/dashboard"
             />
-            <Button type="reset" label="Reset" color="black" />
           </Box>
         </Form>
+        <Box
+          direction="row"
+          justify="between"
+          width="medium"
+          margin={{ top: "medium", bottom: "none" }}
+        >
+          <Button label="New account sign up" color="black" fill="horizontal" />
+          <Button
+            label="I have forgotten my password"
+            color="black"
+            fill="horizontal"
+          />
+        </Box>
       </Box>
     </Box>
   );

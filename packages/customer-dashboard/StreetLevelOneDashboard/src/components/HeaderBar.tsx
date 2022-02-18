@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Image, Header, Button, Menu } from "grommet";
+import { UserSettings } from "grommet-icons";
 
 export const HeaderBar = () => (
   <Header
@@ -11,7 +12,12 @@ export const HeaderBar = () => (
     height="15vh"
   >
     <Image height="28vh" src="/assets/sl1_logo.png" />
-    <Box direction="row" width="medium" justify="evenly">
+    <Box
+      direction="row"
+      width="large"
+      justify="evenly"
+      pad={{ horizontal: "medium" }}
+    >
       <Button
         secondary
         color="white"
@@ -29,7 +35,8 @@ export const HeaderBar = () => (
         href="/dashboard/reporting"
       />
       <Menu
-        label="settings"
+        icon={<UserSettings />}
+        label="Settings"
         items={[
           { label: "Edit Profile", onClick: () => {} },
           { label: "Change Password", onClick: () => {} },
