@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Image, Header, Button, Menu } from "grommet";
 import { UserSettings } from "grommet-icons";
 
+// TO MAKE BUTTONS ACTIVE WHEN ON PAGE - I image it's a simple useState thing I need to figure out
+
 export const HeaderBar = () => (
   <Header
     background="#000000"
