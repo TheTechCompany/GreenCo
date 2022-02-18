@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Grommet } from "grommet";
 import { HeaderBar } from "./components/HeaderBar";
-import { DashboardSidebar } from "./components/DashboardSidebar";
 import { Campaigns } from "./veiws/Campaigns";
+import { SingleCampaign } from "./veiws/SingleCampaign";
+
 import { Reporting } from "./veiws/Reporting";
 import { Settings } from "./veiws/Settings";
 
@@ -47,7 +48,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="campaignlist" element={<Campaigns />} />
-          <Route path="campaign" element={<Campaigns />} />
+          <Route path="campaign" element={<SingleCampaign />} />
           <Route path="reporting" element={<Reporting />} />
           <Route path="settings" element={<Settings />} />
         </Route>

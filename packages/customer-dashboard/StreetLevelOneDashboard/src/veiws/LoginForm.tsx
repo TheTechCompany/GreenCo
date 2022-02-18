@@ -2,6 +2,8 @@ import React from "react";
 import { Form, FormField, TextInput, Box, Button, Image, Text } from "grommet";
 import { Hide, View } from "grommet-icons";
 
+// NEED TO FIGURE OUT HOW TO CENTER THE HEADING ETC
+
 export const LoginForm = () => {
   const [value, setValue] = React.useState({});
   return (
