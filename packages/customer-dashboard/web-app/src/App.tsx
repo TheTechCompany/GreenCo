@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grommet } from "grommet";
-import { HeaderBar } from "./components/HeaderBar";
+import { HeaderBar } from "./components/Header";
 import { Campaigns } from "./views/Campaigns";
 import { SingleCampaign } from "./views/SingleCampaign";
 
