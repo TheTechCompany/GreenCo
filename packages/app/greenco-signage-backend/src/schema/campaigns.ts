@@ -11,6 +11,10 @@ export default `
 		id: ID! @id
 		name: String
 
+		peopleCount: [CameraAnalytic] @ignore
+
+		charts: [CampaignChart] @relationship(type: "HAS_CHART", direction: OUT)
+
 		views: Int @ignore
 		interactions: Int @ignore
 		interactionTimeline: [CampaignInteraction] @ignore
@@ -21,6 +25,23 @@ export default `
 		customer: String
 
 		organisation: HiveOrganisation @relationship(type: "HAS_CAMPAIGN", direction: IN)
+	}
+
+	type CampaignChart {
+		id: ID! @id
+		label: String
+		width: Int
+		height: Int
+		x: Int
+		y: Int
+
+		type: String
+
+		data: String
+		dataKey: String
+		total: Boolean
+
+		campaign: Campaign @relationship(type: "HAS_CHART", direction: IN)
 	}
 
 	type CampaignInteraction @exclude {

@@ -15,6 +15,8 @@ export const ScreenSingleContext = React.createContext<{
 		location: {
 			id: string;
 			name: string;
+			lat: string;
+			lng: string;
 		}
 	}
 	refresh?:() => void;

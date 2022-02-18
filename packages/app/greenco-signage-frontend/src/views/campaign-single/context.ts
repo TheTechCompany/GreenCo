@@ -3,6 +3,7 @@ import React from 'react';
 export const CampaignSingleContext = React.createContext<{
 	campaign?: any;
 	files?: any[],
+	charts?: any[],
 	views?: number;
 	interactions?: number;
 	interactionTimeline?: {time: Date, interactions: number}[]

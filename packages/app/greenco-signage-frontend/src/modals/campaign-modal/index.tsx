@@ -18,6 +18,13 @@ export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
         setCampaign({...props.selected})
     }, [props.selected])
 
+    useEffect(() => 
+	{
+	if (props.open == false){
+		setCampaign({})}
+
+	}, [props.open])
+
     return props.open ? (
         <Layer
             onEsc={props.onClose}

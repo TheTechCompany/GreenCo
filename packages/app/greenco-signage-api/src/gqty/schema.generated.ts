@@ -406,13 +406,580 @@ export interface CampaignAnalyticsUpdateFieldInput {
   where?: Maybe<CampaignAnalyticsConnectionWhere>;
 }
 
+export interface CampaignChartCampaignAggregateInput {
+  AND?: Maybe<Array<CampaignChartCampaignAggregateInput>>;
+  OR?: Maybe<Array<CampaignChartCampaignAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CampaignChartCampaignNodeAggregationWhereInput>;
+}
+
+export interface CampaignChartCampaignConnectFieldInput {
+  connect?: Maybe<CampaignConnectInput>;
+  where?: Maybe<CampaignConnectWhere>;
+}
+
+export interface CampaignChartCampaignConnectOrCreateFieldInput {
+  onCreate: CampaignChartCampaignConnectOrCreateFieldInputOnCreate;
+  where: CampaignConnectOrCreateWhere;
+}
+
+export interface CampaignChartCampaignConnectOrCreateFieldInputOnCreate {
+  node: CampaignCreateInput;
+}
+
+export interface CampaignChartCampaignConnectionSort {
+  node?: Maybe<CampaignSort>;
+}
+
+export interface CampaignChartCampaignConnectionWhere {
+  AND?: Maybe<Array<CampaignChartCampaignConnectionWhere>>;
+  OR?: Maybe<Array<CampaignChartCampaignConnectionWhere>>;
+  node?: Maybe<CampaignWhere>;
+  node_NOT?: Maybe<CampaignWhere>;
+}
+
+export interface CampaignChartCampaignCreateFieldInput {
+  node: CampaignCreateInput;
+}
+
+export interface CampaignChartCampaignDeleteFieldInput {
+  delete?: Maybe<CampaignDeleteInput>;
+  where?: Maybe<CampaignChartCampaignConnectionWhere>;
+}
+
+export interface CampaignChartCampaignDisconnectFieldInput {
+  disconnect?: Maybe<CampaignDisconnectInput>;
+  where?: Maybe<CampaignChartCampaignConnectionWhere>;
+}
+
+export interface CampaignChartCampaignFieldInput {
+  connect?: Maybe<CampaignChartCampaignConnectFieldInput>;
+  connectOrCreate?: Maybe<CampaignChartCampaignConnectOrCreateFieldInput>;
+  create?: Maybe<CampaignChartCampaignCreateFieldInput>;
+}
+
+export interface CampaignChartCampaignNodeAggregationWhereInput {
+  AND?: Maybe<Array<CampaignChartCampaignNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CampaignChartCampaignNodeAggregationWhereInput>>;
+  assetFolder_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  assetFolder_EQUAL?: Maybe<Scalars["String"]>;
+  assetFolder_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  customer_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  customer_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  customer_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  customer_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  customer_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  customer_EQUAL?: Maybe<Scalars["String"]>;
+  customer_GT?: Maybe<Scalars["Int"]>;
+  customer_GTE?: Maybe<Scalars["Int"]>;
+  customer_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  customer_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  customer_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  customer_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  customer_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  customer_LT?: Maybe<Scalars["Int"]>;
+  customer_LTE?: Maybe<Scalars["Int"]>;
+  customer_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  customer_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  customer_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  customer_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  customer_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CampaignChartCampaignUpdateConnectionInput {
+  node?: Maybe<CampaignUpdateInput>;
+}
+
+export interface CampaignChartCampaignUpdateFieldInput {
+  connect?: Maybe<CampaignChartCampaignConnectFieldInput>;
+  connectOrCreate?: Maybe<CampaignChartCampaignConnectOrCreateFieldInput>;
+  create?: Maybe<CampaignChartCampaignCreateFieldInput>;
+  delete?: Maybe<CampaignChartCampaignDeleteFieldInput>;
+  disconnect?: Maybe<CampaignChartCampaignDisconnectFieldInput>;
+  update?: Maybe<CampaignChartCampaignUpdateConnectionInput>;
+  where?: Maybe<CampaignChartCampaignConnectionWhere>;
+}
+
+export interface CampaignChartConnectInput {
+  campaign?: Maybe<CampaignChartCampaignConnectFieldInput>;
+}
+
+export interface CampaignChartConnectOrCreateInput {
+  campaign?: Maybe<CampaignChartCampaignConnectOrCreateFieldInput>;
+}
+
+export interface CampaignChartConnectOrCreateWhere {
+  node: CampaignChartUniqueWhere;
+}
+
+export interface CampaignChartConnectWhere {
+  node: CampaignChartWhere;
+}
+
+export interface CampaignChartCreateInput {
+  campaign?: Maybe<CampaignChartCampaignFieldInput>;
+  data?: Maybe<Scalars["String"]>;
+  dataKey?: Maybe<Scalars["String"]>;
+  height?: Maybe<Scalars["Int"]>;
+  label?: Maybe<Scalars["String"]>;
+  total?: Maybe<Scalars["Boolean"]>;
+  type?: Maybe<Scalars["String"]>;
+  width?: Maybe<Scalars["Int"]>;
+  x?: Maybe<Scalars["Int"]>;
+  y?: Maybe<Scalars["Int"]>;
+}
+
+export interface CampaignChartDeleteInput {
+  campaign?: Maybe<CampaignChartCampaignDeleteFieldInput>;
+}
+
+export interface CampaignChartDisconnectInput {
+  campaign?: Maybe<CampaignChartCampaignDisconnectFieldInput>;
+}
+
+export interface CampaignChartOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more CampaignChartSort objects to sort CampaignCharts by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<CampaignChartSort>>>;
+}
+
+export interface CampaignChartRelationInput {
+  campaign?: Maybe<CampaignChartCampaignCreateFieldInput>;
+}
+
+/** Fields to sort CampaignCharts by. The order in which sorts are applied is not guaranteed when specifying many fields in one CampaignChartSort object. */
+export interface CampaignChartSort {
+  data?: Maybe<SortDirection>;
+  dataKey?: Maybe<SortDirection>;
+  height?: Maybe<SortDirection>;
+  id?: Maybe<SortDirection>;
+  label?: Maybe<SortDirection>;
+  total?: Maybe<SortDirection>;
+  type?: Maybe<SortDirection>;
+  width?: Maybe<SortDirection>;
+  x?: Maybe<SortDirection>;
+  y?: Maybe<SortDirection>;
+}
+
+export interface CampaignChartUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface CampaignChartUpdateInput {
+  campaign?: Maybe<CampaignChartCampaignUpdateFieldInput>;
+  data?: Maybe<Scalars["String"]>;
+  dataKey?: Maybe<Scalars["String"]>;
+  height?: Maybe<Scalars["Int"]>;
+  label?: Maybe<Scalars["String"]>;
+  total?: Maybe<Scalars["Boolean"]>;
+  type?: Maybe<Scalars["String"]>;
+  width?: Maybe<Scalars["Int"]>;
+  x?: Maybe<Scalars["Int"]>;
+  y?: Maybe<Scalars["Int"]>;
+}
+
+export interface CampaignChartWhere {
+  AND?: Maybe<Array<CampaignChartWhere>>;
+  OR?: Maybe<Array<CampaignChartWhere>>;
+  campaign?: Maybe<CampaignWhere>;
+  campaignAggregate?: Maybe<CampaignChartCampaignAggregateInput>;
+  campaignConnection?: Maybe<CampaignChartCampaignConnectionWhere>;
+  campaignConnection_NOT?: Maybe<CampaignChartCampaignConnectionWhere>;
+  campaign_NOT?: Maybe<CampaignWhere>;
+  data?: Maybe<Scalars["String"]>;
+  dataKey?: Maybe<Scalars["String"]>;
+  dataKey_CONTAINS?: Maybe<Scalars["String"]>;
+  dataKey_ENDS_WITH?: Maybe<Scalars["String"]>;
+  dataKey_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  dataKey_NOT?: Maybe<Scalars["String"]>;
+  dataKey_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  dataKey_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  dataKey_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  dataKey_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  dataKey_STARTS_WITH?: Maybe<Scalars["String"]>;
+  data_CONTAINS?: Maybe<Scalars["String"]>;
+  data_ENDS_WITH?: Maybe<Scalars["String"]>;
+  data_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  data_NOT?: Maybe<Scalars["String"]>;
+  data_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  data_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  data_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  data_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  data_STARTS_WITH?: Maybe<Scalars["String"]>;
+  height?: Maybe<Scalars["Int"]>;
+  height_GT?: Maybe<Scalars["Int"]>;
+  height_GTE?: Maybe<Scalars["Int"]>;
+  height_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  height_LT?: Maybe<Scalars["Int"]>;
+  height_LTE?: Maybe<Scalars["Int"]>;
+  height_NOT?: Maybe<Scalars["Int"]>;
+  height_NOT_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  label?: Maybe<Scalars["String"]>;
+  label_CONTAINS?: Maybe<Scalars["String"]>;
+  label_ENDS_WITH?: Maybe<Scalars["String"]>;
+  label_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  label_NOT?: Maybe<Scalars["String"]>;
+  label_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  label_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  label_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  label_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  label_STARTS_WITH?: Maybe<Scalars["String"]>;
+  total?: Maybe<Scalars["Boolean"]>;
+  total_NOT?: Maybe<Scalars["Boolean"]>;
+  type?: Maybe<Scalars["String"]>;
+  type_CONTAINS?: Maybe<Scalars["String"]>;
+  type_ENDS_WITH?: Maybe<Scalars["String"]>;
+  type_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  type_NOT?: Maybe<Scalars["String"]>;
+  type_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  type_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  type_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  type_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  type_STARTS_WITH?: Maybe<Scalars["String"]>;
+  width?: Maybe<Scalars["Int"]>;
+  width_GT?: Maybe<Scalars["Int"]>;
+  width_GTE?: Maybe<Scalars["Int"]>;
+  width_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  width_LT?: Maybe<Scalars["Int"]>;
+  width_LTE?: Maybe<Scalars["Int"]>;
+  width_NOT?: Maybe<Scalars["Int"]>;
+  width_NOT_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  x?: Maybe<Scalars["Int"]>;
+  x_GT?: Maybe<Scalars["Int"]>;
+  x_GTE?: Maybe<Scalars["Int"]>;
+  x_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  x_LT?: Maybe<Scalars["Int"]>;
+  x_LTE?: Maybe<Scalars["Int"]>;
+  x_NOT?: Maybe<Scalars["Int"]>;
+  x_NOT_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  y?: Maybe<Scalars["Int"]>;
+  y_GT?: Maybe<Scalars["Int"]>;
+  y_GTE?: Maybe<Scalars["Int"]>;
+  y_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+  y_LT?: Maybe<Scalars["Int"]>;
+  y_LTE?: Maybe<Scalars["Int"]>;
+  y_NOT?: Maybe<Scalars["Int"]>;
+  y_NOT_IN?: Maybe<Array<Maybe<Scalars["Int"]>>>;
+}
+
+export interface CampaignChartsAggregateInput {
+  AND?: Maybe<Array<CampaignChartsAggregateInput>>;
+  OR?: Maybe<Array<CampaignChartsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CampaignChartsNodeAggregationWhereInput>;
+}
+
+export interface CampaignChartsConnectFieldInput {
+  connect?: Maybe<Array<CampaignChartConnectInput>>;
+  where?: Maybe<CampaignChartConnectWhere>;
+}
+
+export interface CampaignChartsConnectOrCreateFieldInput {
+  onCreate: CampaignChartsConnectOrCreateFieldInputOnCreate;
+  where: CampaignChartConnectOrCreateWhere;
+}
+
+export interface CampaignChartsConnectOrCreateFieldInputOnCreate {
+  node: CampaignChartCreateInput;
+}
+
+export interface CampaignChartsConnectionSort {
+  node?: Maybe<CampaignChartSort>;
+}
+
+export interface CampaignChartsConnectionWhere {
+  AND?: Maybe<Array<CampaignChartsConnectionWhere>>;
+  OR?: Maybe<Array<CampaignChartsConnectionWhere>>;
+  node?: Maybe<CampaignChartWhere>;
+  node_NOT?: Maybe<CampaignChartWhere>;
+}
+
+export interface CampaignChartsCreateFieldInput {
+  node: CampaignChartCreateInput;
+}
+
+export interface CampaignChartsDeleteFieldInput {
+  delete?: Maybe<CampaignChartDeleteInput>;
+  where?: Maybe<CampaignChartsConnectionWhere>;
+}
+
+export interface CampaignChartsDisconnectFieldInput {
+  disconnect?: Maybe<CampaignChartDisconnectInput>;
+  where?: Maybe<CampaignChartsConnectionWhere>;
+}
+
+export interface CampaignChartsFieldInput {
+  connect?: Maybe<Array<CampaignChartsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CampaignChartsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CampaignChartsCreateFieldInput>>;
+}
+
+export interface CampaignChartsNodeAggregationWhereInput {
+  AND?: Maybe<Array<CampaignChartsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CampaignChartsNodeAggregationWhereInput>>;
+  dataKey_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  dataKey_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  dataKey_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  dataKey_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  dataKey_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  dataKey_EQUAL?: Maybe<Scalars["String"]>;
+  dataKey_GT?: Maybe<Scalars["Int"]>;
+  dataKey_GTE?: Maybe<Scalars["Int"]>;
+  dataKey_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  dataKey_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  dataKey_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  dataKey_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  dataKey_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  dataKey_LT?: Maybe<Scalars["Int"]>;
+  dataKey_LTE?: Maybe<Scalars["Int"]>;
+  dataKey_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  dataKey_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  dataKey_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  dataKey_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  dataKey_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  data_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  data_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  data_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  data_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  data_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  data_EQUAL?: Maybe<Scalars["String"]>;
+  data_GT?: Maybe<Scalars["Int"]>;
+  data_GTE?: Maybe<Scalars["Int"]>;
+  data_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  data_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  data_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  data_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  data_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  data_LT?: Maybe<Scalars["Int"]>;
+  data_LTE?: Maybe<Scalars["Int"]>;
+  data_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  data_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  data_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  data_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  data_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  height_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  height_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  height_EQUAL?: Maybe<Scalars["Int"]>;
+  height_GT?: Maybe<Scalars["Int"]>;
+  height_GTE?: Maybe<Scalars["Int"]>;
+  height_LT?: Maybe<Scalars["Int"]>;
+  height_LTE?: Maybe<Scalars["Int"]>;
+  height_MAX_EQUAL?: Maybe<Scalars["Int"]>;
+  height_MAX_GT?: Maybe<Scalars["Int"]>;
+  height_MAX_GTE?: Maybe<Scalars["Int"]>;
+  height_MAX_LT?: Maybe<Scalars["Int"]>;
+  height_MAX_LTE?: Maybe<Scalars["Int"]>;
+  height_MIN_EQUAL?: Maybe<Scalars["Int"]>;
+  height_MIN_GT?: Maybe<Scalars["Int"]>;
+  height_MIN_GTE?: Maybe<Scalars["Int"]>;
+  height_MIN_LT?: Maybe<Scalars["Int"]>;
+  height_MIN_LTE?: Maybe<Scalars["Int"]>;
+  height_SUM_EQUAL?: Maybe<Scalars["Int"]>;
+  height_SUM_GT?: Maybe<Scalars["Int"]>;
+  height_SUM_GTE?: Maybe<Scalars["Int"]>;
+  height_SUM_LT?: Maybe<Scalars["Int"]>;
+  height_SUM_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  label_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  label_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  label_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  label_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  label_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  label_EQUAL?: Maybe<Scalars["String"]>;
+  label_GT?: Maybe<Scalars["Int"]>;
+  label_GTE?: Maybe<Scalars["Int"]>;
+  label_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  label_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  label_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  label_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  label_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  label_LT?: Maybe<Scalars["Int"]>;
+  label_LTE?: Maybe<Scalars["Int"]>;
+  label_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  label_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  label_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  label_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  label_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  type_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  type_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  type_EQUAL?: Maybe<Scalars["String"]>;
+  type_GT?: Maybe<Scalars["Int"]>;
+  type_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  type_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  type_LT?: Maybe<Scalars["Int"]>;
+  type_LTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  type_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  width_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  width_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  width_EQUAL?: Maybe<Scalars["Int"]>;
+  width_GT?: Maybe<Scalars["Int"]>;
+  width_GTE?: Maybe<Scalars["Int"]>;
+  width_LT?: Maybe<Scalars["Int"]>;
+  width_LTE?: Maybe<Scalars["Int"]>;
+  width_MAX_EQUAL?: Maybe<Scalars["Int"]>;
+  width_MAX_GT?: Maybe<Scalars["Int"]>;
+  width_MAX_GTE?: Maybe<Scalars["Int"]>;
+  width_MAX_LT?: Maybe<Scalars["Int"]>;
+  width_MAX_LTE?: Maybe<Scalars["Int"]>;
+  width_MIN_EQUAL?: Maybe<Scalars["Int"]>;
+  width_MIN_GT?: Maybe<Scalars["Int"]>;
+  width_MIN_GTE?: Maybe<Scalars["Int"]>;
+  width_MIN_LT?: Maybe<Scalars["Int"]>;
+  width_MIN_LTE?: Maybe<Scalars["Int"]>;
+  width_SUM_EQUAL?: Maybe<Scalars["Int"]>;
+  width_SUM_GT?: Maybe<Scalars["Int"]>;
+  width_SUM_GTE?: Maybe<Scalars["Int"]>;
+  width_SUM_LT?: Maybe<Scalars["Int"]>;
+  width_SUM_LTE?: Maybe<Scalars["Int"]>;
+  x_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  x_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  x_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  x_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  x_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  x_EQUAL?: Maybe<Scalars["Int"]>;
+  x_GT?: Maybe<Scalars["Int"]>;
+  x_GTE?: Maybe<Scalars["Int"]>;
+  x_LT?: Maybe<Scalars["Int"]>;
+  x_LTE?: Maybe<Scalars["Int"]>;
+  x_MAX_EQUAL?: Maybe<Scalars["Int"]>;
+  x_MAX_GT?: Maybe<Scalars["Int"]>;
+  x_MAX_GTE?: Maybe<Scalars["Int"]>;
+  x_MAX_LT?: Maybe<Scalars["Int"]>;
+  x_MAX_LTE?: Maybe<Scalars["Int"]>;
+  x_MIN_EQUAL?: Maybe<Scalars["Int"]>;
+  x_MIN_GT?: Maybe<Scalars["Int"]>;
+  x_MIN_GTE?: Maybe<Scalars["Int"]>;
+  x_MIN_LT?: Maybe<Scalars["Int"]>;
+  x_MIN_LTE?: Maybe<Scalars["Int"]>;
+  x_SUM_EQUAL?: Maybe<Scalars["Int"]>;
+  x_SUM_GT?: Maybe<Scalars["Int"]>;
+  x_SUM_GTE?: Maybe<Scalars["Int"]>;
+  x_SUM_LT?: Maybe<Scalars["Int"]>;
+  x_SUM_LTE?: Maybe<Scalars["Int"]>;
+  y_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  y_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  y_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  y_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  y_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  y_EQUAL?: Maybe<Scalars["Int"]>;
+  y_GT?: Maybe<Scalars["Int"]>;
+  y_GTE?: Maybe<Scalars["Int"]>;
+  y_LT?: Maybe<Scalars["Int"]>;
+  y_LTE?: Maybe<Scalars["Int"]>;
+  y_MAX_EQUAL?: Maybe<Scalars["Int"]>;
+  y_MAX_GT?: Maybe<Scalars["Int"]>;
+  y_MAX_GTE?: Maybe<Scalars["Int"]>;
+  y_MAX_LT?: Maybe<Scalars["Int"]>;
+  y_MAX_LTE?: Maybe<Scalars["Int"]>;
+  y_MIN_EQUAL?: Maybe<Scalars["Int"]>;
+  y_MIN_GT?: Maybe<Scalars["Int"]>;
+  y_MIN_GTE?: Maybe<Scalars["Int"]>;
+  y_MIN_LT?: Maybe<Scalars["Int"]>;
+  y_MIN_LTE?: Maybe<Scalars["Int"]>;
+  y_SUM_EQUAL?: Maybe<Scalars["Int"]>;
+  y_SUM_GT?: Maybe<Scalars["Int"]>;
+  y_SUM_GTE?: Maybe<Scalars["Int"]>;
+  y_SUM_LT?: Maybe<Scalars["Int"]>;
+  y_SUM_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CampaignChartsUpdateConnectionInput {
+  node?: Maybe<CampaignChartUpdateInput>;
+}
+
+export interface CampaignChartsUpdateFieldInput {
+  connect?: Maybe<Array<CampaignChartsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CampaignChartsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CampaignChartsCreateFieldInput>>;
+  delete?: Maybe<Array<CampaignChartsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<CampaignChartsDisconnectFieldInput>>;
+  update?: Maybe<CampaignChartsUpdateConnectionInput>;
+  where?: Maybe<CampaignChartsConnectionWhere>;
+}
+
 export interface CampaignConnectInput {
   analytics?: Maybe<Array<CampaignAnalyticsConnectFieldInput>>;
+  charts?: Maybe<Array<CampaignChartsConnectFieldInput>>;
   organisation?: Maybe<CampaignOrganisationConnectFieldInput>;
 }
 
 export interface CampaignConnectOrCreateInput {
   analytics?: Maybe<Array<CampaignAnalyticsConnectOrCreateFieldInput>>;
+  charts?: Maybe<Array<CampaignChartsConnectOrCreateFieldInput>>;
   organisation?: Maybe<CampaignOrganisationConnectOrCreateFieldInput>;
 }
 
@@ -427,6 +994,7 @@ export interface CampaignConnectWhere {
 export interface CampaignCreateInput {
   analytics?: Maybe<CampaignAnalyticsFieldInput>;
   assetFolder?: Maybe<Scalars["String"]>;
+  charts?: Maybe<CampaignChartsFieldInput>;
   customer?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<CampaignOrganisationFieldInput>;
@@ -434,11 +1002,13 @@ export interface CampaignCreateInput {
 
 export interface CampaignDeleteInput {
   analytics?: Maybe<Array<CampaignAnalyticsDeleteFieldInput>>;
+  charts?: Maybe<Array<CampaignChartsDeleteFieldInput>>;
   organisation?: Maybe<CampaignOrganisationDeleteFieldInput>;
 }
 
 export interface CampaignDisconnectInput {
   analytics?: Maybe<Array<CampaignAnalyticsDisconnectFieldInput>>;
+  charts?: Maybe<Array<CampaignChartsDisconnectFieldInput>>;
   organisation?: Maybe<CampaignOrganisationDisconnectFieldInput>;
 }
 
@@ -547,6 +1117,7 @@ export interface CampaignOrganisationUpdateFieldInput {
 
 export interface CampaignRelationInput {
   analytics?: Maybe<Array<CampaignAnalyticsCreateFieldInput>>;
+  charts?: Maybe<Array<CampaignChartsCreateFieldInput>>;
   organisation?: Maybe<CampaignOrganisationCreateFieldInput>;
 }
 
@@ -565,6 +1136,7 @@ export interface CampaignUniqueWhere {
 export interface CampaignUpdateInput {
   analytics?: Maybe<Array<CampaignAnalyticsUpdateFieldInput>>;
   assetFolder?: Maybe<Scalars["String"]>;
+  charts?: Maybe<Array<CampaignChartsUpdateFieldInput>>;
   customer?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<CampaignOrganisationUpdateFieldInput>;
@@ -588,6 +1160,11 @@ export interface CampaignWhere {
   assetFolder_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
   assetFolder_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
   assetFolder_STARTS_WITH?: Maybe<Scalars["String"]>;
+  charts?: Maybe<CampaignChartWhere>;
+  chartsAggregate?: Maybe<CampaignChartsAggregateInput>;
+  chartsConnection?: Maybe<CampaignChartsConnectionWhere>;
+  chartsConnection_NOT?: Maybe<CampaignChartsConnectionWhere>;
+  charts_NOT?: Maybe<CampaignChartWhere>;
   customer?: Maybe<Scalars["String"]>;
   customer_CONTAINS?: Maybe<Scalars["String"]>;
   customer_ENDS_WITH?: Maybe<Scalars["String"]>;
@@ -10882,6 +11459,23 @@ export const generatedSchema = {
     },
     assetFolder: { __type: "String" },
     assets: { __type: "[CampaignAsset]" },
+    charts: {
+      __type: "[CampaignChart]",
+      __args: { options: "CampaignChartOptions", where: "CampaignChartWhere" },
+    },
+    chartsAggregate: {
+      __type: "CampaignCampaignChartChartsAggregationSelection",
+      __args: { where: "CampaignChartWhere" },
+    },
+    chartsConnection: {
+      __type: "CampaignChartsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CampaignChartsConnectionSort!]",
+        where: "CampaignChartsConnectionWhere",
+      },
+    },
     customer: { __type: "String" },
     id: { __type: "ID!" },
     interactionTimeline: { __type: "[CampaignInteraction]" },
@@ -10907,6 +11501,7 @@ export const generatedSchema = {
         where: "CampaignOrganisationConnectionWhere",
       },
     },
+    peopleCount: { __type: "[CameraAnalytic]" },
     views: { __type: "Int" },
   },
   CampaignAggregateSelection: {
@@ -11351,12 +11946,630 @@ export const generatedSchema = {
     name: { __type: "StringAggregateSelection!" },
     type: { __type: "StringAggregateSelection!" },
   },
+  CampaignCampaignChartChartsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CampaignCampaignChartChartsNodeAggregateSelection" },
+  },
+  CampaignCampaignChartChartsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    data: { __type: "StringAggregateSelection!" },
+    dataKey: { __type: "StringAggregateSelection!" },
+    height: { __type: "IntAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    label: { __type: "StringAggregateSelection!" },
+    type: { __type: "StringAggregateSelection!" },
+    width: { __type: "IntAggregateSelection!" },
+    x: { __type: "IntAggregateSelection!" },
+    y: { __type: "IntAggregateSelection!" },
+  },
+  CampaignChart: {
+    __typename: { __type: "String!" },
+    campaign: {
+      __type: "Campaign",
+      __args: { options: "CampaignOptions", where: "CampaignWhere" },
+    },
+    campaignAggregate: {
+      __type: "CampaignChartCampaignCampaignAggregationSelection",
+      __args: { where: "CampaignWhere" },
+    },
+    campaignConnection: {
+      __type: "CampaignChartCampaignConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CampaignChartCampaignConnectionSort!]",
+        where: "CampaignChartCampaignConnectionWhere",
+      },
+    },
+    data: { __type: "String" },
+    dataKey: { __type: "String" },
+    height: { __type: "Int" },
+    id: { __type: "ID!" },
+    label: { __type: "String" },
+    total: { __type: "Boolean" },
+    type: { __type: "String" },
+    width: { __type: "Int" },
+    x: { __type: "Int" },
+    y: { __type: "Int" },
+  },
+  CampaignChartAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    data: { __type: "StringAggregateSelection!" },
+    dataKey: { __type: "StringAggregateSelection!" },
+    height: { __type: "IntAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    label: { __type: "StringAggregateSelection!" },
+    type: { __type: "StringAggregateSelection!" },
+    width: { __type: "IntAggregateSelection!" },
+    x: { __type: "IntAggregateSelection!" },
+    y: { __type: "IntAggregateSelection!" },
+  },
+  CampaignChartCampaignAggregateInput: {
+    AND: { __type: "[CampaignChartCampaignAggregateInput!]" },
+    OR: { __type: "[CampaignChartCampaignAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CampaignChartCampaignNodeAggregationWhereInput" },
+  },
+  CampaignChartCampaignCampaignAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CampaignChartCampaignCampaignNodeAggregateSelection" },
+  },
+  CampaignChartCampaignCampaignNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    assetFolder: { __type: "StringAggregateSelection!" },
+    customer: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  CampaignChartCampaignConnectFieldInput: {
+    connect: { __type: "CampaignConnectInput" },
+    where: { __type: "CampaignConnectWhere" },
+  },
+  CampaignChartCampaignConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "CampaignChartCampaignConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "CampaignConnectOrCreateWhere!" },
+  },
+  CampaignChartCampaignConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  CampaignChartCampaignConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CampaignChartCampaignRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CampaignChartCampaignConnectionSort: { node: { __type: "CampaignSort" } },
+  CampaignChartCampaignConnectionWhere: {
+    AND: { __type: "[CampaignChartCampaignConnectionWhere!]" },
+    OR: { __type: "[CampaignChartCampaignConnectionWhere!]" },
+    node: { __type: "CampaignWhere" },
+    node_NOT: { __type: "CampaignWhere" },
+  },
+  CampaignChartCampaignCreateFieldInput: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  CampaignChartCampaignDeleteFieldInput: {
+    delete: { __type: "CampaignDeleteInput" },
+    where: { __type: "CampaignChartCampaignConnectionWhere" },
+  },
+  CampaignChartCampaignDisconnectFieldInput: {
+    disconnect: { __type: "CampaignDisconnectInput" },
+    where: { __type: "CampaignChartCampaignConnectionWhere" },
+  },
+  CampaignChartCampaignFieldInput: {
+    connect: { __type: "CampaignChartCampaignConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CampaignChartCampaignConnectOrCreateFieldInput",
+    },
+    create: { __type: "CampaignChartCampaignCreateFieldInput" },
+  },
+  CampaignChartCampaignNodeAggregationWhereInput: {
+    AND: { __type: "[CampaignChartCampaignNodeAggregationWhereInput!]" },
+    OR: { __type: "[CampaignChartCampaignNodeAggregationWhereInput!]" },
+    assetFolder_AVERAGE_EQUAL: { __type: "Float" },
+    assetFolder_AVERAGE_GT: { __type: "Float" },
+    assetFolder_AVERAGE_GTE: { __type: "Float" },
+    assetFolder_AVERAGE_LT: { __type: "Float" },
+    assetFolder_AVERAGE_LTE: { __type: "Float" },
+    assetFolder_EQUAL: { __type: "String" },
+    assetFolder_GT: { __type: "Int" },
+    assetFolder_GTE: { __type: "Int" },
+    assetFolder_LONGEST_EQUAL: { __type: "Int" },
+    assetFolder_LONGEST_GT: { __type: "Int" },
+    assetFolder_LONGEST_GTE: { __type: "Int" },
+    assetFolder_LONGEST_LT: { __type: "Int" },
+    assetFolder_LONGEST_LTE: { __type: "Int" },
+    assetFolder_LT: { __type: "Int" },
+    assetFolder_LTE: { __type: "Int" },
+    assetFolder_SHORTEST_EQUAL: { __type: "Int" },
+    assetFolder_SHORTEST_GT: { __type: "Int" },
+    assetFolder_SHORTEST_GTE: { __type: "Int" },
+    assetFolder_SHORTEST_LT: { __type: "Int" },
+    assetFolder_SHORTEST_LTE: { __type: "Int" },
+    customer_AVERAGE_EQUAL: { __type: "Float" },
+    customer_AVERAGE_GT: { __type: "Float" },
+    customer_AVERAGE_GTE: { __type: "Float" },
+    customer_AVERAGE_LT: { __type: "Float" },
+    customer_AVERAGE_LTE: { __type: "Float" },
+    customer_EQUAL: { __type: "String" },
+    customer_GT: { __type: "Int" },
+    customer_GTE: { __type: "Int" },
+    customer_LONGEST_EQUAL: { __type: "Int" },
+    customer_LONGEST_GT: { __type: "Int" },
+    customer_LONGEST_GTE: { __type: "Int" },
+    customer_LONGEST_LT: { __type: "Int" },
+    customer_LONGEST_LTE: { __type: "Int" },
+    customer_LT: { __type: "Int" },
+    customer_LTE: { __type: "Int" },
+    customer_SHORTEST_EQUAL: { __type: "Int" },
+    customer_SHORTEST_GT: { __type: "Int" },
+    customer_SHORTEST_GTE: { __type: "Int" },
+    customer_SHORTEST_LT: { __type: "Int" },
+    customer_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  CampaignChartCampaignRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Campaign!" },
+  },
+  CampaignChartCampaignUpdateConnectionInput: {
+    node: { __type: "CampaignUpdateInput" },
+  },
+  CampaignChartCampaignUpdateFieldInput: {
+    connect: { __type: "CampaignChartCampaignConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CampaignChartCampaignConnectOrCreateFieldInput",
+    },
+    create: { __type: "CampaignChartCampaignCreateFieldInput" },
+    delete: { __type: "CampaignChartCampaignDeleteFieldInput" },
+    disconnect: { __type: "CampaignChartCampaignDisconnectFieldInput" },
+    update: { __type: "CampaignChartCampaignUpdateConnectionInput" },
+    where: { __type: "CampaignChartCampaignConnectionWhere" },
+  },
+  CampaignChartConnectInput: {
+    campaign: { __type: "CampaignChartCampaignConnectFieldInput" },
+  },
+  CampaignChartConnectOrCreateInput: {
+    campaign: { __type: "CampaignChartCampaignConnectOrCreateFieldInput" },
+  },
+  CampaignChartConnectOrCreateWhere: {
+    node: { __type: "CampaignChartUniqueWhere!" },
+  },
+  CampaignChartConnectWhere: { node: { __type: "CampaignChartWhere!" } },
+  CampaignChartCreateInput: {
+    campaign: { __type: "CampaignChartCampaignFieldInput" },
+    data: { __type: "String" },
+    dataKey: { __type: "String" },
+    height: { __type: "Int" },
+    label: { __type: "String" },
+    total: { __type: "Boolean" },
+    type: { __type: "String" },
+    width: { __type: "Int" },
+    x: { __type: "Int" },
+    y: { __type: "Int" },
+  },
+  CampaignChartDeleteInput: {
+    campaign: { __type: "CampaignChartCampaignDeleteFieldInput" },
+  },
+  CampaignChartDisconnectInput: {
+    campaign: { __type: "CampaignChartCampaignDisconnectFieldInput" },
+  },
+  CampaignChartOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[CampaignChartSort]" },
+  },
+  CampaignChartRelationInput: {
+    campaign: { __type: "CampaignChartCampaignCreateFieldInput" },
+  },
+  CampaignChartSort: {
+    data: { __type: "SortDirection" },
+    dataKey: { __type: "SortDirection" },
+    height: { __type: "SortDirection" },
+    id: { __type: "SortDirection" },
+    label: { __type: "SortDirection" },
+    total: { __type: "SortDirection" },
+    type: { __type: "SortDirection" },
+    width: { __type: "SortDirection" },
+    x: { __type: "SortDirection" },
+    y: { __type: "SortDirection" },
+  },
+  CampaignChartUniqueWhere: { id: { __type: "ID" } },
+  CampaignChartUpdateInput: {
+    campaign: { __type: "CampaignChartCampaignUpdateFieldInput" },
+    data: { __type: "String" },
+    dataKey: { __type: "String" },
+    height: { __type: "Int" },
+    label: { __type: "String" },
+    total: { __type: "Boolean" },
+    type: { __type: "String" },
+    width: { __type: "Int" },
+    x: { __type: "Int" },
+    y: { __type: "Int" },
+  },
+  CampaignChartWhere: {
+    AND: { __type: "[CampaignChartWhere!]" },
+    OR: { __type: "[CampaignChartWhere!]" },
+    campaign: { __type: "CampaignWhere" },
+    campaignAggregate: { __type: "CampaignChartCampaignAggregateInput" },
+    campaignConnection: { __type: "CampaignChartCampaignConnectionWhere" },
+    campaignConnection_NOT: { __type: "CampaignChartCampaignConnectionWhere" },
+    campaign_NOT: { __type: "CampaignWhere" },
+    data: { __type: "String" },
+    dataKey: { __type: "String" },
+    dataKey_CONTAINS: { __type: "String" },
+    dataKey_ENDS_WITH: { __type: "String" },
+    dataKey_IN: { __type: "[String]" },
+    dataKey_NOT: { __type: "String" },
+    dataKey_NOT_CONTAINS: { __type: "String" },
+    dataKey_NOT_ENDS_WITH: { __type: "String" },
+    dataKey_NOT_IN: { __type: "[String]" },
+    dataKey_NOT_STARTS_WITH: { __type: "String" },
+    dataKey_STARTS_WITH: { __type: "String" },
+    data_CONTAINS: { __type: "String" },
+    data_ENDS_WITH: { __type: "String" },
+    data_IN: { __type: "[String]" },
+    data_NOT: { __type: "String" },
+    data_NOT_CONTAINS: { __type: "String" },
+    data_NOT_ENDS_WITH: { __type: "String" },
+    data_NOT_IN: { __type: "[String]" },
+    data_NOT_STARTS_WITH: { __type: "String" },
+    data_STARTS_WITH: { __type: "String" },
+    height: { __type: "Int" },
+    height_GT: { __type: "Int" },
+    height_GTE: { __type: "Int" },
+    height_IN: { __type: "[Int]" },
+    height_LT: { __type: "Int" },
+    height_LTE: { __type: "Int" },
+    height_NOT: { __type: "Int" },
+    height_NOT_IN: { __type: "[Int]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    label: { __type: "String" },
+    label_CONTAINS: { __type: "String" },
+    label_ENDS_WITH: { __type: "String" },
+    label_IN: { __type: "[String]" },
+    label_NOT: { __type: "String" },
+    label_NOT_CONTAINS: { __type: "String" },
+    label_NOT_ENDS_WITH: { __type: "String" },
+    label_NOT_IN: { __type: "[String]" },
+    label_NOT_STARTS_WITH: { __type: "String" },
+    label_STARTS_WITH: { __type: "String" },
+    total: { __type: "Boolean" },
+    total_NOT: { __type: "Boolean" },
+    type: { __type: "String" },
+    type_CONTAINS: { __type: "String" },
+    type_ENDS_WITH: { __type: "String" },
+    type_IN: { __type: "[String]" },
+    type_NOT: { __type: "String" },
+    type_NOT_CONTAINS: { __type: "String" },
+    type_NOT_ENDS_WITH: { __type: "String" },
+    type_NOT_IN: { __type: "[String]" },
+    type_NOT_STARTS_WITH: { __type: "String" },
+    type_STARTS_WITH: { __type: "String" },
+    width: { __type: "Int" },
+    width_GT: { __type: "Int" },
+    width_GTE: { __type: "Int" },
+    width_IN: { __type: "[Int]" },
+    width_LT: { __type: "Int" },
+    width_LTE: { __type: "Int" },
+    width_NOT: { __type: "Int" },
+    width_NOT_IN: { __type: "[Int]" },
+    x: { __type: "Int" },
+    x_GT: { __type: "Int" },
+    x_GTE: { __type: "Int" },
+    x_IN: { __type: "[Int]" },
+    x_LT: { __type: "Int" },
+    x_LTE: { __type: "Int" },
+    x_NOT: { __type: "Int" },
+    x_NOT_IN: { __type: "[Int]" },
+    y: { __type: "Int" },
+    y_GT: { __type: "Int" },
+    y_GTE: { __type: "Int" },
+    y_IN: { __type: "[Int]" },
+    y_LT: { __type: "Int" },
+    y_LTE: { __type: "Int" },
+    y_NOT: { __type: "Int" },
+    y_NOT_IN: { __type: "[Int]" },
+  },
+  CampaignChartsAggregateInput: {
+    AND: { __type: "[CampaignChartsAggregateInput!]" },
+    OR: { __type: "[CampaignChartsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CampaignChartsNodeAggregationWhereInput" },
+  },
+  CampaignChartsConnectFieldInput: {
+    connect: { __type: "[CampaignChartConnectInput!]" },
+    where: { __type: "CampaignChartConnectWhere" },
+  },
+  CampaignChartsConnectOrCreateFieldInput: {
+    onCreate: { __type: "CampaignChartsConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "CampaignChartConnectOrCreateWhere!" },
+  },
+  CampaignChartsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CampaignChartCreateInput!" },
+  },
+  CampaignChartsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CampaignChartsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CampaignChartsConnectionSort: { node: { __type: "CampaignChartSort" } },
+  CampaignChartsConnectionWhere: {
+    AND: { __type: "[CampaignChartsConnectionWhere!]" },
+    OR: { __type: "[CampaignChartsConnectionWhere!]" },
+    node: { __type: "CampaignChartWhere" },
+    node_NOT: { __type: "CampaignChartWhere" },
+  },
+  CampaignChartsCreateFieldInput: {
+    node: { __type: "CampaignChartCreateInput!" },
+  },
+  CampaignChartsDeleteFieldInput: {
+    delete: { __type: "CampaignChartDeleteInput" },
+    where: { __type: "CampaignChartsConnectionWhere" },
+  },
+  CampaignChartsDisconnectFieldInput: {
+    disconnect: { __type: "CampaignChartDisconnectInput" },
+    where: { __type: "CampaignChartsConnectionWhere" },
+  },
+  CampaignChartsFieldInput: {
+    connect: { __type: "[CampaignChartsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[CampaignChartsConnectOrCreateFieldInput!]" },
+    create: { __type: "[CampaignChartsCreateFieldInput!]" },
+  },
+  CampaignChartsNodeAggregationWhereInput: {
+    AND: { __type: "[CampaignChartsNodeAggregationWhereInput!]" },
+    OR: { __type: "[CampaignChartsNodeAggregationWhereInput!]" },
+    dataKey_AVERAGE_EQUAL: { __type: "Float" },
+    dataKey_AVERAGE_GT: { __type: "Float" },
+    dataKey_AVERAGE_GTE: { __type: "Float" },
+    dataKey_AVERAGE_LT: { __type: "Float" },
+    dataKey_AVERAGE_LTE: { __type: "Float" },
+    dataKey_EQUAL: { __type: "String" },
+    dataKey_GT: { __type: "Int" },
+    dataKey_GTE: { __type: "Int" },
+    dataKey_LONGEST_EQUAL: { __type: "Int" },
+    dataKey_LONGEST_GT: { __type: "Int" },
+    dataKey_LONGEST_GTE: { __type: "Int" },
+    dataKey_LONGEST_LT: { __type: "Int" },
+    dataKey_LONGEST_LTE: { __type: "Int" },
+    dataKey_LT: { __type: "Int" },
+    dataKey_LTE: { __type: "Int" },
+    dataKey_SHORTEST_EQUAL: { __type: "Int" },
+    dataKey_SHORTEST_GT: { __type: "Int" },
+    dataKey_SHORTEST_GTE: { __type: "Int" },
+    dataKey_SHORTEST_LT: { __type: "Int" },
+    dataKey_SHORTEST_LTE: { __type: "Int" },
+    data_AVERAGE_EQUAL: { __type: "Float" },
+    data_AVERAGE_GT: { __type: "Float" },
+    data_AVERAGE_GTE: { __type: "Float" },
+    data_AVERAGE_LT: { __type: "Float" },
+    data_AVERAGE_LTE: { __type: "Float" },
+    data_EQUAL: { __type: "String" },
+    data_GT: { __type: "Int" },
+    data_GTE: { __type: "Int" },
+    data_LONGEST_EQUAL: { __type: "Int" },
+    data_LONGEST_GT: { __type: "Int" },
+    data_LONGEST_GTE: { __type: "Int" },
+    data_LONGEST_LT: { __type: "Int" },
+    data_LONGEST_LTE: { __type: "Int" },
+    data_LT: { __type: "Int" },
+    data_LTE: { __type: "Int" },
+    data_SHORTEST_EQUAL: { __type: "Int" },
+    data_SHORTEST_GT: { __type: "Int" },
+    data_SHORTEST_GTE: { __type: "Int" },
+    data_SHORTEST_LT: { __type: "Int" },
+    data_SHORTEST_LTE: { __type: "Int" },
+    height_AVERAGE_EQUAL: { __type: "Float" },
+    height_AVERAGE_GT: { __type: "Float" },
+    height_AVERAGE_GTE: { __type: "Float" },
+    height_AVERAGE_LT: { __type: "Float" },
+    height_AVERAGE_LTE: { __type: "Float" },
+    height_EQUAL: { __type: "Int" },
+    height_GT: { __type: "Int" },
+    height_GTE: { __type: "Int" },
+    height_LT: { __type: "Int" },
+    height_LTE: { __type: "Int" },
+    height_MAX_EQUAL: { __type: "Int" },
+    height_MAX_GT: { __type: "Int" },
+    height_MAX_GTE: { __type: "Int" },
+    height_MAX_LT: { __type: "Int" },
+    height_MAX_LTE: { __type: "Int" },
+    height_MIN_EQUAL: { __type: "Int" },
+    height_MIN_GT: { __type: "Int" },
+    height_MIN_GTE: { __type: "Int" },
+    height_MIN_LT: { __type: "Int" },
+    height_MIN_LTE: { __type: "Int" },
+    height_SUM_EQUAL: { __type: "Int" },
+    height_SUM_GT: { __type: "Int" },
+    height_SUM_GTE: { __type: "Int" },
+    height_SUM_LT: { __type: "Int" },
+    height_SUM_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    label_AVERAGE_EQUAL: { __type: "Float" },
+    label_AVERAGE_GT: { __type: "Float" },
+    label_AVERAGE_GTE: { __type: "Float" },
+    label_AVERAGE_LT: { __type: "Float" },
+    label_AVERAGE_LTE: { __type: "Float" },
+    label_EQUAL: { __type: "String" },
+    label_GT: { __type: "Int" },
+    label_GTE: { __type: "Int" },
+    label_LONGEST_EQUAL: { __type: "Int" },
+    label_LONGEST_GT: { __type: "Int" },
+    label_LONGEST_GTE: { __type: "Int" },
+    label_LONGEST_LT: { __type: "Int" },
+    label_LONGEST_LTE: { __type: "Int" },
+    label_LT: { __type: "Int" },
+    label_LTE: { __type: "Int" },
+    label_SHORTEST_EQUAL: { __type: "Int" },
+    label_SHORTEST_GT: { __type: "Int" },
+    label_SHORTEST_GTE: { __type: "Int" },
+    label_SHORTEST_LT: { __type: "Int" },
+    label_SHORTEST_LTE: { __type: "Int" },
+    type_AVERAGE_EQUAL: { __type: "Float" },
+    type_AVERAGE_GT: { __type: "Float" },
+    type_AVERAGE_GTE: { __type: "Float" },
+    type_AVERAGE_LT: { __type: "Float" },
+    type_AVERAGE_LTE: { __type: "Float" },
+    type_EQUAL: { __type: "String" },
+    type_GT: { __type: "Int" },
+    type_GTE: { __type: "Int" },
+    type_LONGEST_EQUAL: { __type: "Int" },
+    type_LONGEST_GT: { __type: "Int" },
+    type_LONGEST_GTE: { __type: "Int" },
+    type_LONGEST_LT: { __type: "Int" },
+    type_LONGEST_LTE: { __type: "Int" },
+    type_LT: { __type: "Int" },
+    type_LTE: { __type: "Int" },
+    type_SHORTEST_EQUAL: { __type: "Int" },
+    type_SHORTEST_GT: { __type: "Int" },
+    type_SHORTEST_GTE: { __type: "Int" },
+    type_SHORTEST_LT: { __type: "Int" },
+    type_SHORTEST_LTE: { __type: "Int" },
+    width_AVERAGE_EQUAL: { __type: "Float" },
+    width_AVERAGE_GT: { __type: "Float" },
+    width_AVERAGE_GTE: { __type: "Float" },
+    width_AVERAGE_LT: { __type: "Float" },
+    width_AVERAGE_LTE: { __type: "Float" },
+    width_EQUAL: { __type: "Int" },
+    width_GT: { __type: "Int" },
+    width_GTE: { __type: "Int" },
+    width_LT: { __type: "Int" },
+    width_LTE: { __type: "Int" },
+    width_MAX_EQUAL: { __type: "Int" },
+    width_MAX_GT: { __type: "Int" },
+    width_MAX_GTE: { __type: "Int" },
+    width_MAX_LT: { __type: "Int" },
+    width_MAX_LTE: { __type: "Int" },
+    width_MIN_EQUAL: { __type: "Int" },
+    width_MIN_GT: { __type: "Int" },
+    width_MIN_GTE: { __type: "Int" },
+    width_MIN_LT: { __type: "Int" },
+    width_MIN_LTE: { __type: "Int" },
+    width_SUM_EQUAL: { __type: "Int" },
+    width_SUM_GT: { __type: "Int" },
+    width_SUM_GTE: { __type: "Int" },
+    width_SUM_LT: { __type: "Int" },
+    width_SUM_LTE: { __type: "Int" },
+    x_AVERAGE_EQUAL: { __type: "Float" },
+    x_AVERAGE_GT: { __type: "Float" },
+    x_AVERAGE_GTE: { __type: "Float" },
+    x_AVERAGE_LT: { __type: "Float" },
+    x_AVERAGE_LTE: { __type: "Float" },
+    x_EQUAL: { __type: "Int" },
+    x_GT: { __type: "Int" },
+    x_GTE: { __type: "Int" },
+    x_LT: { __type: "Int" },
+    x_LTE: { __type: "Int" },
+    x_MAX_EQUAL: { __type: "Int" },
+    x_MAX_GT: { __type: "Int" },
+    x_MAX_GTE: { __type: "Int" },
+    x_MAX_LT: { __type: "Int" },
+    x_MAX_LTE: { __type: "Int" },
+    x_MIN_EQUAL: { __type: "Int" },
+    x_MIN_GT: { __type: "Int" },
+    x_MIN_GTE: { __type: "Int" },
+    x_MIN_LT: { __type: "Int" },
+    x_MIN_LTE: { __type: "Int" },
+    x_SUM_EQUAL: { __type: "Int" },
+    x_SUM_GT: { __type: "Int" },
+    x_SUM_GTE: { __type: "Int" },
+    x_SUM_LT: { __type: "Int" },
+    x_SUM_LTE: { __type: "Int" },
+    y_AVERAGE_EQUAL: { __type: "Float" },
+    y_AVERAGE_GT: { __type: "Float" },
+    y_AVERAGE_GTE: { __type: "Float" },
+    y_AVERAGE_LT: { __type: "Float" },
+    y_AVERAGE_LTE: { __type: "Float" },
+    y_EQUAL: { __type: "Int" },
+    y_GT: { __type: "Int" },
+    y_GTE: { __type: "Int" },
+    y_LT: { __type: "Int" },
+    y_LTE: { __type: "Int" },
+    y_MAX_EQUAL: { __type: "Int" },
+    y_MAX_GT: { __type: "Int" },
+    y_MAX_GTE: { __type: "Int" },
+    y_MAX_LT: { __type: "Int" },
+    y_MAX_LTE: { __type: "Int" },
+    y_MIN_EQUAL: { __type: "Int" },
+    y_MIN_GT: { __type: "Int" },
+    y_MIN_GTE: { __type: "Int" },
+    y_MIN_LT: { __type: "Int" },
+    y_MIN_LTE: { __type: "Int" },
+    y_SUM_EQUAL: { __type: "Int" },
+    y_SUM_GT: { __type: "Int" },
+    y_SUM_GTE: { __type: "Int" },
+    y_SUM_LT: { __type: "Int" },
+    y_SUM_LTE: { __type: "Int" },
+  },
+  CampaignChartsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "CampaignChart!" },
+  },
+  CampaignChartsUpdateConnectionInput: {
+    node: { __type: "CampaignChartUpdateInput" },
+  },
+  CampaignChartsUpdateFieldInput: {
+    connect: { __type: "[CampaignChartsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[CampaignChartsConnectOrCreateFieldInput!]" },
+    create: { __type: "[CampaignChartsCreateFieldInput!]" },
+    delete: { __type: "[CampaignChartsDeleteFieldInput!]" },
+    disconnect: { __type: "[CampaignChartsDisconnectFieldInput!]" },
+    update: { __type: "CampaignChartsUpdateConnectionInput" },
+    where: { __type: "CampaignChartsConnectionWhere" },
+  },
   CampaignConnectInput: {
     analytics: { __type: "[CampaignAnalyticsConnectFieldInput!]" },
+    charts: { __type: "[CampaignChartsConnectFieldInput!]" },
     organisation: { __type: "CampaignOrganisationConnectFieldInput" },
   },
   CampaignConnectOrCreateInput: {
     analytics: { __type: "[CampaignAnalyticsConnectOrCreateFieldInput!]" },
+    charts: { __type: "[CampaignChartsConnectOrCreateFieldInput!]" },
     organisation: { __type: "CampaignOrganisationConnectOrCreateFieldInput" },
   },
   CampaignConnectOrCreateWhere: { node: { __type: "CampaignUniqueWhere!" } },
@@ -11364,16 +12577,19 @@ export const generatedSchema = {
   CampaignCreateInput: {
     analytics: { __type: "CampaignAnalyticsFieldInput" },
     assetFolder: { __type: "String" },
+    charts: { __type: "CampaignChartsFieldInput" },
     customer: { __type: "String" },
     name: { __type: "String" },
     organisation: { __type: "CampaignOrganisationFieldInput" },
   },
   CampaignDeleteInput: {
     analytics: { __type: "[CampaignAnalyticsDeleteFieldInput!]" },
+    charts: { __type: "[CampaignChartsDeleteFieldInput!]" },
     organisation: { __type: "CampaignOrganisationDeleteFieldInput" },
   },
   CampaignDisconnectInput: {
     analytics: { __type: "[CampaignAnalyticsDisconnectFieldInput!]" },
+    charts: { __type: "[CampaignChartsDisconnectFieldInput!]" },
     organisation: { __type: "CampaignOrganisationDisconnectFieldInput" },
   },
   CampaignHiveOrganisationOrganisationAggregationSelection: {
@@ -11500,6 +12716,7 @@ export const generatedSchema = {
   },
   CampaignRelationInput: {
     analytics: { __type: "[CampaignAnalyticsCreateFieldInput!]" },
+    charts: { __type: "[CampaignChartsCreateFieldInput!]" },
     organisation: { __type: "CampaignOrganisationCreateFieldInput" },
   },
   CampaignSort: {
@@ -11512,6 +12729,7 @@ export const generatedSchema = {
   CampaignUpdateInput: {
     analytics: { __type: "[CampaignAnalyticsUpdateFieldInput!]" },
     assetFolder: { __type: "String" },
+    charts: { __type: "[CampaignChartsUpdateFieldInput!]" },
     customer: { __type: "String" },
     name: { __type: "String" },
     organisation: { __type: "CampaignOrganisationUpdateFieldInput" },
@@ -11534,6 +12752,11 @@ export const generatedSchema = {
     assetFolder_NOT_IN: { __type: "[String]" },
     assetFolder_NOT_STARTS_WITH: { __type: "String" },
     assetFolder_STARTS_WITH: { __type: "String" },
+    charts: { __type: "CampaignChartWhere" },
+    chartsAggregate: { __type: "CampaignChartsAggregateInput" },
+    chartsConnection: { __type: "CampaignChartsConnectionWhere" },
+    chartsConnection_NOT: { __type: "CampaignChartsConnectionWhere" },
+    charts_NOT: { __type: "CampaignChartWhere" },
     customer: { __type: "String" },
     customer_CONTAINS: { __type: "String" },
     customer_ENDS_WITH: { __type: "String" },
@@ -11575,6 +12798,11 @@ export const generatedSchema = {
   CreateCampaignAnalyticsMutationResponse: {
     __typename: { __type: "String!" },
     campaignAnalytics: { __type: "[CampaignAnalytic!]!" },
+    info: { __type: "CreateInfo!" },
+  },
+  CreateCampaignChartsMutationResponse: {
+    __typename: { __type: "String!" },
+    campaignCharts: { __type: "[CampaignChart!]!" },
     info: { __type: "CreateInfo!" },
   },
   CreateCampaignsMutationResponse: {
@@ -23875,6 +25103,11 @@ export const generatedSchema = {
     campaignAnalytics: { __type: "[CampaignAnalytic!]!" },
     info: { __type: "UpdateInfo!" },
   },
+  UpdateCampaignChartsMutationResponse: {
+    __typename: { __type: "String!" },
+    campaignCharts: { __type: "[CampaignChart!]!" },
+    info: { __type: "UpdateInfo!" },
+  },
   UpdateCampaignsMutationResponse: {
     __typename: { __type: "String!" },
     campaigns: { __type: "[Campaign!]!" },
@@ -24016,6 +25249,10 @@ export const generatedSchema = {
       __type: "CreateCampaignAnalyticsMutationResponse!",
       __args: { input: "[CampaignAnalyticCreateInput!]!" },
     },
+    createCampaignCharts: {
+      __type: "CreateCampaignChartsMutationResponse!",
+      __args: { input: "[CampaignChartCreateInput!]!" },
+    },
     createCampaigns: {
       __type: "CreateCampaignsMutationResponse!",
       __args: { input: "[CampaignCreateInput!]!" },
@@ -24121,6 +25358,13 @@ export const generatedSchema = {
       __args: {
         delete: "CampaignAnalyticDeleteInput",
         where: "CampaignAnalyticWhere",
+      },
+    },
+    deleteCampaignCharts: {
+      __type: "DeleteInfo!",
+      __args: {
+        delete: "CampaignChartDeleteInput",
+        where: "CampaignChartWhere",
       },
     },
     deleteCampaigns: {
@@ -24255,6 +25499,18 @@ export const generatedSchema = {
         disconnect: "CampaignAnalyticDisconnectInput",
         update: "CampaignAnalyticUpdateInput",
         where: "CampaignAnalyticWhere",
+      },
+    },
+    updateCampaignCharts: {
+      __type: "UpdateCampaignChartsMutationResponse!",
+      __args: {
+        connect: "CampaignChartConnectInput",
+        connectOrCreate: "CampaignChartConnectOrCreateInput",
+        create: "CampaignChartRelationInput",
+        delete: "CampaignChartDeleteInput",
+        disconnect: "CampaignChartDisconnectInput",
+        update: "CampaignChartUpdateInput",
+        where: "CampaignChartWhere",
       },
     },
     updateCampaigns: {
@@ -24547,6 +25803,18 @@ export const generatedSchema = {
     campaignAnalyticsCount: {
       __type: "Int!",
       __args: { where: "CampaignAnalyticWhere" },
+    },
+    campaignCharts: {
+      __type: "[CampaignChart!]!",
+      __args: { options: "CampaignChartOptions", where: "CampaignChartWhere" },
+    },
+    campaignChartsAggregate: {
+      __type: "CampaignChartAggregateSelection!",
+      __args: { where: "CampaignChartWhere" },
+    },
+    campaignChartsCount: {
+      __type: "Int!",
+      __args: { where: "CampaignChartWhere" },
     },
     campaigns: {
       __type: "[Campaign!]!",
@@ -24875,6 +26143,19 @@ export interface Campaign {
   }) => CampaignAnalyticsConnection;
   assetFolder?: Maybe<ScalarsEnums["String"]>;
   assets?: Maybe<Array<Maybe<CampaignAsset>>>;
+  charts: (args?: {
+    options?: Maybe<CampaignChartOptions>;
+    where?: Maybe<CampaignChartWhere>;
+  }) => Maybe<Array<Maybe<CampaignChart>>>;
+  chartsAggregate: (args?: {
+    where?: Maybe<CampaignChartWhere>;
+  }) => Maybe<CampaignCampaignChartChartsAggregationSelection>;
+  chartsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CampaignChartsConnectionSort>>;
+    where?: Maybe<CampaignChartsConnectionWhere>;
+  }) => CampaignChartsConnection;
   customer?: Maybe<ScalarsEnums["String"]>;
   id: ScalarsEnums["ID"];
   interactionTimeline?: Maybe<Array<Maybe<CampaignInteraction>>>;
@@ -24893,6 +26174,7 @@ export interface Campaign {
     sort?: Maybe<Array<CampaignOrganisationConnectionSort>>;
     where?: Maybe<CampaignOrganisationConnectionWhere>;
   }) => CampaignOrganisationConnection;
+  peopleCount?: Maybe<Array<Maybe<CameraAnalytic>>>;
   views?: Maybe<ScalarsEnums["Int"]>;
 }
 
@@ -25000,6 +26282,106 @@ export interface CampaignCampaignAnalyticAnalyticsNodeAggregateSelection {
   type: StringAggregateSelection;
 }
 
+export interface CampaignCampaignChartChartsAggregationSelection {
+  __typename?: "CampaignCampaignChartChartsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CampaignCampaignChartChartsNodeAggregateSelection>;
+}
+
+export interface CampaignCampaignChartChartsNodeAggregateSelection {
+  __typename?: "CampaignCampaignChartChartsNodeAggregateSelection";
+  data: StringAggregateSelection;
+  dataKey: StringAggregateSelection;
+  height: IntAggregateSelection;
+  id: IDAggregateSelection;
+  label: StringAggregateSelection;
+  type: StringAggregateSelection;
+  width: IntAggregateSelection;
+  x: IntAggregateSelection;
+  y: IntAggregateSelection;
+}
+
+export interface CampaignChart {
+  __typename?: "CampaignChart";
+  campaign: (args?: {
+    options?: Maybe<CampaignOptions>;
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<Campaign>;
+  campaignAggregate: (args?: {
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<CampaignChartCampaignCampaignAggregationSelection>;
+  campaignConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CampaignChartCampaignConnectionSort>>;
+    where?: Maybe<CampaignChartCampaignConnectionWhere>;
+  }) => CampaignChartCampaignConnection;
+  data?: Maybe<ScalarsEnums["String"]>;
+  dataKey?: Maybe<ScalarsEnums["String"]>;
+  height?: Maybe<ScalarsEnums["Int"]>;
+  id: ScalarsEnums["ID"];
+  label?: Maybe<ScalarsEnums["String"]>;
+  total?: Maybe<ScalarsEnums["Boolean"]>;
+  type?: Maybe<ScalarsEnums["String"]>;
+  width?: Maybe<ScalarsEnums["Int"]>;
+  x?: Maybe<ScalarsEnums["Int"]>;
+  y?: Maybe<ScalarsEnums["Int"]>;
+}
+
+export interface CampaignChartAggregateSelection {
+  __typename?: "CampaignChartAggregateSelection";
+  count: ScalarsEnums["Int"];
+  data: StringAggregateSelection;
+  dataKey: StringAggregateSelection;
+  height: IntAggregateSelection;
+  id: IDAggregateSelection;
+  label: StringAggregateSelection;
+  type: StringAggregateSelection;
+  width: IntAggregateSelection;
+  x: IntAggregateSelection;
+  y: IntAggregateSelection;
+}
+
+export interface CampaignChartCampaignCampaignAggregationSelection {
+  __typename?: "CampaignChartCampaignCampaignAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CampaignChartCampaignCampaignNodeAggregateSelection>;
+}
+
+export interface CampaignChartCampaignCampaignNodeAggregateSelection {
+  __typename?: "CampaignChartCampaignCampaignNodeAggregateSelection";
+  assetFolder: StringAggregateSelection;
+  customer: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface CampaignChartCampaignConnection {
+  __typename?: "CampaignChartCampaignConnection";
+  edges: Array<CampaignChartCampaignRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CampaignChartCampaignRelationship {
+  __typename?: "CampaignChartCampaignRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Campaign;
+}
+
+export interface CampaignChartsConnection {
+  __typename?: "CampaignChartsConnection";
+  edges: Array<CampaignChartsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CampaignChartsRelationship {
+  __typename?: "CampaignChartsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: CampaignChart;
+}
+
 export interface CampaignHiveOrganisationOrganisationAggregationSelection {
   __typename?: "CampaignHiveOrganisationOrganisationAggregationSelection";
   count: ScalarsEnums["Int"];
@@ -25034,6 +26416,12 @@ export interface CampaignOrganisationRelationship {
 export interface CreateCampaignAnalyticsMutationResponse {
   __typename?: "CreateCampaignAnalyticsMutationResponse";
   campaignAnalytics: Array<CampaignAnalytic>;
+  info: CreateInfo;
+}
+
+export interface CreateCampaignChartsMutationResponse {
+  __typename?: "CreateCampaignChartsMutationResponse";
+  campaignCharts: Array<CampaignChart>;
   info: CreateInfo;
 }
 
@@ -27928,6 +29316,12 @@ export interface UpdateCampaignAnalyticsMutationResponse {
   info: UpdateInfo;
 }
 
+export interface UpdateCampaignChartsMutationResponse {
+  __typename?: "UpdateCampaignChartsMutationResponse";
+  campaignCharts: Array<CampaignChart>;
+  info: UpdateInfo;
+}
+
 export interface UpdateCampaignsMutationResponse {
   __typename?: "UpdateCampaignsMutationResponse";
   campaigns: Array<Campaign>;
@@ -28092,6 +29486,9 @@ export interface Mutation {
   createCampaignAnalytics: (args: {
     input: Array<CampaignAnalyticCreateInput>;
   }) => CreateCampaignAnalyticsMutationResponse;
+  createCampaignCharts: (args: {
+    input: Array<CampaignChartCreateInput>;
+  }) => CreateCampaignChartsMutationResponse;
   createCampaigns: (args: {
     input: Array<CampaignCreateInput>;
   }) => CreateCampaignsMutationResponse;
@@ -28170,6 +29567,10 @@ export interface Mutation {
   deleteCampaignAnalytics: (args?: {
     delete?: Maybe<CampaignAnalyticDeleteInput>;
     where?: Maybe<CampaignAnalyticWhere>;
+  }) => DeleteInfo;
+  deleteCampaignCharts: (args?: {
+    delete?: Maybe<CampaignChartDeleteInput>;
+    where?: Maybe<CampaignChartWhere>;
   }) => DeleteInfo;
   deleteCampaigns: (args?: {
     delete?: Maybe<CampaignDeleteInput>;
@@ -28276,6 +29677,15 @@ export interface Mutation {
     update?: Maybe<CampaignAnalyticUpdateInput>;
     where?: Maybe<CampaignAnalyticWhere>;
   }) => UpdateCampaignAnalyticsMutationResponse;
+  updateCampaignCharts: (args?: {
+    connect?: Maybe<CampaignChartConnectInput>;
+    connectOrCreate?: Maybe<CampaignChartConnectOrCreateInput>;
+    create?: Maybe<CampaignChartRelationInput>;
+    delete?: Maybe<CampaignChartDeleteInput>;
+    disconnect?: Maybe<CampaignChartDisconnectInput>;
+    update?: Maybe<CampaignChartUpdateInput>;
+    where?: Maybe<CampaignChartWhere>;
+  }) => UpdateCampaignChartsMutationResponse;
   updateCampaigns: (args?: {
     connect?: Maybe<CampaignConnectInput>;
     connectOrCreate?: Maybe<CampaignConnectOrCreateInput>;
@@ -28493,6 +29903,16 @@ export interface Query {
   }) => CampaignAnalyticAggregateSelection;
   campaignAnalyticsCount: (args?: {
     where?: Maybe<CampaignAnalyticWhere>;
+  }) => ScalarsEnums["Int"];
+  campaignCharts: (args?: {
+    options?: Maybe<CampaignChartOptions>;
+    where?: Maybe<CampaignChartWhere>;
+  }) => Array<CampaignChart>;
+  campaignChartsAggregate: (args?: {
+    where?: Maybe<CampaignChartWhere>;
+  }) => CampaignChartAggregateSelection;
+  campaignChartsCount: (args?: {
+    where?: Maybe<CampaignChartWhere>;
   }) => ScalarsEnums["Int"];
   campaigns: (args?: {
     options?: Maybe<CampaignOptions>;
@@ -28764,12 +30184,23 @@ export interface SchemaObjectTypes {
   CampaignAsset: CampaignAsset;
   CampaignCampaignAnalyticAnalyticsAggregationSelection: CampaignCampaignAnalyticAnalyticsAggregationSelection;
   CampaignCampaignAnalyticAnalyticsNodeAggregateSelection: CampaignCampaignAnalyticAnalyticsNodeAggregateSelection;
+  CampaignCampaignChartChartsAggregationSelection: CampaignCampaignChartChartsAggregationSelection;
+  CampaignCampaignChartChartsNodeAggregateSelection: CampaignCampaignChartChartsNodeAggregateSelection;
+  CampaignChart: CampaignChart;
+  CampaignChartAggregateSelection: CampaignChartAggregateSelection;
+  CampaignChartCampaignCampaignAggregationSelection: CampaignChartCampaignCampaignAggregationSelection;
+  CampaignChartCampaignCampaignNodeAggregateSelection: CampaignChartCampaignCampaignNodeAggregateSelection;
+  CampaignChartCampaignConnection: CampaignChartCampaignConnection;
+  CampaignChartCampaignRelationship: CampaignChartCampaignRelationship;
+  CampaignChartsConnection: CampaignChartsConnection;
+  CampaignChartsRelationship: CampaignChartsRelationship;
   CampaignHiveOrganisationOrganisationAggregationSelection: CampaignHiveOrganisationOrganisationAggregationSelection;
   CampaignHiveOrganisationOrganisationNodeAggregateSelection: CampaignHiveOrganisationOrganisationNodeAggregateSelection;
   CampaignInteraction: CampaignInteraction;
   CampaignOrganisationConnection: CampaignOrganisationConnection;
   CampaignOrganisationRelationship: CampaignOrganisationRelationship;
   CreateCampaignAnalyticsMutationResponse: CreateCampaignAnalyticsMutationResponse;
+  CreateCampaignChartsMutationResponse: CreateCampaignChartsMutationResponse;
   CreateCampaignsMutationResponse: CreateCampaignsMutationResponse;
   CreateGreenScreenTemplatesMutationResponse: CreateGreenScreenTemplatesMutationResponse;
   CreateGreenScreensMutationResponse: CreateGreenScreensMutationResponse;
@@ -29087,6 +30518,7 @@ export interface SchemaObjectTypes {
   TemplateSlotUsedByConnection: TemplateSlotUsedByConnection;
   TemplateSlotUsedByRelationship: TemplateSlotUsedByRelationship;
   UpdateCampaignAnalyticsMutationResponse: UpdateCampaignAnalyticsMutationResponse;
+  UpdateCampaignChartsMutationResponse: UpdateCampaignChartsMutationResponse;
   UpdateCampaignsMutationResponse: UpdateCampaignsMutationResponse;
   UpdateGreenScreenTemplatesMutationResponse: UpdateGreenScreenTemplatesMutationResponse;
   UpdateGreenScreensMutationResponse: UpdateGreenScreensMutationResponse;
@@ -29130,12 +30562,23 @@ export type SchemaObjectTypesNames =
   | "CampaignAsset"
   | "CampaignCampaignAnalyticAnalyticsAggregationSelection"
   | "CampaignCampaignAnalyticAnalyticsNodeAggregateSelection"
+  | "CampaignCampaignChartChartsAggregationSelection"
+  | "CampaignCampaignChartChartsNodeAggregateSelection"
+  | "CampaignChart"
+  | "CampaignChartAggregateSelection"
+  | "CampaignChartCampaignCampaignAggregationSelection"
+  | "CampaignChartCampaignCampaignNodeAggregateSelection"
+  | "CampaignChartCampaignConnection"
+  | "CampaignChartCampaignRelationship"
+  | "CampaignChartsConnection"
+  | "CampaignChartsRelationship"
   | "CampaignHiveOrganisationOrganisationAggregationSelection"
   | "CampaignHiveOrganisationOrganisationNodeAggregateSelection"
   | "CampaignInteraction"
   | "CampaignOrganisationConnection"
   | "CampaignOrganisationRelationship"
   | "CreateCampaignAnalyticsMutationResponse"
+  | "CreateCampaignChartsMutationResponse"
   | "CreateCampaignsMutationResponse"
   | "CreateGreenScreenTemplatesMutationResponse"
   | "CreateGreenScreensMutationResponse"
@@ -29453,6 +30896,7 @@ export type SchemaObjectTypesNames =
   | "TemplateSlotUsedByConnection"
   | "TemplateSlotUsedByRelationship"
   | "UpdateCampaignAnalyticsMutationResponse"
+  | "UpdateCampaignChartsMutationResponse"
   | "UpdateCampaignsMutationResponse"
   | "UpdateGreenScreenTemplatesMutationResponse"
   | "UpdateGreenScreensMutationResponse"

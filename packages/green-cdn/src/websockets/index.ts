@@ -12,6 +12,7 @@ export const socketHandler = async (driver: Driver) => {
 	}
 
 	const emitPluginEvent = async (ids: string[], msg: {plugin: string, message: string}) => {
+		console.log("Plugin Event", {ids, msg})
 		await Promise.all(ids.filter((a) => sockets[a]).map((id) => {
 			sockets[id].emit('plugin-message', {plugin: msg.plugin, message: msg.message})
 		}))
@@ -19,7 +20,7 @@ export const socketHandler = async (driver: Driver) => {
 
 	const handleSocket = async (socket: Socket) => {
 
-		socket.emit('update', {version: 'latest'})
+		// socket.emit('update', {version: 'latest'})
 
 		const session = await driver.session()
 

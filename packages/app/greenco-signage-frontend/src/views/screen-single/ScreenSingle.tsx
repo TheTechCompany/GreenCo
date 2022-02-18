@@ -65,6 +65,8 @@ export const ScreenSingle = (props) => {
 				location {
 					id
 					name
+					lat
+					lng
 				}
 			}
 

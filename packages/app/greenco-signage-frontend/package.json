@@ -60,7 +60,7 @@
     "@greenco/signage-api": "^0.0.2",
     "@greenco/styles": "^0.0.2",
     "@hexhive/auth-ui": "^0.0.6",
-    "@hexhive/ui": "^0.0.6-alpha.0",
+    "@hexhive/ui": "^0.0.6-alpha.20",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",

@@ -57,6 +57,7 @@ import jwt from 'jsonwebtoken'
 
 	channel.consume(`GREEN-SCREEN:SCHEDULE:RELOAD`, async (msg) => {
 		let {schedule} = JSON.parse(msg?.content.toString('utf8') || '{}')
+		console.log("RELOAD", {schedule})
 
 		const session = driver.session()
 

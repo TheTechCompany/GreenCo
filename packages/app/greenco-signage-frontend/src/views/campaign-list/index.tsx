@@ -68,15 +68,22 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
            <CampaignModal   
             open={modalOpen}
             selected={selected}
-            onClose={() => openModal(false)}
+            onClose={() => {
+                openModal(false)
+                setSelected(undefined)
+            }}
             onDelete={() => {
                 deleteCampaign({args: {id: selected.id}}).then(() => {
                     openModal(false)
+                setSelected(undefined)
+                    
                 })
             }}
             onSubmit={(campaign) => {
                 createCampaign({args: {name: campaign.name}}).then(() => {
                     openModal(false)
+                    setSelected(undefined)
+                    
                 })
             }} />
             <Box pad="xsmall" align="center" background="accent-2" direction="row" justify="between">

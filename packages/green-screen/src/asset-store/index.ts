@@ -1,4 +1,4 @@
-import { IPFS, create } from 'ipfs';
+import { IPFSHTTPClient, create } from 'ipfs-http-client';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
@@ -21,7 +21,7 @@ export interface AssetStoreConfiguration {
 }
 
 export class AssetStore {
-	private node?: IPFS;
+	private node?: IPFSHTTPClient;
 
 	private server: AssetStoreServer;
 
@@ -63,7 +63,7 @@ export class AssetStore {
 
 	async pullAll(){
 		let results = await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
-			console.log(`Pulling ${manifestItem.campaign?.name}`)
+			console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.assetFolder}`)
 			if(!manifestItem.id) return;
 
 			const data = await this.pull(manifestItem.campaign?.assetFolder || '')
@@ -112,10 +112,17 @@ export class AssetStore {
 			rmdirSync(path.join(ipfsPath, 'repo.lock'))
 		}
 
-		this.node = await create({
-			repo: ipfsPath,
+		this.node = await create({url: `http://54.206.111.213:8080`})
 
-		})
+		// this.node = await create({
+		// 	repo: ipfsPath,
+		// 	config: {
+		// 		Bootstrap: [
+		// 			'/ip4/54.206.111.213/tcp/4001'
+		// 		]
+		// 	}
+			
+		// })
 
 		await this.refreshSchedule()
 	}
@@ -132,12 +139,13 @@ export class AssetStore {
 			const timeoutTimer = setTimeout(() => {
 				console.log(`Pulling ${hash} timed out`)
 				resolve(null)
-			}, 5 * 60 * 1000)
+			}, 10 * 60 * 1000)
 
 			const pull = this.node?.get(hash)
 			if(!pull) return;
 			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
+				console.log(`${hash} - ${chunk.length}`)
 				ret.push(chunk)
 			}
 

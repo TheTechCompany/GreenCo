@@ -1,5 +1,5 @@
 import { Box, List, Button, Text } from 'grommet';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import { ScreenPreview } from '../../components/screen-preview';
 import { Upload, Analytics, Add, Tools, Document, Qr, MoreVertical, DownloadOption} from 'grommet-icons';
 import { UploadPlaceholder } from '../../components/upload-placeholder';
@@ -13,6 +13,7 @@ import { FilesPage } from './pages/files';
 import { AnalyticsPage } from './pages/analytics';
 import { ToolsPage } from './pages/tools';
 import { CampaignSingleProvider } from './context';
+import moment from 'moment';
 
 
 export const NavButtons = (props) => {
@@ -50,7 +51,6 @@ export const CampaignSingle = (props) => {
 
 	const [ analyticModalOpen, setAnalyticModalOpen ] = useState(false)
 	const [ selectedAnalytic, setSelectedAnalytic ] = useState(false)
-	const campaign = query.campaigns({where: {id: id}})?.[0]
 
 	const setView = (path: string) => {
 		navigate(`${path}`)
@@ -79,8 +79,35 @@ export const CampaignSingle = (props) => {
 		query Q ($id: ID) {
 			campaigns(where: {id: $id}) {
 				id
+				name
+
 				views
 				interactions
+
+				peopleCount {
+					timestamp
+					results {
+						name
+						confidence
+					}
+				}
+
+				charts {
+					id
+					label
+					type
+
+					width
+					height
+
+					x
+					y
+
+					data
+					dataKey
+					total
+
+				}
 
 				interactionTimeline {
 					time
@@ -110,13 +137,18 @@ export const CampaignSingle = (props) => {
 	})
 
 	console.log(data)
-	const views = data?.campaigns?.[0]?.views
-	const files = data?.campaigns?.[0]?.assets || [];
-	const analytics = data?.campaigns?.[0]?.analytics || [];
-	
-	const interactions = data?.campaigns?.[0]?.interactions
-	const interactionTimeline = data?.campaigns?.[0]?.interactionTimeline
+	const campaign = data?.campaigns?.[0];
 
+	const views = campaign?.views
+	const files = campaign?.assets || [];
+	const analytics = campaign?.analytics || [];
+	
+	const interactions = campaign?.interactions
+	const interactionTimeline = campaign?.interactionTimeline
+
+	const charts = campaign?.charts;
+
+	const peopleCount = campaign?.peopleCount
 
 	const active = menu.map((item) => matchPath(window.location.pathname.replace(`/dashboard/signage`, ''), 
 		`${item.route}`,
@@ -128,14 +160,43 @@ export const CampaignSingle = (props) => {
 		await downloadCampaignAssets(id)
 		setDownloading(false)
 	}
+	const [keys, points] = useMemo(() => {
+		const keys = [...new Set(peopleCount?.map(a => {
+			return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
+		}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
+
+		const points = peopleCount?.map(({timestamp, results}) => {
+			let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
+
+			let returnObject : any = {};
+
+			resultKeys.forEach((key: string) => {
+				returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
+			})
+
+			return {
+				timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
+				...returnObject
+			}
+		})
+		return [keys, points]
+	}, [peopleCount])
+	
 
 	return (
 		<CampaignSingleProvider value={{
-			campaign,
+			campaign: {
+				...campaign,
+				peopleCount: {
+					keys,
+					points
+				}
+			},
 			files,
 			analytics,
 			views,
 			interactions,
+			charts,
 			interactionTimeline,
 			refresh: () => {
 				client.refetchQueries({include: ['Q']})
@@ -157,7 +218,7 @@ export const CampaignSingle = (props) => {
 				background="light-1"
 				 flex>
 				<Box direction="row" justify="between" align="center" pad="xsmall" background="accent-2">
-					<Text>{campaign.name}</Text>
+					<Text>{campaign?.name}</Text>
 
 					<Box direction="row" gap="xsmall">
 						<Button 

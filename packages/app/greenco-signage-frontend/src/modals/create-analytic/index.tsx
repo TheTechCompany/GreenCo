@@ -7,6 +7,7 @@ import { SMSForm } from './forms/sms';
 import { PhoneForm } from './forms/phone';
 import { TextForm } from './forms/text';
 import { WebsiteForm } from './forms/website';
+import { getQRURL } from '../../api/campaign';
 
 const options = [
 	{
@@ -69,9 +70,10 @@ export const CreateAnalyticModal = (props) => {
 			onSubmit={onSubmit}
 			open={props.open}>
 			<Box gap="xsmall" align="center" flex direction="row">
+				{analytic.id && (
 				<Box overflow="hidden" round="xsmall" elevation="small">
-					<QRCode value={analytic.data || ''} />
-				</Box>
+					<QRCode value={getQRURL(analytic.id) || ''} />
+				</Box>)}
 			<Box flex gap="xsmall">
 								
 				<FormInput 

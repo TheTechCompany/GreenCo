@@ -1,6 +1,8 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
 import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
+import Screenshot from 'screenshot-desktop'
+
 const handsfree = require('./handsfree.js');
 
 export class DisplayManager {
@@ -19,6 +21,8 @@ export class DisplayManager {
 
 	private hold = false;
 
+	private screenshotTimer? : NodeJS.Timer;
+
 	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
 		this.telemtry = telemtry
@@ -28,12 +32,15 @@ export class DisplayManager {
 		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
+			devtools: true, //process.env.DEVTOOLS === 'true' ? true : false,
 			ignoreDefaultArgs: ['--enable-automation'],
 			defaultViewport: {
 				width: 1080, //1080
 				height: 1920 //1920
 			},
-			args: ['--kiosk', '--disable-infobars']
+			executablePath: `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
+			// "C:\Program Files\Google\Chrome\Application
+			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
 		})
 
 		this.page = await this.browser?.newPage()
@@ -43,6 +50,11 @@ export class DisplayManager {
 		}catch(e){
 
 		}
+
+		this.screenshotTimer = setInterval(async () => {
+			await this.screenshot()
+		}, 5 * 60 * 1000);
+		
 	}
 
 	get isHolding(){
@@ -55,6 +67,11 @@ export class DisplayManager {
 
 	releaseAsset(){
 		this.hold = false;
+	}
+
+	async screenshot(){
+		const desktop = await Screenshot()
+		await this.telemtry.sendScreenshot(desktop)
 	}
 
 	async play(campaign: {id: string, assetFolder: string}){

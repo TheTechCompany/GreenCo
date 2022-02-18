@@ -69,7 +69,7 @@ const greenlock = require("greenlock-express");
 		url: process.env.IPFS_URL || 'http://localhost:5001'
 	})
 
-	const resolved = await resolvers(fs, pgClient, channel)
+	const resolved = await resolvers(fs, pgClient, channel, driver)
 	// const ogm = new OGM({typeDefs, driver})
 	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
@@ -87,7 +87,7 @@ const greenlock = require("greenlock-express");
 	await graphServer.init()
 
 
-	if(graphServer.graphManager) app.use('/api/', signageApi(graphServer.graphManager, fs))
+	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient, fs))
 
 	app.use(graphServer.middleware)
 

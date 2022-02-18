@@ -7,13 +7,14 @@ import QRCode from 'qrcode.react'
 import { CreateAnalyticModal } from '../../../modals/create-analytic';
 import { useMutation } from '@greenco/signage-api';
 import { CampaignSingleContext, } from '../context';
+import { getQRURL } from '../../../api/campaign';
 
 export const ToolsPage = () => {
 	const [ modalOpen, openModal ] = useState(false)
 
 	const [ selected, setSelected ] = useState<any>()
 
-	const { analytics, campaign } = useContext(CampaignSingleContext)
+	const { analytics, campaign, refresh } = useContext(CampaignSingleContext)
 	const [ createCampaignAnalytic, createAnalyticInfo ] = useMutation((mutation, args: {id?: string, name: string, type: string, data: string}) => {
 		let update : any = undefined;
 
@@ -73,7 +74,7 @@ export const ToolsPage = () => {
 						}
 					}).then(() => {
 						openModal(false)
-
+						refresh?.()
 					})
 
 				}}
@@ -97,7 +98,7 @@ export const ToolsPage = () => {
 									<Box direction="row" align="center" justify='between'>
 										<Box gap="xsmall" direction="row" align="center" flex>
 											<Box elevation="small" round="xsmall" overflow="hidden">
-												<QRCode size={50}  value={datum.data || ''} />
+												<QRCode size={50}  value={getQRURL(datum.id) || ''} />
 											</Box>
 											<Text>{datum.name}</Text>
 										</Box>
