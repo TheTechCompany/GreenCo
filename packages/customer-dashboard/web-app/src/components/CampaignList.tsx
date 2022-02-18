@@ -5,6 +5,8 @@ import { CampaignCard, CampaignCardProps } from "./CampaignCard";
 
 export interface CampaignListProps {
   data?: any;
+  campaigns: {id: string, title: string}[]
+  onClickItem?: (campaign: {id: string, title: string}) => void;
 }
 
 // Not sure how to make this more interesting yet: Some thoughts:
@@ -13,8 +15,9 @@ export interface CampaignListProps {
 export const CampaignList: React.FC<CampaignListProps> = (props) => {
   return (
     <Box direction="row" justify="evenly">
-      <CampaignCard title="Test title" />
-      <CampaignCard title="Another test title" />
+      {props.campaigns.map((campaign) => (
+        <CampaignCard onClick={() => {props.onClickItem?.(campaign)}} title={campaign.title} />
+      ))}
     </Box>
   );
 };

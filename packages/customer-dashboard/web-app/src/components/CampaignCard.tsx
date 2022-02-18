@@ -7,13 +7,18 @@ export interface CampaignCardProps {
   title: string;
   description?: string;
   data?: any;
+  onClick?: () => void;
 }
 
 // TODO: I want the elevation to change to large (and maybe the box slightly bigger?) when overed over, and make these clickables
 
 export const CampaignCard: React.FC<CampaignCardProps> = (props) => {
   return (
-    <Box pad="large" gap="medium" width="medium">
+    <Box
+      onClick={props.onClick}
+      pad="large" 
+      gap="medium" 
+      width="medium">
       <Card pad="small" background="dark-1" gap="medium" elevation="large">
         <CardBody>
           <Image

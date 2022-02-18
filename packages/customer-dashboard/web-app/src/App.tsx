@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Grommet } from "grommet";
 import { HeaderBar } from "./components/HeaderBar";
-import { Campaigns } from "./veiws/Campaigns";
-import { SingleCampaign } from "./veiws/SingleCampaign";
+import { Campaigns } from "./views/Campaigns";
+import { SingleCampaign } from "./views/SingleCampaign";
 
-import { Reporting } from "./veiws/Reporting";
-import { Settings } from "./veiws/Settings";
+import { Reporting } from "./views/Reporting";
+import { Settings } from "./views/Settings";
 
-import { Routes, Route } from "react-router-dom";
-import { LoginForm } from "./veiws/LoginForm";
-import { Dashboard } from "./veiws/Dashboard";
+import { Routes, Route, Outlet } from "react-router-dom";
+import { LoginForm } from "./views/LoginForm";
+import { Dashboard } from "./views/Dashboard";
 
 const theme = {
   global: {
@@ -43,13 +43,15 @@ const theme = {
 
 function App() {
   return (
-    <Grommet theme={theme}>
+    <Grommet style={{display: 'flex'}} full theme={theme}>
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="campaignlist" element={<Campaigns />} />
-          <Route path="campaign" element={<SingleCampaign />} />
-          <Route path="reporting" element={<Reporting />} />
+          <Route path="campaigns" element={<Outlet />} >
+            <Route path="" element={<Campaigns />} />
+            <Route path=":id" element={<SingleCampaign />} />
+          </Route>
+          <Route path="reports" element={<Reporting />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>

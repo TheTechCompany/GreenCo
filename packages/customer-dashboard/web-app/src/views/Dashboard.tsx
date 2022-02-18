@@ -5,10 +5,10 @@ import { DashboardSidebar } from "../components/DashboardSidebar";
 import { Outlet } from "react-router-dom";
 
 export const Dashboard = () => (
-  <>
+  <Box flex>
     <HeaderBar />
-    <Box direction="row" flex height="85vh">
+    <Box direction="row" flex>
       <Outlet />
     </Box>
-  </>
+  </Box>
 );

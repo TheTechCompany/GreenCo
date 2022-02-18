@@ -11,13 +11,12 @@ export const HeaderBar = () => (
     pad={{ horizontal: "medium", vertical: "medium" }}
     elevation="small"
     justify="between"
-    height="15vh"
+    height="50px"
   >
-    <Image height="28vh" src="/assets/sl1_logo.png" />
+      <Image height="24px" src="/assets/sl1_logo.png" />
     <Box
       direction="row"
-      width="large"
-      justify="evenly"
+      gap="small"
       pad={{ horizontal: "medium" }}
     >
       <Button
@@ -26,7 +25,7 @@ export const HeaderBar = () => (
         label="Campaigns"
         hoverIndicator
         alignSelf="center"
-        href="/dashboard/campaignlist"
+        href="/dashboard/campaigns"
       />
       <Button
         active
@@ -34,17 +33,20 @@ export const HeaderBar = () => (
         label="Reporting"
         hoverIndicator
         alignSelf="center"
-        href="/dashboard/reporting"
+        href="/dashboard/reports"
       />
-      <Menu
-        icon={<UserSettings />}
-        label="Settings"
-        items={[
-          { label: "Edit Profile", onClick: () => {} },
-          { label: "Change Password", onClick: () => {} },
-          { label: "Log Out", onClick: () => {} },
-        ]}
-      />
+      <Box border={{size: 'small', color: 'gray'}} round="xsmall" elevation="small">
+        <Menu
+  
+          icon={<UserSettings />}
+          label="Settings"
+          items={[
+            { label: "Edit Profile", onClick: () => {} },
+            { label: "Change Password", onClick: () => {} },
+            { label: "Log Out", onClick: () => {} },
+          ]}
+        />
+      </Box>
     </Box>
   </Header>
 );
