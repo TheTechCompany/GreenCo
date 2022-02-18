@@ -1,5 +1,5 @@
-56 error Error: Command failed with exit code 128: git tag v0.0.1-alpha.82 -m v0.0.1-alpha.82
-56 error fatal: tag 'v0.0.1-alpha.82' already exists
+56 error Error: Command failed with exit code 128: git tag v0.0.1 -m v0.0.1
+56 error fatal: tag 'v0.0.1' already exists
 56 error     at makeError (/Users/thekid/Work/Ultraviolet/apps/GreenCo/node_modules/execa/lib/error.js:60:11)
 56 error     at handlePromise (/Users/thekid/Work/Ultraviolet/apps/GreenCo/node_modules/execa/index.js:118:26)
 56 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
