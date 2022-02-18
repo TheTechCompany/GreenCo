@@ -1,6 +1,6 @@
 {
   "name": "@greenco/signage-backend",
-  "version": "0.0.1-alpha.79",
+  "version": "0.0.1-alpha.81",
   "description": "",
   "main": "index.js",
   "private": true,
