@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Grommet } from "grommet";
 import { HeaderBar } from "./components/HeaderBar";
 import { DashboardSidebar } from "./components/DashboardSidebar";
-import { CampaignList } from "./components/CampaignList";
 import { Campaigns } from "./veiws/Campaigns";
 import { Reporting } from "./veiws/Reporting";
 import { Settings } from "./veiws/Settings";
@@ -23,6 +22,21 @@ const theme = {
       height: "20px",
     },
     active: { background: "white", color: "black" },
+    card: {
+      hover: {
+        container: {
+          elevation: "large",
+        },
+      },
+      container: {
+        elevation: "medium",
+        extend: `transition: all 0.2s ease-in-out;`,
+      },
+      footer: {
+        pad: { horizontal: "medium", vertical: "small" },
+        background: "#00000008",
+      },
+    },
   },
 };
 
