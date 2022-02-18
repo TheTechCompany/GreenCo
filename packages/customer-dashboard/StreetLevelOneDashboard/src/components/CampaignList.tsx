@@ -9,7 +9,7 @@ export interface CampaignListProps {
 
 export const CampaignList: React.FC<CampaignListProps> = (props) => {
   return (
-    <Box direction="row">
+    <Box direction="row" justify="evenly">
       <CampaignCard title="Test title" />
       <CampaignCard title="Another test title" />
     </Box>
