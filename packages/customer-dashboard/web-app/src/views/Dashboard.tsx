@@ -1,15 +1,14 @@
 import React from "react";
 import { Box } from "grommet";
-import { HeaderBar } from "../components/HeaderBar";
+import { HeaderBar } from "../components/Header";
 import { DashboardSidebar } from "../components/DashboardSidebar";
 import { Outlet } from "react-router-dom";
 
 export const Dashboard = () => (
-  <>
+  <Box flex>
     <HeaderBar />
-    <Box direction="row" flex height="85vh">
-      <DashboardSidebar />
+    <Box direction="row" flex>
       <Outlet />
     </Box>
-  </>
+  </Box>
 );

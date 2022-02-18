@@ -2,6 +2,8 @@ import React from "react";
 import { Sidebar, Avatar, Button, Nav } from "grommet";
 import { Projects, Clock, Help } from "grommet-icons";
 
+// NO LONGER USING THIS
+
 export const DashboardSidebar = () => (
   <Sidebar background="black" width="small" align="center" elevation="small">
     <Nav pad="small">
