@@ -32,15 +32,15 @@ export class DisplayManager {
 		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
-			devtools: true, //process.env.DEVTOOLS === 'true' ? true : false,
+			devtools: false, //process.env.DEVTOOLS === 'true' ? true : false,
 			ignoreDefaultArgs: ['--enable-automation'],
 			defaultViewport: {
-				width: 800, //1080
-				height: 400 //1920
+				width: 1080, //1080
+				height: 1920 //1920
 			},
 			executablePath: `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
 			// "C:\Program Files\Google\Chrome\Application
-			args: ['--auto-open-devtools-for-tabs'] //'--kiosk', '--disable-infobars', '
+			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs'] //'--kiosk', '--disable-infobars', '
 		})
 
 		this.page = await this.browser?.newPage()
