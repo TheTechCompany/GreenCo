@@ -1,6 +1,6 @@
 export default `
 (() => {
-	alert("Conencted to analytics")
+	// alert("Conencted to analytics")
 
 	document.addEventListener('click', () => {
 		fetch('http://localhost:3000/api/interaction', {method: "POST"})

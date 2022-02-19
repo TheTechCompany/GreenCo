@@ -3,7 +3,7 @@
 // `
 
 export default `(() => {
-    alert("Handsfree")
+    // alert("Handsfree")
     const ws = new WebSocket('ws://localhost:8000');
 
     let pointer;
@@ -27,7 +27,7 @@ export default `(() => {
                 break;
         }
 
-        pointer.style.background = 'red';
+        // pointer.style.background = 'red';
 
         pointer.style.height = '50px';
         pointer.style.width = '50px';
@@ -45,7 +45,7 @@ export default `(() => {
     }
 
     ws.addEventListener('open', () => {
-        alert("Conencted to mouse")
+        // alert("Conencted to mouse")
     })
 
     ws.addEventListener('message', (msg) => {
