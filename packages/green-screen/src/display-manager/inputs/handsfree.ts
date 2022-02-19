@@ -169,5 +169,5 @@ export default `(() => {
             y: position[1] + ((position[3] - position[1]) / 2)
         }, gesture);
     })
-})()
+})();
 `
