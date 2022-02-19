@@ -145,7 +145,10 @@ export class AssetStore {
 			const pull = this.node?.get(hash)
 			console.log(`Pulling ${hash}`)
 
-			if(!pull) return;
+			if(!pull) {
+				console.error(`Pulling ${hash} failed`)
+				return
+			};
 			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
 				console.log(`${hash} - ${chunk.length}`)
