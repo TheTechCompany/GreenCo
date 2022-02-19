@@ -1,4 +1,4 @@
-import { IPFSHTTPClient, create } from 'ipfs-http-client';
+import { create, IPFSHTTPClient } from 'ipfs-http-client';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
@@ -145,7 +145,10 @@ export class AssetStore {
 			const pull = this.node?.get(hash)
 			console.log(`Pulling ${hash}`)
 
-			if(!pull) return;
+			if(!pull) {
+				console.error(`Pulling ${hash} failed`)
+				return
+			};
 			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
 				console.log(`${hash} - ${chunk.length}`)

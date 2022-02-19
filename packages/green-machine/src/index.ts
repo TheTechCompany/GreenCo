@@ -127,7 +127,7 @@ export class GreenMachine {
 
 		this.initControlSocket(this.opts.controlUrl, token);
 		
-		await this.pluginManager.startAll(token)
+		await this.pluginManager.startAll(token, data)
 
 		this.app.listen(9090)
 	}

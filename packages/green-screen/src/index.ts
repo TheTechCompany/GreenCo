@@ -23,8 +23,11 @@ export default class GreenScreen {
 
 	private runtimeToken?: string;
 
-	constructor(token?: string){
+	private slotData? : {slot: {id: string}, slots: {id: string, ip: string, template: {id: string, name: string}}[]};
+
+	constructor(token?: string, data?: {slot: {id: string}, slots: {id: string, ip: string, template: {id: string, name: string}}[]}){
 		this.runtimeToken = token;
+		this.slotData = data
 
 		// this.network = new Network({
 		// 	url: `http://hahei-jumpbox.hexhive.io`,
@@ -75,7 +78,11 @@ export default class GreenScreen {
 		// 	// await this.assetStore.provision();
 		// 	this.isProvisioned = true;
 		// }
-		await this.displayManager.init()
+
+		const isPublic = this.slotData?.slots.find((a) => a.id == this.slotData?.slot.id)?.template.name == "Public Display";
+		const privateAddress = this.slotData?.slots.find((a) => a.template.name !== "Public Display")?.ip || 'localhost';
+
+		await this.displayManager.init({isPublic, privateAddress})
 		await this.assetStore.init()
 		await this.schedule()
 		

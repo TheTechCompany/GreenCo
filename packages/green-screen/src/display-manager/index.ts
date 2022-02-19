@@ -3,7 +3,7 @@ import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
 import Screenshot from 'screenshot-desktop'
 
-const handsfree = require('./inputs/handsfree.js');
+import handsfree from './inputs/handsfree';
 
 export class DisplayManager {
 	private browser?: Browser;
@@ -23,16 +23,22 @@ export class DisplayManager {
 
 	private screenshotTimer? : NodeJS.Timer;
 
+	private isPublic: boolean = false;
+	private privateAddress: string = '127.0.0.1';
+
 	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
 		this.telemtry = telemtry
 	}
 
-	async init(){
+	async init(args: {isPublic: boolean, privateAddress: string}){
+		this.privateAddress = args.privateAddress;
+		this.isPublic = args.isPublic
+
 		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
-			devtools: true, //process.env.DEVTOOLS === 'true' ? true : false,
+			devtools: false, //process.env.DEVTOOLS === 'true' ? true : false,
 			ignoreDefaultArgs: ['--enable-automation'],
 			defaultViewport: {
 				width: 1080, //1080
@@ -40,7 +46,7 @@ export class DisplayManager {
 			},
 			executablePath: `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
 			// "C:\Program Files\Google\Chrome\Application
-			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs']
+			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs'] //'--kiosk', '--disable-infobars', '
 		})
 
 		this.page = await this.browser?.newPage()
@@ -86,7 +92,9 @@ export class DisplayManager {
 			await this.page?.goto(`http://localhost:3000/${campaign.assetFolder}`)
 			await this.page?.addScriptTag({content: analytics})
 	
-			await this.page?.addScriptTag({content: handsfree.toString()})
+			if(this.isPublic){
+				await this.page?.addScriptTag({content: handsfree(this.privateAddress)})
+			}
 		}catch(e){
 
 		}
