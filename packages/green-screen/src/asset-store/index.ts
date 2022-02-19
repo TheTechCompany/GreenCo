@@ -100,7 +100,7 @@ export class AssetStore {
 
 	async loadManifest(){
 		const resp = await axios.get(`${this.assetStoreUrl}/api/distribute?token=${this.token}`)
-		console.log({manifest: this.manifest})
+		console.log({manifest: resp.data})
 		this.manifest = resp.data.campaigns;
 	}
 
