@@ -1,4 +1,4 @@
-import { IPFSHTTPClient, create } from 'ipfs-http-client';
+import { create, IPFS } from 'ipfs';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
@@ -21,7 +21,7 @@ export interface AssetStoreConfiguration {
 }
 
 export class AssetStore {
-	private node?: IPFSHTTPClient;
+	private node?: IPFS;
 
 	private server: AssetStoreServer;
 
