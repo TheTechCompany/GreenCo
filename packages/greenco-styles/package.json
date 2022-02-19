@@ -1,6 +1,6 @@
 {
   "name": "@greenco/styles",
-  "version": "0.0.2",
+  "version": "0.0.3-alpha.1",
   "private": true,
   "description": "",
   "main": "dist/index.js",

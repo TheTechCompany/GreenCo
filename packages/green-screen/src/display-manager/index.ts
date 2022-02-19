@@ -3,7 +3,7 @@ import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
 import Screenshot from 'screenshot-desktop'
 
-const handsfree = require('./handsfree.js');
+const handsfree = require('./inputs/handsfree.js');
 
 export class DisplayManager {
 	private browser?: Browser;
