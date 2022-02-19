@@ -4,5 +4,5 @@
     "packages/app/*"
   ],
   "npmClient": "yarn",
-  "version": "0.0.3-alpha.15"
+  "version": "0.0.3-alpha.16"
 }
