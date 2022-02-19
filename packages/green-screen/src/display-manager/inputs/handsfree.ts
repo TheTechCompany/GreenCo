@@ -2,7 +2,7 @@
 
 // `
 
-export default `(async () => {
+export default `(() => {
     alert("Handsfree")
     const ws = new WebSocket('ws://localhost:8000');
 
