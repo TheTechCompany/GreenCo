@@ -3,6 +3,7 @@
 // `
 
 export default `(async () => {
+    alert("Handsfree")
     const ws = new WebSocket('ws://localhost:8000');
 
     let pointer;
