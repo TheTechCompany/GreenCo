@@ -79,8 +79,11 @@ export default class GreenScreen {
 		// 	this.isProvisioned = true;
 		// }
 
+		console.log({slots: JSON.stringify(this.slotData)})
 		const isPublic = this.slotData?.slots.find((a) => a.id == this.slotData?.slot.id)?.template.name == "Public Display";
 		const privateAddress = this.slotData?.slots.find((a) => a.template.name !== "Public Display")?.ip || 'localhost';
+
+		console.log({isPublic, privateAddress})
 
 		await this.displayManager.init({isPublic, privateAddress})
 		await this.assetStore.init()
