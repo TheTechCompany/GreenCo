@@ -44,6 +44,8 @@ export default (driver: Driver) => {
 				id: (info as any).slot,
 				networkName
 			})
+
+			console.log({info, networkName})
 			
 			session.close()
 			
