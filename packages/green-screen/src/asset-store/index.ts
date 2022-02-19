@@ -100,6 +100,7 @@ export class AssetStore {
 
 	async loadManifest(){
 		const resp = await axios.get(`${this.assetStoreUrl}/api/distribute?token=${this.token}`)
+		console.log({manifest: this.manifest})
 		this.manifest = resp.data.campaigns;
 	}
 
@@ -142,6 +143,8 @@ export class AssetStore {
 			}, 10 * 60 * 1000)
 
 			const pull = this.node?.get(hash)
+			console.log(`Pulling ${hash}`)
+
 			if(!pull) return;
 			let ret : Uint8Array[] = [];
 			for await (const chunk of pull){
