@@ -18,7 +18,7 @@ export default async (driver: Driver) => {
 			const result = await session.run(`
 				MATCH (screen:GreenScreen {networkName: $networkName})
 				OPTIONAL MATCH (screen)-[:HAS_SLOT]->(slots:ScreenSlot)
-				MERGE (screen)-[:HAS_SLOT]->(slot:ScreenSlot {hostname: $hostname})
+				MERGE (screen)-[:HAS_SLOT]->(slot:ScreenSlot {hostname: $hostname})-[:USES_SLOT]->(slotTemplate:TemplateSlot)
 				ON CREATE
 					SET slot.id = $slotId, slot.memory = $memory, slot.memoryUsed = $memoryUsed, slot.cpus = $cpus, slot.os = $os, slot.ip = $ipAddr, slot.agentVersion = $agentVersion
 				ON MATCH
@@ -26,7 +26,7 @@ export default async (driver: Driver) => {
 				return screen{
 					.*,
 					slot: slot{.*},
-					slots: collect(slots{.*})
+					slots: collect(slots{.*, template: slotTemplate{.*}})
 				}
 			`, {
 				hostname,

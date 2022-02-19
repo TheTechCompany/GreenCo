@@ -70,7 +70,8 @@ export class PluginManager {
 		await this.installPlugins()
 	}
 
-	async startAll(token?: string){
+	async startAll(token?: string, data?: { slot: {id: string}, slots: {id: string, template: {id: string, name: string}}[] } ){
+
 		let python_plugins = this.configuration.plugins.filter((plugin) => plugin.type == 'python');
 		let plugin_names = this.configuration.plugins.filter((a) => a.sourceType == 'npm').map((plugin) => { return plugin.source })
 		
@@ -86,7 +87,7 @@ export class PluginManager {
 			const { default : module } = plugin?.module;
 			return plugin && {
 				id: plugin?.id || '',
-				instance: new module(token)
+				instance: new module(token, data)
 			}
 		})
 

@@ -23,12 +23,18 @@ export class DisplayManager {
 
 	private screenshotTimer? : NodeJS.Timer;
 
+	private isPublic: boolean = false;
+	private privateAddress: string = '127.0.0.1';
+
 	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
 		this.telemtry = telemtry
 	}
 
-	async init(){
+	async init(args: {isPublic: boolean, privateAddress: string}){
+		this.privateAddress = args.privateAddress;
+		this.isPublic = args.isPublic
+
 		console.log("Setting up screen")
 		this.browser = await puppeteer.launch({
 			headless: false,
@@ -86,7 +92,9 @@ export class DisplayManager {
 			await this.page?.goto(`http://localhost:3000/${campaign.assetFolder}`)
 			await this.page?.addScriptTag({content: analytics})
 	
-			await this.page?.addScriptTag({content: handsfree})
+			if(this.isPublic){
+				await this.page?.addScriptTag({content: handsfree(this.privateAddress)})
+			}
 		}catch(e){
 
 		}

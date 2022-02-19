@@ -2,9 +2,9 @@
 
 // `
 
-export default `(() => {
+export default (privateAddress: string) => `(() => {
     // alert("Handsfree")
-    const ws = new WebSocket('ws://localhost:8000');
+    const ws = new WebSocket('ws://${privateAddress || 'localhost'}:8000');
 
     let pointer;
 
