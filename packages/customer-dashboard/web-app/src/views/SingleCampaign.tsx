@@ -1,12 +1,30 @@
 import React from "react";
 import { Box, Grid } from "grommet";
 import { CampaignList } from "../components/CampaignList";
+import { GraphGrid, GridLayoutItem, LineGraph } from "@hexhive/ui";
 
 // PROBABLY TO BE VERY SIMILAR TO REPORTING BUT FOR INDIVIDUAL CAMPAIGN. PROBABLY REUSE THE COMPONENTS
+const singleCampaignLayout = [
+  {
+    id: "1",
+    label: "label 1",
+    total: "total 1",
+    x: 0,
+    y: 0,
+    w: 2,
+    h: 2,
+  },
+];
 
 export const SingleCampaign = () => (
-  <Box flex background="black">
-    <Grid
+  <Box flex>
+    GraphGrid Component to go here
+    {/* <GraphGrid layout={singleCampaignLayout}></GraphGrid>{" "} */}
+  </Box>
+);
+
+{
+  /* <Grid
       fill
       areas={[
         { name: "CampaignImage", start: [0, 0], end: [0, 2] },
@@ -40,6 +58,5 @@ export const SingleCampaign = () => (
       <Box gridArea="info" background="red">
         INFO
       </Box>
-    </Grid>
-  </Box>
-);
+    </Grid> */
+}

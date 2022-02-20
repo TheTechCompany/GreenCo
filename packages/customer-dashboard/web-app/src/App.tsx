@@ -8,8 +8,11 @@ import { Reporting } from "./views/Reporting";
 import { Settings } from "./views/Settings";
 
 import { Routes, Route, Outlet } from "react-router-dom";
-import { LoginForm } from "./views/LoginForm";
+import { LoginPage } from "./views/LoginPage";
 import { Dashboard } from "./views/Dashboard";
+import { LoginForm } from "./components/Forms/LoginForm";
+import { SignUpForm } from "./components/Forms/SignUpForm";
+import { ForgottenPassForm } from "./components/Forms/ForgottonPassForm";
 
 const theme = {
   global: {
@@ -43,11 +46,16 @@ const theme = {
 
 function App() {
   return (
-    <Grommet style={{display: 'flex'}} full theme={theme}>
+    <Grommet style={{ display: "flex" }} full theme={theme}>
       <Routes>
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginPage />}>
+          <Route path="" element={<LoginForm />} />
+          <Route path="signup" element={<SignUpForm />} />
+          <Route path="resetpassword" element={<ForgottenPassForm />} />
+        </Route>
+
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="campaigns" element={<Outlet />} >
+          <Route path="campaigns" element={<Outlet />}>
             <Route path="" element={<Campaigns />} />
             <Route path=":id" element={<SingleCampaign />} />
           </Route>
