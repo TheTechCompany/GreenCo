@@ -13,6 +13,8 @@ import { Dashboard } from "./views/Dashboard";
 import { LoginForm } from "./components/Forms/LoginForm";
 import { SignUpForm } from "./components/Forms/SignUpForm";
 import { ForgottenPassForm } from "./components/Forms/ForgottonPassForm";
+import { EditProfile } from "./components/Forms/EditProfile";
+import { ChangePassword } from "./components/Forms/ChangePassword";
 
 const theme = {
   global: {
@@ -60,7 +62,8 @@ function App() {
             <Route path=":id" element={<SingleCampaign />} />
           </Route>
           <Route path="reports" element={<Reporting />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="editprofile" element={<EditProfile />} />
+          <Route path="changepassword" element={<ChangePassword />} />
         </Route>
       </Routes>
     </Grommet>

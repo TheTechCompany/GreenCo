@@ -3,10 +3,11 @@ import { Box, Image, Header, Button, Menu } from "grommet";
 import { UserSettings } from "grommet-icons";
 import { NavItem } from "./NavItem";
 
-// TO MAKE BUTTONS ACTIVE WHEN ON PAGE - I image it's a simple useState thing I need to figure out
-
 export const HeaderBar = () => {
-  const navOptions = [{label: "Campaigns", route: 'campaigns'}, {label: "Reports", route: 'reports'}]
+  const navOptions = [
+    { label: "Campaigns", route: "campaigns" },
+    { label: "Reports", route: "reports" },
+  ];
 
   return (
     <Header
@@ -17,21 +18,18 @@ export const HeaderBar = () => {
       justify="between"
       height="50px"
     >
-        <Image height="24px" src="/assets/sl1_logo.png" />
-      <Box
-        direction="row"
-        gap="small"
-        pad={{ horizontal: "medium" }}
-      >
+      <Image height="24px" src="/assets/sl1_logo.png" />
+      <Box direction="row" gap="small" pad={{ horizontal: "medium" }}>
         {navOptions.map((nav) => (
-          <NavItem
-            route={nav.route}
-            label={nav.label} />
+          <NavItem route={nav.route} label={nav.label} />
         ))}
-       
-        <Box border={{size: 'small', color: 'gray'}} round="xsmall" elevation="small">
+
+        <Box
+          border={{ size: "small", color: "gray" }}
+          round="xsmall"
+          elevation="small"
+        >
           <Menu
-    
             icon={<UserSettings />}
             label="Settings"
             items={[
@@ -43,5 +41,5 @@ export const HeaderBar = () => {
         </Box>
       </Box>
     </Header>
-  )
-}
+  );
+};
