@@ -45,7 +45,7 @@ export default (privateAddress: string) => `(() => {
     }
 
     ws.addEventListener('open', () => {
-        // alert("Conencted to mouse")
+        alert("Conencted to mouse")
     })
 
     ws.addEventListener('message', (msg) => {
