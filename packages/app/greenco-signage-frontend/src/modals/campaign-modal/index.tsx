@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Text, Button, Layer, TextInput } from 'grommet'
+import { Box, Text, Button, Layer, TextInput, Select } from 'grommet'
 import { useState, useEffect } from 'react';
 
 export interface CampaignModalProps {
@@ -8,14 +8,16 @@ export interface CampaignModalProps {
     selected?: any;
     onClose?: () => void;
     onDelete?: () => void;
-    onSubmit?: (app: {name: string}) => void;
+    onSubmit?: (app: {name: string, customer: string}) => void;
+
+    customers?: any[];
 }
 export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
     // const [ name, setName ] = useState<string>('')
     const [ campaign, setCampaign ] = useState<any>({})
 
     useEffect(() => {
-        setCampaign({...props.selected})
+        setCampaign({...props.selected, customer: props.selected?.customer?.id})
     }, [props.selected])
 
     useEffect(() => 
@@ -36,6 +38,7 @@ export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
                     <Text>{campaign.id ? "Update" : "Create"} Campaign</Text>
                 </Box>
                 <Box
+                    gap='xsmall'
                     pad="xsmall"
                     >
                     <TextInput 
@@ -43,6 +46,13 @@ export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
                         onChange={(e) => setCampaign({...campaign, name: e.target.value})}
                         placeholder="Campaign Name" />
 
+                    <Select
+                        value={campaign.customer}
+                        onChange={(e) => setCampaign({...campaign, customer: e.value})}
+                        placeholder="Customer"
+                        labelKey={"name"}
+                        valueKey={{key: "id", reduce: true}}
+                        options={props.customers || []} />
                     <Box 
                         margin={{top: 'small'}}
                         justify="end"

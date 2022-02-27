@@ -20,6 +20,8 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
 
     const campaigns = query.campaigns()
 
+    const customers = query.customers()
+
     const [ deleteCampaign, deleteInfo ] = useMutation((mutation, args: {id: string}) => {
         if(!args.id) {return}
         const item = mutation.deleteCampaigns({where: {id: args.id}})
@@ -31,14 +33,21 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
     }, {
         refetchQueries: [query.campaigns()]
     })
-    const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string}) => {
+    const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string, customer: string}) => {
+        let customerUpdate = {};
+        if(args.customer){
+            customerUpdate = {
+                customer: {connect: {where: {node: {id: args.customer}}}},
+            }
+        }
        const item = mutation.updateHiveOrganisations({
             // where: {id: "J8I15pyAKy037gISCwfmT"},
             update: {
                 campaigns: [{
                     create: [{
                         node: {
-                            name: args.name
+                            name: args.name,
+                            ...customerUpdate
                         }
                     }]
                 }]
@@ -66,26 +75,29 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
             round="xsmall"
             elevation="small">
            <CampaignModal   
-            open={modalOpen}
-            selected={selected}
-            onClose={() => {
-                openModal(false)
-                setSelected(undefined)
-            }}
-            onDelete={() => {
-                deleteCampaign({args: {id: selected.id}}).then(() => {
-                    openModal(false)
-                setSelected(undefined)
-                    
-                })
-            }}
-            onSubmit={(campaign) => {
-                createCampaign({args: {name: campaign.name}}).then(() => {
+                customers={customers}
+                open={modalOpen}
+                selected={selected}
+                onClose={() => {
                     openModal(false)
                     setSelected(undefined)
-                    
-                })
-            }} />
+                }}
+                onDelete={() => {
+                    deleteCampaign({args: {id: selected.id}}).then(() => {
+                        openModal(false)
+                    setSelected(undefined)
+                        
+                    })
+                }}
+                onSubmit={(campaign) => {
+                    // console.log({campaign})
+
+                    createCampaign({args: {name: campaign.name, customer: campaign.customer}}).then(() => {
+                        openModal(false)
+                        setSelected(undefined)
+                        
+                    })
+                }} />
             <Box pad="xsmall" align="center" background="accent-2" direction="row" justify="between">
                 <Text>Campaigns</Text>
                 <Button plain hoverIndicator style={{padding: 6, borderRadius: 3}} onClick={() => openModal(true)} icon={<Add size="small" />} />

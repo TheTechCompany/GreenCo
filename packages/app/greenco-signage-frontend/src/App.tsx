@@ -11,11 +11,13 @@ import {  ScheduleList } from './views/schedule-list/ScheduleList';
 import { LocationSingle } from './views/location-single/LocationSingle';
 import {  ScheduleSingle } from './views/schedule-single/ScheduleSingle';
 import {  ScreenSingle } from './views/screen-single';
-import { Monitor, SchedulePlay, System, Template, Catalog, Map, ServerCluster, Analytics as AnalyticsIcon } from 'grommet-icons';
+import { Monitor, SchedulePlay, Group, System, Template, Catalog, Map, ServerCluster, Analytics as AnalyticsIcon } from 'grommet-icons';
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import {  TemplateList } from './views/template-list';
 import {  TemplateSingle } from './views/template-single';
+import { CustomerList } from './views/customer-list';
+import { CustomerSingle } from './views/customer-single';
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_API ? `${process.env.REACT_APP_API}/graphql?appliance=GreenScreen`: 'http://localhost:7000/graphql?appliance=GreenScreen',
@@ -46,6 +48,11 @@ export const App = (props) => {
             label: "Campaigns",
             path: "campaigns"
         },
+        {
+            icon: <Group />,
+            label: "Customers",
+            path: "customers"
+        },  
         {
             icon: <Map />,
             label: "Locations",
@@ -108,6 +115,11 @@ export const App = (props) => {
                         <Route path={"schedules"}  element={<Outlet />}>
                             <Route path={""} element={<ScheduleList />} />
                             <Route path={":id/*"} element={<ScheduleSingle />} />
+                        </Route>
+
+                        <Route path={"customers"} element={<Outlet />}>
+                            <Route path={""} element={<CustomerList />} />
+                            <Route path={":id/*"} element={<CustomerSingle />} />
                         </Route>
 
                         <Route path={'locations'} element={<Outlet />}>

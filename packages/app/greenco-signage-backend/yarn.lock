@@ -918,10 +918,10 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@hexhive/graphql-server@0.0.6-alpha.13":
-  version "0.0.6-alpha.13"
-  resolved "https://registry.yarnpkg.com/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.13.tgz#be12dffd9c92eccde1f470151e2361a88d5cd36c"
-  integrity sha512-UQA2lwiwYxMQvz1EMu7vzTTA1Yj16IIFBhzMq/5bi7NXLc8R2KaKq+6PN3HXHjd+wen/q0PK51Rtbk3sc+9gMA==
+"@hexhive/graphql-server@0.0.6-alpha.48":
+  version "0.0.6-alpha.48"
+  resolved "https://registry.yarnpkg.com/@hexhive/graphql-server/-/graphql-server-0.0.6-alpha.48.tgz#a4968d35ddfd5d21f13f677985abad28b5f55010"
+  integrity sha512-gW4/AAnJrtxxtNR2ostDFXyI//N8m+mWC0bJG3RQ1PYgzhCqVHmrZYLfBzJ/KCxY+Kp++9rDJVdnUAPsTChUBg==
   dependencies:
     "@graphql-tools/merge" "^8.2.1"
     "@neo4j/graphql" "^2.5.4"
