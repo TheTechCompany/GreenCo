@@ -22,8 +22,8 @@ export default `
 		analytics: [CampaignAnalytic] @relationship(type: "HAS_ANALYTICS", direction: OUT)
 		assetFolder: String
 		assets: [CampaignAsset] @ignore
-		customer: String
 
+		customer: Customer @relationship(type: "HAS_CAMPAIGN", direction: IN)
 		organisation: HiveOrganisation @relationship(type: "HAS_CAMPAIGN", direction: IN)
 	}
 

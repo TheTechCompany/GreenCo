@@ -102,26 +102,6 @@ export interface CampaignAnalyticCampaignNodeAggregationWhereInput {
   assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  customer_EQUAL?: Maybe<Scalars["String"]>;
-  customer_GT?: Maybe<Scalars["Int"]>;
-  customer_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_LT?: Maybe<Scalars["Int"]>;
-  customer_LTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
@@ -485,26 +465,6 @@ export interface CampaignChartCampaignNodeAggregationWhereInput {
   assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  customer_EQUAL?: Maybe<Scalars["String"]>;
-  customer_GT?: Maybe<Scalars["Int"]>;
-  customer_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_LT?: Maybe<Scalars["Int"]>;
-  customer_LTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
@@ -974,12 +934,14 @@ export interface CampaignChartsUpdateFieldInput {
 export interface CampaignConnectInput {
   analytics?: Maybe<Array<CampaignAnalyticsConnectFieldInput>>;
   charts?: Maybe<Array<CampaignChartsConnectFieldInput>>;
+  customer?: Maybe<CampaignCustomerConnectFieldInput>;
   organisation?: Maybe<CampaignOrganisationConnectFieldInput>;
 }
 
 export interface CampaignConnectOrCreateInput {
   analytics?: Maybe<Array<CampaignAnalyticsConnectOrCreateFieldInput>>;
   charts?: Maybe<Array<CampaignChartsConnectOrCreateFieldInput>>;
+  customer?: Maybe<CampaignCustomerConnectOrCreateFieldInput>;
   organisation?: Maybe<CampaignOrganisationConnectOrCreateFieldInput>;
 }
 
@@ -995,20 +957,158 @@ export interface CampaignCreateInput {
   analytics?: Maybe<CampaignAnalyticsFieldInput>;
   assetFolder?: Maybe<Scalars["String"]>;
   charts?: Maybe<CampaignChartsFieldInput>;
-  customer?: Maybe<Scalars["String"]>;
+  customer?: Maybe<CampaignCustomerFieldInput>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<CampaignOrganisationFieldInput>;
+}
+
+export interface CampaignCustomerAggregateInput {
+  AND?: Maybe<Array<CampaignCustomerAggregateInput>>;
+  OR?: Maybe<Array<CampaignCustomerAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CampaignCustomerNodeAggregationWhereInput>;
+}
+
+export interface CampaignCustomerConnectFieldInput {
+  connect?: Maybe<CustomerConnectInput>;
+  where?: Maybe<CustomerConnectWhere>;
+}
+
+export interface CampaignCustomerConnectOrCreateFieldInput {
+  onCreate: CampaignCustomerConnectOrCreateFieldInputOnCreate;
+  where: CustomerConnectOrCreateWhere;
+}
+
+export interface CampaignCustomerConnectOrCreateFieldInputOnCreate {
+  node: CustomerCreateInput;
+}
+
+export interface CampaignCustomerConnectionSort {
+  node?: Maybe<CustomerSort>;
+}
+
+export interface CampaignCustomerConnectionWhere {
+  AND?: Maybe<Array<CampaignCustomerConnectionWhere>>;
+  OR?: Maybe<Array<CampaignCustomerConnectionWhere>>;
+  node?: Maybe<CustomerWhere>;
+  node_NOT?: Maybe<CustomerWhere>;
+}
+
+export interface CampaignCustomerCreateFieldInput {
+  node: CustomerCreateInput;
+}
+
+export interface CampaignCustomerDeleteFieldInput {
+  delete?: Maybe<CustomerDeleteInput>;
+  where?: Maybe<CampaignCustomerConnectionWhere>;
+}
+
+export interface CampaignCustomerDisconnectFieldInput {
+  disconnect?: Maybe<CustomerDisconnectInput>;
+  where?: Maybe<CampaignCustomerConnectionWhere>;
+}
+
+export interface CampaignCustomerFieldInput {
+  connect?: Maybe<CampaignCustomerConnectFieldInput>;
+  connectOrCreate?: Maybe<CampaignCustomerConnectOrCreateFieldInput>;
+  create?: Maybe<CampaignCustomerCreateFieldInput>;
+}
+
+export interface CampaignCustomerNodeAggregationWhereInput {
+  AND?: Maybe<Array<CampaignCustomerNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CampaignCustomerNodeAggregationWhereInput>>;
+  email_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  email_EQUAL?: Maybe<Scalars["String"]>;
+  email_GT?: Maybe<Scalars["Int"]>;
+  email_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  email_LT?: Maybe<Scalars["Int"]>;
+  email_LTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  phone_EQUAL?: Maybe<Scalars["String"]>;
+  phone_GT?: Maybe<Scalars["Int"]>;
+  phone_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_LT?: Maybe<Scalars["Int"]>;
+  phone_LTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CampaignCustomerUpdateConnectionInput {
+  node?: Maybe<CustomerUpdateInput>;
+}
+
+export interface CampaignCustomerUpdateFieldInput {
+  connect?: Maybe<CampaignCustomerConnectFieldInput>;
+  connectOrCreate?: Maybe<CampaignCustomerConnectOrCreateFieldInput>;
+  create?: Maybe<CampaignCustomerCreateFieldInput>;
+  delete?: Maybe<CampaignCustomerDeleteFieldInput>;
+  disconnect?: Maybe<CampaignCustomerDisconnectFieldInput>;
+  update?: Maybe<CampaignCustomerUpdateConnectionInput>;
+  where?: Maybe<CampaignCustomerConnectionWhere>;
 }
 
 export interface CampaignDeleteInput {
   analytics?: Maybe<Array<CampaignAnalyticsDeleteFieldInput>>;
   charts?: Maybe<Array<CampaignChartsDeleteFieldInput>>;
+  customer?: Maybe<CampaignCustomerDeleteFieldInput>;
   organisation?: Maybe<CampaignOrganisationDeleteFieldInput>;
 }
 
 export interface CampaignDisconnectInput {
   analytics?: Maybe<Array<CampaignAnalyticsDisconnectFieldInput>>;
   charts?: Maybe<Array<CampaignChartsDisconnectFieldInput>>;
+  customer?: Maybe<CampaignCustomerDisconnectFieldInput>;
   organisation?: Maybe<CampaignOrganisationDisconnectFieldInput>;
 }
 
@@ -1118,13 +1218,13 @@ export interface CampaignOrganisationUpdateFieldInput {
 export interface CampaignRelationInput {
   analytics?: Maybe<Array<CampaignAnalyticsCreateFieldInput>>;
   charts?: Maybe<Array<CampaignChartsCreateFieldInput>>;
+  customer?: Maybe<CampaignCustomerCreateFieldInput>;
   organisation?: Maybe<CampaignOrganisationCreateFieldInput>;
 }
 
 /** Fields to sort Campaigns by. The order in which sorts are applied is not guaranteed when specifying many fields in one CampaignSort object. */
 export interface CampaignSort {
   assetFolder?: Maybe<SortDirection>;
-  customer?: Maybe<SortDirection>;
   id?: Maybe<SortDirection>;
   name?: Maybe<SortDirection>;
 }
@@ -1137,7 +1237,7 @@ export interface CampaignUpdateInput {
   analytics?: Maybe<Array<CampaignAnalyticsUpdateFieldInput>>;
   assetFolder?: Maybe<Scalars["String"]>;
   charts?: Maybe<Array<CampaignChartsUpdateFieldInput>>;
-  customer?: Maybe<Scalars["String"]>;
+  customer?: Maybe<CampaignCustomerUpdateFieldInput>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<CampaignOrganisationUpdateFieldInput>;
 }
@@ -1165,16 +1265,11 @@ export interface CampaignWhere {
   chartsConnection?: Maybe<CampaignChartsConnectionWhere>;
   chartsConnection_NOT?: Maybe<CampaignChartsConnectionWhere>;
   charts_NOT?: Maybe<CampaignChartWhere>;
-  customer?: Maybe<Scalars["String"]>;
-  customer_CONTAINS?: Maybe<Scalars["String"]>;
-  customer_ENDS_WITH?: Maybe<Scalars["String"]>;
-  customer_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  customer_NOT?: Maybe<Scalars["String"]>;
-  customer_NOT_CONTAINS?: Maybe<Scalars["String"]>;
-  customer_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
-  customer_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  customer_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
-  customer_STARTS_WITH?: Maybe<Scalars["String"]>;
+  customer?: Maybe<CustomerWhere>;
+  customerAggregate?: Maybe<CampaignCustomerAggregateInput>;
+  customerConnection?: Maybe<CampaignCustomerConnectionWhere>;
+  customerConnection_NOT?: Maybe<CampaignCustomerConnectionWhere>;
+  customer_NOT?: Maybe<CustomerWhere>;
   id?: Maybe<Scalars["ID"]>;
   id_CONTAINS?: Maybe<Scalars["ID"]>;
   id_ENDS_WITH?: Maybe<Scalars["ID"]>;
@@ -1200,6 +1295,736 @@ export interface CampaignWhere {
   organisationConnection?: Maybe<CampaignOrganisationConnectionWhere>;
   organisationConnection_NOT?: Maybe<CampaignOrganisationConnectionWhere>;
   organisation_NOT?: Maybe<HiveOrganisationWhere>;
+}
+
+export interface CustomerAccountConnectInput {
+  customer?: Maybe<CustomerAccountCustomerConnectFieldInput>;
+}
+
+export interface CustomerAccountConnectOrCreateInput {
+  customer?: Maybe<CustomerAccountCustomerConnectOrCreateFieldInput>;
+}
+
+export interface CustomerAccountConnectOrCreateWhere {
+  node: CustomerAccountUniqueWhere;
+}
+
+export interface CustomerAccountConnectWhere {
+  node: CustomerAccountWhere;
+}
+
+export interface CustomerAccountCreateInput {
+  customer?: Maybe<CustomerAccountCustomerFieldInput>;
+  email?: Maybe<Scalars["String"]>;
+  name: Scalars["String"];
+  password?: Maybe<Scalars["String"]>;
+}
+
+export interface CustomerAccountCustomerAggregateInput {
+  AND?: Maybe<Array<CustomerAccountCustomerAggregateInput>>;
+  OR?: Maybe<Array<CustomerAccountCustomerAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CustomerAccountCustomerNodeAggregationWhereInput>;
+}
+
+export interface CustomerAccountCustomerConnectFieldInput {
+  connect?: Maybe<CustomerConnectInput>;
+  where?: Maybe<CustomerConnectWhere>;
+}
+
+export interface CustomerAccountCustomerConnectOrCreateFieldInput {
+  onCreate: CustomerAccountCustomerConnectOrCreateFieldInputOnCreate;
+  where: CustomerConnectOrCreateWhere;
+}
+
+export interface CustomerAccountCustomerConnectOrCreateFieldInputOnCreate {
+  node: CustomerCreateInput;
+}
+
+export interface CustomerAccountCustomerConnectionSort {
+  node?: Maybe<CustomerSort>;
+}
+
+export interface CustomerAccountCustomerConnectionWhere {
+  AND?: Maybe<Array<CustomerAccountCustomerConnectionWhere>>;
+  OR?: Maybe<Array<CustomerAccountCustomerConnectionWhere>>;
+  node?: Maybe<CustomerWhere>;
+  node_NOT?: Maybe<CustomerWhere>;
+}
+
+export interface CustomerAccountCustomerCreateFieldInput {
+  node: CustomerCreateInput;
+}
+
+export interface CustomerAccountCustomerDeleteFieldInput {
+  delete?: Maybe<CustomerDeleteInput>;
+  where?: Maybe<CustomerAccountCustomerConnectionWhere>;
+}
+
+export interface CustomerAccountCustomerDisconnectFieldInput {
+  disconnect?: Maybe<CustomerDisconnectInput>;
+  where?: Maybe<CustomerAccountCustomerConnectionWhere>;
+}
+
+export interface CustomerAccountCustomerFieldInput {
+  connect?: Maybe<CustomerAccountCustomerConnectFieldInput>;
+  connectOrCreate?: Maybe<CustomerAccountCustomerConnectOrCreateFieldInput>;
+  create?: Maybe<CustomerAccountCustomerCreateFieldInput>;
+}
+
+export interface CustomerAccountCustomerNodeAggregationWhereInput {
+  AND?: Maybe<Array<CustomerAccountCustomerNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CustomerAccountCustomerNodeAggregationWhereInput>>;
+  email_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  email_EQUAL?: Maybe<Scalars["String"]>;
+  email_GT?: Maybe<Scalars["Int"]>;
+  email_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  email_LT?: Maybe<Scalars["Int"]>;
+  email_LTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  phone_EQUAL?: Maybe<Scalars["String"]>;
+  phone_GT?: Maybe<Scalars["Int"]>;
+  phone_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_LT?: Maybe<Scalars["Int"]>;
+  phone_LTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CustomerAccountCustomerUpdateConnectionInput {
+  node?: Maybe<CustomerUpdateInput>;
+}
+
+export interface CustomerAccountCustomerUpdateFieldInput {
+  connect?: Maybe<CustomerAccountCustomerConnectFieldInput>;
+  connectOrCreate?: Maybe<CustomerAccountCustomerConnectOrCreateFieldInput>;
+  create?: Maybe<CustomerAccountCustomerCreateFieldInput>;
+  delete?: Maybe<CustomerAccountCustomerDeleteFieldInput>;
+  disconnect?: Maybe<CustomerAccountCustomerDisconnectFieldInput>;
+  update?: Maybe<CustomerAccountCustomerUpdateConnectionInput>;
+  where?: Maybe<CustomerAccountCustomerConnectionWhere>;
+}
+
+export interface CustomerAccountDeleteInput {
+  customer?: Maybe<CustomerAccountCustomerDeleteFieldInput>;
+}
+
+export interface CustomerAccountDisconnectInput {
+  customer?: Maybe<CustomerAccountCustomerDisconnectFieldInput>;
+}
+
+export interface CustomerAccountOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more CustomerAccountSort objects to sort CustomerAccounts by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<CustomerAccountSort>>>;
+}
+
+export interface CustomerAccountRelationInput {
+  customer?: Maybe<CustomerAccountCustomerCreateFieldInput>;
+}
+
+/** Fields to sort CustomerAccounts by. The order in which sorts are applied is not guaranteed when specifying many fields in one CustomerAccountSort object. */
+export interface CustomerAccountSort {
+  email?: Maybe<SortDirection>;
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+  password?: Maybe<SortDirection>;
+}
+
+export interface CustomerAccountUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface CustomerAccountUpdateInput {
+  customer?: Maybe<CustomerAccountCustomerUpdateFieldInput>;
+  email?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+}
+
+export interface CustomerAccountWhere {
+  AND?: Maybe<Array<CustomerAccountWhere>>;
+  OR?: Maybe<Array<CustomerAccountWhere>>;
+  customer?: Maybe<CustomerWhere>;
+  customerAggregate?: Maybe<CustomerAccountCustomerAggregateInput>;
+  customerConnection?: Maybe<CustomerAccountCustomerConnectionWhere>;
+  customerConnection_NOT?: Maybe<CustomerAccountCustomerConnectionWhere>;
+  customer_NOT?: Maybe<CustomerWhere>;
+  email?: Maybe<Scalars["String"]>;
+  email_CONTAINS?: Maybe<Scalars["String"]>;
+  email_ENDS_WITH?: Maybe<Scalars["String"]>;
+  email_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  email_NOT?: Maybe<Scalars["String"]>;
+  email_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  email_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  email_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  email_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  email_STARTS_WITH?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  password_CONTAINS?: Maybe<Scalars["String"]>;
+  password_ENDS_WITH?: Maybe<Scalars["String"]>;
+  password_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  password_NOT?: Maybe<Scalars["String"]>;
+  password_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  password_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  password_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  password_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  password_STARTS_WITH?: Maybe<Scalars["String"]>;
+}
+
+export interface CustomerAccountsAggregateInput {
+  AND?: Maybe<Array<CustomerAccountsAggregateInput>>;
+  OR?: Maybe<Array<CustomerAccountsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CustomerAccountsNodeAggregationWhereInput>;
+}
+
+export interface CustomerAccountsConnectFieldInput {
+  connect?: Maybe<Array<CustomerAccountConnectInput>>;
+  where?: Maybe<CustomerAccountConnectWhere>;
+}
+
+export interface CustomerAccountsConnectOrCreateFieldInput {
+  onCreate: CustomerAccountsConnectOrCreateFieldInputOnCreate;
+  where: CustomerAccountConnectOrCreateWhere;
+}
+
+export interface CustomerAccountsConnectOrCreateFieldInputOnCreate {
+  node: CustomerAccountCreateInput;
+}
+
+export interface CustomerAccountsConnectionSort {
+  node?: Maybe<CustomerAccountSort>;
+}
+
+export interface CustomerAccountsConnectionWhere {
+  AND?: Maybe<Array<CustomerAccountsConnectionWhere>>;
+  OR?: Maybe<Array<CustomerAccountsConnectionWhere>>;
+  node?: Maybe<CustomerAccountWhere>;
+  node_NOT?: Maybe<CustomerAccountWhere>;
+}
+
+export interface CustomerAccountsCreateFieldInput {
+  node: CustomerAccountCreateInput;
+}
+
+export interface CustomerAccountsDeleteFieldInput {
+  delete?: Maybe<CustomerAccountDeleteInput>;
+  where?: Maybe<CustomerAccountsConnectionWhere>;
+}
+
+export interface CustomerAccountsDisconnectFieldInput {
+  disconnect?: Maybe<CustomerAccountDisconnectInput>;
+  where?: Maybe<CustomerAccountsConnectionWhere>;
+}
+
+export interface CustomerAccountsFieldInput {
+  connect?: Maybe<Array<CustomerAccountsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CustomerAccountsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CustomerAccountsCreateFieldInput>>;
+}
+
+export interface CustomerAccountsNodeAggregationWhereInput {
+  AND?: Maybe<Array<CustomerAccountsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CustomerAccountsNodeAggregationWhereInput>>;
+  email_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  email_EQUAL?: Maybe<Scalars["String"]>;
+  email_GT?: Maybe<Scalars["Int"]>;
+  email_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  email_LT?: Maybe<Scalars["Int"]>;
+  email_LTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  password_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  password_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  password_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  password_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  password_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  password_EQUAL?: Maybe<Scalars["String"]>;
+  password_GT?: Maybe<Scalars["Int"]>;
+  password_GTE?: Maybe<Scalars["Int"]>;
+  password_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  password_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  password_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  password_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  password_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  password_LT?: Maybe<Scalars["Int"]>;
+  password_LTE?: Maybe<Scalars["Int"]>;
+  password_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  password_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  password_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  password_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  password_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CustomerAccountsUpdateConnectionInput {
+  node?: Maybe<CustomerAccountUpdateInput>;
+}
+
+export interface CustomerAccountsUpdateFieldInput {
+  connect?: Maybe<Array<CustomerAccountsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CustomerAccountsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CustomerAccountsCreateFieldInput>>;
+  delete?: Maybe<Array<CustomerAccountsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<CustomerAccountsDisconnectFieldInput>>;
+  update?: Maybe<CustomerAccountsUpdateConnectionInput>;
+  where?: Maybe<CustomerAccountsConnectionWhere>;
+}
+
+export interface CustomerCampaignsAggregateInput {
+  AND?: Maybe<Array<CustomerCampaignsAggregateInput>>;
+  OR?: Maybe<Array<CustomerCampaignsAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CustomerCampaignsNodeAggregationWhereInput>;
+}
+
+export interface CustomerCampaignsConnectFieldInput {
+  connect?: Maybe<Array<CampaignConnectInput>>;
+  where?: Maybe<CampaignConnectWhere>;
+}
+
+export interface CustomerCampaignsConnectOrCreateFieldInput {
+  onCreate: CustomerCampaignsConnectOrCreateFieldInputOnCreate;
+  where: CampaignConnectOrCreateWhere;
+}
+
+export interface CustomerCampaignsConnectOrCreateFieldInputOnCreate {
+  node: CampaignCreateInput;
+}
+
+export interface CustomerCampaignsConnectionSort {
+  node?: Maybe<CampaignSort>;
+}
+
+export interface CustomerCampaignsConnectionWhere {
+  AND?: Maybe<Array<CustomerCampaignsConnectionWhere>>;
+  OR?: Maybe<Array<CustomerCampaignsConnectionWhere>>;
+  node?: Maybe<CampaignWhere>;
+  node_NOT?: Maybe<CampaignWhere>;
+}
+
+export interface CustomerCampaignsCreateFieldInput {
+  node: CampaignCreateInput;
+}
+
+export interface CustomerCampaignsDeleteFieldInput {
+  delete?: Maybe<CampaignDeleteInput>;
+  where?: Maybe<CustomerCampaignsConnectionWhere>;
+}
+
+export interface CustomerCampaignsDisconnectFieldInput {
+  disconnect?: Maybe<CampaignDisconnectInput>;
+  where?: Maybe<CustomerCampaignsConnectionWhere>;
+}
+
+export interface CustomerCampaignsFieldInput {
+  connect?: Maybe<Array<CustomerCampaignsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CustomerCampaignsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CustomerCampaignsCreateFieldInput>>;
+}
+
+export interface CustomerCampaignsNodeAggregationWhereInput {
+  AND?: Maybe<Array<CustomerCampaignsNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CustomerCampaignsNodeAggregationWhereInput>>;
+  assetFolder_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  assetFolder_EQUAL?: Maybe<Scalars["String"]>;
+  assetFolder_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CustomerCampaignsUpdateConnectionInput {
+  node?: Maybe<CampaignUpdateInput>;
+}
+
+export interface CustomerCampaignsUpdateFieldInput {
+  connect?: Maybe<Array<CustomerCampaignsConnectFieldInput>>;
+  connectOrCreate?: Maybe<Array<CustomerCampaignsConnectOrCreateFieldInput>>;
+  create?: Maybe<Array<CustomerCampaignsCreateFieldInput>>;
+  delete?: Maybe<Array<CustomerCampaignsDeleteFieldInput>>;
+  disconnect?: Maybe<Array<CustomerCampaignsDisconnectFieldInput>>;
+  update?: Maybe<CustomerCampaignsUpdateConnectionInput>;
+  where?: Maybe<CustomerCampaignsConnectionWhere>;
+}
+
+export interface CustomerConnectInput {
+  accounts?: Maybe<Array<CustomerAccountsConnectFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsConnectFieldInput>>;
+  organisation?: Maybe<CustomerOrganisationConnectFieldInput>;
+}
+
+export interface CustomerConnectOrCreateInput {
+  accounts?: Maybe<Array<CustomerAccountsConnectOrCreateFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsConnectOrCreateFieldInput>>;
+  organisation?: Maybe<CustomerOrganisationConnectOrCreateFieldInput>;
+}
+
+export interface CustomerConnectOrCreateWhere {
+  node: CustomerUniqueWhere;
+}
+
+export interface CustomerConnectWhere {
+  node: CustomerWhere;
+}
+
+export interface CustomerCreateInput {
+  accounts?: Maybe<CustomerAccountsFieldInput>;
+  campaigns?: Maybe<CustomerCampaignsFieldInput>;
+  email?: Maybe<Scalars["String"]>;
+  name: Scalars["String"];
+  organisation?: Maybe<CustomerOrganisationFieldInput>;
+  phone?: Maybe<Scalars["String"]>;
+}
+
+export interface CustomerDeleteInput {
+  accounts?: Maybe<Array<CustomerAccountsDeleteFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsDeleteFieldInput>>;
+  organisation?: Maybe<CustomerOrganisationDeleteFieldInput>;
+}
+
+export interface CustomerDisconnectInput {
+  accounts?: Maybe<Array<CustomerAccountsDisconnectFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsDisconnectFieldInput>>;
+  organisation?: Maybe<CustomerOrganisationDisconnectFieldInput>;
+}
+
+export interface CustomerOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more CustomerSort objects to sort Customers by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<CustomerSort>>>;
+}
+
+export interface CustomerOrganisationAggregateInput {
+  AND?: Maybe<Array<CustomerOrganisationAggregateInput>>;
+  OR?: Maybe<Array<CustomerOrganisationAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<CustomerOrganisationNodeAggregationWhereInput>;
+}
+
+export interface CustomerOrganisationConnectFieldInput {
+  connect?: Maybe<HiveOrganisationConnectInput>;
+  where?: Maybe<HiveOrganisationConnectWhere>;
+}
+
+export interface CustomerOrganisationConnectOrCreateFieldInput {
+  onCreate: CustomerOrganisationConnectOrCreateFieldInputOnCreate;
+  where: HiveOrganisationConnectOrCreateWhere;
+}
+
+export interface CustomerOrganisationConnectOrCreateFieldInputOnCreate {
+  node: HiveOrganisationCreateInput;
+}
+
+export interface CustomerOrganisationConnectionSort {
+  node?: Maybe<HiveOrganisationSort>;
+}
+
+export interface CustomerOrganisationConnectionWhere {
+  AND?: Maybe<Array<CustomerOrganisationConnectionWhere>>;
+  OR?: Maybe<Array<CustomerOrganisationConnectionWhere>>;
+  node?: Maybe<HiveOrganisationWhere>;
+  node_NOT?: Maybe<HiveOrganisationWhere>;
+}
+
+export interface CustomerOrganisationCreateFieldInput {
+  node: HiveOrganisationCreateInput;
+}
+
+export interface CustomerOrganisationDeleteFieldInput {
+  delete?: Maybe<HiveOrganisationDeleteInput>;
+  where?: Maybe<CustomerOrganisationConnectionWhere>;
+}
+
+export interface CustomerOrganisationDisconnectFieldInput {
+  disconnect?: Maybe<HiveOrganisationDisconnectInput>;
+  where?: Maybe<CustomerOrganisationConnectionWhere>;
+}
+
+export interface CustomerOrganisationFieldInput {
+  connect?: Maybe<CustomerOrganisationConnectFieldInput>;
+  connectOrCreate?: Maybe<CustomerOrganisationConnectOrCreateFieldInput>;
+  create?: Maybe<CustomerOrganisationCreateFieldInput>;
+}
+
+export interface CustomerOrganisationNodeAggregationWhereInput {
+  AND?: Maybe<Array<CustomerOrganisationNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<CustomerOrganisationNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface CustomerOrganisationUpdateConnectionInput {
+  node?: Maybe<HiveOrganisationUpdateInput>;
+}
+
+export interface CustomerOrganisationUpdateFieldInput {
+  connect?: Maybe<CustomerOrganisationConnectFieldInput>;
+  connectOrCreate?: Maybe<CustomerOrganisationConnectOrCreateFieldInput>;
+  create?: Maybe<CustomerOrganisationCreateFieldInput>;
+  delete?: Maybe<CustomerOrganisationDeleteFieldInput>;
+  disconnect?: Maybe<CustomerOrganisationDisconnectFieldInput>;
+  update?: Maybe<CustomerOrganisationUpdateConnectionInput>;
+  where?: Maybe<CustomerOrganisationConnectionWhere>;
+}
+
+export interface CustomerRelationInput {
+  accounts?: Maybe<Array<CustomerAccountsCreateFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsCreateFieldInput>>;
+  organisation?: Maybe<CustomerOrganisationCreateFieldInput>;
+}
+
+/** Fields to sort Customers by. The order in which sorts are applied is not guaranteed when specifying many fields in one CustomerSort object. */
+export interface CustomerSort {
+  email?: Maybe<SortDirection>;
+  id?: Maybe<SortDirection>;
+  name?: Maybe<SortDirection>;
+  phone?: Maybe<SortDirection>;
+}
+
+export interface CustomerUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface CustomerUpdateInput {
+  accounts?: Maybe<Array<CustomerAccountsUpdateFieldInput>>;
+  campaigns?: Maybe<Array<CustomerCampaignsUpdateFieldInput>>;
+  email?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  organisation?: Maybe<CustomerOrganisationUpdateFieldInput>;
+  phone?: Maybe<Scalars["String"]>;
+}
+
+export interface CustomerWhere {
+  AND?: Maybe<Array<CustomerWhere>>;
+  OR?: Maybe<Array<CustomerWhere>>;
+  accounts?: Maybe<CustomerAccountWhere>;
+  accountsAggregate?: Maybe<CustomerAccountsAggregateInput>;
+  accountsConnection?: Maybe<CustomerAccountsConnectionWhere>;
+  accountsConnection_NOT?: Maybe<CustomerAccountsConnectionWhere>;
+  accounts_NOT?: Maybe<CustomerAccountWhere>;
+  campaigns?: Maybe<CampaignWhere>;
+  campaignsAggregate?: Maybe<CustomerCampaignsAggregateInput>;
+  campaignsConnection?: Maybe<CustomerCampaignsConnectionWhere>;
+  campaignsConnection_NOT?: Maybe<CustomerCampaignsConnectionWhere>;
+  campaigns_NOT?: Maybe<CampaignWhere>;
+  email?: Maybe<Scalars["String"]>;
+  email_CONTAINS?: Maybe<Scalars["String"]>;
+  email_ENDS_WITH?: Maybe<Scalars["String"]>;
+  email_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  email_NOT?: Maybe<Scalars["String"]>;
+  email_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  email_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  email_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  email_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  email_STARTS_WITH?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  name_CONTAINS?: Maybe<Scalars["String"]>;
+  name_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT?: Maybe<Scalars["String"]>;
+  name_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  name_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  name_STARTS_WITH?: Maybe<Scalars["String"]>;
+  organisation?: Maybe<HiveOrganisationWhere>;
+  organisationAggregate?: Maybe<CustomerOrganisationAggregateInput>;
+  organisationConnection?: Maybe<CustomerOrganisationConnectionWhere>;
+  organisationConnection_NOT?: Maybe<CustomerOrganisationConnectionWhere>;
+  organisation_NOT?: Maybe<HiveOrganisationWhere>;
+  phone?: Maybe<Scalars["String"]>;
+  phone_CONTAINS?: Maybe<Scalars["String"]>;
+  phone_ENDS_WITH?: Maybe<Scalars["String"]>;
+  phone_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  phone_NOT?: Maybe<Scalars["String"]>;
+  phone_NOT_CONTAINS?: Maybe<Scalars["String"]>;
+  phone_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
+  phone_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  phone_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
+  phone_STARTS_WITH?: Maybe<Scalars["String"]>;
 }
 
 export interface GreenScreenConnectInput {
@@ -4334,26 +5159,6 @@ export interface HiveOrganisationCampaignsNodeAggregationWhereInput {
   assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  customer_EQUAL?: Maybe<Scalars["String"]>;
-  customer_GT?: Maybe<Scalars["Int"]>;
-  customer_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_LT?: Maybe<Scalars["Int"]>;
-  customer_LTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
@@ -4396,6 +5201,7 @@ export interface HiveOrganisationCampaignsUpdateFieldInput {
 export interface HiveOrganisationConnectInput {
   appliances?: Maybe<Array<HiveOrganisationAppliancesConnectFieldInput>>;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsConnectFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersConnectFieldInput>>;
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensConnectFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsConnectFieldInput>>;
   locationGroups?: Maybe<
@@ -4415,6 +5221,7 @@ export interface HiveOrganisationConnectOrCreateInput {
     Array<HiveOrganisationAppliancesConnectOrCreateFieldInput>
   >;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsConnectOrCreateFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersConnectOrCreateFieldInput>>;
   greenScreens?: Maybe<
     Array<HiveOrganisationGreenScreensConnectOrCreateFieldInput>
   >;
@@ -4446,6 +5253,7 @@ export interface HiveOrganisationConnectWhere {
 export interface HiveOrganisationCreateInput {
   appliances?: Maybe<HiveOrganisationAppliancesFieldInput>;
   campaigns?: Maybe<HiveOrganisationCampaignsFieldInput>;
+  customers?: Maybe<HiveOrganisationCustomersFieldInput>;
   greenScreens?: Maybe<HiveOrganisationGreenScreensFieldInput>;
   integrations?: Maybe<HiveOrganisationIntegrationsFieldInput>;
   locationGroups?: Maybe<HiveOrganisationLocationGroupsFieldInput>;
@@ -4457,9 +5265,150 @@ export interface HiveOrganisationCreateInput {
   screenTemplates?: Maybe<HiveOrganisationScreenTemplatesFieldInput>;
 }
 
+export interface HiveOrganisationCustomersAggregateInput {
+  AND?: Maybe<Array<HiveOrganisationCustomersAggregateInput>>;
+  OR?: Maybe<Array<HiveOrganisationCustomersAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<HiveOrganisationCustomersNodeAggregationWhereInput>;
+}
+
+export interface HiveOrganisationCustomersConnectFieldInput {
+  connect?: Maybe<Array<CustomerConnectInput>>;
+  where?: Maybe<CustomerConnectWhere>;
+}
+
+export interface HiveOrganisationCustomersConnectOrCreateFieldInput {
+  onCreate: HiveOrganisationCustomersConnectOrCreateFieldInputOnCreate;
+  where: CustomerConnectOrCreateWhere;
+}
+
+export interface HiveOrganisationCustomersConnectOrCreateFieldInputOnCreate {
+  node: CustomerCreateInput;
+}
+
+export interface HiveOrganisationCustomersConnectionSort {
+  node?: Maybe<CustomerSort>;
+}
+
+export interface HiveOrganisationCustomersConnectionWhere {
+  AND?: Maybe<Array<HiveOrganisationCustomersConnectionWhere>>;
+  OR?: Maybe<Array<HiveOrganisationCustomersConnectionWhere>>;
+  node?: Maybe<CustomerWhere>;
+  node_NOT?: Maybe<CustomerWhere>;
+}
+
+export interface HiveOrganisationCustomersCreateFieldInput {
+  node: CustomerCreateInput;
+}
+
+export interface HiveOrganisationCustomersDeleteFieldInput {
+  delete?: Maybe<CustomerDeleteInput>;
+  where?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+}
+
+export interface HiveOrganisationCustomersDisconnectFieldInput {
+  disconnect?: Maybe<CustomerDisconnectInput>;
+  where?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+}
+
+export interface HiveOrganisationCustomersFieldInput {
+  connect?: Maybe<Array<HiveOrganisationCustomersConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<HiveOrganisationCustomersConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<HiveOrganisationCustomersCreateFieldInput>>;
+}
+
+export interface HiveOrganisationCustomersNodeAggregationWhereInput {
+  AND?: Maybe<Array<HiveOrganisationCustomersNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<HiveOrganisationCustomersNodeAggregationWhereInput>>;
+  email_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  email_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  email_EQUAL?: Maybe<Scalars["String"]>;
+  email_GT?: Maybe<Scalars["Int"]>;
+  email_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  email_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  email_LT?: Maybe<Scalars["Int"]>;
+  email_LTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  email_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  phone_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  phone_EQUAL?: Maybe<Scalars["String"]>;
+  phone_GT?: Maybe<Scalars["Int"]>;
+  phone_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  phone_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  phone_LT?: Maybe<Scalars["Int"]>;
+  phone_LTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  phone_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface HiveOrganisationCustomersUpdateConnectionInput {
+  node?: Maybe<CustomerUpdateInput>;
+}
+
+export interface HiveOrganisationCustomersUpdateFieldInput {
+  connect?: Maybe<Array<HiveOrganisationCustomersConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<HiveOrganisationCustomersConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<HiveOrganisationCustomersCreateFieldInput>>;
+  delete?: Maybe<Array<HiveOrganisationCustomersDeleteFieldInput>>;
+  disconnect?: Maybe<Array<HiveOrganisationCustomersDisconnectFieldInput>>;
+  update?: Maybe<HiveOrganisationCustomersUpdateConnectionInput>;
+  where?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+}
+
 export interface HiveOrganisationDeleteInput {
   appliances?: Maybe<Array<HiveOrganisationAppliancesDeleteFieldInput>>;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsDeleteFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersDeleteFieldInput>>;
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensDeleteFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsDeleteFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsDeleteFieldInput>>;
@@ -4475,6 +5424,7 @@ export interface HiveOrganisationDeleteInput {
 export interface HiveOrganisationDisconnectInput {
   appliances?: Maybe<Array<HiveOrganisationAppliancesDisconnectFieldInput>>;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsDisconnectFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersDisconnectFieldInput>>;
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensDisconnectFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsDisconnectFieldInput>>;
   locationGroups?: Maybe<
@@ -4981,6 +5931,7 @@ export interface HiveOrganisationOptions {
 export interface HiveOrganisationRelationInput {
   appliances?: Maybe<Array<HiveOrganisationAppliancesCreateFieldInput>>;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsCreateFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersCreateFieldInput>>;
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensCreateFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsCreateFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsCreateFieldInput>>;
@@ -5508,6 +6459,7 @@ export interface HiveOrganisationUniqueWhere {
 export interface HiveOrganisationUpdateInput {
   appliances?: Maybe<Array<HiveOrganisationAppliancesUpdateFieldInput>>;
   campaigns?: Maybe<Array<HiveOrganisationCampaignsUpdateFieldInput>>;
+  customers?: Maybe<Array<HiveOrganisationCustomersUpdateFieldInput>>;
   greenScreens?: Maybe<Array<HiveOrganisationGreenScreensUpdateFieldInput>>;
   integrations?: Maybe<Array<HiveOrganisationIntegrationsUpdateFieldInput>>;
   locationGroups?: Maybe<Array<HiveOrganisationLocationGroupsUpdateFieldInput>>;
@@ -5534,6 +6486,11 @@ export interface HiveOrganisationWhere {
   campaignsConnection?: Maybe<HiveOrganisationCampaignsConnectionWhere>;
   campaignsConnection_NOT?: Maybe<HiveOrganisationCampaignsConnectionWhere>;
   campaigns_NOT?: Maybe<CampaignWhere>;
+  customers?: Maybe<CustomerWhere>;
+  customersAggregate?: Maybe<HiveOrganisationCustomersAggregateInput>;
+  customersConnection?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+  customersConnection_NOT?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+  customers_NOT?: Maybe<CustomerWhere>;
   greenScreens?: Maybe<GreenScreenWhere>;
   greenScreensAggregate?: Maybe<HiveOrganisationGreenScreensAggregateInput>;
   greenScreensConnection?: Maybe<HiveOrganisationGreenScreensConnectionWhere>;
@@ -8243,26 +9200,6 @@ export interface ScheduleSlotCampaignNodeAggregationWhereInput {
   assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  customer_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  customer_EQUAL?: Maybe<Scalars["String"]>;
-  customer_GT?: Maybe<Scalars["Int"]>;
-  customer_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  customer_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  customer_LT?: Maybe<Scalars["Int"]>;
-  customer_LTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  customer_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
   id_EQUAL?: Maybe<Scalars["ID"]>;
   name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
@@ -11476,7 +12413,23 @@ export const generatedSchema = {
         where: "CampaignChartsConnectionWhere",
       },
     },
-    customer: { __type: "String" },
+    customer: {
+      __type: "Customer",
+      __args: { options: "CustomerOptions", where: "CustomerWhere" },
+    },
+    customerAggregate: {
+      __type: "CampaignCustomerCustomerAggregationSelection",
+      __args: { where: "CustomerWhere" },
+    },
+    customerConnection: {
+      __type: "CampaignCustomerConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CampaignCustomerConnectionSort!]",
+        where: "CampaignCustomerConnectionWhere",
+      },
+    },
     id: { __type: "ID!" },
     interactionTimeline: { __type: "[CampaignInteraction]" },
     interactions: { __type: "Int" },
@@ -11508,7 +12461,6 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     assetFolder: { __type: "StringAggregateSelection!" },
     count: { __type: "Int!" },
-    customer: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
@@ -11562,7 +12514,6 @@ export const generatedSchema = {
   CampaignAnalyticCampaignCampaignNodeAggregateSelection: {
     __typename: { __type: "String!" },
     assetFolder: { __type: "StringAggregateSelection!" },
-    customer: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
@@ -11633,26 +12584,6 @@ export const generatedSchema = {
     assetFolder_SHORTEST_GTE: { __type: "Int" },
     assetFolder_SHORTEST_LT: { __type: "Int" },
     assetFolder_SHORTEST_LTE: { __type: "Int" },
-    customer_AVERAGE_EQUAL: { __type: "Float" },
-    customer_AVERAGE_GT: { __type: "Float" },
-    customer_AVERAGE_GTE: { __type: "Float" },
-    customer_AVERAGE_LT: { __type: "Float" },
-    customer_AVERAGE_LTE: { __type: "Float" },
-    customer_EQUAL: { __type: "String" },
-    customer_GT: { __type: "Int" },
-    customer_GTE: { __type: "Int" },
-    customer_LONGEST_EQUAL: { __type: "Int" },
-    customer_LONGEST_GT: { __type: "Int" },
-    customer_LONGEST_GTE: { __type: "Int" },
-    customer_LONGEST_LT: { __type: "Int" },
-    customer_LONGEST_LTE: { __type: "Int" },
-    customer_LT: { __type: "Int" },
-    customer_LTE: { __type: "Int" },
-    customer_SHORTEST_EQUAL: { __type: "Int" },
-    customer_SHORTEST_GT: { __type: "Int" },
-    customer_SHORTEST_GTE: { __type: "Int" },
-    customer_SHORTEST_LT: { __type: "Int" },
-    customer_SHORTEST_LTE: { __type: "Int" },
     id_EQUAL: { __type: "ID" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
@@ -12024,7 +12955,6 @@ export const generatedSchema = {
   CampaignChartCampaignCampaignNodeAggregateSelection: {
     __typename: { __type: "String!" },
     assetFolder: { __type: "StringAggregateSelection!" },
-    customer: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
@@ -12095,26 +13025,6 @@ export const generatedSchema = {
     assetFolder_SHORTEST_GTE: { __type: "Int" },
     assetFolder_SHORTEST_LT: { __type: "Int" },
     assetFolder_SHORTEST_LTE: { __type: "Int" },
-    customer_AVERAGE_EQUAL: { __type: "Float" },
-    customer_AVERAGE_GT: { __type: "Float" },
-    customer_AVERAGE_GTE: { __type: "Float" },
-    customer_AVERAGE_LT: { __type: "Float" },
-    customer_AVERAGE_LTE: { __type: "Float" },
-    customer_EQUAL: { __type: "String" },
-    customer_GT: { __type: "Int" },
-    customer_GTE: { __type: "Int" },
-    customer_LONGEST_EQUAL: { __type: "Int" },
-    customer_LONGEST_GT: { __type: "Int" },
-    customer_LONGEST_GTE: { __type: "Int" },
-    customer_LONGEST_LT: { __type: "Int" },
-    customer_LONGEST_LTE: { __type: "Int" },
-    customer_LT: { __type: "Int" },
-    customer_LTE: { __type: "Int" },
-    customer_SHORTEST_EQUAL: { __type: "Int" },
-    customer_SHORTEST_GT: { __type: "Int" },
-    customer_SHORTEST_GTE: { __type: "Int" },
-    customer_SHORTEST_LT: { __type: "Int" },
-    customer_SHORTEST_LTE: { __type: "Int" },
     id_EQUAL: { __type: "ID" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
@@ -12565,11 +13475,13 @@ export const generatedSchema = {
   CampaignConnectInput: {
     analytics: { __type: "[CampaignAnalyticsConnectFieldInput!]" },
     charts: { __type: "[CampaignChartsConnectFieldInput!]" },
+    customer: { __type: "CampaignCustomerConnectFieldInput" },
     organisation: { __type: "CampaignOrganisationConnectFieldInput" },
   },
   CampaignConnectOrCreateInput: {
     analytics: { __type: "[CampaignAnalyticsConnectOrCreateFieldInput!]" },
     charts: { __type: "[CampaignChartsConnectOrCreateFieldInput!]" },
+    customer: { __type: "CampaignCustomerConnectOrCreateFieldInput" },
     organisation: { __type: "CampaignOrganisationConnectOrCreateFieldInput" },
   },
   CampaignConnectOrCreateWhere: { node: { __type: "CampaignUniqueWhere!" } },
@@ -12578,18 +13490,164 @@ export const generatedSchema = {
     analytics: { __type: "CampaignAnalyticsFieldInput" },
     assetFolder: { __type: "String" },
     charts: { __type: "CampaignChartsFieldInput" },
-    customer: { __type: "String" },
+    customer: { __type: "CampaignCustomerFieldInput" },
     name: { __type: "String" },
     organisation: { __type: "CampaignOrganisationFieldInput" },
+  },
+  CampaignCustomerAggregateInput: {
+    AND: { __type: "[CampaignCustomerAggregateInput!]" },
+    OR: { __type: "[CampaignCustomerAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CampaignCustomerNodeAggregationWhereInput" },
+  },
+  CampaignCustomerConnectFieldInput: {
+    connect: { __type: "CustomerConnectInput" },
+    where: { __type: "CustomerConnectWhere" },
+  },
+  CampaignCustomerConnectOrCreateFieldInput: {
+    onCreate: { __type: "CampaignCustomerConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "CustomerConnectOrCreateWhere!" },
+  },
+  CampaignCustomerConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  CampaignCustomerConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CampaignCustomerRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CampaignCustomerConnectionSort: { node: { __type: "CustomerSort" } },
+  CampaignCustomerConnectionWhere: {
+    AND: { __type: "[CampaignCustomerConnectionWhere!]" },
+    OR: { __type: "[CampaignCustomerConnectionWhere!]" },
+    node: { __type: "CustomerWhere" },
+    node_NOT: { __type: "CustomerWhere" },
+  },
+  CampaignCustomerCreateFieldInput: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  CampaignCustomerCustomerAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CampaignCustomerCustomerNodeAggregateSelection" },
+  },
+  CampaignCustomerCustomerNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    phone: { __type: "StringAggregateSelection!" },
+  },
+  CampaignCustomerDeleteFieldInput: {
+    delete: { __type: "CustomerDeleteInput" },
+    where: { __type: "CampaignCustomerConnectionWhere" },
+  },
+  CampaignCustomerDisconnectFieldInput: {
+    disconnect: { __type: "CustomerDisconnectInput" },
+    where: { __type: "CampaignCustomerConnectionWhere" },
+  },
+  CampaignCustomerFieldInput: {
+    connect: { __type: "CampaignCustomerConnectFieldInput" },
+    connectOrCreate: { __type: "CampaignCustomerConnectOrCreateFieldInput" },
+    create: { __type: "CampaignCustomerCreateFieldInput" },
+  },
+  CampaignCustomerNodeAggregationWhereInput: {
+    AND: { __type: "[CampaignCustomerNodeAggregationWhereInput!]" },
+    OR: { __type: "[CampaignCustomerNodeAggregationWhereInput!]" },
+    email_AVERAGE_EQUAL: { __type: "Float" },
+    email_AVERAGE_GT: { __type: "Float" },
+    email_AVERAGE_GTE: { __type: "Float" },
+    email_AVERAGE_LT: { __type: "Float" },
+    email_AVERAGE_LTE: { __type: "Float" },
+    email_EQUAL: { __type: "String" },
+    email_GT: { __type: "Int" },
+    email_GTE: { __type: "Int" },
+    email_LONGEST_EQUAL: { __type: "Int" },
+    email_LONGEST_GT: { __type: "Int" },
+    email_LONGEST_GTE: { __type: "Int" },
+    email_LONGEST_LT: { __type: "Int" },
+    email_LONGEST_LTE: { __type: "Int" },
+    email_LT: { __type: "Int" },
+    email_LTE: { __type: "Int" },
+    email_SHORTEST_EQUAL: { __type: "Int" },
+    email_SHORTEST_GT: { __type: "Int" },
+    email_SHORTEST_GTE: { __type: "Int" },
+    email_SHORTEST_LT: { __type: "Int" },
+    email_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    phone_AVERAGE_EQUAL: { __type: "Float" },
+    phone_AVERAGE_GT: { __type: "Float" },
+    phone_AVERAGE_GTE: { __type: "Float" },
+    phone_AVERAGE_LT: { __type: "Float" },
+    phone_AVERAGE_LTE: { __type: "Float" },
+    phone_EQUAL: { __type: "String" },
+    phone_GT: { __type: "Int" },
+    phone_GTE: { __type: "Int" },
+    phone_LONGEST_EQUAL: { __type: "Int" },
+    phone_LONGEST_GT: { __type: "Int" },
+    phone_LONGEST_GTE: { __type: "Int" },
+    phone_LONGEST_LT: { __type: "Int" },
+    phone_LONGEST_LTE: { __type: "Int" },
+    phone_LT: { __type: "Int" },
+    phone_LTE: { __type: "Int" },
+    phone_SHORTEST_EQUAL: { __type: "Int" },
+    phone_SHORTEST_GT: { __type: "Int" },
+    phone_SHORTEST_GTE: { __type: "Int" },
+    phone_SHORTEST_LT: { __type: "Int" },
+    phone_SHORTEST_LTE: { __type: "Int" },
+  },
+  CampaignCustomerRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Customer!" },
+  },
+  CampaignCustomerUpdateConnectionInput: {
+    node: { __type: "CustomerUpdateInput" },
+  },
+  CampaignCustomerUpdateFieldInput: {
+    connect: { __type: "CampaignCustomerConnectFieldInput" },
+    connectOrCreate: { __type: "CampaignCustomerConnectOrCreateFieldInput" },
+    create: { __type: "CampaignCustomerCreateFieldInput" },
+    delete: { __type: "CampaignCustomerDeleteFieldInput" },
+    disconnect: { __type: "CampaignCustomerDisconnectFieldInput" },
+    update: { __type: "CampaignCustomerUpdateConnectionInput" },
+    where: { __type: "CampaignCustomerConnectionWhere" },
   },
   CampaignDeleteInput: {
     analytics: { __type: "[CampaignAnalyticsDeleteFieldInput!]" },
     charts: { __type: "[CampaignChartsDeleteFieldInput!]" },
+    customer: { __type: "CampaignCustomerDeleteFieldInput" },
     organisation: { __type: "CampaignOrganisationDeleteFieldInput" },
   },
   CampaignDisconnectInput: {
     analytics: { __type: "[CampaignAnalyticsDisconnectFieldInput!]" },
     charts: { __type: "[CampaignChartsDisconnectFieldInput!]" },
+    customer: { __type: "CampaignCustomerDisconnectFieldInput" },
     organisation: { __type: "CampaignOrganisationDisconnectFieldInput" },
   },
   CampaignHiveOrganisationOrganisationAggregationSelection: {
@@ -12717,11 +13775,11 @@ export const generatedSchema = {
   CampaignRelationInput: {
     analytics: { __type: "[CampaignAnalyticsCreateFieldInput!]" },
     charts: { __type: "[CampaignChartsCreateFieldInput!]" },
+    customer: { __type: "CampaignCustomerCreateFieldInput" },
     organisation: { __type: "CampaignOrganisationCreateFieldInput" },
   },
   CampaignSort: {
     assetFolder: { __type: "SortDirection" },
-    customer: { __type: "SortDirection" },
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
   },
@@ -12730,7 +13788,7 @@ export const generatedSchema = {
     analytics: { __type: "[CampaignAnalyticsUpdateFieldInput!]" },
     assetFolder: { __type: "String" },
     charts: { __type: "[CampaignChartsUpdateFieldInput!]" },
-    customer: { __type: "String" },
+    customer: { __type: "CampaignCustomerUpdateFieldInput" },
     name: { __type: "String" },
     organisation: { __type: "CampaignOrganisationUpdateFieldInput" },
   },
@@ -12757,16 +13815,11 @@ export const generatedSchema = {
     chartsConnection: { __type: "CampaignChartsConnectionWhere" },
     chartsConnection_NOT: { __type: "CampaignChartsConnectionWhere" },
     charts_NOT: { __type: "CampaignChartWhere" },
-    customer: { __type: "String" },
-    customer_CONTAINS: { __type: "String" },
-    customer_ENDS_WITH: { __type: "String" },
-    customer_IN: { __type: "[String]" },
-    customer_NOT: { __type: "String" },
-    customer_NOT_CONTAINS: { __type: "String" },
-    customer_NOT_ENDS_WITH: { __type: "String" },
-    customer_NOT_IN: { __type: "[String]" },
-    customer_NOT_STARTS_WITH: { __type: "String" },
-    customer_STARTS_WITH: { __type: "String" },
+    customer: { __type: "CustomerWhere" },
+    customerAggregate: { __type: "CampaignCustomerAggregateInput" },
+    customerConnection: { __type: "CampaignCustomerConnectionWhere" },
+    customerConnection_NOT: { __type: "CampaignCustomerConnectionWhere" },
+    customer_NOT: { __type: "CustomerWhere" },
     id: { __type: "ID" },
     id_CONTAINS: { __type: "ID" },
     id_ENDS_WITH: { __type: "ID" },
@@ -12808,6 +13861,16 @@ export const generatedSchema = {
   CreateCampaignsMutationResponse: {
     __typename: { __type: "String!" },
     campaigns: { __type: "[Campaign!]!" },
+    info: { __type: "CreateInfo!" },
+  },
+  CreateCustomerAccountsMutationResponse: {
+    __typename: { __type: "String!" },
+    customerAccounts: { __type: "[CustomerAccount!]!" },
+    info: { __type: "CreateInfo!" },
+  },
+  CreateCustomersMutationResponse: {
+    __typename: { __type: "String!" },
+    customers: { __type: "[Customer!]!" },
     info: { __type: "CreateInfo!" },
   },
   CreateGreenScreenTemplatesMutationResponse: {
@@ -12937,6 +14000,853 @@ export const generatedSchema = {
     __typename: { __type: "String!" },
     info: { __type: "CreateInfo!" },
     templateSlots: { __type: "[TemplateSlot!]!" },
+  },
+  Customer: {
+    __typename: { __type: "String!" },
+    accounts: {
+      __type: "[CustomerAccount]",
+      __args: {
+        options: "CustomerAccountOptions",
+        where: "CustomerAccountWhere",
+      },
+    },
+    accountsAggregate: {
+      __type: "CustomerCustomerAccountAccountsAggregationSelection",
+      __args: { where: "CustomerAccountWhere" },
+    },
+    accountsConnection: {
+      __type: "CustomerAccountsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CustomerAccountsConnectionSort!]",
+        where: "CustomerAccountsConnectionWhere",
+      },
+    },
+    campaigns: {
+      __type: "[Campaign]",
+      __args: { options: "CampaignOptions", where: "CampaignWhere" },
+    },
+    campaignsAggregate: {
+      __type: "CustomerCampaignCampaignsAggregationSelection",
+      __args: { where: "CampaignWhere" },
+    },
+    campaignsConnection: {
+      __type: "CustomerCampaignsConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CustomerCampaignsConnectionSort!]",
+        where: "CustomerCampaignsConnectionWhere",
+      },
+    },
+    email: { __type: "String" },
+    id: { __type: "ID!" },
+    name: { __type: "String!" },
+    organisation: {
+      __type: "HiveOrganisation",
+      __args: {
+        options: "HiveOrganisationOptions",
+        where: "HiveOrganisationWhere",
+      },
+    },
+    organisationAggregate: {
+      __type: "CustomerHiveOrganisationOrganisationAggregationSelection",
+      __args: { where: "HiveOrganisationWhere" },
+    },
+    organisationConnection: {
+      __type: "CustomerOrganisationConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CustomerOrganisationConnectionSort!]",
+        where: "CustomerOrganisationConnectionWhere",
+      },
+    },
+    phone: { __type: "String" },
+  },
+  CustomerAccount: {
+    __typename: { __type: "String!" },
+    customer: {
+      __type: "Customer",
+      __args: { options: "CustomerOptions", where: "CustomerWhere" },
+    },
+    customerAggregate: {
+      __type: "CustomerAccountCustomerCustomerAggregationSelection",
+      __args: { where: "CustomerWhere" },
+    },
+    customerConnection: {
+      __type: "CustomerAccountCustomerConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[CustomerAccountCustomerConnectionSort!]",
+        where: "CustomerAccountCustomerConnectionWhere",
+      },
+    },
+    email: { __type: "String" },
+    id: { __type: "ID!" },
+    name: { __type: "String!" },
+    password: { __type: "String" },
+  },
+  CustomerAccountAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    password: { __type: "StringAggregateSelection!" },
+  },
+  CustomerAccountConnectInput: {
+    customer: { __type: "CustomerAccountCustomerConnectFieldInput" },
+  },
+  CustomerAccountConnectOrCreateInput: {
+    customer: { __type: "CustomerAccountCustomerConnectOrCreateFieldInput" },
+  },
+  CustomerAccountConnectOrCreateWhere: {
+    node: { __type: "CustomerAccountUniqueWhere!" },
+  },
+  CustomerAccountConnectWhere: { node: { __type: "CustomerAccountWhere!" } },
+  CustomerAccountCreateInput: {
+    customer: { __type: "CustomerAccountCustomerFieldInput" },
+    email: { __type: "String" },
+    name: { __type: "String!" },
+    password: { __type: "String" },
+  },
+  CustomerAccountCustomerAggregateInput: {
+    AND: { __type: "[CustomerAccountCustomerAggregateInput!]" },
+    OR: { __type: "[CustomerAccountCustomerAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CustomerAccountCustomerNodeAggregationWhereInput" },
+  },
+  CustomerAccountCustomerConnectFieldInput: {
+    connect: { __type: "CustomerConnectInput" },
+    where: { __type: "CustomerConnectWhere" },
+  },
+  CustomerAccountCustomerConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "CustomerAccountCustomerConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "CustomerConnectOrCreateWhere!" },
+  },
+  CustomerAccountCustomerConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  CustomerAccountCustomerConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CustomerAccountCustomerRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CustomerAccountCustomerConnectionSort: { node: { __type: "CustomerSort" } },
+  CustomerAccountCustomerConnectionWhere: {
+    AND: { __type: "[CustomerAccountCustomerConnectionWhere!]" },
+    OR: { __type: "[CustomerAccountCustomerConnectionWhere!]" },
+    node: { __type: "CustomerWhere" },
+    node_NOT: { __type: "CustomerWhere" },
+  },
+  CustomerAccountCustomerCreateFieldInput: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  CustomerAccountCustomerCustomerAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CustomerAccountCustomerCustomerNodeAggregateSelection" },
+  },
+  CustomerAccountCustomerCustomerNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    phone: { __type: "StringAggregateSelection!" },
+  },
+  CustomerAccountCustomerDeleteFieldInput: {
+    delete: { __type: "CustomerDeleteInput" },
+    where: { __type: "CustomerAccountCustomerConnectionWhere" },
+  },
+  CustomerAccountCustomerDisconnectFieldInput: {
+    disconnect: { __type: "CustomerDisconnectInput" },
+    where: { __type: "CustomerAccountCustomerConnectionWhere" },
+  },
+  CustomerAccountCustomerFieldInput: {
+    connect: { __type: "CustomerAccountCustomerConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CustomerAccountCustomerConnectOrCreateFieldInput",
+    },
+    create: { __type: "CustomerAccountCustomerCreateFieldInput" },
+  },
+  CustomerAccountCustomerNodeAggregationWhereInput: {
+    AND: { __type: "[CustomerAccountCustomerNodeAggregationWhereInput!]" },
+    OR: { __type: "[CustomerAccountCustomerNodeAggregationWhereInput!]" },
+    email_AVERAGE_EQUAL: { __type: "Float" },
+    email_AVERAGE_GT: { __type: "Float" },
+    email_AVERAGE_GTE: { __type: "Float" },
+    email_AVERAGE_LT: { __type: "Float" },
+    email_AVERAGE_LTE: { __type: "Float" },
+    email_EQUAL: { __type: "String" },
+    email_GT: { __type: "Int" },
+    email_GTE: { __type: "Int" },
+    email_LONGEST_EQUAL: { __type: "Int" },
+    email_LONGEST_GT: { __type: "Int" },
+    email_LONGEST_GTE: { __type: "Int" },
+    email_LONGEST_LT: { __type: "Int" },
+    email_LONGEST_LTE: { __type: "Int" },
+    email_LT: { __type: "Int" },
+    email_LTE: { __type: "Int" },
+    email_SHORTEST_EQUAL: { __type: "Int" },
+    email_SHORTEST_GT: { __type: "Int" },
+    email_SHORTEST_GTE: { __type: "Int" },
+    email_SHORTEST_LT: { __type: "Int" },
+    email_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    phone_AVERAGE_EQUAL: { __type: "Float" },
+    phone_AVERAGE_GT: { __type: "Float" },
+    phone_AVERAGE_GTE: { __type: "Float" },
+    phone_AVERAGE_LT: { __type: "Float" },
+    phone_AVERAGE_LTE: { __type: "Float" },
+    phone_EQUAL: { __type: "String" },
+    phone_GT: { __type: "Int" },
+    phone_GTE: { __type: "Int" },
+    phone_LONGEST_EQUAL: { __type: "Int" },
+    phone_LONGEST_GT: { __type: "Int" },
+    phone_LONGEST_GTE: { __type: "Int" },
+    phone_LONGEST_LT: { __type: "Int" },
+    phone_LONGEST_LTE: { __type: "Int" },
+    phone_LT: { __type: "Int" },
+    phone_LTE: { __type: "Int" },
+    phone_SHORTEST_EQUAL: { __type: "Int" },
+    phone_SHORTEST_GT: { __type: "Int" },
+    phone_SHORTEST_GTE: { __type: "Int" },
+    phone_SHORTEST_LT: { __type: "Int" },
+    phone_SHORTEST_LTE: { __type: "Int" },
+  },
+  CustomerAccountCustomerRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Customer!" },
+  },
+  CustomerAccountCustomerUpdateConnectionInput: {
+    node: { __type: "CustomerUpdateInput" },
+  },
+  CustomerAccountCustomerUpdateFieldInput: {
+    connect: { __type: "CustomerAccountCustomerConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CustomerAccountCustomerConnectOrCreateFieldInput",
+    },
+    create: { __type: "CustomerAccountCustomerCreateFieldInput" },
+    delete: { __type: "CustomerAccountCustomerDeleteFieldInput" },
+    disconnect: { __type: "CustomerAccountCustomerDisconnectFieldInput" },
+    update: { __type: "CustomerAccountCustomerUpdateConnectionInput" },
+    where: { __type: "CustomerAccountCustomerConnectionWhere" },
+  },
+  CustomerAccountDeleteInput: {
+    customer: { __type: "CustomerAccountCustomerDeleteFieldInput" },
+  },
+  CustomerAccountDisconnectInput: {
+    customer: { __type: "CustomerAccountCustomerDisconnectFieldInput" },
+  },
+  CustomerAccountOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[CustomerAccountSort]" },
+  },
+  CustomerAccountRelationInput: {
+    customer: { __type: "CustomerAccountCustomerCreateFieldInput" },
+  },
+  CustomerAccountSort: {
+    email: { __type: "SortDirection" },
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+    password: { __type: "SortDirection" },
+  },
+  CustomerAccountUniqueWhere: { id: { __type: "ID" } },
+  CustomerAccountUpdateInput: {
+    customer: { __type: "CustomerAccountCustomerUpdateFieldInput" },
+    email: { __type: "String" },
+    name: { __type: "String" },
+    password: { __type: "String" },
+  },
+  CustomerAccountWhere: {
+    AND: { __type: "[CustomerAccountWhere!]" },
+    OR: { __type: "[CustomerAccountWhere!]" },
+    customer: { __type: "CustomerWhere" },
+    customerAggregate: { __type: "CustomerAccountCustomerAggregateInput" },
+    customerConnection: { __type: "CustomerAccountCustomerConnectionWhere" },
+    customerConnection_NOT: {
+      __type: "CustomerAccountCustomerConnectionWhere",
+    },
+    customer_NOT: { __type: "CustomerWhere" },
+    email: { __type: "String" },
+    email_CONTAINS: { __type: "String" },
+    email_ENDS_WITH: { __type: "String" },
+    email_IN: { __type: "[String]" },
+    email_NOT: { __type: "String" },
+    email_NOT_CONTAINS: { __type: "String" },
+    email_NOT_ENDS_WITH: { __type: "String" },
+    email_NOT_IN: { __type: "[String]" },
+    email_NOT_STARTS_WITH: { __type: "String" },
+    email_STARTS_WITH: { __type: "String" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    password: { __type: "String" },
+    password_CONTAINS: { __type: "String" },
+    password_ENDS_WITH: { __type: "String" },
+    password_IN: { __type: "[String]" },
+    password_NOT: { __type: "String" },
+    password_NOT_CONTAINS: { __type: "String" },
+    password_NOT_ENDS_WITH: { __type: "String" },
+    password_NOT_IN: { __type: "[String]" },
+    password_NOT_STARTS_WITH: { __type: "String" },
+    password_STARTS_WITH: { __type: "String" },
+  },
+  CustomerAccountsAggregateInput: {
+    AND: { __type: "[CustomerAccountsAggregateInput!]" },
+    OR: { __type: "[CustomerAccountsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CustomerAccountsNodeAggregationWhereInput" },
+  },
+  CustomerAccountsConnectFieldInput: {
+    connect: { __type: "[CustomerAccountConnectInput!]" },
+    where: { __type: "CustomerAccountConnectWhere" },
+  },
+  CustomerAccountsConnectOrCreateFieldInput: {
+    onCreate: { __type: "CustomerAccountsConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "CustomerAccountConnectOrCreateWhere!" },
+  },
+  CustomerAccountsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CustomerAccountCreateInput!" },
+  },
+  CustomerAccountsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CustomerAccountsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CustomerAccountsConnectionSort: { node: { __type: "CustomerAccountSort" } },
+  CustomerAccountsConnectionWhere: {
+    AND: { __type: "[CustomerAccountsConnectionWhere!]" },
+    OR: { __type: "[CustomerAccountsConnectionWhere!]" },
+    node: { __type: "CustomerAccountWhere" },
+    node_NOT: { __type: "CustomerAccountWhere" },
+  },
+  CustomerAccountsCreateFieldInput: {
+    node: { __type: "CustomerAccountCreateInput!" },
+  },
+  CustomerAccountsDeleteFieldInput: {
+    delete: { __type: "CustomerAccountDeleteInput" },
+    where: { __type: "CustomerAccountsConnectionWhere" },
+  },
+  CustomerAccountsDisconnectFieldInput: {
+    disconnect: { __type: "CustomerAccountDisconnectInput" },
+    where: { __type: "CustomerAccountsConnectionWhere" },
+  },
+  CustomerAccountsFieldInput: {
+    connect: { __type: "[CustomerAccountsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[CustomerAccountsConnectOrCreateFieldInput!]" },
+    create: { __type: "[CustomerAccountsCreateFieldInput!]" },
+  },
+  CustomerAccountsNodeAggregationWhereInput: {
+    AND: { __type: "[CustomerAccountsNodeAggregationWhereInput!]" },
+    OR: { __type: "[CustomerAccountsNodeAggregationWhereInput!]" },
+    email_AVERAGE_EQUAL: { __type: "Float" },
+    email_AVERAGE_GT: { __type: "Float" },
+    email_AVERAGE_GTE: { __type: "Float" },
+    email_AVERAGE_LT: { __type: "Float" },
+    email_AVERAGE_LTE: { __type: "Float" },
+    email_EQUAL: { __type: "String" },
+    email_GT: { __type: "Int" },
+    email_GTE: { __type: "Int" },
+    email_LONGEST_EQUAL: { __type: "Int" },
+    email_LONGEST_GT: { __type: "Int" },
+    email_LONGEST_GTE: { __type: "Int" },
+    email_LONGEST_LT: { __type: "Int" },
+    email_LONGEST_LTE: { __type: "Int" },
+    email_LT: { __type: "Int" },
+    email_LTE: { __type: "Int" },
+    email_SHORTEST_EQUAL: { __type: "Int" },
+    email_SHORTEST_GT: { __type: "Int" },
+    email_SHORTEST_GTE: { __type: "Int" },
+    email_SHORTEST_LT: { __type: "Int" },
+    email_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    password_AVERAGE_EQUAL: { __type: "Float" },
+    password_AVERAGE_GT: { __type: "Float" },
+    password_AVERAGE_GTE: { __type: "Float" },
+    password_AVERAGE_LT: { __type: "Float" },
+    password_AVERAGE_LTE: { __type: "Float" },
+    password_EQUAL: { __type: "String" },
+    password_GT: { __type: "Int" },
+    password_GTE: { __type: "Int" },
+    password_LONGEST_EQUAL: { __type: "Int" },
+    password_LONGEST_GT: { __type: "Int" },
+    password_LONGEST_GTE: { __type: "Int" },
+    password_LONGEST_LT: { __type: "Int" },
+    password_LONGEST_LTE: { __type: "Int" },
+    password_LT: { __type: "Int" },
+    password_LTE: { __type: "Int" },
+    password_SHORTEST_EQUAL: { __type: "Int" },
+    password_SHORTEST_GT: { __type: "Int" },
+    password_SHORTEST_GTE: { __type: "Int" },
+    password_SHORTEST_LT: { __type: "Int" },
+    password_SHORTEST_LTE: { __type: "Int" },
+  },
+  CustomerAccountsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "CustomerAccount!" },
+  },
+  CustomerAccountsUpdateConnectionInput: {
+    node: { __type: "CustomerAccountUpdateInput" },
+  },
+  CustomerAccountsUpdateFieldInput: {
+    connect: { __type: "[CustomerAccountsConnectFieldInput!]" },
+    connectOrCreate: { __type: "[CustomerAccountsConnectOrCreateFieldInput!]" },
+    create: { __type: "[CustomerAccountsCreateFieldInput!]" },
+    delete: { __type: "[CustomerAccountsDeleteFieldInput!]" },
+    disconnect: { __type: "[CustomerAccountsDisconnectFieldInput!]" },
+    update: { __type: "CustomerAccountsUpdateConnectionInput" },
+    where: { __type: "CustomerAccountsConnectionWhere" },
+  },
+  CustomerAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    phone: { __type: "StringAggregateSelection!" },
+  },
+  CustomerCampaignCampaignsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CustomerCampaignCampaignsNodeAggregateSelection" },
+  },
+  CustomerCampaignCampaignsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    assetFolder: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  CustomerCampaignsAggregateInput: {
+    AND: { __type: "[CustomerCampaignsAggregateInput!]" },
+    OR: { __type: "[CustomerCampaignsAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CustomerCampaignsNodeAggregationWhereInput" },
+  },
+  CustomerCampaignsConnectFieldInput: {
+    connect: { __type: "[CampaignConnectInput!]" },
+    where: { __type: "CampaignConnectWhere" },
+  },
+  CustomerCampaignsConnectOrCreateFieldInput: {
+    onCreate: { __type: "CustomerCampaignsConnectOrCreateFieldInputOnCreate!" },
+    where: { __type: "CampaignConnectOrCreateWhere!" },
+  },
+  CustomerCampaignsConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  CustomerCampaignsConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CustomerCampaignsRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CustomerCampaignsConnectionSort: { node: { __type: "CampaignSort" } },
+  CustomerCampaignsConnectionWhere: {
+    AND: { __type: "[CustomerCampaignsConnectionWhere!]" },
+    OR: { __type: "[CustomerCampaignsConnectionWhere!]" },
+    node: { __type: "CampaignWhere" },
+    node_NOT: { __type: "CampaignWhere" },
+  },
+  CustomerCampaignsCreateFieldInput: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  CustomerCampaignsDeleteFieldInput: {
+    delete: { __type: "CampaignDeleteInput" },
+    where: { __type: "CustomerCampaignsConnectionWhere" },
+  },
+  CustomerCampaignsDisconnectFieldInput: {
+    disconnect: { __type: "CampaignDisconnectInput" },
+    where: { __type: "CustomerCampaignsConnectionWhere" },
+  },
+  CustomerCampaignsFieldInput: {
+    connect: { __type: "[CustomerCampaignsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[CustomerCampaignsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[CustomerCampaignsCreateFieldInput!]" },
+  },
+  CustomerCampaignsNodeAggregationWhereInput: {
+    AND: { __type: "[CustomerCampaignsNodeAggregationWhereInput!]" },
+    OR: { __type: "[CustomerCampaignsNodeAggregationWhereInput!]" },
+    assetFolder_AVERAGE_EQUAL: { __type: "Float" },
+    assetFolder_AVERAGE_GT: { __type: "Float" },
+    assetFolder_AVERAGE_GTE: { __type: "Float" },
+    assetFolder_AVERAGE_LT: { __type: "Float" },
+    assetFolder_AVERAGE_LTE: { __type: "Float" },
+    assetFolder_EQUAL: { __type: "String" },
+    assetFolder_GT: { __type: "Int" },
+    assetFolder_GTE: { __type: "Int" },
+    assetFolder_LONGEST_EQUAL: { __type: "Int" },
+    assetFolder_LONGEST_GT: { __type: "Int" },
+    assetFolder_LONGEST_GTE: { __type: "Int" },
+    assetFolder_LONGEST_LT: { __type: "Int" },
+    assetFolder_LONGEST_LTE: { __type: "Int" },
+    assetFolder_LT: { __type: "Int" },
+    assetFolder_LTE: { __type: "Int" },
+    assetFolder_SHORTEST_EQUAL: { __type: "Int" },
+    assetFolder_SHORTEST_GT: { __type: "Int" },
+    assetFolder_SHORTEST_GTE: { __type: "Int" },
+    assetFolder_SHORTEST_LT: { __type: "Int" },
+    assetFolder_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  CustomerCampaignsRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Campaign!" },
+  },
+  CustomerCampaignsUpdateConnectionInput: {
+    node: { __type: "CampaignUpdateInput" },
+  },
+  CustomerCampaignsUpdateFieldInput: {
+    connect: { __type: "[CustomerCampaignsConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[CustomerCampaignsConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[CustomerCampaignsCreateFieldInput!]" },
+    delete: { __type: "[CustomerCampaignsDeleteFieldInput!]" },
+    disconnect: { __type: "[CustomerCampaignsDisconnectFieldInput!]" },
+    update: { __type: "CustomerCampaignsUpdateConnectionInput" },
+    where: { __type: "CustomerCampaignsConnectionWhere" },
+  },
+  CustomerConnectInput: {
+    accounts: { __type: "[CustomerAccountsConnectFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsConnectFieldInput!]" },
+    organisation: { __type: "CustomerOrganisationConnectFieldInput" },
+  },
+  CustomerConnectOrCreateInput: {
+    accounts: { __type: "[CustomerAccountsConnectOrCreateFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsConnectOrCreateFieldInput!]" },
+    organisation: { __type: "CustomerOrganisationConnectOrCreateFieldInput" },
+  },
+  CustomerConnectOrCreateWhere: { node: { __type: "CustomerUniqueWhere!" } },
+  CustomerConnectWhere: { node: { __type: "CustomerWhere!" } },
+  CustomerCreateInput: {
+    accounts: { __type: "CustomerAccountsFieldInput" },
+    campaigns: { __type: "CustomerCampaignsFieldInput" },
+    email: { __type: "String" },
+    name: { __type: "String!" },
+    organisation: { __type: "CustomerOrganisationFieldInput" },
+    phone: { __type: "String" },
+  },
+  CustomerCustomerAccountAccountsAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "CustomerCustomerAccountAccountsNodeAggregateSelection" },
+  },
+  CustomerCustomerAccountAccountsNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    password: { __type: "StringAggregateSelection!" },
+  },
+  CustomerDeleteInput: {
+    accounts: { __type: "[CustomerAccountsDeleteFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsDeleteFieldInput!]" },
+    organisation: { __type: "CustomerOrganisationDeleteFieldInput" },
+  },
+  CustomerDisconnectInput: {
+    accounts: { __type: "[CustomerAccountsDisconnectFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsDisconnectFieldInput!]" },
+    organisation: { __type: "CustomerOrganisationDisconnectFieldInput" },
+  },
+  CustomerHiveOrganisationOrganisationAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "CustomerHiveOrganisationOrganisationNodeAggregateSelection",
+    },
+  },
+  CustomerHiveOrganisationOrganisationNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  CustomerOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[CustomerSort]" },
+  },
+  CustomerOrganisationAggregateInput: {
+    AND: { __type: "[CustomerOrganisationAggregateInput!]" },
+    OR: { __type: "[CustomerOrganisationAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "CustomerOrganisationNodeAggregationWhereInput" },
+  },
+  CustomerOrganisationConnectFieldInput: {
+    connect: { __type: "HiveOrganisationConnectInput" },
+    where: { __type: "HiveOrganisationConnectWhere" },
+  },
+  CustomerOrganisationConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "CustomerOrganisationConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "HiveOrganisationConnectOrCreateWhere!" },
+  },
+  CustomerOrganisationConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "HiveOrganisationCreateInput!" },
+  },
+  CustomerOrganisationConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[CustomerOrganisationRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  CustomerOrganisationConnectionSort: {
+    node: { __type: "HiveOrganisationSort" },
+  },
+  CustomerOrganisationConnectionWhere: {
+    AND: { __type: "[CustomerOrganisationConnectionWhere!]" },
+    OR: { __type: "[CustomerOrganisationConnectionWhere!]" },
+    node: { __type: "HiveOrganisationWhere" },
+    node_NOT: { __type: "HiveOrganisationWhere" },
+  },
+  CustomerOrganisationCreateFieldInput: {
+    node: { __type: "HiveOrganisationCreateInput!" },
+  },
+  CustomerOrganisationDeleteFieldInput: {
+    delete: { __type: "HiveOrganisationDeleteInput" },
+    where: { __type: "CustomerOrganisationConnectionWhere" },
+  },
+  CustomerOrganisationDisconnectFieldInput: {
+    disconnect: { __type: "HiveOrganisationDisconnectInput" },
+    where: { __type: "CustomerOrganisationConnectionWhere" },
+  },
+  CustomerOrganisationFieldInput: {
+    connect: { __type: "CustomerOrganisationConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CustomerOrganisationConnectOrCreateFieldInput",
+    },
+    create: { __type: "CustomerOrganisationCreateFieldInput" },
+  },
+  CustomerOrganisationNodeAggregationWhereInput: {
+    AND: { __type: "[CustomerOrganisationNodeAggregationWhereInput!]" },
+    OR: { __type: "[CustomerOrganisationNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  CustomerOrganisationRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "HiveOrganisation!" },
+  },
+  CustomerOrganisationUpdateConnectionInput: {
+    node: { __type: "HiveOrganisationUpdateInput" },
+  },
+  CustomerOrganisationUpdateFieldInput: {
+    connect: { __type: "CustomerOrganisationConnectFieldInput" },
+    connectOrCreate: {
+      __type: "CustomerOrganisationConnectOrCreateFieldInput",
+    },
+    create: { __type: "CustomerOrganisationCreateFieldInput" },
+    delete: { __type: "CustomerOrganisationDeleteFieldInput" },
+    disconnect: { __type: "CustomerOrganisationDisconnectFieldInput" },
+    update: { __type: "CustomerOrganisationUpdateConnectionInput" },
+    where: { __type: "CustomerOrganisationConnectionWhere" },
+  },
+  CustomerRelationInput: {
+    accounts: { __type: "[CustomerAccountsCreateFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsCreateFieldInput!]" },
+    organisation: { __type: "CustomerOrganisationCreateFieldInput" },
+  },
+  CustomerSort: {
+    email: { __type: "SortDirection" },
+    id: { __type: "SortDirection" },
+    name: { __type: "SortDirection" },
+    phone: { __type: "SortDirection" },
+  },
+  CustomerUniqueWhere: { id: { __type: "ID" } },
+  CustomerUpdateInput: {
+    accounts: { __type: "[CustomerAccountsUpdateFieldInput!]" },
+    campaigns: { __type: "[CustomerCampaignsUpdateFieldInput!]" },
+    email: { __type: "String" },
+    name: { __type: "String" },
+    organisation: { __type: "CustomerOrganisationUpdateFieldInput" },
+    phone: { __type: "String" },
+  },
+  CustomerWhere: {
+    AND: { __type: "[CustomerWhere!]" },
+    OR: { __type: "[CustomerWhere!]" },
+    accounts: { __type: "CustomerAccountWhere" },
+    accountsAggregate: { __type: "CustomerAccountsAggregateInput" },
+    accountsConnection: { __type: "CustomerAccountsConnectionWhere" },
+    accountsConnection_NOT: { __type: "CustomerAccountsConnectionWhere" },
+    accounts_NOT: { __type: "CustomerAccountWhere" },
+    campaigns: { __type: "CampaignWhere" },
+    campaignsAggregate: { __type: "CustomerCampaignsAggregateInput" },
+    campaignsConnection: { __type: "CustomerCampaignsConnectionWhere" },
+    campaignsConnection_NOT: { __type: "CustomerCampaignsConnectionWhere" },
+    campaigns_NOT: { __type: "CampaignWhere" },
+    email: { __type: "String" },
+    email_CONTAINS: { __type: "String" },
+    email_ENDS_WITH: { __type: "String" },
+    email_IN: { __type: "[String]" },
+    email_NOT: { __type: "String" },
+    email_NOT_CONTAINS: { __type: "String" },
+    email_NOT_ENDS_WITH: { __type: "String" },
+    email_NOT_IN: { __type: "[String]" },
+    email_NOT_STARTS_WITH: { __type: "String" },
+    email_STARTS_WITH: { __type: "String" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    name: { __type: "String" },
+    name_CONTAINS: { __type: "String" },
+    name_ENDS_WITH: { __type: "String" },
+    name_IN: { __type: "[String]" },
+    name_NOT: { __type: "String" },
+    name_NOT_CONTAINS: { __type: "String" },
+    name_NOT_ENDS_WITH: { __type: "String" },
+    name_NOT_IN: { __type: "[String]" },
+    name_NOT_STARTS_WITH: { __type: "String" },
+    name_STARTS_WITH: { __type: "String" },
+    organisation: { __type: "HiveOrganisationWhere" },
+    organisationAggregate: { __type: "CustomerOrganisationAggregateInput" },
+    organisationConnection: { __type: "CustomerOrganisationConnectionWhere" },
+    organisationConnection_NOT: {
+      __type: "CustomerOrganisationConnectionWhere",
+    },
+    organisation_NOT: { __type: "HiveOrganisationWhere" },
+    phone: { __type: "String" },
+    phone_CONTAINS: { __type: "String" },
+    phone_ENDS_WITH: { __type: "String" },
+    phone_IN: { __type: "[String]" },
+    phone_NOT: { __type: "String" },
+    phone_NOT_CONTAINS: { __type: "String" },
+    phone_NOT_ENDS_WITH: { __type: "String" },
+    phone_NOT_IN: { __type: "[String]" },
+    phone_NOT_STARTS_WITH: { __type: "String" },
+    phone_STARTS_WITH: { __type: "String" },
   },
   DateTimeAggregateSelection: {
     __typename: { __type: "String!" },
@@ -16551,6 +18461,23 @@ export const generatedSchema = {
         where: "HiveOrganisationCampaignsConnectionWhere",
       },
     },
+    customers: {
+      __type: "[Customer]",
+      __args: { options: "CustomerOptions", where: "CustomerWhere" },
+    },
+    customersAggregate: {
+      __type: "HiveOrganisationCustomerCustomersAggregationSelection",
+      __args: { where: "CustomerWhere" },
+    },
+    customersConnection: {
+      __type: "HiveOrganisationCustomersConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[HiveOrganisationCustomersConnectionSort!]",
+        where: "HiveOrganisationCustomersConnectionWhere",
+      },
+    },
     greenScreens: {
       __type: "[GreenScreen]",
       __args: { options: "GreenScreenOptions", where: "GreenScreenWhere" },
@@ -16852,7 +18779,6 @@ export const generatedSchema = {
   HiveOrganisationCampaignCampaignsNodeAggregateSelection: {
     __typename: { __type: "String!" },
     assetFolder: { __type: "StringAggregateSelection!" },
-    customer: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
@@ -16933,26 +18859,6 @@ export const generatedSchema = {
     assetFolder_SHORTEST_GTE: { __type: "Int" },
     assetFolder_SHORTEST_LT: { __type: "Int" },
     assetFolder_SHORTEST_LTE: { __type: "Int" },
-    customer_AVERAGE_EQUAL: { __type: "Float" },
-    customer_AVERAGE_GT: { __type: "Float" },
-    customer_AVERAGE_GTE: { __type: "Float" },
-    customer_AVERAGE_LT: { __type: "Float" },
-    customer_AVERAGE_LTE: { __type: "Float" },
-    customer_EQUAL: { __type: "String" },
-    customer_GT: { __type: "Int" },
-    customer_GTE: { __type: "Int" },
-    customer_LONGEST_EQUAL: { __type: "Int" },
-    customer_LONGEST_GT: { __type: "Int" },
-    customer_LONGEST_GTE: { __type: "Int" },
-    customer_LONGEST_LT: { __type: "Int" },
-    customer_LONGEST_LTE: { __type: "Int" },
-    customer_LT: { __type: "Int" },
-    customer_LTE: { __type: "Int" },
-    customer_SHORTEST_EQUAL: { __type: "Int" },
-    customer_SHORTEST_GT: { __type: "Int" },
-    customer_SHORTEST_GTE: { __type: "Int" },
-    customer_SHORTEST_LT: { __type: "Int" },
-    customer_SHORTEST_LTE: { __type: "Int" },
     id_EQUAL: { __type: "ID" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
@@ -16997,6 +18903,7 @@ export const generatedSchema = {
   HiveOrganisationConnectInput: {
     appliances: { __type: "[HiveOrganisationAppliancesConnectFieldInput!]" },
     campaigns: { __type: "[HiveOrganisationCampaignsConnectFieldInput!]" },
+    customers: { __type: "[HiveOrganisationCustomersConnectFieldInput!]" },
     greenScreens: {
       __type: "[HiveOrganisationGreenScreensConnectFieldInput!]",
     },
@@ -17022,6 +18929,9 @@ export const generatedSchema = {
     },
     campaigns: {
       __type: "[HiveOrganisationCampaignsConnectOrCreateFieldInput!]",
+    },
+    customers: {
+      __type: "[HiveOrganisationCustomersConnectOrCreateFieldInput!]",
     },
     greenScreens: {
       __type: "[HiveOrganisationGreenScreensConnectOrCreateFieldInput!]",
@@ -17051,6 +18961,7 @@ export const generatedSchema = {
   HiveOrganisationCreateInput: {
     appliances: { __type: "HiveOrganisationAppliancesFieldInput" },
     campaigns: { __type: "HiveOrganisationCampaignsFieldInput" },
+    customers: { __type: "HiveOrganisationCustomersFieldInput" },
     greenScreens: { __type: "HiveOrganisationGreenScreensFieldInput" },
     integrations: { __type: "HiveOrganisationIntegrationsFieldInput" },
     locationGroups: { __type: "HiveOrganisationLocationGroupsFieldInput" },
@@ -17061,9 +18972,160 @@ export const generatedSchema = {
     schedules: { __type: "HiveOrganisationSchedulesFieldInput" },
     screenTemplates: { __type: "HiveOrganisationScreenTemplatesFieldInput" },
   },
+  HiveOrganisationCustomerCustomersAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: { __type: "HiveOrganisationCustomerCustomersNodeAggregateSelection" },
+  },
+  HiveOrganisationCustomerCustomersNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    email: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    phone: { __type: "StringAggregateSelection!" },
+  },
+  HiveOrganisationCustomersAggregateInput: {
+    AND: { __type: "[HiveOrganisationCustomersAggregateInput!]" },
+    OR: { __type: "[HiveOrganisationCustomersAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "HiveOrganisationCustomersNodeAggregationWhereInput" },
+  },
+  HiveOrganisationCustomersConnectFieldInput: {
+    connect: { __type: "[CustomerConnectInput!]" },
+    where: { __type: "CustomerConnectWhere" },
+  },
+  HiveOrganisationCustomersConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "HiveOrganisationCustomersConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "CustomerConnectOrCreateWhere!" },
+  },
+  HiveOrganisationCustomersConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  HiveOrganisationCustomersConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[HiveOrganisationCustomersRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  HiveOrganisationCustomersConnectionSort: { node: { __type: "CustomerSort" } },
+  HiveOrganisationCustomersConnectionWhere: {
+    AND: { __type: "[HiveOrganisationCustomersConnectionWhere!]" },
+    OR: { __type: "[HiveOrganisationCustomersConnectionWhere!]" },
+    node: { __type: "CustomerWhere" },
+    node_NOT: { __type: "CustomerWhere" },
+  },
+  HiveOrganisationCustomersCreateFieldInput: {
+    node: { __type: "CustomerCreateInput!" },
+  },
+  HiveOrganisationCustomersDeleteFieldInput: {
+    delete: { __type: "CustomerDeleteInput" },
+    where: { __type: "HiveOrganisationCustomersConnectionWhere" },
+  },
+  HiveOrganisationCustomersDisconnectFieldInput: {
+    disconnect: { __type: "CustomerDisconnectInput" },
+    where: { __type: "HiveOrganisationCustomersConnectionWhere" },
+  },
+  HiveOrganisationCustomersFieldInput: {
+    connect: { __type: "[HiveOrganisationCustomersConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[HiveOrganisationCustomersConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[HiveOrganisationCustomersCreateFieldInput!]" },
+  },
+  HiveOrganisationCustomersNodeAggregationWhereInput: {
+    AND: { __type: "[HiveOrganisationCustomersNodeAggregationWhereInput!]" },
+    OR: { __type: "[HiveOrganisationCustomersNodeAggregationWhereInput!]" },
+    email_AVERAGE_EQUAL: { __type: "Float" },
+    email_AVERAGE_GT: { __type: "Float" },
+    email_AVERAGE_GTE: { __type: "Float" },
+    email_AVERAGE_LT: { __type: "Float" },
+    email_AVERAGE_LTE: { __type: "Float" },
+    email_EQUAL: { __type: "String" },
+    email_GT: { __type: "Int" },
+    email_GTE: { __type: "Int" },
+    email_LONGEST_EQUAL: { __type: "Int" },
+    email_LONGEST_GT: { __type: "Int" },
+    email_LONGEST_GTE: { __type: "Int" },
+    email_LONGEST_LT: { __type: "Int" },
+    email_LONGEST_LTE: { __type: "Int" },
+    email_LT: { __type: "Int" },
+    email_LTE: { __type: "Int" },
+    email_SHORTEST_EQUAL: { __type: "Int" },
+    email_SHORTEST_GT: { __type: "Int" },
+    email_SHORTEST_GTE: { __type: "Int" },
+    email_SHORTEST_LT: { __type: "Int" },
+    email_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    phone_AVERAGE_EQUAL: { __type: "Float" },
+    phone_AVERAGE_GT: { __type: "Float" },
+    phone_AVERAGE_GTE: { __type: "Float" },
+    phone_AVERAGE_LT: { __type: "Float" },
+    phone_AVERAGE_LTE: { __type: "Float" },
+    phone_EQUAL: { __type: "String" },
+    phone_GT: { __type: "Int" },
+    phone_GTE: { __type: "Int" },
+    phone_LONGEST_EQUAL: { __type: "Int" },
+    phone_LONGEST_GT: { __type: "Int" },
+    phone_LONGEST_GTE: { __type: "Int" },
+    phone_LONGEST_LT: { __type: "Int" },
+    phone_LONGEST_LTE: { __type: "Int" },
+    phone_LT: { __type: "Int" },
+    phone_LTE: { __type: "Int" },
+    phone_SHORTEST_EQUAL: { __type: "Int" },
+    phone_SHORTEST_GT: { __type: "Int" },
+    phone_SHORTEST_GTE: { __type: "Int" },
+    phone_SHORTEST_LT: { __type: "Int" },
+    phone_SHORTEST_LTE: { __type: "Int" },
+  },
+  HiveOrganisationCustomersRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Customer!" },
+  },
+  HiveOrganisationCustomersUpdateConnectionInput: {
+    node: { __type: "CustomerUpdateInput" },
+  },
+  HiveOrganisationCustomersUpdateFieldInput: {
+    connect: { __type: "[HiveOrganisationCustomersConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[HiveOrganisationCustomersConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[HiveOrganisationCustomersCreateFieldInput!]" },
+    delete: { __type: "[HiveOrganisationCustomersDeleteFieldInput!]" },
+    disconnect: { __type: "[HiveOrganisationCustomersDisconnectFieldInput!]" },
+    update: { __type: "HiveOrganisationCustomersUpdateConnectionInput" },
+    where: { __type: "HiveOrganisationCustomersConnectionWhere" },
+  },
   HiveOrganisationDeleteInput: {
     appliances: { __type: "[HiveOrganisationAppliancesDeleteFieldInput!]" },
     campaigns: { __type: "[HiveOrganisationCampaignsDeleteFieldInput!]" },
+    customers: { __type: "[HiveOrganisationCustomersDeleteFieldInput!]" },
     greenScreens: { __type: "[HiveOrganisationGreenScreensDeleteFieldInput!]" },
     integrations: { __type: "[HiveOrganisationIntegrationsDeleteFieldInput!]" },
     locationGroups: {
@@ -17082,6 +19144,7 @@ export const generatedSchema = {
   HiveOrganisationDisconnectInput: {
     appliances: { __type: "[HiveOrganisationAppliancesDisconnectFieldInput!]" },
     campaigns: { __type: "[HiveOrganisationCampaignsDisconnectFieldInput!]" },
+    customers: { __type: "[HiveOrganisationCustomersDisconnectFieldInput!]" },
     greenScreens: {
       __type: "[HiveOrganisationGreenScreensDisconnectFieldInput!]",
     },
@@ -17677,6 +19740,7 @@ export const generatedSchema = {
   HiveOrganisationRelationInput: {
     appliances: { __type: "[HiveOrganisationAppliancesCreateFieldInput!]" },
     campaigns: { __type: "[HiveOrganisationCampaignsCreateFieldInput!]" },
+    customers: { __type: "[HiveOrganisationCustomersCreateFieldInput!]" },
     greenScreens: { __type: "[HiveOrganisationGreenScreensCreateFieldInput!]" },
     integrations: { __type: "[HiveOrganisationIntegrationsCreateFieldInput!]" },
     locationGroups: {
@@ -18246,6 +20310,7 @@ export const generatedSchema = {
   HiveOrganisationUpdateInput: {
     appliances: { __type: "[HiveOrganisationAppliancesUpdateFieldInput!]" },
     campaigns: { __type: "[HiveOrganisationCampaignsUpdateFieldInput!]" },
+    customers: { __type: "[HiveOrganisationCustomersUpdateFieldInput!]" },
     greenScreens: { __type: "[HiveOrganisationGreenScreensUpdateFieldInput!]" },
     integrations: { __type: "[HiveOrganisationIntegrationsUpdateFieldInput!]" },
     locationGroups: {
@@ -18281,6 +20346,13 @@ export const generatedSchema = {
       __type: "HiveOrganisationCampaignsConnectionWhere",
     },
     campaigns_NOT: { __type: "CampaignWhere" },
+    customers: { __type: "CustomerWhere" },
+    customersAggregate: { __type: "HiveOrganisationCustomersAggregateInput" },
+    customersConnection: { __type: "HiveOrganisationCustomersConnectionWhere" },
+    customersConnection_NOT: {
+      __type: "HiveOrganisationCustomersConnectionWhere",
+    },
+    customers_NOT: { __type: "CustomerWhere" },
     greenScreens: { __type: "GreenScreenWhere" },
     greenScreensAggregate: {
       __type: "HiveOrganisationGreenScreensAggregateInput",
@@ -21520,7 +23592,6 @@ export const generatedSchema = {
   ScheduleSlotCampaignCampaignNodeAggregateSelection: {
     __typename: { __type: "String!" },
     assetFolder: { __type: "StringAggregateSelection!" },
-    customer: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
   },
@@ -21591,26 +23662,6 @@ export const generatedSchema = {
     assetFolder_SHORTEST_GTE: { __type: "Int" },
     assetFolder_SHORTEST_LT: { __type: "Int" },
     assetFolder_SHORTEST_LTE: { __type: "Int" },
-    customer_AVERAGE_EQUAL: { __type: "Float" },
-    customer_AVERAGE_GT: { __type: "Float" },
-    customer_AVERAGE_GTE: { __type: "Float" },
-    customer_AVERAGE_LT: { __type: "Float" },
-    customer_AVERAGE_LTE: { __type: "Float" },
-    customer_EQUAL: { __type: "String" },
-    customer_GT: { __type: "Int" },
-    customer_GTE: { __type: "Int" },
-    customer_LONGEST_EQUAL: { __type: "Int" },
-    customer_LONGEST_GT: { __type: "Int" },
-    customer_LONGEST_GTE: { __type: "Int" },
-    customer_LONGEST_LT: { __type: "Int" },
-    customer_LONGEST_LTE: { __type: "Int" },
-    customer_LT: { __type: "Int" },
-    customer_LTE: { __type: "Int" },
-    customer_SHORTEST_EQUAL: { __type: "Int" },
-    customer_SHORTEST_GT: { __type: "Int" },
-    customer_SHORTEST_GTE: { __type: "Int" },
-    customer_SHORTEST_LT: { __type: "Int" },
-    customer_SHORTEST_LTE: { __type: "Int" },
     id_EQUAL: { __type: "ID" },
     name_AVERAGE_EQUAL: { __type: "Float" },
     name_AVERAGE_GT: { __type: "Float" },
@@ -25113,6 +27164,16 @@ export const generatedSchema = {
     campaigns: { __type: "[Campaign!]!" },
     info: { __type: "UpdateInfo!" },
   },
+  UpdateCustomerAccountsMutationResponse: {
+    __typename: { __type: "String!" },
+    customerAccounts: { __type: "[CustomerAccount!]!" },
+    info: { __type: "UpdateInfo!" },
+  },
+  UpdateCustomersMutationResponse: {
+    __typename: { __type: "String!" },
+    customers: { __type: "[Customer!]!" },
+    info: { __type: "UpdateInfo!" },
+  },
   UpdateGreenScreenTemplatesMutationResponse: {
     __typename: { __type: "String!" },
     greenScreenTemplates: { __type: "[GreenScreenTemplate!]!" },
@@ -25257,6 +27318,14 @@ export const generatedSchema = {
       __type: "CreateCampaignsMutationResponse!",
       __args: { input: "[CampaignCreateInput!]!" },
     },
+    createCustomerAccounts: {
+      __type: "CreateCustomerAccountsMutationResponse!",
+      __args: { input: "[CustomerAccountCreateInput!]!" },
+    },
+    createCustomers: {
+      __type: "CreateCustomersMutationResponse!",
+      __args: { input: "[CustomerCreateInput!]!" },
+    },
     createGreenScreenTemplates: {
       __type: "CreateGreenScreenTemplatesMutationResponse!",
       __args: { input: "[GreenScreenTemplateCreateInput!]!" },
@@ -25370,6 +27439,17 @@ export const generatedSchema = {
     deleteCampaigns: {
       __type: "DeleteInfo!",
       __args: { delete: "CampaignDeleteInput", where: "CampaignWhere" },
+    },
+    deleteCustomerAccounts: {
+      __type: "DeleteInfo!",
+      __args: {
+        delete: "CustomerAccountDeleteInput",
+        where: "CustomerAccountWhere",
+      },
+    },
+    deleteCustomers: {
+      __type: "DeleteInfo!",
+      __args: { delete: "CustomerDeleteInput", where: "CustomerWhere" },
     },
     deleteGreenScreenTemplates: {
       __type: "DeleteInfo!",
@@ -25523,6 +27603,30 @@ export const generatedSchema = {
         disconnect: "CampaignDisconnectInput",
         update: "CampaignUpdateInput",
         where: "CampaignWhere",
+      },
+    },
+    updateCustomerAccounts: {
+      __type: "UpdateCustomerAccountsMutationResponse!",
+      __args: {
+        connect: "CustomerAccountConnectInput",
+        connectOrCreate: "CustomerAccountConnectOrCreateInput",
+        create: "CustomerAccountRelationInput",
+        delete: "CustomerAccountDeleteInput",
+        disconnect: "CustomerAccountDisconnectInput",
+        update: "CustomerAccountUpdateInput",
+        where: "CustomerAccountWhere",
+      },
+    },
+    updateCustomers: {
+      __type: "UpdateCustomersMutationResponse!",
+      __args: {
+        connect: "CustomerConnectInput",
+        connectOrCreate: "CustomerConnectOrCreateInput",
+        create: "CustomerRelationInput",
+        delete: "CustomerDeleteInput",
+        disconnect: "CustomerDisconnectInput",
+        update: "CustomerUpdateInput",
+        where: "CustomerWhere",
       },
     },
     updateGreenScreenTemplates: {
@@ -25825,6 +27929,30 @@ export const generatedSchema = {
       __args: { where: "CampaignWhere" },
     },
     campaignsCount: { __type: "Int!", __args: { where: "CampaignWhere" } },
+    customerAccounts: {
+      __type: "[CustomerAccount!]!",
+      __args: {
+        options: "CustomerAccountOptions",
+        where: "CustomerAccountWhere",
+      },
+    },
+    customerAccountsAggregate: {
+      __type: "CustomerAccountAggregateSelection!",
+      __args: { where: "CustomerAccountWhere" },
+    },
+    customerAccountsCount: {
+      __type: "Int!",
+      __args: { where: "CustomerAccountWhere" },
+    },
+    customers: {
+      __type: "[Customer!]!",
+      __args: { options: "CustomerOptions", where: "CustomerWhere" },
+    },
+    customersAggregate: {
+      __type: "CustomerAggregateSelection!",
+      __args: { where: "CustomerWhere" },
+    },
+    customersCount: { __type: "Int!", __args: { where: "CustomerWhere" } },
     greenScreenTemplates: {
       __type: "[GreenScreenTemplate!]!",
       __args: {
@@ -26156,7 +28284,19 @@ export interface Campaign {
     sort?: Maybe<Array<CampaignChartsConnectionSort>>;
     where?: Maybe<CampaignChartsConnectionWhere>;
   }) => CampaignChartsConnection;
-  customer?: Maybe<ScalarsEnums["String"]>;
+  customer: (args?: {
+    options?: Maybe<CustomerOptions>;
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<Customer>;
+  customerAggregate: (args?: {
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<CampaignCustomerCustomerAggregationSelection>;
+  customerConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CampaignCustomerConnectionSort>>;
+    where?: Maybe<CampaignCustomerConnectionWhere>;
+  }) => CampaignCustomerConnection;
   id: ScalarsEnums["ID"];
   interactionTimeline?: Maybe<Array<Maybe<CampaignInteraction>>>;
   interactions?: Maybe<ScalarsEnums["Int"]>;
@@ -26182,7 +28322,6 @@ export interface CampaignAggregateSelection {
   __typename?: "CampaignAggregateSelection";
   assetFolder: StringAggregateSelection;
   count: ScalarsEnums["Int"];
-  customer: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
 }
@@ -26226,7 +28365,6 @@ export interface CampaignAnalyticCampaignCampaignAggregationSelection {
 export interface CampaignAnalyticCampaignCampaignNodeAggregateSelection {
   __typename?: "CampaignAnalyticCampaignCampaignNodeAggregateSelection";
   assetFolder: StringAggregateSelection;
-  customer: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
 }
@@ -26351,7 +28489,6 @@ export interface CampaignChartCampaignCampaignAggregationSelection {
 export interface CampaignChartCampaignCampaignNodeAggregateSelection {
   __typename?: "CampaignChartCampaignCampaignNodeAggregateSelection";
   assetFolder: StringAggregateSelection;
-  customer: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
 }
@@ -26380,6 +28517,33 @@ export interface CampaignChartsRelationship {
   __typename?: "CampaignChartsRelationship";
   cursor: ScalarsEnums["String"];
   node: CampaignChart;
+}
+
+export interface CampaignCustomerConnection {
+  __typename?: "CampaignCustomerConnection";
+  edges: Array<CampaignCustomerRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CampaignCustomerCustomerAggregationSelection {
+  __typename?: "CampaignCustomerCustomerAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CampaignCustomerCustomerNodeAggregateSelection>;
+}
+
+export interface CampaignCustomerCustomerNodeAggregateSelection {
+  __typename?: "CampaignCustomerCustomerNodeAggregateSelection";
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  phone: StringAggregateSelection;
+}
+
+export interface CampaignCustomerRelationship {
+  __typename?: "CampaignCustomerRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Customer;
 }
 
 export interface CampaignHiveOrganisationOrganisationAggregationSelection {
@@ -26428,6 +28592,18 @@ export interface CreateCampaignChartsMutationResponse {
 export interface CreateCampaignsMutationResponse {
   __typename?: "CreateCampaignsMutationResponse";
   campaigns: Array<Campaign>;
+  info: CreateInfo;
+}
+
+export interface CreateCustomerAccountsMutationResponse {
+  __typename?: "CreateCustomerAccountsMutationResponse";
+  customerAccounts: Array<CustomerAccount>;
+  info: CreateInfo;
+}
+
+export interface CreateCustomersMutationResponse {
+  __typename?: "CreateCustomersMutationResponse";
+  customers: Array<Customer>;
   info: CreateInfo;
 }
 
@@ -26580,6 +28756,197 @@ export interface CreateTemplateSlotsMutationResponse {
   __typename?: "CreateTemplateSlotsMutationResponse";
   info: CreateInfo;
   templateSlots: Array<TemplateSlot>;
+}
+
+export interface Customer {
+  __typename?: "Customer";
+  accounts: (args?: {
+    options?: Maybe<CustomerAccountOptions>;
+    where?: Maybe<CustomerAccountWhere>;
+  }) => Maybe<Array<Maybe<CustomerAccount>>>;
+  accountsAggregate: (args?: {
+    where?: Maybe<CustomerAccountWhere>;
+  }) => Maybe<CustomerCustomerAccountAccountsAggregationSelection>;
+  accountsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CustomerAccountsConnectionSort>>;
+    where?: Maybe<CustomerAccountsConnectionWhere>;
+  }) => CustomerAccountsConnection;
+  campaigns: (args?: {
+    options?: Maybe<CampaignOptions>;
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<Array<Maybe<Campaign>>>;
+  campaignsAggregate: (args?: {
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<CustomerCampaignCampaignsAggregationSelection>;
+  campaignsConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CustomerCampaignsConnectionSort>>;
+    where?: Maybe<CustomerCampaignsConnectionWhere>;
+  }) => CustomerCampaignsConnection;
+  email?: Maybe<ScalarsEnums["String"]>;
+  id: ScalarsEnums["ID"];
+  name: ScalarsEnums["String"];
+  organisation: (args?: {
+    options?: Maybe<HiveOrganisationOptions>;
+    where?: Maybe<HiveOrganisationWhere>;
+  }) => Maybe<HiveOrganisation>;
+  organisationAggregate: (args?: {
+    where?: Maybe<HiveOrganisationWhere>;
+  }) => Maybe<CustomerHiveOrganisationOrganisationAggregationSelection>;
+  organisationConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CustomerOrganisationConnectionSort>>;
+    where?: Maybe<CustomerOrganisationConnectionWhere>;
+  }) => CustomerOrganisationConnection;
+  phone?: Maybe<ScalarsEnums["String"]>;
+}
+
+export interface CustomerAccount {
+  __typename?: "CustomerAccount";
+  customer: (args?: {
+    options?: Maybe<CustomerOptions>;
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<Customer>;
+  customerAggregate: (args?: {
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<CustomerAccountCustomerCustomerAggregationSelection>;
+  customerConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<CustomerAccountCustomerConnectionSort>>;
+    where?: Maybe<CustomerAccountCustomerConnectionWhere>;
+  }) => CustomerAccountCustomerConnection;
+  email?: Maybe<ScalarsEnums["String"]>;
+  id: ScalarsEnums["ID"];
+  name: ScalarsEnums["String"];
+  password?: Maybe<ScalarsEnums["String"]>;
+}
+
+export interface CustomerAccountAggregateSelection {
+  __typename?: "CustomerAccountAggregateSelection";
+  count: ScalarsEnums["Int"];
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  password: StringAggregateSelection;
+}
+
+export interface CustomerAccountCustomerConnection {
+  __typename?: "CustomerAccountCustomerConnection";
+  edges: Array<CustomerAccountCustomerRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CustomerAccountCustomerCustomerAggregationSelection {
+  __typename?: "CustomerAccountCustomerCustomerAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CustomerAccountCustomerCustomerNodeAggregateSelection>;
+}
+
+export interface CustomerAccountCustomerCustomerNodeAggregateSelection {
+  __typename?: "CustomerAccountCustomerCustomerNodeAggregateSelection";
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  phone: StringAggregateSelection;
+}
+
+export interface CustomerAccountCustomerRelationship {
+  __typename?: "CustomerAccountCustomerRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Customer;
+}
+
+export interface CustomerAccountsConnection {
+  __typename?: "CustomerAccountsConnection";
+  edges: Array<CustomerAccountsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CustomerAccountsRelationship {
+  __typename?: "CustomerAccountsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: CustomerAccount;
+}
+
+export interface CustomerAggregateSelection {
+  __typename?: "CustomerAggregateSelection";
+  count: ScalarsEnums["Int"];
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  phone: StringAggregateSelection;
+}
+
+export interface CustomerCampaignCampaignsAggregationSelection {
+  __typename?: "CustomerCampaignCampaignsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CustomerCampaignCampaignsNodeAggregateSelection>;
+}
+
+export interface CustomerCampaignCampaignsNodeAggregateSelection {
+  __typename?: "CustomerCampaignCampaignsNodeAggregateSelection";
+  assetFolder: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface CustomerCampaignsConnection {
+  __typename?: "CustomerCampaignsConnection";
+  edges: Array<CustomerCampaignsRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CustomerCampaignsRelationship {
+  __typename?: "CustomerCampaignsRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Campaign;
+}
+
+export interface CustomerCustomerAccountAccountsAggregationSelection {
+  __typename?: "CustomerCustomerAccountAccountsAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CustomerCustomerAccountAccountsNodeAggregateSelection>;
+}
+
+export interface CustomerCustomerAccountAccountsNodeAggregateSelection {
+  __typename?: "CustomerCustomerAccountAccountsNodeAggregateSelection";
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  password: StringAggregateSelection;
+}
+
+export interface CustomerHiveOrganisationOrganisationAggregationSelection {
+  __typename?: "CustomerHiveOrganisationOrganisationAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<CustomerHiveOrganisationOrganisationNodeAggregateSelection>;
+}
+
+export interface CustomerHiveOrganisationOrganisationNodeAggregateSelection {
+  __typename?: "CustomerHiveOrganisationOrganisationNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface CustomerOrganisationConnection {
+  __typename?: "CustomerOrganisationConnection";
+  edges: Array<CustomerOrganisationRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface CustomerOrganisationRelationship {
+  __typename?: "CustomerOrganisationRelationship";
+  cursor: ScalarsEnums["String"];
+  node: HiveOrganisation;
 }
 
 export interface DateTimeAggregateSelection {
@@ -27372,6 +29739,19 @@ export interface HiveOrganisation {
     sort?: Maybe<Array<HiveOrganisationCampaignsConnectionSort>>;
     where?: Maybe<HiveOrganisationCampaignsConnectionWhere>;
   }) => HiveOrganisationCampaignsConnection;
+  customers: (args?: {
+    options?: Maybe<CustomerOptions>;
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<Array<Maybe<Customer>>>;
+  customersAggregate: (args?: {
+    where?: Maybe<CustomerWhere>;
+  }) => Maybe<HiveOrganisationCustomerCustomersAggregationSelection>;
+  customersConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<HiveOrganisationCustomersConnectionSort>>;
+    where?: Maybe<HiveOrganisationCustomersConnectionWhere>;
+  }) => HiveOrganisationCustomersConnection;
   greenScreens: (args?: {
     options?: Maybe<GreenScreenOptions>;
     where?: Maybe<GreenScreenWhere>;
@@ -27509,7 +29889,6 @@ export interface HiveOrganisationCampaignCampaignsAggregationSelection {
 export interface HiveOrganisationCampaignCampaignsNodeAggregateSelection {
   __typename?: "HiveOrganisationCampaignCampaignsNodeAggregateSelection";
   assetFolder: StringAggregateSelection;
-  customer: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
 }
@@ -27525,6 +29904,33 @@ export interface HiveOrganisationCampaignsRelationship {
   __typename?: "HiveOrganisationCampaignsRelationship";
   cursor: ScalarsEnums["String"];
   node: Campaign;
+}
+
+export interface HiveOrganisationCustomerCustomersAggregationSelection {
+  __typename?: "HiveOrganisationCustomerCustomersAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<HiveOrganisationCustomerCustomersNodeAggregateSelection>;
+}
+
+export interface HiveOrganisationCustomerCustomersNodeAggregateSelection {
+  __typename?: "HiveOrganisationCustomerCustomersNodeAggregateSelection";
+  email: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  phone: StringAggregateSelection;
+}
+
+export interface HiveOrganisationCustomersConnection {
+  __typename?: "HiveOrganisationCustomersConnection";
+  edges: Array<HiveOrganisationCustomersRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface HiveOrganisationCustomersRelationship {
+  __typename?: "HiveOrganisationCustomersRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Customer;
 }
 
 export interface HiveOrganisationGreenScreenGreenScreensAggregationSelection {
@@ -28651,7 +31057,6 @@ export interface ScheduleSlotCampaignCampaignAggregationSelection {
 export interface ScheduleSlotCampaignCampaignNodeAggregateSelection {
   __typename?: "ScheduleSlotCampaignCampaignNodeAggregateSelection";
   assetFolder: StringAggregateSelection;
-  customer: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
 }
@@ -29328,6 +31733,18 @@ export interface UpdateCampaignsMutationResponse {
   info: UpdateInfo;
 }
 
+export interface UpdateCustomerAccountsMutationResponse {
+  __typename?: "UpdateCustomerAccountsMutationResponse";
+  customerAccounts: Array<CustomerAccount>;
+  info: UpdateInfo;
+}
+
+export interface UpdateCustomersMutationResponse {
+  __typename?: "UpdateCustomersMutationResponse";
+  customers: Array<Customer>;
+  info: UpdateInfo;
+}
+
 export interface UpdateGreenScreenTemplatesMutationResponse {
   __typename?: "UpdateGreenScreenTemplatesMutationResponse";
   greenScreenTemplates: Array<GreenScreenTemplate>;
@@ -29492,6 +31909,12 @@ export interface Mutation {
   createCampaigns: (args: {
     input: Array<CampaignCreateInput>;
   }) => CreateCampaignsMutationResponse;
+  createCustomerAccounts: (args: {
+    input: Array<CustomerAccountCreateInput>;
+  }) => CreateCustomerAccountsMutationResponse;
+  createCustomers: (args: {
+    input: Array<CustomerCreateInput>;
+  }) => CreateCustomersMutationResponse;
   createGreenScreenTemplates: (args: {
     input: Array<GreenScreenTemplateCreateInput>;
   }) => CreateGreenScreenTemplatesMutationResponse;
@@ -29575,6 +31998,14 @@ export interface Mutation {
   deleteCampaigns: (args?: {
     delete?: Maybe<CampaignDeleteInput>;
     where?: Maybe<CampaignWhere>;
+  }) => DeleteInfo;
+  deleteCustomerAccounts: (args?: {
+    delete?: Maybe<CustomerAccountDeleteInput>;
+    where?: Maybe<CustomerAccountWhere>;
+  }) => DeleteInfo;
+  deleteCustomers: (args?: {
+    delete?: Maybe<CustomerDeleteInput>;
+    where?: Maybe<CustomerWhere>;
   }) => DeleteInfo;
   deleteGreenScreenTemplates: (args?: {
     delete?: Maybe<GreenScreenTemplateDeleteInput>;
@@ -29695,6 +32126,24 @@ export interface Mutation {
     update?: Maybe<CampaignUpdateInput>;
     where?: Maybe<CampaignWhere>;
   }) => UpdateCampaignsMutationResponse;
+  updateCustomerAccounts: (args?: {
+    connect?: Maybe<CustomerAccountConnectInput>;
+    connectOrCreate?: Maybe<CustomerAccountConnectOrCreateInput>;
+    create?: Maybe<CustomerAccountRelationInput>;
+    delete?: Maybe<CustomerAccountDeleteInput>;
+    disconnect?: Maybe<CustomerAccountDisconnectInput>;
+    update?: Maybe<CustomerAccountUpdateInput>;
+    where?: Maybe<CustomerAccountWhere>;
+  }) => UpdateCustomerAccountsMutationResponse;
+  updateCustomers: (args?: {
+    connect?: Maybe<CustomerConnectInput>;
+    connectOrCreate?: Maybe<CustomerConnectOrCreateInput>;
+    create?: Maybe<CustomerRelationInput>;
+    delete?: Maybe<CustomerDeleteInput>;
+    disconnect?: Maybe<CustomerDisconnectInput>;
+    update?: Maybe<CustomerUpdateInput>;
+    where?: Maybe<CustomerWhere>;
+  }) => UpdateCustomersMutationResponse;
   updateGreenScreenTemplates: (args?: {
     connect?: Maybe<GreenScreenTemplateConnectInput>;
     connectOrCreate?: Maybe<GreenScreenTemplateConnectOrCreateInput>;
@@ -29923,6 +32372,26 @@ export interface Query {
   }) => CampaignAggregateSelection;
   campaignsCount: (args?: {
     where?: Maybe<CampaignWhere>;
+  }) => ScalarsEnums["Int"];
+  customerAccounts: (args?: {
+    options?: Maybe<CustomerAccountOptions>;
+    where?: Maybe<CustomerAccountWhere>;
+  }) => Array<CustomerAccount>;
+  customerAccountsAggregate: (args?: {
+    where?: Maybe<CustomerAccountWhere>;
+  }) => CustomerAccountAggregateSelection;
+  customerAccountsCount: (args?: {
+    where?: Maybe<CustomerAccountWhere>;
+  }) => ScalarsEnums["Int"];
+  customers: (args?: {
+    options?: Maybe<CustomerOptions>;
+    where?: Maybe<CustomerWhere>;
+  }) => Array<Customer>;
+  customersAggregate: (args?: {
+    where?: Maybe<CustomerWhere>;
+  }) => CustomerAggregateSelection;
+  customersCount: (args?: {
+    where?: Maybe<CustomerWhere>;
   }) => ScalarsEnums["Int"];
   greenScreenTemplates: (args?: {
     options?: Maybe<GreenScreenTemplateOptions>;
@@ -30194,6 +32663,10 @@ export interface SchemaObjectTypes {
   CampaignChartCampaignRelationship: CampaignChartCampaignRelationship;
   CampaignChartsConnection: CampaignChartsConnection;
   CampaignChartsRelationship: CampaignChartsRelationship;
+  CampaignCustomerConnection: CampaignCustomerConnection;
+  CampaignCustomerCustomerAggregationSelection: CampaignCustomerCustomerAggregationSelection;
+  CampaignCustomerCustomerNodeAggregateSelection: CampaignCustomerCustomerNodeAggregateSelection;
+  CampaignCustomerRelationship: CampaignCustomerRelationship;
   CampaignHiveOrganisationOrganisationAggregationSelection: CampaignHiveOrganisationOrganisationAggregationSelection;
   CampaignHiveOrganisationOrganisationNodeAggregateSelection: CampaignHiveOrganisationOrganisationNodeAggregateSelection;
   CampaignInteraction: CampaignInteraction;
@@ -30202,6 +32675,8 @@ export interface SchemaObjectTypes {
   CreateCampaignAnalyticsMutationResponse: CreateCampaignAnalyticsMutationResponse;
   CreateCampaignChartsMutationResponse: CreateCampaignChartsMutationResponse;
   CreateCampaignsMutationResponse: CreateCampaignsMutationResponse;
+  CreateCustomerAccountsMutationResponse: CreateCustomerAccountsMutationResponse;
+  CreateCustomersMutationResponse: CreateCustomersMutationResponse;
   CreateGreenScreenTemplatesMutationResponse: CreateGreenScreenTemplatesMutationResponse;
   CreateGreenScreensMutationResponse: CreateGreenScreensMutationResponse;
   CreateHiveAppliancesMutationResponse: CreateHiveAppliancesMutationResponse;
@@ -30227,6 +32702,26 @@ export interface SchemaObjectTypes {
   CreateScreenTagsMutationResponse: CreateScreenTagsMutationResponse;
   CreateTemplateSlotPluginsMutationResponse: CreateTemplateSlotPluginsMutationResponse;
   CreateTemplateSlotsMutationResponse: CreateTemplateSlotsMutationResponse;
+  Customer: Customer;
+  CustomerAccount: CustomerAccount;
+  CustomerAccountAggregateSelection: CustomerAccountAggregateSelection;
+  CustomerAccountCustomerConnection: CustomerAccountCustomerConnection;
+  CustomerAccountCustomerCustomerAggregationSelection: CustomerAccountCustomerCustomerAggregationSelection;
+  CustomerAccountCustomerCustomerNodeAggregateSelection: CustomerAccountCustomerCustomerNodeAggregateSelection;
+  CustomerAccountCustomerRelationship: CustomerAccountCustomerRelationship;
+  CustomerAccountsConnection: CustomerAccountsConnection;
+  CustomerAccountsRelationship: CustomerAccountsRelationship;
+  CustomerAggregateSelection: CustomerAggregateSelection;
+  CustomerCampaignCampaignsAggregationSelection: CustomerCampaignCampaignsAggregationSelection;
+  CustomerCampaignCampaignsNodeAggregateSelection: CustomerCampaignCampaignsNodeAggregateSelection;
+  CustomerCampaignsConnection: CustomerCampaignsConnection;
+  CustomerCampaignsRelationship: CustomerCampaignsRelationship;
+  CustomerCustomerAccountAccountsAggregationSelection: CustomerCustomerAccountAccountsAggregationSelection;
+  CustomerCustomerAccountAccountsNodeAggregateSelection: CustomerCustomerAccountAccountsNodeAggregateSelection;
+  CustomerHiveOrganisationOrganisationAggregationSelection: CustomerHiveOrganisationOrganisationAggregationSelection;
+  CustomerHiveOrganisationOrganisationNodeAggregateSelection: CustomerHiveOrganisationOrganisationNodeAggregateSelection;
+  CustomerOrganisationConnection: CustomerOrganisationConnection;
+  CustomerOrganisationRelationship: CustomerOrganisationRelationship;
   DateTimeAggregateSelection: DateTimeAggregateSelection;
   DeleteInfo: DeleteInfo;
   FloatAggregateSelection: FloatAggregateSelection;
@@ -30316,6 +32811,10 @@ export interface SchemaObjectTypes {
   HiveOrganisationCampaignCampaignsNodeAggregateSelection: HiveOrganisationCampaignCampaignsNodeAggregateSelection;
   HiveOrganisationCampaignsConnection: HiveOrganisationCampaignsConnection;
   HiveOrganisationCampaignsRelationship: HiveOrganisationCampaignsRelationship;
+  HiveOrganisationCustomerCustomersAggregationSelection: HiveOrganisationCustomerCustomersAggregationSelection;
+  HiveOrganisationCustomerCustomersNodeAggregateSelection: HiveOrganisationCustomerCustomersNodeAggregateSelection;
+  HiveOrganisationCustomersConnection: HiveOrganisationCustomersConnection;
+  HiveOrganisationCustomersRelationship: HiveOrganisationCustomersRelationship;
   HiveOrganisationGreenScreenGreenScreensAggregationSelection: HiveOrganisationGreenScreenGreenScreensAggregationSelection;
   HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection: HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection;
   HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection: HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection;
@@ -30520,6 +33019,8 @@ export interface SchemaObjectTypes {
   UpdateCampaignAnalyticsMutationResponse: UpdateCampaignAnalyticsMutationResponse;
   UpdateCampaignChartsMutationResponse: UpdateCampaignChartsMutationResponse;
   UpdateCampaignsMutationResponse: UpdateCampaignsMutationResponse;
+  UpdateCustomerAccountsMutationResponse: UpdateCustomerAccountsMutationResponse;
+  UpdateCustomersMutationResponse: UpdateCustomersMutationResponse;
   UpdateGreenScreenTemplatesMutationResponse: UpdateGreenScreenTemplatesMutationResponse;
   UpdateGreenScreensMutationResponse: UpdateGreenScreensMutationResponse;
   UpdateHiveAppliancesMutationResponse: UpdateHiveAppliancesMutationResponse;
@@ -30572,6 +33073,10 @@ export type SchemaObjectTypesNames =
   | "CampaignChartCampaignRelationship"
   | "CampaignChartsConnection"
   | "CampaignChartsRelationship"
+  | "CampaignCustomerConnection"
+  | "CampaignCustomerCustomerAggregationSelection"
+  | "CampaignCustomerCustomerNodeAggregateSelection"
+  | "CampaignCustomerRelationship"
   | "CampaignHiveOrganisationOrganisationAggregationSelection"
   | "CampaignHiveOrganisationOrganisationNodeAggregateSelection"
   | "CampaignInteraction"
@@ -30580,6 +33085,8 @@ export type SchemaObjectTypesNames =
   | "CreateCampaignAnalyticsMutationResponse"
   | "CreateCampaignChartsMutationResponse"
   | "CreateCampaignsMutationResponse"
+  | "CreateCustomerAccountsMutationResponse"
+  | "CreateCustomersMutationResponse"
   | "CreateGreenScreenTemplatesMutationResponse"
   | "CreateGreenScreensMutationResponse"
   | "CreateHiveAppliancesMutationResponse"
@@ -30605,6 +33112,26 @@ export type SchemaObjectTypesNames =
   | "CreateScreenTagsMutationResponse"
   | "CreateTemplateSlotPluginsMutationResponse"
   | "CreateTemplateSlotsMutationResponse"
+  | "Customer"
+  | "CustomerAccount"
+  | "CustomerAccountAggregateSelection"
+  | "CustomerAccountCustomerConnection"
+  | "CustomerAccountCustomerCustomerAggregationSelection"
+  | "CustomerAccountCustomerCustomerNodeAggregateSelection"
+  | "CustomerAccountCustomerRelationship"
+  | "CustomerAccountsConnection"
+  | "CustomerAccountsRelationship"
+  | "CustomerAggregateSelection"
+  | "CustomerCampaignCampaignsAggregationSelection"
+  | "CustomerCampaignCampaignsNodeAggregateSelection"
+  | "CustomerCampaignsConnection"
+  | "CustomerCampaignsRelationship"
+  | "CustomerCustomerAccountAccountsAggregationSelection"
+  | "CustomerCustomerAccountAccountsNodeAggregateSelection"
+  | "CustomerHiveOrganisationOrganisationAggregationSelection"
+  | "CustomerHiveOrganisationOrganisationNodeAggregateSelection"
+  | "CustomerOrganisationConnection"
+  | "CustomerOrganisationRelationship"
   | "DateTimeAggregateSelection"
   | "DeleteInfo"
   | "FloatAggregateSelection"
@@ -30694,6 +33221,10 @@ export type SchemaObjectTypesNames =
   | "HiveOrganisationCampaignCampaignsNodeAggregateSelection"
   | "HiveOrganisationCampaignsConnection"
   | "HiveOrganisationCampaignsRelationship"
+  | "HiveOrganisationCustomerCustomersAggregationSelection"
+  | "HiveOrganisationCustomerCustomersNodeAggregateSelection"
+  | "HiveOrganisationCustomersConnection"
+  | "HiveOrganisationCustomersRelationship"
   | "HiveOrganisationGreenScreenGreenScreensAggregationSelection"
   | "HiveOrganisationGreenScreenGreenScreensNodeAggregateSelection"
   | "HiveOrganisationGreenScreenTemplateScreenTemplatesAggregationSelection"
@@ -30898,6 +33429,8 @@ export type SchemaObjectTypesNames =
   | "UpdateCampaignAnalyticsMutationResponse"
   | "UpdateCampaignChartsMutationResponse"
   | "UpdateCampaignsMutationResponse"
+  | "UpdateCustomerAccountsMutationResponse"
+  | "UpdateCustomersMutationResponse"
   | "UpdateGreenScreenTemplatesMutationResponse"
   | "UpdateGreenScreensMutationResponse"
   | "UpdateHiveAppliancesMutationResponse"

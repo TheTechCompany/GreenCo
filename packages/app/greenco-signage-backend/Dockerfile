@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-RUN apk update && apk add openssl
+RUN apk update && apk add openssl && apk add bash
 
 WORKDIR /app
 
