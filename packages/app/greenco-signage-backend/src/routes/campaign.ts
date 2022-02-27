@@ -1,5 +1,6 @@
 import { OGM } from '@neo4j/graphql-ogm'
 import { Router } from 'express'
+import { existsSync, stat } from 'fs'
 import { mkdir, writeFile } from 'fs/promises'
 import multer from 'multer'
 import path from 'path'
@@ -60,6 +61,10 @@ export default (ogm: OGM, fs: FileStore) => {
 
 			let campaignDir = path.join('/data/campaigns/', req.params.id);
 
+
+			if(!existsSync(campaignDir)){
+				await mkdir(campaignDir, {recursive: true})
+			}
 
 			let files = (req as any).files as any[] || [];
 
