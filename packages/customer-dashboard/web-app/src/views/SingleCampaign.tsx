@@ -75,19 +75,24 @@ export const SingleCampaign = () => {
         campaigns(id: $id){
           name
           id
+
+          views
+          interactions
         }
     }
   `
   const data = useQuery(GET_SINGLE_CAMPAIGN, {variables: {id: id}})
 
   const campaign = data.data?.campaigns?.[0];
+
+  console.log({campaign})
   
   const renderItem = (item: GridLayoutItem) => {
     switch(item.id){
       case 'campaign-preview':
         return (
           <Box flex elevation="small">
-            <CampaignPreview previewUrl="https://google.com" />
+            <CampaignPreview previewUrl={`http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
           </Box>
         )
       case 'people-viewed':
@@ -108,7 +113,7 @@ export const SingleCampaign = () => {
         return (
           <Box pad="xsmall" justify="center" direction="column"  flex background={blue}>
             <Text>Appearances</Text>
-            <Text size="large">1000</Text>
+            <Text size="large">{campaign?.views || 0}</Text>
           </Box>
         )
       case 'footprint':

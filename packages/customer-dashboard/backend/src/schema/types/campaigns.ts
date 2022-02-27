@@ -6,7 +6,11 @@ export default ( schemaComposer: SchemaComposer ) => {
             id: ID!
             name: String!
             
+            views: Int
+		    interactions: Int
+            
         }
+
     `)
 
     return {
