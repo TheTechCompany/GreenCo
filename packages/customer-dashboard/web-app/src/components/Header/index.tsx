@@ -30,7 +30,7 @@ export const HeaderBar = () => {
           elevation="small"
         >
           <Menu
-            icon={<UserSettings />}
+            icon={<UserSettings/>}
             label="Settings"
             items={[
               { label: "Edit Profile", onClick: () => {} },

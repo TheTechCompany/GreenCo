@@ -1,5 +1,6 @@
 import { OGM } from '@neo4j/graphql-ogm'
 import { Router } from 'express'
+import { mkdir, writeFile } from 'fs/promises'
 import multer from 'multer'
 import path from 'path'
 import { FileStore } from '../de-file-store'
@@ -12,42 +13,53 @@ export default (ogm: OGM, fs: FileStore) => {
 	const Campaign = ogm.model("Campaign")
 	const CampaignAsset = ogm.model("CampaignAsset")
 
-	router.get(`/:id/data`, async (req, res) => {
-		const items = await fs.pull('QmTCresRk3i7t7WDETwNPwr7ZXbnLKBgLwRuAzVfsZgWNT')
-		let results = [];
+	// router.get(`/:id/data`, async (req, res) => {
+	// 	const items = await fs.pull('QmTCresRk3i7t7WDETwNPwr7ZXbnLKBgLwRuAzVfsZgWNT')
+	// 	let results = [];
 
-		if(!items) return res.send({error: "No node found"});
+	// 	if(!items) return res.send({error: "No node found"});
 
-		for await (const item of items) {
-			results.push(item)
-		}
-		console.log(items)
-		res.send(Buffer.concat(results))
-	})
-	router.use('/:id/preview*', function (req, res, next) {
-		// res.header("Content-Type",'text/html');
-		next();
-	});
+	// 	for await (const item of items) {
+	// 		results.push(item)
+	// 	}
+	// 	console.log(items)
+	// 	res.send(Buffer.concat(results))
+	// })
+
+	// router.use('/:id/preview*', function (req, res, next) {
+	// 	// res.header("Content-Type",'text/html');
+	// 	next();
+	// });
 
 	router.get('/:id/preview*', async (req, res) => {
 		let campaignId = req.params.id
 
-		let filePath = (req.params as any)?.['0'].length > 0 ? (req.params as any)?.['0'] : '/index.html'
-		console.log(filePath)
-		try{
-			const result = await fs.readFile(campaignId, filePath)
-			if(!result) res.send({error: "no file"})
-			res.contentType(path.basename(filePath))
-			res.send(result)
-		}catch(e){
-			res.send({error: e})
-		}
+		let campaignDir = path.join('/data/campaigns/', campaignId)
+
+		let filePath = path.join(campaignDir, (req.params as any)?.['0'].length > 0 ? (req.params as any)?.['0'] : '/index.html')
+	
+		res.contentType(path.basename(filePath));
+		
+		res.sendFile(filePath);
+
+		// console.log(filePath)
+		// try{
+		// 	const result = await fs.readFile(campaignId, filePath)
+		// 	if(!result) res.send({error: "no file"})
+		// 	res.contentType(path.basename(filePath))
+		// 	res.send(result)
+		// }catch(e){
+		// 	res.send({error: e})
+		// }
 	})
 
 
 	router.route('/:id/assets')
 		.post(upload.array('files'), async (req, res) => {
 			//Add assets to campaign
+
+			let campaignDir = path.join('/data/campaigns/', req.params.id);
+
 
 			let files = (req as any).files as any[] || [];
 
@@ -83,26 +95,36 @@ export default (ogm: OGM, fs: FileStore) => {
 
 			// const pathIndex = campaign?.[0]?.assets.map((x: any) => ({id: x.id, path: x.path}));
 
-				await Promise.all(files.map(async (file, ix) => {
-					await fs.writeFile(req.params.id, `${paths[ix]}`, file.buffer)
+			await Promise.all(directories.map(async (dir) => {
+				let curPath = path.join(campaignDir, `${dir}`)
+				await mkdir(curPath, {recursive: true})
+			}))
 
-				}))
+			await Promise.all(files.map(async (file, ix) => {
+				let curPath = path.join(campaignDir, paths[ix]);
+				await writeFile(curPath, file.buffer)
+			}))
 
-			const folderInfo = await fs.getFolderInfo(req.params.id)
-				await Campaign.update({
-					where: {id: req.params.id},
-					update: {
-						assetFolder: folderInfo?.cid?.toString()
-					},
-					selectionSet: `
-					{
-						campaigns {
-							id
-							assetFolder
-						}
-					}
-					`
-				})
+				// await Promise.all(files.map(async (file, ix) => {
+				// 	await fs.writeFile(req.params.id, `${paths[ix]}`, file.buffer)
+
+				// }))
+
+			// const folderInfo = await fs.getFolderInfo(req.params.id)
+			// 	await Campaign.update({
+			// 		where: {id: req.params.id},
+			// 		update: {
+			// 			assetFolder: folderInfo?.cid?.toString()
+			// 		},
+			// 		selectionSet: `
+			// 		{
+			// 			campaigns {
+			// 				id
+			// 				assetFolder
+			// 			}
+			// 		}
+			// 		`
+			// 	})
 			res.send({files})
 				// await Campaign.update({
 				// 	where: {id: req.params.id},

@@ -15,6 +15,12 @@ import { SignUpForm } from "./components/Forms/SignUpForm";
 import { ForgottenPassForm } from "./components/Forms/ForgottonPassForm";
 import { EditProfile } from "./components/Forms/EditProfile";
 import { ChangePassword } from "./components/Forms/ChangePassword";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8080/graphql',
+  cache: new InMemoryCache()
+});
 
 const theme = {
   global: {
@@ -48,13 +54,14 @@ const theme = {
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <Grommet style={{ display: "flex" }} full theme={theme}>
       <Routes>
         <Route path="/login" element={<LoginPage />}>
           <Route path="" element={<LoginForm />} />
           <Route path="signup" element={<SignUpForm />} />
-          <Route path="resetpassword" element={<ForgottenPassForm />} />
         </Route>
+        <Route path="account-recovery" element={<ForgottenPassForm />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="campaigns" element={<Outlet />}>
@@ -67,6 +74,7 @@ function App() {
         </Route>
       </Routes>
     </Grommet>
+    </ApolloProvider>
   );
 }
 
