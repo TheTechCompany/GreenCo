@@ -2,6 +2,8 @@ import { FileStore } from "../de-file-store"
 import { Pool } from 'pg';
 import { Channel } from 'amqplib'
 import { Driver } from "neo4j-driver";
+import { readdir } from "fs/promises";
+import path from "path";
 
 export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Driver) => {
 
@@ -112,12 +114,20 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 			},
 			assets: async (root: any, ) => {
 				console.log(root)
-				try{
-					return await fs.lsAsset(root.id)
+				let campaignDir = path.join('/data/campaigns', root.id);
+				const files = await readdir(campaignDir)
 
-				}catch(e){
-					return []
-				}
+				return files.map((file) => ({
+					id: file,
+					name: file,
+					path: file
+				}))
+				// try{
+				// 	return await fs.lsAsset(root.id)
+
+				// }catch(e){
+				// 	return []
+				// }
 			}
 		}	
 	}
