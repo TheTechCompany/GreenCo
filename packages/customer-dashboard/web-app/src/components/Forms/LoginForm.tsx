@@ -22,6 +22,7 @@ export const LoginForm = () => {
     }).then((d) => {
       return d.json()
     }).then((result) => {
+      localStorage.setItem('token', result.token);
       console.log({result})
     })
     // console.log({

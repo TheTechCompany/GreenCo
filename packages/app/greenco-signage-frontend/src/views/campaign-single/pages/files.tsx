@@ -13,8 +13,11 @@ export const FilesPage = (props: any) => {
 	const [ loadingPercent, setLoadingPercent ] = useState<number>(0);
 	const [ uploading, setUploading ] = useState<any[]>([])
 
+
 	const onDrop = useCallback(acceptedFiles => {
 		// Do something with the files
+
+
 		console.log(acceptedFiles)
 		setUploading(acceptedFiles.map((file: File) => ({
 			...file,
@@ -30,7 +33,7 @@ export const FilesPage = (props: any) => {
 			refresh?.()
 		})
 
-	}, [])
+	}, [campaign])
 
 
 	const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})

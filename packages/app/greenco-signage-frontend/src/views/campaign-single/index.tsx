@@ -136,8 +136,8 @@ export const CampaignSingle = (props) => {
 		}
 	})
 
-	console.log(data)
 	const campaign = data?.campaigns?.[0];
+
 
 	const views = campaign?.views
 	const files = campaign?.assets || [];

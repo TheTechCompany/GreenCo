@@ -9,6 +9,9 @@ import { FileStore } from '../de-file-store'
 const upload = multer()
 
 export default (ogm: OGM, fs: FileStore) => {
+
+	const campaignRootDir = process.env.CAMPAIGN_ROOT || '/Users/thekid/campaigns' ///data/campaigns
+
 	const router = Router()
 	
 	const Campaign = ogm.model("Campaign")
@@ -35,7 +38,7 @@ export default (ogm: OGM, fs: FileStore) => {
 	router.get('/:id/preview*', async (req, res) => {
 		let campaignId = req.params.id
 
-		let campaignDir = path.join('/data/campaigns/', campaignId)
+		let campaignDir = path.join(campaignRootDir, campaignId)
 
 		let filePath = path.join(campaignDir, (req.params as any)?.['0'].length > 0 ? (req.params as any)?.['0'] : '/index.html')
 	
@@ -59,7 +62,7 @@ export default (ogm: OGM, fs: FileStore) => {
 		.post(upload.array('files'), async (req, res) => {
 			//Add assets to campaign
 
-			let campaignDir = path.join('/data/campaigns/', req.params.id);
+			let campaignDir = path.join(campaignRootDir, req.params.id);
 
 
 			if(!existsSync(campaignDir)){

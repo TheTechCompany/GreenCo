@@ -6,6 +6,7 @@ import { readdir } from "fs/promises";
 import path from "path";
 
 export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Driver) => {
+	const campaignRootDir = process.env.CAMPAIGN_ROOT || '/Users/thekid/campaigns' ///data/campaigns
 
 	const client = await pool.connect()
 
@@ -114,14 +115,19 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 			},
 			assets: async (root: any, ) => {
 				console.log(root)
-				let campaignDir = path.join('/data/campaigns', root.id);
-				const files = await readdir(campaignDir)
+				try{
+					let campaignDir = path.join(campaignRootDir, root.id);
+					const files = await readdir(campaignDir)
 
-				return files.map((file) => ({
-					id: file,
-					name: file,
-					path: file
-				}))
+					console.log({files})
+					return files.map((file) => ({
+						id: file,
+						name: file,
+						path: file
+					}))
+				}catch(e){
+					return [];
+				}
 				// try{
 				// 	return await fs.lsAsset(root.id)
 

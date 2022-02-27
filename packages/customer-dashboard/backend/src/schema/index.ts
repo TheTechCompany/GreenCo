@@ -21,6 +21,10 @@ schemaComposer.Query.addFields({
                         campaigns(where: {customer: {id: $customer}, id: $id}) {
                             id
                             name
+
+                            views
+                            interactions
+                            
                         }
                     }
                 `

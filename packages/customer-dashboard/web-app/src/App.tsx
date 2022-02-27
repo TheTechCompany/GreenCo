@@ -19,6 +19,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: 'http://localhost:8080/graphql',
+  headers: {
+    authorization: `bearer ${localStorage.getItem('token')}`
+  },
   cache: new InMemoryCache()
 });
 
