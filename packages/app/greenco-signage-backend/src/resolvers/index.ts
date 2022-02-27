@@ -52,6 +52,44 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 			}
 		},
 		Campaign: {
+			activeScreens: async (parent: any) => {
+				const session = driver.session();
+				const result = await session.run(`
+					MATCH (:Campaign {id: $id})<-[:USES_CAMPAIGN]-(slots:ScheduleSlot)<-[:HAS_SLOT]-(:Schedule)<-[:USES_SCHEDULE]-(:LocationGroup)-[:HAS_LOCATION]->(locations:Location)
+					WHERE slots.endDate > DATETIME() AND slots.startDate < DATETIME()
+					RETURN count(locations)
+				`, {
+					id: parent.id,
+				})
+				await session.close()
+				return result.records[0].get(0).toNumber()
+			},
+			activeClusters: async (parent: any) => {
+				const session = driver.session();
+				const result = await session.run(`
+					MATCH (:Campaign {id: $id})<-[:USES_CAMPAIGN]-(slots:ScheduleSlot)<-[:HAS_SLOT]-(:Schedule)<-[:USES_SCHEDULE]-(groups:LocationGroup)
+					WHERE slots.endDate > DATETIME() AND slots.startDate < DATETIME()
+					RETURN count(groups) as count
+				`, {
+					id: parent.id,
+				})
+				// console.log(result.records?.[0]?.get(0).toNumber())
+				await session.close()
+				return result.records[0].get(0).toNumber()
+			},
+			activeTier: async (parent: any) => {
+				const session = driver.session();
+				const result = await session.run(`
+					MATCH (:Campaign {id: $id})<-[:USES_CAMPAIGN]-(slots:ScheduleSlot)-[:USES_TIER]->(tier:ScheduleTier)
+					WHERE slots.endDate > DATETIME() AND slots.startDate < DATETIME()
+					RETURN tier{.*}
+				`, {
+					id: parent.id,
+				})
+				// console.log(result.records?.[0]?.get(0).toNumber())
+				await session.close()
+				return result?.records?.[0]?.get(0)?.name;
+			},
 			peopleCount: async (parent: any) => {
 				const session = driver.session();
 				console.log({parent})
@@ -63,24 +101,96 @@ export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Drive
 					id: parent.id
 				})
 
-				console.log({records: location_res.records})
+				// console.log({records: location_res.records})
 				const locations = location_res.records?.map((x) => x.get(0)) //[0]?.get(0)
 
 				const res = await client.query(
-					`SELECT properties, timestamp 
-						FROM green_screen_telemetry 
-					WHERE event=$1 AND source=$2 AND created_by = ANY($3::text[]) AND 
-					"timestamp" < now() and "timestamp" > now() - interval '1 week'
-					`,
-					['camera-yolo', 'camera', locations?.map((x: any) => `${x.networkName}.hexhive.io`) ]
+					`
+					SELECT SUM(personCount) FROM
+					(SELECT 
+						COUNT(*) over (order by time_bucket) as personCount, 
+						time_bucket 
+						FROM (
+								select time_bucket('5 minutes', "timestamp"), jsonb_array_elements(properties->'results')->'name' as name
+								from green_screen_telemetry 
+								where event=$1 AND source=$2 AND created_by=ANY($3::text[])
+							) as foo 
+						WHERE 
+							name::text = $4 AND time_bucket > NOW() - interval '1 day' AND time_bucket < NOW()
+						GROUP by time_bucket) as daily
+										
+					`,//AND created_by = ANY($3::text[]) //and "timestamp" > now() - interval '1 day'
+					['camera-yolo', 'camera', locations?.map((x: any) => `${x.networkName}.hexhive.io`), '"person"' ]
 				)
+
+				/*
+	SELECT properties, timestamp 
+						FROM green_screen_telemetry 
+					WHERE event=$1 AND source=$2 AND 
+					"timestamp" < now() AND "timestamp" > now() - interval '1 month'
+				*/
 				await session.close()
-				return res.rows.map(row => {
-					return {
-						timestamp: row.timestamp,
-						results: row.properties?.results?.map((x: any) => ({name: x.name, confidence: x.confidence}))
-					}
+
+				console.log("PEOPLE COUNT", res.rows?.map((x) => ({
+					name: x.properties?.results?.map((y: any) => ({name: y.name, confidence: y.confidence}))
+				})))
+
+				return 0
+				
+				// res.rows.map(row => {
+				// 	return {
+				// 		timestamp: row.timestamp,
+				// 		results: row.properties?.results?.map((x: any) => ({name: x.name, confidence: x.confidence}))
+				// 	}
+				// })
+				
+			},
+			peopleCountWeek: async (parent: any) => {
+				const session = driver.session();
+				console.log({parent})
+				const location_res = await session.run(`
+					MATCH (c:Campaign {id: $id})<--(:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen)
+					WHERE screen.networkName IS NOT NULL
+					RETURN distinct(screen{.*})
+				`, {
+					id: parent.id
 				})
+
+				// console.log({records: location_res.records})
+				const locations = location_res.records?.map((x) => x.get(0)) //[0]?.get(0)
+
+				const res = await client.query(
+					`
+					SELECT SUM(personCount) FROM
+					(SELECT 
+						COUNT(*) over (order by time_bucket) as personCount, 
+						time_bucket 
+						FROM (
+								select time_bucket('5 minutes', "timestamp"), jsonb_array_elements(properties->'results')->'name' as name
+								from green_screen_telemetry 
+								where event=$1 AND source=$2 AND created_by=ANY($3::text[])
+							) as foo 
+						WHERE 
+							name::text = $4 AND time_bucket > NOW() - interval '1 week' AND time_bucket < NOW()
+						GROUP by time_bucket) as daily
+										
+					`,//AND created_by = ANY($3::text[]) //and "timestamp" > now() - interval '1 day'
+					['camera-yolo', 'camera', locations?.map((x: any) => `${x.networkName}.hexhive.io`), '"person"']
+				)
+
+				/*
+	SELECT properties, timestamp 
+						FROM green_screen_telemetry 
+					WHERE event=$1 AND source=$2 AND 
+					"timestamp" < now() AND "timestamp" > now() - interval '1 month'
+				*/
+				await session.close()
+
+				console.log("PEOPLE COUNT", res.rows?.map((x) => ({
+					name: x.properties?.results?.map((y: any) => ({name: y.name, confidence: y.confidence}))
+				})))
+
+				return 0
 				
 			},
 			interactions: async (root: any) => {
