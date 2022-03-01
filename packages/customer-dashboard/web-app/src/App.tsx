@@ -71,7 +71,7 @@ function App() {
             <Route path="" element={<Campaigns />} />
             <Route path=":id" element={<SingleCampaign />} />
           </Route>
-          <Route path="reports" element={<Reporting />} />
+          {/* <Route path="reports" element={<Reporting />} /> */}
           <Route path="editprofile" element={<EditProfile />} />
           <Route path="changepassword" element={<ChangePassword />} />
         </Route>

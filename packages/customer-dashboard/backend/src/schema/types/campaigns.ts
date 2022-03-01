@@ -9,6 +9,13 @@ export default ( schemaComposer: SchemaComposer ) => {
             views: Int
 		    interactions: Int
             
+            activeClusters: Int
+            activeScreens: Int
+
+            activeTier: String
+
+            peopleCount: Int
+            peopleCountWeek: Int
         }
 
     `)

@@ -14,8 +14,8 @@ const singleCampaignLayout = [
     label: "Campaign Preview",
     x: 0,
     y: 0,
-    w: 3.5,
-    h: 5
+    w: 3,
+    h: 19
   },
   {
     id: "people-viewed",
@@ -23,8 +23,8 @@ const singleCampaignLayout = [
     total: "total 1",
     x: 3.5,
     y: 0,
-    w: 1.5,
-    h: 1.5,
+    w: 1,
+    h: 4,
   },
   {
     id: 'people-viewed-week',
@@ -32,16 +32,16 @@ const singleCampaignLayout = [
     total: "total 2",
     x: 3.5,
     y: 2,
-    w: 1.5,
-    h: 1.5
+    w: 1,
+    h: 4
   },
   {
     id: 'appearances',
     label: 'Appearances',
     x: 5.5,
     y: 0,
-    w: 1.5,
-    h: 1.5
+    w: 1,
+    h: 4
   },
   {
     id: 'footprint',
@@ -49,7 +49,7 @@ const singleCampaignLayout = [
     x: 7.5,
     y: 2,
     w: 1,
-    h: 1
+    h: 4
   },
   {
     id: 'ad-package',
@@ -57,7 +57,7 @@ const singleCampaignLayout = [
     x: 7.5,
     y: 0,
     w: 1,
-    h: 1
+    h: 4
   }
 ];
 
@@ -78,6 +78,13 @@ export const SingleCampaign = () => {
 
           views
           interactions
+
+          activeScreens
+          activeClusters
+          activeTier
+
+          peopleCount
+          peopleCountWeek
         }
     }
   `
@@ -92,21 +99,21 @@ export const SingleCampaign = () => {
       case 'campaign-preview':
         return (
           <Box flex elevation="small">
-            <CampaignPreview previewUrl={`http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
+            <CampaignPreview elevated previewUrl={`http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
           </Box>
         )
       case 'people-viewed':
         return (
           <Box pad="xsmall" justify="center" direction="column" flex background={blue}>
             <Text>Impressions per day</Text>
-            <Text size="large">1</Text>
+            <Text size="large">{campaign?.peopleCount}</Text>
           </Box>
         )
       case 'people-viewed-week':
         return (
           <Box pad="xsmall" justify="center" direction="column"  flex background={blue}>
             <Text>Impressions per week</Text>
-            <Text size="large">10</Text>
+            <Text size="large">{campaign?.peopleCountWeek}</Text>
           </Box>
         )
       case 'appearances':
@@ -120,16 +127,16 @@ export const SingleCampaign = () => {
         return (
           <Box pad="xsmall" justify='center' flex>
             <Text>Total Clusters</Text>
-            <Text weight="bold" size="medium" color={blue}>1</Text>
+            <Text weight="bold" size="medium" color={blue}>{campaign?.activeClusters}</Text>
             <Text>Total Screens</Text>
-            <Text weight="bold" size="medium" color={blue}>10</Text>
+            <Text weight="bold" size="medium" color={blue}>{campaign?.activeScreens}</Text>
           </Box>
         )
       case 'ad-package':
         return (
           <Box justify="center" pad="xsmall" direction="column" flex background={gray}>
             <Text color="white">Ad Package</Text>
-            <Text color="white" size="large"> Engage</Text>
+            <Text color="white" size="large"> {campaign?.activeTier}</Text>
           </Box>
         )
       default:
@@ -156,6 +163,7 @@ export const SingleCampaign = () => {
     </Box>
     {/* GraphGrid Component to go here */}
     <GraphGrid 
+      
       noWrap
       layout={singleCampaignLayout} 
       onLayoutChange={(layout) => {

@@ -6,7 +6,7 @@ import { NavItem } from "./NavItem";
 export const HeaderBar = () => {
   const navOptions = [
     { label: "Campaigns", route: "campaigns" },
-    { label: "Reports", route: "reports" },
+    // { label: "Reports", route: "reports" },
   ];
 
   return (
@@ -31,7 +31,7 @@ export const HeaderBar = () => {
         >
           <Menu
             icon={<UserSettings/>}
-            label="Settings"
+            label="Profile"
             items={[
               { label: "Edit Profile", onClick: () => {} },
               { label: "Change Password", onClick: () => {} },

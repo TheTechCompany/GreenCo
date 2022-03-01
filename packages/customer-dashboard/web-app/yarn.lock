@@ -1290,10 +1290,10 @@
   resolved "https://registry.yarnpkg.com/@hexhive/styles/-/styles-0.0.6-alpha.13.tgz#4c316bdbb8a6c1489faf4912b26400cdff43be8b"
   integrity sha512-bZcFH+VpAV7MpxTRdK+o+HQyEpWoCCXxA6j21g7JiTr+skzxb+yoMIGUESxJ6FgpTh6HjxYE4gHWIx/YRWxrgQ==
 
-"@hexhive/ui@^0.0.6-alpha.45":
-  version "0.0.6-alpha.45"
-  resolved "https://registry.yarnpkg.com/@hexhive/ui/-/ui-0.0.6-alpha.45.tgz#2825f3e8cdb553ec34aa3535f67b50971dbfb08e"
-  integrity sha512-vlnM6R8vgqx6vsW1A6HxXupVmSNZEiCPOVyU6QP/7ggyIXWHklOucU2KpJgWmb8tfpAA5s/IwYtEATAd6U8FUw==
+"@hexhive/ui@0.0.6-alpha.49":
+  version "0.0.6-alpha.49"
+  resolved "https://registry.yarnpkg.com/@hexhive/ui/-/ui-0.0.6-alpha.49.tgz#297c41f1c647acbd2f06c243c4a17a72e8a75619"
+  integrity sha512-E1IUbLd3/ckbBePGfoWQ7N1SSG5lrXYcI+a9Hi98mrex1VNihKDxmosEZ9Lb5jkpCDLvx7l9TxjNZWK6emlpyQ==
   dependencies:
     "@babylonjs/core" "5.0.0-alpha.6"
     "@babylonjs/loaders" "5.0.0-alpha.6"

@@ -24,7 +24,13 @@ schemaComposer.Query.addFields({
 
                             views
                             interactions
-                            
+
+                            activeTier
+                            activeClusters
+                            activeScreens
+
+                            peopleCount
+                            peopleCountWeek
                         }
                     }
                 `
@@ -39,6 +45,16 @@ schemaComposer.Query.addFields({
                     campaigns(where: {customer: {id: $id}}){
                         id
                         name
+
+                        views
+                        interactions
+
+                        activeTier
+                        activeClusters
+                        activeScreens
+                        
+                        peopleCount
+                        peopleCountWeek
                     }
                 }
             `
