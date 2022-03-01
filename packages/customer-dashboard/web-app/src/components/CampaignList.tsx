@@ -17,7 +17,10 @@ export const CampaignList: React.FC<CampaignListProps> = (props) => {
   return (
     <Box direction="row" justify="evenly">
       {props.campaigns.map((campaign) => (
-        <CampaignCard onClick={() => {props.onClickItem?.(campaign)}} title={campaign.name} />
+        <CampaignCard   
+          id={campaign.id}
+          onClick={() => {props.onClickItem?.(campaign)}} 
+          title={campaign.name} />
       ))}
     </Box>
   );

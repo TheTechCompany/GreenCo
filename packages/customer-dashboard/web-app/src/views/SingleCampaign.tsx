@@ -99,7 +99,7 @@ export const SingleCampaign = () => {
       case 'campaign-preview':
         return (
           <Box flex elevation="small">
-            <CampaignPreview previewUrl={`http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
+            <CampaignPreview elevated previewUrl={`http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
           </Box>
         )
       case 'people-viewed':

@@ -6,6 +6,7 @@ export interface ScreenPreviewProps {
 	previewUrl?: string;
 	width?: any;
 	height?: any;
+    elevated?: any;
 }
 
 export const PreviewFrame = (props: any) => {
@@ -38,7 +39,7 @@ export const CampaignPreview : React.FC<ScreenPreviewProps> = (props) => {
 			width={props.width}
 			height={props.height}
 			round="small"
-			elevation="small">
+			elevation={props.elevated ?? "small"}>
 
 			<Box  overflow="hidden" background="neutral-2" round="small" flex >
 			{resizeListener}

@@ -1,9 +1,11 @@
 import { Box, Card, Image, Heading, CardBody, CardFooter } from "grommet";
 import React from "react";
+import { CampaignPreview } from "./CampaignPreview";
 
 const CampaignTitle = "Placeholder Title";
 
 export interface CampaignCardProps {
+  id?: string;
   title: string;
   description?: string;
   data?: any;
@@ -20,12 +22,14 @@ export const CampaignCard: React.FC<CampaignCardProps> = (props) => {
       gap="medium" 
       width="medium">
       <Card pad="small" background="dark-1" gap="medium" elevation="large">
-        <CardBody>
-          <Image
+        <CardBody style={{pointerEvents: 'none'}}>
+          <CampaignPreview previewUrl={`http://localhost:9009/api/campaign/${props?.id}/preview`} />
+
+          {/* <Image
             fit="cover"
             src="//v2.grommet.io/assets/IMG_4245.jpg"
             a11yTitle="bridge"
-          />
+          /> */}
         </CardBody>
         <CardFooter justify="center">
           <Heading level="3" textAlign="center">

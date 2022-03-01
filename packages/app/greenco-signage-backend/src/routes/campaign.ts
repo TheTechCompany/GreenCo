@@ -110,6 +110,8 @@ export default (ogm: OGM, fs: FileStore) => {
 
 			await Promise.all(files.map(async (file, ix) => {
 				let curPath = path.join(campaignDir, paths[ix]);
+				let dir = path.dirname(curPath);
+				await mkdir(dir, {recursive: true})
 				await writeFile(curPath, file.buffer)
 			}))
 

@@ -22,10 +22,7 @@ export const Campaigns = () => {
   
   return <Box flex>
     <CampaignList
-      campaigns={data?.data?.campaigns || [
-        { id: "1", name: "Campaign 1" },
-        { id: "2", name: "Campaign 2" },
-      ]}
+      campaigns={data?.data?.campaigns || []}
       onClickItem={(campaign) => {
         navigate(campaign.id)
       }}
