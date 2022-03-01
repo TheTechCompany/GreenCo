@@ -75,6 +75,15 @@ export const CampaignSingle = (props) => {
 	]
 	// const [files, setFiles] = useState<any[]>([])
 
+	/*
+		peopleCount {
+					timestamp
+					results {
+						name
+						confidence
+					}
+				}
+	*/
 	const { data } = useApolloQuery(gql`
 		query Q ($id: ID) {
 			campaigns(where: {id: $id}) {
@@ -84,13 +93,7 @@ export const CampaignSingle = (props) => {
 				views
 				interactions
 
-				peopleCount {
-					timestamp
-					results {
-						name
-						confidence
-					}
-				}
+		
 
 				charts {
 					id
@@ -148,7 +151,7 @@ export const CampaignSingle = (props) => {
 
 	const charts = campaign?.charts;
 
-	const peopleCount = campaign?.peopleCount
+	// const peopleCount = campaign?.peopleCount
 
 	const active = menu.map((item) => matchPath(window.location.pathname.replace(`/dashboard/signage`, ''), 
 		`${item.route}`,
@@ -160,37 +163,37 @@ export const CampaignSingle = (props) => {
 		await downloadCampaignAssets(id)
 		setDownloading(false)
 	}
-	const [keys, points] = useMemo(() => {
-		const keys = [...new Set(peopleCount?.map(a => {
-			return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
-		}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
+	// const [keys, points] = useMemo(() => {
+	// 	const keys = [...new Set(peopleCount?.map(a => {
+	// 		return [...new Set<string>(a.results.map((x) => x.name?.replace(/ /g, '-')))]
+	// 	}).reduce((prev, curr) => prev.concat(curr), []).filter((a) => a != undefined))];
 
-		const points = peopleCount?.map(({timestamp, results}) => {
-			let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
+	// 	const points = peopleCount?.map(({timestamp, results}) => {
+	// 		let resultKeys : string[] = [...new Set<string>(results.map((x: any) => x.name?.replace(/ /g, '-')) || [])]
 
-			let returnObject : any = {};
+	// 		let returnObject : any = {};
 
-			resultKeys.forEach((key: string) => {
-				returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
-			})
+	// 		resultKeys.forEach((key: string) => {
+	// 			returnObject[key] = results.filter((x) => x.name?.replace(/ /g, '-') === key).length
+	// 		})
 
-			return {
-				timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
-				...returnObject
-			}
-		})
-		return [keys, points]
-	}, [peopleCount])
+	// 		return {
+	// 			timestamp: moment(new Date(timestamp).getTime()).format('DD/MM'),
+	// 			...returnObject
+	// 		}
+	// 	})
+	// 	return [keys, points]
+	// }, [peopleCount])
 	
 
 	return (
 		<CampaignSingleProvider value={{
 			campaign: {
 				...campaign,
-				peopleCount: {
-					keys,
-					points
-				}
+				// peopleCount: {
+				// 	keys,
+				// 	points
+				// }
 			},
 			files,
 			analytics,
