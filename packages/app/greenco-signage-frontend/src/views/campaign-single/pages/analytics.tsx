@@ -35,16 +35,16 @@ export const AnalyticsPage = () => {
 			h: 3,
 			data: "interactions"
 		},
-		{
-			id: 'people',
-			type: 'area-chart',
-			label: "Camera (past 7 days)",
-			x: 0,
-			y: 3,
-			w: 6,
-			h: 6,
-			data: "peopleCount"
-		},
+		// {
+		// 	id: 'people',
+		// 	type: 'area-chart',
+		// 	label: "Camera (past 7 days)",
+		// 	x: 0,
+		// 	y: 3,
+		// 	w: 6,
+		// 	h: 6,
+		// 	data: "peopleCount"
+		// },
 		{
 			id: 'people-7d',
 			type: 'bubble',
