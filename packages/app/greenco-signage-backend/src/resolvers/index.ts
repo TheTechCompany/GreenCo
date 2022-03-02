@@ -5,7 +5,7 @@ import { Driver } from "neo4j-driver";
 import { readdir } from "fs/promises";
 import path from "path";
 
-export default async (fs: FileStore, pool: Pool, channel: Channel, driver: Driver) => {
+export default async (pool: Pool, channel: Channel, driver: Driver) => {
 	const campaignRootDir = process.env.CAMPAIGN_ROOT || '/Users/thekid/campaigns' ///data/campaigns
 
 	const client = await pool.connect()

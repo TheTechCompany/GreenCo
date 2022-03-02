@@ -8,7 +8,7 @@ import { FileStore } from '../de-file-store'
 
 const upload = multer()
 
-export default (ogm: OGM, fs: FileStore) => {
+export default (ogm: OGM) => {
 
 	const campaignRootDir = process.env.CAMPAIGN_ROOT || '/Users/thekid/campaigns' ///data/campaigns
 
@@ -166,18 +166,18 @@ export default (ogm: OGM, fs: FileStore) => {
 		})
 		.get(async (req, res) => {
 			//Get assets for campaign and zip them up
-			const folderInfo = await fs.getFolderInfo(req.params.id)
-			if(!folderInfo?.cid.toString()) return res.send({error: "No folder found"})
-			const asset = await fs.pull(folderInfo?.cid?.toString())
+			// const folderInfo = await fs.getFolderInfo(req.params.id)
+			// if(!folderInfo?.cid.toString()) return res.send({error: "No folder found"})
+			// const asset = await fs.pull(folderInfo?.cid?.toString())
 			
-			if(!asset) return;
-			let ret = [];
-			for await (const chunk of asset){
-				ret.push(chunk)
-			}
-			// resolve(Buffer.concat(ret))
+			// if(!asset) return;
+			// let ret = [];
+			// for await (const chunk of asset){
+			// 	ret.push(chunk)
+			// }
+			// // resolve(Buffer.concat(ret))
 
-			res.send(Buffer.concat(ret))
+			// res.send(Buffer.concat(ret))
 		})
 	return router
 }

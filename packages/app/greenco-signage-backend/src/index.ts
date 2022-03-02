@@ -21,7 +21,6 @@ import { FileStore } from './de-file-store'
 import { Pool } from 'pg';
 import { createServer } from "http"
 
-const greenlock = require("greenlock-express");
 
 (async () => {
 
@@ -59,17 +58,17 @@ const greenlock = require("greenlock-express");
 
 	console.log("Postgres")
 
-	const fs = new FileStore();
+	// const fs = new FileStore();
 /*
 {
 		url: process.env.IPFS_URL || 'http://localhost:5001'
 	}
-*/
-	await fs.init({
-		url: process.env.IPFS_URL || 'http://localhost:5001'
-	})
+// */
+// 	await fs.init({
+// 		url: process.env.IPFS_URL || 'http://localhost:5001'
+// 	})
 
-	const resolved = await resolvers(fs, pgClient, channel, driver)
+	const resolved = await resolvers( pgClient, channel, driver)
 	// const ogm = new OGM({typeDefs, driver})
 	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
@@ -87,37 +86,44 @@ const greenlock = require("greenlock-express");
 	await graphServer.init()
 
 
-	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient, fs))
+	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient))
 
 	app.use(graphServer.middleware)
 
 
 	if(process.env.NODE_ENV == "production"){
-		const httpsWorker = (glx: any)  => {
-			const server = glx.httpsServer()
+		app.use((req, res, next) => {
+			req.secure ? next() : res.redirect('https://' + req.headers.host + req.url)
+		})
+		
+		server.listen(process.env.PORT || 9009, () => {
+			console.log(`🚀 Server ready at :${process.env.PORT || 9009}`)
+		})
+		// const httpsWorker = (glx: any)  => {
+		// 	const server = glx.httpsServer()
 			
-			// const io = new Server(server)
-			// var ws = new WebSocketServer({ server: server, perMessageDeflate: false});
-			// ws.on("connection", function(ws: WebSocket, req: any) {
-			//     // inspect req.headers.authorization (or cookies) for session info
-			//     collaborationServer.handleConnection(ws)
-			// });
+		// 	// const io = new Server(server)
+		// 	// var ws = new WebSocketServer({ server: server, perMessageDeflate: false});
+		// 	// ws.on("connection", function(ws: WebSocket, req: any) {
+		// 	//     // inspect req.headers.authorization (or cookies) for session info
+		// 	//     collaborationServer.handleConnection(ws)
+		// 	// });
         
-			// servers a node app that proxies requests to a localhost
-			glx.serveApp(app)
-		}
+		// 	// servers a node app that proxies requests to a localhost
+		// 	glx.serveApp(app)
+		// }
 
-		if(!process.env.MAINTAINER_EMAIL) throw new Error("Provide a maintainer email through MAINTAINER_EMAIL environment variable")
-		greenlock.init({
-			packageRoot: __dirname + "/../",
-			configDir: "./greenlock.d",
+		// if(!process.env.MAINTAINER_EMAIL) throw new Error("Provide a maintainer email through MAINTAINER_EMAIL environment variable")
+		// greenlock.init({
+		// 	packageRoot: __dirname + "/../",
+		// 	configDir: "./greenlock.d",
      
-			// contact for security and critical bug notices
-			maintainerEmail: process.env.MAINTAINER_EMAIL,
+		// 	// contact for security and critical bug notices
+		// 	maintainerEmail: process.env.MAINTAINER_EMAIL,
      
-			// whether or not to run at cloudscale
-			cluster: false
-		}).ready(httpsWorker)
+		// 	// whether or not to run at cloudscale
+		// 	cluster: false
+		// }).ready(httpsWorker)
 	}else{
 
 		app.listen(process.env.PORT || 9009, () => {

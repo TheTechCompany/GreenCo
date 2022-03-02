@@ -17,7 +17,7 @@ const queryFetcher: QueryFetcher = async function (query, variables) {
   // Modify "/api/graphql" if needed
   const API_URL = localStorage.getItem('HEXHIVE_API');
 
-  let url = process.env.NODE_ENV == 'production' ? API_URL || (process.env.REACT_APP_API != undefined ? `${process.env.REACT_APP_API}/graphql` : '/graphql') : "http://localhost:7000/graphql"
+  let url = process.env.NODE_ENV == 'production' ? `${API_URL}/graphql` || (process.env.REACT_APP_API != undefined ? `${process.env.REACT_APP_API}/graphql` : '/graphql') : "http://localhost:7000/graphql"
 
   const response = await fetch(`${url}?appliance=GreenScreen`, {
     method: "POST",
