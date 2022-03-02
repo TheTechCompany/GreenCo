@@ -135,7 +135,7 @@ export default (ogm: OGM, fs: FileStore) => {
 			// 		}
 			// 		`
 			// 	})
-			res.send({files})
+			res.send({files: files.map((x) => ({name: x.name}))})
 				// await Campaign.update({
 				// 	where: {id: req.params.id},
 				// 	update: {

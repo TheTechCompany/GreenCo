@@ -19,8 +19,10 @@ import {  TemplateSingle } from './views/template-single';
 import { CustomerList } from './views/customer-list';
 import { CustomerSingle } from './views/customer-single';
 
+const API_URL = localStorage.getItem('HEXHIVE_API');
+
 const client = new ApolloClient({
-    uri: process.env.REACT_APP_API ? `${process.env.REACT_APP_API}/graphql?appliance=GreenScreen`: 'http://localhost:7000/graphql?appliance=GreenScreen',
+    uri: process.env.NODE_ENV == 'production' ? `${API_URL || process.env.REACT_APP_API}/graphql?appliance=GreenScreen`: 'http://localhost:7000/graphql?appliance=GreenScreen',
     cache: new InMemoryCache(),
     credentials: 'include'
 })
