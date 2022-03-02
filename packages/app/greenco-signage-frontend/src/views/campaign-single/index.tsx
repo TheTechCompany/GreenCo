@@ -91,9 +91,6 @@ export const CampaignSingle = (props) => {
 				name
 
 				views
-				interactions
-
-		
 
 				charts {
 					id
@@ -114,7 +111,7 @@ export const CampaignSingle = (props) => {
 
 				interactionTimeline {
 					time
-					interactions
+					value
 				}
 
 				assetFolder

@@ -63,6 +63,7 @@ export const ToolsPage = () => {
 				selected={selected}
 				onClose={() => {
 					openModal(false)
+					setSelected(undefined)
 				}}
 				onSubmit={(analytic) => {
 					createCampaignAnalytic({
@@ -73,6 +74,7 @@ export const ToolsPage = () => {
 							data: analytic.data,
 						}
 					}).then(() => {
+						setSelected(undefined)
 						openModal(false)
 						refresh?.()
 					})
@@ -98,7 +100,7 @@ export const ToolsPage = () => {
 									<Box direction="row" align="center" justify='between'>
 										<Box gap="xsmall" direction="row" align="center" flex>
 											<Box elevation="small" round="xsmall" overflow="hidden">
-												<QRCode size={50}  value={getQRURL(datum.id) || ''} />
+												<QRCode renderAs={'svg'} size={50}  value={getQRURL(datum.id) || ''} />
 											</Box>
 											<Text>{datum.name}</Text>
 										</Box>
