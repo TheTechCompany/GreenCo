@@ -21,7 +21,6 @@ import { FileStore } from './de-file-store'
 import { Pool } from 'pg';
 import { createServer } from "http"
 
-const greenlock = require("greenlock-express");
 
 (async () => {
 
@@ -59,17 +58,17 @@ const greenlock = require("greenlock-express");
 
 	console.log("Postgres")
 
-	const fs = new FileStore();
+	// const fs = new FileStore();
 /*
 {
 		url: process.env.IPFS_URL || 'http://localhost:5001'
 	}
-*/
-	await fs.init({
-		url: process.env.IPFS_URL || 'http://localhost:5001'
-	})
+// */
+// 	await fs.init({
+// 		url: process.env.IPFS_URL || 'http://localhost:5001'
+// 	})
 
-	const resolved = await resolvers(fs, pgClient, channel, driver)
+	const resolved = await resolvers( pgClient, channel, driver)
 	// const ogm = new OGM({typeDefs, driver})
 	// const neoSchema : Neo4jGraphQL = new Neo4jGraphQL({ typeDefs, resolvers: resolved , driver })
 
@@ -87,7 +86,7 @@ const greenlock = require("greenlock-express");
 	await graphServer.init()
 
 
-	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient, fs))
+	if(graphServer.graphManager) app.use('/api/', await signageApi(graphServer.graphManager, pgClient))
 
 	app.use(graphServer.middleware)
 

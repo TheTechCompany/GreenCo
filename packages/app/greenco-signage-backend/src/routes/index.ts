@@ -5,7 +5,7 @@ import { FileStore } from '../de-file-store'
 
 import campaignRouter from './campaign'
 
-export default async (ogm: OGM, pool: Pool, fs: FileStore) => {
+export default async (ogm: OGM, pool: Pool) => {
 	const router = Router()
 
 	const client = await pool.connect()
@@ -29,7 +29,7 @@ export default async (ogm: OGM, pool: Pool, fs: FileStore) => {
 		
 		res.redirect(analytic?.[0]?.data)
 	})
-	router.use('/campaign', campaignRouter(ogm, fs))
+	router.use('/campaign', campaignRouter(ogm))
 	
 	return router
 }
