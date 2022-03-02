@@ -1,6 +1,12 @@
 import { SchemaComposer, schemaComposer } from "graphql-compose";
 
 export default ( schemaComposer: SchemaComposer ) => {
+    const AnalyticData = schemaComposer.createObjectTC(`
+        type AnalyticData {
+            time: Date
+            value: Int
+        }
+    `)
     const Campaigns = schemaComposer.createObjectTC(`
         type Campaign {
             id: ID!
@@ -16,6 +22,9 @@ export default ( schemaComposer: SchemaComposer ) => {
 
             peopleCount: Int
             peopleCountWeek: Int
+
+    		peopleTimeline(length: String, unit: String): [AnalyticData]
+
         }
 
     `)

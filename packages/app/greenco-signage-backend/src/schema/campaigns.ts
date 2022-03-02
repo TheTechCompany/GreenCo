@@ -14,6 +14,8 @@ export default `
 		peopleCount: Int @ignore
 		peopleCountWeek: Int @ignore
 
+		peopleTimeline(length: String, unit: String): [CampaignInteraction] @ignore
+
 		charts: [CampaignChart] @relationship(type: "HAS_CHART", direction: OUT)
 
 		activeScreens: Int @ignore
@@ -51,7 +53,7 @@ export default `
 
 	type CampaignInteraction @exclude {
 		time: DateTime
-		interactions: Int
+		value: Int
 	}
 
 	type CampaignAsset @exclude {
