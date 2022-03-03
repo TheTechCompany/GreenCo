@@ -90,6 +90,55 @@ export default async (pool: Pool, channel: Channel, driver: Driver) => {
 				await session.close()
 				return result?.records?.[0]?.get(0)?.name;
 			},
+			peopleTimeline: async (parent: any, args: {length: string, unit: string}) => {
+				console.log({parent, args});
+				const session = driver.session();
+				console.log({parent})
+				const location_res = await session.run(`
+					MATCH (c:Campaign {id: $id})<--(:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen)
+					WHERE screen.networkName IS NOT NULL
+					RETURN distinct(screen{.*})
+				`, {
+					id: parent.id
+				})
+
+				// console.log({records: location_res.records})
+				const locations = location_res.records?.map((x) => x.get(0)) //[0]?.get(0)
+
+				const res = await client.query(
+					`
+					SELECT personCount, time_bucket as time FROM
+					(SELECT 
+						SUM(COUNT(*)) over (order by time_bucket) as personCount, 
+						time_bucket 
+						FROM (
+								select time_bucket_gapfill('${args.unit}', "timestamp") as time_bucket, jsonb_array_elements(properties->'results')->'name' as name
+								from green_screen_telemetry 
+								where event=$1 AND source=$2 AND created_by=ANY($3::text[])
+							) as foo 
+						WHERE 
+							name::text = $4 AND time_bucket > NOW() - interval '${args.length}' AND time_bucket < NOW()
+						GROUP by time_bucket) as daily
+										
+					`,//AND created_by = ANY($3::text[]) //and "timestamp" > now() - interval '1 day'
+					['camera-yolo', 'camera', locations?.map((x: any) => `${x.networkName}.hexhive.io`), '"person"' ]
+				)
+
+				/*
+	SELECT properties, timestamp 
+						FROM green_screen_telemetry 
+					WHERE event=$1 AND source=$2 AND 
+					"timestamp" < now() AND "timestamp" > now() - interval '1 month'
+				*/
+				await session.close()
+
+				// console.log("PEOPLE COUNT", res.rows?.map((x) => ({
+				// 	name: x.properties?.results?.map((y: any) => ({name: y.name, confidence: y.confidence}))
+				// })))
+
+				return res.rows;
+
+			},
 			peopleCount: async (parent: any) => {
 				const session = driver.session();
 				console.log({parent})
@@ -210,7 +259,7 @@ export default async (pool: Pool, channel: Channel, driver: Driver) => {
 						"timestamp" < now() and "timestamp" > now() - interval '1 week'
 						group by time
 					)
-					select time, SUM(cnt) over (order by time) as interactions from data`,
+					select time, SUM(cnt) over (order by time) as value from data`,
 					// `SELECT "timestamp" as time, SUM(COUNT(*)) OVER(ORDER BY "timestamp") as interactions FROM  green_screen_telemetry WHERE event=$1 AND source=$2 group by "timestamp"`, 
 					['campaign-interaction', `asset://${root.id}`])
 				return res.rows

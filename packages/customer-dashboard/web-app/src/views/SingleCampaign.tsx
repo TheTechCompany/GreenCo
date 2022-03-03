@@ -3,9 +3,11 @@ import { Box, Grid, Text, Button } from "grommet";
 import { LinkPrevious } from 'grommet-icons'
 import { CampaignList } from "../components/CampaignList";
 import { GraphGrid, GridLayoutItem } from "@hexhive/ui/dist/components/GraphGrid";
+import { BarGraph } from '@hexhive/ui/dist/components/Graphs'
 import { gql, useQuery } from "@apollo/client";
 import { useNavigate, useParams } from "react-router-dom";
 import { CampaignPreview } from "../components/CampaignPreview";
+import moment from 'moment';
 
 // PROBABLY TO BE VERY SIMILAR TO REPORTING BUT FOR INDIVIDUAL CAMPAIGN. PROBABLY REUSE THE COMPONENTS
 const singleCampaignLayout = [
@@ -58,6 +60,14 @@ const singleCampaignLayout = [
     y: 0,
     w: 1,
     h: 4
+  },
+  {
+    id: 'people-timeline',
+    label: "Impressions/week",
+    x: 3.5,
+    y: 6,
+    w: 5,
+    h: 8
   }
 ];
 
@@ -85,6 +95,11 @@ export const SingleCampaign = () => {
 
           peopleCount
           peopleCountWeek
+
+          peopleTimeline(length: "1 week", unit: "1 day") {
+            time
+            value
+          }
         }
     }
   `
@@ -96,6 +111,25 @@ export const SingleCampaign = () => {
   
   const renderItem = (item: GridLayoutItem) => {
     switch(item.id){
+      case 'people-timeline':
+        return (
+          <Box flex>
+            <Box pad="xsmall">
+              <Text>{item.label}</Text>
+            </Box>
+            <Box flex>
+            <BarGraph
+              data={campaign.peopleTimeline?.map((x: any) => ({
+                value: x.value,
+                time: moment(x.time).format('DD/MM/yyyy HH:mma')
+              }))}
+              color={blue}
+              xKey="time"
+              yKey="value"
+              />
+              </Box>
+          </Box>
+        );
       case 'campaign-preview':
         return (
           <Box flex elevation="small">

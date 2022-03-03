@@ -143,10 +143,10 @@ export const AnalyticsPage = () => {
 							</linearGradient>
 						</defs>
 						<XAxis minTickGap={25} dataKey="time" />
-						<YAxis dataKey="interactions" />
+						<YAxis dataKey="value" />
 						<Tooltip />
 						<CartesianGrid stroke="#f5f5f5" />
-						<Area type="monotone" dataKey="interactions" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+						<Area type="monotone" dataKey="value" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
 						{/* <Line type="monotone" dataKey={"interactions"}  stroke="#ff7300" yAxisId={0} /> */}
 					</AreaChart>
 				</ResponsiveContainer>

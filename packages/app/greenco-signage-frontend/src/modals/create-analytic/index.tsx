@@ -54,6 +54,7 @@ export const CreateAnalyticModal = (props) => {
 			...props.selected
 		})
 	}, [props.selected])
+
 	const onSubmit = () => {
 		props.onSubmit(analytic)
 	}
@@ -72,7 +73,7 @@ export const CreateAnalyticModal = (props) => {
 			<Box gap="xsmall" align="center" flex direction="row">
 				{analytic.id && (
 				<Box overflow="hidden" round="xsmall" elevation="small">
-					<QRCode value={getQRURL(analytic.id) || ''} />
+					<QRCode style={{height: 100, width: 100}} size={500} value={getQRURL(analytic.id) || ''} />
 				</Box>)}
 			<Box flex gap="xsmall">
 								
