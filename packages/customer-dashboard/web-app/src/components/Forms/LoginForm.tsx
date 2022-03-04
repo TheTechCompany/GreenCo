@@ -10,7 +10,7 @@ export const LoginForm = () => {
   const [ password, setPassword ] = useState<string>('')
   
   const signIn = () => {
-    fetch('http://localhost:8080/login', {
+    fetch(`${process.env.NODE_ENV == 'production' ? 'https://dashboard.streetlevelone.com/api' : 'http://localhost:8080'}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -22,7 +22,10 @@ export const LoginForm = () => {
     }).then((d) => {
       return d.json()
     }).then((result) => {
-      localStorage.setItem('token', result.token);
+      if(result.token){
+        localStorage.setItem('token', result.token);
+        navigate('home')
+      }
       console.log({result})
     })
     // console.log({

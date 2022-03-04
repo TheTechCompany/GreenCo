@@ -15,6 +15,23 @@ export const ToolsPage = () => {
 	const [ selected, setSelected ] = useState<any>()
 
 	const { analytics, campaign, refresh } = useContext(CampaignSingleContext)
+
+	const [ deleteCampaignAnalytic ] = useMutation((mutation, args: {id: string}) => {
+		const item = mutation.updateCampaigns({
+			where: {id: campaign?.id},
+			update: {
+				analytics: [{
+					delete: [{where: {node: {id: args.id}}}]
+				}]
+			}
+		})
+		return {
+			item: {
+				...item.campaigns?.[0]
+			}
+		}
+	})
+
 	const [ createCampaignAnalytic, createAnalyticInfo ] = useMutation((mutation, args: {id?: string, name: string, type: string, data: string}) => {
 		let update : any = undefined;
 
@@ -61,11 +78,23 @@ export const ToolsPage = () => {
 			<CreateAnalyticModal
 				open={modalOpen}
 				selected={selected}
+				onDelete={() => {
+					deleteCampaignAnalytic({
+						args: {
+							id: selected.id
+						}
+					}).then(() => {
+						refresh?.();
+						setSelected(undefined)
+						openModal(false)
+					})
+				}}
 				onClose={() => {
 					openModal(false)
 					setSelected(undefined)
 				}}
 				onSubmit={(analytic) => {
+					
 					createCampaignAnalytic({
 						args: {
 							id: analytic.id,

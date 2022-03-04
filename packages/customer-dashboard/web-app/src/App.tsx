@@ -18,7 +18,7 @@ import { ChangePassword } from "./components/Forms/ChangePassword";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
+  uri: `${process.env.NODE_ENV == 'production' ? 'https://dashboard.streetlevelone.com/api' : 'http://localhost:8080'}/graphql`,
   headers: {
     authorization: `bearer ${localStorage.getItem('token')}`
   },
@@ -60,13 +60,13 @@ function App() {
     <ApolloProvider client={client}>
     <Grommet style={{ display: "flex" }} full theme={theme}>
       <Routes>
-        <Route path="/login" element={<LoginPage />}>
+        <Route path="/" element={<LoginPage />}>
           <Route path="" element={<LoginForm />} />
           <Route path="signup" element={<SignUpForm />} />
         </Route>
         <Route path="account-recovery" element={<ForgottenPassForm />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/home" element={<Dashboard />}>
           <Route path="campaigns" element={<Outlet />}>
             <Route path="" element={<Campaigns />} />
             <Route path=":id" element={<SingleCampaign />} />
