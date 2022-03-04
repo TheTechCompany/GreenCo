@@ -1,5 +1,5 @@
 import { FormInput } from '@hexhive/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QRFormProps } from '.';
 
 
@@ -7,6 +7,16 @@ export const PhoneForm : React.FC<QRFormProps> = (props) => {
 
 	const [ data, setData ] = useState<{number?: string}>({})
 
+	useEffect(() => {
+		setData(deserialize(props.analytic.data));
+	}, [props.analytic])
+
+
+	const deserialize = (data: string) => {
+		let match = data.match(/^tel:(.*)$/)
+
+		return {number: match?.[1]}
+	}
 	const formatData = (data: any) => {
 		return `tel:${data.number}`
 	}

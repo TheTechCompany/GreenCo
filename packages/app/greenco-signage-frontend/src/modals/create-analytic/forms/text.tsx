@@ -1,11 +1,14 @@
 import { FormInput } from '@hexhive/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QRFormProps } from '.';
 
 
 export const TextForm : React.FC<QRFormProps> = (props) => {
 
 	const [ data, setData ] = useState<string>('')
+	useEffect(() => {
+		setData(props.analytic.data);
+	}, [props.analytic])
 
 
 	const onChange = (key: string, val: string) => {

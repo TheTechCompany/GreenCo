@@ -1,11 +1,22 @@
 import { FormInput } from '@hexhive/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QRFormProps } from '.';
 
 
 export const EmailForm : React.FC<QRFormProps> = (props) => {
 
 	const [ data, setData ] = useState<{email?: string, subject?: string, message?: string}>({})
+
+	useEffect(() => {
+		setData(deserialize(props.analytic.data));
+	}, [props.analytic])
+
+	
+	const deserialize = (data: string) => {
+		let match = data.match(/^mailto:(.*)\?subject=(.*)&body=(.*)$/)
+
+		return {email: match?.[1], subject: match?.[2], message: match?.[3]}
+	}
 
 	const formatData = (data: any) => {
 		return `mailto:${data.email}?subject=${data.subject}&body=${data.message}`

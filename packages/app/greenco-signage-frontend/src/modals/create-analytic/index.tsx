@@ -9,6 +9,15 @@ import { TextForm } from './forms/text';
 import { WebsiteForm } from './forms/website';
 import { getQRURL } from '../../api/campaign';
 
+
+export interface CreateAnalyticProps {
+	selected?: any;
+	open: boolean;
+	onSubmit?: (data: any) => void;
+	onClose?: () => void;
+	onDelete?: () => void;
+}
+
 const options = [
 	{
 		type: 'text',
@@ -37,7 +46,7 @@ const options = [
 	}
 ]
 
-export const CreateAnalyticModal = (props) => {
+export const CreateAnalyticModal : React.FC<CreateAnalyticProps> = (props) => {
 	const [ analytic, setAnalytic ] = useState<{
 		id?: string,
 		type: 'text' | 'email' | 'sms' | 'phone' | 'text' | 'website',
@@ -56,10 +65,11 @@ export const CreateAnalyticModal = (props) => {
 	}, [props.selected])
 
 	const onSubmit = () => {
-		props.onSubmit(analytic)
+		props.onSubmit?.(analytic)
 	}
 
 
+	console.log(props.selected, props.onDelete)
 	const FormComponent = options.find((a) => a.type == analytic.type)?.component
 
 	console.log(analytic.type)
@@ -68,6 +78,7 @@ export const CreateAnalyticModal = (props) => {
 			width="large"
 			title="Create Analytics"
 			onClose={props.onClose}
+			onDelete={props.selected && props.onDelete}
 			onSubmit={onSubmit}
 			open={props.open}>
 			<Box gap="xsmall" align="center" flex direction="row">

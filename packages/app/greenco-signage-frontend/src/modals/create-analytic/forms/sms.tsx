@@ -1,5 +1,5 @@
 import { FormInput } from '@hexhive/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QRFormProps } from '.';
 
 
@@ -7,6 +7,15 @@ export const SMSForm : React.FC<QRFormProps> = (props) => {
 
 	const [ data, setData ] = useState<{number?: string, message?: string}>({})
 
+	useEffect(() => {
+		setData(deserialize(props.analytic.data));
+	}, [props.analytic])
+
+	const deserialize = (data: string) => {
+		let match = data.match(/^sms:(.*)\?body=(.*)$/)
+		console.log(data, match)
+		return {number: match?.[1], message: match?.[2]}
+	}
 	const formatData = (data: any) => {
 		return `sms:${data.number}?body=${data.message}`
 	}
