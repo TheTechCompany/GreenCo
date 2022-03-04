@@ -82,7 +82,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15.x
+          node-version: 16.x
       - run: yarn
 
       - run: cd packages/customer-dashboard/web-app; yarn
