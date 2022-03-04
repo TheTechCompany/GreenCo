@@ -102,7 +102,7 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                 <Text>Campaigns</Text>
                 <Button plain hoverIndicator style={{padding: 6, borderRadius: 3}} onClick={() => openModal(true)} icon={<Add size="small" />} />
             </Box>
-            <Box flex>
+            <Box flex overflow={"auto"}>
                 <List 
                     primaryKey={"name"}
                     data={campaigns}>
