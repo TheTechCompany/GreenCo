@@ -75,7 +75,8 @@ export default (driver: Driver) => {
 				await tar.c(
 					{
 						gzip: true,
-						file: `${campaignPath}.tar.gz`
+						file: `${campaignPath}.tar.gz`,
+						cwd: `/data/campaigns`
 					},
 					[campaignPath]
 				)
