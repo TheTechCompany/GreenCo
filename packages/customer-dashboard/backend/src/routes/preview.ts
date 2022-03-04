@@ -7,7 +7,7 @@ export default () => {
     
     const router = Router();
 
-    router.get('/:id/*', async (req, res) => {
+    router.get(['/:id', '/:id/*'], async (req, res) => {
         let campaignId = req.params.id
 
         let campaignDir = path.join(campaignRootDir, campaignId)
