@@ -10,7 +10,7 @@ export const LoginForm = () => {
   const [ password, setPassword ] = useState<string>('')
   
   const signIn = () => {
-    fetch('http://localhost:8080/login', {
+    fetch(`${process.env.NODE_ENV == 'production' ? 'https://dashboard.streetlevelone.com/api' : 'http://localhost:8080'}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

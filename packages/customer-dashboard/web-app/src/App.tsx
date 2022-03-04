@@ -18,7 +18,7 @@ import { ChangePassword } from "./components/Forms/ChangePassword";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
+  uri: `${process.env.NODE_ENV == 'production' ? 'https://dashboard.streetlevelone.com/api' : 'http://localhost:8080'}/graphql`,
   headers: {
     authorization: `bearer ${localStorage.getItem('token')}`
   },
