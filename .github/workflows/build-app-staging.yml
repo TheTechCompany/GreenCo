@@ -74,3 +74,37 @@ jobs:
       - name: Upload new web-build
         run: |
           aws s3 sync packages/app/greenco-${{ matrix.apps }}/dist/ s3://${{ secrets.STAGING_APP_BUCKET }}/${{matrix.apps}} --delete
+
+  build_customerdashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.x
+      - run: yarn
+
+      - run: cd packages/customer-dashboard/web-app; yarn
+        env: 
+          CI: false
+
+      - run: export REACT_APP_API="https://staging-api.hexhive.io"
+      - run: export REACT_APP_URL="https://next.hexhive.io"
+      - run: export PUBLIC_PATH="https://staging-apps.hexhive.io/${{matrix.apps}}/"
+      
+      - name: Build web
+        run: cd packages/customer-dashboard/web-app; yarn build
+        env: 
+          CI: false
+          
+      - name: Configure AWS Creds
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-southeast-2
+
+      - name: Upload new web-build
+        run: |
+          aws s3 sync packages/customer-dashboard/web-app/build/ s3://${{ secrets.STAGING_APP_BUCKET }}/greenco-customerdashboard --delete
