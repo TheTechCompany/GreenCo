@@ -147,29 +147,32 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 					icon={<Add size="small" />}
 					hoverIndicator />
 			</Box>
-			<List
-				primaryKey="name"
-				data={schedules}>
-				{(datum) => (
-					<Box 
-						onClick={() => navigate(`${datum.id}`)}
-						direction='row' align='center' justify='between'>
-						<Text>{datum.name}</Text>
-						<Button 
-							onClick={(e) => {
-								e.stopPropagation()
-                                e.preventDefault()
-								setModalOpen(true)
-								setSelected(datum)
+			<Box flex overflow={"auto"}>
+				<List
+					primaryKey="name"
+					data={schedules}>
+					{(datum) => (
+						<Box 
+							onClick={() => navigate(`${datum.id}`)}
+							direction='row' align='center' justify='between'>
+							<Text>{datum.name}</Text>
+							<Button 
+								onClick={(e) => {
+									e.stopPropagation()
+									e.preventDefault()
+									setModalOpen(true)
+									setSelected(datum)
 
-							}}
-							hoverIndicator 
-							plain 
-							style={{padding: 6, borderRadius: 3}} 
-							icon={<MoreVertical size="small" />} />
-					</Box>
-				)}
-			</List>
+								}}
+								hoverIndicator 
+								plain 
+								style={{padding: 6, borderRadius: 3}} 
+								icon={<MoreVertical size="small" />} />
+						</Box>
+					)}
+				</List>
+			</Box>
+			
 		</Box>
 	)
 }

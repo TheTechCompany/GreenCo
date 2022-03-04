@@ -76,7 +76,7 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
                 <Button plain hoverIndicator style={{padding: 6, borderRadius: 3}} onClick={() => openModal(true)} icon={<Add size="small" />} />
             </Box>
             <Box  direction='row' flex>
-                <Box flex overflow={"scroll"}>
+                <Box flex overflow={"auto"}>
                     <List 
                         onClickItem={(ev) => navigate(`${ev.item.id}`)}
                         primaryKey={"name"}

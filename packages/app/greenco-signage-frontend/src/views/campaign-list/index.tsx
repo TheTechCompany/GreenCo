@@ -1,7 +1,8 @@
 import { Box, Button, Text, List } from 'grommet';
 import React, { useState } from 'react';
 import { Add, MoreVertical } from 'grommet-icons';
-import { mutation, useMutation, useQuery } from '@greenco/signage-api'
+import { client, mutation, useMutation } from '@greenco/signage-api'
+import { gql, useApolloClient, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { CampaignModal } from '../../modals/campaign-modal';
 
@@ -16,11 +17,33 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
 
     const [ selected, setSelected ] = useState<any>(undefined)
 
-    const query = useQuery()
+    const client = useApolloClient()
 
-    const campaigns = query.campaigns()
+    const {data} = useQuery(gql`
+        query Q {
+            campaigns {
+                id
+                name
+                customer {
+                    id
+                    name
+                }
+            }
 
-    const customers = query.customers()
+            customers{
+                id
+                name
+            }
+        }
+    `)
+
+    const refetch = () => {
+        client.refetchQueries({include: ['Q']})
+    }
+
+    const campaigns = data?.campaigns
+
+    const customers = data?.customers;
 
     const [ deleteCampaign, deleteInfo ] = useMutation((mutation, args: {id: string}) => {
         if(!args.id) {return}
@@ -30,9 +53,8 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                 ...item.nodesDeleted?.[0]
             }
         }
-    }, {
-        refetchQueries: [query.campaigns()]
     })
+
     const [ createCampaign, createInfo ] = useMutation((mutation, args: {name: string, customer: string}) => {
         let customerUpdate = {};
         if(args.customer){
@@ -60,10 +82,40 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
             },
             err: null
         }
-    }, {
-        suspense: false,
-        awaitRefetchQueries: true,
-        refetchQueries: [query.campaigns()]
+    })
+
+    const [ updateCampaign ] = useMutation((mutation, args: {id: string, name: string, customer: string}) => {
+        let customerUpdate = {};
+        if(args.customer){
+            console.log({customer: args.customer})
+            customerUpdate = {
+                customer: {
+                    connect: {where: {node: {id: args.customer}}},
+                    disconnect: {where: {node: {id_NOT: args.customer}}}
+                },
+            }
+        }
+       const item = mutation.updateHiveOrganisations({
+            // where: {id: "J8I15pyAKy037gISCwfmT"},
+            update: {
+                campaigns: [{
+                    where: {node: {id: args.id}},
+                    update: {
+                        node: {
+                            name: args.name,
+                            ...customerUpdate
+                        }
+                    }
+                }]
+            }
+        })
+        // const item = mutation.createCampaigns({input: [{name: args.name}]})
+        return {
+            item: {
+                ...item.hiveOrganisations[0]
+            },
+            err: null
+        }
     })
     // const workflow = query.hivePi
 
@@ -85,18 +137,28 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                 onDelete={() => {
                     deleteCampaign({args: {id: selected.id}}).then(() => {
                         openModal(false)
-                    setSelected(undefined)
-                        
+                        setSelected(undefined)
+                        refetch()
                     })
                 }}
                 onSubmit={(campaign) => {
                     // console.log({campaign})
 
-                    createCampaign({args: {name: campaign.name, customer: campaign.customer}}).then(() => {
-                        openModal(false)
-                        setSelected(undefined)
-                        
-                    })
+                    if(!campaign.id){
+                        createCampaign({args: {name: campaign.name, customer: campaign.customer}}).then(() => {
+                            openModal(false)
+                            setSelected(undefined)
+                             refetch()
+                            
+                        })
+                    }else{
+                        updateCampaign({args: {id: campaign.id, name: campaign.name, customer: campaign.customer}}).then(() => {
+                            openModal(false);
+                            setSelected(undefined)
+                            refetch()
+
+                        })
+                    }
                 }} />
             <Box pad="xsmall" align="center" background="accent-2" direction="row" justify="between">
                 <Text>Campaigns</Text>
@@ -110,7 +172,10 @@ export const CampaignList : React.FC<TriggerListProps> = (props) => {
                         <Box
                             onClick={() => navigate(`${datum.id}`)}
                             align="center" justify="between" direction="row">
-                            <Text>{datum.name}</Text>
+                            <Box>
+                                <Text>{datum.name}</Text>
+                                <Text size="small">{datum?.customer?.name}</Text>
+                            </Box>
                             <Button 
                                 onClick={(e) => {
                                     e.stopPropagation()

@@ -8,7 +8,7 @@ export interface CampaignModalProps {
     selected?: any;
     onClose?: () => void;
     onDelete?: () => void;
-    onSubmit?: (app: {name: string, customer: string}) => void;
+    onSubmit?: (app: {id?: string, name: string, customer: string}) => void;
 
     customers?: any[];
 }
@@ -26,6 +26,8 @@ export const CampaignModal: React.FC<CampaignModalProps> = (props) => {
 		setCampaign({})}
 
 	}, [props.open])
+
+    console.log({campaign})
 
     return props.open ? (
         <Layer
