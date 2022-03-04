@@ -120,7 +120,7 @@ export const ToolsPage = () => {
 									style={{padding: 6, borderRadius: 3}} 
 									icon={<Add size="small" />} />
 							</Box>
-							<Box flex>
+							<Box flex overflow={"auto"}>
 							<List
 								primaryKey="id"
 								data={analytics}
