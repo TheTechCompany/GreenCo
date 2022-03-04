@@ -22,7 +22,10 @@ export const LoginForm = () => {
     }).then((d) => {
       return d.json()
     }).then((result) => {
-      localStorage.setItem('token', result.token);
+      if(result.token){
+        localStorage.setItem('token', result.token);
+        navigate('home')
+      }
       console.log({result})
     })
     // console.log({

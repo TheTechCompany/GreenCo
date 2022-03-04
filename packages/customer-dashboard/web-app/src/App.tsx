@@ -60,7 +60,7 @@ function App() {
     <ApolloProvider client={client}>
     <Grommet style={{ display: "flex" }} full theme={theme}>
       <Routes>
-        <Route path="/login" element={<LoginPage />}>
+        <Route path="/" element={<LoginPage />}>
           <Route path="" element={<LoginForm />} />
           <Route path="signup" element={<SignUpForm />} />
         </Route>
