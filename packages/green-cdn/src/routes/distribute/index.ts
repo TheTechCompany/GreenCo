@@ -85,7 +85,6 @@ export default (driver: Driver) => {
 
 			res.sendFile(`${campaignPath}.tar.gz`)
 
-
 		})
 	// router.route('/')
 

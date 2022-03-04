@@ -62,11 +62,11 @@ export class AssetStore {
 	}
 
 	async pullAll(){
-		let results = await Promise.all(this.manifest.filter((a) => a.campaign?.assetFolder).map(async (manifestItem) => {
-			console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.assetFolder}`)
+		let results = await Promise.all(this.manifest.map(async (manifestItem) => {
+			console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.id}`)
 			if(!manifestItem.id) return;
 
-			const data = await this.pull(manifestItem.campaign?.assetFolder || '')
+			const data = await this.pull(manifestItem.campaign?.id || '')
 			if(!data) {
 				this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
 				return {failed: true, id: manifestItem.id}
@@ -134,31 +134,36 @@ export class AssetStore {
 		this.queue = new AssetQueue(this.manifest, rejected, 15)
 	}
 
-	async pull(hash: string){
-		return await new Promise<Buffer | null>(async (resolve, reject) => {
+	async pull(contentId: string){
+		console.log(`Pulling ${contentId}`)
+		const tarball = await axios.get(`${this.assetStoreUrl}/api/distribute/asset/${contentId}?token=${this.token}`)
+		console.log(`Pulling ${contentId} length : ${Buffer.from(tarball.data).length}`)
+		return tarball.data;
 
-			const timeoutTimer = setTimeout(() => {
-				console.log(`Pulling ${hash} timed out`)
-				resolve(null)
-			}, 10 * 60 * 1000)
+		// return await new Promise<Buffer | null>(async (resolve, reject) => {
 
-			const pull = this.node?.get(hash)
-			console.log(`Pulling ${hash}`)
+		// 	const timeoutTimer = setTimeout(() => {
+		// 		console.log(`Pulling ${hash} timed out`)
+		// 		resolve(null)
+		// 	}, 10 * 60 * 1000)
 
-			if(!pull) {
-				console.error(`Pulling ${hash} failed`)
-				return
-			};
-			let ret : Uint8Array[] = [];
-			for await (const chunk of pull){
-				console.log(`${hash} - ${chunk.length}`)
-				ret.push(chunk)
-			}
+		// 	const pull = this.node?.get(hash)
+		// 	console.log(`Pulling ${hash}`)
 
-			clearTimeout(timeoutTimer)
+		// 	if(!pull) {
+		// 		console.error(`Pulling ${hash} failed`)
+		// 		return
+		// 	};
+		// 	let ret : Uint8Array[] = [];
+		// 	for await (const chunk of pull){
+		// 		console.log(`${hash} - ${chunk.length}`)
+		// 		ret.push(chunk)
+		// 	}
 
-			resolve(Buffer.concat(ret))
+		// 	clearTimeout(timeoutTimer)
 
-		})
+		// 	resolve(Buffer.concat(ret))
+
+		// })
 	}
 }
