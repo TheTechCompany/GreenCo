@@ -1,6 +1,10 @@
 import { Router } from 'express'
 import { Driver, Session } from 'neo4j-driver-core'
 import jwt from 'jsonwebtoken'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
+import path from 'path'
+import { hashElement } from 'folder-hash'
+import tar from 'tar';
 
 export default (driver: Driver) => {
 	const router = Router()
@@ -54,6 +58,35 @@ export default (driver: Driver) => {
 			})
 		})
 	
+	router.route('/asset/:id')
+		.get(async (req, res) => {
+			let id = req.params.id;
+
+			let campaignPath = path.join(`/data/campaigns`, id)
+			let lastHash;
+
+			if(existsSync(`${campaignPath}-hash`)){
+				lastHash = readFileSync(`${campaignPath}-hash`, 'utf-8');
+			}
+
+			let currentHash = await hashElement(campaignPath, {})
+
+			if(currentHash.hash != lastHash){
+				await tar.c(
+					{
+						gzip: true,
+						file: `${campaignPath}.tar.gz`
+					},
+					[campaignPath]
+				)
+
+				writeFileSync(`${campaignPath}-hash`, currentHash.hash)
+			}
+
+			res.sendFile(`${campaignPath}.tar.gz`)
+
+
+		})
 	// router.route('/')
 
 	return router
