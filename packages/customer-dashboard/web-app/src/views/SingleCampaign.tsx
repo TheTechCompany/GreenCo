@@ -110,16 +110,16 @@ export const SingleCampaign = () => {
   console.log({campaign})
   
   const renderItem = (item: GridLayoutItem) => {
-    switch(item.id){
+    switch(item?.id){
       case 'people-timeline':
         return (
           <Box flex>
             <Box pad="xsmall">
-              <Text>{item.label}</Text>
+              <Text>{item?.label}</Text>
             </Box>
             <Box flex>
             <BarGraph
-              data={campaign.peopleTimeline?.map((x: any) => ({
+              data={campaign?.peopleTimeline?.map((x: any) => ({
                 value: x.value,
                 time: moment(x.time).format('DD/MM/yyyy HH:mma')
               }))}
