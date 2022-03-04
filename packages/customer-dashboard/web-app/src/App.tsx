@@ -66,7 +66,7 @@ function App() {
         </Route>
         <Route path="account-recovery" element={<ForgottenPassForm />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/home" element={<Dashboard />}>
           <Route path="campaigns" element={<Outlet />}>
             <Route path="" element={<Campaigns />} />
             <Route path=":id" element={<SingleCampaign />} />
