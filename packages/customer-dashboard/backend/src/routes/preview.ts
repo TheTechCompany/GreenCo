@@ -12,7 +12,7 @@ export default () => {
 
         let campaignDir = path.join(campaignRootDir, campaignId)
 
-        let filePath = path.join(campaignDir, (req.params as any)?.['0'].length > 0 ? (req.params as any)?.['0'] : '/index.html')
+        let filePath = path.join(campaignDir, (req.params as any)?.['0']?.length > 0 ? (req.params as any)?.['0'] : '/index.html')
 
         res.contentType(path.basename(filePath));
         
