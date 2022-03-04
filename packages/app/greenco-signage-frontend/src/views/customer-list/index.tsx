@@ -56,7 +56,7 @@ export const CustomerList = () => {
                 <Text>Customers</Text>
                 <Button plain hoverIndicator style={{padding: 6, borderRadius: 3}} onClick={() => openModal(true)} icon={<Add size="small" />} />
             </Box>
-            <Box background={'neutral-1'} flex>
+            <Box background={'neutral-1'} flex overflow={"auto"}>
                 <List 
                     onClickItem={({item}: any) => navigate(item.id)}
                     data={customers}

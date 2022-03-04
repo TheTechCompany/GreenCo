@@ -174,7 +174,7 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 						/>
 				</Box>
 			</Box>
-			<Box flex>
+			<Box flex overflow={"auto"}>
 				{view == 'list' ? (
 							<List
 								onClickItem={(ev) => navigate(`${ev.item.id}`)}
