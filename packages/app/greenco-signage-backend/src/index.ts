@@ -54,6 +54,7 @@ import { createServer } from "http"
 		port: 5432,
 		user: 'postgres',
 		password: process.env.TIMESERIES_PASSWORD,
+		keepAlive: true,
 		max: 10,
 	});
 
