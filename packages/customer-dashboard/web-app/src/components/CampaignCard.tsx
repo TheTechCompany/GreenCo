@@ -23,7 +23,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = (props) => {
       width="medium">
       <Card pad="small" background="dark-1" gap="medium" elevation="large">
         <CardBody style={{pointerEvents: 'none'}}>
-          <CampaignPreview previewUrl={process.env.NODE_ENV == 'production' ? `/api/preview/${props?.id}` : `http://localhost:9009/api/campaign/${props?.id}/preview`} />
+          <CampaignPreview previewUrl={process.env.NODE_ENV == 'production' ? `/api/preview/${props?.id}/view` : `http://localhost:9009/api/campaign/${props?.id}/preview`} />
 
           {/* <Image
             fit="cover"

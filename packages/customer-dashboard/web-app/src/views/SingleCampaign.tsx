@@ -133,7 +133,7 @@ export const SingleCampaign = () => {
       case 'campaign-preview':
         return (
           <Box flex elevation="small">
-            <CampaignPreview elevated previewUrl={process.env.NODE_ENV == 'production' ? `/api/preview/${campaign?.id}` : `http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
+            <CampaignPreview elevated previewUrl={process.env.NODE_ENV == 'production' ? `/api/preview/${campaign?.id}/view` : `http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
           </Box>
         )
       case 'people-viewed':
