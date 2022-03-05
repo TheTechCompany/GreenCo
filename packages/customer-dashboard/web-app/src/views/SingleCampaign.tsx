@@ -113,9 +113,9 @@ export const SingleCampaign = () => {
     switch(item?.id){
       case 'people-timeline':
         return (
-          <Box flex>
+          <Box flex background={gray}>
             <Box pad="xsmall">
-              <Text>{item?.label}</Text>
+              <Text color={'white'}>{item?.label}</Text>
             </Box>
             <Box flex>
             <BarGraph
