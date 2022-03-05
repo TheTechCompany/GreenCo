@@ -7,7 +7,7 @@ import { SingleCampaign } from "./views/SingleCampaign";
 import { Reporting } from "./views/Reporting";
 import { Settings } from "./views/Settings";
 
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useRoutes, Navigate } from "react-router-dom";
 import { LoginPage } from "./views/LoginPage";
 import { Dashboard } from "./views/Dashboard";
 import { LoginForm } from "./components/Forms/LoginForm";
@@ -55,11 +55,47 @@ const theme = {
   },
 };
 
+const routes = () => {
+  let token = localStorage.getItem('token');
+    return [
+      {
+        path: '/',
+        element: <LoginPage />,
+        children: [
+          {path: '', element: <LoginForm />},
+          {path: 'signup', element: <SignUpForm />}
+        ]
+      },
+      {
+        path: 'account-recovery',
+        element: <ForgottenPassForm />
+      },
+      {
+        path: '/home',
+        element: token ? <Dashboard /> : <Navigate to="/" />,
+        children: token ? [
+          {
+            path: 'campaigns', 
+            element: <Outlet />,
+            children: [
+              {path: '', element: <Campaigns />},
+              {path: ':id', element: <SingleCampaign />}
+            ]
+          },
+        ] : []
+      }
+    ];
+
+}
+
+const routing = useRoutes(routes())
+
 function App() {
   return (
     <ApolloProvider client={client}>
     <Grommet style={{ display: "flex" }} full theme={theme}>
-      <Routes>
+      {routing}
+      {/* <Routes>
         <Route path="/" element={<LoginPage />}>
           <Route path="" element={<LoginForm />} />
           <Route path="signup" element={<SignUpForm />} />
@@ -71,11 +107,10 @@ function App() {
             <Route path="" element={<Campaigns />} />
             <Route path=":id" element={<SingleCampaign />} />
           </Route>
-          {/* <Route path="reports" element={<Reporting />} /> */}
           <Route path="editprofile" element={<EditProfile />} />
           <Route path="changepassword" element={<ChangePassword />} />
         </Route>
-      </Routes>
+      </Routes> */}
     </Grommet>
     </ApolloProvider>
   );
