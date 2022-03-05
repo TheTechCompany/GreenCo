@@ -110,16 +110,16 @@ export const SingleCampaign = () => {
   console.log({campaign})
   
   const renderItem = (item: GridLayoutItem) => {
-    switch(item.id){
+    switch(item?.id){
       case 'people-timeline':
         return (
-          <Box flex>
+          <Box flex background={gray}>
             <Box pad="xsmall">
-              <Text>{item.label}</Text>
+              <Text color={'white'}>{item?.label}</Text>
             </Box>
             <Box flex>
             <BarGraph
-              data={campaign.peopleTimeline?.map((x: any) => ({
+              data={campaign?.peopleTimeline?.map((x: any) => ({
                 value: x.value,
                 time: moment(x.time).format('DD/MM/yyyy HH:mma')
               }))}
@@ -133,7 +133,7 @@ export const SingleCampaign = () => {
       case 'campaign-preview':
         return (
           <Box flex elevation="small">
-            <CampaignPreview elevated previewUrl={`${process.env.NODE_ENV=='production' ? 'https://api.greenco.co.nz' : 'http://localhost:9009'}/api/campaign/${campaign?.id}/preview`} />
+            <CampaignPreview elevated previewUrl={process.env.NODE_ENV == 'production' ? `/api/preview/${campaign?.id}/view/index.html` : `http://localhost:9009/api/campaign/${campaign?.id}/preview`} />
           </Box>
         )
       case 'people-viewed':
