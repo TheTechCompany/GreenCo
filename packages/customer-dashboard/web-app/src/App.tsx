@@ -55,42 +55,45 @@ const theme = {
   },
 };
 
-const routes = () => {
-  let token = localStorage.getItem('token');
-    return [
-      {
-        path: '/',
-        element: <LoginPage />,
-        children: [
-          {path: '', element: <LoginForm />},
-          {path: 'signup', element: <SignUpForm />}
-        ]
-      },
-      {
-        path: 'account-recovery',
-        element: <ForgottenPassForm />
-      },
-      {
-        path: '/home',
-        element: token ? <Dashboard /> : <Navigate to="/" />,
-        children: token ? [
-          {
-            path: 'campaigns', 
-            element: <Outlet />,
-            children: [
-              {path: '', element: <Campaigns />},
-              {path: ':id', element: <SingleCampaign />}
-            ]
-          },
-        ] : []
-      }
-    ];
-
-}
-
-const routing = useRoutes(routes())
-
 function App() {
+
+
+  const routes = () => {
+    let token = localStorage.getItem('token');
+      return [
+        {
+          path: '/',
+          element: <LoginPage />,
+          children: [
+            {path: '', element: <LoginForm />},
+            {path: 'signup', element: <SignUpForm />}
+          ]
+        },
+        {
+          path: 'account-recovery',
+          element: <ForgottenPassForm />
+        },
+        {
+          path: '/home',
+          element: token ? <Dashboard /> : <Navigate to="/" />,
+          children: token ? [
+            {
+              path: 'campaigns', 
+              element: <Outlet />,
+              children: [
+                {path: '', element: <Campaigns />},
+                {path: ':id', element: <SingleCampaign />}
+              ]
+            },
+          ] : []
+        }
+      ];
+
+  }
+
+  const routing = useRoutes(routes())
+
+
   return (
     <ApolloProvider client={client}>
     <Grommet style={{ display: "flex" }} full theme={theme}>
