@@ -38,7 +38,7 @@ type ScheduleView @auth(rules: [
 }
 
 type ScheduleSlot @auth(rules: [
-	{operations: [READ, UPDATE, CREATE], where: {schedule: {organisation: {id: "$jwt.organisation"}}}},
+	{operations: [READ, UPDATE, CREATE], where: { schedule: { organisation: {id: "$jwt.organisation"}}} },
 	{operations: [UPDATE, DELETE], bind: {schedule: {organisation: {id: "$jwt.organisation"}}}},
 ]) {
 	id: ID! @id
@@ -49,6 +49,8 @@ type ScheduleSlot @auth(rules: [
 
 	startDate: DateTime
 	endDate: DateTime
+
+
 	schedule: Schedule @relationship(type: "HAS_SLOT", direction: IN)
 }
 
@@ -71,8 +73,15 @@ type ScheduleTier @auth(rules: [
 	percent: Float
 	slots: Float
 
+	slotsFilled: [ScheduleTierFilled] @ignore
+
 	color: String
 
 	organisation: HiveOrganisation @relationship(type: "HAS_TIER", direction: IN)
+}
+
+type ScheduleTierFilled  @exclude {
+	slot: TemplateSlot @ignore
+	filled: Float @ignore
 }
 `

@@ -8,6 +8,9 @@ export const ScheduleSingleContext = React.createContext<{
 	views?: {id: string, name: string, tags: string[]}[]
 	tiers?: any[]
 	refresh?: () => void;
+
+	activeView?: string | null,
+	changeActiveView?: (view: string) => void
 }>({
 
 })

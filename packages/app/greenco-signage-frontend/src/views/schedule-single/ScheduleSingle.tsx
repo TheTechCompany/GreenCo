@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Select, Text } from 'grommet';
 import { client, useMutation, useQuery } from '@greenco/signage-api';
 import { Analytics, Scorecard, Monitor, Map, SchedulePlay } from 'grommet-icons';
@@ -14,6 +14,9 @@ import { ScheduleViews } from './views/ScheduleViews';
 export const ScheduleSingle : React.FC<{}> = (props) => {
 	const query = useQuery()
 	const client = useApolloClient()
+
+	const [ activeView, changeActiveView ] = useState<string | null>(null);
+
 
 	const resolvedPath = useResolvedPath(`:id`)
 	const match = useMatch(resolvedPath.pathname) || {params: {id: ''}}
@@ -88,6 +91,13 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 					percent
 					slots
 					color
+
+					slotsFilled {
+						slot {
+							id
+						}
+						filled
+					}
 				}
 
 			
@@ -149,6 +159,8 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 
 	return (
 		<ScheduleSingleProvider value={{
+			activeView,
+			changeActiveView,
 			scheduleId: id,
 			locations: schedule?.locations,
 			screens: schedule?.screens,

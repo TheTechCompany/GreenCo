@@ -20,6 +20,36 @@ export default async (pool: Pool, channel: Channel, driver: Driver) => {
 			}
 
 		},
+		ScheduleTier: {
+			slotsFilled: async (parent: any) => {
+				let query = `
+					MATCH (ts:TemplateSlot)<--(slots:ScheduleSlot)-[:USES_TIER]->(tier:ScheduleTier {id: $id})
+					WHERE slots.endDate > DATETIME() AND slots.startDate < DATETIME()
+					RETURN ts{
+						.*,
+						count: COUNT(slots)
+					}
+				`
+
+				const session = driver.session();
+				const result = await session.run(query, {id: parent.id})
+				session.close()
+
+				const counter = result.records?.[0]?.get(0);
+				console.log({result: result.records.map((x) => x.get(0))})
+
+				return result.records?.map((x) => {
+					let dat = x.get(0);
+					return {
+						slot: {
+							id: dat.id
+						},
+						filled: dat.count.toNumber()
+					}
+				})
+
+			}
+		},
 		Location: {
 			cameraAnalytics: async (parent: any) => {
 				if(!parent.id) return [];
