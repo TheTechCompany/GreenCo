@@ -55,7 +55,7 @@ const theme = {
   },
 };
 
-function App() {
+const App : React.FC<{}> = (props) => {
 
 
   const routes = () => {
