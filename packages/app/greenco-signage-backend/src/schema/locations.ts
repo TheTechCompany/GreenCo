@@ -12,7 +12,7 @@ type LocationGroup  @auth(rules: [
 	name: String
 	locations: [Location] @relationship(type: "HAS_LOCATION", direction: OUT)
 
-	schedule: Schedule @relationship(type: "USES_SCHEDULE", direction: IN)
+	schedule: Schedule @relationship(type: "USES_SCHEDULE", direction: OUT)
 
 	organisation: HiveOrganisation @relationship(type: "HAS_LOCATION_GROUP", direction: IN)
 }

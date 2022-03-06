@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@greenco/signage-api';
 import { Box, Button, List, Select, Text } from 'grommet'
 import { CloudUpload, FormPreviousLink } from 'grommet-icons'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, useParams, useNavigate } from 'react-router-dom'
 import { ProvisionMachineModal } from '../../modals/provision-machine';
 import { ScreenSingleProvider } from './context';
@@ -10,20 +10,45 @@ import { ScreenComputers } from './ScreenComputers';
 import { ScreenDisplays } from './ScreenDisplays';
 import { gql, useApolloClient, useQuery as useApolloQuery } from '@apollo/client';
 import { FormControl } from '@hexhive/ui';
+import { ScreenSchedule } from './ScreenSchedule';
 
 export const ScreenSingle = (props) => {
 	const query = useQuery()
 
 	const navigate = useNavigate()
 	const { id } = useParams()
-	
-	const [ modalOpen, openModal ] = useState(false);
+
+	const [modalOpen, openModal] = useState(false);
 
 
 
 	const { data } = useApolloQuery(gql`
 		query ScreenSingle ($id: ID!){
 
+			campaigns {
+				id
+				name
+			}
+
+			screenScheduleSlots(where: {screen: {id: $id}}){
+				id
+				startDate
+				endDate
+				slot {
+					id
+					name
+				}
+				campaign {
+					id
+					name
+				}
+				tier {
+					id
+					name
+					slots
+					color
+				}
+			}
 
 			greenScreens(where: {id: $id}){
 				id
@@ -67,6 +92,44 @@ export const ScreenSingle = (props) => {
 					name
 					lat
 					lng
+
+					group{
+						schedule{
+
+							tiers {
+								id
+								name
+							}
+
+							template {
+								slots {
+									id
+									name
+								}
+							}
+
+							slots {
+								id
+								startDate
+								endDate
+								slot {
+									id
+									name
+								}
+								campaign {
+									id
+									name
+								}
+								tier {
+									id
+									name
+									slots
+									color
+								}
+							}
+							
+						}
+					}
 				}
 			}
 
@@ -86,21 +149,26 @@ export const ScreenSingle = (props) => {
 
 	const slots = machine?.slots || [];
 
+	const scheduleViews = machine?.location?.group?.schedule?.template?.slots;
+	const scheduledCampaigns = machine?.location?.group?.schedule?.slots;
+
+	const tiers = machine?.location?.group?.schedule?.tiers || [];
+
 	const client = useApolloClient()
 
 	const refresh = () => {
-		client.refetchQueries({include: ['ScreenSingle']})
+		client.refetchQueries({ include: ['ScreenSingle'] })
 	}
 
 	const templates = data?.greenScreenTemplates || []
 
-	const [ updateScreenTemplate ] = useMutation((mutation, args: {template: string}) => {
+	const [updateScreenTemplate] = useMutation((mutation, args: { template: string }) => {
 		const item = mutation.updateGreenScreens({
-			where: {id: id},
+			where: { id: id },
 			update: {
 				template: {
-					connect: {where: {node: {id: args.template}}},
-					disconnect: {where: {node: {id_NOT: args.template}}}
+					connect: { where: { node: { id: args.template } } },
+					disconnect: { where: { node: { id_NOT: args.template } } }
 				}
 			}
 		})
@@ -129,44 +197,50 @@ export const ScreenSingle = (props) => {
 	// 	refetchQueries: [query.machines({where: {id: id}})],
 	// })
 
+	console.log({machine})
+
 	return (
 		<ScreenSingleProvider value={{
 			id: id,
+			campaigns: data?.campaigns || [],
 			screen: data?.greenScreens?.[0],
+			scheduledCampaigns: scheduledCampaigns?.concat(data?.screenScheduleSlots || []),
+			tiers,
+			scheduleViews,
 			slots,
 			refresh
 		}}>
-		<ProvisionMachineModal
-			onSubmit={(provision) => {
-				// provisionMachine({
-				// 	args: {
-				// 		networkName: provision.code,
-				// 	}
-				// }).then(() => {
-				// 	openModal(false)
-				// })
-			}}
-			onClose={() => openModal(false)}
-			open={modalOpen} />
-		<Box 
-			round="xsmall"
-			flex 
-			overflow="hidden"
-			background="neutral-1" 
-			elevation="small">
-			
-			<Box 
-				align="center"
-				justify="between"
-				pad="xsmall" 
-				background="accent-2" 
-				direction="row">
+			<ProvisionMachineModal
+				onSubmit={(provision) => {
+					// provisionMachine({
+					// 	args: {
+					// 		networkName: provision.code,
+					// 	}
+					// }).then(() => {
+					// 	openModal(false)
+					// })
+				}}
+				onClose={() => openModal(false)}
+				open={modalOpen} />
+			<Box
+				round="xsmall"
+				flex
+				overflow="hidden"
+				background="neutral-1"
+				elevation="small">
+
+				<Box
+					align="center"
+					justify="between"
+					pad="xsmall"
+					background="accent-2"
+					direction="row">
 					<Box direction='row' align='center' gap="xsmall">
-						<Button 
+						<Button
 							hoverIndicator
 							onClick={() => navigate('../')}
-							plain 
-							style={{padding: 6, borderRadius: 3}} 
+							plain
+							style={{ padding: 6, borderRadius: 3 }}
 							icon={<FormPreviousLink />} />
 						<Box>
 							<Text>{machine?.name}</Text>
@@ -177,7 +251,7 @@ export const ScreenSingle = (props) => {
 					<Box>
 						{/* <Text size="small">Template</Text> */}
 						<Select
-							onChange={({value}) => {
+							onChange={({ value }) => {
 								updateScreenTemplate({
 									args: {
 										template: value.id
@@ -187,31 +261,31 @@ export const ScreenSingle = (props) => {
 								})
 							}}
 							size='small'
-							plain 
+							plain
 							options={templates}
 							labelKey='name'
-							valueKey={{key: 'id', reduce: true}}
+							valueKey={{ key: 'id', reduce: true }}
 							value={machine.template?.id}
 							placeholder='Select template...' />
 					</Box>
-			</Box>
+				</Box>
 
-			<Box flex direction="row">
-				<Box elevation="small" border={{side: 'right', size: 'small'}}>
-					<List 
-						border={false}
-						onClickItem={(ev) => navigate(`${ev.item.toLowerCase()}`)}
-						data={["Computers", "Screen", "Location"]} />
-				</Box>
-				<Box flex>
-					<Routes>
-						<Route path={`computers/*`} element={<ScreenComputers/>} />
-						<Route path={`screen`} element={<ScreenDisplays/>} />
-						<Route path={`location`} element={<ScreenLocation />} />
-					</Routes>
+				<Box flex direction="row">
+					<Box elevation="small" border={{ side: 'right', size: 'small' }}>
+						<List
+							border={false}
+							onClickItem={(ev) => navigate(`${ev.item.toLowerCase()}`)}
+							data={["Computers", "Schedule", "Location"]} />
+					</Box>
+					<Box flex>
+						<Routes>
+							<Route path={`computers/*`} element={<ScreenComputers />} />
+							<Route path={`schedule`} element={<ScreenSchedule />} />
+							<Route path={`location`} element={<ScreenLocation />} />
+						</Routes>
+					</Box>
 				</Box>
 			</Box>
-		</Box>
 		</ScreenSingleProvider>
 	)
 }

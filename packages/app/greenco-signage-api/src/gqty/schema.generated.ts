@@ -21,6 +21,7 @@ export interface Scalars {
   Float: number;
   /** A date and time, represented as an ISO-8601 string */
   DateTime: string;
+  Hash: any;
 }
 
 export interface CampaignAnalyticCampaignAggregateInput {
@@ -1317,7 +1318,7 @@ export interface CustomerAccountCreateInput {
   customer?: Maybe<CustomerAccountCustomerFieldInput>;
   email?: Maybe<Scalars["String"]>;
   name: Scalars["String"];
-  password?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["Hash"]>;
 }
 
 export interface CustomerAccountCustomerAggregateInput {
@@ -1491,7 +1492,7 @@ export interface CustomerAccountUpdateInput {
   customer?: Maybe<CustomerAccountCustomerUpdateFieldInput>;
   email?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["Hash"]>;
 }
 
 export interface CustomerAccountWhere {
@@ -1532,16 +1533,7 @@ export interface CustomerAccountWhere {
   name_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
   name_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
   name_STARTS_WITH?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  password_CONTAINS?: Maybe<Scalars["String"]>;
-  password_ENDS_WITH?: Maybe<Scalars["String"]>;
-  password_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  password_NOT?: Maybe<Scalars["String"]>;
-  password_NOT_CONTAINS?: Maybe<Scalars["String"]>;
-  password_NOT_ENDS_WITH?: Maybe<Scalars["String"]>;
-  password_NOT_IN?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  password_NOT_STARTS_WITH?: Maybe<Scalars["String"]>;
-  password_STARTS_WITH?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["Hash"]>;
 }
 
 export interface CustomerAccountsAggregateInput {
@@ -1644,26 +1636,6 @@ export interface CustomerAccountsNodeAggregationWhereInput {
   name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  password_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  password_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  password_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  password_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  password_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  password_EQUAL?: Maybe<Scalars["String"]>;
-  password_GT?: Maybe<Scalars["Int"]>;
-  password_GTE?: Maybe<Scalars["Int"]>;
-  password_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
-  password_LONGEST_GT?: Maybe<Scalars["Int"]>;
-  password_LONGEST_GTE?: Maybe<Scalars["Int"]>;
-  password_LONGEST_LT?: Maybe<Scalars["Int"]>;
-  password_LONGEST_LTE?: Maybe<Scalars["Int"]>;
-  password_LT?: Maybe<Scalars["Int"]>;
-  password_LTE?: Maybe<Scalars["Int"]>;
-  password_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
-  password_SHORTEST_GT?: Maybe<Scalars["Int"]>;
-  password_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
-  password_SHORTEST_LT?: Maybe<Scalars["Int"]>;
-  password_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
 }
 
 export interface CustomerAccountsUpdateConnectionInput {
@@ -2028,6 +2000,7 @@ export interface CustomerWhere {
 }
 
 export interface GreenScreenConnectInput {
+  customSchedule?: Maybe<Array<GreenScreenCustomScheduleConnectFieldInput>>;
   location?: Maybe<GreenScreenLocationConnectFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationConnectFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsConnectFieldInput>>;
@@ -2035,6 +2008,9 @@ export interface GreenScreenConnectInput {
 }
 
 export interface GreenScreenConnectOrCreateInput {
+  customSchedule?: Maybe<
+    Array<GreenScreenCustomScheduleConnectOrCreateFieldInput>
+  >;
   location?: Maybe<GreenScreenLocationConnectOrCreateFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationConnectOrCreateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsConnectOrCreateFieldInput>>;
@@ -2050,6 +2026,7 @@ export interface GreenScreenConnectWhere {
 }
 
 export interface GreenScreenCreateInput {
+  customSchedule?: Maybe<GreenScreenCustomScheduleFieldInput>;
   location?: Maybe<GreenScreenLocationFieldInput>;
   name?: Maybe<Scalars["String"]>;
   networkName?: Maybe<Scalars["String"]>;
@@ -2059,7 +2036,118 @@ export interface GreenScreenCreateInput {
   template?: Maybe<GreenScreenTemplateFieldInput>;
 }
 
+export interface GreenScreenCustomScheduleAggregateInput {
+  AND?: Maybe<Array<GreenScreenCustomScheduleAggregateInput>>;
+  OR?: Maybe<Array<GreenScreenCustomScheduleAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<GreenScreenCustomScheduleNodeAggregationWhereInput>;
+}
+
+export interface GreenScreenCustomScheduleConnectFieldInput {
+  connect?: Maybe<Array<ScheduleSlotConnectInput>>;
+  where?: Maybe<ScheduleSlotConnectWhere>;
+}
+
+export interface GreenScreenCustomScheduleConnectOrCreateFieldInput {
+  onCreate: GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate;
+  where: ScheduleSlotConnectOrCreateWhere;
+}
+
+export interface GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate {
+  node: ScheduleSlotCreateInput;
+}
+
+export interface GreenScreenCustomScheduleConnectionSort {
+  node?: Maybe<ScheduleSlotSort>;
+}
+
+export interface GreenScreenCustomScheduleConnectionWhere {
+  AND?: Maybe<Array<GreenScreenCustomScheduleConnectionWhere>>;
+  OR?: Maybe<Array<GreenScreenCustomScheduleConnectionWhere>>;
+  node?: Maybe<ScheduleSlotWhere>;
+  node_NOT?: Maybe<ScheduleSlotWhere>;
+}
+
+export interface GreenScreenCustomScheduleCreateFieldInput {
+  node: ScheduleSlotCreateInput;
+}
+
+export interface GreenScreenCustomScheduleDeleteFieldInput {
+  delete?: Maybe<ScheduleSlotDeleteInput>;
+  where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+}
+
+export interface GreenScreenCustomScheduleDisconnectFieldInput {
+  disconnect?: Maybe<ScheduleSlotDisconnectInput>;
+  where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+}
+
+export interface GreenScreenCustomScheduleFieldInput {
+  connect?: Maybe<Array<GreenScreenCustomScheduleConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenCustomScheduleConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenCustomScheduleCreateFieldInput>>;
+}
+
+export interface GreenScreenCustomScheduleNodeAggregationWhereInput {
+  AND?: Maybe<Array<GreenScreenCustomScheduleNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<GreenScreenCustomScheduleNodeAggregationWhereInput>>;
+  endDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  startDate_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MAX_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_EQUAL?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_MIN_LTE?: Maybe<Scalars["DateTime"]>;
+}
+
+export interface GreenScreenCustomScheduleUpdateConnectionInput {
+  node?: Maybe<ScheduleSlotUpdateInput>;
+}
+
+export interface GreenScreenCustomScheduleUpdateFieldInput {
+  connect?: Maybe<Array<GreenScreenCustomScheduleConnectFieldInput>>;
+  connectOrCreate?: Maybe<
+    Array<GreenScreenCustomScheduleConnectOrCreateFieldInput>
+  >;
+  create?: Maybe<Array<GreenScreenCustomScheduleCreateFieldInput>>;
+  delete?: Maybe<Array<GreenScreenCustomScheduleDeleteFieldInput>>;
+  disconnect?: Maybe<Array<GreenScreenCustomScheduleDisconnectFieldInput>>;
+  update?: Maybe<GreenScreenCustomScheduleUpdateConnectionInput>;
+  where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+}
+
 export interface GreenScreenDeleteInput {
+  customSchedule?: Maybe<Array<GreenScreenCustomScheduleDeleteFieldInput>>;
   location?: Maybe<GreenScreenLocationDeleteFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationDeleteFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsDeleteFieldInput>>;
@@ -2067,6 +2155,7 @@ export interface GreenScreenDeleteInput {
 }
 
 export interface GreenScreenDisconnectInput {
+  customSchedule?: Maybe<Array<GreenScreenCustomScheduleDisconnectFieldInput>>;
   location?: Maybe<GreenScreenLocationDisconnectFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationDisconnectFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsDisconnectFieldInput>>;
@@ -2338,6 +2427,7 @@ export interface GreenScreenOrganisationUpdateFieldInput {
 }
 
 export interface GreenScreenRelationInput {
+  customSchedule?: Maybe<Array<GreenScreenCustomScheduleCreateFieldInput>>;
   location?: Maybe<GreenScreenLocationCreateFieldInput>;
   organisation?: Maybe<GreenScreenOrganisationCreateFieldInput>;
   slots?: Maybe<Array<GreenScreenSlotsCreateFieldInput>>;
@@ -3426,6 +3516,7 @@ export interface GreenScreenUniqueWhere {
 }
 
 export interface GreenScreenUpdateInput {
+  customSchedule?: Maybe<Array<GreenScreenCustomScheduleUpdateFieldInput>>;
   location?: Maybe<GreenScreenLocationUpdateFieldInput>;
   name?: Maybe<Scalars["String"]>;
   networkName?: Maybe<Scalars["String"]>;
@@ -3438,6 +3529,11 @@ export interface GreenScreenUpdateInput {
 export interface GreenScreenWhere {
   AND?: Maybe<Array<GreenScreenWhere>>;
   OR?: Maybe<Array<GreenScreenWhere>>;
+  customSchedule?: Maybe<ScheduleSlotWhere>;
+  customScheduleAggregate?: Maybe<GreenScreenCustomScheduleAggregateInput>;
+  customScheduleConnection?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+  customScheduleConnection_NOT?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+  customSchedule_NOT?: Maybe<ScheduleSlotWhere>;
   id?: Maybe<Scalars["ID"]>;
   id_CONTAINS?: Maybe<Scalars["ID"]>;
   id_ENDS_WITH?: Maybe<Scalars["ID"]>;
@@ -12356,6 +12452,7 @@ export const scalarsEnumsHash: import("gqty").ScalarsEnumsHash = {
   Boolean: true,
   DateTime: true,
   Float: true,
+  Hash: true,
   ID: true,
   Int: true,
   SortDirection: true,
@@ -12374,6 +12471,9 @@ export const generatedSchema = {
   },
   Campaign: {
     __typename: { __type: "String!" },
+    activeClusters: { __type: "Int" },
+    activeScreens: { __type: "Int" },
+    activeTier: { __type: "String" },
     analytics: {
       __type: "[CampaignAnalytic]",
       __args: {
@@ -12454,7 +12554,12 @@ export const generatedSchema = {
         where: "CampaignOrganisationConnectionWhere",
       },
     },
-    peopleCount: { __type: "[CameraAnalytic]" },
+    peopleCount: { __type: "Int" },
+    peopleCountWeek: { __type: "Int" },
+    peopleTimeline: {
+      __type: "[CampaignInteraction]",
+      __args: { length: "String", unit: "String" },
+    },
     views: { __type: "Int" },
   },
   CampaignAggregateSelection: {
@@ -13664,8 +13769,8 @@ export const generatedSchema = {
   },
   CampaignInteraction: {
     __typename: { __type: "String!" },
-    interactions: { __type: "Int" },
     time: { __type: "DateTime" },
+    value: { __type: "Int" },
   },
   CampaignOptions: {
     limit: { __type: "Int" },
@@ -14087,7 +14192,7 @@ export const generatedSchema = {
     email: { __type: "String" },
     id: { __type: "ID!" },
     name: { __type: "String!" },
-    password: { __type: "String" },
+    password: { __type: "Hash" },
   },
   CustomerAccountAggregateSelection: {
     __typename: { __type: "String!" },
@@ -14095,7 +14200,6 @@ export const generatedSchema = {
     email: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    password: { __type: "StringAggregateSelection!" },
   },
   CustomerAccountConnectInput: {
     customer: { __type: "CustomerAccountCustomerConnectFieldInput" },
@@ -14111,7 +14215,7 @@ export const generatedSchema = {
     customer: { __type: "CustomerAccountCustomerFieldInput" },
     email: { __type: "String" },
     name: { __type: "String!" },
-    password: { __type: "String" },
+    password: { __type: "Hash" },
   },
   CustomerAccountCustomerAggregateInput: {
     AND: { __type: "[CustomerAccountCustomerAggregateInput!]" },
@@ -14288,7 +14392,7 @@ export const generatedSchema = {
     customer: { __type: "CustomerAccountCustomerUpdateFieldInput" },
     email: { __type: "String" },
     name: { __type: "String" },
-    password: { __type: "String" },
+    password: { __type: "Hash" },
   },
   CustomerAccountWhere: {
     AND: { __type: "[CustomerAccountWhere!]" },
@@ -14330,16 +14434,7 @@ export const generatedSchema = {
     name_NOT_IN: { __type: "[String]" },
     name_NOT_STARTS_WITH: { __type: "String" },
     name_STARTS_WITH: { __type: "String" },
-    password: { __type: "String" },
-    password_CONTAINS: { __type: "String" },
-    password_ENDS_WITH: { __type: "String" },
-    password_IN: { __type: "[String]" },
-    password_NOT: { __type: "String" },
-    password_NOT_CONTAINS: { __type: "String" },
-    password_NOT_ENDS_WITH: { __type: "String" },
-    password_NOT_IN: { __type: "[String]" },
-    password_NOT_STARTS_WITH: { __type: "String" },
-    password_STARTS_WITH: { __type: "String" },
+    password: { __type: "Hash" },
   },
   CustomerAccountsAggregateInput: {
     AND: { __type: "[CustomerAccountsAggregateInput!]" },
@@ -14435,26 +14530,6 @@ export const generatedSchema = {
     name_SHORTEST_GTE: { __type: "Int" },
     name_SHORTEST_LT: { __type: "Int" },
     name_SHORTEST_LTE: { __type: "Int" },
-    password_AVERAGE_EQUAL: { __type: "Float" },
-    password_AVERAGE_GT: { __type: "Float" },
-    password_AVERAGE_GTE: { __type: "Float" },
-    password_AVERAGE_LT: { __type: "Float" },
-    password_AVERAGE_LTE: { __type: "Float" },
-    password_EQUAL: { __type: "String" },
-    password_GT: { __type: "Int" },
-    password_GTE: { __type: "Int" },
-    password_LONGEST_EQUAL: { __type: "Int" },
-    password_LONGEST_GT: { __type: "Int" },
-    password_LONGEST_GTE: { __type: "Int" },
-    password_LONGEST_LT: { __type: "Int" },
-    password_LONGEST_LTE: { __type: "Int" },
-    password_LT: { __type: "Int" },
-    password_LTE: { __type: "Int" },
-    password_SHORTEST_EQUAL: { __type: "Int" },
-    password_SHORTEST_GT: { __type: "Int" },
-    password_SHORTEST_GTE: { __type: "Int" },
-    password_SHORTEST_LT: { __type: "Int" },
-    password_SHORTEST_LTE: { __type: "Int" },
   },
   CustomerAccountsRelationship: {
     __typename: { __type: "String!" },
@@ -14638,7 +14713,6 @@ export const generatedSchema = {
     email: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    password: { __type: "StringAggregateSelection!" },
   },
   CustomerDeleteInput: {
     accounts: { __type: "[CustomerAccountsDeleteFieldInput!]" },
@@ -14868,6 +14942,23 @@ export const generatedSchema = {
   },
   GreenScreen: {
     __typename: { __type: "String!" },
+    customSchedule: {
+      __type: "[ScheduleSlot]",
+      __args: { options: "ScheduleSlotOptions", where: "ScheduleSlotWhere" },
+    },
+    customScheduleAggregate: {
+      __type: "GreenScreenScheduleSlotCustomScheduleAggregationSelection",
+      __args: { where: "ScheduleSlotWhere" },
+    },
+    customScheduleConnection: {
+      __type: "GreenScreenCustomScheduleConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[GreenScreenCustomScheduleConnectionSort!]",
+        where: "GreenScreenCustomScheduleConnectionWhere",
+      },
+    },
     id: { __type: "ID!" },
     location: {
       __type: "Location",
@@ -14955,12 +15046,16 @@ export const generatedSchema = {
     networkName: { __type: "StringAggregateSelection!" },
   },
   GreenScreenConnectInput: {
+    customSchedule: { __type: "[GreenScreenCustomScheduleConnectFieldInput!]" },
     location: { __type: "GreenScreenLocationConnectFieldInput" },
     organisation: { __type: "GreenScreenOrganisationConnectFieldInput" },
     slots: { __type: "[GreenScreenSlotsConnectFieldInput!]" },
     template: { __type: "GreenScreenTemplateConnectFieldInput" },
   },
   GreenScreenConnectOrCreateInput: {
+    customSchedule: {
+      __type: "[GreenScreenCustomScheduleConnectOrCreateFieldInput!]",
+    },
     location: { __type: "GreenScreenLocationConnectOrCreateFieldInput" },
     organisation: {
       __type: "GreenScreenOrganisationConnectOrCreateFieldInput",
@@ -14973,6 +15068,7 @@ export const generatedSchema = {
   },
   GreenScreenConnectWhere: { node: { __type: "GreenScreenWhere!" } },
   GreenScreenCreateInput: {
+    customSchedule: { __type: "GreenScreenCustomScheduleFieldInput" },
     location: { __type: "GreenScreenLocationFieldInput" },
     name: { __type: "String" },
     networkName: { __type: "String" },
@@ -14981,13 +15077,127 @@ export const generatedSchema = {
     slots: { __type: "GreenScreenSlotsFieldInput" },
     template: { __type: "GreenScreenTemplateFieldInput" },
   },
+  GreenScreenCustomScheduleAggregateInput: {
+    AND: { __type: "[GreenScreenCustomScheduleAggregateInput!]" },
+    OR: { __type: "[GreenScreenCustomScheduleAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "GreenScreenCustomScheduleNodeAggregationWhereInput" },
+  },
+  GreenScreenCustomScheduleConnectFieldInput: {
+    connect: { __type: "[ScheduleSlotConnectInput!]" },
+    where: { __type: "ScheduleSlotConnectWhere" },
+  },
+  GreenScreenCustomScheduleConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "ScheduleSlotConnectOrCreateWhere!" },
+  },
+  GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScheduleSlotCreateInput!" },
+  },
+  GreenScreenCustomScheduleConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[GreenScreenCustomScheduleRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  GreenScreenCustomScheduleConnectionSort: {
+    node: { __type: "ScheduleSlotSort" },
+  },
+  GreenScreenCustomScheduleConnectionWhere: {
+    AND: { __type: "[GreenScreenCustomScheduleConnectionWhere!]" },
+    OR: { __type: "[GreenScreenCustomScheduleConnectionWhere!]" },
+    node: { __type: "ScheduleSlotWhere" },
+    node_NOT: { __type: "ScheduleSlotWhere" },
+  },
+  GreenScreenCustomScheduleCreateFieldInput: {
+    node: { __type: "ScheduleSlotCreateInput!" },
+  },
+  GreenScreenCustomScheduleDeleteFieldInput: {
+    delete: { __type: "ScheduleSlotDeleteInput" },
+    where: { __type: "GreenScreenCustomScheduleConnectionWhere" },
+  },
+  GreenScreenCustomScheduleDisconnectFieldInput: {
+    disconnect: { __type: "ScheduleSlotDisconnectInput" },
+    where: { __type: "GreenScreenCustomScheduleConnectionWhere" },
+  },
+  GreenScreenCustomScheduleFieldInput: {
+    connect: { __type: "[GreenScreenCustomScheduleConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenCustomScheduleConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenCustomScheduleCreateFieldInput!]" },
+  },
+  GreenScreenCustomScheduleNodeAggregationWhereInput: {
+    AND: { __type: "[GreenScreenCustomScheduleNodeAggregationWhereInput!]" },
+    OR: { __type: "[GreenScreenCustomScheduleNodeAggregationWhereInput!]" },
+    endDate_EQUAL: { __type: "DateTime" },
+    endDate_GT: { __type: "DateTime" },
+    endDate_GTE: { __type: "DateTime" },
+    endDate_LT: { __type: "DateTime" },
+    endDate_LTE: { __type: "DateTime" },
+    endDate_MAX_EQUAL: { __type: "DateTime" },
+    endDate_MAX_GT: { __type: "DateTime" },
+    endDate_MAX_GTE: { __type: "DateTime" },
+    endDate_MAX_LT: { __type: "DateTime" },
+    endDate_MAX_LTE: { __type: "DateTime" },
+    endDate_MIN_EQUAL: { __type: "DateTime" },
+    endDate_MIN_GT: { __type: "DateTime" },
+    endDate_MIN_GTE: { __type: "DateTime" },
+    endDate_MIN_LT: { __type: "DateTime" },
+    endDate_MIN_LTE: { __type: "DateTime" },
+    id_EQUAL: { __type: "ID" },
+    startDate_EQUAL: { __type: "DateTime" },
+    startDate_GT: { __type: "DateTime" },
+    startDate_GTE: { __type: "DateTime" },
+    startDate_LT: { __type: "DateTime" },
+    startDate_LTE: { __type: "DateTime" },
+    startDate_MAX_EQUAL: { __type: "DateTime" },
+    startDate_MAX_GT: { __type: "DateTime" },
+    startDate_MAX_GTE: { __type: "DateTime" },
+    startDate_MAX_LT: { __type: "DateTime" },
+    startDate_MAX_LTE: { __type: "DateTime" },
+    startDate_MIN_EQUAL: { __type: "DateTime" },
+    startDate_MIN_GT: { __type: "DateTime" },
+    startDate_MIN_GTE: { __type: "DateTime" },
+    startDate_MIN_LT: { __type: "DateTime" },
+    startDate_MIN_LTE: { __type: "DateTime" },
+  },
+  GreenScreenCustomScheduleRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "ScheduleSlot!" },
+  },
+  GreenScreenCustomScheduleUpdateConnectionInput: {
+    node: { __type: "ScheduleSlotUpdateInput" },
+  },
+  GreenScreenCustomScheduleUpdateFieldInput: {
+    connect: { __type: "[GreenScreenCustomScheduleConnectFieldInput!]" },
+    connectOrCreate: {
+      __type: "[GreenScreenCustomScheduleConnectOrCreateFieldInput!]",
+    },
+    create: { __type: "[GreenScreenCustomScheduleCreateFieldInput!]" },
+    delete: { __type: "[GreenScreenCustomScheduleDeleteFieldInput!]" },
+    disconnect: { __type: "[GreenScreenCustomScheduleDisconnectFieldInput!]" },
+    update: { __type: "GreenScreenCustomScheduleUpdateConnectionInput" },
+    where: { __type: "GreenScreenCustomScheduleConnectionWhere" },
+  },
   GreenScreenDeleteInput: {
+    customSchedule: { __type: "[GreenScreenCustomScheduleDeleteFieldInput!]" },
     location: { __type: "GreenScreenLocationDeleteFieldInput" },
     organisation: { __type: "GreenScreenOrganisationDeleteFieldInput" },
     slots: { __type: "[GreenScreenSlotsDeleteFieldInput!]" },
     template: { __type: "GreenScreenTemplateDeleteFieldInput" },
   },
   GreenScreenDisconnectInput: {
+    customSchedule: {
+      __type: "[GreenScreenCustomScheduleDisconnectFieldInput!]",
+    },
     location: { __type: "GreenScreenLocationDisconnectFieldInput" },
     organisation: { __type: "GreenScreenOrganisationDisconnectFieldInput" },
     slots: { __type: "[GreenScreenSlotsDisconnectFieldInput!]" },
@@ -15295,10 +15505,24 @@ export const generatedSchema = {
     where: { __type: "GreenScreenOrganisationConnectionWhere" },
   },
   GreenScreenRelationInput: {
+    customSchedule: { __type: "[GreenScreenCustomScheduleCreateFieldInput!]" },
     location: { __type: "GreenScreenLocationCreateFieldInput" },
     organisation: { __type: "GreenScreenOrganisationCreateFieldInput" },
     slots: { __type: "[GreenScreenSlotsCreateFieldInput!]" },
     template: { __type: "GreenScreenTemplateCreateFieldInput" },
+  },
+  GreenScreenScheduleSlotCustomScheduleAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection",
+    },
+  },
+  GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    endDate: { __type: "DateTimeAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    startDate: { __type: "DateTimeAggregateSelection!" },
   },
   GreenScreenScreenSlotSlotsAggregationSelection: {
     __typename: { __type: "String!" },
@@ -16552,6 +16776,7 @@ export const generatedSchema = {
   },
   GreenScreenUniqueWhere: { id: { __type: "ID" } },
   GreenScreenUpdateInput: {
+    customSchedule: { __type: "[GreenScreenCustomScheduleUpdateFieldInput!]" },
     location: { __type: "GreenScreenLocationUpdateFieldInput" },
     name: { __type: "String" },
     networkName: { __type: "String" },
@@ -16563,6 +16788,17 @@ export const generatedSchema = {
   GreenScreenWhere: {
     AND: { __type: "[GreenScreenWhere!]" },
     OR: { __type: "[GreenScreenWhere!]" },
+    customSchedule: { __type: "ScheduleSlotWhere" },
+    customScheduleAggregate: {
+      __type: "GreenScreenCustomScheduleAggregateInput",
+    },
+    customScheduleConnection: {
+      __type: "GreenScreenCustomScheduleConnectionWhere",
+    },
+    customScheduleConnection_NOT: {
+      __type: "GreenScreenCustomScheduleConnectionWhere",
+    },
+    customSchedule_NOT: { __type: "ScheduleSlotWhere" },
     id: { __type: "ID" },
     id_CONTAINS: { __type: "ID" },
     id_ENDS_WITH: { __type: "ID" },
@@ -24477,6 +24713,7 @@ export const generatedSchema = {
       },
     },
     slots: { __type: "Float" },
+    slotsFilled: { __type: "[ScheduleTierFilled]" },
   },
   ScheduleTierAggregateSelection: {
     __typename: { __type: "String!" },
@@ -24516,6 +24753,11 @@ export const generatedSchema = {
   ScheduleTierDisconnectInput: {
     organisation: { __type: "ScheduleTierOrganisationDisconnectFieldInput" },
     schedule: { __type: "ScheduleTierScheduleDisconnectFieldInput" },
+  },
+  ScheduleTierFilled: {
+    __typename: { __type: "String!" },
+    filled: { __type: "Float" },
+    slot: { __type: "TemplateSlot" },
   },
   ScheduleTierHiveOrganisationOrganisationAggregationSelection: {
     __typename: { __type: "String!" },
@@ -28256,6 +28498,9 @@ export interface CameraAnalyticResult {
 
 export interface Campaign {
   __typename?: "Campaign";
+  activeClusters?: Maybe<ScalarsEnums["Int"]>;
+  activeScreens?: Maybe<ScalarsEnums["Int"]>;
+  activeTier?: Maybe<ScalarsEnums["String"]>;
   analytics: (args?: {
     options?: Maybe<CampaignAnalyticOptions>;
     where?: Maybe<CampaignAnalyticWhere>;
@@ -28314,7 +28559,12 @@ export interface Campaign {
     sort?: Maybe<Array<CampaignOrganisationConnectionSort>>;
     where?: Maybe<CampaignOrganisationConnectionWhere>;
   }) => CampaignOrganisationConnection;
-  peopleCount?: Maybe<Array<Maybe<CameraAnalytic>>>;
+  peopleCount?: Maybe<ScalarsEnums["Int"]>;
+  peopleCountWeek?: Maybe<ScalarsEnums["Int"]>;
+  peopleTimeline: (args?: {
+    length?: Maybe<Scalars["String"]>;
+    unit?: Maybe<Scalars["String"]>;
+  }) => Maybe<Array<Maybe<CampaignInteraction>>>;
   views?: Maybe<ScalarsEnums["Int"]>;
 }
 
@@ -28560,8 +28810,8 @@ export interface CampaignHiveOrganisationOrganisationNodeAggregateSelection {
 
 export interface CampaignInteraction {
   __typename?: "CampaignInteraction";
-  interactions?: Maybe<ScalarsEnums["Int"]>;
   time?: Maybe<ScalarsEnums["DateTime"]>;
+  value?: Maybe<ScalarsEnums["Int"]>;
 }
 
 export interface CampaignOrganisationConnection {
@@ -28823,7 +29073,7 @@ export interface CustomerAccount {
   email?: Maybe<ScalarsEnums["String"]>;
   id: ScalarsEnums["ID"];
   name: ScalarsEnums["String"];
-  password?: Maybe<ScalarsEnums["String"]>;
+  password?: Maybe<ScalarsEnums["Hash"]>;
 }
 
 export interface CustomerAccountAggregateSelection {
@@ -28832,7 +29082,6 @@ export interface CustomerAccountAggregateSelection {
   email: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  password: StringAggregateSelection;
 }
 
 export interface CustomerAccountCustomerConnection {
@@ -28921,7 +29170,6 @@ export interface CustomerCustomerAccountAccountsNodeAggregateSelection {
   email: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  password: StringAggregateSelection;
 }
 
 export interface CustomerHiveOrganisationOrganisationAggregationSelection {
@@ -28972,6 +29220,19 @@ export interface FloatAggregateSelection {
 
 export interface GreenScreen {
   __typename?: "GreenScreen";
+  customSchedule: (args?: {
+    options?: Maybe<ScheduleSlotOptions>;
+    where?: Maybe<ScheduleSlotWhere>;
+  }) => Maybe<Array<Maybe<ScheduleSlot>>>;
+  customScheduleAggregate: (args?: {
+    where?: Maybe<ScheduleSlotWhere>;
+  }) => Maybe<GreenScreenScheduleSlotCustomScheduleAggregationSelection>;
+  customScheduleConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<GreenScreenCustomScheduleConnectionSort>>;
+    where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
+  }) => GreenScreenCustomScheduleConnection;
   id: ScalarsEnums["ID"];
   location: (args?: {
     options?: Maybe<LocationOptions>;
@@ -29038,6 +29299,19 @@ export interface GreenScreenAggregateSelection {
   networkName: StringAggregateSelection;
 }
 
+export interface GreenScreenCustomScheduleConnection {
+  __typename?: "GreenScreenCustomScheduleConnection";
+  edges: Array<GreenScreenCustomScheduleRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface GreenScreenCustomScheduleRelationship {
+  __typename?: "GreenScreenCustomScheduleRelationship";
+  cursor: ScalarsEnums["String"];
+  node: ScheduleSlot;
+}
+
 export interface GreenScreenGreenScreenTemplateTemplateAggregationSelection {
   __typename?: "GreenScreenGreenScreenTemplateTemplateAggregationSelection";
   count: ScalarsEnums["Int"];
@@ -29101,6 +29375,19 @@ export interface GreenScreenOrganisationRelationship {
   __typename?: "GreenScreenOrganisationRelationship";
   cursor: ScalarsEnums["String"];
   node: HiveOrganisation;
+}
+
+export interface GreenScreenScheduleSlotCustomScheduleAggregationSelection {
+  __typename?: "GreenScreenScheduleSlotCustomScheduleAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection>;
+}
+
+export interface GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection {
+  __typename?: "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection";
+  endDate: DateTimeAggregateSelection;
+  id: IDAggregateSelection;
+  startDate: DateTimeAggregateSelection;
 }
 
 export interface GreenScreenScreenSlotSlotsAggregationSelection {
@@ -31213,6 +31500,7 @@ export interface ScheduleTier {
     where?: Maybe<ScheduleTierScheduleConnectionWhere>;
   }) => ScheduleTierScheduleConnection;
   slots?: Maybe<ScalarsEnums["Float"]>;
+  slotsFilled?: Maybe<Array<Maybe<ScheduleTierFilled>>>;
 }
 
 export interface ScheduleTierAggregateSelection {
@@ -31223,6 +31511,12 @@ export interface ScheduleTierAggregateSelection {
   name: StringAggregateSelection;
   percent: FloatAggregateSelection;
   slots: FloatAggregateSelection;
+}
+
+export interface ScheduleTierFilled {
+  __typename?: "ScheduleTierFilled";
+  filled?: Maybe<ScalarsEnums["Float"]>;
+  slot?: Maybe<TemplateSlot>;
 }
 
 export interface ScheduleTierHiveOrganisationOrganisationAggregationSelection {
@@ -32727,6 +33021,8 @@ export interface SchemaObjectTypes {
   FloatAggregateSelection: FloatAggregateSelection;
   GreenScreen: GreenScreen;
   GreenScreenAggregateSelection: GreenScreenAggregateSelection;
+  GreenScreenCustomScheduleConnection: GreenScreenCustomScheduleConnection;
+  GreenScreenCustomScheduleRelationship: GreenScreenCustomScheduleRelationship;
   GreenScreenGreenScreenTemplateTemplateAggregationSelection: GreenScreenGreenScreenTemplateTemplateAggregationSelection;
   GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection: GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection;
   GreenScreenHiveOrganisationOrganisationAggregationSelection: GreenScreenHiveOrganisationOrganisationAggregationSelection;
@@ -32737,6 +33033,8 @@ export interface SchemaObjectTypes {
   GreenScreenLocationRelationship: GreenScreenLocationRelationship;
   GreenScreenOrganisationConnection: GreenScreenOrganisationConnection;
   GreenScreenOrganisationRelationship: GreenScreenOrganisationRelationship;
+  GreenScreenScheduleSlotCustomScheduleAggregationSelection: GreenScreenScheduleSlotCustomScheduleAggregationSelection;
+  GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection;
   GreenScreenScreenSlotSlotsAggregationSelection: GreenScreenScreenSlotSlotsAggregationSelection;
   GreenScreenScreenSlotSlotsNodeAggregateSelection: GreenScreenScreenSlotSlotsNodeAggregateSelection;
   GreenScreenSlotsConnection: GreenScreenSlotsConnection;
@@ -32962,6 +33260,7 @@ export interface SchemaObjectTypes {
   ScheduleTemplateRelationship: ScheduleTemplateRelationship;
   ScheduleTier: ScheduleTier;
   ScheduleTierAggregateSelection: ScheduleTierAggregateSelection;
+  ScheduleTierFilled: ScheduleTierFilled;
   ScheduleTierHiveOrganisationOrganisationAggregationSelection: ScheduleTierHiveOrganisationOrganisationAggregationSelection;
   ScheduleTierHiveOrganisationOrganisationNodeAggregateSelection: ScheduleTierHiveOrganisationOrganisationNodeAggregateSelection;
   ScheduleTierOrganisationConnection: ScheduleTierOrganisationConnection;
@@ -33137,6 +33436,8 @@ export type SchemaObjectTypesNames =
   | "FloatAggregateSelection"
   | "GreenScreen"
   | "GreenScreenAggregateSelection"
+  | "GreenScreenCustomScheduleConnection"
+  | "GreenScreenCustomScheduleRelationship"
   | "GreenScreenGreenScreenTemplateTemplateAggregationSelection"
   | "GreenScreenGreenScreenTemplateTemplateNodeAggregateSelection"
   | "GreenScreenHiveOrganisationOrganisationAggregationSelection"
@@ -33147,6 +33448,8 @@ export type SchemaObjectTypesNames =
   | "GreenScreenLocationRelationship"
   | "GreenScreenOrganisationConnection"
   | "GreenScreenOrganisationRelationship"
+  | "GreenScreenScheduleSlotCustomScheduleAggregationSelection"
+  | "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection"
   | "GreenScreenScreenSlotSlotsAggregationSelection"
   | "GreenScreenScreenSlotSlotsNodeAggregateSelection"
   | "GreenScreenSlotsConnection"
@@ -33372,6 +33675,7 @@ export type SchemaObjectTypesNames =
   | "ScheduleTemplateRelationship"
   | "ScheduleTier"
   | "ScheduleTierAggregateSelection"
+  | "ScheduleTierFilled"
   | "ScheduleTierHiveOrganisationOrganisationAggregationSelection"
   | "ScheduleTierHiveOrganisationOrganisationNodeAggregateSelection"
   | "ScheduleTierOrganisationConnection"

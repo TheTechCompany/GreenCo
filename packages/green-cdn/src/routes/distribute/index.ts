@@ -18,25 +18,27 @@ export default (driver: Driver) => {
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
 
 			const campaigns = await session.run(`
+			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen {networkName: $networkName})-->(:ScreenSlot)-->(templateSlot:TemplateSlot {id: $id})
+			WITH distinct(schedule), templateSlot, screen
 
-			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(:GreenScreen {networkName: $networkName})-->(:ScreenSlot {id: $id})-->(templateSlot:TemplateSlot)
-			WITH distinct(schedule), templateSlot
 			CALL {
-				WITH schedule, templateSlot
+				WITH schedule, templateSlot, screen
 				MATCH (schedule)-->(slots:ScheduleSlot)-->(templateSlot)
-				WHERE slots.endDate > DATETIME()
+				OPTIONAL MATCH (templateSlot)<--(screenSlots:ScreenScheduleSlot)<--(screen)
+				WHERE slots.endDate > DATETIME() AND screenSlots.endDate > DATETIME()
+				WITH COLLECT(slots) + COLLECT(screenSlots) as cZ
+				UNWIND cZ as slotsZ 
 				CALL {
-					WITH slots
-					MATCH (slots)-->(campaign:Campaign)
-					WHERE campaign.assetFolder IS NOT NULL
+					WITH slotsZ
+					MATCH (slotsZ)-->(campaign:Campaign)
 					RETURN campaign{.*} as campaign
 				}
 				CALL {
-					WITH slots
-					MATCH (slots)-->(tiers:ScheduleTier)
+					WITH slotsZ
+					MATCH (slotsZ)-->(tiers:ScheduleTier)
 					RETURN tiers{.*} as tier
 				}
-				RETURN slots {
+				RETURN slotsZ {
 					.*,
 					tier,
 					campaign

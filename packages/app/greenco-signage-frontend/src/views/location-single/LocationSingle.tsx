@@ -34,13 +34,7 @@ export const LocationSingle = (props) => {
 				name
 				lat
 				lng
-				cameraAnalytics {
-					timestamp
-					results {
-						name
-						confidence
-					}
-				} 	
+			
 
 				screen {
 					id
@@ -58,6 +52,17 @@ export const LocationSingle = (props) => {
 			id
 		}
 	})
+
+/*
+	cameraAnalytics {
+					timestamp
+					results {
+						name
+						confidence
+					}
+				} 	
+*/
+
 	const group = data?.locationGroups?.[0] || {} // query.locationGroups({where: {id: id}})?.[0]
 
 	const locations = data?.locations || [] //({where: {group: {id: id}}})

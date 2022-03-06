@@ -11,14 +11,13 @@ export const ScheduleCampaigns = () => {
 
 	const [ selected, setSelected ] = useState<{id: string} | null>(null);
 
-	const [ activeView, changeActiveView ] = useState<string | null>(null);
 	
 	// const [ filteredCampaigns, setFilteredCampaigns ] = useState<any[]>()
 
 	const [ modalOpen, openModal ] = useState(false)
 	const [ viewMode, changeMode ] = useState(false)
 
-	const { scheduleId, tiers, views, campaigns, refresh } = useContext(ScheduleSingleContext)
+	const { scheduleId, tiers, views, campaigns, refresh, changeActiveView, activeView } = useContext(ScheduleSingleContext)
 
 	const { data } = useApolloQuery(gql`
 		query GetCampaigns {
@@ -31,7 +30,7 @@ export const ScheduleCampaigns = () => {
 	const allCampaigns = data?.campaigns || [];
 
 	const [ scheduleCampaign, scheduleInfo ] = useMutation((mutation, args: {tier: string, campaign: string, dates: string[]}) => {
-		if(!scheduleId) return;
+		if(!scheduleId || !args.campaign) return;
 	
 		let dateUpdate = {};
 		if(args.dates.length == 2){
@@ -74,7 +73,7 @@ export const ScheduleCampaigns = () => {
 		dates: string[],
 		screen: string
 	}) => {
-		if(!scheduleId) return;
+		if(!scheduleId || !args.campaign) return;
 
 		let dateUpdate = {};
 		if(args.dates.length == 2){
@@ -207,7 +206,7 @@ export const ScheduleCampaigns = () => {
 							plain
 							size='small'
 							labelKey={"name"}
-							onChange={({value}) => changeActiveView(value)}
+							onChange={({value}) => changeActiveView?.(value)}
 							valueKey={{key: 'id', reduce: true}}
 							value={activeView || views?.[0]?.id}
 							options={views || []} />
