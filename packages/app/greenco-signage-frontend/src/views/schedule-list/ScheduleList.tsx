@@ -111,7 +111,7 @@ export const ScheduleList : React.FC<ScheduleListProps> = (props) => {
 			<CreateScheduleModal 
 				selected={selected}
 				onSubmit={(schedule: any) => {
-					if(schedule.id){
+					if(!schedule.id){
 						createSchedule({args: {name: schedule.name}}).then(() => {
 							setModalOpen(false)
 						})
