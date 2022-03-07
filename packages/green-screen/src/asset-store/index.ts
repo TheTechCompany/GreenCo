@@ -77,11 +77,13 @@ export class AssetStore {
 			// 		this.failedAssets.splice(ix, 1)
 			// 	}
 			// };
+			console.log({path: path.join(this.assetStoragePath || '', manifestItem.id)})
 
-			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
+			await promises.writeFile(path.join(this.assetStoragePath || '', manifestItem.id), data)
 
 			await tar.x({
 				file: `${this.assetStoragePath}/${manifestItem.id}`,
+				
 				cwd: this.assetStoragePath,
 			})
 			console.log(`Pulled ${manifestItem.campaign?.name}`)
@@ -138,7 +140,7 @@ export class AssetStore {
 		console.log(`Pulling ${contentId}`)
 		const tarball = await axios.get(`${this.assetStoreUrl}/api/distribute/asset/${contentId}?token=${this.token}`)
 		console.log(`Pulling ${contentId} length : ${Buffer.from(tarball.data).length}`)
-		return tarball.data;
+		return Buffer.from(tarball.data);
 
 		// return await new Promise<Buffer | null>(async (resolve, reject) => {
 
