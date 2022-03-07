@@ -2,7 +2,7 @@ import { create, IPFSHTTPClient } from 'ipfs-http-client';
 import os from 'os';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
-import { promises } from 'fs';
+import { createWriteStream, promises } from 'fs';
 import tar from 'tar';
 import { TelemetryService } from '../telemetry';
 import { DisplayManager } from '../display-manager';
@@ -78,10 +78,32 @@ export class AssetStore {
 			// 	}
 			// };
 
-			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
+
+			let outPath = path.join(this.assetStoragePath||'', manifestItem.id);
+			console.log({path: path.join(this.assetStoragePath || '', manifestItem.id)})
+
+			let writeStream = createWriteStream(outPath)
+			await new Promise((resolve, reject) => {
+				data.pipe(writeStream)
+				let error : any = null;
+				writeStream.on('error', (err) => {
+					error = err;
+					writeStream.close();
+					reject(err);
+				})
+
+				writeStream.on('close', () => {
+					if(!error){
+						resolve(true);
+					}
+				})
+			})
+
+			// await promises.writeFile(outPath, data)
 
 			await tar.x({
-				file: `${this.assetStoragePath}/${manifestItem.id}`,
+				file: outPath,
+				
 				cwd: this.assetStoragePath,
 			})
 			console.log(`Pulled ${manifestItem.campaign?.name}`)
@@ -136,9 +158,16 @@ export class AssetStore {
 
 	async pull(contentId: string){
 		console.log(`Pulling ${contentId}`)
-		const tarball = await axios.get(`${this.assetStoreUrl}/api/distribute/asset/${contentId}?token=${this.token}`)
-		console.log(`Pulling ${contentId} length : ${Buffer.from(tarball.data).length}`)
-		return tarball.data;
+
+		const tarball = await axios({
+			method: 'get',
+			url: `${this.assetStoreUrl}/api/distribute/asset/${contentId}?token=${this.token}`,
+			responseType: 'stream'
+		})
+		
+		// console.log(`Pulling ${contentId} length : ${Buffer.from(tarball.data).length}`)
+
+		return tarball.data; //Buffer.from(tarball.data);
 
 		// return await new Promise<Buffer | null>(async (resolve, reject) => {
 

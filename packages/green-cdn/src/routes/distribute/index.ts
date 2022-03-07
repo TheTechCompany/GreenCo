@@ -80,7 +80,7 @@ export default (driver: Driver) => {
 						file: `${campaignPath}.tar.gz`,
 						cwd: `/data/campaigns`
 					},
-					[campaignPath]
+					[id]
 				)
 
 				writeFileSync(`${campaignPath}-hash`, currentHash.hash)
