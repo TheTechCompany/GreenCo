@@ -14,7 +14,7 @@ export const ScheduleLocations = () => {
 
 	const query = useQuery()
 
-	const { scheduleId, locations } = useContext(ScheduleSingleContext)
+	const { scheduleId, locations, refresh } = useContext(ScheduleSingleContext)
 
 	console.log(locations) 
 	
@@ -46,6 +46,7 @@ export const ScheduleLocations = () => {
 
 					connectLocation({args: {locationId: location}}).then(() => {
 						openModal(false)
+						refresh?.()
 					})
 				}}
 				onClose={() => openModal(false)}
