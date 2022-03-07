@@ -18,7 +18,7 @@ export default (driver: Driver) => {
 			let info = jwt.verify(req.query.token?.toString() || '', 'secret')
 
 			const campaigns = await session.run(`
-			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen {networkName: $networkName})-->(:ScreenSlot)-->(templateSlot:TemplateSlot {id: $id})
+			MATCH (schedule:Schedule)<--(:LocationGroup)-->(:Location)<--(screen:GreenScreen {networkName: $networkName})-->(:ScreenSlot  {id: $id})-->(templateSlot:TemplateSlot)
 			WITH distinct(schedule), templateSlot, screen
 
 			CALL {
