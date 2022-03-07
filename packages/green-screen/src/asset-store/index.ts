@@ -67,10 +67,12 @@ export class AssetStore {
 			if(!manifestItem.id) return;
 
 			const data = await this.pull(manifestItem.campaign?.id || '')
-			if(!data) {
-				this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
-				return {failed: true, id: manifestItem.id}
-			}
+			// if(!data) {
+			// 	this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
+			// 	return {failed: true, id: manifestItem.id}
+			// }
+
+
 			// }else{
 			// 	let ix = this.failedAssets.indexOf(manifestItem.id)
 			// 	if(ix > -1){
@@ -110,7 +112,7 @@ export class AssetStore {
 
 		}))
 
-		return {rejected: results.filter((a) => a?.failed).map((a) => a?.id || '')}
+		return {rejected: []}
 	}
 
 
