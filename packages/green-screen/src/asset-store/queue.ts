@@ -3,6 +3,7 @@ export interface AssetQueueItem {
 	startDate?: Date,
 	endDate?: Date,
 	tier?: {
+		id?: string,
 		slots?: number,
 		percent?: number,
 	},
@@ -23,6 +24,8 @@ export interface QueueRow {
 	items: QueueEntry[]
 	index: number,
 }
+
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 //Priority queue for displaying assets
 export class AssetQueue {
@@ -121,10 +124,20 @@ export class AssetQueue {
 	resetQueue(){
 		let qHr = (60 * 60 / this.asset_length);
 
+		let tierLabels = [...new Set(this.struct.map((x) => x.tier?.id))].map((x, ix) => {
+			return {
+				label: alphabet[ix],
+				tier: x
+			}
+		})
+
 		let tiers = this.struct.map((curr) => {
 			let priority =  Math.ceil((qHr / 100 * (curr.tier?.percent || 0)) / (curr.tier?.slots || 1))
+			
+			let label = tierLabels.find((a) => a.tier == curr.tier?.id)?.label || '';
+
 			return {
-				priority: priority,
+				priority: label,
 				item: {
 					...curr,
 					tier: {
@@ -139,7 +152,9 @@ export class AssetQueue {
 		}), {})
 
 		const dispersal = Object.keys(tiers).map((tier) => {
-			return Array.from(new Array(parseInt(tier) * tiers[tier].length)).map((x) => tier).join('')
+			let tierValue = tiers[tier].item.tier.show;
+
+			return Array.from(new Array(parseInt(tierValue) * tiers[tier].length)).map((x) => tier).join('')
 		})
 
 		this.queueChains = Object.keys(tiers).map((tier) => {
