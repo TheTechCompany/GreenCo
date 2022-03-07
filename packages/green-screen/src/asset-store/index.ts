@@ -77,12 +77,14 @@ export class AssetStore {
 			// 		this.failedAssets.splice(ix, 1)
 			// 	}
 			// };
+
+			let outPath = path.join(this.assetStoragePath||'', manifestItem.id);
 			console.log({path: path.join(this.assetStoragePath || '', manifestItem.id)})
 
-			await promises.writeFile(path.join(this.assetStoragePath || '', manifestItem.id), data)
+			await promises.writeFile(outPath, data)
 
 			await tar.x({
-				file: `${this.assetStoragePath}/${manifestItem.id}`,
+				file: outPath,
 				
 				cwd: this.assetStoragePath,
 			})
