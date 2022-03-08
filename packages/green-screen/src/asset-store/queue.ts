@@ -153,7 +153,7 @@ export class AssetQueue {
 
 		const dispersal = Object.keys(tiers).map((tier) => {
 			
-			let tierValue = tiers[tier]?.[0]?.item?.tier?.show;
+			let tierValue = tiers[tier]?.[0]?.tier?.show;
 			
 			console.log({tierValue, tier: tiers[tier]})
 
