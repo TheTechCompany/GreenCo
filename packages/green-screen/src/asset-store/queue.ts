@@ -155,6 +155,7 @@ export class AssetQueue {
 			
 			let tierValue = tiers[tier]?.[0]?.item?.tier?.show;
 			
+			console.log({tierValue, tier: tiers[tier]})
 
 			return Array.from(new Array(parseInt(tierValue) * tiers[tier].length)).map((x) => tier).join('')
 		})
