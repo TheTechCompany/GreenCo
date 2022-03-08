@@ -84,7 +84,7 @@ export class AssetStore {
 			// };
 
 
-			let outPath = path.join(this.assetStoragePath||'', manifestItem);
+			let outPath = path.join(this.assetStoragePath||'', `${manifestItem}.tgz`);
 			console.log({path: path.join(this.assetStoragePath || '', manifestItem)})
 
 			let writeStream = createWriteStream(outPath)
