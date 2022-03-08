@@ -152,7 +152,9 @@ export class AssetQueue {
 		}), {})
 
 		const dispersal = Object.keys(tiers).map((tier) => {
-			let tierValue = tiers[tier].item.tier.show;
+			
+			let tierValue = tiers[tier]?.[0]?.item?.tier?.show;
+			
 
 			return Array.from(new Array(parseInt(tierValue) * tiers[tier].length)).map((x) => tier).join('')
 		})
