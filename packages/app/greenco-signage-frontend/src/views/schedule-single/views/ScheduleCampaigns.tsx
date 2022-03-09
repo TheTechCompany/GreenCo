@@ -148,7 +148,7 @@ export const ScheduleCampaigns = () => {
 	// 	)
 	// }, [campaigns, activeView, screens])
 
-	const filteredCampaigns = campaigns?.filter((a) => a.slot?.id == (activeView || views?.[0]?.id)) || []
+	const filteredCampaigns = campaigns?.filter((a) => a.slot?.id == (activeView || views?.[0]?.id)).filter((a) => a) || []
 	console.log({activeView: (activeView || views?.[0]?.id), views})
 
 	const getSelected = () => {
@@ -226,12 +226,11 @@ export const ScheduleCampaigns = () => {
 							setSelected(item)
 							openModal(true)
 						}}
-					primaryKey="name"
 					data={filteredCampaigns || []} >
 						{(datum: any) => (
 							<Box direction="row" justify="between" align="center">
-								<Text>{datum.campaign.name}</Text>
-								<Text size='small'>{datum.tier?.name}</Text>
+								<Text>{datum?.campaign?.name}</Text>
+								<Text size='small'>{datum?.tier?.name}</Text>
 							</Box>
 						)}
 					</List>
