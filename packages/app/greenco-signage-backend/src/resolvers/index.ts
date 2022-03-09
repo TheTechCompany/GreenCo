@@ -11,6 +11,16 @@ export default async (pool: Pool, channel: Channel, driver: Driver) => {
 	const client = await pool.connect()
 
 	return {
+		CampaignAnalytic: {
+			scanned: async (parent: any) => {
+				const result = await client.query(`
+					SELECT COUNT(*) as count FROM green_screen_telemetry WHERE event = 'qr-code' AND properties->'qr' = $1
+				`, [
+					`"${parent.id}"`
+				])
+				return result.rows?.[0]?.count;
+			}
+		},
 		Mutation: {
 			updateSlotClient: async (parent: any, {id, version}: any, context: any, info: any) => {
 				return channel.sendToQueue(`GREEN-MACHINE:UPDATE`, Buffer.from(JSON.stringify({slot: id, version: version || 'latest'})))

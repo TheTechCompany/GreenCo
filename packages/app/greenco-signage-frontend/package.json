@@ -57,6 +57,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
+    "@babylonjs/core": "^4.2.1",
+    "@babylonjs/loaders": "^4.2.1",
     "@greenco/signage-api": "^0.0.3-alpha.27",
     "@greenco/styles": "^0.0.3-alpha.1",
     "@hexhive/auth-ui": "^0.0.6",

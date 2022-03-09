@@ -73,5 +73,6 @@ export default `
 		type: String
 		name: String
 		data: String
+		scanned: Int @ignore
 	}
 `

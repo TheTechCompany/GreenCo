@@ -1032,6 +1032,13 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
+"@babylonjs/core@4.2.1", "@babylonjs/core@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-4.2.1.tgz#9dc57dabf41d259a2343da308ec52575b368e588"
+  integrity sha512-Z2ZVNRKPB1UvmMeqQtxCJKrQtQ/hb5FcAZi66YEEE0MKBQlLmf6oZEM9vS1RljPK7NZoV/dZSdwjJgiQlGsuhA==
+  dependencies:
+    tslib ">=1.10.0"
+
 "@babylonjs/core@5.0.0-alpha.6":
   version "5.0.0-alpha.6"
   resolved "https://registry.npmjs.org/@babylonjs/core/-/core-5.0.0-alpha.6.tgz"
@@ -1046,6 +1053,15 @@
   dependencies:
     "@babylonjs/core" "5.0.0-alpha.6"
     babylonjs-gltf2interface "5.0.0-alpha.6"
+    tslib ">=1.10.0"
+
+"@babylonjs/loaders@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-4.2.1.tgz#34bcdf688f6bcb92bcf66de3d8fc297e9830026b"
+  integrity sha512-huLdk18nTqwXHYIbxpXRTo1smcL1eCD8TvvyWiHciRjPttpRNjoACSR/G2J2FD0ymSBu8ZS8cdMvq1by7x2DsA==
+  dependencies:
+    "@babylonjs/core" "4.2.1"
+    babylonjs-gltf2interface "4.2.1"
     tslib ">=1.10.0"
 
 "@bcoe/v8-coverage@^0.2.3":
@@ -4302,6 +4318,11 @@ babel-runtime@^7.0.0-beta.3:
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
+
+babylonjs-gltf2interface@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-4.2.1.tgz#d23c78a23a16771ad9e7f8f6d20b7c00b5ce0c33"
+  integrity sha512-ZBfKgIoztO1x1nyf9aPQJ+WXmB6Kw0VlyxvcKchIixbICqeeExiN8nmjvypwXC4hl+5ZDMnUKQNrIhh7uzulnA==
 
 babylonjs-gltf2interface@5.0.0-alpha.6:
   version "5.0.0-alpha.6"

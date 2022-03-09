@@ -98,11 +98,11 @@ export default class GreenScreen {
 
 				const asset = this.assetStore.getNextAsset()
 				// console.log("Asset", asset)
-				if(asset && asset.assetFolder && asset.id){
+				if(asset && asset.id){
 					// console.log("Play")
 					await this.displayManager.play({
 						id: asset.id || '',
-						assetFolder: asset.assetFolder || '',
+						// assetFolder: asset.assetFolder || '',
 					})
 				}
 

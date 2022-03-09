@@ -80,7 +80,7 @@ export class DisplayManager {
 		await this.telemtry.sendScreenshot(desktop)
 	}
 
-	async play(campaign: {id: string, assetFolder: string}){
+	async play(campaign: {id: string}){
 		try{
 			if(this.startTime){
 				const time = Date.now() - this.startTime
@@ -89,7 +89,7 @@ export class DisplayManager {
 			this.lastAsset = campaign
 			// this.currentAsset = id;
 			this.startTime = Date.now()
-			await this.page?.goto(`http://localhost:3000/${campaign.assetFolder}`)
+			await this.page?.goto(`http://localhost:3000/${campaign.id}`)
 			await this.page?.addScriptTag({content: analytics})
 	
 			if(this.isPublic){

@@ -62,15 +62,20 @@ export class AssetStore {
 	}
 
 	async pullAll(){
-		let results = await Promise.all(this.manifest.map(async (manifestItem) => {
-			console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.id}`)
-			if(!manifestItem.id) return;
 
-			const data = await this.pull(manifestItem.campaign?.id || '')
-			if(!data) {
-				this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
-				return {failed: true, id: manifestItem.id}
-			}
+		let assetIds = [...new Set(this.manifest.map((x) => x.campaign?.id))]
+
+		let results = await Promise.all(assetIds.map(async (manifestItem) => {
+			// console.log(`Pulling ${manifestItem.campaign?.name} - ${manifestItem.campaign?.id}`)
+			if(!manifestItem) return;
+
+			const data = await this.pull(manifestItem || '')
+			// if(!data) {
+			// 	this.failedAssets = [...new Set([...(this.failedAssets || []), manifestItem.id])]
+			// 	return {failed: true, id: manifestItem.id}
+			// }
+
+
 			// }else{
 			// 	let ix = this.failedAssets.indexOf(manifestItem.id)
 			// 	if(ix > -1){
@@ -79,8 +84,8 @@ export class AssetStore {
 			// };
 
 
-			let outPath = path.join(this.assetStoragePath||'', manifestItem.id);
-			console.log({path: path.join(this.assetStoragePath || '', manifestItem.id)})
+			let outPath = path.join(this.assetStoragePath||'', `${manifestItem}.tgz`);
+			console.log({path: path.join(this.assetStoragePath || '', manifestItem)})
 
 			let writeStream = createWriteStream(outPath)
 			await new Promise((resolve, reject) => {
@@ -106,11 +111,11 @@ export class AssetStore {
 				
 				cwd: this.assetStoragePath,
 			})
-			console.log(`Pulled ${manifestItem.campaign?.name}`)
+			console.log(`Pulled ${manifestItem}`)
 
 		}))
 
-		return {rejected: results.filter((a) => a?.failed).map((a) => a?.id || '')}
+		return {rejected: []}
 	}
 
 
