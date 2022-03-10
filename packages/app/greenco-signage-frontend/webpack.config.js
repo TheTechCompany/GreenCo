@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = (webpackConfigEnv, argv) => {
+  // webpackConfigEnv.analyze = true;
   const defaultConfig = singleSpaDefaults({
     orgName: "greenco-apps",
     projectName: "signage-frontend",
