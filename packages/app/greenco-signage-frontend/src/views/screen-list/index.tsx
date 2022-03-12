@@ -30,7 +30,7 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
                 name
                 online
                 networkName
-                
+
                 location {
                     name
                 }
@@ -75,7 +75,7 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
     })
 
     const [ updateMachine ] = useMutation((mutation, args: {id: string, name: string, networkName: string}) => {
-      
+        if(!args.id) return;
         const item = mutation.updateHiveOrganisations({
             update: {
                 greenScreens: [{
@@ -103,6 +103,24 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
         }
     })
 
+    const [ deleteMachine ] = useMutation((mutation, args: {id: string}) => {
+        if(!args?.id) return;
+
+        const item = mutation.updateHiveOrganisations({
+            update: {
+                greenScreens: [{
+                    delete: [{where: {node: {id: args.id}}}]
+                }]
+            }
+        })
+
+        return {
+            item: {
+                ...item.hiveOrganisations?.[0]
+            }
+        }
+    })
+
     return (
         <Box
             flex
@@ -113,6 +131,13 @@ export const ScreenList : React.FC<DisplayListProps> = (props) => {
             <CreateScreenModal 
                 selected={selected}
                 open={modalOpen} 
+                onDelete={() => {
+                    deleteMachine({args: {id: selected?.id}}).then(() => {
+                        refetch()
+                        openModal(false)
+                        setSelected(undefined)
+                    })
+                }}
                 onSubmit={(display) => {
                     if(display.id){
                         updateMachine({
