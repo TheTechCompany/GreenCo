@@ -204,7 +204,7 @@ export const ScreenSingle = (props) => {
 			id: id,
 			campaigns: data?.campaigns || [],
 			screen: data?.greenScreens?.[0],
-			scheduledCampaigns: scheduledCampaigns?.concat(data?.screenScheduleSlots || []),
+			scheduledCampaigns: scheduledCampaigns?.map((x) => ({...x, editable: false, opacity: 0.5})).concat(data?.screenScheduleSlots.map((x) => ({...x, editable: true})) || []),
 			tiers,
 			scheduleViews,
 			slots,

@@ -196,8 +196,11 @@ export const ScreenSchedule = (props) => {
                     </Box>
 						<Timeline
 							onSelectItem={(task) => {
-								setSelected(task)
-								openModal(true)
+
+								if(task.editable){
+									setSelected(task)
+									openModal(true)
+								}
 
 
 								// console.log({task})
@@ -206,6 +209,8 @@ export const ScreenSchedule = (props) => {
 								id: campaign?.id,
 								name: `${campaign?.campaign?.name} - ${campaign?.tier?.name}`,
 								color: campaign?.tier?.color,
+								opacity: campaign?.opacity,
+								editable: campaign.editable,
 								showLabel: campaign?.campaign?.name,
 								start: campaign?.startDate,
 								end: campaign?.endDate,
