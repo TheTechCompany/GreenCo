@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Box, Text, Button, Layer, TextInput } from 'grommet'
 import { useState } from 'react';
@@ -6,8 +6,10 @@ import { BaseModal, FormControl, FormInput } from '@hexhive/ui';
 
 export interface WorkflowModalProps {
     open: boolean;
+    selected?: any
     onClose?: () => void;
-    onSubmit?: (app: { name: string, networkName: string }) => void;
+    onDelete?: () => void;
+    onSubmit?: (app: { id?: string, name: string, networkName: string }) => void;
     templates?: any[];
 }
 export const CreateScreenModal: React.FC<WorkflowModalProps> = (props) => {
@@ -16,11 +18,19 @@ export const CreateScreenModal: React.FC<WorkflowModalProps> = (props) => {
     const onSubmit = () => {
         props.onSubmit?.(machine)
     }
+
+    useEffect(() => {
+        setMachine({
+            ...props.selected
+        })
+    }, [props.selected])
+
     return (
         <BaseModal
             width='medium'
-            title="Create Screen"
+            title={`${props.selected ? "Update" : "Create"} Screen`}
             open={props.open}
+            onDelete={props.selected && props.onDelete}
             onClose={props.onClose}
             onSubmit={onSubmit}
         >
