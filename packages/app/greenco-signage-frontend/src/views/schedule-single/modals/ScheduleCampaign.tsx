@@ -1,5 +1,6 @@
 import { BaseModal, FormControl } from '@hexhive/ui';
 import { Box, Calendar, Text, DateInput } from 'grommet';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
 export const ScheduleCampaignModal = (props) => {
@@ -17,6 +18,12 @@ export const ScheduleCampaignModal = (props) => {
 	const onSubmit = () => {
 		props.onSubmit(schedule);
 	}
+
+	console.log(Intl.DateTimeFormat().resolvedOptions().locale)
+	console.log(moment.localeData(Intl.DateTimeFormat().resolvedOptions().locale).longDateFormat('L'))
+
+	const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+	const longDateFormat = moment.localeData(locale).longDateFormat('L').toLowerCase();
 
 	return (
 		<BaseModal 
@@ -41,7 +48,7 @@ export const ScheduleCampaignModal = (props) => {
 				<DateInput
 					value={schedule?.dates || [new Date().toISOString(), new Date().toISOString()]}
 					calendarProps={{range: true, size: 'small'}} 
-					format='dd/mm/yyyy - dd/mm/yyyy'
+					format={`${longDateFormat} - ${longDateFormat}`}
 					onChange={({value}) => setSchedule({...schedule, dates: value})}
 					placeholder='Date'/>
 				{/* <DateInput calendarProps={{size: 'small'}} format='dd/mm/yyyy' placeholder='End Date'/> */}
