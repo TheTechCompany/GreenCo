@@ -70,7 +70,8 @@ type ScheduleTier @auth(rules: [
 	id: ID! @id
 	name: String
 	schedule: Schedule @relationship(type: "SCHEDULE_TIER", direction: IN)
-	percent: Float
+	
+	plays: Float
 	slots: Float
 
 	slotsFilled: [ScheduleTierFilled] @ignore

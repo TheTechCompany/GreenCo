@@ -15,7 +15,15 @@ export const ScheduleTiers = (props: any) => {
 
 	const [ selected, setSelected ] = useState<any>()
 
-	const [ createTier, createInfo ] = useMutation((mutation, args: {id: string, name: string, percent: number, slots: number, color: string}) => {
+	const [ removeTier ] = useMutation((mutation, args: {id: string}) => {
+		if(!args.id)return;
+		const item = mutation.deleteScheduleTiers({where: {id: args.id}});
+		return {
+			item: item.nodesDeleted
+		}
+	})
+
+	const [ createTier, createInfo ] = useMutation((mutation, args: {id: string, name: string, plays: number, slots: number, color: string}) => {
 		
 		let mute = {}
 
@@ -25,7 +33,7 @@ export const ScheduleTiers = (props: any) => {
 				update: {
 					node: {
 						name: args.name,
-						percent: args.percent,
+						plays: args.plays,
 						slots: args.slots,
 						color: args.color
 					}
@@ -36,7 +44,7 @@ export const ScheduleTiers = (props: any) => {
 				create: [{
 					node: {
 						name: args.name,
-						percent: args.percent,
+						plays: args.plays,
 						slots: args.slots,
 						color: args.color
 					}
@@ -76,16 +84,28 @@ export const ScheduleTiers = (props: any) => {
 			<CreateTierModal
 				open={modalOpen}
 				selected={selected}
+				onDelete={() => {
+					removeTier({
+						args: {
+							id: selected.id
+						}
+					}).then(() => {
+						openModal(false)
+						setSelected(undefined)
+						refresh?.()
+					})
+				}}
 				onSubmit={(tier: any) => {
 				
 						createTier({args: {
 							id: tier.id,
 							name: tier.name,
-							percent: tier.percent,
+							plays: tier.plays,
 							slots: tier.slots,
 							color: tier.color
 						}}).then(() => {
 							openModal(false)
+							setSelected(undefined)
 							refresh?.()
 						})
 					
@@ -98,7 +118,7 @@ export const ScheduleTiers = (props: any) => {
 				}}
 				/>
 			<ScheduleMeter 
-				items={tiers?.filter((a) => a.percent).map((x, ix) => ({...x, label: x.name, percent: parseFloat(x.percent), color: x.color}))}
+				items={tiers?.filter((a) => a.plays).map((x, ix) => ({...x, label: x.name, percent: ((x.slots * x.plays) / (60 * 60 / 15)) * 100, color: x.color}))}
 				/>
 			<List
 				primaryKey="name"

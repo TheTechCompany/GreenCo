@@ -7,7 +7,6 @@ import { LocationAnalytics } from './LocationAnalytics';
 // import { ClusterSchedule } from './ClusterSchedule';
 import { ClusterScreens } from './LocationScreens';
 import { ClusterSingleProvider } from './context';
-import { ClusterTiers } from './ClusterTiers';
 import moment from 'moment';
 
 export const LocationSingle = (props) => {

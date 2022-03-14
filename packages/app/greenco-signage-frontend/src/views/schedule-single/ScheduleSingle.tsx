@@ -88,7 +88,7 @@ export const ScheduleSingle : React.FC<{}> = (props) => {
 				tiers {
 					id
 					name
-					percent
+					plays
 					slots
 					color
 
