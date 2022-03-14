@@ -56,7 +56,13 @@ export default (driver: Driver) => {
 			session.close()
 			
 			res.send({
-				campaigns: campaigns?.records?.map(record => record.get(0)) || []
+				campaigns: (campaigns?.records?.map(record => record.get(0)) || []).map(campaign => ({
+					...campaign,
+					tier: {
+						...campaign.tier,
+						percent: (campaign.tier.slots * campaign.tier.plays) / (60 * 60 / 15) * 100
+					}
+				}))
 			})
 		})
 	

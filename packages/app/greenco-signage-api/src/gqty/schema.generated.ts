@@ -2048,41 +2048,41 @@ export interface GreenScreenCustomScheduleAggregateInput {
 }
 
 export interface GreenScreenCustomScheduleConnectFieldInput {
-  connect?: Maybe<Array<ScheduleSlotConnectInput>>;
-  where?: Maybe<ScheduleSlotConnectWhere>;
+  connect?: Maybe<Array<ScreenScheduleSlotConnectInput>>;
+  where?: Maybe<ScreenScheduleSlotConnectWhere>;
 }
 
 export interface GreenScreenCustomScheduleConnectOrCreateFieldInput {
   onCreate: GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate;
-  where: ScheduleSlotConnectOrCreateWhere;
+  where: ScreenScheduleSlotConnectOrCreateWhere;
 }
 
 export interface GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate {
-  node: ScheduleSlotCreateInput;
+  node: ScreenScheduleSlotCreateInput;
 }
 
 export interface GreenScreenCustomScheduleConnectionSort {
-  node?: Maybe<ScheduleSlotSort>;
+  node?: Maybe<ScreenScheduleSlotSort>;
 }
 
 export interface GreenScreenCustomScheduleConnectionWhere {
   AND?: Maybe<Array<GreenScreenCustomScheduleConnectionWhere>>;
   OR?: Maybe<Array<GreenScreenCustomScheduleConnectionWhere>>;
-  node?: Maybe<ScheduleSlotWhere>;
-  node_NOT?: Maybe<ScheduleSlotWhere>;
+  node?: Maybe<ScreenScheduleSlotWhere>;
+  node_NOT?: Maybe<ScreenScheduleSlotWhere>;
 }
 
 export interface GreenScreenCustomScheduleCreateFieldInput {
-  node: ScheduleSlotCreateInput;
+  node: ScreenScheduleSlotCreateInput;
 }
 
 export interface GreenScreenCustomScheduleDeleteFieldInput {
-  delete?: Maybe<ScheduleSlotDeleteInput>;
+  delete?: Maybe<ScreenScheduleSlotDeleteInput>;
   where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
 }
 
 export interface GreenScreenCustomScheduleDisconnectFieldInput {
-  disconnect?: Maybe<ScheduleSlotDisconnectInput>;
+  disconnect?: Maybe<ScreenScheduleSlotDisconnectInput>;
   where?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
 }
 
@@ -2131,7 +2131,7 @@ export interface GreenScreenCustomScheduleNodeAggregationWhereInput {
 }
 
 export interface GreenScreenCustomScheduleUpdateConnectionInput {
-  node?: Maybe<ScheduleSlotUpdateInput>;
+  node?: Maybe<ScreenScheduleSlotUpdateInput>;
 }
 
 export interface GreenScreenCustomScheduleUpdateFieldInput {
@@ -3529,11 +3529,11 @@ export interface GreenScreenUpdateInput {
 export interface GreenScreenWhere {
   AND?: Maybe<Array<GreenScreenWhere>>;
   OR?: Maybe<Array<GreenScreenWhere>>;
-  customSchedule?: Maybe<ScheduleSlotWhere>;
+  customSchedule?: Maybe<ScreenScheduleSlotWhere>;
   customScheduleAggregate?: Maybe<GreenScreenCustomScheduleAggregateInput>;
   customScheduleConnection?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
   customScheduleConnection_NOT?: Maybe<GreenScreenCustomScheduleConnectionWhere>;
-  customSchedule_NOT?: Maybe<ScheduleSlotWhere>;
+  customSchedule_NOT?: Maybe<ScreenScheduleSlotWhere>;
   id?: Maybe<Scalars["ID"]>;
   id_CONTAINS?: Maybe<Scalars["ID"]>;
   id_ENDS_WITH?: Maybe<Scalars["ID"]>;
@@ -6242,31 +6242,31 @@ export interface HiveOrganisationScheduleTiersNodeAggregationWhereInput {
   name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  percent_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  percent_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_GT?: Maybe<Scalars["Float"]>;
-  percent_GTE?: Maybe<Scalars["Float"]>;
-  percent_LT?: Maybe<Scalars["Float"]>;
-  percent_LTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MAX_GT?: Maybe<Scalars["Float"]>;
-  percent_MAX_GTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_LT?: Maybe<Scalars["Float"]>;
-  percent_MAX_LTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MIN_GT?: Maybe<Scalars["Float"]>;
-  percent_MIN_GTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_LT?: Maybe<Scalars["Float"]>;
-  percent_MIN_LTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_SUM_GT?: Maybe<Scalars["Float"]>;
-  percent_SUM_GTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_LT?: Maybe<Scalars["Float"]>;
-  percent_SUM_LTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  plays_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_GT?: Maybe<Scalars["Float"]>;
+  plays_GTE?: Maybe<Scalars["Float"]>;
+  plays_LT?: Maybe<Scalars["Float"]>;
+  plays_LTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MAX_GT?: Maybe<Scalars["Float"]>;
+  plays_MAX_GTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_LT?: Maybe<Scalars["Float"]>;
+  plays_MAX_LTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MIN_GT?: Maybe<Scalars["Float"]>;
+  plays_MIN_GTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_LT?: Maybe<Scalars["Float"]>;
+  plays_MIN_LTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_SUM_GT?: Maybe<Scalars["Float"]>;
+  plays_SUM_GTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_LT?: Maybe<Scalars["Float"]>;
+  plays_SUM_LTE?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -9721,31 +9721,31 @@ export interface ScheduleSlotTierNodeAggregationWhereInput {
   name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  percent_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  percent_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_GT?: Maybe<Scalars["Float"]>;
-  percent_GTE?: Maybe<Scalars["Float"]>;
-  percent_LT?: Maybe<Scalars["Float"]>;
-  percent_LTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MAX_GT?: Maybe<Scalars["Float"]>;
-  percent_MAX_GTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_LT?: Maybe<Scalars["Float"]>;
-  percent_MAX_LTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MIN_GT?: Maybe<Scalars["Float"]>;
-  percent_MIN_GTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_LT?: Maybe<Scalars["Float"]>;
-  percent_MIN_LTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_SUM_GT?: Maybe<Scalars["Float"]>;
-  percent_SUM_GTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_LT?: Maybe<Scalars["Float"]>;
-  percent_SUM_LTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  plays_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_GT?: Maybe<Scalars["Float"]>;
+  plays_GTE?: Maybe<Scalars["Float"]>;
+  plays_LT?: Maybe<Scalars["Float"]>;
+  plays_LTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MAX_GT?: Maybe<Scalars["Float"]>;
+  plays_MAX_GTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_LT?: Maybe<Scalars["Float"]>;
+  plays_MAX_LTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MIN_GT?: Maybe<Scalars["Float"]>;
+  plays_MIN_GTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_LT?: Maybe<Scalars["Float"]>;
+  plays_MIN_LTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_SUM_GT?: Maybe<Scalars["Float"]>;
+  plays_SUM_GTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_LT?: Maybe<Scalars["Float"]>;
+  plays_SUM_LTE?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -10083,7 +10083,7 @@ export interface ScheduleTierCreateInput {
   color?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<ScheduleTierOrganisationFieldInput>;
-  percent?: Maybe<Scalars["Float"]>;
+  plays?: Maybe<Scalars["Float"]>;
   schedule?: Maybe<ScheduleTierScheduleFieldInput>;
   slots?: Maybe<Scalars["Float"]>;
 }
@@ -10337,7 +10337,7 @@ export interface ScheduleTierSort {
   color?: Maybe<SortDirection>;
   id?: Maybe<SortDirection>;
   name?: Maybe<SortDirection>;
-  percent?: Maybe<SortDirection>;
+  plays?: Maybe<SortDirection>;
   slots?: Maybe<SortDirection>;
 }
 
@@ -10349,7 +10349,7 @@ export interface ScheduleTierUpdateInput {
   color?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   organisation?: Maybe<ScheduleTierOrganisationUpdateFieldInput>;
-  percent?: Maybe<Scalars["Float"]>;
+  plays?: Maybe<Scalars["Float"]>;
   schedule?: Maybe<ScheduleTierScheduleUpdateFieldInput>;
   slots?: Maybe<Scalars["Float"]>;
 }
@@ -10392,14 +10392,14 @@ export interface ScheduleTierWhere {
   organisationConnection?: Maybe<ScheduleTierOrganisationConnectionWhere>;
   organisationConnection_NOT?: Maybe<ScheduleTierOrganisationConnectionWhere>;
   organisation_NOT?: Maybe<HiveOrganisationWhere>;
-  percent?: Maybe<Scalars["Float"]>;
-  percent_GT?: Maybe<Scalars["Float"]>;
-  percent_GTE?: Maybe<Scalars["Float"]>;
-  percent_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
-  percent_LT?: Maybe<Scalars["Float"]>;
-  percent_LTE?: Maybe<Scalars["Float"]>;
-  percent_NOT?: Maybe<Scalars["Float"]>;
-  percent_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  plays?: Maybe<Scalars["Float"]>;
+  plays_GT?: Maybe<Scalars["Float"]>;
+  plays_GTE?: Maybe<Scalars["Float"]>;
+  plays_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
+  plays_LT?: Maybe<Scalars["Float"]>;
+  plays_LTE?: Maybe<Scalars["Float"]>;
+  plays_NOT?: Maybe<Scalars["Float"]>;
+  plays_NOT_IN?: Maybe<Array<Maybe<Scalars["Float"]>>>;
   schedule?: Maybe<ScheduleWhere>;
   scheduleAggregate?: Maybe<ScheduleTierScheduleAggregateInput>;
   scheduleConnection?: Maybe<ScheduleTierScheduleConnectionWhere>;
@@ -10515,31 +10515,31 @@ export interface ScheduleTiersNodeAggregationWhereInput {
   name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
   name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
-  percent_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LT?: Maybe<Scalars["Float"]>;
-  percent_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
-  percent_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_GT?: Maybe<Scalars["Float"]>;
-  percent_GTE?: Maybe<Scalars["Float"]>;
-  percent_LT?: Maybe<Scalars["Float"]>;
-  percent_LTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MAX_GT?: Maybe<Scalars["Float"]>;
-  percent_MAX_GTE?: Maybe<Scalars["Float"]>;
-  percent_MAX_LT?: Maybe<Scalars["Float"]>;
-  percent_MAX_LTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_MIN_GT?: Maybe<Scalars["Float"]>;
-  percent_MIN_GTE?: Maybe<Scalars["Float"]>;
-  percent_MIN_LT?: Maybe<Scalars["Float"]>;
-  percent_MIN_LTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_EQUAL?: Maybe<Scalars["Float"]>;
-  percent_SUM_GT?: Maybe<Scalars["Float"]>;
-  percent_SUM_GTE?: Maybe<Scalars["Float"]>;
-  percent_SUM_LT?: Maybe<Scalars["Float"]>;
-  percent_SUM_LTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  plays_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_GT?: Maybe<Scalars["Float"]>;
+  plays_GTE?: Maybe<Scalars["Float"]>;
+  plays_LT?: Maybe<Scalars["Float"]>;
+  plays_LTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MAX_GT?: Maybe<Scalars["Float"]>;
+  plays_MAX_GTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_LT?: Maybe<Scalars["Float"]>;
+  plays_MAX_LTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MIN_GT?: Maybe<Scalars["Float"]>;
+  plays_MIN_GTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_LT?: Maybe<Scalars["Float"]>;
+  plays_MIN_LTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_SUM_GT?: Maybe<Scalars["Float"]>;
+  plays_SUM_GTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_LT?: Maybe<Scalars["Float"]>;
+  plays_SUM_LTE?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GT?: Maybe<Scalars["Float"]>;
   slots_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
@@ -10865,6 +10865,630 @@ export interface ScheduleWhere {
   tiersConnection?: Maybe<ScheduleTiersConnectionWhere>;
   tiersConnection_NOT?: Maybe<ScheduleTiersConnectionWhere>;
   tiers_NOT?: Maybe<ScheduleTierWhere>;
+}
+
+export interface ScreenScheduleSlotCampaignAggregateInput {
+  AND?: Maybe<Array<ScreenScheduleSlotCampaignAggregateInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotCampaignAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenScheduleSlotCampaignNodeAggregationWhereInput>;
+}
+
+export interface ScreenScheduleSlotCampaignConnectFieldInput {
+  connect?: Maybe<CampaignConnectInput>;
+  where?: Maybe<CampaignConnectWhere>;
+}
+
+export interface ScreenScheduleSlotCampaignConnectOrCreateFieldInput {
+  onCreate: ScreenScheduleSlotCampaignConnectOrCreateFieldInputOnCreate;
+  where: CampaignConnectOrCreateWhere;
+}
+
+export interface ScreenScheduleSlotCampaignConnectOrCreateFieldInputOnCreate {
+  node: CampaignCreateInput;
+}
+
+export interface ScreenScheduleSlotCampaignConnectionSort {
+  node?: Maybe<CampaignSort>;
+}
+
+export interface ScreenScheduleSlotCampaignConnectionWhere {
+  AND?: Maybe<Array<ScreenScheduleSlotCampaignConnectionWhere>>;
+  OR?: Maybe<Array<ScreenScheduleSlotCampaignConnectionWhere>>;
+  node?: Maybe<CampaignWhere>;
+  node_NOT?: Maybe<CampaignWhere>;
+}
+
+export interface ScreenScheduleSlotCampaignCreateFieldInput {
+  node: CampaignCreateInput;
+}
+
+export interface ScreenScheduleSlotCampaignDeleteFieldInput {
+  delete?: Maybe<CampaignDeleteInput>;
+  where?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotCampaignDisconnectFieldInput {
+  disconnect?: Maybe<CampaignDisconnectInput>;
+  where?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotCampaignFieldInput {
+  connect?: Maybe<ScreenScheduleSlotCampaignConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotCampaignConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotCampaignCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotCampaignNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenScheduleSlotCampaignNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotCampaignNodeAggregationWhereInput>>;
+  assetFolder_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  assetFolder_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  assetFolder_EQUAL?: Maybe<Scalars["String"]>;
+  assetFolder_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_LTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  assetFolder_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScreenScheduleSlotCampaignUpdateConnectionInput {
+  node?: Maybe<CampaignUpdateInput>;
+}
+
+export interface ScreenScheduleSlotCampaignUpdateFieldInput {
+  connect?: Maybe<ScreenScheduleSlotCampaignConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotCampaignConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotCampaignCreateFieldInput>;
+  delete?: Maybe<ScreenScheduleSlotCampaignDeleteFieldInput>;
+  disconnect?: Maybe<ScreenScheduleSlotCampaignDisconnectFieldInput>;
+  update?: Maybe<ScreenScheduleSlotCampaignUpdateConnectionInput>;
+  where?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotConnectInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignConnectFieldInput>;
+  screen?: Maybe<ScreenScheduleSlotScreenConnectFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotConnectFieldInput>;
+  tier?: Maybe<ScreenScheduleSlotTierConnectFieldInput>;
+}
+
+export interface ScreenScheduleSlotConnectOrCreateInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignConnectOrCreateFieldInput>;
+  screen?: Maybe<ScreenScheduleSlotScreenConnectOrCreateFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotConnectOrCreateFieldInput>;
+  tier?: Maybe<ScreenScheduleSlotTierConnectOrCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotConnectOrCreateWhere {
+  node: ScreenScheduleSlotUniqueWhere;
+}
+
+export interface ScreenScheduleSlotConnectWhere {
+  node: ScreenScheduleSlotWhere;
+}
+
+export interface ScreenScheduleSlotCreateInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignFieldInput>;
+  endDate?: Maybe<Scalars["DateTime"]>;
+  screen?: Maybe<ScreenScheduleSlotScreenFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotFieldInput>;
+  startDate?: Maybe<Scalars["DateTime"]>;
+  tier?: Maybe<ScreenScheduleSlotTierFieldInput>;
+}
+
+export interface ScreenScheduleSlotDeleteInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignDeleteFieldInput>;
+  screen?: Maybe<ScreenScheduleSlotScreenDeleteFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotDeleteFieldInput>;
+  tier?: Maybe<ScreenScheduleSlotTierDeleteFieldInput>;
+}
+
+export interface ScreenScheduleSlotDisconnectInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignDisconnectFieldInput>;
+  screen?: Maybe<ScreenScheduleSlotScreenDisconnectFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotDisconnectFieldInput>;
+  tier?: Maybe<ScreenScheduleSlotTierDisconnectFieldInput>;
+}
+
+export interface ScreenScheduleSlotOptions {
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  /** Specify one or more ScreenScheduleSlotSort objects to sort ScreenScheduleSlots by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: Maybe<Array<Maybe<ScreenScheduleSlotSort>>>;
+}
+
+export interface ScreenScheduleSlotRelationInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignCreateFieldInput>;
+  screen?: Maybe<ScreenScheduleSlotScreenCreateFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotCreateFieldInput>;
+  tier?: Maybe<ScreenScheduleSlotTierCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotScreenAggregateInput {
+  AND?: Maybe<Array<ScreenScheduleSlotScreenAggregateInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotScreenAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenScheduleSlotScreenNodeAggregationWhereInput>;
+}
+
+export interface ScreenScheduleSlotScreenConnectFieldInput {
+  connect?: Maybe<GreenScreenConnectInput>;
+  where?: Maybe<GreenScreenConnectWhere>;
+}
+
+export interface ScreenScheduleSlotScreenConnectOrCreateFieldInput {
+  onCreate: ScreenScheduleSlotScreenConnectOrCreateFieldInputOnCreate;
+  where: GreenScreenConnectOrCreateWhere;
+}
+
+export interface ScreenScheduleSlotScreenConnectOrCreateFieldInputOnCreate {
+  node: GreenScreenCreateInput;
+}
+
+export interface ScreenScheduleSlotScreenConnectionSort {
+  node?: Maybe<GreenScreenSort>;
+}
+
+export interface ScreenScheduleSlotScreenConnectionWhere {
+  AND?: Maybe<Array<ScreenScheduleSlotScreenConnectionWhere>>;
+  OR?: Maybe<Array<ScreenScheduleSlotScreenConnectionWhere>>;
+  node?: Maybe<GreenScreenWhere>;
+  node_NOT?: Maybe<GreenScreenWhere>;
+}
+
+export interface ScreenScheduleSlotScreenCreateFieldInput {
+  node: GreenScreenCreateInput;
+}
+
+export interface ScreenScheduleSlotScreenDeleteFieldInput {
+  delete?: Maybe<GreenScreenDeleteInput>;
+  where?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotScreenDisconnectFieldInput {
+  disconnect?: Maybe<GreenScreenDisconnectInput>;
+  where?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotScreenFieldInput {
+  connect?: Maybe<ScreenScheduleSlotScreenConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotScreenConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotScreenCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotScreenNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenScheduleSlotScreenNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotScreenNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  networkName_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  networkName_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  networkName_EQUAL?: Maybe<Scalars["String"]>;
+  networkName_GT?: Maybe<Scalars["Int"]>;
+  networkName_GTE?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  networkName_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  networkName_LT?: Maybe<Scalars["Int"]>;
+  networkName_LTE?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  networkName_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScreenScheduleSlotScreenUpdateConnectionInput {
+  node?: Maybe<GreenScreenUpdateInput>;
+}
+
+export interface ScreenScheduleSlotScreenUpdateFieldInput {
+  connect?: Maybe<ScreenScheduleSlotScreenConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotScreenConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotScreenCreateFieldInput>;
+  delete?: Maybe<ScreenScheduleSlotScreenDeleteFieldInput>;
+  disconnect?: Maybe<ScreenScheduleSlotScreenDisconnectFieldInput>;
+  update?: Maybe<ScreenScheduleSlotScreenUpdateConnectionInput>;
+  where?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotSlotAggregateInput {
+  AND?: Maybe<Array<ScreenScheduleSlotSlotAggregateInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotSlotAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenScheduleSlotSlotNodeAggregationWhereInput>;
+}
+
+export interface ScreenScheduleSlotSlotConnectFieldInput {
+  connect?: Maybe<TemplateSlotConnectInput>;
+  where?: Maybe<TemplateSlotConnectWhere>;
+}
+
+export interface ScreenScheduleSlotSlotConnectOrCreateFieldInput {
+  onCreate: ScreenScheduleSlotSlotConnectOrCreateFieldInputOnCreate;
+  where: TemplateSlotConnectOrCreateWhere;
+}
+
+export interface ScreenScheduleSlotSlotConnectOrCreateFieldInputOnCreate {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScreenScheduleSlotSlotConnectionSort {
+  node?: Maybe<TemplateSlotSort>;
+}
+
+export interface ScreenScheduleSlotSlotConnectionWhere {
+  AND?: Maybe<Array<ScreenScheduleSlotSlotConnectionWhere>>;
+  OR?: Maybe<Array<ScreenScheduleSlotSlotConnectionWhere>>;
+  node?: Maybe<TemplateSlotWhere>;
+  node_NOT?: Maybe<TemplateSlotWhere>;
+}
+
+export interface ScreenScheduleSlotSlotCreateFieldInput {
+  node: TemplateSlotCreateInput;
+}
+
+export interface ScreenScheduleSlotSlotDeleteFieldInput {
+  delete?: Maybe<TemplateSlotDeleteInput>;
+  where?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotSlotDisconnectFieldInput {
+  disconnect?: Maybe<TemplateSlotDisconnectInput>;
+  where?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotSlotFieldInput {
+  connect?: Maybe<ScreenScheduleSlotSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotSlotCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotSlotNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenScheduleSlotSlotNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotSlotNodeAggregationWhereInput>>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+}
+
+export interface ScreenScheduleSlotSlotUpdateConnectionInput {
+  node?: Maybe<TemplateSlotUpdateInput>;
+}
+
+export interface ScreenScheduleSlotSlotUpdateFieldInput {
+  connect?: Maybe<ScreenScheduleSlotSlotConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotSlotConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotSlotCreateFieldInput>;
+  delete?: Maybe<ScreenScheduleSlotSlotDeleteFieldInput>;
+  disconnect?: Maybe<ScreenScheduleSlotSlotDisconnectFieldInput>;
+  update?: Maybe<ScreenScheduleSlotSlotUpdateConnectionInput>;
+  where?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+}
+
+/** Fields to sort ScreenScheduleSlots by. The order in which sorts are applied is not guaranteed when specifying many fields in one ScreenScheduleSlotSort object. */
+export interface ScreenScheduleSlotSort {
+  endDate?: Maybe<SortDirection>;
+  id?: Maybe<SortDirection>;
+  startDate?: Maybe<SortDirection>;
+}
+
+export interface ScreenScheduleSlotTierAggregateInput {
+  AND?: Maybe<Array<ScreenScheduleSlotTierAggregateInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotTierAggregateInput>>;
+  count?: Maybe<Scalars["Int"]>;
+  count_GT?: Maybe<Scalars["Int"]>;
+  count_GTE?: Maybe<Scalars["Int"]>;
+  count_LT?: Maybe<Scalars["Int"]>;
+  count_LTE?: Maybe<Scalars["Int"]>;
+  node?: Maybe<ScreenScheduleSlotTierNodeAggregationWhereInput>;
+}
+
+export interface ScreenScheduleSlotTierConnectFieldInput {
+  connect?: Maybe<ScheduleTierConnectInput>;
+  where?: Maybe<ScheduleTierConnectWhere>;
+}
+
+export interface ScreenScheduleSlotTierConnectOrCreateFieldInput {
+  onCreate: ScreenScheduleSlotTierConnectOrCreateFieldInputOnCreate;
+  where: ScheduleTierConnectOrCreateWhere;
+}
+
+export interface ScreenScheduleSlotTierConnectOrCreateFieldInputOnCreate {
+  node: ScheduleTierCreateInput;
+}
+
+export interface ScreenScheduleSlotTierConnectionSort {
+  node?: Maybe<ScheduleTierSort>;
+}
+
+export interface ScreenScheduleSlotTierConnectionWhere {
+  AND?: Maybe<Array<ScreenScheduleSlotTierConnectionWhere>>;
+  OR?: Maybe<Array<ScreenScheduleSlotTierConnectionWhere>>;
+  node?: Maybe<ScheduleTierWhere>;
+  node_NOT?: Maybe<ScheduleTierWhere>;
+}
+
+export interface ScreenScheduleSlotTierCreateFieldInput {
+  node: ScheduleTierCreateInput;
+}
+
+export interface ScreenScheduleSlotTierDeleteFieldInput {
+  delete?: Maybe<ScheduleTierDeleteInput>;
+  where?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotTierDisconnectFieldInput {
+  disconnect?: Maybe<ScheduleTierDisconnectInput>;
+  where?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotTierFieldInput {
+  connect?: Maybe<ScreenScheduleSlotTierConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotTierConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotTierCreateFieldInput>;
+}
+
+export interface ScreenScheduleSlotTierNodeAggregationWhereInput {
+  AND?: Maybe<Array<ScreenScheduleSlotTierNodeAggregationWhereInput>>;
+  OR?: Maybe<Array<ScreenScheduleSlotTierNodeAggregationWhereInput>>;
+  color_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  color_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  color_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  color_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  color_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  color_EQUAL?: Maybe<Scalars["String"]>;
+  color_GT?: Maybe<Scalars["Int"]>;
+  color_GTE?: Maybe<Scalars["Int"]>;
+  color_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  color_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  color_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  color_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  color_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  color_LT?: Maybe<Scalars["Int"]>;
+  color_LTE?: Maybe<Scalars["Int"]>;
+  color_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  color_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  color_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  color_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  color_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  id_EQUAL?: Maybe<Scalars["ID"]>;
+  name_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  name_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  name_EQUAL?: Maybe<Scalars["String"]>;
+  name_GT?: Maybe<Scalars["Int"]>;
+  name_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_GTE?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LT?: Maybe<Scalars["Int"]>;
+  name_LONGEST_LTE?: Maybe<Scalars["Int"]>;
+  name_LT?: Maybe<Scalars["Int"]>;
+  name_LTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_EQUAL?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_GTE?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LT?: Maybe<Scalars["Int"]>;
+  name_SHORTEST_LTE?: Maybe<Scalars["Int"]>;
+  plays_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  plays_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  plays_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_GT?: Maybe<Scalars["Float"]>;
+  plays_GTE?: Maybe<Scalars["Float"]>;
+  plays_LT?: Maybe<Scalars["Float"]>;
+  plays_LTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MAX_GT?: Maybe<Scalars["Float"]>;
+  plays_MAX_GTE?: Maybe<Scalars["Float"]>;
+  plays_MAX_LT?: Maybe<Scalars["Float"]>;
+  plays_MAX_LTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_MIN_GT?: Maybe<Scalars["Float"]>;
+  plays_MIN_GTE?: Maybe<Scalars["Float"]>;
+  plays_MIN_LT?: Maybe<Scalars["Float"]>;
+  plays_MIN_LTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  plays_SUM_GT?: Maybe<Scalars["Float"]>;
+  plays_SUM_GTE?: Maybe<Scalars["Float"]>;
+  plays_SUM_LT?: Maybe<Scalars["Float"]>;
+  plays_SUM_LTE?: Maybe<Scalars["Float"]>;
+  slots_AVERAGE_EQUAL?: Maybe<Scalars["Float"]>;
+  slots_AVERAGE_GT?: Maybe<Scalars["Float"]>;
+  slots_AVERAGE_GTE?: Maybe<Scalars["Float"]>;
+  slots_AVERAGE_LT?: Maybe<Scalars["Float"]>;
+  slots_AVERAGE_LTE?: Maybe<Scalars["Float"]>;
+  slots_EQUAL?: Maybe<Scalars["Float"]>;
+  slots_GT?: Maybe<Scalars["Float"]>;
+  slots_GTE?: Maybe<Scalars["Float"]>;
+  slots_LT?: Maybe<Scalars["Float"]>;
+  slots_LTE?: Maybe<Scalars["Float"]>;
+  slots_MAX_EQUAL?: Maybe<Scalars["Float"]>;
+  slots_MAX_GT?: Maybe<Scalars["Float"]>;
+  slots_MAX_GTE?: Maybe<Scalars["Float"]>;
+  slots_MAX_LT?: Maybe<Scalars["Float"]>;
+  slots_MAX_LTE?: Maybe<Scalars["Float"]>;
+  slots_MIN_EQUAL?: Maybe<Scalars["Float"]>;
+  slots_MIN_GT?: Maybe<Scalars["Float"]>;
+  slots_MIN_GTE?: Maybe<Scalars["Float"]>;
+  slots_MIN_LT?: Maybe<Scalars["Float"]>;
+  slots_MIN_LTE?: Maybe<Scalars["Float"]>;
+  slots_SUM_EQUAL?: Maybe<Scalars["Float"]>;
+  slots_SUM_GT?: Maybe<Scalars["Float"]>;
+  slots_SUM_GTE?: Maybe<Scalars["Float"]>;
+  slots_SUM_LT?: Maybe<Scalars["Float"]>;
+  slots_SUM_LTE?: Maybe<Scalars["Float"]>;
+}
+
+export interface ScreenScheduleSlotTierUpdateConnectionInput {
+  node?: Maybe<ScheduleTierUpdateInput>;
+}
+
+export interface ScreenScheduleSlotTierUpdateFieldInput {
+  connect?: Maybe<ScreenScheduleSlotTierConnectFieldInput>;
+  connectOrCreate?: Maybe<ScreenScheduleSlotTierConnectOrCreateFieldInput>;
+  create?: Maybe<ScreenScheduleSlotTierCreateFieldInput>;
+  delete?: Maybe<ScreenScheduleSlotTierDeleteFieldInput>;
+  disconnect?: Maybe<ScreenScheduleSlotTierDisconnectFieldInput>;
+  update?: Maybe<ScreenScheduleSlotTierUpdateConnectionInput>;
+  where?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+}
+
+export interface ScreenScheduleSlotUniqueWhere {
+  id?: Maybe<Scalars["ID"]>;
+}
+
+export interface ScreenScheduleSlotUpdateInput {
+  campaign?: Maybe<ScreenScheduleSlotCampaignUpdateFieldInput>;
+  endDate?: Maybe<Scalars["DateTime"]>;
+  screen?: Maybe<ScreenScheduleSlotScreenUpdateFieldInput>;
+  slot?: Maybe<ScreenScheduleSlotSlotUpdateFieldInput>;
+  startDate?: Maybe<Scalars["DateTime"]>;
+  tier?: Maybe<ScreenScheduleSlotTierUpdateFieldInput>;
+}
+
+export interface ScreenScheduleSlotWhere {
+  AND?: Maybe<Array<ScreenScheduleSlotWhere>>;
+  OR?: Maybe<Array<ScreenScheduleSlotWhere>>;
+  campaign?: Maybe<CampaignWhere>;
+  campaignAggregate?: Maybe<ScreenScheduleSlotCampaignAggregateInput>;
+  campaignConnection?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+  campaignConnection_NOT?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+  campaign_NOT?: Maybe<CampaignWhere>;
+  endDate?: Maybe<Scalars["DateTime"]>;
+  endDate_GT?: Maybe<Scalars["DateTime"]>;
+  endDate_GTE?: Maybe<Scalars["DateTime"]>;
+  endDate_IN?: Maybe<Array<Maybe<Scalars["DateTime"]>>>;
+  endDate_LT?: Maybe<Scalars["DateTime"]>;
+  endDate_LTE?: Maybe<Scalars["DateTime"]>;
+  endDate_NOT?: Maybe<Scalars["DateTime"]>;
+  endDate_NOT_IN?: Maybe<Array<Maybe<Scalars["DateTime"]>>>;
+  id?: Maybe<Scalars["ID"]>;
+  id_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT?: Maybe<Scalars["ID"]>;
+  id_NOT_CONTAINS?: Maybe<Scalars["ID"]>;
+  id_NOT_ENDS_WITH?: Maybe<Scalars["ID"]>;
+  id_NOT_IN?: Maybe<Array<Maybe<Scalars["ID"]>>>;
+  id_NOT_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  id_STARTS_WITH?: Maybe<Scalars["ID"]>;
+  screen?: Maybe<GreenScreenWhere>;
+  screenAggregate?: Maybe<ScreenScheduleSlotScreenAggregateInput>;
+  screenConnection?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+  screenConnection_NOT?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+  screen_NOT?: Maybe<GreenScreenWhere>;
+  slot?: Maybe<TemplateSlotWhere>;
+  slotAggregate?: Maybe<ScreenScheduleSlotSlotAggregateInput>;
+  slotConnection?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+  slotConnection_NOT?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+  slot_NOT?: Maybe<TemplateSlotWhere>;
+  startDate?: Maybe<Scalars["DateTime"]>;
+  startDate_GT?: Maybe<Scalars["DateTime"]>;
+  startDate_GTE?: Maybe<Scalars["DateTime"]>;
+  startDate_IN?: Maybe<Array<Maybe<Scalars["DateTime"]>>>;
+  startDate_LT?: Maybe<Scalars["DateTime"]>;
+  startDate_LTE?: Maybe<Scalars["DateTime"]>;
+  startDate_NOT?: Maybe<Scalars["DateTime"]>;
+  startDate_NOT_IN?: Maybe<Array<Maybe<Scalars["DateTime"]>>>;
+  tier?: Maybe<ScheduleTierWhere>;
+  tierAggregate?: Maybe<ScreenScheduleSlotTierAggregateInput>;
+  tierConnection?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+  tierConnection_NOT?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+  tier_NOT?: Maybe<ScheduleTierWhere>;
 }
 
 export interface ScreenSlotConnectInput {
@@ -12591,6 +13215,7 @@ export const generatedSchema = {
     data: { __type: "String" },
     id: { __type: "ID!" },
     name: { __type: "String" },
+    scanned: { __type: "Int" },
     type: { __type: "String" },
   },
   CampaignAnalyticAggregateSelection: {
@@ -14086,6 +14711,11 @@ export const generatedSchema = {
     info: { __type: "CreateInfo!" },
     schedules: { __type: "[Schedule!]!" },
   },
+  CreateScreenScheduleSlotsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "CreateInfo!" },
+    screenScheduleSlots: { __type: "[ScreenScheduleSlot!]!" },
+  },
   CreateScreenSlotsMutationResponse: {
     __typename: { __type: "String!" },
     info: { __type: "CreateInfo!" },
@@ -14943,12 +15573,15 @@ export const generatedSchema = {
   GreenScreen: {
     __typename: { __type: "String!" },
     customSchedule: {
-      __type: "[ScheduleSlot]",
-      __args: { options: "ScheduleSlotOptions", where: "ScheduleSlotWhere" },
+      __type: "[ScreenScheduleSlot]",
+      __args: {
+        options: "ScreenScheduleSlotOptions",
+        where: "ScreenScheduleSlotWhere",
+      },
     },
     customScheduleAggregate: {
-      __type: "GreenScreenScheduleSlotCustomScheduleAggregationSelection",
-      __args: { where: "ScheduleSlotWhere" },
+      __type: "GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection",
+      __args: { where: "ScreenScheduleSlotWhere" },
     },
     customScheduleConnection: {
       __type: "GreenScreenCustomScheduleConnection!",
@@ -15088,17 +15721,17 @@ export const generatedSchema = {
     node: { __type: "GreenScreenCustomScheduleNodeAggregationWhereInput" },
   },
   GreenScreenCustomScheduleConnectFieldInput: {
-    connect: { __type: "[ScheduleSlotConnectInput!]" },
-    where: { __type: "ScheduleSlotConnectWhere" },
+    connect: { __type: "[ScreenScheduleSlotConnectInput!]" },
+    where: { __type: "ScreenScheduleSlotConnectWhere" },
   },
   GreenScreenCustomScheduleConnectOrCreateFieldInput: {
     onCreate: {
       __type: "GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate!",
     },
-    where: { __type: "ScheduleSlotConnectOrCreateWhere!" },
+    where: { __type: "ScreenScheduleSlotConnectOrCreateWhere!" },
   },
   GreenScreenCustomScheduleConnectOrCreateFieldInputOnCreate: {
-    node: { __type: "ScheduleSlotCreateInput!" },
+    node: { __type: "ScreenScheduleSlotCreateInput!" },
   },
   GreenScreenCustomScheduleConnection: {
     __typename: { __type: "String!" },
@@ -15107,23 +15740,23 @@ export const generatedSchema = {
     totalCount: { __type: "Int!" },
   },
   GreenScreenCustomScheduleConnectionSort: {
-    node: { __type: "ScheduleSlotSort" },
+    node: { __type: "ScreenScheduleSlotSort" },
   },
   GreenScreenCustomScheduleConnectionWhere: {
     AND: { __type: "[GreenScreenCustomScheduleConnectionWhere!]" },
     OR: { __type: "[GreenScreenCustomScheduleConnectionWhere!]" },
-    node: { __type: "ScheduleSlotWhere" },
-    node_NOT: { __type: "ScheduleSlotWhere" },
+    node: { __type: "ScreenScheduleSlotWhere" },
+    node_NOT: { __type: "ScreenScheduleSlotWhere" },
   },
   GreenScreenCustomScheduleCreateFieldInput: {
-    node: { __type: "ScheduleSlotCreateInput!" },
+    node: { __type: "ScreenScheduleSlotCreateInput!" },
   },
   GreenScreenCustomScheduleDeleteFieldInput: {
-    delete: { __type: "ScheduleSlotDeleteInput" },
+    delete: { __type: "ScreenScheduleSlotDeleteInput" },
     where: { __type: "GreenScreenCustomScheduleConnectionWhere" },
   },
   GreenScreenCustomScheduleDisconnectFieldInput: {
-    disconnect: { __type: "ScheduleSlotDisconnectInput" },
+    disconnect: { __type: "ScreenScheduleSlotDisconnectInput" },
     where: { __type: "GreenScreenCustomScheduleConnectionWhere" },
   },
   GreenScreenCustomScheduleFieldInput: {
@@ -15171,10 +15804,10 @@ export const generatedSchema = {
   GreenScreenCustomScheduleRelationship: {
     __typename: { __type: "String!" },
     cursor: { __type: "String!" },
-    node: { __type: "ScheduleSlot!" },
+    node: { __type: "ScreenScheduleSlot!" },
   },
   GreenScreenCustomScheduleUpdateConnectionInput: {
-    node: { __type: "ScheduleSlotUpdateInput" },
+    node: { __type: "ScreenScheduleSlotUpdateInput" },
   },
   GreenScreenCustomScheduleUpdateFieldInput: {
     connect: { __type: "[GreenScreenCustomScheduleConnectFieldInput!]" },
@@ -15511,14 +16144,15 @@ export const generatedSchema = {
     slots: { __type: "[GreenScreenSlotsCreateFieldInput!]" },
     template: { __type: "GreenScreenTemplateCreateFieldInput" },
   },
-  GreenScreenScheduleSlotCustomScheduleAggregationSelection: {
+  GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection: {
     __typename: { __type: "String!" },
     count: { __type: "Int!" },
     node: {
-      __type: "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection",
+      __type:
+        "GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection",
     },
   },
-  GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: {
+  GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: {
     __typename: { __type: "String!" },
     endDate: { __type: "DateTimeAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
@@ -16788,7 +17422,7 @@ export const generatedSchema = {
   GreenScreenWhere: {
     AND: { __type: "[GreenScreenWhere!]" },
     OR: { __type: "[GreenScreenWhere!]" },
-    customSchedule: { __type: "ScheduleSlotWhere" },
+    customSchedule: { __type: "ScreenScheduleSlotWhere" },
     customScheduleAggregate: {
       __type: "GreenScreenCustomScheduleAggregateInput",
     },
@@ -16798,7 +17432,7 @@ export const generatedSchema = {
     customScheduleConnection_NOT: {
       __type: "GreenScreenCustomScheduleConnectionWhere",
     },
-    customSchedule_NOT: { __type: "ScheduleSlotWhere" },
+    customSchedule_NOT: { __type: "ScreenScheduleSlotWhere" },
     id: { __type: "ID" },
     id_CONTAINS: { __type: "ID" },
     id_ENDS_WITH: { __type: "ID" },
@@ -20124,7 +20758,7 @@ export const generatedSchema = {
     color: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    percent: { __type: "FloatAggregateSelection!" },
+    plays: { __type: "FloatAggregateSelection!" },
     slots: { __type: "FloatAggregateSelection!" },
   },
   HiveOrganisationScheduleTiersAggregateInput: {
@@ -20229,31 +20863,31 @@ export const generatedSchema = {
     name_SHORTEST_GTE: { __type: "Int" },
     name_SHORTEST_LT: { __type: "Int" },
     name_SHORTEST_LTE: { __type: "Int" },
-    percent_AVERAGE_EQUAL: { __type: "Float" },
-    percent_AVERAGE_GT: { __type: "Float" },
-    percent_AVERAGE_GTE: { __type: "Float" },
-    percent_AVERAGE_LT: { __type: "Float" },
-    percent_AVERAGE_LTE: { __type: "Float" },
-    percent_EQUAL: { __type: "Float" },
-    percent_GT: { __type: "Float" },
-    percent_GTE: { __type: "Float" },
-    percent_LT: { __type: "Float" },
-    percent_LTE: { __type: "Float" },
-    percent_MAX_EQUAL: { __type: "Float" },
-    percent_MAX_GT: { __type: "Float" },
-    percent_MAX_GTE: { __type: "Float" },
-    percent_MAX_LT: { __type: "Float" },
-    percent_MAX_LTE: { __type: "Float" },
-    percent_MIN_EQUAL: { __type: "Float" },
-    percent_MIN_GT: { __type: "Float" },
-    percent_MIN_GTE: { __type: "Float" },
-    percent_MIN_LT: { __type: "Float" },
-    percent_MIN_LTE: { __type: "Float" },
-    percent_SUM_EQUAL: { __type: "Float" },
-    percent_SUM_GT: { __type: "Float" },
-    percent_SUM_GTE: { __type: "Float" },
-    percent_SUM_LT: { __type: "Float" },
-    percent_SUM_LTE: { __type: "Float" },
+    plays_AVERAGE_EQUAL: { __type: "Float" },
+    plays_AVERAGE_GT: { __type: "Float" },
+    plays_AVERAGE_GTE: { __type: "Float" },
+    plays_AVERAGE_LT: { __type: "Float" },
+    plays_AVERAGE_LTE: { __type: "Float" },
+    plays_EQUAL: { __type: "Float" },
+    plays_GT: { __type: "Float" },
+    plays_GTE: { __type: "Float" },
+    plays_LT: { __type: "Float" },
+    plays_LTE: { __type: "Float" },
+    plays_MAX_EQUAL: { __type: "Float" },
+    plays_MAX_GT: { __type: "Float" },
+    plays_MAX_GTE: { __type: "Float" },
+    plays_MAX_LT: { __type: "Float" },
+    plays_MAX_LTE: { __type: "Float" },
+    plays_MIN_EQUAL: { __type: "Float" },
+    plays_MIN_GT: { __type: "Float" },
+    plays_MIN_GTE: { __type: "Float" },
+    plays_MIN_LT: { __type: "Float" },
+    plays_MIN_LTE: { __type: "Float" },
+    plays_SUM_EQUAL: { __type: "Float" },
+    plays_SUM_GT: { __type: "Float" },
+    plays_SUM_GTE: { __type: "Float" },
+    plays_SUM_LT: { __type: "Float" },
+    plays_SUM_LTE: { __type: "Float" },
     slots_AVERAGE_EQUAL: { __type: "Float" },
     slots_AVERAGE_GT: { __type: "Float" },
     slots_AVERAGE_GTE: { __type: "Float" },
@@ -23726,7 +24360,7 @@ export const generatedSchema = {
     color: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    percent: { __type: "FloatAggregateSelection!" },
+    plays: { __type: "FloatAggregateSelection!" },
     slots: { __type: "FloatAggregateSelection!" },
   },
   ScheduleSlot: {
@@ -24122,7 +24756,7 @@ export const generatedSchema = {
     color: { __type: "StringAggregateSelection!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    percent: { __type: "FloatAggregateSelection!" },
+    plays: { __type: "FloatAggregateSelection!" },
     slots: { __type: "FloatAggregateSelection!" },
   },
   ScheduleSlotScheduleUpdateConnectionInput: {
@@ -24340,31 +24974,31 @@ export const generatedSchema = {
     name_SHORTEST_GTE: { __type: "Int" },
     name_SHORTEST_LT: { __type: "Int" },
     name_SHORTEST_LTE: { __type: "Int" },
-    percent_AVERAGE_EQUAL: { __type: "Float" },
-    percent_AVERAGE_GT: { __type: "Float" },
-    percent_AVERAGE_GTE: { __type: "Float" },
-    percent_AVERAGE_LT: { __type: "Float" },
-    percent_AVERAGE_LTE: { __type: "Float" },
-    percent_EQUAL: { __type: "Float" },
-    percent_GT: { __type: "Float" },
-    percent_GTE: { __type: "Float" },
-    percent_LT: { __type: "Float" },
-    percent_LTE: { __type: "Float" },
-    percent_MAX_EQUAL: { __type: "Float" },
-    percent_MAX_GT: { __type: "Float" },
-    percent_MAX_GTE: { __type: "Float" },
-    percent_MAX_LT: { __type: "Float" },
-    percent_MAX_LTE: { __type: "Float" },
-    percent_MIN_EQUAL: { __type: "Float" },
-    percent_MIN_GT: { __type: "Float" },
-    percent_MIN_GTE: { __type: "Float" },
-    percent_MIN_LT: { __type: "Float" },
-    percent_MIN_LTE: { __type: "Float" },
-    percent_SUM_EQUAL: { __type: "Float" },
-    percent_SUM_GT: { __type: "Float" },
-    percent_SUM_GTE: { __type: "Float" },
-    percent_SUM_LT: { __type: "Float" },
-    percent_SUM_LTE: { __type: "Float" },
+    plays_AVERAGE_EQUAL: { __type: "Float" },
+    plays_AVERAGE_GT: { __type: "Float" },
+    plays_AVERAGE_GTE: { __type: "Float" },
+    plays_AVERAGE_LT: { __type: "Float" },
+    plays_AVERAGE_LTE: { __type: "Float" },
+    plays_EQUAL: { __type: "Float" },
+    plays_GT: { __type: "Float" },
+    plays_GTE: { __type: "Float" },
+    plays_LT: { __type: "Float" },
+    plays_LTE: { __type: "Float" },
+    plays_MAX_EQUAL: { __type: "Float" },
+    plays_MAX_GT: { __type: "Float" },
+    plays_MAX_GTE: { __type: "Float" },
+    plays_MAX_LT: { __type: "Float" },
+    plays_MAX_LTE: { __type: "Float" },
+    plays_MIN_EQUAL: { __type: "Float" },
+    plays_MIN_GT: { __type: "Float" },
+    plays_MIN_GTE: { __type: "Float" },
+    plays_MIN_LT: { __type: "Float" },
+    plays_MIN_LTE: { __type: "Float" },
+    plays_SUM_EQUAL: { __type: "Float" },
+    plays_SUM_GT: { __type: "Float" },
+    plays_SUM_GTE: { __type: "Float" },
+    plays_SUM_LT: { __type: "Float" },
+    plays_SUM_LTE: { __type: "Float" },
     slots_AVERAGE_EQUAL: { __type: "Float" },
     slots_AVERAGE_GT: { __type: "Float" },
     slots_AVERAGE_GTE: { __type: "Float" },
@@ -24694,7 +25328,7 @@ export const generatedSchema = {
         where: "ScheduleTierOrganisationConnectionWhere",
       },
     },
-    percent: { __type: "Float" },
+    plays: { __type: "Float" },
     schedule: {
       __type: "Schedule",
       __args: { options: "ScheduleOptions", where: "ScheduleWhere" },
@@ -24721,7 +25355,7 @@ export const generatedSchema = {
     count: { __type: "Int!" },
     id: { __type: "IDAggregateSelection!" },
     name: { __type: "StringAggregateSelection!" },
-    percent: { __type: "FloatAggregateSelection!" },
+    plays: { __type: "FloatAggregateSelection!" },
     slots: { __type: "FloatAggregateSelection!" },
   },
   ScheduleTierConnectInput: {
@@ -24742,7 +25376,7 @@ export const generatedSchema = {
     color: { __type: "String" },
     name: { __type: "String" },
     organisation: { __type: "ScheduleTierOrganisationFieldInput" },
-    percent: { __type: "Float" },
+    plays: { __type: "Float" },
     schedule: { __type: "ScheduleTierScheduleFieldInput" },
     slots: { __type: "Float" },
   },
@@ -25024,7 +25658,7 @@ export const generatedSchema = {
     color: { __type: "SortDirection" },
     id: { __type: "SortDirection" },
     name: { __type: "SortDirection" },
-    percent: { __type: "SortDirection" },
+    plays: { __type: "SortDirection" },
     slots: { __type: "SortDirection" },
   },
   ScheduleTierUniqueWhere: { id: { __type: "ID" } },
@@ -25032,7 +25666,7 @@ export const generatedSchema = {
     color: { __type: "String" },
     name: { __type: "String" },
     organisation: { __type: "ScheduleTierOrganisationUpdateFieldInput" },
-    percent: { __type: "Float" },
+    plays: { __type: "Float" },
     schedule: { __type: "ScheduleTierScheduleUpdateFieldInput" },
     slots: { __type: "Float" },
   },
@@ -25078,14 +25712,14 @@ export const generatedSchema = {
       __type: "ScheduleTierOrganisationConnectionWhere",
     },
     organisation_NOT: { __type: "HiveOrganisationWhere" },
-    percent: { __type: "Float" },
-    percent_GT: { __type: "Float" },
-    percent_GTE: { __type: "Float" },
-    percent_IN: { __type: "[Float]" },
-    percent_LT: { __type: "Float" },
-    percent_LTE: { __type: "Float" },
-    percent_NOT: { __type: "Float" },
-    percent_NOT_IN: { __type: "[Float]" },
+    plays: { __type: "Float" },
+    plays_GT: { __type: "Float" },
+    plays_GTE: { __type: "Float" },
+    plays_IN: { __type: "[Float]" },
+    plays_LT: { __type: "Float" },
+    plays_LTE: { __type: "Float" },
+    plays_NOT: { __type: "Float" },
+    plays_NOT_IN: { __type: "[Float]" },
     schedule: { __type: "ScheduleWhere" },
     scheduleAggregate: { __type: "ScheduleTierScheduleAggregateInput" },
     scheduleConnection: { __type: "ScheduleTierScheduleConnectionWhere" },
@@ -25194,31 +25828,31 @@ export const generatedSchema = {
     name_SHORTEST_GTE: { __type: "Int" },
     name_SHORTEST_LT: { __type: "Int" },
     name_SHORTEST_LTE: { __type: "Int" },
-    percent_AVERAGE_EQUAL: { __type: "Float" },
-    percent_AVERAGE_GT: { __type: "Float" },
-    percent_AVERAGE_GTE: { __type: "Float" },
-    percent_AVERAGE_LT: { __type: "Float" },
-    percent_AVERAGE_LTE: { __type: "Float" },
-    percent_EQUAL: { __type: "Float" },
-    percent_GT: { __type: "Float" },
-    percent_GTE: { __type: "Float" },
-    percent_LT: { __type: "Float" },
-    percent_LTE: { __type: "Float" },
-    percent_MAX_EQUAL: { __type: "Float" },
-    percent_MAX_GT: { __type: "Float" },
-    percent_MAX_GTE: { __type: "Float" },
-    percent_MAX_LT: { __type: "Float" },
-    percent_MAX_LTE: { __type: "Float" },
-    percent_MIN_EQUAL: { __type: "Float" },
-    percent_MIN_GT: { __type: "Float" },
-    percent_MIN_GTE: { __type: "Float" },
-    percent_MIN_LT: { __type: "Float" },
-    percent_MIN_LTE: { __type: "Float" },
-    percent_SUM_EQUAL: { __type: "Float" },
-    percent_SUM_GT: { __type: "Float" },
-    percent_SUM_GTE: { __type: "Float" },
-    percent_SUM_LT: { __type: "Float" },
-    percent_SUM_LTE: { __type: "Float" },
+    plays_AVERAGE_EQUAL: { __type: "Float" },
+    plays_AVERAGE_GT: { __type: "Float" },
+    plays_AVERAGE_GTE: { __type: "Float" },
+    plays_AVERAGE_LT: { __type: "Float" },
+    plays_AVERAGE_LTE: { __type: "Float" },
+    plays_EQUAL: { __type: "Float" },
+    plays_GT: { __type: "Float" },
+    plays_GTE: { __type: "Float" },
+    plays_LT: { __type: "Float" },
+    plays_LTE: { __type: "Float" },
+    plays_MAX_EQUAL: { __type: "Float" },
+    plays_MAX_GT: { __type: "Float" },
+    plays_MAX_GTE: { __type: "Float" },
+    plays_MAX_LT: { __type: "Float" },
+    plays_MAX_LTE: { __type: "Float" },
+    plays_MIN_EQUAL: { __type: "Float" },
+    plays_MIN_GT: { __type: "Float" },
+    plays_MIN_GTE: { __type: "Float" },
+    plays_MIN_LT: { __type: "Float" },
+    plays_MIN_LTE: { __type: "Float" },
+    plays_SUM_EQUAL: { __type: "Float" },
+    plays_SUM_GT: { __type: "Float" },
+    plays_SUM_GTE: { __type: "Float" },
+    plays_SUM_LT: { __type: "Float" },
+    plays_SUM_LTE: { __type: "Float" },
     slots_AVERAGE_EQUAL: { __type: "Float" },
     slots_AVERAGE_GT: { __type: "Float" },
     slots_AVERAGE_GTE: { __type: "Float" },
@@ -25575,6 +26209,765 @@ export const generatedSchema = {
     tiersConnection: { __type: "ScheduleTiersConnectionWhere" },
     tiersConnection_NOT: { __type: "ScheduleTiersConnectionWhere" },
     tiers_NOT: { __type: "ScheduleTierWhere" },
+  },
+  ScreenScheduleSlot: {
+    __typename: { __type: "String!" },
+    campaign: {
+      __type: "Campaign",
+      __args: { options: "CampaignOptions", where: "CampaignWhere" },
+    },
+    campaignAggregate: {
+      __type: "ScreenScheduleSlotCampaignCampaignAggregationSelection",
+      __args: { where: "CampaignWhere" },
+    },
+    campaignConnection: {
+      __type: "ScreenScheduleSlotCampaignConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenScheduleSlotCampaignConnectionSort!]",
+        where: "ScreenScheduleSlotCampaignConnectionWhere",
+      },
+    },
+    endDate: { __type: "DateTime" },
+    id: { __type: "ID!" },
+    screen: {
+      __type: "GreenScreen",
+      __args: { options: "GreenScreenOptions", where: "GreenScreenWhere" },
+    },
+    screenAggregate: {
+      __type: "ScreenScheduleSlotGreenScreenScreenAggregationSelection",
+      __args: { where: "GreenScreenWhere" },
+    },
+    screenConnection: {
+      __type: "ScreenScheduleSlotScreenConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenScheduleSlotScreenConnectionSort!]",
+        where: "ScreenScheduleSlotScreenConnectionWhere",
+      },
+    },
+    slot: {
+      __type: "TemplateSlot",
+      __args: { options: "TemplateSlotOptions", where: "TemplateSlotWhere" },
+    },
+    slotAggregate: {
+      __type: "ScreenScheduleSlotTemplateSlotSlotAggregationSelection",
+      __args: { where: "TemplateSlotWhere" },
+    },
+    slotConnection: {
+      __type: "ScreenScheduleSlotSlotConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenScheduleSlotSlotConnectionSort!]",
+        where: "ScreenScheduleSlotSlotConnectionWhere",
+      },
+    },
+    startDate: { __type: "DateTime" },
+    tier: {
+      __type: "ScheduleTier",
+      __args: { options: "ScheduleTierOptions", where: "ScheduleTierWhere" },
+    },
+    tierAggregate: {
+      __type: "ScreenScheduleSlotScheduleTierTierAggregationSelection",
+      __args: { where: "ScheduleTierWhere" },
+    },
+    tierConnection: {
+      __type: "ScreenScheduleSlotTierConnection!",
+      __args: {
+        after: "String",
+        first: "Int",
+        sort: "[ScreenScheduleSlotTierConnectionSort!]",
+        where: "ScreenScheduleSlotTierConnectionWhere",
+      },
+    },
+  },
+  ScreenScheduleSlotAggregateSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    endDate: { __type: "DateTimeAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    startDate: { __type: "DateTimeAggregateSelection!" },
+  },
+  ScreenScheduleSlotCampaignAggregateInput: {
+    AND: { __type: "[ScreenScheduleSlotCampaignAggregateInput!]" },
+    OR: { __type: "[ScreenScheduleSlotCampaignAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenScheduleSlotCampaignNodeAggregationWhereInput" },
+  },
+  ScreenScheduleSlotCampaignCampaignAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScreenScheduleSlotCampaignCampaignNodeAggregateSelection",
+    },
+  },
+  ScreenScheduleSlotCampaignCampaignNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    assetFolder: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  ScreenScheduleSlotCampaignConnectFieldInput: {
+    connect: { __type: "CampaignConnectInput" },
+    where: { __type: "CampaignConnectWhere" },
+  },
+  ScreenScheduleSlotCampaignConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScreenScheduleSlotCampaignConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "CampaignConnectOrCreateWhere!" },
+  },
+  ScreenScheduleSlotCampaignConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  ScreenScheduleSlotCampaignConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenScheduleSlotCampaignRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenScheduleSlotCampaignConnectionSort: {
+    node: { __type: "CampaignSort" },
+  },
+  ScreenScheduleSlotCampaignConnectionWhere: {
+    AND: { __type: "[ScreenScheduleSlotCampaignConnectionWhere!]" },
+    OR: { __type: "[ScreenScheduleSlotCampaignConnectionWhere!]" },
+    node: { __type: "CampaignWhere" },
+    node_NOT: { __type: "CampaignWhere" },
+  },
+  ScreenScheduleSlotCampaignCreateFieldInput: {
+    node: { __type: "CampaignCreateInput!" },
+  },
+  ScreenScheduleSlotCampaignDeleteFieldInput: {
+    delete: { __type: "CampaignDeleteInput" },
+    where: { __type: "ScreenScheduleSlotCampaignConnectionWhere" },
+  },
+  ScreenScheduleSlotCampaignDisconnectFieldInput: {
+    disconnect: { __type: "CampaignDisconnectInput" },
+    where: { __type: "ScreenScheduleSlotCampaignConnectionWhere" },
+  },
+  ScreenScheduleSlotCampaignFieldInput: {
+    connect: { __type: "ScreenScheduleSlotCampaignConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotCampaignConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotCampaignCreateFieldInput" },
+  },
+  ScreenScheduleSlotCampaignNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenScheduleSlotCampaignNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenScheduleSlotCampaignNodeAggregationWhereInput!]" },
+    assetFolder_AVERAGE_EQUAL: { __type: "Float" },
+    assetFolder_AVERAGE_GT: { __type: "Float" },
+    assetFolder_AVERAGE_GTE: { __type: "Float" },
+    assetFolder_AVERAGE_LT: { __type: "Float" },
+    assetFolder_AVERAGE_LTE: { __type: "Float" },
+    assetFolder_EQUAL: { __type: "String" },
+    assetFolder_GT: { __type: "Int" },
+    assetFolder_GTE: { __type: "Int" },
+    assetFolder_LONGEST_EQUAL: { __type: "Int" },
+    assetFolder_LONGEST_GT: { __type: "Int" },
+    assetFolder_LONGEST_GTE: { __type: "Int" },
+    assetFolder_LONGEST_LT: { __type: "Int" },
+    assetFolder_LONGEST_LTE: { __type: "Int" },
+    assetFolder_LT: { __type: "Int" },
+    assetFolder_LTE: { __type: "Int" },
+    assetFolder_SHORTEST_EQUAL: { __type: "Int" },
+    assetFolder_SHORTEST_GT: { __type: "Int" },
+    assetFolder_SHORTEST_GTE: { __type: "Int" },
+    assetFolder_SHORTEST_LT: { __type: "Int" },
+    assetFolder_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScreenScheduleSlotCampaignRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "Campaign!" },
+  },
+  ScreenScheduleSlotCampaignUpdateConnectionInput: {
+    node: { __type: "CampaignUpdateInput" },
+  },
+  ScreenScheduleSlotCampaignUpdateFieldInput: {
+    connect: { __type: "ScreenScheduleSlotCampaignConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotCampaignConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotCampaignCreateFieldInput" },
+    delete: { __type: "ScreenScheduleSlotCampaignDeleteFieldInput" },
+    disconnect: { __type: "ScreenScheduleSlotCampaignDisconnectFieldInput" },
+    update: { __type: "ScreenScheduleSlotCampaignUpdateConnectionInput" },
+    where: { __type: "ScreenScheduleSlotCampaignConnectionWhere" },
+  },
+  ScreenScheduleSlotConnectInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignConnectFieldInput" },
+    screen: { __type: "ScreenScheduleSlotScreenConnectFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotConnectFieldInput" },
+    tier: { __type: "ScreenScheduleSlotTierConnectFieldInput" },
+  },
+  ScreenScheduleSlotConnectOrCreateInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignConnectOrCreateFieldInput" },
+    screen: { __type: "ScreenScheduleSlotScreenConnectOrCreateFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotConnectOrCreateFieldInput" },
+    tier: { __type: "ScreenScheduleSlotTierConnectOrCreateFieldInput" },
+  },
+  ScreenScheduleSlotConnectOrCreateWhere: {
+    node: { __type: "ScreenScheduleSlotUniqueWhere!" },
+  },
+  ScreenScheduleSlotConnectWhere: {
+    node: { __type: "ScreenScheduleSlotWhere!" },
+  },
+  ScreenScheduleSlotCreateInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignFieldInput" },
+    endDate: { __type: "DateTime" },
+    screen: { __type: "ScreenScheduleSlotScreenFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotFieldInput" },
+    startDate: { __type: "DateTime" },
+    tier: { __type: "ScreenScheduleSlotTierFieldInput" },
+  },
+  ScreenScheduleSlotDeleteInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignDeleteFieldInput" },
+    screen: { __type: "ScreenScheduleSlotScreenDeleteFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotDeleteFieldInput" },
+    tier: { __type: "ScreenScheduleSlotTierDeleteFieldInput" },
+  },
+  ScreenScheduleSlotDisconnectInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignDisconnectFieldInput" },
+    screen: { __type: "ScreenScheduleSlotScreenDisconnectFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotDisconnectFieldInput" },
+    tier: { __type: "ScreenScheduleSlotTierDisconnectFieldInput" },
+  },
+  ScreenScheduleSlotGreenScreenScreenAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection",
+    },
+  },
+  ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    networkName: { __type: "StringAggregateSelection!" },
+  },
+  ScreenScheduleSlotOptions: {
+    limit: { __type: "Int" },
+    offset: { __type: "Int" },
+    sort: { __type: "[ScreenScheduleSlotSort]" },
+  },
+  ScreenScheduleSlotRelationInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignCreateFieldInput" },
+    screen: { __type: "ScreenScheduleSlotScreenCreateFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotCreateFieldInput" },
+    tier: { __type: "ScreenScheduleSlotTierCreateFieldInput" },
+  },
+  ScreenScheduleSlotScheduleTierTierAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScreenScheduleSlotScheduleTierTierNodeAggregateSelection",
+    },
+  },
+  ScreenScheduleSlotScheduleTierTierNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    color: { __type: "StringAggregateSelection!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+    plays: { __type: "FloatAggregateSelection!" },
+    slots: { __type: "FloatAggregateSelection!" },
+  },
+  ScreenScheduleSlotScreenAggregateInput: {
+    AND: { __type: "[ScreenScheduleSlotScreenAggregateInput!]" },
+    OR: { __type: "[ScreenScheduleSlotScreenAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenScheduleSlotScreenNodeAggregationWhereInput" },
+  },
+  ScreenScheduleSlotScreenConnectFieldInput: {
+    connect: { __type: "GreenScreenConnectInput" },
+    where: { __type: "GreenScreenConnectWhere" },
+  },
+  ScreenScheduleSlotScreenConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScreenScheduleSlotScreenConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "GreenScreenConnectOrCreateWhere!" },
+  },
+  ScreenScheduleSlotScreenConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "GreenScreenCreateInput!" },
+  },
+  ScreenScheduleSlotScreenConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenScheduleSlotScreenRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenScheduleSlotScreenConnectionSort: {
+    node: { __type: "GreenScreenSort" },
+  },
+  ScreenScheduleSlotScreenConnectionWhere: {
+    AND: { __type: "[ScreenScheduleSlotScreenConnectionWhere!]" },
+    OR: { __type: "[ScreenScheduleSlotScreenConnectionWhere!]" },
+    node: { __type: "GreenScreenWhere" },
+    node_NOT: { __type: "GreenScreenWhere" },
+  },
+  ScreenScheduleSlotScreenCreateFieldInput: {
+    node: { __type: "GreenScreenCreateInput!" },
+  },
+  ScreenScheduleSlotScreenDeleteFieldInput: {
+    delete: { __type: "GreenScreenDeleteInput" },
+    where: { __type: "ScreenScheduleSlotScreenConnectionWhere" },
+  },
+  ScreenScheduleSlotScreenDisconnectFieldInput: {
+    disconnect: { __type: "GreenScreenDisconnectInput" },
+    where: { __type: "ScreenScheduleSlotScreenConnectionWhere" },
+  },
+  ScreenScheduleSlotScreenFieldInput: {
+    connect: { __type: "ScreenScheduleSlotScreenConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotScreenConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotScreenCreateFieldInput" },
+  },
+  ScreenScheduleSlotScreenNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenScheduleSlotScreenNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenScheduleSlotScreenNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    networkName_AVERAGE_EQUAL: { __type: "Float" },
+    networkName_AVERAGE_GT: { __type: "Float" },
+    networkName_AVERAGE_GTE: { __type: "Float" },
+    networkName_AVERAGE_LT: { __type: "Float" },
+    networkName_AVERAGE_LTE: { __type: "Float" },
+    networkName_EQUAL: { __type: "String" },
+    networkName_GT: { __type: "Int" },
+    networkName_GTE: { __type: "Int" },
+    networkName_LONGEST_EQUAL: { __type: "Int" },
+    networkName_LONGEST_GT: { __type: "Int" },
+    networkName_LONGEST_GTE: { __type: "Int" },
+    networkName_LONGEST_LT: { __type: "Int" },
+    networkName_LONGEST_LTE: { __type: "Int" },
+    networkName_LT: { __type: "Int" },
+    networkName_LTE: { __type: "Int" },
+    networkName_SHORTEST_EQUAL: { __type: "Int" },
+    networkName_SHORTEST_GT: { __type: "Int" },
+    networkName_SHORTEST_GTE: { __type: "Int" },
+    networkName_SHORTEST_LT: { __type: "Int" },
+    networkName_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScreenScheduleSlotScreenRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "GreenScreen!" },
+  },
+  ScreenScheduleSlotScreenUpdateConnectionInput: {
+    node: { __type: "GreenScreenUpdateInput" },
+  },
+  ScreenScheduleSlotScreenUpdateFieldInput: {
+    connect: { __type: "ScreenScheduleSlotScreenConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotScreenConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotScreenCreateFieldInput" },
+    delete: { __type: "ScreenScheduleSlotScreenDeleteFieldInput" },
+    disconnect: { __type: "ScreenScheduleSlotScreenDisconnectFieldInput" },
+    update: { __type: "ScreenScheduleSlotScreenUpdateConnectionInput" },
+    where: { __type: "ScreenScheduleSlotScreenConnectionWhere" },
+  },
+  ScreenScheduleSlotSlotAggregateInput: {
+    AND: { __type: "[ScreenScheduleSlotSlotAggregateInput!]" },
+    OR: { __type: "[ScreenScheduleSlotSlotAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenScheduleSlotSlotNodeAggregationWhereInput" },
+  },
+  ScreenScheduleSlotSlotConnectFieldInput: {
+    connect: { __type: "TemplateSlotConnectInput" },
+    where: { __type: "TemplateSlotConnectWhere" },
+  },
+  ScreenScheduleSlotSlotConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScreenScheduleSlotSlotConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "TemplateSlotConnectOrCreateWhere!" },
+  },
+  ScreenScheduleSlotSlotConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScreenScheduleSlotSlotConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenScheduleSlotSlotRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenScheduleSlotSlotConnectionSort: {
+    node: { __type: "TemplateSlotSort" },
+  },
+  ScreenScheduleSlotSlotConnectionWhere: {
+    AND: { __type: "[ScreenScheduleSlotSlotConnectionWhere!]" },
+    OR: { __type: "[ScreenScheduleSlotSlotConnectionWhere!]" },
+    node: { __type: "TemplateSlotWhere" },
+    node_NOT: { __type: "TemplateSlotWhere" },
+  },
+  ScreenScheduleSlotSlotCreateFieldInput: {
+    node: { __type: "TemplateSlotCreateInput!" },
+  },
+  ScreenScheduleSlotSlotDeleteFieldInput: {
+    delete: { __type: "TemplateSlotDeleteInput" },
+    where: { __type: "ScreenScheduleSlotSlotConnectionWhere" },
+  },
+  ScreenScheduleSlotSlotDisconnectFieldInput: {
+    disconnect: { __type: "TemplateSlotDisconnectInput" },
+    where: { __type: "ScreenScheduleSlotSlotConnectionWhere" },
+  },
+  ScreenScheduleSlotSlotFieldInput: {
+    connect: { __type: "ScreenScheduleSlotSlotConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotSlotConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotSlotCreateFieldInput" },
+  },
+  ScreenScheduleSlotSlotNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenScheduleSlotSlotNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenScheduleSlotSlotNodeAggregationWhereInput!]" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+  },
+  ScreenScheduleSlotSlotRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "TemplateSlot!" },
+  },
+  ScreenScheduleSlotSlotUpdateConnectionInput: {
+    node: { __type: "TemplateSlotUpdateInput" },
+  },
+  ScreenScheduleSlotSlotUpdateFieldInput: {
+    connect: { __type: "ScreenScheduleSlotSlotConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotSlotConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotSlotCreateFieldInput" },
+    delete: { __type: "ScreenScheduleSlotSlotDeleteFieldInput" },
+    disconnect: { __type: "ScreenScheduleSlotSlotDisconnectFieldInput" },
+    update: { __type: "ScreenScheduleSlotSlotUpdateConnectionInput" },
+    where: { __type: "ScreenScheduleSlotSlotConnectionWhere" },
+  },
+  ScreenScheduleSlotSort: {
+    endDate: { __type: "SortDirection" },
+    id: { __type: "SortDirection" },
+    startDate: { __type: "SortDirection" },
+  },
+  ScreenScheduleSlotTemplateSlotSlotAggregationSelection: {
+    __typename: { __type: "String!" },
+    count: { __type: "Int!" },
+    node: {
+      __type: "ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection",
+    },
+  },
+  ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection: {
+    __typename: { __type: "String!" },
+    id: { __type: "IDAggregateSelection!" },
+    name: { __type: "StringAggregateSelection!" },
+  },
+  ScreenScheduleSlotTierAggregateInput: {
+    AND: { __type: "[ScreenScheduleSlotTierAggregateInput!]" },
+    OR: { __type: "[ScreenScheduleSlotTierAggregateInput!]" },
+    count: { __type: "Int" },
+    count_GT: { __type: "Int" },
+    count_GTE: { __type: "Int" },
+    count_LT: { __type: "Int" },
+    count_LTE: { __type: "Int" },
+    node: { __type: "ScreenScheduleSlotTierNodeAggregationWhereInput" },
+  },
+  ScreenScheduleSlotTierConnectFieldInput: {
+    connect: { __type: "ScheduleTierConnectInput" },
+    where: { __type: "ScheduleTierConnectWhere" },
+  },
+  ScreenScheduleSlotTierConnectOrCreateFieldInput: {
+    onCreate: {
+      __type: "ScreenScheduleSlotTierConnectOrCreateFieldInputOnCreate!",
+    },
+    where: { __type: "ScheduleTierConnectOrCreateWhere!" },
+  },
+  ScreenScheduleSlotTierConnectOrCreateFieldInputOnCreate: {
+    node: { __type: "ScheduleTierCreateInput!" },
+  },
+  ScreenScheduleSlotTierConnection: {
+    __typename: { __type: "String!" },
+    edges: { __type: "[ScreenScheduleSlotTierRelationship!]!" },
+    pageInfo: { __type: "PageInfo!" },
+    totalCount: { __type: "Int!" },
+  },
+  ScreenScheduleSlotTierConnectionSort: {
+    node: { __type: "ScheduleTierSort" },
+  },
+  ScreenScheduleSlotTierConnectionWhere: {
+    AND: { __type: "[ScreenScheduleSlotTierConnectionWhere!]" },
+    OR: { __type: "[ScreenScheduleSlotTierConnectionWhere!]" },
+    node: { __type: "ScheduleTierWhere" },
+    node_NOT: { __type: "ScheduleTierWhere" },
+  },
+  ScreenScheduleSlotTierCreateFieldInput: {
+    node: { __type: "ScheduleTierCreateInput!" },
+  },
+  ScreenScheduleSlotTierDeleteFieldInput: {
+    delete: { __type: "ScheduleTierDeleteInput" },
+    where: { __type: "ScreenScheduleSlotTierConnectionWhere" },
+  },
+  ScreenScheduleSlotTierDisconnectFieldInput: {
+    disconnect: { __type: "ScheduleTierDisconnectInput" },
+    where: { __type: "ScreenScheduleSlotTierConnectionWhere" },
+  },
+  ScreenScheduleSlotTierFieldInput: {
+    connect: { __type: "ScreenScheduleSlotTierConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotTierConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotTierCreateFieldInput" },
+  },
+  ScreenScheduleSlotTierNodeAggregationWhereInput: {
+    AND: { __type: "[ScreenScheduleSlotTierNodeAggregationWhereInput!]" },
+    OR: { __type: "[ScreenScheduleSlotTierNodeAggregationWhereInput!]" },
+    color_AVERAGE_EQUAL: { __type: "Float" },
+    color_AVERAGE_GT: { __type: "Float" },
+    color_AVERAGE_GTE: { __type: "Float" },
+    color_AVERAGE_LT: { __type: "Float" },
+    color_AVERAGE_LTE: { __type: "Float" },
+    color_EQUAL: { __type: "String" },
+    color_GT: { __type: "Int" },
+    color_GTE: { __type: "Int" },
+    color_LONGEST_EQUAL: { __type: "Int" },
+    color_LONGEST_GT: { __type: "Int" },
+    color_LONGEST_GTE: { __type: "Int" },
+    color_LONGEST_LT: { __type: "Int" },
+    color_LONGEST_LTE: { __type: "Int" },
+    color_LT: { __type: "Int" },
+    color_LTE: { __type: "Int" },
+    color_SHORTEST_EQUAL: { __type: "Int" },
+    color_SHORTEST_GT: { __type: "Int" },
+    color_SHORTEST_GTE: { __type: "Int" },
+    color_SHORTEST_LT: { __type: "Int" },
+    color_SHORTEST_LTE: { __type: "Int" },
+    id_EQUAL: { __type: "ID" },
+    name_AVERAGE_EQUAL: { __type: "Float" },
+    name_AVERAGE_GT: { __type: "Float" },
+    name_AVERAGE_GTE: { __type: "Float" },
+    name_AVERAGE_LT: { __type: "Float" },
+    name_AVERAGE_LTE: { __type: "Float" },
+    name_EQUAL: { __type: "String" },
+    name_GT: { __type: "Int" },
+    name_GTE: { __type: "Int" },
+    name_LONGEST_EQUAL: { __type: "Int" },
+    name_LONGEST_GT: { __type: "Int" },
+    name_LONGEST_GTE: { __type: "Int" },
+    name_LONGEST_LT: { __type: "Int" },
+    name_LONGEST_LTE: { __type: "Int" },
+    name_LT: { __type: "Int" },
+    name_LTE: { __type: "Int" },
+    name_SHORTEST_EQUAL: { __type: "Int" },
+    name_SHORTEST_GT: { __type: "Int" },
+    name_SHORTEST_GTE: { __type: "Int" },
+    name_SHORTEST_LT: { __type: "Int" },
+    name_SHORTEST_LTE: { __type: "Int" },
+    plays_AVERAGE_EQUAL: { __type: "Float" },
+    plays_AVERAGE_GT: { __type: "Float" },
+    plays_AVERAGE_GTE: { __type: "Float" },
+    plays_AVERAGE_LT: { __type: "Float" },
+    plays_AVERAGE_LTE: { __type: "Float" },
+    plays_EQUAL: { __type: "Float" },
+    plays_GT: { __type: "Float" },
+    plays_GTE: { __type: "Float" },
+    plays_LT: { __type: "Float" },
+    plays_LTE: { __type: "Float" },
+    plays_MAX_EQUAL: { __type: "Float" },
+    plays_MAX_GT: { __type: "Float" },
+    plays_MAX_GTE: { __type: "Float" },
+    plays_MAX_LT: { __type: "Float" },
+    plays_MAX_LTE: { __type: "Float" },
+    plays_MIN_EQUAL: { __type: "Float" },
+    plays_MIN_GT: { __type: "Float" },
+    plays_MIN_GTE: { __type: "Float" },
+    plays_MIN_LT: { __type: "Float" },
+    plays_MIN_LTE: { __type: "Float" },
+    plays_SUM_EQUAL: { __type: "Float" },
+    plays_SUM_GT: { __type: "Float" },
+    plays_SUM_GTE: { __type: "Float" },
+    plays_SUM_LT: { __type: "Float" },
+    plays_SUM_LTE: { __type: "Float" },
+    slots_AVERAGE_EQUAL: { __type: "Float" },
+    slots_AVERAGE_GT: { __type: "Float" },
+    slots_AVERAGE_GTE: { __type: "Float" },
+    slots_AVERAGE_LT: { __type: "Float" },
+    slots_AVERAGE_LTE: { __type: "Float" },
+    slots_EQUAL: { __type: "Float" },
+    slots_GT: { __type: "Float" },
+    slots_GTE: { __type: "Float" },
+    slots_LT: { __type: "Float" },
+    slots_LTE: { __type: "Float" },
+    slots_MAX_EQUAL: { __type: "Float" },
+    slots_MAX_GT: { __type: "Float" },
+    slots_MAX_GTE: { __type: "Float" },
+    slots_MAX_LT: { __type: "Float" },
+    slots_MAX_LTE: { __type: "Float" },
+    slots_MIN_EQUAL: { __type: "Float" },
+    slots_MIN_GT: { __type: "Float" },
+    slots_MIN_GTE: { __type: "Float" },
+    slots_MIN_LT: { __type: "Float" },
+    slots_MIN_LTE: { __type: "Float" },
+    slots_SUM_EQUAL: { __type: "Float" },
+    slots_SUM_GT: { __type: "Float" },
+    slots_SUM_GTE: { __type: "Float" },
+    slots_SUM_LT: { __type: "Float" },
+    slots_SUM_LTE: { __type: "Float" },
+  },
+  ScreenScheduleSlotTierRelationship: {
+    __typename: { __type: "String!" },
+    cursor: { __type: "String!" },
+    node: { __type: "ScheduleTier!" },
+  },
+  ScreenScheduleSlotTierUpdateConnectionInput: {
+    node: { __type: "ScheduleTierUpdateInput" },
+  },
+  ScreenScheduleSlotTierUpdateFieldInput: {
+    connect: { __type: "ScreenScheduleSlotTierConnectFieldInput" },
+    connectOrCreate: {
+      __type: "ScreenScheduleSlotTierConnectOrCreateFieldInput",
+    },
+    create: { __type: "ScreenScheduleSlotTierCreateFieldInput" },
+    delete: { __type: "ScreenScheduleSlotTierDeleteFieldInput" },
+    disconnect: { __type: "ScreenScheduleSlotTierDisconnectFieldInput" },
+    update: { __type: "ScreenScheduleSlotTierUpdateConnectionInput" },
+    where: { __type: "ScreenScheduleSlotTierConnectionWhere" },
+  },
+  ScreenScheduleSlotUniqueWhere: { id: { __type: "ID" } },
+  ScreenScheduleSlotUpdateInput: {
+    campaign: { __type: "ScreenScheduleSlotCampaignUpdateFieldInput" },
+    endDate: { __type: "DateTime" },
+    screen: { __type: "ScreenScheduleSlotScreenUpdateFieldInput" },
+    slot: { __type: "ScreenScheduleSlotSlotUpdateFieldInput" },
+    startDate: { __type: "DateTime" },
+    tier: { __type: "ScreenScheduleSlotTierUpdateFieldInput" },
+  },
+  ScreenScheduleSlotWhere: {
+    AND: { __type: "[ScreenScheduleSlotWhere!]" },
+    OR: { __type: "[ScreenScheduleSlotWhere!]" },
+    campaign: { __type: "CampaignWhere" },
+    campaignAggregate: { __type: "ScreenScheduleSlotCampaignAggregateInput" },
+    campaignConnection: { __type: "ScreenScheduleSlotCampaignConnectionWhere" },
+    campaignConnection_NOT: {
+      __type: "ScreenScheduleSlotCampaignConnectionWhere",
+    },
+    campaign_NOT: { __type: "CampaignWhere" },
+    endDate: { __type: "DateTime" },
+    endDate_GT: { __type: "DateTime" },
+    endDate_GTE: { __type: "DateTime" },
+    endDate_IN: { __type: "[DateTime]" },
+    endDate_LT: { __type: "DateTime" },
+    endDate_LTE: { __type: "DateTime" },
+    endDate_NOT: { __type: "DateTime" },
+    endDate_NOT_IN: { __type: "[DateTime]" },
+    id: { __type: "ID" },
+    id_CONTAINS: { __type: "ID" },
+    id_ENDS_WITH: { __type: "ID" },
+    id_IN: { __type: "[ID]" },
+    id_NOT: { __type: "ID" },
+    id_NOT_CONTAINS: { __type: "ID" },
+    id_NOT_ENDS_WITH: { __type: "ID" },
+    id_NOT_IN: { __type: "[ID]" },
+    id_NOT_STARTS_WITH: { __type: "ID" },
+    id_STARTS_WITH: { __type: "ID" },
+    screen: { __type: "GreenScreenWhere" },
+    screenAggregate: { __type: "ScreenScheduleSlotScreenAggregateInput" },
+    screenConnection: { __type: "ScreenScheduleSlotScreenConnectionWhere" },
+    screenConnection_NOT: { __type: "ScreenScheduleSlotScreenConnectionWhere" },
+    screen_NOT: { __type: "GreenScreenWhere" },
+    slot: { __type: "TemplateSlotWhere" },
+    slotAggregate: { __type: "ScreenScheduleSlotSlotAggregateInput" },
+    slotConnection: { __type: "ScreenScheduleSlotSlotConnectionWhere" },
+    slotConnection_NOT: { __type: "ScreenScheduleSlotSlotConnectionWhere" },
+    slot_NOT: { __type: "TemplateSlotWhere" },
+    startDate: { __type: "DateTime" },
+    startDate_GT: { __type: "DateTime" },
+    startDate_GTE: { __type: "DateTime" },
+    startDate_IN: { __type: "[DateTime]" },
+    startDate_LT: { __type: "DateTime" },
+    startDate_LTE: { __type: "DateTime" },
+    startDate_NOT: { __type: "DateTime" },
+    startDate_NOT_IN: { __type: "[DateTime]" },
+    tier: { __type: "ScheduleTierWhere" },
+    tierAggregate: { __type: "ScreenScheduleSlotTierAggregateInput" },
+    tierConnection: { __type: "ScreenScheduleSlotTierConnectionWhere" },
+    tierConnection_NOT: { __type: "ScreenScheduleSlotTierConnectionWhere" },
+    tier_NOT: { __type: "ScheduleTierWhere" },
   },
   ScreenSlot: {
     __typename: { __type: "String!" },
@@ -27526,6 +28919,11 @@ export const generatedSchema = {
     info: { __type: "UpdateInfo!" },
     schedules: { __type: "[Schedule!]!" },
   },
+  UpdateScreenScheduleSlotsMutationResponse: {
+    __typename: { __type: "String!" },
+    info: { __type: "UpdateInfo!" },
+    screenScheduleSlots: { __type: "[ScreenScheduleSlot!]!" },
+  },
   UpdateScreenSlotsMutationResponse: {
     __typename: { __type: "String!" },
     info: { __type: "UpdateInfo!" },
@@ -27647,6 +29045,10 @@ export const generatedSchema = {
     createSchedules: {
       __type: "CreateSchedulesMutationResponse!",
       __args: { input: "[ScheduleCreateInput!]!" },
+    },
+    createScreenScheduleSlots: {
+      __type: "CreateScreenScheduleSlotsMutationResponse!",
+      __args: { input: "[ScreenScheduleSlotCreateInput!]!" },
     },
     createScreenSlots: {
       __type: "CreateScreenSlotsMutationResponse!",
@@ -27790,6 +29192,13 @@ export const generatedSchema = {
     deleteSchedules: {
       __type: "DeleteInfo!",
       __args: { delete: "ScheduleDeleteInput", where: "ScheduleWhere" },
+    },
+    deleteScreenScheduleSlots: {
+      __type: "DeleteInfo!",
+      __args: {
+        delete: "ScreenScheduleSlotDeleteInput",
+        where: "ScreenScheduleSlotWhere",
+      },
     },
     deleteScreenSlots: {
       __type: "DeleteInfo!",
@@ -28086,6 +29495,18 @@ export const generatedSchema = {
         disconnect: "ScheduleDisconnectInput",
         update: "ScheduleUpdateInput",
         where: "ScheduleWhere",
+      },
+    },
+    updateScreenScheduleSlots: {
+      __type: "UpdateScreenScheduleSlotsMutationResponse!",
+      __args: {
+        connect: "ScreenScheduleSlotConnectInput",
+        connectOrCreate: "ScreenScheduleSlotConnectOrCreateInput",
+        create: "ScreenScheduleSlotRelationInput",
+        delete: "ScreenScheduleSlotDeleteInput",
+        disconnect: "ScreenScheduleSlotDisconnectInput",
+        update: "ScreenScheduleSlotUpdateInput",
+        where: "ScreenScheduleSlotWhere",
       },
     },
     updateScreenSlots: {
@@ -28435,6 +29856,21 @@ export const generatedSchema = {
       __args: { where: "ScheduleWhere" },
     },
     schedulesCount: { __type: "Int!", __args: { where: "ScheduleWhere" } },
+    screenScheduleSlots: {
+      __type: "[ScreenScheduleSlot!]!",
+      __args: {
+        options: "ScreenScheduleSlotOptions",
+        where: "ScreenScheduleSlotWhere",
+      },
+    },
+    screenScheduleSlotsAggregate: {
+      __type: "ScreenScheduleSlotAggregateSelection!",
+      __args: { where: "ScreenScheduleSlotWhere" },
+    },
+    screenScheduleSlotsCount: {
+      __type: "Int!",
+      __args: { where: "ScreenScheduleSlotWhere" },
+    },
     screenSlots: {
       __type: "[ScreenSlot!]!",
       __args: { options: "ScreenSlotOptions", where: "ScreenSlotWhere" },
@@ -28594,6 +30030,7 @@ export interface CampaignAnalytic {
   data?: Maybe<ScalarsEnums["String"]>;
   id: ScalarsEnums["ID"];
   name?: Maybe<ScalarsEnums["String"]>;
+  scanned?: Maybe<ScalarsEnums["Int"]>;
   type?: Maybe<ScalarsEnums["String"]>;
 }
 
@@ -28984,6 +30421,12 @@ export interface CreateSchedulesMutationResponse {
   schedules: Array<Schedule>;
 }
 
+export interface CreateScreenScheduleSlotsMutationResponse {
+  __typename?: "CreateScreenScheduleSlotsMutationResponse";
+  info: CreateInfo;
+  screenScheduleSlots: Array<ScreenScheduleSlot>;
+}
+
 export interface CreateScreenSlotsMutationResponse {
   __typename?: "CreateScreenSlotsMutationResponse";
   info: CreateInfo;
@@ -29221,12 +30664,12 @@ export interface FloatAggregateSelection {
 export interface GreenScreen {
   __typename?: "GreenScreen";
   customSchedule: (args?: {
-    options?: Maybe<ScheduleSlotOptions>;
-    where?: Maybe<ScheduleSlotWhere>;
-  }) => Maybe<Array<Maybe<ScheduleSlot>>>;
+    options?: Maybe<ScreenScheduleSlotOptions>;
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => Maybe<Array<Maybe<ScreenScheduleSlot>>>;
   customScheduleAggregate: (args?: {
-    where?: Maybe<ScheduleSlotWhere>;
-  }) => Maybe<GreenScreenScheduleSlotCustomScheduleAggregationSelection>;
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => Maybe<GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection>;
   customScheduleConnection: (args?: {
     after?: Maybe<Scalars["String"]>;
     first?: Maybe<Scalars["Int"]>;
@@ -29309,7 +30752,7 @@ export interface GreenScreenCustomScheduleConnection {
 export interface GreenScreenCustomScheduleRelationship {
   __typename?: "GreenScreenCustomScheduleRelationship";
   cursor: ScalarsEnums["String"];
-  node: ScheduleSlot;
+  node: ScreenScheduleSlot;
 }
 
 export interface GreenScreenGreenScreenTemplateTemplateAggregationSelection {
@@ -29377,14 +30820,14 @@ export interface GreenScreenOrganisationRelationship {
   node: HiveOrganisation;
 }
 
-export interface GreenScreenScheduleSlotCustomScheduleAggregationSelection {
-  __typename?: "GreenScreenScheduleSlotCustomScheduleAggregationSelection";
+export interface GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection {
+  __typename?: "GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection";
   count: ScalarsEnums["Int"];
-  node?: Maybe<GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection>;
+  node?: Maybe<GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection>;
 }
 
-export interface GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection {
-  __typename?: "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection";
+export interface GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection {
+  __typename?: "GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection";
   endDate: DateTimeAggregateSelection;
   id: IDAggregateSelection;
   startDate: DateTimeAggregateSelection;
@@ -30400,7 +31843,7 @@ export interface HiveOrganisationScheduleTierScheduleTiersNodeAggregateSelection
   color: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  percent: FloatAggregateSelection;
+  plays: FloatAggregateSelection;
   slots: FloatAggregateSelection;
 }
 
@@ -31264,7 +32707,7 @@ export interface ScheduleScheduleTierTiersNodeAggregateSelection {
   color: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  percent: FloatAggregateSelection;
+  plays: FloatAggregateSelection;
   slots: FloatAggregateSelection;
 }
 
@@ -31399,7 +32842,7 @@ export interface ScheduleSlotScheduleTierTierNodeAggregateSelection {
   color: StringAggregateSelection;
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  percent: FloatAggregateSelection;
+  plays: FloatAggregateSelection;
   slots: FloatAggregateSelection;
 }
 
@@ -31485,7 +32928,7 @@ export interface ScheduleTier {
     sort?: Maybe<Array<ScheduleTierOrganisationConnectionSort>>;
     where?: Maybe<ScheduleTierOrganisationConnectionWhere>;
   }) => ScheduleTierOrganisationConnection;
-  percent?: Maybe<ScalarsEnums["Float"]>;
+  plays?: Maybe<ScalarsEnums["Float"]>;
   schedule: (args?: {
     options?: Maybe<ScheduleOptions>;
     where?: Maybe<ScheduleWhere>;
@@ -31509,7 +32952,7 @@ export interface ScheduleTierAggregateSelection {
   count: ScalarsEnums["Int"];
   id: IDAggregateSelection;
   name: StringAggregateSelection;
-  percent: FloatAggregateSelection;
+  plays: FloatAggregateSelection;
   slots: FloatAggregateSelection;
 }
 
@@ -31636,6 +33079,178 @@ export interface ScheduleViewScheduleScheduleNodeAggregateSelection {
   id: IDAggregateSelection;
   name: StringAggregateSelection;
   startDate: DateTimeAggregateSelection;
+}
+
+export interface ScreenScheduleSlot {
+  __typename?: "ScreenScheduleSlot";
+  campaign: (args?: {
+    options?: Maybe<CampaignOptions>;
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<Campaign>;
+  campaignAggregate: (args?: {
+    where?: Maybe<CampaignWhere>;
+  }) => Maybe<ScreenScheduleSlotCampaignCampaignAggregationSelection>;
+  campaignConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenScheduleSlotCampaignConnectionSort>>;
+    where?: Maybe<ScreenScheduleSlotCampaignConnectionWhere>;
+  }) => ScreenScheduleSlotCampaignConnection;
+  endDate?: Maybe<ScalarsEnums["DateTime"]>;
+  id: ScalarsEnums["ID"];
+  screen: (args?: {
+    options?: Maybe<GreenScreenOptions>;
+    where?: Maybe<GreenScreenWhere>;
+  }) => Maybe<GreenScreen>;
+  screenAggregate: (args?: {
+    where?: Maybe<GreenScreenWhere>;
+  }) => Maybe<ScreenScheduleSlotGreenScreenScreenAggregationSelection>;
+  screenConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenScheduleSlotScreenConnectionSort>>;
+    where?: Maybe<ScreenScheduleSlotScreenConnectionWhere>;
+  }) => ScreenScheduleSlotScreenConnection;
+  slot: (args?: {
+    options?: Maybe<TemplateSlotOptions>;
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<TemplateSlot>;
+  slotAggregate: (args?: {
+    where?: Maybe<TemplateSlotWhere>;
+  }) => Maybe<ScreenScheduleSlotTemplateSlotSlotAggregationSelection>;
+  slotConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenScheduleSlotSlotConnectionSort>>;
+    where?: Maybe<ScreenScheduleSlotSlotConnectionWhere>;
+  }) => ScreenScheduleSlotSlotConnection;
+  startDate?: Maybe<ScalarsEnums["DateTime"]>;
+  tier: (args?: {
+    options?: Maybe<ScheduleTierOptions>;
+    where?: Maybe<ScheduleTierWhere>;
+  }) => Maybe<ScheduleTier>;
+  tierAggregate: (args?: {
+    where?: Maybe<ScheduleTierWhere>;
+  }) => Maybe<ScreenScheduleSlotScheduleTierTierAggregationSelection>;
+  tierConnection: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    sort?: Maybe<Array<ScreenScheduleSlotTierConnectionSort>>;
+    where?: Maybe<ScreenScheduleSlotTierConnectionWhere>;
+  }) => ScreenScheduleSlotTierConnection;
+}
+
+export interface ScreenScheduleSlotAggregateSelection {
+  __typename?: "ScreenScheduleSlotAggregateSelection";
+  count: ScalarsEnums["Int"];
+  endDate: DateTimeAggregateSelection;
+  id: IDAggregateSelection;
+  startDate: DateTimeAggregateSelection;
+}
+
+export interface ScreenScheduleSlotCampaignCampaignAggregationSelection {
+  __typename?: "ScreenScheduleSlotCampaignCampaignAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenScheduleSlotCampaignCampaignNodeAggregateSelection>;
+}
+
+export interface ScreenScheduleSlotCampaignCampaignNodeAggregateSelection {
+  __typename?: "ScreenScheduleSlotCampaignCampaignNodeAggregateSelection";
+  assetFolder: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface ScreenScheduleSlotCampaignConnection {
+  __typename?: "ScreenScheduleSlotCampaignConnection";
+  edges: Array<ScreenScheduleSlotCampaignRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenScheduleSlotCampaignRelationship {
+  __typename?: "ScreenScheduleSlotCampaignRelationship";
+  cursor: ScalarsEnums["String"];
+  node: Campaign;
+}
+
+export interface ScreenScheduleSlotGreenScreenScreenAggregationSelection {
+  __typename?: "ScreenScheduleSlotGreenScreenScreenAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection>;
+}
+
+export interface ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection {
+  __typename?: "ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  networkName: StringAggregateSelection;
+}
+
+export interface ScreenScheduleSlotScheduleTierTierAggregationSelection {
+  __typename?: "ScreenScheduleSlotScheduleTierTierAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenScheduleSlotScheduleTierTierNodeAggregateSelection>;
+}
+
+export interface ScreenScheduleSlotScheduleTierTierNodeAggregateSelection {
+  __typename?: "ScreenScheduleSlotScheduleTierTierNodeAggregateSelection";
+  color: StringAggregateSelection;
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+  plays: FloatAggregateSelection;
+  slots: FloatAggregateSelection;
+}
+
+export interface ScreenScheduleSlotScreenConnection {
+  __typename?: "ScreenScheduleSlotScreenConnection";
+  edges: Array<ScreenScheduleSlotScreenRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenScheduleSlotScreenRelationship {
+  __typename?: "ScreenScheduleSlotScreenRelationship";
+  cursor: ScalarsEnums["String"];
+  node: GreenScreen;
+}
+
+export interface ScreenScheduleSlotSlotConnection {
+  __typename?: "ScreenScheduleSlotSlotConnection";
+  edges: Array<ScreenScheduleSlotSlotRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenScheduleSlotSlotRelationship {
+  __typename?: "ScreenScheduleSlotSlotRelationship";
+  cursor: ScalarsEnums["String"];
+  node: TemplateSlot;
+}
+
+export interface ScreenScheduleSlotTemplateSlotSlotAggregationSelection {
+  __typename?: "ScreenScheduleSlotTemplateSlotSlotAggregationSelection";
+  count: ScalarsEnums["Int"];
+  node?: Maybe<ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection>;
+}
+
+export interface ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection {
+  __typename?: "ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection";
+  id: IDAggregateSelection;
+  name: StringAggregateSelection;
+}
+
+export interface ScreenScheduleSlotTierConnection {
+  __typename?: "ScreenScheduleSlotTierConnection";
+  edges: Array<ScreenScheduleSlotTierRelationship>;
+  pageInfo: PageInfo;
+  totalCount: ScalarsEnums["Int"];
+}
+
+export interface ScreenScheduleSlotTierRelationship {
+  __typename?: "ScreenScheduleSlotTierRelationship";
+  cursor: ScalarsEnums["String"];
+  node: ScheduleTier;
 }
 
 export interface ScreenSlot {
@@ -32168,6 +33783,12 @@ export interface UpdateSchedulesMutationResponse {
   schedules: Array<Schedule>;
 }
 
+export interface UpdateScreenScheduleSlotsMutationResponse {
+  __typename?: "UpdateScreenScheduleSlotsMutationResponse";
+  info: UpdateInfo;
+  screenScheduleSlots: Array<ScreenScheduleSlot>;
+}
+
 export interface UpdateScreenSlotsMutationResponse {
   __typename?: "UpdateScreenSlotsMutationResponse";
   info: UpdateInfo;
@@ -32269,6 +33890,9 @@ export interface Mutation {
   createSchedules: (args: {
     input: Array<ScheduleCreateInput>;
   }) => CreateSchedulesMutationResponse;
+  createScreenScheduleSlots: (args: {
+    input: Array<ScreenScheduleSlotCreateInput>;
+  }) => CreateScreenScheduleSlotsMutationResponse;
   createScreenSlots: (args: {
     input: Array<ScreenSlotCreateInput>;
   }) => CreateScreenSlotsMutationResponse;
@@ -32376,6 +34000,10 @@ export interface Mutation {
   deleteSchedules: (args?: {
     delete?: Maybe<ScheduleDeleteInput>;
     where?: Maybe<ScheduleWhere>;
+  }) => DeleteInfo;
+  deleteScreenScheduleSlots: (args?: {
+    delete?: Maybe<ScreenScheduleSlotDeleteInput>;
+    where?: Maybe<ScreenScheduleSlotWhere>;
   }) => DeleteInfo;
   deleteScreenSlots: (args?: {
     delete?: Maybe<ScreenSlotDeleteInput>;
@@ -32598,6 +34226,15 @@ export interface Mutation {
     update?: Maybe<ScheduleUpdateInput>;
     where?: Maybe<ScheduleWhere>;
   }) => UpdateSchedulesMutationResponse;
+  updateScreenScheduleSlots: (args?: {
+    connect?: Maybe<ScreenScheduleSlotConnectInput>;
+    connectOrCreate?: Maybe<ScreenScheduleSlotConnectOrCreateInput>;
+    create?: Maybe<ScreenScheduleSlotRelationInput>;
+    delete?: Maybe<ScreenScheduleSlotDeleteInput>;
+    disconnect?: Maybe<ScreenScheduleSlotDisconnectInput>;
+    update?: Maybe<ScreenScheduleSlotUpdateInput>;
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => UpdateScreenScheduleSlotsMutationResponse;
   updateScreenSlots: (args?: {
     connect?: Maybe<ScreenSlotConnectInput>;
     connectOrCreate?: Maybe<ScreenSlotConnectOrCreateInput>;
@@ -32885,6 +34522,16 @@ export interface Query {
   schedulesCount: (args?: {
     where?: Maybe<ScheduleWhere>;
   }) => ScalarsEnums["Int"];
+  screenScheduleSlots: (args?: {
+    options?: Maybe<ScreenScheduleSlotOptions>;
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => Array<ScreenScheduleSlot>;
+  screenScheduleSlotsAggregate: (args?: {
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => ScreenScheduleSlotAggregateSelection;
+  screenScheduleSlotsCount: (args?: {
+    where?: Maybe<ScreenScheduleSlotWhere>;
+  }) => ScalarsEnums["Int"];
   screenSlots: (args?: {
     options?: Maybe<ScreenSlotOptions>;
     where?: Maybe<ScreenSlotWhere>;
@@ -32992,6 +34639,7 @@ export interface SchemaObjectTypes {
   CreateScheduleTiersMutationResponse: CreateScheduleTiersMutationResponse;
   CreateScheduleViewsMutationResponse: CreateScheduleViewsMutationResponse;
   CreateSchedulesMutationResponse: CreateSchedulesMutationResponse;
+  CreateScreenScheduleSlotsMutationResponse: CreateScreenScheduleSlotsMutationResponse;
   CreateScreenSlotsMutationResponse: CreateScreenSlotsMutationResponse;
   CreateScreenTagsMutationResponse: CreateScreenTagsMutationResponse;
   CreateTemplateSlotPluginsMutationResponse: CreateTemplateSlotPluginsMutationResponse;
@@ -33033,8 +34681,8 @@ export interface SchemaObjectTypes {
   GreenScreenLocationRelationship: GreenScreenLocationRelationship;
   GreenScreenOrganisationConnection: GreenScreenOrganisationConnection;
   GreenScreenOrganisationRelationship: GreenScreenOrganisationRelationship;
-  GreenScreenScheduleSlotCustomScheduleAggregationSelection: GreenScreenScheduleSlotCustomScheduleAggregationSelection;
-  GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection;
+  GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection: GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection;
+  GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection: GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection;
   GreenScreenScreenSlotSlotsAggregationSelection: GreenScreenScreenSlotSlotsAggregationSelection;
   GreenScreenScreenSlotSlotsNodeAggregateSelection: GreenScreenScreenSlotSlotsNodeAggregateSelection;
   GreenScreenSlotsConnection: GreenScreenSlotsConnection;
@@ -33277,6 +34925,24 @@ export interface SchemaObjectTypes {
   ScheduleViewScheduleRelationship: ScheduleViewScheduleRelationship;
   ScheduleViewScheduleScheduleAggregationSelection: ScheduleViewScheduleScheduleAggregationSelection;
   ScheduleViewScheduleScheduleNodeAggregateSelection: ScheduleViewScheduleScheduleNodeAggregateSelection;
+  ScreenScheduleSlot: ScreenScheduleSlot;
+  ScreenScheduleSlotAggregateSelection: ScreenScheduleSlotAggregateSelection;
+  ScreenScheduleSlotCampaignCampaignAggregationSelection: ScreenScheduleSlotCampaignCampaignAggregationSelection;
+  ScreenScheduleSlotCampaignCampaignNodeAggregateSelection: ScreenScheduleSlotCampaignCampaignNodeAggregateSelection;
+  ScreenScheduleSlotCampaignConnection: ScreenScheduleSlotCampaignConnection;
+  ScreenScheduleSlotCampaignRelationship: ScreenScheduleSlotCampaignRelationship;
+  ScreenScheduleSlotGreenScreenScreenAggregationSelection: ScreenScheduleSlotGreenScreenScreenAggregationSelection;
+  ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection: ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection;
+  ScreenScheduleSlotScheduleTierTierAggregationSelection: ScreenScheduleSlotScheduleTierTierAggregationSelection;
+  ScreenScheduleSlotScheduleTierTierNodeAggregateSelection: ScreenScheduleSlotScheduleTierTierNodeAggregateSelection;
+  ScreenScheduleSlotScreenConnection: ScreenScheduleSlotScreenConnection;
+  ScreenScheduleSlotScreenRelationship: ScreenScheduleSlotScreenRelationship;
+  ScreenScheduleSlotSlotConnection: ScreenScheduleSlotSlotConnection;
+  ScreenScheduleSlotSlotRelationship: ScreenScheduleSlotSlotRelationship;
+  ScreenScheduleSlotTemplateSlotSlotAggregationSelection: ScreenScheduleSlotTemplateSlotSlotAggregationSelection;
+  ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection: ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection;
+  ScreenScheduleSlotTierConnection: ScreenScheduleSlotTierConnection;
+  ScreenScheduleSlotTierRelationship: ScreenScheduleSlotTierRelationship;
   ScreenSlot: ScreenSlot;
   ScreenSlotAggregateSelection: ScreenSlotAggregateSelection;
   ScreenSlotGreenScreenScreenAggregationSelection: ScreenSlotGreenScreenScreenAggregationSelection;
@@ -33341,6 +35007,7 @@ export interface SchemaObjectTypes {
   UpdateScheduleTiersMutationResponse: UpdateScheduleTiersMutationResponse;
   UpdateScheduleViewsMutationResponse: UpdateScheduleViewsMutationResponse;
   UpdateSchedulesMutationResponse: UpdateSchedulesMutationResponse;
+  UpdateScreenScheduleSlotsMutationResponse: UpdateScreenScheduleSlotsMutationResponse;
   UpdateScreenSlotsMutationResponse: UpdateScreenSlotsMutationResponse;
   UpdateScreenTagsMutationResponse: UpdateScreenTagsMutationResponse;
   UpdateTemplateSlotPluginsMutationResponse: UpdateTemplateSlotPluginsMutationResponse;
@@ -33407,6 +35074,7 @@ export type SchemaObjectTypesNames =
   | "CreateScheduleTiersMutationResponse"
   | "CreateScheduleViewsMutationResponse"
   | "CreateSchedulesMutationResponse"
+  | "CreateScreenScheduleSlotsMutationResponse"
   | "CreateScreenSlotsMutationResponse"
   | "CreateScreenTagsMutationResponse"
   | "CreateTemplateSlotPluginsMutationResponse"
@@ -33448,8 +35116,8 @@ export type SchemaObjectTypesNames =
   | "GreenScreenLocationRelationship"
   | "GreenScreenOrganisationConnection"
   | "GreenScreenOrganisationRelationship"
-  | "GreenScreenScheduleSlotCustomScheduleAggregationSelection"
-  | "GreenScreenScheduleSlotCustomScheduleNodeAggregateSelection"
+  | "GreenScreenScreenScheduleSlotCustomScheduleAggregationSelection"
+  | "GreenScreenScreenScheduleSlotCustomScheduleNodeAggregateSelection"
   | "GreenScreenScreenSlotSlotsAggregationSelection"
   | "GreenScreenScreenSlotSlotsNodeAggregateSelection"
   | "GreenScreenSlotsConnection"
@@ -33692,6 +35360,24 @@ export type SchemaObjectTypesNames =
   | "ScheduleViewScheduleRelationship"
   | "ScheduleViewScheduleScheduleAggregationSelection"
   | "ScheduleViewScheduleScheduleNodeAggregateSelection"
+  | "ScreenScheduleSlot"
+  | "ScreenScheduleSlotAggregateSelection"
+  | "ScreenScheduleSlotCampaignCampaignAggregationSelection"
+  | "ScreenScheduleSlotCampaignCampaignNodeAggregateSelection"
+  | "ScreenScheduleSlotCampaignConnection"
+  | "ScreenScheduleSlotCampaignRelationship"
+  | "ScreenScheduleSlotGreenScreenScreenAggregationSelection"
+  | "ScreenScheduleSlotGreenScreenScreenNodeAggregateSelection"
+  | "ScreenScheduleSlotScheduleTierTierAggregationSelection"
+  | "ScreenScheduleSlotScheduleTierTierNodeAggregateSelection"
+  | "ScreenScheduleSlotScreenConnection"
+  | "ScreenScheduleSlotScreenRelationship"
+  | "ScreenScheduleSlotSlotConnection"
+  | "ScreenScheduleSlotSlotRelationship"
+  | "ScreenScheduleSlotTemplateSlotSlotAggregationSelection"
+  | "ScreenScheduleSlotTemplateSlotSlotNodeAggregateSelection"
+  | "ScreenScheduleSlotTierConnection"
+  | "ScreenScheduleSlotTierRelationship"
   | "ScreenSlot"
   | "ScreenSlotAggregateSelection"
   | "ScreenSlotGreenScreenScreenAggregationSelection"
@@ -33756,6 +35442,7 @@ export type SchemaObjectTypesNames =
   | "UpdateScheduleTiersMutationResponse"
   | "UpdateScheduleViewsMutationResponse"
   | "UpdateSchedulesMutationResponse"
+  | "UpdateScreenScheduleSlotsMutationResponse"
   | "UpdateScreenSlotsMutationResponse"
   | "UpdateScreenTagsMutationResponse"
   | "UpdateTemplateSlotPluginsMutationResponse"
