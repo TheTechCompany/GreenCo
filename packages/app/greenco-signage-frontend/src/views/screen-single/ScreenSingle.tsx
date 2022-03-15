@@ -95,6 +95,7 @@ export const ScreenSingle = (props) => {
 
 					group{
 						schedule{
+							id
 
 							tiers {
 								id
@@ -152,6 +153,8 @@ export const ScreenSingle = (props) => {
 	const scheduleViews = machine?.location?.group?.schedule?.template?.slots;
 	const scheduledCampaigns = machine?.location?.group?.schedule?.slots;
 
+	const scheduleId = machine?.location?.group?.schedule?.id;
+
 	const tiers = machine?.location?.group?.schedule?.tiers || [];
 
 	const client = useApolloClient()
@@ -202,6 +205,7 @@ export const ScreenSingle = (props) => {
 	return (
 		<ScreenSingleProvider value={{
 			id: id,
+			scheduleId,
 			campaigns: data?.campaigns || [],
 			screen: data?.greenScreens?.[0],
 			scheduledCampaigns: scheduledCampaigns?.map((x) => ({...x, editable: false, opacity: 0.5})).concat(data?.screenScheduleSlots.map((x) => ({...x, editable: true})) || []),
