@@ -8,7 +8,7 @@ import { query, useMutation } from '@greenco/signage-api';
 
 export const ScreenSchedule = (props) => {
 
-    const { id, scheduledCampaigns, tiers, campaigns, scheduleViews, refresh } = useContext(ScreenSingleContext);
+    const { id, scheduledCampaigns, scheduleId, tiers, campaigns, scheduleViews, refresh } = useContext(ScreenSingleContext);
 
 	const [ selected, setSelected ] = useState<{id: string} | null>(null);
 
@@ -54,12 +54,18 @@ export const ScreenSchedule = (props) => {
             }
         })
 
+		let updateRes;
+		if(scheduleId){
+			updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+		}
+
         //TODO push update from server side
 		// const updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
 
 
         return {
             item : {
+				updated: updateRes,
                 ...item?.greenScreens?.[0],
                 // updateRes
             }
@@ -102,10 +108,16 @@ export const ScreenSchedule = (props) => {
 			}
 		})
 
+		let updateRes;
+		if(scheduleId){
+			updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+		}
+
 		// const updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
 
 		return {
 			item: {
+				updated: updateRes,
 				...item.greenScreens?.[0],
 				// update: updateRes
 			}
@@ -123,8 +135,15 @@ export const ScreenSchedule = (props) => {
                 }]
             }
         })
+		
+		let updateRes;
+		if(scheduleId){
+			updateRes = mutation.pushScheduleUpdate({schedule: scheduleId})
+		}
+
         return {
             item: {
+				updated: updateRes,
                 ...item.greenScreens?.[0]
             }
         }

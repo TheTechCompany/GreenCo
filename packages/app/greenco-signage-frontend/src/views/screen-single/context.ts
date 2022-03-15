@@ -3,6 +3,7 @@ import React from 'react';
 export const ScreenSingleContext = React.createContext<{
 	id?: string;
 	slots?: any[];
+	scheduleId?: string,
 	campaigns?: any[];
 	scheduledCampaigns?: any[];
 	scheduleViews?: any[];
