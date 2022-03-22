@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Text, Button, List } from 'grommet';
 import { useMutation, useQuery } from '@greenco/signage-api';
-import { Add, List as ListIcon, Edit, Map as MapIcon } from 'grommet-icons';
+import { Add, List as ListIcon, MoreVertical, Map as MapIcon } from 'grommet-icons';
 import { CreateLocationModal } from '../../modals/create-location';
 import { useNavigate } from 'react-router-dom'
 import { LocationMap } from '../../components/location-map';
@@ -139,6 +139,8 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 							...cluster
 						}}).then(() => {
 							openModal(false)
+							setSelected(null)
+
 						})
 					}
 				}}
@@ -177,21 +179,26 @@ export const LocationList : React.FC<LocationListProps> = (props) => {
 			<Box flex overflow={"auto"}>
 				{view == 'list' ? (
 							<List
-								onClickItem={(ev) => navigate(`${ev.item.id}`)}
 								primaryKey={"name"}
 								data={locationGroups}>
 								{(datum) => (
-									<Box direction='row' align='center' justify='between'>
+									<Box
+										onClick={() => navigate(`${datum.id}`)} 
+										direction='row' 
+										align='center' 
+										justify='between'>
 										<Text>{datum?.name}</Text>
 										<Button 
-											onClick={() => {
+											onClick={(e) => {
+												e.stopPropagation();
+
 												openModal(true)
 												setSelected(datum)
 											}}
 											plain
 											hoverIndicator
 											style={{padding: 6, borderRadius: 3}}
-											icon={<Edit />} />
+											icon={<MoreVertical size="small" />} />
 									</Box>
 								)}
 							</List>
