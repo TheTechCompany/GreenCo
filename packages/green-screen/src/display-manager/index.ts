@@ -44,9 +44,9 @@ export class DisplayManager {
 				width: 1080, //1080
 				height: 1920 //1920
 			},
-			executablePath: `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
+			executablePath: process.env.NODE_ENV == 'development' ? '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome' : `C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe`,
 			// "C:\Program Files\Google\Chrome\Application
-			args: ['--kiosk', '--disable-infobars', '--auto-open-devtools-for-tabs'] //'--kiosk', '--disable-infobars', '
+			args: ['--kiosk', '--disable-infobars'] //'--kiosk', '--disable-infobars', '
 		})
 
 		this.page = await this.browser?.newPage()
@@ -61,6 +61,10 @@ export class DisplayManager {
 			await this.screenshot()
 		}, 5 * 60 * 1000);
 		
+	}
+
+	shutdown(){
+		this.browser?.close()
 	}
 
 	get isHolding(){
@@ -92,9 +96,9 @@ export class DisplayManager {
 			await this.page?.goto(`http://localhost:3000/${campaign.id}`)
 			await this.page?.addScriptTag({content: analytics})
 	
-			if(this.isPublic){
-				await this.page?.addScriptTag({content: handsfree(this.privateAddress)})
-			}
+			// if(this.isPublic){
+			// 	await this.page?.addScriptTag({content: handsfree(this.privateAddress)})
+			// }
 		}catch(e){
 
 		}
