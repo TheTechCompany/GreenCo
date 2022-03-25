@@ -44,7 +44,6 @@ export class GreenMachine {
 
 		this.pluginManager = new PluginManager({
 			pluginDirectory: opts.pluginDirectory,
-			// initPlugins: opts.initPlugins
 		})
 
 		this.app = express()
