@@ -1,6 +1,6 @@
 {
   "name": "@greenco/cdn",
-  "version": "0.0.3-alpha.31",
+  "version": "0.0.3-alpha.37",
   "description": "",
   "main": "index.js",
   "publishConfig": {
